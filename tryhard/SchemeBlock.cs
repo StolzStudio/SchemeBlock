@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace tryhard
 {
+    struct Point
+    {
+        public int x;
+        public int y;
+        public Point(int Ax, int Ay)
+        {
+            x = Ax;
+            y = Ay;
+        }
+    }
+
     class SchemeBlock
     {
         //{consts}
@@ -18,18 +29,18 @@ namespace tryhard
             public System.Windows.Forms.Label NameLabel;
         //{end}
 
-        public SchemeBlock(string AName)
+        public SchemeBlock(string AName, Point APossition)
         {
-            InitializeComponent(AName);
+            InitializeComponent(AName, APossition);
         }
 
-        private void InitializeComponent(string AName)
+        private void InitializeComponent(string AName, Point APossition)
         {
             //{BlockBody}
                 this.BlockBody = new System.Windows.Forms.Panel();
 
                 this.BlockBody.BackColor =     System.Drawing.Color.Beige;
-                this.BlockBody.Location  = new System.Drawing.Point(12, 12);
+                this.BlockBody.Location  = new System.Drawing.Point(APossition.x, APossition.y);
                 this.BlockBody.Size      = new System.Drawing.Size(BlockBodyWidth, BlockBodyHeight);
             //{end}
 
