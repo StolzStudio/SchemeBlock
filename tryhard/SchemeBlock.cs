@@ -29,18 +29,18 @@ namespace tryhard
             public System.Windows.Forms.Label NameLabel;
         //{end}
 
-        public SchemeBlock(string AName, Point APossition)
+        public SchemeBlock(string AName, Point APosition)
         {
-            InitializeComponent(AName, APossition);
+            InitializeComponent(AName, APosition);
         }
 
-        private void InitializeComponent(string AName, Point APossition)
+        private void InitializeComponent(string AName, Point APosition)
         {
             //{BlockBody}
                 this.BlockBody = new System.Windows.Forms.Panel();
 
                 this.BlockBody.BackColor =     System.Drawing.Color.Beige;
-                this.BlockBody.Location  = new System.Drawing.Point(APossition.x, APossition.y);
+                this.BlockBody.Location  = new System.Drawing.Point(APosition.x, APosition.y);
                 this.BlockBody.Size      = new System.Drawing.Size(BlockBodyWidth, BlockBodyHeight);
             //{end}
 
