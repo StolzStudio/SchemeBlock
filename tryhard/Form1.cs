@@ -12,12 +12,15 @@ namespace tryhard
 {
     public partial class MainForm : Form
     {
-        private SchemeBlock[] Blocks;
+        public System.Drawing.Point DrawingPanelOffset;
 
+        private SchemeBlock[] Blocks;
+        
         public MainForm()
         {
             Blocks = new SchemeBlock[0];
             InitializeComponent();
+            DrawingPanelOffset = DrawingPanel.Location;
         }
 
         private void AddBlockButton_Click(object sender, EventArgs e)

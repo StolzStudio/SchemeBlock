@@ -59,8 +59,11 @@ namespace tryhard
         public void SchemeBodyMouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown)
-            { 
-                this.BlockBody.Location = Form.PointToClient(Cursor.Position);
+            {
+                System.Drawing.Point Ptr = Form.PointToClient(Cursor.Position);
+                Ptr.X -= Form.DrawingPanelOffset.X + BlockBodyWidth  / 2;
+                Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
+                this.BlockBody.Location = Ptr;
             }
         }
 
