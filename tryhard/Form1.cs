@@ -25,7 +25,7 @@ namespace tryhard
             Array.Resize(ref Blocks, Blocks.Length + 1);
             System.Drawing.Point Pos = new System.Drawing.Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
 
-            Blocks[Blocks.Length - 1] = new SchemeBlock("Труба" + (Blocks.Length - 1).ToString(), Pos);
+            Blocks[Blocks.Length - 1] = new SchemeBlock("Труба" + (Blocks.Length - 1).ToString(), Pos, this);
             this.DrawingPanel.Controls.Add(Blocks[Blocks.Length - 1].BlockBody);
             this.label1.Text = Blocks.Length.ToString();
         }

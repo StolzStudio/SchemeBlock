@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace tryhard
-{ 
+{
     class SchemeBlock
     {
         //{consts}
             private int  BlockBodyWidth  = 120;
             private int  BlockBodyHeight = 60;
             private bool isMouseDown     = false;
+
+            private MainForm Form;
         //{end}
 
         //{controls}
@@ -20,8 +22,9 @@ namespace tryhard
             public System.Windows.Forms.Label NameLabel;
         //{end}
 
-        public SchemeBlock(string AName, System.Drawing.Point APosition)
+        public SchemeBlock(string AName, System.Drawing.Point APosition, MainForm AForm)
         {
+            Form = AForm;
             InitializeComponent(AName, APosition);
         }
 
@@ -56,8 +59,8 @@ namespace tryhard
         public void SchemeBodyMouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown)
-            {
-                this.BlockBody.Location = new System.Drawing.Point(e.Location.X, e.Location.Y);
+            { 
+                this.BlockBody.Location = Form.PointToClient(Cursor.Position);
             }
         }
 
