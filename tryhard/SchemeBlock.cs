@@ -42,11 +42,9 @@ namespace tryhard
             //{end}
 
             //{NameLabel}
-            this.NameLabel = new System.Windows.Forms.Label();
-
+                this.NameLabel = new System.Windows.Forms.Label();
                 this.NameLabel.Location = new System.Drawing.Point(0, 0);
                 this.NameLabel.Text     = AName;
-
                 this.BlockBody.Controls.Add(this.NameLabel);
             //{end}
         }
