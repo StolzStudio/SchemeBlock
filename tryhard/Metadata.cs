@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace tryhard
 {
-    public enum FieldTypes {  };
+    public enum FieldTypes { };
 
     class CField
     {
@@ -15,7 +15,7 @@ namespace tryhard
         private int FTableTag;
         private FieldTypes FType;
         private CField FReference = null;
- 
+
         /* Properties */
 
         public string Name
@@ -52,7 +52,7 @@ namespace tryhard
         {
             get { return FReference; }
             set { FReference = value; }
-        } 
+        }
     }
 
     class CTable
@@ -64,6 +64,20 @@ namespace tryhard
         private bool BIsRefFields = false;
 
         public List<CField> Fields;
+
+        public CTable (string ATableName)
+        {
+            Name = ATableName;
+            Caption = ATableName;
+            FillDataTable(ATableName);
+        }
+
+        /* Methods*/
+
+        private void FillDataTable(string ATableName)
+        {
+
+        }
 
         /* Properties */
 
@@ -90,6 +104,32 @@ namespace tryhard
     {
         /* Fields */
 
-        public List<CTable> Tables;
+        public List<CTable> Tables = null;
+
+        /* Methods */
+
+        public void CreateTable(string ATableName)
+        {
+            Tables.Add(new CTable(ATableName));
+        }
+
+        public void DeleteTable(string ATableName)
+        {
+            for (int i = 0; i < Tables.Count; i++)
+            {
+                if (ATableName == Tables[i].Name)
+                {
+                    Tables.RemoveAt(i);
+                    return;
+                }
+            }
+            return;
+        }
+
+        public void DeleteTable(int ATableIndex)
+        {
+            Tables.RemoveAt(ATableIndex);
+            return;
+        }
     }
-}
+}   
