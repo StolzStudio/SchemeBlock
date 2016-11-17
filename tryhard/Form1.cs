@@ -50,7 +50,6 @@ namespace tryhard
             {
                 this.DBlabel.Text = "Error";
             }
-            this.DBlabel.Text = "Yeaaa beach!";
         }
     }
 }

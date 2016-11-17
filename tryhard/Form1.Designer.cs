@@ -90,7 +90,7 @@
             this.DBlabel.Name = "DBlabel";
             this.DBlabel.Size = new System.Drawing.Size(33, 13);
             this.DBlabel.TabIndex = 5;
-            this.DBlabel.Text = "None";
+            this.DBlabel.Text = "Click left button!";
             // 
             // MainForm
             // 
