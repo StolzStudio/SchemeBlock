@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TestDBButton = new System.Windows.Forms.Button();
-            this.DBlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -83,21 +82,11 @@
             this.TestDBButton.UseVisualStyleBackColor = true;
             this.TestDBButton.Click += new System.EventHandler(this.TestDBButton_Click);
             // 
-            // DBlabel
-            // 
-            this.DBlabel.AutoSize = true;
-            this.DBlabel.Location = new System.Drawing.Point(1025, 496);
-            this.DBlabel.Name = "DBlabel";
-            this.DBlabel.Size = new System.Drawing.Size(33, 13);
-            this.DBlabel.TabIndex = 5;
-            this.DBlabel.Text = "Click left button!";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1343, 610);
-            this.Controls.Add(this.DBlabel);
             this.Controls.Add(this.TestDBButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -117,7 +106,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button TestDBButton;
-        private System.Windows.Forms.Label DBlabel;
     }
 }
 

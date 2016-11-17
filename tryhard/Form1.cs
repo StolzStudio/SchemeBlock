@@ -41,15 +41,7 @@ namespace tryhard
 
         private void TestDBButton_Click(object sender, EventArgs e)
         {
-            SQLiteConnection conn = new SQLiteConnection("Data source=database.db; Version=3;");
-            try
-            {
-                conn.Open();
-            }
-            catch (SQLiteException ex)
-            {
-                this.DBlabel.Text = "Error";
-            }
+            
         }
     }
 }
