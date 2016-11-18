@@ -24,7 +24,12 @@ namespace tryhard
 
         public System.Drawing.Point GetInputSchemePointLocation(SchemeBlock AInputBlock)
         {
-            return AInputBlock.BlockBody.Location; ///
+            return AInputBlock.BlockPoints[InputSchemePointIndex].Location; 
+        }
+
+        public System.Drawing.Point GetOutputSchemePointLocation(SchemeBlock AOutputBlock)
+        {
+            return AOutputBlock.BlockPoints[OutputSchemePointIndex].Location;
         }
     }
 }
