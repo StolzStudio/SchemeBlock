@@ -103,6 +103,7 @@ namespace tryhard
                 Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
 
                 this.BlockBody.Location = Ptr;
+                Form.DrawingPanel.Invalidate();
             }
         }
 
