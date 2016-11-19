@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace tryhard
 {
-    class SchemeLink
+    public class SchemeLink
     {
-        private int InputSchemeIndex;
-        private int InputSchemePointIndex;
-        private int OutputSchemeIndex;
-        private int OutputSchemePointIndex;
+        public int InputSchemeIndex;
+        public int InputSchemePointIndex;
+        public int OutputSchemeIndex;
+        public int OutputSchemePointIndex;
 
         public SchemeLink(int AInputSchemeIndex, int AInputSchemePointIndex,
                           int AOutputSchemeIndex, int AOutputSchemePointIndex)
@@ -22,14 +22,14 @@ namespace tryhard
             OutputSchemePointIndex = AOutputSchemePointIndex;
         }
 
-        public System.Drawing.Point GetInputSchemePointLocation(SchemeBlock AInputBlock)
+        public System.Drawing.Point GetInputSchemePointLocation(MainForm AForm)
         {
-            return AInputBlock.BlockPoints[InputSchemePointIndex].Location; 
+            return AForm.Blocks[InputSchemeIndex].BlockPoints[InputSchemePointIndex].Location; 
         }
 
-        public System.Drawing.Point GetOutputSchemePointLocation(SchemeBlock AOutputBlock)
+        public System.Drawing.Point GetOutputSchemePointLocation(MainForm AForm)
         {
-            return AOutputBlock.BlockPoints[OutputSchemePointIndex].Location;
+            return AForm.Blocks[OutputSchemeIndex].BlockPoints[OutputSchemePointIndex].Location;
         }
     }
 }

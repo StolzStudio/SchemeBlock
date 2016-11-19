@@ -42,7 +42,7 @@
             this.DrawingPanel.Name = "DrawingPanel";
             this.DrawingPanel.Size = new System.Drawing.Size(882, 586);
             this.DrawingPanel.TabIndex = 0;
-            this.DrawingPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawingPanel_MouseDown);
+            this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
             // AddBlockButton
             // 
@@ -101,10 +101,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel DrawingPanel;
+        public  System.Windows.Forms.Panel DrawingPanel;
         private System.Windows.Forms.Button AddBlockButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        public  System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button TestDBButton;
     }
 }
