@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace tryhard
 {
@@ -22,12 +23,12 @@ namespace tryhard
             OutputSchemePointIndex = AOutputSchemePointIndex;
         }
 
-        public System.Drawing.Point GetInputSchemePointLocation(MainForm AForm)
+        public Point GetInputSchemePointLocation(MainForm AForm)
         {
             return AForm.Blocks[InputSchemeIndex].BlockPoints[InputSchemePointIndex].Location; 
         }
 
-        public System.Drawing.Point GetOutputSchemePointLocation(MainForm AForm)
+        public Point GetOutputSchemePointLocation(MainForm AForm)
         {
             return AForm.Blocks[OutputSchemeIndex].BlockPoints[OutputSchemePointIndex].Location;
         }

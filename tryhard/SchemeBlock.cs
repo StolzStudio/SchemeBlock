@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace tryhard
 {
@@ -23,56 +24,56 @@ namespace tryhard
         //{end}
 
         //{controls}
-        public System.Windows.Forms.Panel   BlockBody;
-        public System.Windows.Forms.Label   NameLabel;
-        public System.Windows.Forms.Panel[] BlockPoints;
+        public Panel   BlockBody;
+        public Label   NameLabel;
+        public Panel[] BlockPoints;
         //{end}
 
-        public SchemeBlock(int AIndex, string AName, System.Drawing.Point APosition, MainForm AForm)
+        public SchemeBlock(int AIndex, string AName, Point APosition, MainForm AForm)
         {
             Form  = AForm;
             Index = AIndex;
             InitializeComponent(AName, APosition);
         }
 
-        private void InitializeComponent(string AName, System.Drawing.Point APosition)
+        private void InitializeComponent(string AName, Point APosition)
         {
             //{BlockBody}
-            this.BlockBody = new System.Windows.Forms.Panel();
+            this.BlockBody = new Panel();
 
-            this.BlockBody.BackColor  =     System.Drawing.Color.Beige;
-            this.BlockBody.Location   = new System.Drawing.Point(APosition.X, APosition.Y);
-            this.BlockBody.Size       = new System.Drawing.Size(BlockBodyWidth, BlockBodyHeight);
-            this.BlockBody.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SchemeBodyMouseDown);
-            this.BlockBody.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SchemeBodyMouseMove);
-            this.BlockBody.MouseUp   += new System.Windows.Forms.MouseEventHandler(this.SchemeBodyMouseUp);
+            this.BlockBody.BackColor  =     Color.Beige;
+            this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
+            this.BlockBody.Size       = new Size(BlockBodyWidth, BlockBodyHeight);
+            this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
+            this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
+            this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             //{end}
 
             //{BlockPoints}
-            this.BlockPoints = new System.Windows.Forms.Panel[4];
+            this.BlockPoints = new Panel[4];
 
-            this.BlockPoints[0]          = new System.Windows.Forms.Panel();
-            this.BlockPoints[0].Location = new System.Drawing.Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
+            this.BlockPoints[0]          = new Panel();
+            this.BlockPoints[0].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
             this.BlockPoints[0].Name     = "Top";
 
-            this.BlockPoints[1]          = new System.Windows.Forms.Panel();
-            this.BlockPoints[1].Location = new System.Drawing.Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
+            this.BlockPoints[1]          = new Panel();
+            this.BlockPoints[1].Location = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
             this.BlockPoints[1].Name     = "Right";
 
-            this.BlockPoints[2]          = new System.Windows.Forms.Panel();
-            this.BlockPoints[2].Location = new System.Drawing.Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
+            this.BlockPoints[2]          = new Panel();
+            this.BlockPoints[2].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
             this.BlockPoints[2].Name     = "Bot";
 
-            this.BlockPoints[3]          = new System.Windows.Forms.Panel();
-            this.BlockPoints[3].Location = new System.Drawing.Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
+            this.BlockPoints[3]          = new Panel();
+            this.BlockPoints[3].Location = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
             this.BlockPoints[3].Name     = "Left";
 
             for (int i = 0; i < 4; i++)
             {
-                this.BlockPoints[i].Size      = new System.Drawing.Size(BlockPointSize, BlockPointSize);
+                this.BlockPoints[i].Size      = new Size(BlockPointSize, BlockPointSize);
                 this.BlockPoints[i].TabIndex  = i;
-                this.BlockPoints[i].BackColor = System.Drawing.Color.Black;
+                this.BlockPoints[i].BackColor = Color.Black;
                 this.BlockPoints[i].Click    += new EventHandler(this.BlockPointClick);
                 this.BlockBody.Controls.Add(this.BlockPoints[i]);
             }
@@ -80,8 +81,8 @@ namespace tryhard
             //{end}
 
             //{NameLabel}
-            this.NameLabel          = new System.Windows.Forms.Label();
-            this.NameLabel.Location = new System.Drawing.Point(0, 0);
+            this.NameLabel          = new Label();
+            this.NameLabel.Location = new Point(0, 0);
             this.NameLabel.Text     = AName;
             this.BlockBody.Controls.Add(this.NameLabel);
             //{end}
