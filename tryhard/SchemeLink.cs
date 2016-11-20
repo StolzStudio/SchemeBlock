@@ -26,15 +26,15 @@ namespace tryhard
         public Point GetInputSchemePointLocation(MainForm AForm)
         {
             SchemeBlock Block = AForm.Blocks[InputSchemeIndex];
-            return new Point(Block.BlockPoints[InputSchemePointIndex].Location.X + Block.BlockBody.Location.X,
-                             Block.BlockPoints[InputSchemePointIndex].Location.Y + Block.BlockBody.Location.Y);
+            return new Point(Block.PointLocation[InputSchemePointIndex].X + Block.BlockBody.Location.X,
+                             Block.PointLocation[InputSchemePointIndex].Y + Block.BlockBody.Location.Y);
         }
 
         public Point GetOutputSchemePointLocation(MainForm AForm)
         {
             SchemeBlock Block = AForm.Blocks[OutputSchemeIndex];
-            return new Point(Block.BlockPoints[OutputSchemePointIndex].Location.X + Block.BlockBody.Location.X,
-                             Block.BlockPoints[OutputSchemePointIndex].Location.Y + Block.BlockBody.Location.Y);
+            return new Point(Block.PointLocation[OutputSchemePointIndex].X + Block.BlockBody.Location.X,
+                             Block.PointLocation[OutputSchemePointIndex].Y + Block.BlockBody.Location.Y);
         }
     }
 }

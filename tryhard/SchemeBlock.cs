@@ -18,8 +18,10 @@ namespace tryhard
 
         private MainForm Form;
         private int      Index;
+        private bool     isFocus;
 
         public bool       isAddSchemeLink = false;
+        public Point[]    PointLocation;
         public SchemeLink AddedSchemeLink;
         //{end}
 
@@ -33,7 +35,13 @@ namespace tryhard
         {
             Form  = AForm;
             Index = AIndex;
-            InitializeComponent(AName, APosition);
+            PointLocation    = new Point[4];
+            PointLocation[0] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
+            PointLocation[1] = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
+            PointLocation[2] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
+            PointLocation[3] = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
+
+            this.InitializeComponent(AName, APosition);
         }
 
         private void InitializeComponent(string AName, Point APosition)
@@ -47,38 +55,11 @@ namespace tryhard
             this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
+            this.BlockBody.Click     += new EventHandler(this.SchemeBodyClick);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             //{end}
 
-            //{BlockPoints}
-            this.BlockPoints = new Panel[4];
-
-            this.BlockPoints[0]          = new Panel();
-            this.BlockPoints[0].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
-            this.BlockPoints[0].Name     = "Top";
-
-            this.BlockPoints[1]          = new Panel();
-            this.BlockPoints[1].Location = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
-            this.BlockPoints[1].Name     = "Right";
-
-            this.BlockPoints[2]          = new Panel();
-            this.BlockPoints[2].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
-            this.BlockPoints[2].Name     = "Bot";
-
-            this.BlockPoints[3]          = new Panel();
-            this.BlockPoints[3].Location = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
-            this.BlockPoints[3].Name     = "Left";
-
-            for (int i = 0; i < 4; i++)
-            {
-                this.BlockPoints[i].Size      = new Size(BlockPointSize, BlockPointSize);
-                this.BlockPoints[i].TabIndex  = i;
-                this.BlockPoints[i].BackColor = Color.Black;
-                this.BlockPoints[i].Click    += new EventHandler(this.BlockPointClick);
-                this.BlockBody.Controls.Add(this.BlockPoints[i]);
-            }
-
-            //{end}
+            this.SetFocus();
 
             //{NameLabel}
             this.NameLabel          = new Label();
@@ -87,17 +68,63 @@ namespace tryhard
             this.BlockBody.Controls.Add(this.NameLabel);
             //{end}
         }
+        
+        public void SetFocus()
+        {
+            this.isFocus     = true;
+            this.BlockPoints = new Panel[4];
+
+            for (int i = 0; i < 4; i++)
+            {
+                this.BlockPoints[i]           = new Panel();
+                this.BlockPoints[i].Location  = PointLocation[i];
+                this.BlockPoints[i].Size      = new Size(BlockPointSize, BlockPointSize);
+                this.BlockPoints[i].TabIndex  = i;
+                this.BlockPoints[i].BackColor = Color.Black;
+                this.BlockPoints[i].Click    += new EventHandler(this.BlockPointClick);
+                this.BlockBody.Controls.Add(this.BlockPoints[i]);
+            }
+        }
+
+        public void ClearFocus()
+        {
+            this.isFocus = false;
+
+            if (BlockBody.Controls.Contains(BlockPoints[0]))
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    this.BlockPoints[i].Click -= new EventHandler(this.BlockPointClick);
+                    this.BlockBody.Controls.Remove(BlockPoints[i]);
+                    BlockPoints[i].Dispose();
+                }
+            }
+        }
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
         {
             isMouseDown = true;
+
+            CheckFocus();
+        }
+
+        private void CheckFocus()
+        {
+            if (!isFocus)
+            {
+                for (int i = 0; i < Form.Blocks.Length; i++)
+                {
+                    Form.Blocks[i].ClearFocus();
+                }
+                this.SetFocus();
+            }
         }
 
         private void SchemeBodyMouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown)
             {
-                System.Drawing.Point Ptr = Form.PointToClient(Cursor.Position);
+                Point Ptr = Form.PointToClient(Cursor.Position);
 
                 Ptr.X -= Form.DrawingPanelOffset.X + BlockBodyWidth  / 2;
                 Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
@@ -121,13 +148,61 @@ namespace tryhard
                 Form.InputSchemePointIndex = Pnl.TabIndex;
                 Form.isBlockPointClick     = true;
             }
+        }
+
+        private void SchemeBodyClick(object sender, EventArgs e)
+        {
+            if (Form.isBlockPointClick)
+            {
+                Panel Pnl              = sender as Panel;
+                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, Pnl.TabIndex);
+                Form.isBlockPointClick = false;
+                Form.AddSchemeLink(SL);
+            }
             else
             {
-                SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, Pnl.TabIndex);
-                Form.AddSchemeLink(SL);
-                Form.isBlockPointClick = false;
+                CheckFocus();
             }
-            Form.label2.Text = Form.InputSchemePointIndex.ToString();
+        }
+
+        private int GetIndexOfNearestPoint()
+        {
+            Point Ptr = Cursor.Position;
+            int dX = 0;
+            int dY = 0;
+            int iX = 1;
+            int iY = 0;
+
+            if (Ptr.X < (BlockBodyWidth / 2))
+            {
+                dX = Ptr.X;
+                iX = 3;
+            }
+            else
+            {
+                dX = BlockBodyWidth - Ptr.X;
+                iX = 1;
+            }
+
+            if (Ptr.Y < (BlockBodyHeight / 2))
+            {
+                dY = Ptr.Y;
+                iY = 0;
+            }
+            else
+            {
+                dY = BlockBodyHeight - Ptr.Y;
+                iY = 2;
+            }
+
+            if (dX < dY)
+            {
+                return iX;
+            }
+            else
+            {
+                return iY;
+            }
         }
     }
 }

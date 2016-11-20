@@ -43,6 +43,14 @@ namespace tryhard
             Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
 
             Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, "Труба" + (Blocks.Length - 1).ToString(), Pos, this);
+
+            for (int i = 0; i < Blocks.Length; i++)
+            {
+               Blocks[i].ClearFocus();
+            }
+
+            Blocks[Blocks.Length - 1].SetFocus();
+
             this.label1.Text = Blocks.Length.ToString();
         }
         
