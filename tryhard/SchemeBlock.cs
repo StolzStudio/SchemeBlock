@@ -104,6 +104,20 @@ namespace tryhard
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
         {
             isMouseDown = true;
+
+            CheckFocus();
+        }
+
+        private void CheckFocus()
+        {
+            if (!isFocus)
+            {
+                for (int i = 0; i < Form.Blocks.Length; i++)
+                {
+                    Form.Blocks[i].ClearFocus();
+                }
+                this.SetFocus();
+            }
         }
 
         private void SchemeBodyMouseMove(object sender, MouseEventArgs e)
@@ -134,20 +148,60 @@ namespace tryhard
                 Form.InputSchemePointIndex = Pnl.TabIndex;
                 Form.isBlockPointClick     = true;
             }
-            else
-            {
-                SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, Pnl.TabIndex);
-                Form.AddSchemeLink(SL);
-                Form.isBlockPointClick = false;
-            }
-            Form.label2.Text = Form.InputSchemePointIndex.ToString();
         }
 
         private void SchemeBodyClick(object sender, EventArgs e)
         {
             if (Form.isBlockPointClick)
             {
+                Panel Pnl              = sender as Panel;
+                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, Pnl.TabIndex);
+                Form.isBlockPointClick = false;
+                Form.AddSchemeLink(SL);
+            }
+            else
+            {
+                CheckFocus();
+            }
+        }
 
+        private int GetIndexOfNearestPoint()
+        {
+            Point Ptr = Cursor.Position;
+            int dX = 0;
+            int dY = 0;
+            int iX = 1;
+            int iY = 0;
+
+            if (Ptr.X < (BlockBodyWidth / 2))
+            {
+                dX = Ptr.X;
+                iX = 3;
+            }
+            else
+            {
+                dX = BlockBodyWidth - Ptr.X;
+                iX = 1;
+            }
+
+            if (Ptr.Y < (BlockBodyHeight / 2))
+            {
+                dY = Ptr.Y;
+                iY = 0;
+            }
+            else
+            {
+                dY = BlockBodyHeight - Ptr.Y;
+                iY = 2;
+            }
+
+            if (dX < dY)
+            {
+                return iX;
+            }
+            else
+            {
+                return iY;
             }
         }
     }
