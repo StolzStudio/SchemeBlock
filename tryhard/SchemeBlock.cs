@@ -18,6 +18,7 @@ namespace tryhard
 
         private MainForm Form;
         private int      Index;
+        private bool     isFocus;
 
         public bool       isAddSchemeLink = false;
         public SchemeLink AddedSchemeLink;
@@ -33,7 +34,7 @@ namespace tryhard
         {
             Form  = AForm;
             Index = AIndex;
-            InitializeComponent(AName, APosition);
+            this.InitializeComponent(AName, APosition);
         }
 
         private void InitializeComponent(string AName, Point APosition)
@@ -50,35 +51,7 @@ namespace tryhard
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             //{end}
 
-            //{BlockPoints}
-            this.BlockPoints = new Panel[4];
-
-            this.BlockPoints[0]          = new Panel();
-            this.BlockPoints[0].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
-            this.BlockPoints[0].Name     = "Top";
-
-            this.BlockPoints[1]          = new Panel();
-            this.BlockPoints[1].Location = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
-            this.BlockPoints[1].Name     = "Right";
-
-            this.BlockPoints[2]          = new Panel();
-            this.BlockPoints[2].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
-            this.BlockPoints[2].Name     = "Bot";
-
-            this.BlockPoints[3]          = new Panel();
-            this.BlockPoints[3].Location = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
-            this.BlockPoints[3].Name     = "Left";
-
-            for (int i = 0; i < 4; i++)
-            {
-                this.BlockPoints[i].Size      = new Size(BlockPointSize, BlockPointSize);
-                this.BlockPoints[i].TabIndex  = i;
-                this.BlockPoints[i].BackColor = Color.Black;
-                this.BlockPoints[i].Click    += new EventHandler(this.BlockPointClick);
-                this.BlockBody.Controls.Add(this.BlockPoints[i]);
-            }
-
-            //{end}
+            this.SetFocus();
 
             //{NameLabel}
             this.NameLabel          = new Label();
@@ -86,6 +59,52 @@ namespace tryhard
             this.NameLabel.Text     = AName;
             this.BlockBody.Controls.Add(this.NameLabel);
             //{end}
+        }
+        
+        private void SetFocus()
+        {
+            this.isFocus     = true;
+            this.BlockPoints = new Panel[4];
+
+            this.BlockPoints[0] = new Panel();
+            this.BlockPoints[0].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
+            this.BlockPoints[0].Name = "Top";
+
+            this.BlockPoints[1] = new Panel();
+            this.BlockPoints[1].Location = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
+            this.BlockPoints[1].Name = "Right";
+
+            this.BlockPoints[2] = new Panel();
+            this.BlockPoints[2].Location = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
+            this.BlockPoints[2].Name = "Bot";
+
+            this.BlockPoints[3] = new Panel();
+            this.BlockPoints[3].Location = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
+            this.BlockPoints[3].Name = "Left";
+
+            for (int i = 0; i < 4; i++)
+            {
+                this.BlockPoints[i].Size = new Size(BlockPointSize, BlockPointSize);
+                this.BlockPoints[i].TabIndex = i;
+                this.BlockPoints[i].BackColor = Color.Black;
+                this.BlockPoints[i].Click += new EventHandler(this.BlockPointClick);
+                this.BlockBody.Controls.Add(this.BlockPoints[i]);
+            }
+        }
+
+        private void ClearFocus()
+        {
+            this.isFocus = false;
+
+            if (BlockBody.Controls.Contains(BlockPoints[0]))
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    this.BlockPoints[i].Click -= new EventHandler(this.BlockPointClick);
+                    this.BlockBody.Controls.Remove(BlockPoints[i]);
+                    BlockPoints[i].Dispose();
+                }
+            }
         }
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
@@ -97,7 +116,7 @@ namespace tryhard
         {
             if (isMouseDown)
             {
-                System.Drawing.Point Ptr = Form.PointToClient(Cursor.Position);
+                Point Ptr = Form.PointToClient(Cursor.Position);
 
                 Ptr.X -= Form.DrawingPanelOffset.X + BlockBodyWidth  / 2;
                 Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
