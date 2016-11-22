@@ -31,6 +31,23 @@ namespace tryhard
         public Panel[] BlockPoints;
         //{end}
 
+        //{db fields}
+        private string block_class;
+        private int block_id;
+
+        public string BlockClass
+        {
+            get { return block_class; }
+            set { block_class = value; }
+        }
+
+        public int Id
+        {
+            get { return block_id; }
+            set { block_id = value; }
+        }
+
+
         public SchemeBlock(int AIndex, string AName, Point APosition, MainForm AForm)
         {
             Form  = AForm;
