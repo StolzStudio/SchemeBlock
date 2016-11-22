@@ -27,7 +27,8 @@ namespace tryhard
 
         //{controls}
         public Panel   BlockBody;
-        public Label   NameLabel;
+        public Label   BlockClassLabel;
+        public Label   BlockModelLabel;
         public Panel[] BlockPoints;
         //{end}
 
@@ -59,10 +60,10 @@ namespace tryhard
             PointLocation[1] = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
             PointLocation[2] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
             PointLocation[3] = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
-            this.InitializeComponent(ABlockClass, APosition);
+            this.InitializeComponent(ABlockClass, "TPC-100", APosition);
         }
 
-        private void InitializeComponent(string AName, Point APosition)
+        private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)
         {
             //{BlockBody}
             this.BlockBody = new Panel();
@@ -78,14 +79,21 @@ namespace tryhard
 
             this.SetFocus();
 
-            //{NameLabel}
-            this.NameLabel          = new Label();
-            this.NameLabel.Location = new Point(0, 0);
-            this.NameLabel.Text     = AName;
-            this.BlockBody.Controls.Add(this.NameLabel);
+            //{BlockClassLabel}
+            this.BlockClassLabel          = new Label();
+            this.BlockClassLabel.Location = new Point(0, 0);
+            this.BlockClassLabel.Text     = ABlockClass;
+            this.BlockBody.Controls.Add(this.BlockClassLabel);
+            //{end}
+
+            //{BlockModelLabel}
+            this.BlockModelLabel          = new Label();
+            this.BlockModelLabel.Location = new Point(0, 0);
+            this.BlockModelLabel.Text     = ABlockModel;
+            this.BlockBody.Controls.Add(this.BlockModelLabel);
             //{end}
         }
-        
+
         public void SetFocus()
         {
             this.isFocus     = true;

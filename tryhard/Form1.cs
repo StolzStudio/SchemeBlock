@@ -51,13 +51,6 @@ namespace tryhard
             }
 
             Blocks[Blocks.Length - 1].SetFocus();
-
-            //this.label1.Text = Blocks.Length.ToString();
-        }
-        
-        private void TestDBButton_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
