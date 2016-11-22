@@ -41,31 +41,31 @@ namespace tryhard
             set { block_class = value; }
         }
 
-        public int Id
+        public int BlockId
         {
             get { return block_id; }
             set { block_id = value; }
         }
 
 
-        public SchemeBlock(int AIndex, string AName, Point APosition, MainForm AForm)
+        public SchemeBlock(int AIndex, string ABlockClass, int ABlockId, Point APosition, MainForm AForm)
         {
             Form  = AForm;
             Index = AIndex;
+            BlockClass = ABlockClass;
+            BlockId = ABlockId;
             PointLocation    = new Point[4];
             PointLocation[0] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
             PointLocation[1] = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
             PointLocation[2] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
             PointLocation[3] = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
-
-            this.InitializeComponent(AName, APosition);
+            this.InitializeComponent(ABlockClass, APosition);
         }
 
         private void InitializeComponent(string AName, Point APosition)
         {
             //{BlockBody}
             this.BlockBody = new Panel();
-
             this.BlockBody.BackColor  =     Color.Beige;
             this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
             this.BlockBody.Size       = new Size(BlockBodyWidth, BlockBodyHeight);

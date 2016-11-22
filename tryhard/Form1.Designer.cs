@@ -30,9 +30,10 @@
         {
             this.DrawingPanel = new System.Windows.Forms.Panel();
             this.AddBlockButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TestDBButton = new System.Windows.Forms.Button();
+            this.EquipmentCB = new System.Windows.Forms.ComboBox();
+            this.ModelCB = new System.Windows.Forms.ComboBox();
+            this.EquipmentLabel = new System.Windows.Forms.Label();
+            this.ModelLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -54,42 +55,49 @@
             this.AddBlockButton.UseVisualStyleBackColor = true;
             this.AddBlockButton.Click += new System.EventHandler(this.AddBlockButton_Click);
             // 
-            // label1
+            // EquipmentCB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(968, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.EquipmentCB.FormattingEnabled = true;
+            this.EquipmentCB.Location = new System.Drawing.Point(988, 27);
+            this.EquipmentCB.Name = "EquipmentCB";
+            this.EquipmentCB.Size = new System.Drawing.Size(159, 21);
+            this.EquipmentCB.TabIndex = 2;
             // 
-            // label2
+            // ModelCB
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(968, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.ModelCB.FormattingEnabled = true;
+            this.ModelCB.Location = new System.Drawing.Point(1172, 27);
+            this.ModelCB.Name = "ModelCB";
+            this.ModelCB.Size = new System.Drawing.Size(159, 21);
+            this.ModelCB.TabIndex = 3;
             // 
-            // TestDBButton
+            // EquipmentLabel
             // 
-            this.TestDBButton.Location = new System.Drawing.Point(900, 481);
-            this.TestDBButton.Name = "TestDBButton";
-            this.TestDBButton.Size = new System.Drawing.Size(103, 43);
-            this.TestDBButton.TabIndex = 4;
-            this.TestDBButton.Text = "DataBase";
-            this.TestDBButton.UseVisualStyleBackColor = true;
-            this.TestDBButton.Click += new System.EventHandler(this.TestDBButton_Click);
+            this.EquipmentLabel.AutoSize = true;
+            this.EquipmentLabel.Location = new System.Drawing.Point(985, 11);
+            this.EquipmentLabel.Name = "EquipmentLabel";
+            this.EquipmentLabel.Size = new System.Drawing.Size(112, 13);
+            this.EquipmentLabel.TabIndex = 4;
+            this.EquipmentLabel.Text = "Класс оборудования";
+            // 
+            // ModelLabel
+            // 
+            this.ModelLabel.AutoSize = true;
+            this.ModelLabel.Location = new System.Drawing.Point(1169, 9);
+            this.ModelLabel.Name = "ModelLabel";
+            this.ModelLabel.Size = new System.Drawing.Size(46, 13);
+            this.ModelLabel.TabIndex = 5;
+            this.ModelLabel.Text = "Модель";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1343, 610);
-            this.Controls.Add(this.TestDBButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ModelLabel);
+            this.Controls.Add(this.EquipmentLabel);
+            this.Controls.Add(this.ModelCB);
+            this.Controls.Add(this.EquipmentCB);
             this.Controls.Add(this.AddBlockButton);
             this.Controls.Add(this.DrawingPanel);
             this.Name = "MainForm";
@@ -103,9 +111,10 @@
 
         public  System.Windows.Forms.Panel DrawingPanel;
         private System.Windows.Forms.Button AddBlockButton;
-        private System.Windows.Forms.Label label1;
-        public  System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button TestDBButton;
+        private System.Windows.Forms.ComboBox EquipmentCB;
+        private System.Windows.Forms.ComboBox ModelCB;
+        private System.Windows.Forms.Label EquipmentLabel;
+        private System.Windows.Forms.Label ModelLabel;
     }
 }
 

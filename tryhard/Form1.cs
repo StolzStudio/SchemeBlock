@@ -42,7 +42,8 @@ namespace tryhard
             Array.Resize(ref Blocks, Blocks.Length + 1);
             Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
 
-            Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, "Труба" + (Blocks.Length - 1).ToString(), Pos, this);
+            Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
+                                                        "fu", 0, Pos, this);
 
             for (int i = 0; i < Blocks.Length; i++)
             {
@@ -51,7 +52,7 @@ namespace tryhard
 
             Blocks[Blocks.Length - 1].SetFocus();
 
-            this.label1.Text = Blocks.Length.ToString();
+            //this.label1.Text = Blocks.Length.ToString();
         }
         
         private void TestDBButton_Click(object sender, EventArgs e)
