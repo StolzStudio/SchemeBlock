@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Data.SQLite;
+using System.Data.SQLite;
 
 namespace tryhard
 {
     public enum FieldTypes { };
 
-    class CField
+    public class CField
     {
         /* Fields  */
 
@@ -16,6 +16,13 @@ namespace tryhard
         private int FTableTag;
         private FieldTypes FType;
         private CField FReference = null;
+
+        /* Methods */
+
+        public CField(string AName)
+        {
+            Name = AName;
+        }
 
         /* Properties */
 
@@ -56,7 +63,7 @@ namespace tryhard
         }
     }
 
-    class CTable
+    public class CTable
     {
         /* Fields */
 
@@ -64,20 +71,25 @@ namespace tryhard
         private string FCaption;
         private bool BIsRefFields = false;
 
-        public List<CField> Fields;
+        public List<CField> Fields = new List<CField>();
+        public List<string> NameFields = new List<string>();
 
-        public CTable (string ATableName)
+        public CTable (string ATableName, List<string> ANameFields)
         {
             Name = ATableName;
             Caption = ATableName;
-            FillDataTable(ATableName);
+            NameFields = ANameFields;
+            FillDataTable();
         }
 
         /* Methods*/
 
-        private void FillDataTable(string ATableName)
+        private void FillDataTable()
         {
-
+            foreach (string field_name in NameFields)
+            {
+                Fields.Add(new CField(field_name));
+            }   
         }
 
         /* Properties */
@@ -101,17 +113,31 @@ namespace tryhard
         }
     }
 
-    class CMeta
+    public class CMeta
     {
         /* Fields */
 
-        public List<CTable> Tables = null;
+        public List<CTable> Tables = new List<CTable>();
+        public List<string> TablesList = new List<string>();
+        public DBConnection database = new DBConnection();
 
         /* Methods */
 
-        public void CreateTable(string ATableName)
+        public CMeta(string ADataBasePath)
         {
-            Tables.Add(new CTable(ATableName));
+            if (database.Connect(ADataBasePath) == 1)
+            {
+                TablesList = database.GetListTables();
+                foreach(string table_name in TablesList)
+                {
+                    CreateTable(table_name, database.GetListTableFields(table_name));
+                }
+            }
+        }
+
+        public void CreateTable(string ATableName, List<string> ANameFields)
+        {
+            Tables.Add(new CTable(ATableName, ANameFields));
         }
 
         public void DeleteTable(string ATableName)
@@ -131,6 +157,18 @@ namespace tryhard
         {
             Tables.RemoveAt(ATableIndex);
             return;
+        }
+
+        public List<string> GetListFieldOfTableName(string ATableName)
+        {
+            for (int i = 0; i < Tables.Count; i++)
+            {
+                if (Tables[i].Name == ATableName)
+                {
+                    return Tables[i].NameFields;
+                }
+            }
+            return new List<string>();
         }
     }
 }   

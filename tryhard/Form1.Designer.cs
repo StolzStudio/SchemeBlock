@@ -26,6 +26,10 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        ///
+
+        public CMeta Meta;
+
         private void InitializeComponent()
         {
             this.DrawingPanel = new System.Windows.Forms.Panel();

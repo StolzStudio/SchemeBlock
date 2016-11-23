@@ -21,12 +21,15 @@ namespace tryhard
 
         public SchemeBlock[] Blocks;
         public  SchemeLink[]  Links;
-        
+
         public MainForm()
         {
+            Meta = new CMeta("database.db");
             Blocks = new SchemeBlock[0];
             Links  = new SchemeLink[0];
             InitializeComponent();
+            FillEquipmentCB();
+            FillModelCB("dk");
             DrawingPanelOffset = DrawingPanel.Location;
         }
 
@@ -64,6 +67,28 @@ namespace tryhard
                     e.Graphics.DrawLine(BlackPen, Links[i].GetInputSchemePointLocation(this), Links[i].GetOutputSchemePointLocation(this));
                 }
             }
+        }
+
+        private void FillEquipmentCB()
+        {
+            for (int i = 0; i < Meta.TablesList.Count; i++)
+            {
+                EquipmentCB.Items.Add(Meta.TablesList[i]);
+            }
+            EquipmentCB.SelectedIndex = 0;
+            EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        }
+
+        private void FillModelCB(string AEquipmentName)
+        {
+            ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            List<string> items = Meta.GetListFieldOfTableName(AEquipmentName);
+            for (int i = 0; i < items.Count; i++)
+            {
+                ModelCB.Items.Add(items[i]);
+            }
+            ModelCB.SelectedIndex = 0;
+            ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
     }
 }
