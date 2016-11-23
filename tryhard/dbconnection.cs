@@ -59,6 +59,20 @@ namespace tryhard
             return list;
         }
 
+        public List<string> GetListRecords(string ATableName, string AFieldName)
+        {
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT " + AFieldName + " FROM " + ATableName + ";";
+            reader = cmd.ExecuteReader();
+            List<string> list = new List<string>();
+            while (reader.Read())
+            {
+                list.Add(reader["name"].ToString());
+                Console.WriteLine(list[list.Count - 1]);
+            }
+            return list;
+        }
+
         public List<string> GetListTableFields(string ATableName)
         {
             cmd = connection.CreateCommand();

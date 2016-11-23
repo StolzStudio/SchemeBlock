@@ -159,6 +159,11 @@ namespace tryhard
             return;
         }
 
+        public List<string> GetListRecords(string ATableName, string AFieldName)
+        {
+            return database.GetListRecords(ATableName, AFieldName);
+        }
+
         public List<string> GetListFieldOfTableName(string ATableName)
         {
             for (int i = 0; i < Tables.Count; i++)

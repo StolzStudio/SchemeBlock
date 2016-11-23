@@ -89,7 +89,7 @@ namespace tryhard
         private void FillModelCB(string AEquipmentName)
         {
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            List<string> items = Meta.GetListFieldOfTableName(AEquipmentName);
+            List<string> items = Meta.GetListRecords(AEquipmentName, "name");
             for (int i = 0; i < items.Count; i++)
             {
                 ModelCB.Items.Add(items[i]);
