@@ -66,6 +66,8 @@
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(159, 21);
             this.EquipmentCB.TabIndex = 2;
+            this.EquipmentCB.SelectedIndexChanged +=
+                    new System.EventHandler(EquipmentCBSelectedIndexChanged);
             // 
             // ModelCB
             // 

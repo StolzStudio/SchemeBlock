@@ -29,7 +29,7 @@ namespace tryhard
             Links  = new SchemeLink[0];
             InitializeComponent();
             FillEquipmentCB();
-            FillModelCB("dk");
+            FillModelCB((string)EquipmentCB.Items[0]);
             DrawingPanelOffset = DrawingPanel.Location;
         }
 
@@ -46,7 +46,8 @@ namespace tryhard
             Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
 
             Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
-                                                        "fu", 0, Pos, this);
+                                                        (string)EquipmentCB.SelectedItem, 
+                                                        ModelCB.SelectedIndex, Pos, this);
 
             for (int i = 0; i < Blocks.Length; i++)
             {
@@ -67,6 +68,12 @@ namespace tryhard
                     e.Graphics.DrawLine(BlackPen, Links[i].GetInputSchemePointLocation(this), Links[i].GetOutputSchemePointLocation(this));
                 }
             }
+        }
+
+        private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            ModelCB.Items.Clear();
+            FillModelCB((string)EquipmentCB.Items[EquipmentCB.SelectedIndex]);
         }
 
         private void FillEquipmentCB()
