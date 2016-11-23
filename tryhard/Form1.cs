@@ -24,7 +24,7 @@ namespace tryhard
 
         public MainForm()
         {
-            Meta = new CMeta("database.db");
+            Meta = new CMeta("../Databases/database.db");
             Blocks = new SchemeBlock[0];
             Links  = new SchemeLink[0];
             InitializeComponent();
