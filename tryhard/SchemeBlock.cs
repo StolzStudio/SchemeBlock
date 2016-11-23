@@ -128,7 +128,10 @@ namespace tryhard
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
         {
-            isMouseDown = true;
+            if (this.isFocus)
+            {
+                isMouseDown = true;
+            }
 
             CheckFocus();
         }
