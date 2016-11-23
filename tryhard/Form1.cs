@@ -78,10 +78,14 @@ namespace tryhard
 
         private void FillEquipmentCB()
         {
+            string[] temp_list = new string[] {"dk", "dks", "field_parameters", "nnpv", "oil_quality",
+                                               "rr", "rtn", "ukpg", "ukpg", "upn"};
+            EquipmentCB.Items.AddRange(temp_list);
+            /*
             for (int i = 0; i < Meta.TablesList.Count; i++)
             {
                 EquipmentCB.Items.Add(Meta.TablesList[i]);
-            }
+            }*/
             EquipmentCB.SelectedIndex = 0;
             EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
