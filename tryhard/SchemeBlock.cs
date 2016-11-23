@@ -55,11 +55,12 @@ namespace tryhard
             Index = AIndex;
             BlockClass = ABlockClass;
             BlockId = ABlockId;
-            PointLocation    = new Point[4];
+            PointLocation    = new Point[5];
             PointLocation[0] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
             PointLocation[1] = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
             PointLocation[2] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
             PointLocation[3] = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
+            PointLocation[4] = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
             this.InitializeComponent(ABlockClass, "TPC-100", APosition);
         }
 
@@ -183,53 +184,13 @@ namespace tryhard
             if (Form.isBlockPointClick)
             {
                 Panel Pnl              = sender as Panel;
-                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, Pnl.TabIndex);
+                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, 4);
                 Form.isBlockPointClick = false;
                 Form.AddSchemeLink(SL);
             }
             else
             {
                 CheckFocus();
-            }
-        }
-
-        private int GetIndexOfNearestPoint()
-        {
-            Point Ptr = Cursor.Position;
-            int dX = 0;
-            int dY = 0;
-            int iX = 1;
-            int iY = 0;
-
-            if (Ptr.X < (BlockBodyWidth / 2))
-            {
-                dX = Ptr.X;
-                iX = 3;
-            }
-            else
-            {
-                dX = BlockBodyWidth - Ptr.X;
-                iX = 1;
-            }
-
-            if (Ptr.Y < (BlockBodyHeight / 2))
-            {
-                dY = Ptr.Y;
-                iY = 0;
-            }
-            else
-            {
-                dY = BlockBodyHeight - Ptr.Y;
-                iY = 2;
-            }
-
-            if (dX < dY)
-            {
-                return iX;
-            }
-            else
-            {
-                return iY;
             }
         }
     }
