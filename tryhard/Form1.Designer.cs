@@ -47,6 +47,7 @@
             this.DrawingPanel.Name = "DrawingPanel";
             this.DrawingPanel.Size = new System.Drawing.Size(882, 586);
             this.DrawingPanel.TabIndex = 0;
+            this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
             // AddBlockButton
@@ -66,8 +67,7 @@
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(159, 21);
             this.EquipmentCB.TabIndex = 2;
-            this.EquipmentCB.SelectedIndexChanged +=
-                    new System.EventHandler(EquipmentCBSelectedIndexChanged);
+            this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
             // ModelCB
             // 

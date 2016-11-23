@@ -101,5 +101,13 @@ namespace tryhard
             ModelCB.SelectedIndex = 0;
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
+
+        private void DrawingPanel_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Blocks.Length; i++)
+            {
+                Blocks[i].ClearFocus();
+            }
+        }
     }
 }
