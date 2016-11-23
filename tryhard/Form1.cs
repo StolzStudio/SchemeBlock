@@ -59,7 +59,8 @@ namespace tryhard
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
-            Pen BlackPen = new Pen(Color.Black);
+            Pen BlackPen   = new Pen(Color.DarkSlateBlue);
+            BlackPen.Width = 1.5F;
 
             if (Links.Length > 0)
             {
