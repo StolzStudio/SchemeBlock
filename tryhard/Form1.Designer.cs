@@ -42,19 +42,20 @@
             // 
             // DrawingPanel
             // 
+            this.DrawingPanel.AutoSize = true;
             this.DrawingPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.DrawingPanel.Location = new System.Drawing.Point(12, 12);
             this.DrawingPanel.Name = "DrawingPanel";
-            this.DrawingPanel.Size = new System.Drawing.Size(882, 586);
+            this.DrawingPanel.Size = new System.Drawing.Size(913, 586);
             this.DrawingPanel.TabIndex = 0;
             this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
             // AddBlockButton
             // 
-            this.AddBlockButton.Location = new System.Drawing.Point(900, 12);
+            this.AddBlockButton.Location = new System.Drawing.Point(931, 27);
             this.AddBlockButton.Name = "AddBlockButton";
-            this.AddBlockButton.Size = new System.Drawing.Size(48, 48);
+            this.AddBlockButton.Size = new System.Drawing.Size(49, 49);
             this.AddBlockButton.TabIndex = 1;
             this.AddBlockButton.Text = "+";
             this.AddBlockButton.UseVisualStyleBackColor = true;
@@ -63,7 +64,7 @@
             // EquipmentCB
             // 
             this.EquipmentCB.FormattingEnabled = true;
-            this.EquipmentCB.Location = new System.Drawing.Point(988, 27);
+            this.EquipmentCB.Location = new System.Drawing.Point(988, 42);
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(159, 21);
             this.EquipmentCB.TabIndex = 2;
@@ -72,7 +73,7 @@
             // ModelCB
             // 
             this.ModelCB.FormattingEnabled = true;
-            this.ModelCB.Location = new System.Drawing.Point(1172, 27);
+            this.ModelCB.Location = new System.Drawing.Point(1164, 42);
             this.ModelCB.Name = "ModelCB";
             this.ModelCB.Size = new System.Drawing.Size(159, 21);
             this.ModelCB.TabIndex = 3;
@@ -80,7 +81,7 @@
             // EquipmentLabel
             // 
             this.EquipmentLabel.AutoSize = true;
-            this.EquipmentLabel.Location = new System.Drawing.Point(985, 11);
+            this.EquipmentLabel.Location = new System.Drawing.Point(986, 26);
             this.EquipmentLabel.Name = "EquipmentLabel";
             this.EquipmentLabel.Size = new System.Drawing.Size(112, 13);
             this.EquipmentLabel.TabIndex = 4;
@@ -89,7 +90,7 @@
             // ModelLabel
             // 
             this.ModelLabel.AutoSize = true;
-            this.ModelLabel.Location = new System.Drawing.Point(1169, 9);
+            this.ModelLabel.Location = new System.Drawing.Point(1161, 27);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(46, 13);
             this.ModelLabel.TabIndex = 5;
