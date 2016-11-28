@@ -45,6 +45,7 @@
             this.InputSchemeComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.CalcButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -84,11 +85,11 @@
             this.EquipmentCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentCB.BackColor = System.Drawing.Color.White;
             this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EquipmentCB.Font = new System.Drawing.Font("AA American Captain", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipmentCB.FormattingEnabled = true;
             this.EquipmentCB.Location = new System.Drawing.Point(950, 50);
             this.EquipmentCB.Name = "EquipmentCB";
-            this.EquipmentCB.Size = new System.Drawing.Size(135, 33);
+            this.EquipmentCB.Size = new System.Drawing.Size(135, 32);
             this.EquipmentCB.TabIndex = 2;
             this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
@@ -97,21 +98,21 @@
             this.ModelCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelCB.BackColor = System.Drawing.Color.White;
             this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ModelCB.Font = new System.Drawing.Font("AA American Captain", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModelCB.FormattingEnabled = true;
             this.ModelCB.Location = new System.Drawing.Point(1110, 50);
             this.ModelCB.Name = "ModelCB";
-            this.ModelCB.Size = new System.Drawing.Size(135, 33);
+            this.ModelCB.Size = new System.Drawing.Size(135, 32);
             this.ModelCB.TabIndex = 3;
             // 
             // EquipmentLabel
             // 
             this.EquipmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentLabel.AutoSize = true;
-            this.EquipmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EquipmentLabel.Font = new System.Drawing.Font("AA American Captain", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipmentLabel.Location = new System.Drawing.Point(950, 15);
             this.EquipmentLabel.Name = "EquipmentLabel";
-            this.EquipmentLabel.Size = new System.Drawing.Size(129, 15);
+            this.EquipmentLabel.Size = new System.Drawing.Size(127, 17);
             this.EquipmentLabel.TabIndex = 4;
             this.EquipmentLabel.Text = "Класс оборудования:";
             // 
@@ -119,10 +120,10 @@
             // 
             this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelLabel.AutoSize = true;
-            this.ModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ModelLabel.Font = new System.Drawing.Font("AA American Captain", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModelLabel.Location = new System.Drawing.Point(1110, 15);
             this.ModelLabel.Name = "ModelLabel";
-            this.ModelLabel.Size = new System.Drawing.Size(56, 15);
+            this.ModelLabel.Size = new System.Drawing.Size(53, 17);
             this.ModelLabel.TabIndex = 5;
             this.ModelLabel.Text = "Модель:";
             // 
@@ -130,21 +131,21 @@
             // 
             this.OutputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputSchemeLabel.AutoSize = true;
-            this.OutputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OutputSchemeLabel.Font = new System.Drawing.Font("AA American Captain", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputSchemeLabel.Location = new System.Drawing.Point(1110, 100);
             this.OutputSchemeLabel.Name = "OutputSchemeLabel";
-            this.OutputSchemeLabel.Size = new System.Drawing.Size(56, 15);
+            this.OutputSchemeLabel.Size = new System.Drawing.Size(123, 17);
             this.OutputSchemeLabel.TabIndex = 9;
-            this.OutputSchemeLabel.Text = "Модель:";
+            this.OutputSchemeLabel.Text = "Выходной параметр:";
             // 
             // InputSchemeLabel
             // 
             this.InputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSchemeLabel.AutoSize = true;
-            this.InputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputSchemeLabel.Font = new System.Drawing.Font("AA American Captain", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputSchemeLabel.Location = new System.Drawing.Point(950, 100);
             this.InputSchemeLabel.Name = "InputSchemeLabel";
-            this.InputSchemeLabel.Size = new System.Drawing.Size(120, 15);
+            this.InputSchemeLabel.Size = new System.Drawing.Size(113, 17);
             this.InputSchemeLabel.TabIndex = 8;
             this.InputSchemeLabel.Text = "Входной параметр:";
             // 
@@ -152,22 +153,22 @@
             // 
             this.OutputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.OutputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OutputSchemeComboBox.Font = new System.Drawing.Font("AA American Captain", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputSchemeComboBox.FormattingEnabled = true;
             this.OutputSchemeComboBox.Location = new System.Drawing.Point(1110, 135);
             this.OutputSchemeComboBox.Name = "OutputSchemeComboBox";
-            this.OutputSchemeComboBox.Size = new System.Drawing.Size(135, 33);
+            this.OutputSchemeComboBox.Size = new System.Drawing.Size(135, 32);
             this.OutputSchemeComboBox.TabIndex = 7;
             // 
             // InputSchemeComboBox
             // 
             this.InputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.InputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InputSchemeComboBox.Font = new System.Drawing.Font("AA American Captain", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputSchemeComboBox.FormattingEnabled = true;
             this.InputSchemeComboBox.Location = new System.Drawing.Point(950, 135);
             this.InputSchemeComboBox.Name = "InputSchemeComboBox";
-            this.InputSchemeComboBox.Size = new System.Drawing.Size(135, 33);
+            this.InputSchemeComboBox.Size = new System.Drawing.Size(135, 32);
             this.InputSchemeComboBox.TabIndex = 6;
             // 
             // dataGridView
@@ -193,12 +194,26 @@
             this.pictureBox.TabIndex = 11;
             this.pictureBox.TabStop = false;
             // 
+            // CalcButton
+            // 
+            this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CalcButton.Font = new System.Drawing.Font("AA American Captain", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CalcButton.Location = new System.Drawing.Point(730, 15);
+            this.CalcButton.Name = "CalcButton";
+            this.CalcButton.Size = new System.Drawing.Size(105, 30);
+            this.CalcButton.TabIndex = 12;
+            this.CalcButton.Text = "Рассчитать";
+            this.CalcButton.UseVisualStyleBackColor = true;
+            this.CalcButton.Click += new System.EventHandler(this.CalcButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.OutputSchemeLabel);
@@ -213,7 +228,7 @@
             this.Controls.Add(this.DrawingPanel);
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "A$IRIA";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -235,8 +250,7 @@
         private System.Windows.Forms.ComboBox InputSchemeComboBox;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.PictureBox pictureBox;
-
-
+        private System.Windows.Forms.Button CalcButton;
     }
 }
 

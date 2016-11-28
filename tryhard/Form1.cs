@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Drawing.Text;
+using System.IO;
 
 namespace tryhard
 {
@@ -21,6 +23,7 @@ namespace tryhard
 
         public SchemeBlock[] Blocks;
         public  SchemeLink[]  Links;
+
 
         public MainForm()
         {
@@ -108,6 +111,11 @@ namespace tryhard
             {
                 Blocks[i].ClearFocus();
             }
+        }
+
+        private void CalcButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
