@@ -85,6 +85,19 @@ namespace tryhard
             }
             return list;
         }
+
+        public List<string> GetFieldData(string ATableName, string AFieldId)
+        {
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "";
+            reader = cmd.ExecuteReader();
+            List<string> list = new List<string>();
+            while (reader.Read())
+            {
+                
+            }
+            return list;
+        }
     }
 }
 

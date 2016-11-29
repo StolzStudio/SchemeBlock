@@ -99,6 +99,11 @@ namespace tryhard
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
 
+        private void FillParametersGrid(string ATableName, string AFieldId)
+        {
+
+        }
+
         private void DrawingPanel_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < Blocks.Length; i++)
