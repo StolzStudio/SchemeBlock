@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace tryhard
 {
@@ -68,12 +69,11 @@ namespace tryhard
             while (reader.Read())
             {
                 list.Add(reader["name"].ToString());
-                Console.WriteLine(list[list.Count - 1]);
             }
             return list;
         }
 
-        public List<string> GetListTableFields(string ATableName)
+        public List<string> GetListTableRows(string ATableName)
         {
             cmd = connection.CreateCommand();
             cmd.CommandText = "pragma table_info(" + ATableName + ");";
@@ -82,7 +82,6 @@ namespace tryhard
             while (reader.Read())
             {
                 list.Add(reader["name"].ToString());
-                Console.WriteLine(list[list.Count - 1]);
             }
             return list;
         }

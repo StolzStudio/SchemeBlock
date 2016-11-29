@@ -142,15 +142,15 @@ namespace tryhard
                 TablesList = database.GetListTables();
                 foreach(string table_name in TablesList)
                 {
-                    CreateTable(table_name, database.GetListTableFields(table_name));
+                    CreateTable(table_name, database.GetListTableRows(table_name));
                 }
+                CheckReferensesInTables();
             }
         }
 
         public void CreateTable(string ATableName, List<string> ANameFields)
         {
             Tables.Add(new CTable(ATableName, ANameFields));
-            CheckReferenseesInTables();
         }
 
         public void DeleteTable(string ATableName)
@@ -189,17 +189,17 @@ namespace tryhard
             return new List<string>();
         }
 
-        public void CheckReferenseesInTables()
+        public void CheckReferensesInTables()
         {
             for (int i = 0; i < Tables.Count; i++)
             {
                 for (int j = 0; j < Tables[i].Fields.Count; j++)
                 {
-                    string name_referense_field = isReferenseField(Tables[i].Fields[j].Name);
-                    if (name_referense_field != null)
+                    string name_referense_table = isReferenseField(Tables[i].Fields[j].Name);
+                    if (name_referense_table != null)
                     {
                         Tables[i].Fields[j].Reference = 
-                            new SReferenseTableInfo(name_referense_field, RIdentificator);
+                            new SReferenseTableInfo(name_referense_table, RIdentificator);
                         Tables[i].isReferensed = true;
                     }
                 }
