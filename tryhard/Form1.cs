@@ -24,7 +24,6 @@ namespace tryhard
         public SchemeBlock[] Blocks;
         public  SchemeLink[]  Links;
 
-
         public MainForm()
         {
             Meta = new CMeta("../Databases/database.db");
@@ -47,16 +46,13 @@ namespace tryhard
         {
             Array.Resize(ref Blocks, Blocks.Length + 1);
             Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
-
             Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
                                                         (string)EquipmentCB.SelectedItem, 
                                                         ModelCB.SelectedIndex, Pos, this);
-
             for (int i = 0; i < Blocks.Length; i++)
             {
                Blocks[i].ClearFocus();
             }
-
             Blocks[Blocks.Length - 1].SetFocus();
         }
 
@@ -64,7 +60,6 @@ namespace tryhard
         {
             Pen BlackPen   = new Pen(Color.DarkSlateBlue);
             BlackPen.Width = 1.5F;
-
             if (Links.Length > 0)
             {
                 for (int i = 0; i < Links.Length; i++)
@@ -79,6 +74,8 @@ namespace tryhard
             ModelCB.Items.Clear();
             FillModelCB((string)EquipmentCB.Items[EquipmentCB.SelectedIndex]);
         }
+
+        /* Equipment ComboBoxes */
 
         private void FillEquipmentCB()
         {

@@ -48,7 +48,7 @@ namespace tryhard
             get { return FCaption; }
             set { FCaption = value; }
         }
-
+        
         public int Width
         {
             get { return FWidth; }
@@ -83,13 +83,13 @@ namespace tryhard
         private bool FIsRefFields = false;
 
         public List<CField> Fields = new List<CField>();
-        public List<string> NameFields = new List<string>();
+        public List<string> FieldsList = new List<string>();
 
-        public CTable (string ATableName, List<string> ANameFields)
+        public CTable (string ATableName, List<string> AFieldsList)
         {
             Name = ATableName;
             Caption = ATableName;
-            NameFields = ANameFields;
+            FieldsList = AFieldsList;
             FillDataTable();
         }
 
@@ -97,7 +97,7 @@ namespace tryhard
 
         private void FillDataTable()
         {
-            foreach (string field_name in NameFields)
+            foreach (string field_name in FieldsList)
             {
                 Fields.Add(new CField(field_name));
             }   
@@ -181,7 +181,7 @@ namespace tryhard
             {
                 if (Tables[i].Name == ATableName)
                 {
-                    return Tables[i].NameFields;
+                    return Tables[i].FieldsList;
                 }
             }
             return new List<string>();

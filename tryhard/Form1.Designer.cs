@@ -42,11 +42,11 @@
             this.InputSchemeLabel = new System.Windows.Forms.Label();
             this.OutputSchemeComboBox = new System.Windows.Forms.ComboBox();
             this.InputSchemeComboBox = new System.Windows.Forms.ComboBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
+            this.PictureBox = new System.Windows.Forms.PictureBox();
             this.CalcButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // DrawingPanel
@@ -170,28 +170,28 @@
             this.InputSchemeComboBox.Size = new System.Drawing.Size(135, 33);
             this.InputSchemeComboBox.TabIndex = 6;
             // 
-            // dataGridView
+            // DataGridView
             // 
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(950, 195);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(295, 300);
-            this.dataGridView.TabIndex = 10;
+            this.DataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(950, 186);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.Size = new System.Drawing.Size(295, 300);
+            this.DataGridView.TabIndex = 10;
             // 
-            // pictureBox
+            // PictureBox
             // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.ErrorImage = null;
-            this.pictureBox.ImageLocation = "Pictures/formpicture.jpg";
-            this.pictureBox.InitialImage = null;
-            this.pictureBox.Location = new System.Drawing.Point(855, 503);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(410, 180);
-            this.pictureBox.TabIndex = 11;
-            this.pictureBox.TabStop = false;
+            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureBox.ErrorImage = null;
+            this.PictureBox.ImageLocation = "Pictures/formpicture.jpg";
+            this.PictureBox.InitialImage = null;
+            this.PictureBox.Location = new System.Drawing.Point(855, 503);
+            this.PictureBox.Name = "PictureBox";
+            this.PictureBox.Size = new System.Drawing.Size(410, 180);
+            this.PictureBox.TabIndex = 11;
+            this.PictureBox.TabStop = false;
             // 
             // CalcButton
             // 
@@ -213,8 +213,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.CalcButton);
-            this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.PictureBox);
+            this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.OutputSchemeLabel);
             this.Controls.Add(this.InputSchemeLabel);
             this.Controls.Add(this.OutputSchemeComboBox);
@@ -228,8 +228,8 @@
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
             this.Text = "A$IRIA";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,8 +247,8 @@
         private System.Windows.Forms.Label InputSchemeLabel;
         private System.Windows.Forms.ComboBox OutputSchemeComboBox;
         private System.Windows.Forms.ComboBox InputSchemeComboBox;
-        private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.DataGridView DataGridView;
+        private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button CalcButton;
     }
 }

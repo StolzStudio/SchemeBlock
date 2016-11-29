@@ -10,7 +10,8 @@ namespace tryhard
 {
     public class SchemeBlock
     {
-        //{consts}
+        /* Consts */
+
         private int  BlockBodyWidth    = 120;
         private int  BlockBodyHeight   = 60;
         private int  BlockPointSize    = 6;
@@ -23,16 +24,16 @@ namespace tryhard
         public bool       isAddSchemeLink = false;
         public Point[]    PointLocation;
         public SchemeLink AddedSchemeLink;
-        //{end}
 
-        //{controls}
+        /* Controls */
+
         public Panel   BlockBody;
         public Label   BlockClassLabel;
         public Label   BlockModelLabel;
         public Panel[] BlockPoints;
-        //{end}
 
-        //{db fields}
+        /* DB fields */
+
         private string block_class;
         private int block_id;
 
@@ -66,7 +67,8 @@ namespace tryhard
 
         private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)
         {
-            //{BlockBody}
+            /* BlockBody */
+
             this.BlockBody = new Panel();
             this.BlockBody.BackColor  =     Color.Beige;
             this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
@@ -76,23 +78,21 @@ namespace tryhard
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Click     += new EventHandler(this.SchemeBodyClick);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
-            //{end}
-
             this.SetFocus();
 
-            //{BlockClassLabel}
+            /* BlockClassLabel */
+
             this.BlockClassLabel          = new Label();
             this.BlockClassLabel.Location = new Point(0, 0);
             this.BlockClassLabel.Text     = ABlockClass;
             this.BlockBody.Controls.Add(this.BlockClassLabel);
-            //{end}
 
-            //{BlockModelLabel}
+            /* BlockModelLabel */
+
             this.BlockModelLabel          = new Label();
             this.BlockModelLabel.Location = new Point(0, 0);
             this.BlockModelLabel.Text     = ABlockModel;
             this.BlockBody.Controls.Add(this.BlockModelLabel);
-            //{end}
         }
 
         public void SetFocus()
