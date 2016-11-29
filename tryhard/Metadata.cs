@@ -214,9 +214,9 @@ namespace tryhard
             {
                 return null;
             }
-            if (AFieldName.Substring(field_len - 2, field_len) == RIdentificator)
+            if (AFieldName.Substring(field_len - 2) == RIdentificator)
             {
-                return AFieldName.Substring(0, field_len - 2);
+                return AFieldName.Substring(0, field_len - 3);
             }
             return null;
         }
