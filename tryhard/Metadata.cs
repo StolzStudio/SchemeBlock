@@ -163,13 +163,11 @@ namespace tryhard
                     return;
                 }
             }
-            return;
         }
 
         public void DeleteTable(int ATableIndex)
         {
             Tables.RemoveAt(ATableIndex);
-            return;
         }
 
         public List<string> GetListRecords(string ATableName, string AFieldName)
@@ -203,7 +201,6 @@ namespace tryhard
                         Tables[i].isReferensed = true;
                     }
                 }
-
             }
         }
 
