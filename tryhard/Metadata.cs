@@ -6,14 +6,27 @@ namespace tryhard
 {
     public enum FieldTypes { };
 
-    public struct SReferenseTableInfo
+    public class CReferenseTableInfo
     {
-        string TableName;
-        string FieldName;
-        public SReferenseTableInfo(string ATableName, string AFieldName)
+        string table_name;
+        string field_name;
+
+        public CReferenseTableInfo(string ATableName, string AFieldName)
         {
             TableName = ATableName;
             FieldName = AFieldName;
+        }
+
+        public string TableName
+        {
+            get { return table_name; }
+            set { table_name = value; }
+        }
+
+        public string FieldName
+        {
+            get { return field_name; }
+            set { field_name = value; }
         }
     }
 
@@ -26,7 +39,7 @@ namespace tryhard
         private int FWidth;
         private int FTableTag;
         private FieldTypes FType;
-        private SReferenseTableInfo FReference;
+        private CReferenseTableInfo FReference;
 
         /* Methods */
 
@@ -67,7 +80,7 @@ namespace tryhard
             set { FType = value; }
         }
 
-        public SReferenseTableInfo Reference
+        public CReferenseTableInfo Reference
         {
             get { return FReference; }
             set { FReference = value; }
@@ -170,9 +183,14 @@ namespace tryhard
             Tables.RemoveAt(ATableIndex);
         }
 
-        public List<string> GetListRecords(string ATableName, string AFieldName)
+        public List<string> GetListRecordsWithId(string ATableName, string AFieldName)
         {
-            return database.GetListRecords(ATableName, AFieldName);
+            return database.GetListRecordsWithId(ATableName, AFieldName);
+        }
+
+        public List<string> GetFieldData(string ATableName, string AFieldId)
+        {
+            return database.GetFieldData(ATableName, AFieldId);
         }
 
         public List<string> GetListFieldOfTableName(string ATableName)
@@ -197,7 +215,7 @@ namespace tryhard
                     if (name_referense_table != null)
                     {
                         Tables[i].Fields[j].Reference = 
-                            new SReferenseTableInfo(name_referense_table, RIdentificator);
+                            new CReferenseTableInfo(name_referense_table, RIdentificator);
                         Tables[i].isReferensed = true;
                     }
                 }

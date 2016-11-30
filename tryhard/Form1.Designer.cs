@@ -45,6 +45,8 @@
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.CalcButton = new System.Windows.Forms.Button();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Parameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
@@ -175,7 +177,10 @@
             this.DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.ColumnHeadersHeightSizeMode = 
+                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+                                                                    this.name, this.Parameters});
             this.DataGridView.Location = new System.Drawing.Point(950, 186);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.Size = new System.Drawing.Size(295, 300);
@@ -205,6 +210,16 @@
             this.CalcButton.Text = "Рассчитать";
             this.CalcButton.UseVisualStyleBackColor = true;
             this.CalcButton.Click += new System.EventHandler(this.CalcButton_Click);
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Название";
+            this.name.Name = "name";
+            // 
+            // Parameters
+            // 
+            this.Parameters.HeaderText = "Параметры";
+            this.Parameters.Name = "Parameters";
             // 
             // MainForm
             // 
@@ -250,6 +265,8 @@
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button CalcButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Parameters;
     }
 }
 

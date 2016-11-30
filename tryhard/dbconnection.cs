@@ -52,25 +52,26 @@ namespace tryhard
             cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT name FROM sqlite_master WHERE type = 'table';";
             reader = cmd.ExecuteReader();
-            List<string> list = new List<string>();
+            List<string> list_tables = new List<string>();
             while (reader.Read())
             {
-                list.Add(reader["name"].ToString());
+                list_tables.Add(reader["name"].ToString());
             }
-            return list;
+            return list_tables;
         }
 
-        public List<string> GetListRecords(string ATableName, string AFieldName)
+        public List<string> GetListRecordsWithId(string ATableName, string AFieldName)
         {
             cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT " + AFieldName + " FROM " + ATableName + ";";
+            cmd.CommandText = "SELECT id, " + AFieldName + " FROM " + ATableName + ";";
             reader = cmd.ExecuteReader();
-            List<string> list = new List<string>();
+            List<string> list_records = new List<string>();
             while (reader.Read())
             {
-                list.Add(reader["name"].ToString());
+                list_records.Add(reader["id"].ToString());
+                list_records.Add(reader[AFieldName].ToString());
             }
-            return list;
+            return list_records;
         }
 
         public List<string> GetListTableRows(string ATableName)
@@ -78,26 +79,30 @@ namespace tryhard
             cmd = connection.CreateCommand();
             cmd.CommandText = "pragma table_info(" + ATableName + ");";
             reader = cmd.ExecuteReader();
-            List<string> list = new List<string>();
+            List<string> list_rows = new List<string>();
             while (reader.Read())
             {
-                list.Add(reader["name"].ToString());
+                list_rows.Add(reader["name"].ToString());
             }
-            return list;
+            return list_rows;
         }
 
         public List<string> GetFieldData(string ATableName, string AFieldId)
         {
             cmd = connection.CreateCommand();
-            cmd.CommandText = "";
+            cmd.CommandText = "SELECT * FROM " + ATableName + " WHERE id = " + AFieldId;
             reader = cmd.ExecuteReader();
-            List<string> list = new List<string>();
+            List<string> list_data = new List<string>();
             while (reader.Read())
             {
-                
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    list_data.Add(reader[i].ToString());
+                }
             }
-            return list;
+            return list_data;
         }
     }
+
 }
 
