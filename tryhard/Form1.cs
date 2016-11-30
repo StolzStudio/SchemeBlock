@@ -24,6 +24,8 @@ namespace tryhard
         public SchemeBlock[] Blocks;
         public  SchemeLink[]  Links;
 
+        private List<string> ItemsIdList = new List<string>();
+
         public MainForm()
         {
             Meta = new CMeta("../Databases/database.db");
@@ -72,7 +74,8 @@ namespace tryhard
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
-            FillModelCB((string)EquipmentCB.Items[EquipmentCB.SelectedIndex]);
+            FillModelCB((string)EquipmentCB.SelectedItem);
+            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[EquipmentCB.SelectedIndex]);
         }
 
         /* Equipment ComboBoxes */
@@ -90,10 +93,12 @@ namespace tryhard
         private void FillModelCB(string AEquipmentName)
         {
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            List<string> items = Meta.GetListRecords(AEquipmentName, "name");
-            for (int i = 0; i < items.Count; i++)
+            List<string> items = Meta.GetListRecordsWithId(AEquipmentName, "name");
+            ItemsIdList.Clear();
+            for (int i = 0; i < items.Count; i += 2)
             {
-                ModelCB.Items.Add(items[i]);
+                ItemsIdList.Add(items[i]);
+                ModelCB.Items.Add(items[i + 1]);
             }
             ModelCB.SelectedIndex = 0;
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -101,7 +106,7 @@ namespace tryhard
 
         private void FillParametersGrid(string ATableName, string AFieldId)
         {
-
+            List<string> temp = Meta.GetFieldData(ATableName, AFieldId);
         }
 
         private void DrawingPanel_Click(object sender, EventArgs e)
@@ -116,5 +121,6 @@ namespace tryhard
         {
 
         }
+
     }
 }
