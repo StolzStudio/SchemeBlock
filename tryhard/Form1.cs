@@ -106,7 +106,13 @@ namespace tryhard
 
         private void FillParametersGrid(string ATableName, string AFieldId)
         {
-            List<string> temp = Meta.GetFieldData(ATableName, AFieldId);
+            DataGridView.Rows.Clear();
+            List<string> FieldData = Meta.GetFieldData(ATableName, AFieldId);
+            List<string> NameCols = Meta.GetListFieldOfTableName(ATableName);
+            for (int i = 0; i < FieldData.Count(); i++)
+            {
+                DataGridView.Rows.Add(NameCols[i], FieldData[i]);
+            }
         }
 
         private void DrawingPanel_Click(object sender, EventArgs e)
@@ -121,6 +127,5 @@ namespace tryhard
         {
 
         }
-
     }
 }
