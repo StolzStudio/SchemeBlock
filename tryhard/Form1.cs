@@ -67,6 +67,18 @@ namespace tryhard
             }
         }
 
+        public bool CheckLink(int AInputIndex, int AOutputIndex)
+        {
+            for (int i = 0; i < Links.Length; i++)
+            {
+                if ((Links[i].InputSchemeIndex == AInputIndex)&&(Links[i].OutputSchemeIndex == AOutputIndex))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /* Equipment ComboBoxes */
 
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)

@@ -143,9 +143,12 @@ namespace tryhard
             if ((Form.isHaveSelectedBlock) && (Form.InputSchemeIndex != this.Index))
             {
                 Panel Pnl = sender as Panel;
-                SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, this.Index);
-                Form.isHaveSelectedBlock = false;
-                Form.AddSchemeLink(SL);
+                if (!Form.CheckLink(Form.InputSchemeIndex, this.Index))
+                {
+                    SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, this.Index);
+                    Form.isHaveSelectedBlock = false;
+                    Form.AddSchemeLink(SL);
+                }
             }
             else
             {
