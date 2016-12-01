@@ -57,7 +57,7 @@ namespace tryhard
             BlockClass = ABlockClass;
             BlockId = ABlockId;
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
-            this.InitializeComponent(ABlockClass, "TPC-100", APosition);
+            this.InitializeComponent(ABlockClass, (string)Form.ModelCB.SelectedItem, APosition);
         }
 
         private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)
@@ -78,18 +78,29 @@ namespace tryhard
 
             /* BlockClassLabel */
 
-            this.BlockClassLabel          = new Label();
-            this.BlockClassLabel.Location = new Point(5, 5);
-            this.BlockClassLabel.Width    = BlockBodyWidth - 10;
-            this.BlockClassLabel.Text     = ABlockClass;
+            this.BlockClassLabel            = new Label();
+            this.BlockClassLabel.Location   = new Point(5, 5);
+            this.BlockClassLabel.Width      = BlockBodyWidth - 10;
+            this.BlockClassLabel.ForeColor  = Color.Black;
+            this.BlockClassLabel.Text       = ABlockClass;
+            this.BlockClassLabel.TextAlign  = ContentAlignment.MiddleCenter;
+            this.BlockClassLabel.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
+            this.BlockClassLabel.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
+            this.BlockClassLabel.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Controls.Add(this.BlockClassLabel);
 
             /* BlockModelLabel */
 
-            this.BlockModelLabel          = new Label();
-            this.BlockModelLabel.Location = new Point(5, 5);
-            this.BlockModelLabel.Width    = BlockBodyWidth - 10;
-            this.BlockModelLabel.Text     = ABlockModel;
+            this.BlockModelLabel            = new Label();
+            this.BlockModelLabel.Location   = new Point(5, 30);
+            this.BlockModelLabel.Width      = BlockBodyWidth - 10;
+            this.BlockModelLabel.ForeColor  = Color.FromArgb(128, 128, 128);
+            this.BlockModelLabel.Text       = ABlockModel;
+            this.BlockModelLabel.TextAlign  = ContentAlignment.MiddleCenter;
+            this.BlockModelLabel.Font       = new Font(BlockModelLabel.Font.Name, 6, BlockModelLabel.Font.Style);
+            this.BlockModelLabel.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
+            this.BlockModelLabel.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
+            this.BlockModelLabel.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Controls.Add(this.BlockModelLabel);
         }
 

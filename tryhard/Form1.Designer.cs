@@ -332,7 +332,7 @@
         public  System.Windows.Forms.Panel DrawingPanel;
         private System.Windows.Forms.Button AddBlockButton;
         private System.Windows.Forms.ComboBox EquipmentCB;
-        private System.Windows.Forms.ComboBox ModelCB;
+        public  System.Windows.Forms.ComboBox ModelCB;
         private System.Windows.Forms.Label EquipmentLabel;
         private System.Windows.Forms.Label ModelLabel;
         private System.Windows.Forms.Label OutputSchemeLabel;
