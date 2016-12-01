@@ -12,7 +12,7 @@ namespace tryhard
     {
         /* Consts */
 
-        private int  BlockBodyWidth    = 120;
+        private int  BlockBodyWidth    = 60;
         private int  BlockBodyHeight   = 60;
         private int  BlockPointSize    = 6;
         private bool isMouseDown       = false;
@@ -22,7 +22,7 @@ namespace tryhard
         private bool     isFocus;
 
         public bool       isAddSchemeLink = false;
-        public Point[]    PointLocation;
+        public Point      PointLocation;
         public SchemeLink AddedSchemeLink;
 
         /* Controls */
@@ -56,12 +56,7 @@ namespace tryhard
             Index = AIndex;
             BlockClass = ABlockClass;
             BlockId = ABlockId;
-            PointLocation    = new Point[5];
-            PointLocation[0] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, 0);
-            PointLocation[1] = new Point(BlockBodyWidth - BlockPointSize, BlockBodyHeight / 2 - BlockPointSize / 2);
-            PointLocation[2] = new Point(BlockBodyWidth / 2 - BlockPointSize / 2, BlockBodyHeight - BlockPointSize);
-            PointLocation[3] = new Point(0, BlockBodyHeight / 2 - BlockPointSize / 2);
-            PointLocation[4] = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
+            PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
             this.InitializeComponent(ABlockClass, "TPC-100", APosition);
         }
 
@@ -69,62 +64,60 @@ namespace tryhard
         {
             /* BlockBody */
 
-            this.BlockBody = new Panel();
-            this.BlockBody.BackColor  =     Color.Beige;
+            this.BlockBody            = new Panel();
+            this.BlockBody.BackColor  =     Color.FromArgb(27, 239, 253);
             this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
             this.BlockBody.Size       = new Size(BlockBodyWidth, BlockBodyHeight);
             this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Click     += new EventHandler(this.SchemeBodyClick);
+            this.BlockBody.Paint     += new PaintEventHandler(this.SchemeBodyRedraw);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             this.SetFocus();
 
             /* BlockClassLabel */
 
             this.BlockClassLabel          = new Label();
-            this.BlockClassLabel.Location = new Point(0, 0);
+            this.BlockClassLabel.Location = new Point(5, 5);
+            this.BlockClassLabel.Width    = BlockBodyWidth - 10;
             this.BlockClassLabel.Text     = ABlockClass;
             this.BlockBody.Controls.Add(this.BlockClassLabel);
 
             /* BlockModelLabel */
 
             this.BlockModelLabel          = new Label();
-            this.BlockModelLabel.Location = new Point(0, 0);
+            this.BlockModelLabel.Location = new Point(5, 5);
+            this.BlockModelLabel.Width    = BlockBodyWidth - 10;
             this.BlockModelLabel.Text     = ABlockModel;
             this.BlockBody.Controls.Add(this.BlockModelLabel);
         }
 
+        private void SchemeBodyRedraw(object sender, PaintEventArgs e)
+        {
+            if (this.isFocus)
+            {
+                this.SetFocus();
+            }
+        }
+
         public void SetFocus()
         {
-            this.isFocus     = true;
-            this.BlockPoints = new Panel[4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                this.BlockPoints[i]           = new Panel();
-                this.BlockPoints[i].Location  = PointLocation[i];
-                this.BlockPoints[i].Size      = new Size(BlockPointSize, BlockPointSize);
-                this.BlockPoints[i].TabIndex  = i;
-                this.BlockPoints[i].BackColor = Color.Black;
-                this.BlockPoints[i].Click    += new EventHandler(this.BlockPointClick);
-                this.BlockBody.Controls.Add(this.BlockPoints[i]);
-            }
+            this.isFocus = true;
+            Graphics g        = this.BlockBody.CreateGraphics();
+            Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, this.BlockBody.Location.Y + BlockBodyHeight);
+            Pen      BlackPen = new Pen(Color.Black, 4);
+            g.DrawRectangle(BlackPen, 
+                            0,
+                            0,
+                            BlockBodyWidth, 
+                            BlockBodyHeight);
         }
 
         public void ClearFocus()
         {
             this.isFocus = false;
-
-            if (BlockBody.Controls.Contains(BlockPoints[0]))
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    this.BlockPoints[i].Click -= new EventHandler(this.BlockPointClick);
-                    this.BlockBody.Controls.Remove(BlockPoints[i]);
-                    BlockPoints[i].Dispose();
-                }
-            }
+            this.BlockBody.Invalidate();
         }
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
@@ -159,13 +152,14 @@ namespace tryhard
                 Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
 
                 this.BlockBody.Location = Ptr;
-                Form.DrawingPanel.Invalidate();
+                this.BlockBody.Invalidate();
             }
         }
 
         private void SchemeBodyMouseUp(object sender, MouseEventArgs e)
         {
             isMouseDown = false;
+            Form.DrawingPanel.Invalidate();
         }
 
         private void BlockPointClick(object sender, EventArgs e)
@@ -184,7 +178,7 @@ namespace tryhard
             if (Form.isBlockPointClick)
             {
                 Panel Pnl              = sender as Panel;
-                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex, this.Index, 4);
+                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex);
                 Form.isBlockPointClick = false;
                 Form.AddSchemeLink(SL);
             }
