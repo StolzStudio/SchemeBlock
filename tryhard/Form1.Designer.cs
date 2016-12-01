@@ -87,25 +87,24 @@
             this.EquipmentCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentCB.BackColor = System.Drawing.Color.White;
             this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipmentCB.FormattingEnabled = true;
             this.EquipmentCB.Location = new System.Drawing.Point(942, 50);
             this.EquipmentCB.Name = "EquipmentCB";
-            this.EquipmentCB.Size = new System.Drawing.Size(145, 33);
+            this.EquipmentCB.Size = new System.Drawing.Size(145, 28);
             this.EquipmentCB.TabIndex = 2;
-            this.EquipmentCB.SelectedIndexChanged += 
-                new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
+            this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
             // ModelCB
             // 
             this.ModelCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelCB.BackColor = System.Drawing.Color.White;
             this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModelCB.FormattingEnabled = true;
             this.ModelCB.Location = new System.Drawing.Point(1107, 50);
             this.ModelCB.Name = "ModelCB";
-            this.ModelCB.Size = new System.Drawing.Size(145, 33);
+            this.ModelCB.Size = new System.Drawing.Size(145, 28);
             this.ModelCB.TabIndex = 3;
             this.ModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
             // 
@@ -157,22 +156,22 @@
             // 
             this.OutputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.OutputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputSchemeComboBox.FormattingEnabled = true;
             this.OutputSchemeComboBox.Location = new System.Drawing.Point(1107, 135);
             this.OutputSchemeComboBox.Name = "OutputSchemeComboBox";
-            this.OutputSchemeComboBox.Size = new System.Drawing.Size(145, 33);
+            this.OutputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
             this.OutputSchemeComboBox.TabIndex = 7;
             // 
             // InputSchemeComboBox
             // 
             this.InputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.InputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputSchemeComboBox.FormattingEnabled = true;
             this.InputSchemeComboBox.Location = new System.Drawing.Point(942, 135);
             this.InputSchemeComboBox.Name = "InputSchemeComboBox";
-            this.InputSchemeComboBox.Size = new System.Drawing.Size(145, 33);
+            this.InputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
             this.InputSchemeComboBox.TabIndex = 6;
             // 
             // DataGridView
