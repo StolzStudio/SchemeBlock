@@ -93,7 +93,8 @@
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(145, 33);
             this.EquipmentCB.TabIndex = 2;
-            this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
+            this.EquipmentCB.SelectedIndexChanged += 
+                new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
             // ModelCB
             // 
@@ -106,6 +107,7 @@
             this.ModelCB.Name = "ModelCB";
             this.ModelCB.Size = new System.Drawing.Size(145, 33);
             this.ModelCB.TabIndex = 3;
+            this.ModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
             // 
             // EquipmentLabel
             // 

@@ -75,9 +75,13 @@ namespace tryhard
         {
             ModelCB.Items.Clear();
             FillModelCB((string)EquipmentCB.SelectedItem);
-            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
         }
 
+        private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
+        }
+        
         /* Equipment ComboBoxes */
 
         private void FillEquipmentCB()
