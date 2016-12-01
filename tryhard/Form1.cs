@@ -79,6 +79,36 @@ namespace tryhard
             return false;
         }
 
+        private int FoundLinkIndex(int AOuputSchemeIndex)
+        {
+            for (int i = 0; i < Links.Length; i++)
+            {
+                if (Links[i].OutputSchemeIndex == AOuputSchemeIndex)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int FindLastLink()
+        {
+            int LastElement = 0;
+            int[] CountLinksToBlock = new int[Links.Length + 1];
+            for (int i = 0; i < Links.Length; i++)
+            {
+                CountLinksToBlock[Links[i].InputSchemeIndex]++;
+            }
+            for (int i = 0; i < CountLinksToBlock.Length; i++)
+            {
+                if (CountLinksToBlock[i] == 0)
+                {
+                    return i;
+                }
+            }
+            return LastElement;
+        }
+
         /* Equipment ComboBoxes */
 
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
@@ -137,7 +167,25 @@ namespace tryhard
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
+            int a = FindLastLink();
+            int b = FoundLinkIndex(a);
 
+            CalcContainer[] Containers = new CalcContainer[Links.Length];
+
+            for (int i = 0; i < Containers.Length; i++)
+            {
+                Containers[i] = new CalcContainer(Blocks[b].BlockId, Blocks[b].BlockClass, 
+                                                  Blocks[a].BlockId, Blocks[a].BlockClass);
+                a = b;
+                b = FoundLinkIndex(a);
+            }
+
+            //Здесь должна быть твоя крутая функция, которая считает
+            //первый элемент в массиве, последний в цепи
+            //я чуть-чуть поменял, вместо потомка, ты знаешь отца
+            //короче, я верю в твою функцию.
+            //Я СПАТЬ
         }
+
     }
 }
