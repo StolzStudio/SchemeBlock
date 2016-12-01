@@ -176,10 +176,13 @@
             // DataGridView
             // 
             this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToResizeColumns = false;
+            this.DataGridView.AllowUserToResizeRows = false;
             this.DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.ColumnHeadersHeight = 24;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.Parameters});
@@ -188,6 +191,7 @@
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
+            this.DataGridView.RowTemplate.Height = 20;
             this.DataGridView.Size = new System.Drawing.Size(310, 300);
             this.DataGridView.TabIndex = 10;
             // 
@@ -196,12 +200,16 @@
             this.name.HeaderText = "Название";
             this.name.Name = "name";
             this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.name.Width = 154;
             // 
             // Parameters
             // 
             this.Parameters.HeaderText = "Параметры";
             this.Parameters.Name = "Parameters";
             this.Parameters.ReadOnly = true;
+            this.Parameters.Width = 153;
             // 
             // PictureBox
             // 
