@@ -18,8 +18,7 @@ namespace tryhard
         public System.Drawing.Point DrawingPanelOffset;
 
         public int  InputSchemeIndex;
-        public int  InputSchemePointIndex;
-        public bool isBlockPointClick = false;
+        public bool isHaveSelectedBlock = false;
 
         public SchemeBlock[] Blocks;
         public  SchemeLink[]  Links;
@@ -59,13 +58,11 @@ namespace tryhard
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
-            Pen BlackPen   = new Pen(Color.DarkSlateBlue);
-            BlackPen.Width = 1.5F;
             if (Links.Length > 0)
             {
                 for (int i = 0; i < Links.Length; i++)
                 {
-                    e.Graphics.DrawLine(BlackPen, Links[i].GetInputSchemePointLocation(this), Links[i].GetOutputSchemePointLocation(this));
+                    Links[i].Draw(this, e);
                 }
             }
         }

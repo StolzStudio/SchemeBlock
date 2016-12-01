@@ -12,8 +12,8 @@ namespace tryhard
     {
         /* Consts */
 
-        private int  BlockBodyWidth    = 60;
-        private int  BlockBodyHeight   = 60;
+        private int  BlockBodyWidth    = 80;
+        private int  BlockBodyHeight   = 80;
         private int  BlockPointSize    = 6;
         private bool isMouseDown       = false;
 
@@ -71,7 +71,6 @@ namespace tryhard
             this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
-            this.BlockBody.Click     += new EventHandler(this.SchemeBodyClick);
             this.BlockBody.Paint     += new PaintEventHandler(this.SchemeBodyRedraw);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             this.SetFocus();
@@ -114,7 +113,9 @@ namespace tryhard
 
         public void SetFocus()
         {
-            this.isFocus = true;
+            this.isFocus             = true;
+            Form.isHaveSelectedBlock = true;
+            Form.InputSchemeIndex    = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
             Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, this.BlockBody.Location.Y + BlockBodyHeight);
             Pen      BlackPen = new Pen(Color.Black, 4);
@@ -127,7 +128,8 @@ namespace tryhard
 
         public void ClearFocus()
         {
-            this.isFocus = false;
+            this.isFocus             = false;
+            Form.isHaveSelectedBlock = false;
             this.BlockBody.Invalidate();
         }
 
@@ -136,6 +138,18 @@ namespace tryhard
             if (this.isFocus)
             {
                 isMouseDown = true;
+            }
+
+            if ((Form.isHaveSelectedBlock) && (Form.InputSchemeIndex != this.Index))
+            {
+                Panel Pnl = sender as Panel;
+                SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, this.Index);
+                Form.isHaveSelectedBlock = false;
+                Form.AddSchemeLink(SL);
+            }
+            else
+            {
+                Form.InputSchemeIndex = this.Index;
             }
 
             CheckFocus();
@@ -165,6 +179,7 @@ namespace tryhard
                 this.BlockBody.Location = Ptr;
                 this.BlockBody.Invalidate();
             }
+            Form.DrawingPanel.Invalidate();
         }
 
         private void SchemeBodyMouseUp(object sender, MouseEventArgs e)
@@ -173,30 +188,5 @@ namespace tryhard
             Form.DrawingPanel.Invalidate();
         }
 
-        private void BlockPointClick(object sender, EventArgs e)
-        {
-            Panel Pnl = sender as Panel;
-            if (!Form.isBlockPointClick)
-            {
-                Form.InputSchemeIndex      = this.Index;
-                Form.InputSchemePointIndex = Pnl.TabIndex;
-                Form.isBlockPointClick     = true;
-            }
-        }
-
-        private void SchemeBodyClick(object sender, EventArgs e)
-        {
-            if (Form.isBlockPointClick)
-            {
-                Panel Pnl              = sender as Panel;
-                SchemeLink SL          = new SchemeLink(Form.InputSchemeIndex, Form.InputSchemePointIndex);
-                Form.isBlockPointClick = false;
-                Form.AddSchemeLink(SL);
-            }
-            else
-            {
-                CheckFocus();
-            }
-        }
     }
 }
