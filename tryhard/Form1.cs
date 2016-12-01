@@ -33,7 +33,6 @@ namespace tryhard
             Links  = new SchemeLink[0];
             InitializeComponent();
             FillEquipmentCB();
-            FillModelCB((string)EquipmentCB.Items[0]);
             DrawingPanelOffset = DrawingPanel.Location;
         }
 
@@ -71,6 +70,8 @@ namespace tryhard
             }
         }
 
+        /* Equipment ComboBoxes */
+
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
@@ -81,8 +82,6 @@ namespace tryhard
         {
             FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
         }
-        
-        /* Equipment ComboBoxes */
 
         private void FillEquipmentCB()
         {
