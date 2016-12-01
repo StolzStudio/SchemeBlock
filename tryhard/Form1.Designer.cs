@@ -228,9 +228,9 @@
             this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CalcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalcButton.Location = new System.Drawing.Point(730, 15);
+            this.CalcButton.Location = new System.Drawing.Point(717, 15);
             this.CalcButton.Name = "CalcButton";
-            this.CalcButton.Size = new System.Drawing.Size(105, 30);
+            this.CalcButton.Size = new System.Drawing.Size(118, 30);
             this.CalcButton.TabIndex = 12;
             this.CalcButton.Text = "Рассчитать";
             this.CalcButton.UseVisualStyleBackColor = true;
