@@ -33,7 +33,6 @@ namespace tryhard
             Links  = new SchemeLink[0];
             InitializeComponent();
             FillEquipmentCB();
-            FillModelCB((string)EquipmentCB.Items[0]);
             DrawingPanelOffset = DrawingPanel.Location;
         }
 
@@ -71,14 +70,18 @@ namespace tryhard
             }
         }
 
+        /* Equipment ComboBoxes */
+
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
             FillModelCB((string)EquipmentCB.SelectedItem);
-            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
         }
 
-        /* Equipment ComboBoxes */
+        private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
+        }
 
         private void FillEquipmentCB()
         {
@@ -106,7 +109,13 @@ namespace tryhard
 
         private void FillParametersGrid(string ATableName, string AFieldId)
         {
-            List<string> temp = Meta.GetFieldData(ATableName, AFieldId);
+            DataGridView.Rows.Clear();
+            List<string> FieldData = Meta.GetFieldData(ATableName, AFieldId);
+            List<string> NameCols = Meta.GetListFieldOfTableName(ATableName);
+            for (int i = 0; i < FieldData.Count(); i++)
+            {
+                DataGridView.Rows.Add(NameCols[i], FieldData[i]);
+            }
         }
 
         private void DrawingPanel_Click(object sender, EventArgs e)
@@ -121,6 +130,5 @@ namespace tryhard
         {
 
         }
-
     }
 }

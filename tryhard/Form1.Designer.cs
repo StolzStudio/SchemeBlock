@@ -87,11 +87,19 @@
             this.EquipmentCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentCB.BackColor = System.Drawing.Color.White;
             this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+<<<<<<< HEAD
             this.EquipmentCB.Font = new System.Drawing.Font("Europe", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+=======
+            this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> origin/master
             this.EquipmentCB.FormattingEnabled = true;
-            this.EquipmentCB.Location = new System.Drawing.Point(950, 50);
+            this.EquipmentCB.Location = new System.Drawing.Point(942, 50);
             this.EquipmentCB.Name = "EquipmentCB";
+<<<<<<< HEAD
             this.EquipmentCB.Size = new System.Drawing.Size(135, 32);
+=======
+            this.EquipmentCB.Size = new System.Drawing.Size(145, 28);
+>>>>>>> origin/master
             this.EquipmentCB.TabIndex = 2;
             this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
@@ -100,19 +108,33 @@
             this.ModelCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelCB.BackColor = System.Drawing.Color.White;
             this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+<<<<<<< HEAD
             this.ModelCB.Font = new System.Drawing.Font("Europe", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+=======
+            this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> origin/master
             this.ModelCB.FormattingEnabled = true;
-            this.ModelCB.Location = new System.Drawing.Point(1110, 50);
+            this.ModelCB.Location = new System.Drawing.Point(1107, 50);
             this.ModelCB.Name = "ModelCB";
+<<<<<<< HEAD
             this.ModelCB.Size = new System.Drawing.Size(135, 32);
+=======
+            this.ModelCB.Size = new System.Drawing.Size(145, 28);
+>>>>>>> origin/master
             this.ModelCB.TabIndex = 3;
+            this.ModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
             // 
             // EquipmentLabel
             // 
             this.EquipmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentLabel.AutoSize = true;
+<<<<<<< HEAD
             this.EquipmentLabel.Font = new System.Drawing.Font("Europe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.EquipmentLabel.Location = new System.Drawing.Point(950, 15);
+=======
+            this.EquipmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EquipmentLabel.Location = new System.Drawing.Point(939, 15);
+>>>>>>> origin/master
             this.EquipmentLabel.Name = "EquipmentLabel";
             this.EquipmentLabel.Size = new System.Drawing.Size(152, 15);
             this.EquipmentLabel.TabIndex = 4;
@@ -122,8 +144,13 @@
             // 
             this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelLabel.AutoSize = true;
+<<<<<<< HEAD
             this.ModelLabel.Font = new System.Drawing.Font("Europe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ModelLabel.Location = new System.Drawing.Point(1110, 15);
+=======
+            this.ModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModelLabel.Location = new System.Drawing.Point(1104, 15);
+>>>>>>> origin/master
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(65, 15);
             this.ModelLabel.TabIndex = 5;
@@ -133,8 +160,13 @@
             // 
             this.OutputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputSchemeLabel.AutoSize = true;
+<<<<<<< HEAD
             this.OutputSchemeLabel.Font = new System.Drawing.Font("Europe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OutputSchemeLabel.Location = new System.Drawing.Point(1110, 100);
+=======
+            this.OutputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OutputSchemeLabel.Location = new System.Drawing.Point(1104, 100);
+>>>>>>> origin/master
             this.OutputSchemeLabel.Name = "OutputSchemeLabel";
             this.OutputSchemeLabel.Size = new System.Drawing.Size(148, 15);
             this.OutputSchemeLabel.TabIndex = 9;
@@ -144,8 +176,13 @@
             // 
             this.InputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSchemeLabel.AutoSize = true;
+<<<<<<< HEAD
             this.InputSchemeLabel.Font = new System.Drawing.Font("Europe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InputSchemeLabel.Location = new System.Drawing.Point(950, 100);
+=======
+            this.InputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InputSchemeLabel.Location = new System.Drawing.Point(939, 100);
+>>>>>>> origin/master
             this.InputSchemeLabel.Name = "InputSchemeLabel";
             this.InputSchemeLabel.Size = new System.Drawing.Size(137, 15);
             this.InputSchemeLabel.TabIndex = 8;
@@ -155,47 +192,81 @@
             // 
             this.OutputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+<<<<<<< HEAD
             this.OutputSchemeComboBox.Font = new System.Drawing.Font("Europe", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+=======
+            this.OutputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> origin/master
             this.OutputSchemeComboBox.FormattingEnabled = true;
-            this.OutputSchemeComboBox.Location = new System.Drawing.Point(1110, 135);
+            this.OutputSchemeComboBox.Location = new System.Drawing.Point(1107, 135);
             this.OutputSchemeComboBox.Name = "OutputSchemeComboBox";
+<<<<<<< HEAD
             this.OutputSchemeComboBox.Size = new System.Drawing.Size(135, 32);
+=======
+            this.OutputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
+>>>>>>> origin/master
             this.OutputSchemeComboBox.TabIndex = 7;
             // 
             // InputSchemeComboBox
             // 
             this.InputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+<<<<<<< HEAD
             this.InputSchemeComboBox.Font = new System.Drawing.Font("Europe", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+=======
+            this.InputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+>>>>>>> origin/master
             this.InputSchemeComboBox.FormattingEnabled = true;
-            this.InputSchemeComboBox.Location = new System.Drawing.Point(950, 135);
+            this.InputSchemeComboBox.Location = new System.Drawing.Point(942, 135);
             this.InputSchemeComboBox.Name = "InputSchemeComboBox";
+<<<<<<< HEAD
             this.InputSchemeComboBox.Size = new System.Drawing.Size(135, 32);
+=======
+            this.InputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
+>>>>>>> origin/master
             this.InputSchemeComboBox.TabIndex = 6;
             // 
             // DataGridView
             // 
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToResizeColumns = false;
+            this.DataGridView.AllowUserToResizeRows = false;
             this.DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.ColumnHeadersHeight = 24;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.Parameters});
+<<<<<<< HEAD
             this.DataGridView.Location = new System.Drawing.Point(950, 185);
+=======
+            this.DataGridView.EnableHeadersVisualStyles = false;
+            this.DataGridView.Location = new System.Drawing.Point(942, 191);
+>>>>>>> origin/master
             this.DataGridView.Name = "DataGridView";
-            this.DataGridView.Size = new System.Drawing.Size(295, 300);
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersVisible = false;
+            this.DataGridView.RowTemplate.Height = 20;
+            this.DataGridView.Size = new System.Drawing.Size(310, 300);
             this.DataGridView.TabIndex = 10;
             // 
             // name
             // 
             this.name.HeaderText = "Название";
             this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.name.Width = 154;
             // 
             // Parameters
             // 
             this.Parameters.HeaderText = "Параметры";
             this.Parameters.Name = "Parameters";
+            this.Parameters.ReadOnly = true;
+            this.Parameters.Width = 153;
             // 
             // PictureBox
             // 
@@ -213,10 +284,15 @@
             // 
             this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+<<<<<<< HEAD
             this.CalcButton.Font = new System.Drawing.Font("Europe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CalcButton.Location = new System.Drawing.Point(730, 15);
+=======
+            this.CalcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CalcButton.Location = new System.Drawing.Point(717, 15);
+>>>>>>> origin/master
             this.CalcButton.Name = "CalcButton";
-            this.CalcButton.Size = new System.Drawing.Size(105, 30);
+            this.CalcButton.Size = new System.Drawing.Size(118, 30);
             this.CalcButton.TabIndex = 12;
             this.CalcButton.Text = "Рассчитать";
             this.CalcButton.UseVisualStyleBackColor = true;
