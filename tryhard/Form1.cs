@@ -67,11 +67,12 @@ namespace tryhard
             }
         }
 
-        public bool CheckLink(int AInputIndex, int AOutputIndex)
+        public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
             for (int i = 0; i < Links.Length; i++)
             {
-                if ((Links[i].FirstBlockIndex == AInputIndex)&&(Links[i].SecondBlockIndex== AOutputIndex))
+                if ((Links[i].FirstBlockIndex == AFirstBlockIndex) && 
+                    (Links[i].SecondBlockIndex== ASecondBlockIndex))
                 {
                     return true;
                 }
@@ -79,11 +80,11 @@ namespace tryhard
             return false;
         }
 
-        private int FoundLinkIndex(int AOuputSchemeIndex)
+        private int FoundLinkIndex(int ASecondBlockIndex)
         {
             for (int i = 0; i < Links.Length; i++)
             {
-                if (Links[i].SecondBlockIndex == AOuputSchemeIndex)
+                if (Links[i].SecondBlockIndex == ASecondBlockIndex)
                 {
                     return i;
                 }
@@ -170,21 +171,21 @@ namespace tryhard
             int a = FindLastLink();
             int b = FoundLinkIndex(a);
 
-            CalcContainer[] Containers = new CalcContainer[Links.Length];
+            List<CalcContainer> Containers = new List<CalcContainer>();
 
-            for (int i = 0; i < Containers.Length; i++)
+            for (int i = 0; i < Links.Length; i++)
             {
-                Containers[i] = new CalcContainer(Blocks[b].BlockId, Blocks[b].BlockClass, 
-                                                  Blocks[a].BlockId, Blocks[a].BlockClass);
+                if (b == -1)
+                {
+                    break;
+                }
+                Containers.Add(new CalcContainer(Blocks[b].BlockId, Blocks[b].BlockClass,
+                                                 Blocks[a].BlockId, Blocks[a].BlockClass));
                 a = b;
                 b = FoundLinkIndex(a);
             }
 
-            for (int i = 0; i < Containers.Length; i++)
-            {
-                
-            }
+            List<string> res = new List<string>();
         }
-
     }
 }

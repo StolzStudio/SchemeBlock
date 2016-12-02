@@ -8,18 +8,19 @@ namespace tryhard
 {
     class CalcContainer
     {
-        public string Id;
-        public string Class;
-        public string IdFather;
-        public string ClassFather;
+        public string FirstBlockId;
+        public string FirstBlockClass;
+        public string SecondBlockId;
+        public string SecondBlockClass;
         public int Count;
 
-        public CalcContainer(string AId, string AClass, string AIdFather, string AClassFather)
+        public CalcContainer(string AFirstBlockId, string AFirstBlockClass, 
+                             string ASecondBlockId, string ASecondBlockClass)
         {
-            Id          = AId;
-            Class       = AClass;
-            IdFather    = AIdFather;
-            ClassFather = AClassFather;
+            FirstBlockId     = AFirstBlockId;
+            FirstBlockClass  = AFirstBlockClass;
+            SecondBlockId    = ASecondBlockId;
+            SecondBlockClass = ASecondBlockClass;
             Count = 1;
         }
     }

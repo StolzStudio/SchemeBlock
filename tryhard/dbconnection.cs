@@ -102,6 +102,19 @@ namespace tryhard
             }
             return list_data;
         }
+
+        public string GetValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        {
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId;
+            reader = cmd.ExecuteReader();
+            string Value = null;
+            while (reader.Read())
+            {
+                Value = reader[AParameter].ToString();
+            }
+            return Value;
+        }
     }
 
 }

@@ -235,5 +235,10 @@ namespace tryhard
             }
             return null;
         }
+
+        public string GetValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        {
+            return database.GetValueOfParameter(ATableName, AFieldId, AParameter);
+        }
     }
 }   
