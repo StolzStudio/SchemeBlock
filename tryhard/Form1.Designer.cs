@@ -41,10 +41,6 @@ namespace tryhard
             this.ModelCB = new System.Windows.Forms.ComboBox();
             this.EquipmentLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
-            this.OutputSchemeLabel = new System.Windows.Forms.Label();
-            this.InputSchemeLabel = new System.Windows.Forms.Label();
-            this.OutputSchemeComboBox = new System.Windows.Forms.ComboBox();
-            this.InputSchemeComboBox = new System.Windows.Forms.ComboBox();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,50 +128,6 @@ namespace tryhard
             this.ModelLabel.TabIndex = 5;
             this.ModelLabel.Text = "Модель:";
             // 
-            // OutputSchemeLabel
-            // 
-            this.OutputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OutputSchemeLabel.AutoSize = true;
-            this.OutputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OutputSchemeLabel.Location = new System.Drawing.Point(1104, 100);
-            this.OutputSchemeLabel.Name = "OutputSchemeLabel";
-            this.OutputSchemeLabel.Size = new System.Drawing.Size(153, 18);
-            this.OutputSchemeLabel.TabIndex = 9;
-            this.OutputSchemeLabel.Text = "Выходной параметр:";
-            // 
-            // InputSchemeLabel
-            // 
-            this.InputSchemeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputSchemeLabel.AutoSize = true;
-            this.InputSchemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputSchemeLabel.Location = new System.Drawing.Point(939, 100);
-            this.InputSchemeLabel.Name = "InputSchemeLabel";
-            this.InputSchemeLabel.Size = new System.Drawing.Size(142, 18);
-            this.InputSchemeLabel.TabIndex = 8;
-            this.InputSchemeLabel.Text = "Входной параметр:";
-            // 
-            // OutputSchemeComboBox
-            // 
-            this.OutputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.OutputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.OutputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OutputSchemeComboBox.FormattingEnabled = true;
-            this.OutputSchemeComboBox.Location = new System.Drawing.Point(1107, 135);
-            this.OutputSchemeComboBox.Name = "OutputSchemeComboBox";
-            this.OutputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
-            this.OutputSchemeComboBox.TabIndex = 7;
-            // 
-            // InputSchemeComboBox
-            // 
-            this.InputSchemeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputSchemeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.InputSchemeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InputSchemeComboBox.FormattingEnabled = true;
-            this.InputSchemeComboBox.Location = new System.Drawing.Point(942, 135);
-            this.InputSchemeComboBox.Name = "InputSchemeComboBox";
-            this.InputSchemeComboBox.Size = new System.Drawing.Size(145, 28);
-            this.InputSchemeComboBox.TabIndex = 6;
-            // 
             // DataGridView
             // 
             this.DataGridView.AllowUserToAddRows = false;
@@ -190,7 +142,7 @@ namespace tryhard
             this.name,
             this.Parameters});
             this.DataGridView.EnableHeadersVisualStyles = false;
-            this.DataGridView.Location = new System.Drawing.Point(942, 191);
+            this.DataGridView.Location = new System.Drawing.Point(942, 114);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
@@ -248,10 +200,6 @@ namespace tryhard
             this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.DataGridView);
-            this.Controls.Add(this.OutputSchemeLabel);
-            this.Controls.Add(this.InputSchemeLabel);
-            this.Controls.Add(this.OutputSchemeComboBox);
-            this.Controls.Add(this.InputSchemeComboBox);
             this.Controls.Add(this.ModelLabel);
             this.Controls.Add(this.EquipmentLabel);
             this.Controls.Add(this.ModelCB);
@@ -276,10 +224,6 @@ namespace tryhard
         public  System.Windows.Forms.ComboBox ModelCB;
         private System.Windows.Forms.Label EquipmentLabel;
         private System.Windows.Forms.Label ModelLabel;
-        private System.Windows.Forms.Label OutputSchemeLabel;
-        private System.Windows.Forms.Label InputSchemeLabel;
-        private System.Windows.Forms.ComboBox OutputSchemeComboBox;
-        private System.Windows.Forms.ComboBox InputSchemeComboBox;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button CalcButton;
