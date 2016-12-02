@@ -237,7 +237,7 @@ namespace tryhard
         public DrawPanel()
         {
             this.DoubleBuffered = true;
-           // this.ResizeRedraw = true;
+            this.ResizeRedraw = true;
         }
     }
 }

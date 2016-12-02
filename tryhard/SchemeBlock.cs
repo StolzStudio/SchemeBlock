@@ -27,10 +27,9 @@ namespace tryhard
 
         /* Controls */
 
-        public Panel   BlockBody;
-        public Label   BlockClassLabel;
-        public Label   BlockModelLabel;
-        public Panel[] BlockPoints;
+        public DrawPanel BlockBody;
+        public Label     BlockClassLabel;
+        public Label     BlockModelLabel;
 
         /* DB fields */
 
@@ -64,14 +63,13 @@ namespace tryhard
         {
             /* BlockBody */
 
-            this.BlockBody            = new Panel();
+            this.BlockBody            = new DrawPanel();
             this.BlockBody.BackColor  =     Color.FromArgb(244, 188, 66);
             this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
             this.BlockBody.Size       = new Size(BlockBodyWidth, BlockBodyHeight);
             this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
-            this.BlockBody.Paint     += new PaintEventHandler(this.SchemeBodyRedraw);
             this.Form.DrawingPanel.Controls.Add(BlockBody);
             this.SetFocus();
 
@@ -103,34 +101,19 @@ namespace tryhard
             this.BlockBody.Controls.Add(this.BlockModelLabel);
         }
 
-        private void SchemeBodyRedraw(object sender, PaintEventArgs e)
-        {
-            if (this.isFocus)
-            {
-                this.SetFocus();
-            }
-        }
-
         public void SetFocus()
         {
             this.isFocus             = true;
             Form.isHaveSelectedBlock = true;
             Form.SelectedBlockIndex    = this.Index;
-            Graphics g        = this.BlockBody.CreateGraphics();
-            Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, this.BlockBody.Location.Y + BlockBodyHeight);
-            Pen      BlackPen = new Pen(Color.Black, 4);
-            g.DrawRectangle(BlackPen, 
-                            0,
-                            0,
-                            BlockBodyWidth, 
-                            BlockBodyHeight);
+            this.BlockBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         }
 
         public void ClearFocus()
         {
             this.isFocus             = false;
             Form.isHaveSelectedBlock = false;
-            this.BlockBody.Invalidate();
+            this.BlockBody.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
