@@ -47,8 +47,8 @@ namespace tryhard
             Array.Resize(ref Blocks, Blocks.Length + 1);
             Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
             Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
-                                                        (string)EquipmentCB.SelectedItem, 
-                                                        ModelCB.SelectedIndex, Pos, this);
+                                                        (string)EquipmentCB.SelectedItem,
+                                                        ItemsIdList[ModelCB.SelectedIndex], Pos, this);
             for (int i = 0; i < Blocks.Length; i++)
             {
                Blocks[i].ClearFocus();
@@ -180,11 +180,6 @@ namespace tryhard
                 b = FoundLinkIndex(a);
             }
 
-            //Здесь должна быть твоя крутая функция, которая считает
-            //первый элемент в массиве, последний в цепи
-            //я чуть-чуть поменял, вместо потомка, ты знаешь отца
-            //короче, я верю в твою функцию.
-            //Я СПАТЬ
         }
 
     }

@@ -8,12 +8,12 @@ namespace tryhard
 {
     class CalcContainer
     {
-        public int    Id;
+        public string Id;
         public string Class;
-        public int    IdFather;
+        public string IdFather;
         public string ClassFather;
 
-        public CalcContainer(int AId, string AClass, int AIdFather, string AClassFather)
+        public CalcContainer(string AId, string AClass, string AIdFather, string AClassFather)
         {
             Id          = AId;
             Class       = AClass;

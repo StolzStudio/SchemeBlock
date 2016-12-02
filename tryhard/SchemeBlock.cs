@@ -35,7 +35,7 @@ namespace tryhard
         /* DB fields */
 
         private string block_class;
-        private int block_id;
+        private string block_id;
 
         public string BlockClass
         {
@@ -43,14 +43,14 @@ namespace tryhard
             set { block_class = value; }
         }
 
-        public int BlockId
+        public string BlockId
         {
             get { return block_id; }
             set { block_id = value; }
         }
 
 
-        public SchemeBlock(int AIndex, string ABlockClass, int ABlockId, Point APosition, MainForm AForm)
+        public SchemeBlock(int AIndex, string ABlockClass, string ABlockId, Point APosition, MainForm AForm)
         {
             Form  = AForm;
             Index = AIndex;
