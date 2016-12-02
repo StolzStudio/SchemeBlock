@@ -45,7 +45,7 @@ namespace tryhard
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             Array.Resize(ref Blocks, Blocks.Length + 1);
-            Point Pos = new Point(10, 10 * Blocks.Length + 60 * Blocks.Length);
+            Point Pos = new Point(10, 90 * (Blocks.Length - 1) + 10);
             Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
                                                         (string)EquipmentCB.SelectedItem,
                                                         ItemsIdList[ModelCB.SelectedIndex], Pos, this);
@@ -180,6 +180,10 @@ namespace tryhard
                 b = FoundLinkIndex(a);
             }
 
+            for (int i = 0; i < Containers.Length; i++)
+            {
+                
+            }
         }
 
     }

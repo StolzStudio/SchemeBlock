@@ -1,4 +1,6 @@
-﻿namespace tryhard
+﻿using System.Windows.Forms;
+
+namespace tryhard
 {
     partial class MainForm
     {

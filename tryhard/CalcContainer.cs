@@ -20,7 +20,7 @@ namespace tryhard
             Class       = AClass;
             IdFather    = AIdFather;
             ClassFather = AClassFather;
-            Count = 0;
+            Count = 1;
         }
     }
 }
