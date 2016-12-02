@@ -65,7 +65,7 @@ namespace tryhard
             /* BlockBody */
 
             this.BlockBody            = new Panel();
-            this.BlockBody.BackColor  =     Color.FromArgb(27, 239, 253);
+            this.BlockBody.BackColor  =     Color.FromArgb(244, 188, 66);
             this.BlockBody.Location   = new Point(APosition.X, APosition.Y);
             this.BlockBody.Size       = new Size(BlockBodyWidth, BlockBodyHeight);
             this.BlockBody.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);

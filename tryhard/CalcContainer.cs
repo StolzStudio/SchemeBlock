@@ -12,6 +12,7 @@ namespace tryhard
         public string Class;
         public string IdFather;
         public string ClassFather;
+        public int Count;
 
         public CalcContainer(string AId, string AClass, string AIdFather, string AClassFather)
         {
@@ -19,6 +20,7 @@ namespace tryhard
             Class       = AClass;
             IdFather    = AIdFather;
             ClassFather = AClassFather;
+            Count = 0;
         }
     }
 }
