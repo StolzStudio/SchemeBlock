@@ -115,7 +115,7 @@ namespace tryhard
         {
             this.isFocus             = true;
             Form.isHaveSelectedBlock = true;
-            Form.InputSchemeIndex    = this.Index;
+            Form.SelectedBlockIndex    = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
             Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, this.BlockBody.Location.Y + BlockBodyHeight);
             Pen      BlackPen = new Pen(Color.Black, 4);
@@ -140,19 +140,19 @@ namespace tryhard
                 isMouseDown = true;
             }
 
-            if ((Form.isHaveSelectedBlock) && (Form.InputSchemeIndex != this.Index))
+            if ((Form.isHaveSelectedBlock) && (Form.SelectedBlockIndex != this.Index))
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.CheckLink(Form.InputSchemeIndex, this.Index))
+                if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index))
                 {
-                    SchemeLink SL = new SchemeLink(Form.InputSchemeIndex, this.Index);
+                    SchemeLink SL = new SchemeLink(Form.SelectedBlockIndex, this.Index);
                     Form.isHaveSelectedBlock = false;
                     Form.AddSchemeLink(SL);
                 }
             }
             else
             {
-                Form.InputSchemeIndex = this.Index;
+                Form.SelectedBlockIndex = this.Index;
             }
 
             CheckFocus();

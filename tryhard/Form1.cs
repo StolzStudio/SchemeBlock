@@ -17,7 +17,7 @@ namespace tryhard
     {
         public System.Drawing.Point DrawingPanelOffset;
 
-        public int  InputSchemeIndex;
+        public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock = false;
 
         public SchemeBlock[] Blocks;
@@ -71,7 +71,7 @@ namespace tryhard
         {
             for (int i = 0; i < Links.Length; i++)
             {
-                if ((Links[i].InputSchemeIndex == AInputIndex)&&(Links[i].OutputSchemeIndex == AOutputIndex))
+                if ((Links[i].FirstBlockIndex == AInputIndex)&&(Links[i].SecondBlockIndex== AOutputIndex))
                 {
                     return true;
                 }
@@ -83,7 +83,7 @@ namespace tryhard
         {
             for (int i = 0; i < Links.Length; i++)
             {
-                if (Links[i].OutputSchemeIndex == AOuputSchemeIndex)
+                if (Links[i].SecondBlockIndex == AOuputSchemeIndex)
                 {
                     return i;
                 }
@@ -97,7 +97,7 @@ namespace tryhard
             int[] CountLinksToBlock = new int[Links.Length + 1];
             for (int i = 0; i < Links.Length; i++)
             {
-                CountLinksToBlock[Links[i].InputSchemeIndex]++;
+                CountLinksToBlock[Links[i].FirstBlockIndex]++;
             }
             for (int i = 0; i < CountLinksToBlock.Length; i++)
             {

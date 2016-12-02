@@ -10,27 +10,27 @@ namespace tryhard
 {
     public class SchemeLink
     {
-        public  int     InputSchemeIndex;
-        public  int     OutputSchemeIndex;
+        public  int     FirstBlockIndex;
+        public  int     SecondBlockIndex;
         private Point[] Points;
 
-        public SchemeLink(int AInputSchemeIndex, int AOutputSchemeIndex)
+        public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
             Points            = new Point[4];
-            InputSchemeIndex  = AInputSchemeIndex;
-            OutputSchemeIndex = AOutputSchemeIndex;
+            FirstBlockIndex = AFirstBlockIndex;
+            SecondBlockIndex = ASecondBlockIndex;
         }
 
-        public Point GetInputSchemePointLocation(MainForm AForm)
+        public Point GetFirstBlockPointLocation(MainForm AForm)
         {
-            SchemeBlock Block = AForm.Blocks[InputSchemeIndex];
+            SchemeBlock Block = AForm.Blocks[FirstBlockIndex];
             return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }
 
-        public Point GetOutputSchemePointLocation(MainForm AForm)
+        public Point GetSecondBlockPointLocation(MainForm AForm)
         {
-            SchemeBlock Block = AForm.Blocks[OutputSchemeIndex];
+            SchemeBlock Block = AForm.Blocks[SecondBlockIndex];
             return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }
@@ -39,8 +39,8 @@ namespace tryhard
         {
             Pen pen   = new Pen(Color.DarkSlateBlue);
             pen.Width = 1.5F;
-            Points[0] = GetInputSchemePointLocation(AForm);
-            Points[3] = GetOutputSchemePointLocation(AForm);
+            Points[0] = GetFirstBlockPointLocation(AForm);
+            Points[3] = GetSecondBlockPointLocation(AForm);
             if (Math.Abs(Points[0].X - Points[3].X) <
                 Math.Abs(Points[0].Y - Points[3].Y))
             {
