@@ -1,26 +1,26 @@
-id%%%ИН
-name%%%Имя
-amount_holes%%%Количество скважин
-fluid_consumption%%%Расход флюида
-reverse_water_consumption%%%Расход обратной воды
-reagent_consumption%%%Расход реагента
-people_gang_demand%%%Потребность чел/смена
-kw_h_demand%%%Потребность Кв/ч
-weight_equipment%%%Масса оборудования
-volume_equipment%%%Объем оборудования
-cost_equipment%%%Стоимость оборудования
-pressure_gradient%%%Градиент давления
-max_fluid_consumption%%%Максимальный расход флюида
-oil_quality_id%%%Качество нефти
-water_inj_consumption%%%Расход закачиваемой воды
-reserve_days_rvp%%%Запас воды по РВП
-reserve_days_rtn%%%Запас воды по РТН
-gas_consumption%%%Расход газа
-water_consumption%%%Расход воды
-oil_proportion%%%Содержание нефти
-gas_proportion%%%Содержание газа
-water_impurity_proportion%%%Содержание воды и примесей
-water_volume%%%Объем воды
-oil_consumption%%%Потребность нефти
-oil_volume%%%Объем нефти
-wet_gas_consumption%%%Расход мокрого газа
+id%ИН
+name%Имя
+amount_holes%Количество скважин
+fluid_consumption%Расход флюида
+reverse_water_consumption%Расход обратной воды
+reagent_consumption%Расход реагента
+people_gang_demand%Потребность чел/смена
+kw_h_demand%Потребность Кв/ч
+weight_equipment%Масса оборудования
+volume_equipment%Объем оборудования
+cost_equipment%Стоимость оборудования
+pressure_gradient%Градиент давления
+max_fluid_consumption%Максимальный расход флюида
+oil_quality_id%Качество нефти
+water_inj_consumption%Расход закачиваемой воды
+reserve_days_rvp%Запас воды по РВП
+reserve_days_rtn%Запас воды по РТН
+gas_consumption%Расход газа
+water_consumption%Расход воды
+oil_proportion%Содержание нефти
+gas_proportion%Содержание газа
+water_impurity_proportion%Содержание воды и примесей
+water_volume%Объем воды
+oil_consumption%Потребность нефти
+oil_volume%Объем нефти
+wet_gas_consumption%Расход мокрого газа

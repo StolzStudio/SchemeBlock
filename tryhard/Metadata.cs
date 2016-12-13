@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 
 namespace tryhard
 {
@@ -159,6 +160,7 @@ namespace tryhard
                     CreateTable(table_name, Database.GetListTableRows(table_name));
                 }
                 CheckReferensesInTables();
+                FillDictionaryNames("../Databases/dictionary.txt");
             }
         }
 
@@ -244,7 +246,16 @@ namespace tryhard
 
         public void FillDictionaryNames(string AFileName)
         {
-
+            string str = null;
+            using (StreamReader input = new StreamReader(@AFileName))
+            {
+                while ((str = input.ReadLine()) != null)
+                {
+                    string[] str1 = str.Split('%');
+                    Console.WriteLine(str1);
+                    str = null;
+                }
+            }
         }
     }
 }   
