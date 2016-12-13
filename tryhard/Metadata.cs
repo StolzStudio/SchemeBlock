@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 
 namespace tryhard
 {
@@ -143,21 +144,24 @@ namespace tryhard
 
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
-        public DBConnection database = new DBConnection();
+        public DBConnection Database = new DBConnection();
+        public Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
         private string RIdentificator = "id";
+        private string DictSeparator = "%";
 
         /* Methods */
 
         public CMeta(string ADataBasePath)
         {
-            if (database.Connect(ADataBasePath) == 1)
+            if (Database.Connect(ADataBasePath) == 1)
             {
-                TablesList = database.GetListTables();
+                TablesList = Database.GetListTables();
                 foreach(string table_name in TablesList)
                 {
-                    CreateTable(table_name, database.GetListTableRows(table_name));
+                    CreateTable(table_name, Database.GetListTableRows(table_name));
                 }
                 CheckReferensesInTables();
+                FillDictionaryNames("../Databases/dictionary.txt");
             }
         }
 
@@ -185,12 +189,12 @@ namespace tryhard
 
         public List<string> GetListRecordsWithId(string ATableName, string AFieldName)
         {
-            return database.GetListRecordsWithId(ATableName, AFieldName);
+            return Database.GetListRecordsWithId(ATableName, AFieldName);
         }
 
         public List<string> GetFieldData(string ATableName, string AFieldId)
         {
-            return database.GetFieldData(ATableName, AFieldId);
+            return Database.GetFieldData(ATableName, AFieldId);
         }
 
         public List<string> GetListFieldOfTableName(string ATableName)
@@ -238,7 +242,23 @@ namespace tryhard
 
         public string GetValueOfParameter(string ATableName, string AFieldId, string AParameter)
         {
-            return database.GetValueOfParameter(ATableName, AFieldId, AParameter);
+            return Database.GetValueOfParameter(ATableName, AFieldId, AParameter);
+        }
+
+        public void FillDictionaryNames(string AFileName)
+        {
+            string str = null;
+            using (StreamReader input = new StreamReader(@AFileName))
+            {
+                while ((str = input.ReadLine()) != null)
+                {
+                    int i = str.IndexOf(DictSeparator);
+                    string name1 = str.Substring(0, i);
+                    string name2 = str.Substring(i + 1);
+                    DictionaryName.Add(name1, name2);
+                    DictionaryName.Add(name2, name1);
+                }
+            }
         }
     }
 }   

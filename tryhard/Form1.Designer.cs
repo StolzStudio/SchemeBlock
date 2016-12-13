@@ -35,7 +35,7 @@ namespace tryhard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DrawingPanel = new System.Windows.Forms.Panel();
+            this.DrawingPanel = new DrawPanel();
             this.AddBlockButton = new System.Windows.Forms.Button();
             this.EquipmentCB = new System.Windows.Forms.ComboBox();
             this.ModelCB = new System.Windows.Forms.ComboBox();
@@ -63,6 +63,7 @@ namespace tryhard
             this.DrawingPanel.Name = "DrawingPanel";
             this.DrawingPanel.Size = new System.Drawing.Size(820, 620);
             this.DrawingPanel.TabIndex = 0;
+
             this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
@@ -218,17 +219,26 @@ namespace tryhard
 
         #endregion
 
-        public  System.Windows.Forms.Panel DrawingPanel;
-        private System.Windows.Forms.Button AddBlockButton;
-        private System.Windows.Forms.ComboBox EquipmentCB;
-        public  System.Windows.Forms.ComboBox ModelCB;
-        private System.Windows.Forms.Label EquipmentLabel;
-        private System.Windows.Forms.Label ModelLabel;
-        private System.Windows.Forms.DataGridView DataGridView;
-        private System.Windows.Forms.PictureBox PictureBox;
-        private System.Windows.Forms.Button CalcButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Parameters;
+        public  DrawPanel DrawingPanel;
+        private Button AddBlockButton;
+        private ComboBox EquipmentCB;
+        public  ComboBox ModelCB;
+        private Label EquipmentLabel;
+        private Label ModelLabel;
+        private DataGridView DataGridView;
+        private PictureBox PictureBox;
+        private Button CalcButton;
+        private DataGridViewTextBoxColumn name;
+        private DataGridViewTextBoxColumn Parameters;
+    }
+
+    public class DrawPanel : Panel
+    {
+        public DrawPanel()
+        {
+            this.DoubleBuffered = true;
+            this.ResizeRedraw = true;
+        }
     }
 }
 

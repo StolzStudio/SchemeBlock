@@ -154,7 +154,7 @@ namespace tryhard
             List<string> NameCols = Meta.GetListFieldOfTableName(ATableName);
             for (int i = 0; i < FieldData.Count(); i++)
             {
-                DataGridView.Rows.Add(NameCols[i], FieldData[i]);
+                DataGridView.Rows.Add(Meta.DictionaryName[NameCols[i]], FieldData[i]);
             }
         }
 
