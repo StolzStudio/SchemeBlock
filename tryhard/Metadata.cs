@@ -147,6 +147,7 @@ namespace tryhard
         public DBConnection Database = new DBConnection();
         public Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
         private string RIdentificator = "id";
+        private string DictSeparator = "%";
 
         /* Methods */
 
@@ -251,7 +252,7 @@ namespace tryhard
             {
                 while ((str = input.ReadLine()) != null)
                 {
-                    int i = str.IndexOf('%');
+                    int i = str.IndexOf(DictSeparator);
                     string name1 = str.Substring(0, i);
                     string name2 = str.Substring(i + 1);
                     DictionaryName.Add(name1, name2);
