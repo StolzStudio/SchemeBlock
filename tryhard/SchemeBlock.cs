@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Input;
 
 namespace tryhard
 {
@@ -16,6 +17,7 @@ namespace tryhard
         private int  BlockBodyHeight   = 80;
         private int  BlockPointSize    = 6;
         private bool isMouseDown       = false;
+        private bool isCtrlDown        = false;
 
         private MainForm Form;
         private int      Index;
@@ -139,13 +141,23 @@ namespace tryhard
             {
                 isMouseDown = true;
             }
+            
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                isCtrlDown = true;
+            }
+            else
+            {
+                isCtrlDown = false;
+            }
 
-            if ((Form.isHaveSelectedBlock) && (Form.SelectedBlockIndex != this.Index))
+            if ((Form.isHaveSelectedBlock) && (Form.SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
                 if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index))
                 {
                     Form.isHaveSelectedBlock = false;
+                    isCtrlDown = false;
                     Form.AddSchemeLink(new SchemeLink(Form.SelectedBlockIndex, this.Index));
                 }
             }
@@ -171,6 +183,15 @@ namespace tryhard
 
         private void SchemeBodyMouseMove(object sender, MouseEventArgs e)
         {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                isCtrlDown = true;
+            }
+            else
+            {
+                isCtrlDown = false;
+            }
+
             if (isMouseDown)
             {
                 Point Ptr = Form.PointToClient(Cursor.Position);
@@ -186,6 +207,14 @@ namespace tryhard
 
         private void SchemeBodyMouseUp(object sender, MouseEventArgs e)
         {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                isCtrlDown = true;
+            }
+            else
+            {
+                isCtrlDown = false;
+            }
             isMouseDown = false;
             Form.DrawingPanel.Invalidate();
         }

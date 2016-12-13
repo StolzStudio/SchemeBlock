@@ -19,6 +19,7 @@ namespace tryhard
 
         public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock = false;
+        private const int DefaultMargin = 10;
 
         public List<SchemeBlock> Blocks = new List<SchemeBlock>();
         public List<SchemeLink> Links = new List<SchemeLink>();
@@ -40,7 +41,7 @@ namespace tryhard
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
-            Point Pos = new Point(10, 90 * (Blocks.Count) + 10);
+            Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
             Blocks.Add(new SchemeBlock(Blocks.Count, (string)EquipmentCB.SelectedItem,
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (SchemeBlock block in Blocks)
@@ -161,24 +162,6 @@ namespace tryhard
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
-            /*
-            int a = FindLastLink();
-            int b = FoundLinkIndex(a);
-
-            List<CalcContainer> Containers = new List<CalcContainer>();
-
-            for (int i = 0; i < Links.Length; i++)
-            {
-                if (b == -1)
-                {
-                    break;
-                }
-                Containers.Add(new CalcContainer(Blocks[b].BlockId, Blocks[b].BlockClass,
-                                                 Blocks[a].BlockId, Blocks[a].BlockClass));
-                a = b;
-                b = FoundLinkIndex(a);
-            } */
-
             List<string> res = new List<string>();
         }
     }
