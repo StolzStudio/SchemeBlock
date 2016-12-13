@@ -145,7 +145,7 @@ namespace tryhard
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
         public DBConnection Database = new DBConnection();
-        Dictionary<string, string> DictNames;
+        public Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
         private string RIdentificator = "id";
 
         /* Methods */
@@ -251,9 +251,11 @@ namespace tryhard
             {
                 while ((str = input.ReadLine()) != null)
                 {
-                    string[] str1 = str.Split('%');
-                    Console.WriteLine(str1);
-                    str = null;
+                    int i = str.IndexOf('%');
+                    string name1 = str.Substring(0, i);
+                    string name2 = str.Substring(i + 1);
+                    DictionaryName.Add(name1, name2);
+                    DictionaryName.Add(name2, name1);
                 }
             }
         }
