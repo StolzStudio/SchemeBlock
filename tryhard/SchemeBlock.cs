@@ -145,9 +145,8 @@ namespace tryhard
                 Panel Pnl = sender as Panel;
                 if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index))
                 {
-                    SchemeLink SL = new SchemeLink(Form.SelectedBlockIndex, this.Index);
                     Form.isHaveSelectedBlock = false;
-                    Form.AddSchemeLink(SL);
+                    Form.AddSchemeLink(new SchemeLink(Form.SelectedBlockIndex, this.Index));
                 }
             }
             else
