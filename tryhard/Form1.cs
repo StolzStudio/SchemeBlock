@@ -20,16 +20,13 @@ namespace tryhard
         public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock = false;
 
-        public SchemeBlock[] Blocks;
-        public  SchemeLink[]  Links;
-
+        public List<SchemeBlock> Blocks = new List<SchemeBlock>();
+        public List<SchemeLink> Links = new List<SchemeLink>();
         private List<string> ItemsIdList = new List<string>();
 
         public MainForm()
         {
             Meta = new CMeta("../Databases/database.db");
-            Blocks = new SchemeBlock[0];
-            Links  = new SchemeLink[0];
             InitializeComponent();
             FillEquipmentCB();
             DrawingPanelOffset = DrawingPanel.Location;
@@ -37,42 +34,38 @@ namespace tryhard
 
         public void AddSchemeLink(SchemeLink ANewLink)
         {
-            Array.Resize(ref Links, Links.Length + 1);
-            Links[Links.Length - 1] = ANewLink;
+            Links.Add(ANewLink);
             DrawingPanel.Invalidate();
         }
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
-            Array.Resize(ref Blocks, Blocks.Length + 1);
-            Point Pos = new Point(10, 90 * (Blocks.Length - 1) + 10);
-            Blocks[Blocks.Length - 1] = new SchemeBlock(Blocks.Length - 1, 
-                                                        (string)EquipmentCB.SelectedItem,
-                                                        ItemsIdList[ModelCB.SelectedIndex], Pos, this);
-            for (int i = 0; i < Blocks.Length; i++)
+            Point Pos = new Point(10, 90 * (Blocks.Count - 1) + 10);
+            Blocks.Add(new SchemeBlock(Blocks.Count - 1, (string)EquipmentCB.SelectedItem,
+                       ItemsIdList[ModelCB.SelectedIndex], Pos, this));
+            foreach (SchemeBlock block in Blocks)
             {
-               Blocks[i].ClearFocus();
+                block.ClearFocus();
             }
-            Blocks[Blocks.Length - 1].SetFocus();
+            Blocks.Last().SetFocus();
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
-            if (Links.Length > 0)
+            if (Links.Count != 0)
             {
-                for (int i = 0; i < Links.Length; i++)
+                foreach(SchemeLink link in Links)
                 {
-                    Links[i].Draw(this, e);
+                    link.Draw(this, e);
                 }
             }
         }
 
         public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
-            for (int i = 0; i < Links.Length; i++)
+            foreach(SchemeLink link in Links)
             {
-                if ((Links[i].FirstBlockIndex == AFirstBlockIndex) && 
-                    (Links[i].SecondBlockIndex== ASecondBlockIndex))
+                if ((link.FirstBlockIndex == AFirstBlockIndex) && (link.SecondBlockIndex== ASecondBlockIndex))
                 {
                     return true;
                 }
@@ -82,7 +75,7 @@ namespace tryhard
 
         private int FoundLinkIndex(int ASecondBlockIndex)
         {
-            for (int i = 0; i < Links.Length; i++)
+            for (int i = 0; i < Links.Count; i++)
             {
                 if (Links[i].SecondBlockIndex == ASecondBlockIndex)
                 {
@@ -95,8 +88,8 @@ namespace tryhard
         private int FindLastLink()
         {
             int LastElement = 0;
-            int[] CountLinksToBlock = new int[Links.Length + 1];
-            for (int i = 0; i < Links.Length; i++)
+            int[] CountLinksToBlock = new int[Links.Count + 1];
+            for (int i = 0; i < Links.Count; i++)
             {
                 CountLinksToBlock[Links[i].FirstBlockIndex]++;
             }
@@ -160,14 +153,15 @@ namespace tryhard
 
         private void DrawingPanel_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Blocks.Length; i++)
+            foreach(SchemeBlock block in Blocks)
             {
-                Blocks[i].ClearFocus();
+                block.ClearFocus();
             }
         }
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
+            /*
             int a = FindLastLink();
             int b = FoundLinkIndex(a);
 
@@ -183,7 +177,7 @@ namespace tryhard
                                                  Blocks[a].BlockId, Blocks[a].BlockClass));
                 a = b;
                 b = FoundLinkIndex(a);
-            }
+            } */
 
             List<string> res = new List<string>();
         }
