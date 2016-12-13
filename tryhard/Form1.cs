@@ -40,7 +40,7 @@ namespace tryhard
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
-            Point Pos = new Point(10, 90 * (Blocks.Count - 1) + 10);
+            Point Pos = new Point(10, 90 * (Blocks.Count) + 10);
             Blocks.Add(new SchemeBlock(Blocks.Count - 1, (string)EquipmentCB.SelectedItem,
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (SchemeBlock block in Blocks)
