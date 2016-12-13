@@ -149,7 +149,6 @@ namespace tryhard
             this.DataGridView.RowTemplate.Height = 20;
             this.DataGridView.Size = new System.Drawing.Size(310, 300);
             this.DataGridView.TabIndex = 10;
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             // 
             // name
             // 
