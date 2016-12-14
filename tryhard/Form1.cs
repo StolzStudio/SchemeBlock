@@ -47,9 +47,9 @@ namespace tryhard
             Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
                        Meta.DictionaryName[(string)EquipmentCB.SelectedItem],
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
-            foreach (int key in Blocks.Keys)
+            foreach (int Key in Blocks.Keys)
             {
-                Blocks[key].ClearFocus();
+                Blocks[Key].ClearFocus();
             }
             Blocks[block_counter++].SetFocus();
         }
@@ -58,21 +58,18 @@ namespace tryhard
         {
             if (Links.Count != 0)
             {
-                foreach(SchemeLink link in Links)
+                foreach(SchemeLink Link in Links)
                 {
-                    link.Draw(this, e);
+                    Link.Draw(this, e);
                 }
             }
         }
 
         public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
-            foreach(SchemeLink link in Links)
+            foreach(SchemeLink Link in Links)
             {
-                if ((link.FirstBlockIndex == AFirstBlockIndex) && (link.SecondBlockIndex== ASecondBlockIndex))
-                {
-                    return true;
-                }
+                return (Link.FirstBlockIndex == AFirstBlockIndex) && (Link.SecondBlockIndex == ASecondBlockIndex);
             }
             return false;
         }

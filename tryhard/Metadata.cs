@@ -98,6 +98,8 @@ namespace tryhard
 
         public List<CField> Fields = new List<CField>();
         public List<string> FieldsList = new List<string>();
+        public List<string> InputParameters = new List<string>();
+        public List<string> OutputParameters = new List<string>();
 
         public CTable (string ATableName, List<string> AFieldsList)
         {
@@ -156,11 +158,12 @@ namespace tryhard
             if (Database.Connect(ADataBasePath) == 1)
             {
                 TablesList = Database.GetListTables();
-                foreach(string table_name in TablesList)
+                foreach(string TableName in TablesList)
                 {
-                    CreateTable(table_name, Database.GetListTableRows(table_name));
+                    CreateTable(TableName, Database.GetListTableRows(TableName));
                 }
                 CheckReferensesInTables();
+                CheckInputOutputParameters();
                 FillDictionaryNames("../Databases/dictionary.txt");
             }
         }
@@ -199,11 +202,11 @@ namespace tryhard
 
         public List<string> GetListFieldOfTableName(string ATableName)
         {
-            for (int i = 0; i < Tables.Count; i++)
+            foreach (CTable Table in Tables)
             {
-                if (Tables[i].Name == ATableName)
+                if (Table.Name == ATableName)
                 {
-                    return Tables[i].FieldsList;
+                    return Table.FieldsList;
                 }
             }
             return new List<string>();
@@ -211,19 +214,23 @@ namespace tryhard
 
         public void CheckReferensesInTables()
         {
-            for (int i = 0; i < Tables.Count; i++)
+            foreach (CTable Table in Tables)
             {
-                for (int j = 0; j < Tables[i].Fields.Count; j++)
+                foreach (CField Field in Table.Fields)
                 {
-                    string name_referense_table = isReferenseField(Tables[i].Fields[j].Name);
+                    string name_referense_table = isReferenseField(Field.Name);
                     if (name_referense_table != null)
                     {
-                        Tables[i].Fields[j].Reference = 
-                            new CReferenseTableInfo(name_referense_table, RIdentificator);
-                        Tables[i].isReferensed = true;
+                        Field.Reference = new CReferenseTableInfo(name_referense_table, RIdentificator);
+                        Table.isReferensed = true;
                     }
                 }
             }
+        }
+
+        public void CheckInputOutputParameters()
+        {
+
         }
 
         public string isReferenseField(string AFieldName)

@@ -2,6 +2,15 @@
 
 namespace tryhard
 {
+    public class DrawPanel : Panel
+    {
+        public DrawPanel()
+        {
+            this.DoubleBuffered = true;
+            this.ResizeRedraw = true;
+        }
+    }
+
     partial class MainForm
     {
         /// <summary>
@@ -230,15 +239,6 @@ namespace tryhard
         private Button CalcButton;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn Parameters;
-    }
-
-    public class DrawPanel : Panel
-    {
-        public DrawPanel()
-        {
-            this.DoubleBuffered = true;
-            this.ResizeRedraw = true;
-        }
     }
 }
 
