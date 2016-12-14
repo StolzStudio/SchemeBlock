@@ -40,23 +40,67 @@ namespace tryhard
             Pen pen   = new Pen(Color.DarkSlateBlue);
             pen.Width = 1.5F;
             Points[0] = GetFirstBlockPointLocation(AForm);
-            Points[3] = GetSecondBlockPointLocation(AForm);
-            if (Math.Abs(Points[0].X - Points[3].X) <
-                Math.Abs(Points[0].Y - Points[3].Y))
+            Points[2] = GetSecondBlockPointLocation(AForm);
+            if (Math.Abs(Math.Abs(Points[0].X) - Math.Abs(Points[2].X)) <
+                Math.Abs(Math.Abs(Points[0].Y) - Math.Abs(Points[2].Y)))
             {
-                Points[1] = new Point(Points[0].X, GiveY());
-                Points[2] = new Point(Points[3].X, GiveY());
+                Points[1] = new Point(Points[2].X, Points[0].Y);
+                //Points[2] = new Point(Points[3].X, GiveY());
             }
             else
             {
-                Points[1] = new Point(GiveX(), Points[0].Y);
-                Points[2] = new Point(GiveX(), Points[3].Y);
+                Points[1] = new Point(Points[0].X, Points[2].Y);
+                //Points[2] = new Point(GiveX(), Points[3].Y);
             }
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 e.Graphics.DrawLine(pen, Points[i], Points[i + 1]);
             }
+
+            DrawPointer(e, pen);
+
+        }
+
+        private void DrawPointer(PaintEventArgs e, Pen p)
+        {
+            Point[] Ptr = new Point[3];
+
+            int Width = 40;
+
+            if (Points[1].X == Points[2].X)
+            {
+                if (Points[1].Y > Points[2].Y)
+                {
+                    Ptr[0] = new Point(Points[2].X, Points[2].Y + Width);
+                    Ptr[1] = new Point(Points[2].X + 5, Points[2].Y + Width + 10);
+                    Ptr[2] = new Point(Points[2].X - 5, Points[2].Y + Width + 10);
+                }
+                else
+                {
+                    Ptr[0] = new Point(Points[2].X, Points[2].Y - Width);
+                    Ptr[1] = new Point(Points[2].X + 5, Points[2].Y - Width - 10);
+                    Ptr[2] = new Point(Points[2].X - 5, Points[2].Y - Width - 10);
+                }
+            }
+
+            if (Points[1].Y == Points[2].Y)
+            {
+                if (Points[1].X > Points[2].X)
+                {
+                    Ptr[0] = new Point(Points[2].X + Width, Points[1].Y);
+                    Ptr[1] = new Point(Points[2].X + Width + 10, Points[1].Y + 5);
+                    Ptr[2] = new Point(Points[2].X + Width + 10, Points[1].Y - 5);
+                }
+                else
+                {
+                    Ptr[0] = new Point(Points[2].X - Width, Points[1].Y);
+                    Ptr[1] = new Point(Points[2].X - Width - 10, Points[1].Y + 5);
+                    Ptr[2] = new Point(Points[2].X - Width - 10, Points[1].Y - 5);
+                }
+            }
+
+            e.Graphics.DrawPolygon(p, Ptr);
         }
 
         private int GiveX()
