@@ -44,7 +44,8 @@ namespace tryhard
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
-            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, (string)EquipmentCB.SelectedItem,
+            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
+                       Meta.DictionaryName[(string)EquipmentCB.SelectedItem],
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (int key in Blocks.Keys)
             {
@@ -111,19 +112,19 @@ namespace tryhard
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
-            FillModelCB((string)EquipmentCB.SelectedItem);
+            FillModelCB(Meta.DictionaryName[(string)EquipmentCB.SelectedItem]);
         }
 
         private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FillParametersGrid((string)EquipmentCB.SelectedItem, ItemsIdList[ModelCB.SelectedIndex]);
+            FillParametersGrid(Meta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
         }
 
         private void FillEquipmentCB()
         {
             for (int i = 0; i < Meta.TablesList.Count; i++)
             {
-                EquipmentCB.Items.Add(Meta.TablesList[i]);
+                EquipmentCB.Items.Add(Meta.DictionaryName[Meta.TablesList[i]]);
             }
             EquipmentCB.SelectedIndex = 0;
             EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

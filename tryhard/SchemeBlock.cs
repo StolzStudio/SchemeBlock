@@ -20,11 +20,9 @@ namespace tryhard
         private bool isCtrlDown        = false;
 
         private MainForm Form;
-        private int      Index;
         private bool     isFocus;
-
-        public bool       isAddSchemeLink = false;
-        public Point      PointLocation;
+        public  int      Index;
+        public  Point    PointLocation;
 
         /* Controls */
 

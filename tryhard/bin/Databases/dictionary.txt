@@ -29,3 +29,15 @@ wet_gas_input%Вход мокрого газа
 wet_gas_output%Выход мокрого газа
 max_reagent_input%Максимальный вход реагента
 reagent_input%Вход реагента
+dk%ДК
+dks%ДКС
+field_parameters%Месторождение
+fu%ФУ
+nnpv%ННПВ
+oil_quality%Сорт нефти
+rpv%РПВ
+rr%РР
+rtn%РТН
+ukpg%УКПГ
+ukppv%УКППВ
+upn%УПН
