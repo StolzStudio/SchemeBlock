@@ -119,7 +119,8 @@ namespace tryhard
             Form.isHaveSelectedBlock = true;
             Form.SelectedBlockIndex    = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
-            Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, this.BlockBody.Location.Y + BlockBodyHeight);
+            Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, 
+                                          this.BlockBody.Location.Y + BlockBodyHeight);
             Pen      BlackPen = new Pen(Color.Black, 4);
             g.DrawRectangle(BlackPen, 
                             0,
@@ -183,15 +184,6 @@ namespace tryhard
 
         private void SchemeBodyMouseMove(object sender, MouseEventArgs e)
         {
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                isCtrlDown = true;
-            }
-            else
-            {
-                isCtrlDown = false;
-            }
-
             if (isMouseDown)
             {
                 Point Ptr = Form.PointToClient(Cursor.Position);

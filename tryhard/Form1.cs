@@ -24,6 +24,7 @@ namespace tryhard
         public List<SchemeBlock> Blocks = new List<SchemeBlock>();
         public List<SchemeLink> Links = new List<SchemeLink>();
         private List<string> ItemsIdList = new List<string>();
+        private int block_counter = 0;
 
         public MainForm()
         {
