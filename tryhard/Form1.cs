@@ -21,7 +21,8 @@ namespace tryhard
         public bool isHaveSelectedBlock = false;
         private const int DefaultMargin = 10;
 
-        public List<SchemeBlock> Blocks = new List<SchemeBlock>();
+        //public List<SchemeBlock> Blocks = new List<SchemeBlock>();
+        public Dictionary<int, SchemeBlock> Blocks = new Dictionary<int, SchemeBlock>();
         public List<SchemeLink> Links = new List<SchemeLink>();
         private List<string> ItemsIdList = new List<string>();
         private int block_counter = 0;
@@ -43,13 +44,13 @@ namespace tryhard
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
-            Blocks.Add(new SchemeBlock(Blocks.Count, (string)EquipmentCB.SelectedItem,
+            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, (string)EquipmentCB.SelectedItem,
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
-            foreach (SchemeBlock block in Blocks)
+            foreach (int key in Blocks.Keys)
             {
-                block.ClearFocus();
+                Blocks[key].ClearFocus();
             }
-            Blocks.Last().SetFocus();
+            Blocks[block_counter++].SetFocus();
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
@@ -155,9 +156,9 @@ namespace tryhard
 
         private void DrawingPanel_Click(object sender, EventArgs e)
         {
-            foreach(SchemeBlock block in Blocks)
+            foreach(int key in Blocks.Keys)
             {
-                block.ClearFocus();
+                Blocks[key].ClearFocus();
             }
         }
 
