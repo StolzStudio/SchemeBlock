@@ -25,7 +25,6 @@ namespace tryhard
 
         public bool       isAddSchemeLink = false;
         public Point      PointLocation;
-        public SchemeLink AddedSchemeLink;
 
         /* Controls */
 

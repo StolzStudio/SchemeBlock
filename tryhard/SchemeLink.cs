@@ -16,8 +16,8 @@ namespace tryhard
 
         public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
-            Points            = new Point[4];
-            FirstBlockIndex = AFirstBlockIndex;
+            Points           = new Point[4];
+            FirstBlockIndex  = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
         }
 
