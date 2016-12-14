@@ -21,7 +21,6 @@ namespace tryhard
         public bool isHaveSelectedBlock = false;
         private const int DefaultMargin = 10;
 
-        //public List<SchemeBlock> Blocks = new List<SchemeBlock>();
         public Dictionary<int, SchemeBlock> Blocks = new Dictionary<int, SchemeBlock>();
         public List<SchemeLink> Links = new List<SchemeLink>();
         private List<string> ItemsIdList = new List<string>();
@@ -45,7 +44,7 @@ namespace tryhard
         {
             Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
             Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
-                       Meta.DictionaryName[(string)EquipmentCB.SelectedItem],
+                       CMeta.DictionaryName[(string)EquipmentCB.SelectedItem],
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (int Key in Blocks.Keys)
             {
@@ -109,19 +108,19 @@ namespace tryhard
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
-            FillModelCB(Meta.DictionaryName[(string)EquipmentCB.SelectedItem]);
+            FillModelCB(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem]);
         }
 
         private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FillParametersGrid(Meta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
+            FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
         }
 
         private void FillEquipmentCB()
         {
             for (int i = 0; i < Meta.TablesList.Count; i++)
             {
-                EquipmentCB.Items.Add(Meta.DictionaryName[Meta.TablesList[i]]);
+                EquipmentCB.Items.Add(CMeta.DictionaryName[Meta.TablesList[i]]);
             }
             EquipmentCB.SelectedIndex = 0;
             EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -148,7 +147,7 @@ namespace tryhard
             List<string> NameCols = Meta.GetListFieldOfTableName(ATableName);
             for (int i = 0; i < FieldData.Count(); i++)
             {
-                DataGridView.Rows.Add(Meta.DictionaryName[NameCols[i]], FieldData[i]);
+                DataGridView.Rows.Add(CMeta.DictionaryName[NameCols[i]], FieldData[i]);
             }
         }
 

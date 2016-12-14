@@ -1,4 +1,4 @@
-id%ИН
+﻿id%ИН
 name%Имя
 amount_holes%Количество скважин
 fluid_input%Вход флюида
@@ -14,6 +14,7 @@ max_fluid_output%Максимальный выход флюида
 reserve_days_rvp%Запас воды по РВП
 reserve_days_rtn%Запас воды по РТН
 gas_input%Вход газа
+gas_output%Выход газа
 gas_proportion%Содержание газа
 water_input%Вход воды
 water_output%Выход воды

@@ -152,7 +152,8 @@ namespace tryhard
             if ((Form.isHaveSelectedBlock) && (Form.SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index))
+                if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index) && 
+                     Form.Meta.isPossibleLink(Form.Blocks[Form.SelectedBlockIndex].BlockClass, this.BlockClass))
                 {
                     Form.isHaveSelectedBlock = false;
                     isCtrlDown = false;

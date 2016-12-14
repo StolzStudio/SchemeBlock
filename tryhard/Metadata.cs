@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 
 namespace tryhard
 {
@@ -44,9 +45,10 @@ namespace tryhard
 
         /* Methods */
 
-        public CField(string AName)
+        public CField(string AName, string ACaption)
         {
             Name = AName;
+            Caption = ACaption;
         }
 
         /* Properties */
@@ -98,13 +100,16 @@ namespace tryhard
 
         public List<CField> Fields = new List<CField>();
         public List<string> FieldsList = new List<string>();
-        public List<string> InputParameters = new List<string>();
-        public List<string> OutputParameters = new List<string>();
+        public HashSet<string> InputParameters = new HashSet<string>();
+        public HashSet<string> OutputParameters = new HashSet<string>();
 
-        public CTable (string ATableName, List<string> AFieldsList)
+
+        public CTable () { }
+
+        public CTable (string ATableName, string ACaption, List<string> AFieldsList)
         {
             Name = ATableName;
-            Caption = ATableName;
+            Caption = ACaption;
             FieldsList = AFieldsList;
             FillDataTable();
         }
@@ -115,8 +120,20 @@ namespace tryhard
         {
             foreach (string field_name in FieldsList)
             {
-                Fields.Add(new CField(field_name));
+                Fields.Add(new CField(field_name, CMeta.DictionaryName[field_name]));
             }   
+        }
+
+        public bool isPossibleLinkWithTable(CTable ATable)
+        {
+            foreach (string Parameter in this.OutputParameters)
+            {
+                if (ATable.InputParameters.Contains(Parameter))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /* Properties */
@@ -147,9 +164,11 @@ namespace tryhard
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
         public DBConnection Database = new DBConnection();
-        public Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
+        public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
         private string RIdentificator = "id";
         private string DictSeparator = "%";
+        private string InputIdentificator = "input";
+        private string OutputIdentificator = "output";
 
         /* Methods */
 
@@ -157,6 +176,7 @@ namespace tryhard
         {
             if (Database.Connect(ADataBasePath) == 1)
             {
+                FillDictionaryNames("../Databases/dictionary.txt");
                 TablesList = Database.GetListTables();
                 foreach(string TableName in TablesList)
                 {
@@ -164,13 +184,12 @@ namespace tryhard
                 }
                 CheckReferensesInTables();
                 CheckInputOutputParameters();
-                FillDictionaryNames("../Databases/dictionary.txt");
             }
         }
 
         public void CreateTable(string ATableName, List<string> ANameFields)
         {
-            Tables.Add(new CTable(ATableName, ANameFields));
+            Tables.Add(new CTable(ATableName, DictionaryName[ATableName], ANameFields));
         }
 
         public void DeleteTable(string ATableName)
@@ -230,7 +249,39 @@ namespace tryhard
 
         public void CheckInputOutputParameters()
         {
+            foreach (CTable Table in Tables)
+            {
+                foreach (CField Field in Table.Fields)
+                {
+                    if (Field.Name.Contains(InputIdentificator))
+                    {
+                        Table.InputParameters.Add(Field.Name.Substring(0, Field.Name.Length - InputIdentificator.Length - 1));
+                    }
+                    else if (Field.Name.Contains(OutputIdentificator))
+                    {
+                        Table.OutputParameters.Add(Field.Name.Substring(0, Field.Name.Length - OutputIdentificator.Length - 1));
+                    }
+                }
+            }
+        }
 
+        public bool isPossibleLink(string AFirstTable, string ASecondTable)
+        {
+            CTable FirstTable = GetTableOfName(AFirstTable);
+            CTable SecondTable = GetTableOfName(ASecondTable);        
+            return FirstTable.isPossibleLinkWithTable(SecondTable);
+        }
+
+        public CTable GetTableOfName(string ATableName)
+        {
+            foreach (CTable Table in Tables)
+            {
+                if (Table.Name == ATableName)
+                {
+                    return Table;
+                }
+            }
+            return null;
         }
 
         public string isReferenseField(string AFieldName)
