@@ -119,6 +119,7 @@ namespace tryhard
         public void SetComboBoxes(string AEquipmentName, string AModelName)
         {
             EquipmentCB.SelectedIndex = Meta.TablesList.IndexOf(AEquipmentName);
+            ModelCB.SelectedIndex = ItemsIdList.IndexOf(AModelName);
         }
 
         private void FillEquipmentCB()
