@@ -116,11 +116,16 @@ namespace tryhard
             FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
         }
 
+        public void SetComboBoxes(string AEquipmentName, string AModelName)
+        {
+            EquipmentCB.SelectedIndex = Meta.TablesList.IndexOf(AEquipmentName);
+        }
+
         private void FillEquipmentCB()
         {
-            for (int i = 0; i < Meta.TablesList.Count; i++)
+            foreach (string Equipment in Meta.TablesList)
             {
-                EquipmentCB.Items.Add(CMeta.DictionaryName[Meta.TablesList[i]]);
+                EquipmentCB.Items.Add(CMeta.DictionaryName[Equipment]);
             }
             EquipmentCB.SelectedIndex = 0;
             EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

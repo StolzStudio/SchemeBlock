@@ -80,7 +80,7 @@ namespace tryhard
             this.BlockClassLabel.Location   = new Point(5, 5);
             this.BlockClassLabel.Width      = BlockBodyWidth - 10;
             this.BlockClassLabel.ForeColor  = Color.Black;
-            this.BlockClassLabel.Text       = ABlockClass;
+            this.BlockClassLabel.Text       = CMeta.DictionaryName[ABlockClass];
             this.BlockClassLabel.TextAlign  = ContentAlignment.MiddleCenter;
             this.BlockClassLabel.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockClassLabel.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
@@ -124,6 +124,7 @@ namespace tryhard
                             0,
                             BlockBodyWidth, 
                             BlockBodyHeight);
+            Form.SetComboBoxes(this.BlockClass, this.BlockId);
         }
 
         public void ClearFocus()
