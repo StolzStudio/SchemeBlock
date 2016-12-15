@@ -20,6 +20,7 @@ namespace tryhard
         public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock = false;
         private const int DefaultMargin = 10;
+        public bool isOilFieldAdd = false;
 
         public Dictionary<int, SchemeBlock> Blocks = new Dictionary<int, SchemeBlock>();
         public List<SchemeLink> Links = new List<SchemeLink>();
@@ -43,7 +44,11 @@ namespace tryhard
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
-            Blocks.Add(block_counter, new SchemeBlock(block_counter, 
+            if (!isOilFieldAdd)
+            {
+                isOilFieldAdd = (string)EquipmentCB.SelectedItem == "Месторождение";
+            }
+            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
                        CMeta.DictionaryName[(string)EquipmentCB.SelectedItem],
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (int Key in Blocks.Keys)
@@ -118,11 +123,17 @@ namespace tryhard
             FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
         }
 
+        public void SetComboBoxes(string AEquipmentName, string AModelName)
+        {
+            EquipmentCB.SelectedIndex = Meta.TablesList.IndexOf(AEquipmentName);
+            ModelCB.SelectedIndex = ItemsIdList.IndexOf(AModelName);
+        }
+
         private void FillEquipmentCB()
         {
-            for (int i = 0; i < Meta.TablesList.Count; i++)
+            foreach (string Equipment in Meta.TablesList)
             {
-                EquipmentCB.Items.Add(CMeta.DictionaryName[Meta.TablesList[i]]);
+                EquipmentCB.Items.Add(CMeta.DictionaryName[Equipment]);
             }
             EquipmentCB.SelectedIndex = 0;
             EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -161,9 +172,91 @@ namespace tryhard
             }
         }
 
+        public Dictionary<int, CalcBlock> GetCalculatedBlocks()
+        {
+            /*Fill Dict */
+            Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
+            foreach (int Key in Blocks.Keys)
+            {
+                CalcBlocks.Add(Key, new CalcBlock(Key, Blocks[Key].BlockClass, Blocks[Key].BlockId));
+            }
+            /* Fill Links at blocks */
+            foreach (SchemeLink Link in Links)
+            {
+                CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
+                CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
+            }
+            /* Calculating count */
+            bool isAllBlocksCalculated = false;
+            while (!isAllBlocksCalculated)
+            {
+                isAllBlocksCalculated = true;
+                foreach (int Key in CalcBlocks.Keys)
+                {
+                    if ((CalcBlocks[Key].InputLinks.Count != 0) || (CalcBlocks[Key].OutputLinks.Count != 0))
+                    {
+                        if (CalcBlocks[Key].BlockClass == "field_parameters")
+                        {
+                            int link_key = CalcBlocks[Key].OutputLinks[0];
+                            int field_amount_holes = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, "amount_holes");
+                            int dk_amount_holes = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, "amount_holes");
+                            int field_fluid = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, "fluid_output");
+                            int dk_fluid = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, "fluid_input");
+                            int dk_count = dk_amount_holes * CalcBlocks[link_key].Count;
+                            int field_count = field_amount_holes * CalcBlocks[Key].Count;
+                            if (dk_count < field_count)
+                            {
+                                CalcBlocks[link_key].Count = field_count / dk_count;
+                                if (field_count % dk_count != 0)
+                                {
+                                    CalcBlocks[link_key].Count += 1;
+                                }
+                                CalcBlocks[link_key].isDone = false;
+                            }
+                            CalcBlocks[link_key].isDone = true;
+                        }
+                        else
+                        {
+                            foreach (int link_key in CalcBlocks[Key].OutputLinks)
+                            {
+                                string common_parametr = Meta.GetCommonParameterForLink(CalcBlocks[Key].BlockClass, CalcBlocks[link_key].BlockClass);
+                                int first_block_output = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, common_parametr + "_output");
+                                int second_block_input = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, common_parametr + "_input");
+                                int first_block_count = first_block_output * CalcBlocks[Key].Count;
+                                int second_block_count = second_block_input* CalcBlocks[link_key].Count;
+                                if (second_block_count < first_block_count)
+                                {
+                                    CalcBlocks[link_key].Count = first_block_count / second_block_count;
+                                    if (first_block_count % second_block_count != 0)
+                                    {
+                                        CalcBlocks[link_key].Count += 1;
+                                    }
+                                    CalcBlocks[link_key].isDone = false;
+                                }
+                                //Console.WriteLine(common_parametr + " " + value_input + " " + value_output);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return CalcBlocks;
+        }
+
         private void CalcButton_Click(object sender, EventArgs e)
         {
-            List<string> res = new List<string>();
+            if (!isOilFieldAdd)
+            {
+                string message = "Кажется вы забыли добавить месторождение";
+                string caption = "Ошибка в составлении схемы";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
+            Dictionary<int, CalcBlock> CalculatedBlocks = GetCalculatedBlocks();
+            ResultForm ResForm = new ResultForm(this, CalculatedBlocks);
+            ResForm.ShowDialog();
         }
 
         private void DeleteBlockButton_Click(object sender, EventArgs e)
