@@ -136,6 +136,20 @@ namespace tryhard
             return false;
         }
 
+        public string GetCommonParameterForLink(CTable ATable)
+        {
+            string parameter = null;
+            foreach (string Parameter in this.OutputParameters)
+            {
+                if (ATable.InputParameters.Contains(Parameter))
+                {
+                    parameter = Parameter;
+                    break;
+                }
+            }
+            return parameter;
+        }
+
         /* Properties */
 
         public string Name
@@ -272,6 +286,13 @@ namespace tryhard
             return FirstTable.isPossibleLinkWithTable(SecondTable);
         }
 
+        public string GetCommonParameterForLink(string AFirstTable, string ASecondTable)
+        {
+            CTable FirstTable = GetTableOfName(AFirstTable);
+            CTable SecondTable = GetTableOfName(ASecondTable);
+            return FirstTable.GetCommonParameterForLink(SecondTable);
+        }
+
         public CTable GetTableOfName(string ATableName)
         {
             foreach (CTable Table in Tables)
@@ -298,9 +319,14 @@ namespace tryhard
             return null;
         }
 
-        public string GetValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        public string GetStringValueOfParameter(string ATableName, string AFieldId, string AParameter)
         {
-            return Database.GetValueOfParameter(ATableName, AFieldId, AParameter);
+            return Database.GetStringValueOfParameter(ATableName, AFieldId, AParameter);
+        }
+
+        public int GetIntValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        {
+            return Database.GetIntValueOfParameter(ATableName, AFieldId, AParameter);
         }
 
         public void FillDictionaryNames(string AFileName)

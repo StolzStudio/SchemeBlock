@@ -103,7 +103,7 @@ namespace tryhard
             return list_data;
         }
 
-        public string GetValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        public string GetStringValueOfParameter(string ATableName, string AFieldId, string AParameter)
         {
             cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId;
@@ -112,6 +112,19 @@ namespace tryhard
             while (reader.Read())
             {
                 Value = reader[AParameter].ToString();
+            }
+            return Value;
+        }
+
+        public int GetIntValueOfParameter(string ATableName, string AFieldId, string AParameter)
+        {
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId;
+            reader = cmd.ExecuteReader();
+            int Value = 0;
+            while (reader.Read())
+            {
+                Value = Convert.ToInt32(reader[AParameter]);
             }
             return Value;
         }

@@ -44,7 +44,7 @@ namespace tryhard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DrawingPanel = new DrawPanel();
+            this.DrawingPanel = new tryhard.DrawPanel();
             this.AddBlockButton = new System.Windows.Forms.Button();
             this.EquipmentCB = new System.Windows.Forms.ComboBox();
             this.ModelCB = new System.Windows.Forms.ComboBox();
@@ -72,7 +72,6 @@ namespace tryhard
             this.DrawingPanel.Name = "DrawingPanel";
             this.DrawingPanel.Size = new System.Drawing.Size(820, 620);
             this.DrawingPanel.TabIndex = 0;
-
             this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
