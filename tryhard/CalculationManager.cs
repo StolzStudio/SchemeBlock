@@ -4,17 +4,25 @@ using System.Data.SQLite;
 
 namespace tryhard
 {
-    class CalcBlock
+    public class CalcBlock
     {
-        public int FFirstIndex = 0;
-        public int FSecondIndex = 0;
-        public List<string> FFirstDBParametrs = new List<string>();
-        public List<string> FSecondDBParametrs = new List<string>();
+        public List<int> InputLinks = new List<int>();
+        public List<int> OutputLinks = new List<int>();
 
-        public CalcBlock(int AFirstIndex, List<string> AFirstDBParametrs,
-                         int ASecondIndex, List<string> ASecondDBParametrs)
+        public int Index = 0;
+        public string BlockClass;
+        public string BlockId;
+
+        public bool isDone = false;
+
+        public int Count = 1;
+
+
+        public CalcBlock(int AIndex, string ABlockClass, string ABlockId)
         {
-
+            Index = AIndex;
+            BlockClass = ABlockClass;
+            BlockId= ABlockId;
         }
         
     }
