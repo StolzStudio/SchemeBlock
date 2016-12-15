@@ -124,7 +124,6 @@ namespace tryhard
                             0,
                             BlockBodyWidth, 
                             BlockBodyHeight);
-            Form.SetComboBoxes(this.BlockClass, this.BlockId);
         }
 
         public void ClearFocus()
@@ -165,6 +164,8 @@ namespace tryhard
             {
                 Form.SelectedBlockIndex = this.Index;
             }
+
+            Form.SetComboBoxes(this.BlockClass, this.BlockId);
 
             CheckFocus();
         }
