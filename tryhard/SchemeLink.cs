@@ -101,6 +101,7 @@ namespace tryhard
             }
 
             e.Graphics.DrawPolygon(p, Ptr);
+            //e.Graphics.FillPolygon(p, Ptr);
         }
 
         private int GiveX()
