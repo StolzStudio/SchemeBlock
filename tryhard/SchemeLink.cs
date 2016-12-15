@@ -35,6 +35,18 @@ namespace tryhard
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }
 
+        public bool CheckDeletedLink(int AIndex)
+        {
+            if ((AIndex == FirstBlockIndex)||(AIndex == SecondBlockIndex))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Draw(MainForm AForm, PaintEventArgs e)
         {
             Pen pen   = new Pen(Color.DarkSlateBlue);

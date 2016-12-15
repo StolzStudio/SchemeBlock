@@ -55,7 +55,9 @@ namespace tryhard
             {
                 Blocks[Key].ClearFocus();
             }
-            Blocks[block_counter++].SetFocus();
+            Blocks[block_counter].SetFocus();
+            block_counter++;
+            Console.WriteLine(block_counter);
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
@@ -257,5 +259,25 @@ namespace tryhard
             ResForm.ShowDialog();
         }
 
+        private void DeleteBlockButton_Click(object sender, EventArgs e)
+        {
+            //this
+            for (int i = 0; i < Links.Count; i++)
+            {
+                if (Links[i].CheckDeletedLink(SelectedBlockIndex))
+                {
+                    Links.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            DrawingPanel.Controls.Remove(Blocks[SelectedBlockIndex].BlockBody);
+            Blocks.Remove(SelectedBlockIndex);
+            isHaveSelectedBlock = false;
+            SelectedBlockIndex = -1;
+
+            DrawingPanel_Click(sender, e);
+            DrawingPanel.Invalidate();
+        }
     }
 }
