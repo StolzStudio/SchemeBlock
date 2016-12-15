@@ -114,7 +114,7 @@ namespace tryhard
         {
             this.isFocus             = true;
             Form.isHaveSelectedBlock = true;
-            Form.SelectedBlockIndex    = this.Index;
+            Form.SelectedBlockIndex  = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
             Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, 
                                           this.BlockBody.Location.Y + BlockBodyHeight);
@@ -124,12 +124,14 @@ namespace tryhard
                             0,
                             BlockBodyWidth, 
                             BlockBodyHeight);
+            Form.DeleteBlockButton.Visible = true;
         }
 
         public void ClearFocus()
         {
-            this.isFocus             = false;
-            Form.isHaveSelectedBlock = false;
+            this.isFocus                   = false;
+            Form.isHaveSelectedBlock       = false;
+            Form.DeleteBlockButton.Visible = false;
             this.BlockBody.Invalidate();
         }
 
@@ -172,9 +174,9 @@ namespace tryhard
         {
             if (!isFocus)
             {
-                for (int i = 0; i < Form.Blocks.Count; i++)
+                foreach (int Key in Form.Blocks.Keys)
                 {
-                    Form.Blocks[i].ClearFocus();
+                    Form.Blocks[Key].ClearFocus();
                 }
                 this.SetFocus();
             }

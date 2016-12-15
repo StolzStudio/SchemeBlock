@@ -44,7 +44,7 @@ namespace tryhard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DrawingPanel = new DrawPanel();
+            this.DrawingPanel = new tryhard.DrawPanel();
             this.AddBlockButton = new System.Windows.Forms.Button();
             this.EquipmentCB = new System.Windows.Forms.ComboBox();
             this.ModelCB = new System.Windows.Forms.ComboBox();
@@ -55,9 +55,12 @@ namespace tryhard
             this.Parameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.CalcButton = new System.Windows.Forms.Button();
+            this.DeleteBlockButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
+
+            this.DeleteBlockButton.Visible = false;
             // 
             // DrawingPanel
             // 
@@ -72,7 +75,6 @@ namespace tryhard
             this.DrawingPanel.Name = "DrawingPanel";
             this.DrawingPanel.Size = new System.Drawing.Size(820, 620);
             this.DrawingPanel.TabIndex = 0;
-
             this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
@@ -97,7 +99,7 @@ namespace tryhard
             this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipmentCB.FormattingEnabled = true;
-            this.EquipmentCB.Location = new System.Drawing.Point(942, 50);
+            this.EquipmentCB.Location = new System.Drawing.Point(940, 50);
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(145, 28);
             this.EquipmentCB.TabIndex = 2;
@@ -110,7 +112,7 @@ namespace tryhard
             this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModelCB.FormattingEnabled = true;
-            this.ModelCB.Location = new System.Drawing.Point(1107, 50);
+            this.ModelCB.Location = new System.Drawing.Point(1105, 50);
             this.ModelCB.Name = "ModelCB";
             this.ModelCB.Size = new System.Drawing.Size(145, 28);
             this.ModelCB.TabIndex = 3;
@@ -121,7 +123,7 @@ namespace tryhard
             this.EquipmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentLabel.AutoSize = true;
             this.EquipmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EquipmentLabel.Location = new System.Drawing.Point(939, 15);
+            this.EquipmentLabel.Location = new System.Drawing.Point(940, 15);
             this.EquipmentLabel.Name = "EquipmentLabel";
             this.EquipmentLabel.Size = new System.Drawing.Size(159, 18);
             this.EquipmentLabel.TabIndex = 4;
@@ -132,7 +134,7 @@ namespace tryhard
             this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelLabel.AutoSize = true;
             this.ModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModelLabel.Location = new System.Drawing.Point(1104, 15);
+            this.ModelLabel.Location = new System.Drawing.Point(1105, 15);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(68, 18);
             this.ModelLabel.TabIndex = 5;
@@ -152,7 +154,7 @@ namespace tryhard
             this.name,
             this.Parameters});
             this.DataGridView.EnableHeadersVisualStyles = false;
-            this.DataGridView.Location = new System.Drawing.Point(942, 114);
+            this.DataGridView.Location = new System.Drawing.Point(940, 115);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
@@ -201,12 +203,26 @@ namespace tryhard
             this.CalcButton.UseVisualStyleBackColor = true;
             this.CalcButton.Click += new System.EventHandler(this.CalcButton_Click);
             // 
+            // DeleteBlockButton
+            // 
+            this.DeleteBlockButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteBlockButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DeleteBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteBlockButton.Location = new System.Drawing.Point(855, 115);
+            this.DeleteBlockButton.Name = "DeleteBlockButton";
+            this.DeleteBlockButton.Size = new System.Drawing.Size(70, 70);
+            this.DeleteBlockButton.TabIndex = 13;
+            this.DeleteBlockButton.Text = "-";
+            this.DeleteBlockButton.UseVisualStyleBackColor = true;
+            this.DeleteBlockButton.Click += new System.EventHandler(this.DeleteBlockButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.DeleteBlockButton);
             this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.DataGridView);
@@ -239,6 +255,7 @@ namespace tryhard
         private Button CalcButton;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn Parameters;
+        public  Button DeleteBlockButton;
     }
 }
 

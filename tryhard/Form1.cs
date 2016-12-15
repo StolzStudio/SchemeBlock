@@ -43,14 +43,16 @@ namespace tryhard
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
-            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
+            Blocks.Add(block_counter, new SchemeBlock(block_counter, 
                        CMeta.DictionaryName[(string)EquipmentCB.SelectedItem],
                        ItemsIdList[ModelCB.SelectedIndex], Pos, this));
             foreach (int Key in Blocks.Keys)
             {
                 Blocks[Key].ClearFocus();
             }
-            Blocks[block_counter++].SetFocus();
+            Blocks[block_counter].SetFocus();
+            block_counter++;
+            Console.WriteLine(block_counter);
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
@@ -162,6 +164,27 @@ namespace tryhard
         private void CalcButton_Click(object sender, EventArgs e)
         {
             List<string> res = new List<string>();
+        }
+
+        private void DeleteBlockButton_Click(object sender, EventArgs e)
+        {
+            //this
+            for (int i = 0; i < Links.Count; i++)
+            {
+                if (Links[i].CheckDeletedLink(SelectedBlockIndex))
+                {
+                    Links.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            DrawingPanel.Controls.Remove(Blocks[SelectedBlockIndex].BlockBody);
+            Blocks.Remove(SelectedBlockIndex);
+            isHaveSelectedBlock = false;
+            SelectedBlockIndex = -1;
+
+            DrawingPanel_Click(sender, e);
+            DrawingPanel.Invalidate();
         }
     }
 }
