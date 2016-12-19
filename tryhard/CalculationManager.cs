@@ -6,16 +6,18 @@ namespace tryhard
 {
     public class CalcBlock
     {
+        /* Fields */
+
         public List<int> InputLinks = new List<int>();
         public List<int> OutputLinks = new List<int>();
 
-        public int Index = 0;
-        public string BlockClass;
-        public string BlockId;
+        /* Properties */
 
-        public bool isDone = false;
-
-        public int Count = 1;
+        public string BlockClass { get; set; }
+        public string BlockId { get; set; }
+        public bool isDone { get; set; }
+        public int Index { get; set; }
+        public int Count { get; set; }
 
 
         public CalcBlock(int AIndex, string ABlockClass, string ABlockId)

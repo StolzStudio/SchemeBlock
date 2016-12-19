@@ -10,38 +10,26 @@ namespace tryhard
 
     public class CReferenseTableInfo
     {
-        string table_name;
-        string field_name;
-
         public CReferenseTableInfo(string ATableName, string AFieldName)
         {
             TableName = ATableName;
             FieldName = AFieldName;
         }
 
-        public string TableName
-        {
-            get { return table_name; }
-            set { table_name = value; }
-        }
-
-        public string FieldName
-        {
-            get { return field_name; }
-            set { field_name = value; }
-        }
+        public string TableName { get; set; }
+        public string FieldName { get; set; }
     }
 
     public class CField
     {
-        /* Fields  */
+        /* Properties */
 
-        private string FName;
-        private string FCaption;
-        private int FWidth;
-        private int FTableTag;
-        private FieldTypes FType;
-        private CReferenseTableInfo FReference;
+        public string Name { get; set; }
+        public string Caption { get; set; }
+        public int Width { get; set; }
+        public int TableTag { get; set; }
+        public FieldTypes Type { get; set; }
+        public CReferenseTableInfo Reference { get; set; }
 
         /* Methods */
 
@@ -50,59 +38,24 @@ namespace tryhard
             Name = AName;
             Caption = ACaption;
         }
-
-        /* Properties */
-
-        public string Name
-        {
-            get { return FName; }
-            set { FName = value; }
-        }
-
-        public string Caption
-        {
-            get { return FCaption; }
-            set { FCaption = value; }
-        }
-        
-        public int Width
-        {
-            get { return FWidth; }
-            set { FWidth = value; }
-        }
-
-        public int TableTag
-        {
-            get { return FTableTag; }
-            set { FTableTag = value; }
-        }
-
-        public FieldTypes Type
-        {
-            get { return FType; }
-            set { FType = value; }
-        }
-
-        public CReferenseTableInfo Reference
-        {
-            get { return FReference; }
-            set { FReference = value; }
-        }
     }
 
     public class CTable
     {
-        /* Fields */
+        /* Properties */
 
-        private string FName;
-        private string FCaption;
-        private bool FIsRefFields = false;
+        public string Name { get; set; }
+        public string Caption { get; set; }
+        public bool isReferensed { get; set; }
+
+        /* Fields */
 
         public List<CField> Fields = new List<CField>();
         public List<string> FieldsList = new List<string>();
         public HashSet<string> InputParameters = new HashSet<string>();
         public HashSet<string> OutputParameters = new HashSet<string>();
 
+        /* Methods */
 
         public CTable () { }
 
@@ -113,8 +66,6 @@ namespace tryhard
             FieldsList = AFieldsList;
             FillDataTable();
         }
-
-        /* Methods*/
 
         private void FillDataTable()
         {
@@ -148,26 +99,6 @@ namespace tryhard
                 }
             }
             return parameter;
-        }
-
-        /* Properties */
-
-        public string Name
-        {
-            get { return FName; }
-            set { FName = value; }
-        }
-
-        public string Caption
-        {
-            get { return FCaption; }
-            set { FCaption = value; }
-        }
-
-        public bool isReferensed
-        {
-            get { return FIsRefFields; }
-            set { FIsRefFields = value; }
         }
     }
 

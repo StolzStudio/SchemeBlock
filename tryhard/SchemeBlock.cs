@@ -19,35 +19,24 @@ namespace tryhard
         private bool isMouseDown       = false;
         private bool isCtrlDown        = false;
 
+        /* Fields */
+
         private MainForm Form;
         private bool     isFocus;
         public  int      Index;
         public  Point    PointLocation;
-
-        /* Controls */
 
         public Panel   BlockBody;
         public Label   BlockClassLabel;
         public Label   BlockModelLabel;
         public Panel[] BlockPoints;
 
-        /* DB fields */
+        /* Properties */
 
-        private string block_class;
-        private string block_id;
+        public string BlockClass { get; set; }
+        public string BlockId { get; set; }
 
-        public string BlockClass
-        {
-            get { return block_class; }
-            set { block_class = value; }
-        }
-
-        public string BlockId
-        {
-            get { return block_id; }
-            set { block_id = value; }
-        }
-
+        /* Methods */
 
         public SchemeBlock(int AIndex, string ABlockClass, string ABlockId, Point APosition, MainForm AForm)
         {

@@ -15,8 +15,9 @@ namespace tryhard
 {
     public partial class MainForm : Form
     {
-        public System.Drawing.Point DrawingPanelOffset;
+        /* Fields */
 
+        public System.Drawing.Point DrawingPanelOffset;
         public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock = false;
         private const int DefaultMargin = 10;
@@ -26,6 +27,8 @@ namespace tryhard
         public List<SchemeLink> Links = new List<SchemeLink>();
         private List<string> ItemsIdList = new List<string>();
         private int block_counter = 0;
+
+        /* Methods */
 
         public MainForm()
         {
@@ -174,19 +177,24 @@ namespace tryhard
 
         public Dictionary<int, CalcBlock> GetCalculatedBlocks()
         {
-            /*Fill Dict */
+            /* Fill Dict */
+
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
             foreach (int Key in Blocks.Keys)
             {
                 CalcBlocks.Add(Key, new CalcBlock(Key, Blocks[Key].BlockClass, Blocks[Key].BlockId));
             }
+
             /* Fill Links at blocks */
+
             foreach (SchemeLink Link in Links)
             {
                 CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                 CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
             }
+
             /* Calculating count */
+
             bool isAllBlocksCalculated = false;
             while (!isAllBlocksCalculated)
             {
@@ -233,7 +241,6 @@ namespace tryhard
                                     }
                                     CalcBlocks[link_key].isDone = false;
                                 }
-                                //Console.WriteLine(common_parametr + " " + value_input + " " + value_output);
                             }
                         }
                     }

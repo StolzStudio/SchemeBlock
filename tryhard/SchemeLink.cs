@@ -10,9 +10,16 @@ namespace tryhard
 {
     public class SchemeLink
     {
-        public  int     FirstBlockIndex;
-        public  int     SecondBlockIndex;
+        /* Properties */
+
+        public  int FirstBlockIndex { get; set; }
+        public  int SecondBlockIndex { get; set; }
+
+        /* Fields */
+
         private Point[] Points;
+
+        /* Methods */
 
         public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
