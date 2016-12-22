@@ -112,7 +112,10 @@ namespace tryhard
             }
             if (Manager.isAddBlockButtonClick)
             {
-                Manager.AddBlock(PointToClient(Cursor.Position));
+                Point ptr = PointToClient(Cursor.Position);
+                ptr.X -= (DrawingPanel.Location.X + SchemeBlock.BlockBodyWidth / 2);
+                ptr.Y -= (DrawingPanel.Location.Y + SchemeBlock.BlockBodyHeight / 2);
+                Manager.AddBlock(ptr);
             }
         }
 

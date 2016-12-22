@@ -13,8 +13,8 @@ namespace tryhard
     {
         /* Consts */
 
-        private int  BlockBodyWidth    = 80;
-        private int  BlockBodyHeight   = 80;
+        public const int  BlockBodyWidth    = 80;
+        public const int  BlockBodyHeight   = 80;
         private int  BlockPointSize    = 6;
         private bool isMouseDown       = false;
         private bool isCtrlDown        = false;
