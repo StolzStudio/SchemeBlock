@@ -18,15 +18,8 @@ namespace tryhard
         /* Fields */
 
         public System.Drawing.Point DrawingPanelOffset;
-        public int  SelectedBlockIndex;
-        public bool isHaveSelectedBlock = false;
-        private const int DefaultMargin = 10;
-        public bool isOilFieldAdd = false;
-
-        public Dictionary<int, SchemeBlock> Blocks = new Dictionary<int, SchemeBlock>();
-        public List<SchemeLink> Links = new List<SchemeLink>();
-        private List<string> ItemsIdList = new List<string>();
-        private int block_counter = 0;
+      
+        public SchemeManager Manager;
 
         /* Methods */
 
@@ -34,84 +27,28 @@ namespace tryhard
         {
             Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
-            FillEquipmentCB();
+            Manager = new SchemeManager(this);
+            FillEquipmentCB(); 
             DrawingPanelOffset = DrawingPanel.Location;
-        }
-
-        public void AddSchemeLink(SchemeLink ANewLink)
-        {
-            Links.Add(ANewLink);
-            DrawingPanel.Invalidate();
-        }
+        }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
-            Point Pos = new Point(DefaultMargin, 90 * (Blocks.Count) + DefaultMargin);
-            if (!isOilFieldAdd)
-            {
-                isOilFieldAdd = (string)EquipmentCB.SelectedItem == "Месторождение";
-            }
-            Blocks.Add(block_counter, new SchemeBlock(Blocks.Count, 
-                       CMeta.DictionaryName[(string)EquipmentCB.SelectedItem],
-                       ItemsIdList[ModelCB.SelectedIndex], Pos, this));
-            foreach (int Key in Blocks.Keys)
-            {
-                Blocks[Key].ClearFocus();
-            }
-            Blocks[block_counter].SetFocus();
-            block_counter++;
-            Console.WriteLine(block_counter);
+            Manager.isAddBlockButtonClick = true;
         }
 
         private void DrawingPanel_Paint(object sender, PaintEventArgs e)
         {
-            if (Links.Count != 0)
+            if (Manager.Links.Count != 0)
             {
-                foreach(SchemeLink Link in Links)
+                foreach(SchemeLink Link in Manager.Links)
                 {
                     Link.Draw(this, e);
                 }
             }
         }
 
-        public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
-        {
-            foreach(SchemeLink Link in Links)
-            {
-                return (Link.FirstBlockIndex == AFirstBlockIndex) && (Link.SecondBlockIndex == ASecondBlockIndex);
-            }
-            return false;
-        }
-
-        private int FoundLinkIndex(int ASecondBlockIndex)
-        {
-            for (int i = 0; i < Links.Count; i++)
-            {
-                if (Links[i].SecondBlockIndex == ASecondBlockIndex)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        private int FindLastLink()
-        {
-            int LastElement = 0;
-            int[] CountLinksToBlock = new int[Links.Count + 1];
-            for (int i = 0; i < Links.Count; i++)
-            {
-                CountLinksToBlock[Links[i].FirstBlockIndex]++;
-            }
-            for (int i = 0; i < CountLinksToBlock.Length; i++)
-            {
-                if (CountLinksToBlock[i] == 0)
-                {
-                    return i;
-                }
-            }
-            return LastElement;
-        }
+        
 
         /* Equipment ComboBoxes */
 
@@ -123,13 +60,13 @@ namespace tryhard
 
         private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], ItemsIdList[ModelCB.SelectedIndex]);
+            FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], Manager.ItemsIdList[ModelCB.SelectedIndex]);
         }
 
         public void SetComboBoxes(string AEquipmentName, string AModelName)
         {
             EquipmentCB.SelectedIndex = Meta.TablesList.IndexOf(AEquipmentName);
-            ModelCB.SelectedIndex = ItemsIdList.IndexOf(AModelName);
+            ModelCB.SelectedIndex = Manager.ItemsIdList.IndexOf(AModelName);
         }
 
         private void FillEquipmentCB()
@@ -146,10 +83,10 @@ namespace tryhard
         {
             ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             List<string> items = Meta.GetListRecordsWithId(AEquipmentName, "name");
-            ItemsIdList.Clear();
+            Manager.ItemsIdList.Clear();
             for (int i = 0; i < items.Count; i += 2)
             {
-                ItemsIdList.Add(items[i]);
+                Manager.ItemsIdList.Add(items[i]);
                 ModelCB.Items.Add(items[i + 1]);
             }
             ModelCB.SelectedIndex = 0;
@@ -169,9 +106,13 @@ namespace tryhard
 
         private void DrawingPanel_Click(object sender, EventArgs e)
         {
-            foreach(int key in Blocks.Keys)
+            foreach(int key in Manager.Blocks.Keys)
             {
-                Blocks[key].ClearFocus();
+                Manager.Blocks[key].ClearFocus();
+            }
+            if (Manager.isAddBlockButtonClick)
+            {
+                Manager.AddBlock(PointToClient(Cursor.Position));
             }
         }
 
@@ -180,14 +121,14 @@ namespace tryhard
             /* Fill Dict */
 
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
-            foreach (int Key in Blocks.Keys)
+            foreach (int Key in Manager.Blocks.Keys)
             {
-                CalcBlocks.Add(Key, new CalcBlock(Key, Blocks[Key].BlockClass, Blocks[Key].BlockId));
+                CalcBlocks.Add(Key, new CalcBlock(Key, Manager.Blocks[Key].BlockClass, Manager.Blocks[Key].BlockId));
             }
 
             /* Fill Links at blocks */
 
-            foreach (SchemeLink Link in Links)
+            foreach (SchemeLink Link in Manager.Links)
             {
                 CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                 CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
@@ -252,7 +193,7 @@ namespace tryhard
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
-            if (!isOilFieldAdd)
+            if (!Manager.isOilFieldAdd)
             {
                 string message = "Кажется вы забыли добавить месторождение";
                 string caption = "Ошибка в составлении схемы";
@@ -269,19 +210,19 @@ namespace tryhard
         private void DeleteBlockButton_Click(object sender, EventArgs e)
         {
             //this
-            for (int i = 0; i < Links.Count; i++)
+            for (int i = 0; i < Manager.Links.Count; i++)
             {
-                if (Links[i].CheckDeletedLink(SelectedBlockIndex))
+                if (Manager.Links[i].CheckDeletedLink(Manager.SelectedBlockIndex))
                 {
-                    Links.RemoveAt(i);
+                    Manager.Links.RemoveAt(i);
                     i--;
                 }
             }
 
-            DrawingPanel.Controls.Remove(Blocks[SelectedBlockIndex].BlockBody);
-            Blocks.Remove(SelectedBlockIndex);
-            isHaveSelectedBlock = false;
-            SelectedBlockIndex = -1;
+            DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
+            Manager.Blocks.Remove(Manager.SelectedBlockIndex);
+            Manager.isHaveSelectedBlock = false;
+            Manager.SelectedBlockIndex = -1;
 
             DrawingPanel_Click(sender, e);
             DrawingPanel.Invalidate();

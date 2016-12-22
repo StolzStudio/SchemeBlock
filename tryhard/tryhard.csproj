@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="SchemeBlock.cs" />
     <Compile Include="SchemeLink.cs" />
+    <Compile Include="SchemeManager.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

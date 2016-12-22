@@ -102,8 +102,8 @@ namespace tryhard
         public void SetFocus()
         {
             this.isFocus             = true;
-            Form.isHaveSelectedBlock = true;
-            Form.SelectedBlockIndex  = this.Index;
+            Form.Manager.isHaveSelectedBlock = true;
+            Form.Manager.SelectedBlockIndex  = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
             Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, 
                                           this.BlockBody.Location.Y + BlockBodyHeight);
@@ -119,7 +119,7 @@ namespace tryhard
         public void ClearFocus()
         {
             this.isFocus                   = false;
-            Form.isHaveSelectedBlock       = false;
+            Form.Manager.isHaveSelectedBlock = false;
             Form.DeleteBlockButton.Visible = false;
             this.BlockBody.Invalidate();
         }
@@ -140,20 +140,20 @@ namespace tryhard
                 isCtrlDown = false;
             }
 
-            if ((Form.isHaveSelectedBlock) && (Form.SelectedBlockIndex != this.Index) && isCtrlDown)
+            if ((Form.Manager.isHaveSelectedBlock) && (Form.Manager.SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.CheckLink(Form.SelectedBlockIndex, this.Index) && 
-                     Form.Meta.isPossibleLink(Form.Blocks[Form.SelectedBlockIndex].BlockClass, this.BlockClass))
+                if (!Form.Manager.CheckLink(Form.Manager.SelectedBlockIndex, this.Index) && 
+                     Form.Meta.isPossibleLink(Form.Manager.Blocks[Form.Manager.SelectedBlockIndex].BlockClass, this.BlockClass))
                 {
-                    Form.isHaveSelectedBlock = false;
+                    Form.Manager.isHaveSelectedBlock = false;
                     isCtrlDown = false;
-                    Form.AddSchemeLink(new SchemeLink(Form.SelectedBlockIndex, this.Index));
+                    Form.Manager.AddSchemeLink(new SchemeLink(Form.Manager.SelectedBlockIndex, this.Index));
                 }
             }
             else
             {
-                Form.SelectedBlockIndex = this.Index;
+                Form.Manager.SelectedBlockIndex = this.Index;
             }
 
             Form.SetComboBoxes(this.BlockClass, this.BlockId);
@@ -165,9 +165,9 @@ namespace tryhard
         {
             if (!isFocus)
             {
-                foreach (int Key in Form.Blocks.Keys)
+                foreach (int Key in Form.Manager.Blocks.Keys)
                 {
-                    Form.Blocks[Key].ClearFocus();
+                    Form.Manager.Blocks[Key].ClearFocus();
                 }
                 this.SetFocus();
             }

@@ -246,7 +246,7 @@ namespace tryhard
 
         public  DrawPanel DrawingPanel;
         private Button AddBlockButton;
-        private ComboBox EquipmentCB;
+        public  ComboBox EquipmentCB;
         public  ComboBox ModelCB;
         private Label EquipmentLabel;
         private Label ModelLabel;
