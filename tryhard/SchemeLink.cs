@@ -18,12 +18,14 @@ namespace tryhard
         /* Fields */
 
         private Point[] Points;
+        private Color ArrowColor;
 
         /* Methods */
 
         public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
             Points           = new Point[4];
+            ArrowColor       = Color.DarkSlateBlue;
             FirstBlockIndex  = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
         }
@@ -56,7 +58,7 @@ namespace tryhard
 
         public void Draw(MainForm AForm, PaintEventArgs e)
         {
-            Pen pen   = new Pen(Color.DarkSlateBlue);
+            Pen pen   = new Pen(this.ArrowColor);
             pen.Width = 1.5F;
             Points[0] = GetFirstBlockPointLocation(AForm);
             Points[2] = GetSecondBlockPointLocation(AForm);
@@ -64,12 +66,10 @@ namespace tryhard
                 Math.Abs(Math.Abs(Points[0].Y) - Math.Abs(Points[2].Y)))
             {
                 Points[1] = new Point(Points[2].X, Points[0].Y);
-                //Points[2] = new Point(Points[3].X, GiveY());
             }
             else
             {
                 Points[1] = new Point(Points[0].X, Points[2].Y);
-                //Points[2] = new Point(GiveX(), Points[3].Y);
             }
 
             for (int i = 0; i < 2; i++)
@@ -84,6 +84,8 @@ namespace tryhard
         private void DrawPointer(PaintEventArgs e, Pen p)
         {
             Point[] Ptr = new Point[3];
+
+            Brush b = new SolidBrush(this.ArrowColor);
 
             int Width = 40;
 
@@ -120,7 +122,7 @@ namespace tryhard
             }
 
             e.Graphics.DrawPolygon(p, Ptr);
-            //e.Graphics.FillPolygon(p, Ptr);
+            e.Graphics.FillPolygon(b, Ptr);
         }
 
         private int GiveX()
