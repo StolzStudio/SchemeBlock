@@ -44,7 +44,6 @@ namespace tryhard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.DrawingPanel = new tryhard.DrawPanel();
             this.AddBlockButton = new System.Windows.Forms.Button();
             this.EquipmentCB = new System.Windows.Forms.ComboBox();
             this.ModelCB = new System.Windows.Forms.ComboBox();
@@ -56,27 +55,10 @@ namespace tryhard
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.CalcButton = new System.Windows.Forms.Button();
             this.DeleteBlockButton = new System.Windows.Forms.Button();
+            this.DrawingPanel = new tryhard.DrawPanel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
-
-            this.DeleteBlockButton.Visible = false;
-            // 
-            // DrawingPanel
-            // 
-            this.DrawingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DrawingPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.DrawingPanel.BackColor = System.Drawing.Color.White;
-            this.DrawingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DrawingPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.DrawingPanel.Location = new System.Drawing.Point(15, 50);
-            this.DrawingPanel.Name = "DrawingPanel";
-            this.DrawingPanel.Size = new System.Drawing.Size(820, 620);
-            this.DrawingPanel.TabIndex = 0;
-            this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
-            this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
             // AddBlockButton
             // 
@@ -159,7 +141,7 @@ namespace tryhard
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
             this.DataGridView.RowTemplate.Height = 20;
-            this.DataGridView.Size = new System.Drawing.Size(310, 300);
+            this.DataGridView.Size = new System.Drawing.Size(310, 299);
             this.DataGridView.TabIndex = 10;
             // 
             // name
@@ -184,7 +166,7 @@ namespace tryhard
             this.PictureBox.ErrorImage = ((System.Drawing.Image)(resources.GetObject("PictureBox.ErrorImage")));
             this.PictureBox.ImageLocation = "Pictures/formpicture.jpg";
             this.PictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PictureBox.InitialImage")));
-            this.PictureBox.Location = new System.Drawing.Point(855, 503);
+            this.PictureBox.Location = new System.Drawing.Point(855, 502);
             this.PictureBox.Name = "PictureBox";
             this.PictureBox.Size = new System.Drawing.Size(410, 180);
             this.PictureBox.TabIndex = 11;
@@ -214,14 +196,31 @@ namespace tryhard
             this.DeleteBlockButton.TabIndex = 13;
             this.DeleteBlockButton.Text = "-";
             this.DeleteBlockButton.UseVisualStyleBackColor = true;
+            this.DeleteBlockButton.Visible = false;
             this.DeleteBlockButton.Click += new System.EventHandler(this.DeleteBlockButton_Click);
+            // 
+            // DrawingPanel
+            // 
+            this.DrawingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DrawingPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.DrawingPanel.BackColor = System.Drawing.Color.White;
+            this.DrawingPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DrawingPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.DrawingPanel.Location = new System.Drawing.Point(15, 50);
+            this.DrawingPanel.Name = "DrawingPanel";
+            this.DrawingPanel.Size = new System.Drawing.Size(820, 619);
+            this.DrawingPanel.TabIndex = 0;
+            this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
+            this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.DeleteBlockButton);
             this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.PictureBox);
@@ -232,9 +231,10 @@ namespace tryhard
             this.Controls.Add(this.EquipmentCB);
             this.Controls.Add(this.AddBlockButton);
             this.Controls.Add(this.DrawingPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
-            this.Text = "A$IRIA";
+            this.Text = "Gaby";
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);

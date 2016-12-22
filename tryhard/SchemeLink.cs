@@ -118,7 +118,7 @@ namespace tryhard
                     Ptr[0] = new Point(Points[2].X - Width, Points[1].Y);
                     Ptr[1] = new Point(Points[2].X - Width - 10, Points[1].Y + 5);
                     Ptr[2] = new Point(Points[2].X - Width - 10, Points[1].Y - 5);
-                }
+                } 
             }
 
             e.Graphics.DrawPolygon(p, Ptr);
