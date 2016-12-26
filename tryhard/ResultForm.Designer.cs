@@ -39,61 +39,75 @@ namespace tryhard
         /// </summary>
         private void InitializeComponent()
         {
-            this.ResultGridView = new System.Windows.Forms.DataGridView();
+            this.CombinationGridView = new System.Windows.Forms.DataGridView();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeightCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VolumeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ResultGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // ResultGridView
+            // CombinationGridView
             // 
-            this.ResultGridView.AllowUserToAddRows = false;
-            this.ResultGridView.AllowUserToResizeColumns = false;
-            this.ResultGridView.AllowUserToResizeRows = false;
-            this.ResultGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CombinationGridView.AllowUserToAddRows = false;
+            this.CombinationGridView.AllowUserToResizeColumns = false;
+            this.CombinationGridView.AllowUserToResizeRows = false;
+            this.CombinationGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResultGridView.ColumnHeadersHeight = 35;
-            this.ResultGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ResultGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CombinationGridView.ColumnHeadersHeight = 35;
+            this.CombinationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CombinationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassName,
             this.ModelName,
             this.Count,
+            this.WeightCol,
+            this.VolumeCol,
             this.Cost});
-            this.ResultGridView.EnableHeadersVisualStyles = false;
-            this.ResultGridView.Location = new System.Drawing.Point(12, 12);
-            this.ResultGridView.MaximumSize = new System.Drawing.Size(483, 458);
-            this.ResultGridView.MinimumSize = new System.Drawing.Size(483, 458);
-            this.ResultGridView.Name = "ResultGridView";
-            this.ResultGridView.ReadOnly = true;
-            this.ResultGridView.RowHeadersVisible = false;
-            this.ResultGridView.RowHeadersWidth = 100;
-            this.ResultGridView.RowTemplate.Height = 20;
-            this.ResultGridView.Size = new System.Drawing.Size(483, 458);
-            this.ResultGridView.TabIndex = 0;
+            this.CombinationGridView.EnableHeadersVisualStyles = false;
+            this.CombinationGridView.Location = new System.Drawing.Point(361, 12);
+            this.CombinationGridView.MaximumSize = new System.Drawing.Size(483, 458);
+            this.CombinationGridView.MinimumSize = new System.Drawing.Size(483, 458);
+            this.CombinationGridView.Name = "CombinationGridView";
+            this.CombinationGridView.ReadOnly = true;
+            this.CombinationGridView.RowHeadersVisible = false;
+            this.CombinationGridView.RowHeadersWidth = 100;
+            this.CombinationGridView.RowTemplate.Height = 20;
+            this.CombinationGridView.Size = new System.Drawing.Size(483, 458);
+            this.CombinationGridView.TabIndex = 0;
             // 
             // ClassName
             // 
             this.ClassName.HeaderText = "Класс оборудования";
             this.ClassName.Name = "ClassName";
             this.ClassName.ReadOnly = true;
-            this.ClassName.Width = 120;
             // 
             // ModelName
             // 
             this.ModelName.HeaderText = "Название оборудования";
             this.ModelName.Name = "ModelName";
             this.ModelName.ReadOnly = true;
-            this.ModelName.Width = 120;
             // 
             // Count
             // 
             this.Count.HeaderText = "Количество";
             this.Count.Name = "Count";
             this.Count.ReadOnly = true;
-            this.Count.Width = 120;
+            this.Count.Width = 70;
+            // 
+            // WeightCol
+            // 
+            this.WeightCol.HeaderText = "Масса";
+            this.WeightCol.Name = "WeightCol";
+            this.WeightCol.ReadOnly = true;
+            // 
+            // VolumeCol
+            // 
+            this.VolumeCol.HeaderText = "Объем";
+            this.VolumeCol.Name = "VolumeCol";
+            this.VolumeCol.ReadOnly = true;
             // 
             // Cost
             // 
@@ -106,22 +120,24 @@ namespace tryhard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 482);
-            this.Controls.Add(this.ResultGridView);
+            this.ClientSize = new System.Drawing.Size(856, 482);
+            this.Controls.Add(this.CombinationGridView);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "ResultForm";
             this.Text = "Результаты рассчета";
-            ((System.ComponentModel.ISupportInitialize)(this.ResultGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DataGridView ResultGridView;
+        private DataGridView CombinationGridView;
         private DataGridViewTextBoxColumn ClassName;
         private DataGridViewTextBoxColumn ModelName;
         private DataGridViewTextBoxColumn Count;
+        private DataGridViewTextBoxColumn WeightCol;
+        private DataGridViewTextBoxColumn VolumeCol;
         private DataGridViewTextBoxColumn Cost;
     }
 }

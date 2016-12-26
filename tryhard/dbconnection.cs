@@ -123,12 +123,11 @@ namespace tryhard
             reader = cmd.ExecuteReader();
             int Value = 0;
             while (reader.Read())
-            {
+            {   
                 Value = Convert.ToInt32(reader[AParameter]);
             }
             return Value;
         }
     }
-
 }
 

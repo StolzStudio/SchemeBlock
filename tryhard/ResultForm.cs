@@ -32,10 +32,10 @@ namespace tryhard
                     cost = MForm.Meta.GetIntValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "cost_equipment");
                 }
                 string ModelName = MForm.Meta.GetStringValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "name");
-                ResultGridView.Rows.Add(CMeta.DictionaryName[ACalcBlocks[Key].BlockClass], ModelName, ACalcBlocks[Key].Count, cost * ACalcBlocks[Key].Count);
+                CombinationGridView.Rows.Add(CMeta.DictionaryName[ACalcBlocks[Key].BlockClass], ModelName, ACalcBlocks[Key].Count, cost * ACalcBlocks[Key].Count);
                 common_cost += cost * ACalcBlocks[Key].Count;
             }
-            ResultGridView.Rows.Add("", "", "Общая стоимость: ", common_cost);
+            CombinationGridView.Rows.Add("", "", "Общая стоимость: ", common_cost);
         }
     }
 }
