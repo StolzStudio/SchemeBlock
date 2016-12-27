@@ -109,13 +109,16 @@ namespace tryhard
             Manager.ClearLinksFocus();
             Manager.ClearBlocksFocus();
 
+            Point ptr = PointToClient(Cursor.Position);
+            ptr.X -= DrawingPanel.Location.X;
+            ptr.Y -= DrawingPanel.Location.Y;
             if (Manager.isAddBlockButtonClick)
             {
-                Point ptr = PointToClient(Cursor.Position);
-                ptr.X -= (DrawingPanel.Location.X + SchemeBlock.BlockBodyWidth / 2);
-                ptr.Y -= (DrawingPanel.Location.Y + SchemeBlock.BlockBodyHeight / 2);
+                ptr.X -= SchemeBlock.BlockBodyWidth / 2;
+                ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
                 Manager.AddBlock(ptr);
             }
+            Manager.TrySetFocusInLinks(ptr);
         }
 
         public Dictionary<int, CalcBlock> GetCalculatedBlocks()

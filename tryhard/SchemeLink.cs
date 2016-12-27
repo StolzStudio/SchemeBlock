@@ -31,7 +31,7 @@ namespace tryhard
         {
             Points           = new Point[4];
             ArrowColor       = Color.DarkSlateBlue;
-            SelectArrowColor = Color.DarkGoldenrod;
+            SelectArrowColor = Color.IndianRed;
             FirstBlockIndex  = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
             isFocus          = true;
@@ -147,7 +147,42 @@ namespace tryhard
 
         public void TrySetFocus(Point Coord)
         {
+            if (FirstLine == LineType.LTHorizontal)
+            {
+                CheckFocus(Points[0].X, Points[0].Y, Points[1].X, Coord.X, Coord.Y);
+                CheckFocus(Points[1].Y, Points[1].X, Points[2].Y, Coord.Y, Coord.X);
+            }
+            else
+            {
+                CheckFocus(Points[0].Y, Points[0].X, Points[1].Y, Coord.Y, Coord.X);
+                CheckFocus(Points[1].X, Points[1].Y, Points[2].X, Coord.X, Coord.Y);
+            }
 
+        }
+        public void CheckFocus(int Pnt0, int Pnt0_1, int Pnt1, int Pnt2, int Pnt2_1)
+        {
+            int SelectOffset = 7;
+
+            int min;
+            int max;
+
+            if (Pnt0 <= Pnt1)
+            {
+                min = Pnt0;
+                max = Pnt1;
+            }
+            else
+            {
+                min = Pnt1;
+                max = Pnt0;
+            }
+            if ((min - SelectOffset <= Pnt2) && (Pnt2 <= max + SelectOffset))
+            {
+                if ((Pnt0_1 - SelectOffset <= Pnt2_1) && (Pnt2_1 <= Pnt0_1 + SelectOffset))
+                {
+                    this.isFocus = true;
+                }
+            }
         }
     }
 }
