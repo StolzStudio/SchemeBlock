@@ -215,20 +215,23 @@ namespace tryhard
         private void DeleteBlockButton_Click(object sender, EventArgs e)
         {
             //this
+         
+            if (Manager.Blocks[Manager.SelectedBlockIndex].isFocus)
+            {
+                DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
+                Manager.Blocks.Remove(Manager.SelectedBlockIndex);
+                Manager.isHaveSelectedBlock = false;
+                Manager.SelectedBlockIndex = -1;
+            }
+
             for (int i = 0; i < Manager.Links.Count; i++)
             {
-                if (Manager.Links[i].CheckDeletedLink(Manager.SelectedBlockIndex))
+                if ((Manager.Links[i].CheckDeletedLink(Manager.SelectedBlockIndex)) || (Manager.Links[i].isFocus))
                 {
                     Manager.Links.RemoveAt(i);
                     i--;
                 }
             }
-
-            DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
-            Manager.Blocks.Remove(Manager.SelectedBlockIndex);
-            Manager.isHaveSelectedBlock = false;
-            Manager.SelectedBlockIndex = -1;
-
             DrawingPanel_Click(sender, e);
             DrawingPanel.Invalidate();
         }

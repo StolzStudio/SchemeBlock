@@ -90,6 +90,10 @@ namespace tryhard
             foreach(SchemeLink link in Links)
             {
                 link.TrySetFocus(Coord);
+                if (link.isFocus)
+                {
+                    Form.DeleteBlockButton.Visible = true;
+                }
             }
             Form.DrawingPanel.Invalidate();
         }

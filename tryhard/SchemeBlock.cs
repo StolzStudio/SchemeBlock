@@ -22,7 +22,7 @@ namespace tryhard
         /* Fields */
 
         private MainForm Form;
-        private bool     isFocus;
+        public bool     isFocus;
         public  int      Index;
         public  Point    PointLocation;
 
