@@ -8,17 +8,22 @@ using System.Windows.Forms;
 
 namespace tryhard
 {
+    public enum LineType { LTHorizontal, LTVertical };
+
     public class SchemeLink
     {
         /* Properties */
 
-        public  int FirstBlockIndex { get; set; }
-        public  int SecondBlockIndex { get; set; }
+        public int FirstBlockIndex  { get; set; }
+        public int SecondBlockIndex { get; set; }
+        public bool isFocus { get; set; }
 
         /* Fields */
 
         private Point[] Points;
+        private LineType FirstLine;
         private Color ArrowColor;
+        private Color SelectArrowColor;
 
         /* Methods */
 
@@ -26,8 +31,10 @@ namespace tryhard
         {
             Points           = new Point[4];
             ArrowColor       = Color.DarkSlateBlue;
+            SelectArrowColor = Color.DarkGoldenrod;
             FirstBlockIndex  = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
+            isFocus          = true;
         }
 
         public Point GetFirstBlockPointLocation(MainForm AForm)
@@ -59,9 +66,20 @@ namespace tryhard
         public void Draw(MainForm AForm, PaintEventArgs e)
         {
             Pen pen   = new Pen(this.ArrowColor);
-            pen.Width = 1.5F;
+
+            if (this.isFocus)
+            {
+                pen.Width = 2.0F;
+                pen.Color = this.SelectArrowColor;
+            }
+            else
+            {
+                pen.Width = 1.5F;
+            }
+
             Points[0] = GetFirstBlockPointLocation(AForm);
             Points[2] = GetSecondBlockPointLocation(AForm);
+
             if (Math.Abs(Math.Abs(Points[0].X) - Math.Abs(Points[2].X)) <
                 Math.Abs(Math.Abs(Points[0].Y) - Math.Abs(Points[2].Y)))
             {
@@ -85,12 +103,13 @@ namespace tryhard
         {
             Point[] Ptr = new Point[3];
 
-            Brush b = new SolidBrush(this.ArrowColor);
+            Brush b = new SolidBrush(p.Color);
 
             int Width = 40;
 
             if (Points[1].X == Points[2].X)
             {
+                FirstLine = LineType.LTHorizontal;
                 if (Points[1].Y > Points[2].Y)
                 {
                     Ptr[0] = new Point(Points[2].X, Points[2].Y + Width);
@@ -107,6 +126,7 @@ namespace tryhard
 
             if (Points[1].Y == Points[2].Y)
             {
+                FirstLine = LineType.LTVertical;
                 if (Points[1].X > Points[2].X)
                 {
                     Ptr[0] = new Point(Points[2].X + Width, Points[1].Y);
@@ -125,28 +145,9 @@ namespace tryhard
             e.Graphics.FillPolygon(b, Ptr);
         }
 
-        private int GiveX()
+        public void TrySetFocus(Point Coord)
         {
-            if (Points[0].X > Points[3].X)
-            {
-                return Points[0].X / 2;
-            }
-            else
-            {
-                return Points[3].X / 2;
-            }
-        }
 
-        private int GiveY()
-        {
-            if (Points[0].Y > Points[3].Y)
-            {
-                return Points[0].Y / 2;
-            }
-            else
-            {
-                return Points[3].Y / 2;
-            }
         }
     }
 }

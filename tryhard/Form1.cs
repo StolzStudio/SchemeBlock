@@ -106,10 +106,9 @@ namespace tryhard
 
         private void DrawingPanel_Click(object sender, EventArgs e)
         {
-            foreach(int key in Manager.Blocks.Keys)
-            {
-                Manager.Blocks[key].ClearFocus();
-            }
+            Manager.ClearLinksFocus();
+            Manager.ClearBlocksFocus();
+
             if (Manager.isAddBlockButtonClick)
             {
                 Point ptr = PointToClient(Cursor.Position);

@@ -66,6 +66,30 @@ namespace tryhard
             return false;
         }
 
+        public void ClearLinksFocus()
+        {
+            foreach(SchemeLink link in Links)
+            {
+                link.isFocus = false;
+            }
+
+            Form.DrawingPanel.Invalidate();
+        }
         
+        public void ClearBlocksFocus()
+        {
+            foreach (int key in Blocks.Keys)
+            {
+                Blocks[key].ClearFocus();
+            }
+        }
+
+        public void TrySetFocusInLinks()
+        {
+            foreach(SchemeLink link in Links)
+            {
+
+            }
+        }
     }
 }

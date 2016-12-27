@@ -148,6 +148,7 @@ namespace tryhard
                 {
                     Form.Manager.isHaveSelectedBlock = false;
                     isCtrlDown = false;
+                    Form.Manager.ClearLinksFocus();
                     Form.Manager.AddSchemeLink(new SchemeLink(Form.Manager.SelectedBlockIndex, this.Index));
                 }
             }
