@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace tryhard
 {
@@ -84,12 +85,17 @@ namespace tryhard
             }
         }
 
-        public void TrySetFocusInLinks()
+        public void TrySetFocusInLinks(Point Coord)
         {
             foreach(SchemeLink link in Links)
             {
-
+                link.TrySetFocus(Coord);
+                if (link.isFocus)
+                {
+                    Form.DeleteBlockButton.Visible = true;
+                }
             }
+            Form.DrawingPanel.Invalidate();
         }
     }
 }

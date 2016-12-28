@@ -109,13 +109,16 @@ namespace tryhard
             Manager.ClearLinksFocus();
             Manager.ClearBlocksFocus();
 
+            Point ptr = PointToClient(Cursor.Position);
+            ptr.X -= DrawingPanel.Location.X;
+            ptr.Y -= DrawingPanel.Location.Y;
             if (Manager.isAddBlockButtonClick)
             {
-                Point ptr = PointToClient(Cursor.Position);
-                ptr.X -= (DrawingPanel.Location.X + SchemeBlock.BlockBodyWidth / 2);
-                ptr.Y -= (DrawingPanel.Location.Y + SchemeBlock.BlockBodyHeight / 2);
+                ptr.X -= SchemeBlock.BlockBodyWidth / 2;
+                ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
                 Manager.AddBlock(ptr);
             }
+            Manager.TrySetFocusInLinks(ptr);
         }
 
         public Dictionary<int, CalcBlock> GetCalculatedBlocks()
@@ -221,15 +224,33 @@ namespace tryhard
                     LinksArr[i] = null;
                 }
             }
-            
 
-            DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
-            Manager.Blocks.Remove(Manager.SelectedBlockIndex);
-            Manager.isHaveSelectedBlock = false;
-            Manager.SelectedBlockIndex = -1;
+            LinksArr = LinksArr.Where(x => !IsLinkNull(x)).ToArray();
+            Manager.Links = LinksArr.ToList();
+
+            if (Manager.Blocks[Manager.SelectedBlockIndex].isFocus)
+            {
+                DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
+                Manager.Blocks.Remove(Manager.SelectedBlockIndex);
+                Manager.isHaveSelectedBlock = false;
+                Manager.SelectedBlockIndex = -1;
+            }
+
 
             DrawingPanel_Click(sender, e);
             DrawingPanel.Invalidate();
+        }
+
+        private bool IsLinkNull(SchemeLink TestLink)
+        {
+            if (TestLink == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
