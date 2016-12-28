@@ -126,8 +126,8 @@ namespace tryhard
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
         {
             isMouseDown = true;
-            Point Ptr = this.PointNormalize(Form.PointToClient(Cursor.Position));
-            ClickOffset = new Point(Ptr.X - this.BlockBody.Location.X, Ptr.Y - this.BlockBody.Location.Y);
+            Point Pnt = this.PointNormalize(Form.PointToClient(Cursor.Position));
+            ClickOffset = new Point(Pnt.X - this.BlockBody.Location.X, Pnt.Y - this.BlockBody.Location.Y);
 
             if (Control.ModifierKeys == Keys.Control)
             {
@@ -177,12 +177,12 @@ namespace tryhard
         {
             if (isMouseDown)
             {
-                Point Ptr = this.PointNormalize(Form.PointToClient(Cursor.Position));
+                Point Pnt = this.PointNormalize(Form.PointToClient(Cursor.Position));
 
-                Ptr.X -= this.ClickOffset.X;
-                Ptr.Y -= this.ClickOffset.Y;
+                Pnt.X -= this.ClickOffset.X;
+                Pnt.Y -= this.ClickOffset.Y;
                 
-                this.BlockBody.Location = Ptr;
+                this.BlockBody.Location = Pnt;
                 this.BlockBody.Invalidate();
             }
             Form.DrawingPanel.Invalidate();
@@ -202,9 +202,19 @@ namespace tryhard
             Form.DrawingPanel.Invalidate();
         }
 
-        private Point PointNormalize(Point Ptr)
+        private bool isPointValidate(Point Pnt)
         {
-            return new Point(Ptr.X  - Form.DrawingPanelOffset.X, Ptr.Y - Form.DrawingPanelOffset.Y);
+            if (Pnt.X + this.BlockBody.Width <= Form.DrawingPanel.Width &&
+                Pnt.Y + this.BlockBody.Height <= Form.DrawingPanel.Height)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private Point PointNormalize(Point Pnt)
+        {
+            return new Point(Pnt.X  - Form.DrawingPanelOffset.X, Pnt.Y - Form.DrawingPanelOffset.Y);
         }
 
     }
