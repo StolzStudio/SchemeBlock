@@ -211,15 +211,17 @@ namespace tryhard
 
         private void DeleteBlockButton_Click(object sender, EventArgs e)
         {
-            //this
-            for (int i = 0; i < Manager.Links.Count; i++)
+            SchemeLink[] LinksArr = Manager.Links.ToArray();
+            Manager.Links.Clear();
+
+            for (int i = 0; i < LinksArr.Length; i++)
             {
-                if (Manager.Links[i].CheckDeletedLink(Manager.SelectedBlockIndex))
+                if (LinksArr[i].CheckDeletedLink(Manager.SelectedBlockIndex))
                 {
-                    Manager.Links.RemoveAt(i);
-                    i--;
+                    LinksArr[i] = null;
                 }
             }
+            
 
             DrawingPanel.Controls.Remove(Manager.Blocks[Manager.SelectedBlockIndex].BlockBody);
             Manager.Blocks.Remove(Manager.SelectedBlockIndex);
