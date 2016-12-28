@@ -25,6 +25,7 @@ namespace tryhard
         public bool     isFocus;
         public  int      Index;
         public  Point    PointLocation;
+        public Point ClickOffset;
 
         public Panel   BlockBody;
         public Label   BlockClassLabel;
@@ -105,8 +106,6 @@ namespace tryhard
             Form.Manager.isHaveSelectedBlock = true;
             Form.Manager.SelectedBlockIndex  = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
-            Point    Ptr      = new Point(this.BlockBody.Location.X + BlockBodyWidth, 
-                                          this.BlockBody.Location.Y + BlockBodyHeight);
             Pen      BlackPen = new Pen(Color.Black, 4);
             g.DrawRectangle(BlackPen, 
                             0,
@@ -126,11 +125,10 @@ namespace tryhard
 
         private void SchemeBodyMouseDown(object sender, MouseEventArgs e)
         {
-            if (this.isFocus)
-            {
-                isMouseDown = true;
-            }
-            
+            isMouseDown = true;
+            Point Ptr = this.PointNormalize(Form.PointToClient(Cursor.Position));
+            ClickOffset = new Point(Ptr.X - this.BlockBody.Location.X, Ptr.Y - this.BlockBody.Location.Y);
+
             if (Control.ModifierKeys == Keys.Control)
             {
                 isCtrlDown = true;
@@ -154,6 +152,7 @@ namespace tryhard
             }
             else
             {
+                Form.Manager.isHaveSelectedBlock = true;
                 Form.Manager.SelectedBlockIndex = this.Index;
             }
 
@@ -178,11 +177,11 @@ namespace tryhard
         {
             if (isMouseDown)
             {
-                Point Ptr = Form.PointToClient(Cursor.Position);
+                Point Ptr = this.PointNormalize(Form.PointToClient(Cursor.Position));
 
-                Ptr.X -= Form.DrawingPanelOffset.X + BlockBodyWidth  / 2;
-                Ptr.Y -= Form.DrawingPanelOffset.Y + BlockBodyHeight / 2;
-
+                Ptr.X -= this.ClickOffset.X;
+                Ptr.Y -= this.ClickOffset.Y;
+                
                 this.BlockBody.Location = Ptr;
                 this.BlockBody.Invalidate();
             }
@@ -201,6 +200,11 @@ namespace tryhard
             }
             isMouseDown = false;
             Form.DrawingPanel.Invalidate();
+        }
+
+        private Point PointNormalize(Point Ptr)
+        {
+            return new Point(Ptr.X  - Form.DrawingPanelOffset.X, Ptr.Y - Form.DrawingPanelOffset.Y);
         }
 
     }

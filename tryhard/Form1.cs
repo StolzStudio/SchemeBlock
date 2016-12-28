@@ -28,7 +28,7 @@ namespace tryhard
             Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
             Manager = new SchemeManager(this);
-            FillEquipmentCB(); 
+            FillEquipmentCB();
             DrawingPanelOffset = DrawingPanel.Location;
         }   
 
@@ -47,8 +47,6 @@ namespace tryhard
                 }
             }
         }
-
-        
 
         /* Equipment ComboBoxes */
 
