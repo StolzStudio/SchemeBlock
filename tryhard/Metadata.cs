@@ -137,7 +137,14 @@ namespace tryhard
         public void CreateTable(string ATableName, List<string> ANameFields)
         {
             List<string> IdList = new List<string>();
-            IdList = Database.GetListRecordsWithId(ATableName, "id");
+            string[] IdArr = Database.GetListRecordsWithId(ATableName, "id").ToArray();
+            for (int i = 0; i < IdArr.Length; i++)
+            {
+                if ((i + 1) % 2 != 0)
+                {
+                    IdList.Add(IdArr[i]);
+                }
+            }
 
             Tables.Add(new CTable(ATableName, DictionaryName[ATableName], IdList, ANameFields));
         }
