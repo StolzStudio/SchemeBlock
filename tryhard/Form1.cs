@@ -136,62 +136,7 @@ namespace tryhard
                 CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                 CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
             }
-
-            /* Calculating count */
-
-            bool isAllBlocksCalculated = false;
-            while (!isAllBlocksCalculated)
-            {
-                isAllBlocksCalculated = true;
-                foreach (int Key in CalcBlocks.Keys)
-                {
-                    if ((CalcBlocks[Key].InputLinks.Count != 0) || (CalcBlocks[Key].OutputLinks.Count != 0))
-                    {
-                        if (CalcBlocks[Key].BlockClass == "field_parameters")
-                        {
-                            int link_key = CalcBlocks[Key].OutputLinks[0];
-                            int field_amount_holes = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, "amount_holes");
-                            int dk_amount_holes = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, "amount_holes");
-                            int field_fluid = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, "fluid_output");
-                            int dk_fluid = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, "fluid_input");
-                            int dk_count = dk_amount_holes * CalcBlocks[link_key].Count;
-                            int field_count = field_amount_holes * CalcBlocks[Key].Count;
-                            if (dk_count < field_count)
-                            {
-                                CalcBlocks[link_key].Count = field_count / dk_count;
-                                if (field_count % dk_count != 0)
-                                {
-                                    CalcBlocks[link_key].Count += 1;
-                                }
-                                CalcBlocks[link_key].isDone = false;
-                            }
-                            CalcBlocks[link_key].isDone = true;
-                        }
-                        else
-                        {
-                            foreach (int link_key in CalcBlocks[Key].OutputLinks)
-                            {
-                                string common_parametr = Meta.GetCommonParameterForLink(CalcBlocks[Key].BlockClass, CalcBlocks[link_key].BlockClass);
-                                int first_block_output = Meta.GetIntValueOfParameter(CalcBlocks[Key].BlockClass, CalcBlocks[Key].BlockId, common_parametr + "_output");
-                                int second_block_input = Meta.GetIntValueOfParameter(CalcBlocks[link_key].BlockClass, CalcBlocks[link_key].BlockId, common_parametr + "_input");
-                                int first_block_count = first_block_output * CalcBlocks[Key].Count;
-                                int second_block_count = second_block_input* CalcBlocks[link_key].Count;
-                                if (second_block_count < first_block_count)
-                                {
-                                    CalcBlocks[link_key].Count = first_block_count / second_block_count;
-                                    if (first_block_count % second_block_count != 0)
-                                    {
-                                        CalcBlocks[link_key].Count += 1;
-                                    }
-                                    CalcBlocks[link_key].isDone = false;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return CalcBlocks;
+            return CalculationManager.CalculateBlocksCombination(Meta, CalcBlocks);
         }
 
         private void CalcButton_Click(object sender, EventArgs e)

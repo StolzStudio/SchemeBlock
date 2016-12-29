@@ -46,7 +46,13 @@ namespace tryhard
             this.WeightCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VolumeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CombinationsGridView = new System.Windows.Forms.DataGridView();
+            this.CombinationNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CombinationWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CombinationVolume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CombinationCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CombinationGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // CombinationGridView
@@ -54,11 +60,13 @@ namespace tryhard
             this.CombinationGridView.AllowUserToAddRows = false;
             this.CombinationGridView.AllowUserToResizeColumns = false;
             this.CombinationGridView.AllowUserToResizeRows = false;
-            this.CombinationGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.CombinationGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CombinationGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CombinationGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.CombinationGridView.ColumnHeadersHeight = 35;
-            this.CombinationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CombinationGridView.ColumnHeadersHeightSizeMode = 
+                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.CombinationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassName,
             this.ModelName,
@@ -67,15 +75,13 @@ namespace tryhard
             this.VolumeCol,
             this.Cost});
             this.CombinationGridView.EnableHeadersVisualStyles = false;
-            this.CombinationGridView.Location = new System.Drawing.Point(361, 12);
-            this.CombinationGridView.MaximumSize = new System.Drawing.Size(483, 458);
-            this.CombinationGridView.MinimumSize = new System.Drawing.Size(483, 458);
+            this.CombinationGridView.Location = new System.Drawing.Point(12, 342);
             this.CombinationGridView.Name = "CombinationGridView";
             this.CombinationGridView.ReadOnly = true;
             this.CombinationGridView.RowHeadersVisible = false;
             this.CombinationGridView.RowHeadersWidth = 100;
             this.CombinationGridView.RowTemplate.Height = 20;
-            this.CombinationGridView.Size = new System.Drawing.Size(483, 458);
+            this.CombinationGridView.Size = new System.Drawing.Size(565, 182);
             this.CombinationGridView.TabIndex = 0;
             // 
             // ClassName
@@ -95,7 +101,6 @@ namespace tryhard
             this.Count.HeaderText = "Количество";
             this.Count.Name = "Count";
             this.Count.ReadOnly = true;
-            this.Count.Width = 70;
             // 
             // WeightCol
             // 
@@ -114,18 +119,72 @@ namespace tryhard
             this.Cost.HeaderText = "Стоимость";
             this.Cost.Name = "Cost";
             this.Cost.ReadOnly = true;
-            this.Cost.Width = 120;
+            // 
+            // CombinationsGridView
+            // 
+            this.CombinationsGridView.AllowUserToAddRows = false;
+            this.CombinationsGridView.AllowUserToResizeColumns = false;
+            this.CombinationsGridView.AllowUserToResizeRows = false;
+            this.CombinationsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CombinationsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CombinationsGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.CombinationsGridView.ColumnHeadersHeight = 35;
+            this.CombinationsGridView.ColumnHeadersHeightSizeMode =
+                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CombinationsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CombinationNum,
+            this.CombinationWeight,
+            this.CombinationVolume,
+            this.CombinationCost});
+            this.CombinationsGridView.EnableHeadersVisualStyles = false;
+            this.CombinationsGridView.Location = new System.Drawing.Point(12, 12);
+            this.CombinationsGridView.Name = "CombinationsGridView";
+            this.CombinationsGridView.ReadOnly = true;
+            this.CombinationsGridView.RowHeadersVisible = false;
+            this.CombinationsGridView.RowHeadersWidth = 100;
+            this.CombinationsGridView.RowTemplate.Height = 20;
+            this.CombinationsGridView.Size = new System.Drawing.Size(565, 324);
+            this.CombinationsGridView.TabIndex = 1;
+            // 
+            // CombinationNum
+            // 
+            this.CombinationNum.HeaderText = "Номер комбинации";
+            this.CombinationNum.Name = "CombinationNum";
+            this.CombinationNum.ReadOnly = true;
+            // 
+            // CombinationWeight
+            // 
+            this.CombinationWeight.HeaderText = "Масса";
+            this.CombinationWeight.Name = "CombinationWeight";
+            this.CombinationWeight.ReadOnly = true;
+            // 
+            // CombinationVolume
+            // 
+            this.CombinationVolume.HeaderText = "Объем";
+            this.CombinationVolume.Name = "CombinationVolume";
+            this.CombinationVolume.ReadOnly = true;
+            // 
+            // CombinationCost
+            // 
+            this.CombinationCost.HeaderText = "Стоимость";
+            this.CombinationCost.Name = "CombinationCost";
+            this.CombinationCost.ReadOnly = true;
             // 
             // ResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 482);
+            this.ClientSize = new System.Drawing.Size(589, 536);
+            this.Controls.Add(this.CombinationsGridView);
             this.Controls.Add(this.CombinationGridView);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MinimumSize = new System.Drawing.Size(605, 575);
             this.Name = "ResultForm";
             this.Text = "Результаты рассчета";
             ((System.ComponentModel.ISupportInitialize)(this.CombinationGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationsGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -139,5 +198,10 @@ namespace tryhard
         private DataGridViewTextBoxColumn WeightCol;
         private DataGridViewTextBoxColumn VolumeCol;
         private DataGridViewTextBoxColumn Cost;
+        private DataGridView CombinationsGridView;
+        private DataGridViewTextBoxColumn CombinationNum;
+        private DataGridViewTextBoxColumn CombinationWeight;
+        private DataGridViewTextBoxColumn CombinationVolume;
+        private DataGridViewTextBoxColumn CombinationCost;
     }
 }
