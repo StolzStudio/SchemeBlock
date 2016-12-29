@@ -52,6 +52,7 @@ namespace tryhard
 
         public List<CField> Fields = new List<CField>();
         public List<string> FieldsList = new List<string>();
+        public List<string> IdList = new List<string>();
         public HashSet<string> InputParameters = new HashSet<string>();
         public HashSet<string> OutputParameters = new HashSet<string>();
 
@@ -59,10 +60,11 @@ namespace tryhard
 
         public CTable () { }
 
-        public CTable (string ATableName, string ACaption, List<string> AFieldsList)
+        public CTable (string ATableName, string ACaption, List<string> AIdList, List<string> AFieldsList)
         {
             Name = ATableName;
             Caption = ACaption;
+            IdList = AIdList;
             FieldsList = AFieldsList;
             FillDataTable();
         }
@@ -134,7 +136,17 @@ namespace tryhard
 
         public void CreateTable(string ATableName, List<string> ANameFields)
         {
-            Tables.Add(new CTable(ATableName, DictionaryName[ATableName], ANameFields));
+            List<string> IdList = new List<string>();
+            string[] IdArr = Database.GetListRecordsWithId(ATableName, "id").ToArray();
+            for (int i = 0; i < IdArr.Length; i++)
+            {
+                if ((i + 1) % 2 != 0)
+                {
+                    IdList.Add(IdArr[i]);
+                }
+            }
+
+            Tables.Add(new CTable(ATableName, DictionaryName[ATableName], IdList, ANameFields));
         }
 
         public void DeleteTable(string ATableName)
