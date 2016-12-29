@@ -38,10 +38,6 @@ namespace tryhard
                     volume = MForm.Meta.GetIntValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "volume_equipment");
                 }
                 string ModelName = MForm.Meta.GetStringValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "name");
-                if (ACalcBlocks[Key].Count == 10)
-                {
-                    cost = cost;
-                }
                 weight = weight * ACalcBlocks[Key].Count;
                 volume = volume * ACalcBlocks[Key].Count;
                 cost = cost * ACalcBlocks[Key].Count;
