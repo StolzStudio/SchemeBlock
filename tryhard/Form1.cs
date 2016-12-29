@@ -119,7 +119,7 @@ namespace tryhard
             Manager.TrySetFocusInLinks(ptr);
         }
 
-        public Dictionary<int, CalcBlock> GetCalculatedBlocks()
+        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations()
         {
             /* Fill Dict */
 
@@ -150,8 +150,7 @@ namespace tryhard
                 result = MessageBox.Show(message, caption, buttons);
                 return;
             }
-            Dictionary<int, CalcBlock> CalculatedBlocks = GetCalculatedBlocks();
-            ResultForm ResForm = new ResultForm(this, CalculatedBlocks);
+            ResultForm ResForm = new ResultForm(this, GetBlocksCombinations());
             ResForm.ShowDialog();
         }
 

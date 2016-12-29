@@ -31,8 +31,9 @@ namespace tryhard
 
     public static class CalculationManager
     {
-        public static Dictionary<int, CalcBlock> CalculateBlocksCombination(CMeta AMeta, Dictionary<int, CalcBlock> BlocksCombination)
+        public static List<Dictionary<int, CalcBlock>> CalculateBlocksCombination(CMeta AMeta, Dictionary<int, CalcBlock> BlocksCombination)
         {
+            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
             bool isAllBlocksCalculated = false;
             while (!isAllBlocksCalculated)
             {
@@ -91,7 +92,8 @@ namespace tryhard
                     }
                 }
             }
-            return BlocksCombination;
+            Combinations.Add(BlocksCombination);
+            return Combinations;
         }
     }
 }
