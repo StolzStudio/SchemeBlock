@@ -27,11 +27,79 @@ namespace tryhard
             BlockId= ABlockId;
             Count = 1;
         }
+
+        public CalcBlock(CalcBlock AOther)
+        {
+            AOther.Index = Index;
+            AOther.Count = Count;
+            AOther.isDone = isDone;
+            AOther.BlockClass = BlockClass;
+            AOther.BlockId = BlockId;
+            AOther.InputLinks = InputLinks;
+            AOther.OutputLinks = OutputLinks;
+        }
     }
 
-    public static class CalculationManager
+    public class CalculationManager
     {
-        private static Dictionary<int, CalcBlock> CalculateBlocksCombination(CMeta AMeta, 
+        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, 
+                                                                                   Dictionary<int, CalcBlock> BaseBlocks)
+        {
+            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
+            List<Dictionary<int, CalcBlock>> NotCountedCombinations = new List<Dictionary<int, CalcBlock>>();
+            NotCountedCombinations = GetAllCombinations(AMeta, BaseBlocks);
+            foreach (Dictionary<int, CalcBlock> Combination in NotCountedCombinations)
+                Combinations.Add(CalculateBlocksCombination(AMeta, Combination));
+            return Combinations;
+        }
+
+        private List<Dictionary<int, CalcBlock>> GetAllCombinations(CMeta AMeta,
+                                                                           Dictionary<int, CalcBlock> BaseBlocks)
+        {
+            Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
+            List<int> BlockKeys = new List<int>();
+            int FirstKey = -1;
+            foreach (int Key in BaseBlocks.Keys)
+            {
+                BlockKeys.Add(Key);
+                if (!AllFieldsId.ContainsKey(BaseBlocks[Key].BlockClass))
+                {
+                    string TableName = BaseBlocks[Key].BlockClass;
+                    AllFieldsId.Add(TableName, AMeta.GetTableOfName(TableName).IdList);
+                }
+            }
+            List<Dictionary<int, CalcBlock>> AllCombinations = new List<Dictionary<int, CalcBlock>>();
+            int BlockKeysIdx = 0;
+            foreach (string FieldId in AllFieldsId[BaseBlocks[BlockKeys[BlockKeysIdx]].BlockClass])
+            {
+                Dictionary<int, CalcBlock> Combination = new Dictionary<int, CalcBlock>(BaseBlocks);
+                Combination[BlockKeys[BlockKeysIdx]].BlockId = FieldId;
+                AllCombinations.AddRange(GetCombination(Combination, BlockKeys, BlockKeysIdx + 1, AllFieldsId));
+            }
+            return AllCombinations;
+        }
+        
+        private List<Dictionary<int, CalcBlock>> GetCombination(Dictionary<int, CalcBlock> ACombination,
+            List<int> ABlockKeys, int ABlockKeysIdx, Dictionary<string, List<string>> AAllFieldsId)
+        {
+            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
+            if (ABlockKeysIdx < ABlockKeys.Count)
+            {
+                foreach (string FieldId in AAllFieldsId[ACombination[ABlockKeys[ABlockKeysIdx]].BlockClass])
+                {
+                    Dictionary<int, CalcBlock> Combination;// = new Dictionary<int, CalcBlock>(ACombination);
+                    Combination = new Dictionary<int, CalcBlock>(ACombination);
+                    Combination[ABlockKeys[ABlockKeysIdx]].BlockId = FieldId;
+                    Combinations.AddRange(GetCombination(Combination, ABlockKeys, ABlockKeysIdx + 1, AAllFieldsId));
+                }
+            } else
+            {
+                Combinations.Add(ACombination);
+            }
+            return Combinations;
+        }
+
+        private Dictionary<int, CalcBlock> CalculateBlocksCombination(CMeta AMeta,
                                                                              Dictionary<int, CalcBlock> BlocksCombination)
         {
             bool isAllBlocksCalculated = false;
@@ -93,13 +161,6 @@ namespace tryhard
                 }
             }
             return BlocksCombination;
-        }
-
-        public static List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BlocksCombination)
-        {
-            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
-            Combinations.Add(CalculateBlocksCombination(AMeta, BlocksCombination));
-            return Combinations;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace tryhard
         public System.Drawing.Point DrawingPanelOffset;
       
         public SchemeManager Manager;
+        public CalculationManager CalcManager;
 
         /* Methods */
 
@@ -28,6 +29,7 @@ namespace tryhard
             Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
             Manager = new SchemeManager(this);
+            CalcManager = new CalculationManager();
             FillEquipmentCB();
             DrawingPanelOffset = DrawingPanel.Location;
         }   
@@ -136,7 +138,7 @@ namespace tryhard
                 CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                 CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
             }
-            return CalculationManager.CalculateBlocksCombinations(Meta, CalcBlocks);
+            return CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks);
         }
 
         private void CalcButton_Click(object sender, EventArgs e)

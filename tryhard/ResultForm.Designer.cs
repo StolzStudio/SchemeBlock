@@ -65,8 +65,7 @@ namespace tryhard
             this.CombinationGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CombinationGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.CombinationGridView.ColumnHeadersHeight = 35;
-            this.CombinationGridView.ColumnHeadersHeightSizeMode = 
-                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CombinationGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.CombinationGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassName,
             this.ModelName,
@@ -131,8 +130,7 @@ namespace tryhard
             this.CombinationsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CombinationsGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.CombinationsGridView.ColumnHeadersHeight = 35;
-            this.CombinationsGridView.ColumnHeadersHeightSizeMode =
-                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.CombinationsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.CombinationsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CombinationNum,
             this.CombinationWeight,
@@ -147,6 +145,7 @@ namespace tryhard
             this.CombinationsGridView.RowTemplate.Height = 20;
             this.CombinationsGridView.Size = new System.Drawing.Size(565, 324);
             this.CombinationsGridView.TabIndex = 1;
+            this.CombinationsGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CombinationsGridView_CellClick);
             // 
             // CombinationNum
             // 
