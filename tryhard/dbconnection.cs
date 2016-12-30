@@ -74,6 +74,19 @@ namespace tryhard
             return list_records;
         }
 
+        public List<string> GetListRecordsId(string ATableName)
+        {
+            cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT id FROM " + ATableName + ";";
+            reader = cmd.ExecuteReader();
+            List<string> list_id= new List<string>();
+            while (reader.Read())
+            {
+                list_id.Add(reader["id"].ToString());
+            }
+            return list_id;
+        }
+
         public List<string> GetListTableRows(string ATableName)
         {
             cmd = connection.CreateCommand();
