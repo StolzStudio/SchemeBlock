@@ -136,7 +136,7 @@ namespace tryhard
                 CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                 CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
             }
-            return CalculationManager.CalculateBlocksCombination(Meta, CalcBlocks);
+            return CalculationManager.CalculateBlocksCombinations(Meta, CalcBlocks);
         }
 
         private void CalcButton_Click(object sender, EventArgs e)
