@@ -83,6 +83,8 @@ namespace tryhard
             {
                 Blocks[key].ClearFocus();
             }
+
+            Form.DrawingPanel.Invalidate();
         }
 
         public void TrySetFocusInLinks(Point Coord)
