@@ -57,7 +57,8 @@ namespace tryhard
                 common_volume += volume;
                 common_cost += cost;
             }
-            FillCombinationsGridView(AIndex, common_weight, common_volume, common_cost);
+            if (AIndex != 0)
+                FillCombinationsGridView(AIndex, common_weight, common_volume, common_cost);
             if (AIndex == 0)
                 CombinationGridView.Rows.Add("", "", "Итого: ", common_weight, common_volume, common_cost);
         }
@@ -75,7 +76,8 @@ namespace tryhard
 
         private void CombinationsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            FillCombinationGridView(0, (BlocksCombinations[e.RowIndex]));
+            if (e.RowIndex >= 0 && e.RowIndex < BlocksCombinations.Count)
+                FillCombinationGridView(0, (BlocksCombinations[e.RowIndex]));
         }
     }
 }
