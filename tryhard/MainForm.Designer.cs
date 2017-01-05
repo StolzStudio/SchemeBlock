@@ -55,9 +55,16 @@ namespace tryhard
             this.PictureBox = new System.Windows.Forms.PictureBox();
             this.CalcButton = new System.Windows.Forms.Button();
             this.DeleteBlockButton = new System.Windows.Forms.Button();
+            this.MeetPanel = new System.Windows.Forms.Panel();
+            this.GoCalcPanelButton = new System.Windows.Forms.Button();
+            this.GoDrawingPanelButton = new System.Windows.Forms.Button();
             this.DrawingPanel = new tryhard.DrawPanel();
+            this.ShowDrawingPanelButton = new System.Windows.Forms.Button();
+            this.CalcPanel = new System.Windows.Forms.Panel();
+            this.ShowCalcPanelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
+            this.MeetPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddBlockButton
@@ -177,9 +184,9 @@ namespace tryhard
             this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CalcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalcButton.Location = new System.Drawing.Point(717, 15);
+            this.CalcButton.Location = new System.Drawing.Point(715, 15);
             this.CalcButton.Name = "CalcButton";
-            this.CalcButton.Size = new System.Drawing.Size(118, 30);
+            this.CalcButton.Size = new System.Drawing.Size(120, 30);
             this.CalcButton.TabIndex = 12;
             this.CalcButton.Text = "Рассчитать";
             this.CalcButton.UseVisualStyleBackColor = true;
@@ -199,6 +206,39 @@ namespace tryhard
             this.DeleteBlockButton.Visible = false;
             this.DeleteBlockButton.Click += new System.EventHandler(this.DeleteBlockButton_Click);
             // 
+            // MeetPanel
+            // 
+            this.MeetPanel.Controls.Add(this.GoCalcPanelButton);
+            this.MeetPanel.Controls.Add(this.GoDrawingPanelButton);
+            this.MeetPanel.Location = new System.Drawing.Point(15, 50);
+            this.MeetPanel.Name = "MeetPanel";
+            this.MeetPanel.Size = new System.Drawing.Size(820, 620);
+            this.MeetPanel.TabIndex = 14;
+            // 
+            // GoCalcPanelButton
+            // 
+            this.GoCalcPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoCalcPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GoCalcPanelButton.Location = new System.Drawing.Point(254, 271);
+            this.GoCalcPanelButton.Name = "GoCalcPanelButton";
+            this.GoCalcPanelButton.Size = new System.Drawing.Size(266, 75);
+            this.GoCalcPanelButton.TabIndex = 1;
+            this.GoCalcPanelButton.Text = "Go to calc panel";
+            this.GoCalcPanelButton.UseVisualStyleBackColor = true;
+            this.GoCalcPanelButton.Click += new System.EventHandler(this.ShowCalcPanelButton_Click);
+            // 
+            // GoDrawingPanelButton
+            // 
+            this.GoDrawingPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoDrawingPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GoDrawingPanelButton.Location = new System.Drawing.Point(254, 143);
+            this.GoDrawingPanelButton.Name = "GoDrawingPanelButton";
+            this.GoDrawingPanelButton.Size = new System.Drawing.Size(266, 75);
+            this.GoDrawingPanelButton.TabIndex = 0;
+            this.GoDrawingPanelButton.Text = "Go to drawing panel";
+            this.GoDrawingPanelButton.UseVisualStyleBackColor = true;
+            this.GoDrawingPanelButton.Click += new System.EventHandler(this.ShowDrawingPanelButton_Click);
+            // 
             // DrawingPanel
             // 
             this.DrawingPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -210,17 +250,50 @@ namespace tryhard
             this.DrawingPanel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.DrawingPanel.Location = new System.Drawing.Point(15, 50);
             this.DrawingPanel.Name = "DrawingPanel";
-            this.DrawingPanel.Size = new System.Drawing.Size(820, 619);
+            this.DrawingPanel.Size = new System.Drawing.Size(820, 620);
             this.DrawingPanel.TabIndex = 0;
             this.DrawingPanel.Click += new System.EventHandler(this.DrawingPanel_Click);
             this.DrawingPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPanel_Paint);
+            // 
+            // ShowDrawingPanelButton
+            // 
+            this.ShowDrawingPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ShowDrawingPanelButton.Location = new System.Drawing.Point(15, 15);
+            this.ShowDrawingPanelButton.Name = "ShowDrawingPanelButton";
+            this.ShowDrawingPanelButton.Size = new System.Drawing.Size(120, 30);
+            this.ShowDrawingPanelButton.TabIndex = 15;
+            this.ShowDrawingPanelButton.Text = "Drawing panel";
+            this.ShowDrawingPanelButton.UseVisualStyleBackColor = true;
+            this.ShowDrawingPanelButton.Click += new System.EventHandler(this.ShowDrawingPanelButton_Click);
+            // 
+            // CalcPanel
+            // 
+            this.CalcPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CalcPanel.Location = new System.Drawing.Point(15, 50);
+            this.CalcPanel.Name = "CalcPanel";
+            this.CalcPanel.Size = new System.Drawing.Size(820, 620);
+            this.CalcPanel.TabIndex = 16;
+            // 
+            // ShowCalcPanelButton
+            // 
+            this.ShowCalcPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ShowCalcPanelButton.Location = new System.Drawing.Point(141, 14);
+            this.ShowCalcPanelButton.Name = "ShowCalcPanelButton";
+            this.ShowCalcPanelButton.Size = new System.Drawing.Size(120, 30);
+            this.ShowCalcPanelButton.TabIndex = 17;
+            this.ShowCalcPanelButton.Text = "Calc panel";
+            this.ShowCalcPanelButton.UseVisualStyleBackColor = true;
+            this.ShowCalcPanelButton.Click += new System.EventHandler(this.ShowCalcPanelButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.ShowCalcPanelButton);
+            this.Controls.Add(this.ShowDrawingPanelButton);
+            this.Controls.Add(this.MeetPanel);
             this.Controls.Add(this.DeleteBlockButton);
             this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.PictureBox);
@@ -231,12 +304,14 @@ namespace tryhard
             this.Controls.Add(this.EquipmentCB);
             this.Controls.Add(this.AddBlockButton);
             this.Controls.Add(this.DrawingPanel);
+            this.Controls.Add(this.CalcPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
             this.Text = "Gaby";
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
+            this.MeetPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,6 +331,12 @@ namespace tryhard
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn Parameters;
         public  Button DeleteBlockButton;
+        private Panel MeetPanel;
+        private Button GoDrawingPanelButton;
+        private Button ShowDrawingPanelButton;
+        private Button GoCalcPanelButton;
+        private Panel CalcPanel;
+        private Button ShowCalcPanelButton;
     }
 }
 

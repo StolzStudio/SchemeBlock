@@ -194,5 +194,15 @@ namespace tryhard
                 return false;
             }
         }
+
+        private void ShowDrawingPanelButton_Click(object sender, EventArgs e)
+        {
+            DrawingPanel.BringToFront();
+        }
+
+        private void ShowCalcPanelButton_Click(object sender, EventArgs e)
+        {
+            CalcPanel.BringToFront();
+        }
     }
 }
