@@ -39,14 +39,14 @@ namespace tryhard
 
         public Point GetFirstBlockPointLocation(MainForm AForm)
         {
-            SchemeBlock Block = AForm.Manager.Blocks[FirstBlockIndex];
+            SchemeBlock Block = AForm.SchemeManager.Blocks[FirstBlockIndex];
             return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }
 
         public Point GetSecondBlockPointLocation(MainForm AForm)
         {
-            SchemeBlock Block = AForm.Manager.Blocks[SecondBlockIndex];
+            SchemeBlock Block = AForm.SchemeManager.Blocks[SecondBlockIndex];
             return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }

@@ -103,8 +103,8 @@ namespace tryhard
         public void SetFocus()
         {
             this.isFocus             = true;
-            Form.Manager.isHaveSelectedBlock = true;
-            Form.Manager.SelectedBlockIndex  = this.Index;
+            Form.SchemeManager.isHaveSelectedBlock = true;
+            Form.SchemeManager.SelectedBlockIndex  = this.Index;
             Graphics g        = this.BlockBody.CreateGraphics();
             Pen      BlackPen = new Pen(Color.Black, 4);
             g.DrawRectangle(BlackPen, 
@@ -118,7 +118,7 @@ namespace tryhard
         public void ClearFocus()
         {
             this.isFocus                   = false;
-            Form.Manager.isHaveSelectedBlock = false;
+            Form.SchemeManager.isHaveSelectedBlock = false;
             Form.DeleteBlockButton.Visible = false;
             this.BlockBody.Invalidate();
         }
@@ -138,22 +138,22 @@ namespace tryhard
                 isCtrlDown = false;
             }
 
-            if ((Form.Manager.isHaveSelectedBlock) && (Form.Manager.SelectedBlockIndex != this.Index) && isCtrlDown)
+            if ((Form.SchemeManager.isHaveSelectedBlock) && (Form.SchemeManager.SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.Manager.CheckLink(Form.Manager.SelectedBlockIndex, this.Index) && 
-                     Form.Meta.isPossibleLink(Form.Manager.Blocks[Form.Manager.SelectedBlockIndex].BlockClass, this.BlockClass))
+                if (!Form.SchemeManager.CheckLink(Form.SchemeManager.SelectedBlockIndex, this.Index) && 
+                     Form.Meta.isPossibleLink(Form.SchemeManager.Blocks[Form.SchemeManager.SelectedBlockIndex].BlockClass, this.BlockClass))
                 {
-                    Form.Manager.isHaveSelectedBlock = false;
+                    Form.SchemeManager.isHaveSelectedBlock = false;
                     isCtrlDown = false;
-                    Form.Manager.ClearLinksFocus();
-                    Form.Manager.AddSchemeLink(new SchemeLink(Form.Manager.SelectedBlockIndex, this.Index));
+                    Form.SchemeManager.ClearLinksFocus();
+                    Form.SchemeManager.AddSchemeLink(new SchemeLink(Form.SchemeManager.SelectedBlockIndex, this.Index));
                 }
             }
             else
             {
-                Form.Manager.isHaveSelectedBlock = true;
-                Form.Manager.SelectedBlockIndex = this.Index;
+                Form.SchemeManager.isHaveSelectedBlock = true;
+                Form.SchemeManager.SelectedBlockIndex = this.Index;
             }
 
             Form.SetComboBoxes(this.BlockClass, this.BlockId);
@@ -165,9 +165,9 @@ namespace tryhard
         {
             if (!isFocus)
             {
-                foreach (int Key in Form.Manager.Blocks.Keys)
+                foreach (int Key in Form.SchemeManager.Blocks.Keys)
                 {
-                    Form.Manager.Blocks[Key].ClearFocus();
+                    Form.SchemeManager.Blocks[Key].ClearFocus();
                 }
                 this.SetFocus();
             }
