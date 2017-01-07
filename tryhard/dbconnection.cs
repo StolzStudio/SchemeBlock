@@ -10,6 +10,7 @@ namespace tryhard
     {
         /* Field */
 
+        private List<string> UnvisibleTables = new List<string>() { "equipment_matching", "oil_quality" };
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
         private SQLiteDataReader reader = null;
@@ -49,7 +50,6 @@ namespace tryhard
 
         public List<string> GetListTables ()
         {
-            List<string> UnusedTables = new List<string>() { "equipment_matching", "oil_quality" };
             cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT name FROM sqlite_master WHERE type = 'table';";
             reader = cmd.ExecuteReader();
@@ -57,7 +57,7 @@ namespace tryhard
             while (reader.Read())
             {
                 string table_name = reader["name"].ToString();
-                if (!UnusedTables.Contains(table_name))
+                if (!UnvisibleTables.Contains(table_name))
                     list_tables.Add(table_name);
             }
             return list_tables;
