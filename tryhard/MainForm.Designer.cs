@@ -79,12 +79,12 @@ namespace tryhard
             this.CalcButton = new System.Windows.Forms.Button();
             this.DeleteBlockButton = new System.Windows.Forms.Button();
             this.MeetPanel = new System.Windows.Forms.Panel();
-            this.GoCalcPanelButton = new System.Windows.Forms.Button();
-            this.GoDrawingPanelButton = new System.Windows.Forms.Button();
+            this.GoObjectPageButton = new System.Windows.Forms.Button();
+            this.GoDrawingPageButton = new System.Windows.Forms.Button();
             this.ControlsPanel = new System.Windows.Forms.Panel();
             this.PagesControl = new System.Windows.Forms.TabControl();
-            this.DrawingPage = new tryhard.DrawTabPage();
-            this.CalcPage = new tryhard.DrawTabPage();
+            this.SchemePage = new tryhard.DrawTabPage();
+            this.ObjectPage = new tryhard.DrawTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.MeetPanel.SuspendLayout();
@@ -233,36 +233,36 @@ namespace tryhard
             // 
             // MeetPanel
             // 
-            this.MeetPanel.Controls.Add(this.GoCalcPanelButton);
-            this.MeetPanel.Controls.Add(this.GoDrawingPanelButton);
+            this.MeetPanel.Controls.Add(this.GoObjectPageButton);
+            this.MeetPanel.Controls.Add(this.GoDrawingPageButton);
             this.MeetPanel.Location = new System.Drawing.Point(15, 15);
             this.MeetPanel.Name = "MeetPanel";
             this.MeetPanel.Size = new System.Drawing.Size(820, 655);
             this.MeetPanel.TabIndex = 14;
             // 
-            // GoCalcPanelButton
+            // GoObjectPageButton
             // 
-            this.GoCalcPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoCalcPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GoCalcPanelButton.Location = new System.Drawing.Point(500, 275);
-            this.GoCalcPanelButton.Name = "GoCalcPanelButton";
-            this.GoCalcPanelButton.Size = new System.Drawing.Size(260, 75);
-            this.GoCalcPanelButton.TabIndex = 1;
-            this.GoCalcPanelButton.Text = "Go to calc panel";
-            this.GoCalcPanelButton.UseVisualStyleBackColor = true;
-            this.GoCalcPanelButton.Click += new System.EventHandler(this.ShowCalcPanelButton_Click);
+            this.GoObjectPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoObjectPageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GoObjectPageButton.Location = new System.Drawing.Point(500, 275);
+            this.GoObjectPageButton.Name = "GoObjectPageButton";
+            this.GoObjectPageButton.Size = new System.Drawing.Size(260, 75);
+            this.GoObjectPageButton.TabIndex = 1;
+            this.GoObjectPageButton.Text = "Go to object page";
+            this.GoObjectPageButton.UseVisualStyleBackColor = true;
+            this.GoObjectPageButton.Click += new System.EventHandler(this.ShowObjectPageButton_Click);
             // 
-            // GoDrawingPanelButton
+            // GoDrawingPageButton
             // 
-            this.GoDrawingPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoDrawingPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GoDrawingPanelButton.Location = new System.Drawing.Point(500, 145);
-            this.GoDrawingPanelButton.Name = "GoDrawingPanelButton";
-            this.GoDrawingPanelButton.Size = new System.Drawing.Size(260, 75);
-            this.GoDrawingPanelButton.TabIndex = 0;
-            this.GoDrawingPanelButton.Text = "Go to drawing panel";
-            this.GoDrawingPanelButton.UseVisualStyleBackColor = true;
-            this.GoDrawingPanelButton.Click += new System.EventHandler(this.ShowDrawingPanelButton_Click);
+            this.GoDrawingPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoDrawingPageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GoDrawingPageButton.Location = new System.Drawing.Point(500, 145);
+            this.GoDrawingPageButton.Name = "GoDrawingPageButton";
+            this.GoDrawingPageButton.Size = new System.Drawing.Size(260, 75);
+            this.GoDrawingPageButton.TabIndex = 0;
+            this.GoDrawingPageButton.Text = "Go to scheme page";
+            this.GoDrawingPageButton.UseVisualStyleBackColor = true;
+            this.GoDrawingPageButton.Click += new System.EventHandler(this.ShowSchemePageButton_Click);
             // 
             // ControlsPanel
             // 
@@ -281,37 +281,37 @@ namespace tryhard
             // 
             // PagesControl
             // 
-            this.PagesControl.Controls.Add(this.DrawingPage);
-            this.PagesControl.Controls.Add(this.CalcPage);
+            this.PagesControl.Controls.Add(this.SchemePage);
+            this.PagesControl.Controls.Add(this.ObjectPage);
             this.PagesControl.Location = new System.Drawing.Point(15, 15);
             this.PagesControl.Name = "PagesControl";
             this.PagesControl.SelectedIndex = 0;
             this.PagesControl.Size = new System.Drawing.Size(820, 655);
             this.PagesControl.TabIndex = 2;
             // 
-            // DrawingPage
+            // SchemePage
             // 
-            this.DrawingPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DrawingPage.Location = new System.Drawing.Point(4, 22);
-            this.DrawingPage.Name = "DrawingPage";
-            this.DrawingPage.Padding = new System.Windows.Forms.Padding(3);
-            this.DrawingPage.Size = new System.Drawing.Size(812, 629);
-            this.DrawingPage.TabIndex = 0;
-            this.DrawingPage.Text = "Drawing Page";
-            this.DrawingPage.UseVisualStyleBackColor = true;
-            this.DrawingPage.Click += new System.EventHandler(this.DrawingPage_Click);
-            this.DrawingPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawingPage_Paint);
+            this.SchemePage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SchemePage.Location = new System.Drawing.Point(4, 22);
+            this.SchemePage.Name = "SchemePage";
+            this.SchemePage.Padding = new System.Windows.Forms.Padding(3);
+            this.SchemePage.Size = new System.Drawing.Size(812, 629);
+            this.SchemePage.TabIndex = 0;
+            this.SchemePage.Text = "Scheme Page";
+            this.SchemePage.UseVisualStyleBackColor = true;
+            this.SchemePage.Click += new System.EventHandler(this.ShemePage_Click);
+            this.SchemePage.Paint += new System.Windows.Forms.PaintEventHandler(this.SchemePage_Paint);
             // 
-            // CalcPage
+            // ObjectPage
             // 
-            this.CalcPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CalcPage.Location = new System.Drawing.Point(4, 22);
-            this.CalcPage.Name = "CalcPage";
-            this.CalcPage.Padding = new System.Windows.Forms.Padding(3);
-            this.CalcPage.Size = new System.Drawing.Size(812, 629);
-            this.CalcPage.TabIndex = 1;
-            this.CalcPage.Text = "Calc Page";
-            this.CalcPage.UseVisualStyleBackColor = true;
+            this.ObjectPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ObjectPage.Location = new System.Drawing.Point(4, 22);
+            this.ObjectPage.Name = "ObjectPage";
+            this.ObjectPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ObjectPage.Size = new System.Drawing.Size(812, 629);
+            this.ObjectPage.TabIndex = 1;
+            this.ObjectPage.Text = "Object Page";
+            this.ObjectPage.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -350,11 +350,11 @@ namespace tryhard
         private DataGridViewTextBoxColumn Parameters;
         public  Button DeleteBlockButton;
         private Panel MeetPanel;
-        private Button GoDrawingPanelButton;
-        private Button GoCalcPanelButton;
+        private Button GoDrawingPageButton;
+        private Button GoObjectPageButton;
         private TabControl PagesControl;
-        public DrawTabPage DrawingPage;
-        public DrawTabPage CalcPage;
+        public DrawTabPage SchemePage;
+        public DrawTabPage ObjectPage;
         private Panel ControlsPanel;
     }
 }

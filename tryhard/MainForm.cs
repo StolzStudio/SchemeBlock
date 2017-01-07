@@ -144,15 +144,15 @@ namespace tryhard
 
             if (SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].isFocus)
             {
-                DrawingPage.Controls.Remove(SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].BlockBody);
+                SchemePage.Controls.Remove(SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].BlockBody);
                 SchemeManager.Blocks.Remove(SchemeManager.SelectedBlockIndex);
                 SchemeManager.isHaveSelectedBlock = false;
                 SchemeManager.SelectedBlockIndex = -1;
             }
 
 
-            DrawingPage_Click(sender, e);
-            DrawingPage.Invalidate();
+            ShemePage_Click(sender, e);
+            SchemePage.Invalidate();
         }
 
         private bool IsLinkNull(SchemeLink TestLink)
@@ -167,26 +167,21 @@ namespace tryhard
             }
         }
 
-        private void ShowDrawingPanelButton_Click(object sender, EventArgs e)
+        private void ShowObjectPageButton_Click(object sender, EventArgs e)
         {
             MeetPanel.SendToBack();
-            PagesControl.SelectTab(DrawingPage);
+            PagesControl.SelectTab(ObjectPage);
             ControlsPanel.Visible = true;
         }
 
-        private void ShowCalcPanelButton_Click(object sender, EventArgs e)
+        private void ShowSchemePageButton_Click(object sender, EventArgs e)
         {
             MeetPanel.SendToBack();
-            PagesControl.SelectTab(CalcPage);
+            PagesControl.SelectTab(SchemePage);
             ControlsPanel.Visible = true;
         }
 
-        private void CalcPanel_Click(object sender, EventArgs e)
-        {
-            ShowCalcPanelButton_Click(sender, e);
-        }
-
-        private void DrawingPage_Click(object sender, EventArgs e)
+        private void ShemePage_Click(object sender, EventArgs e)
         {
             SchemeManager.ClearLinksFocus();
             SchemeManager.ClearBlocksFocus();
@@ -203,7 +198,7 @@ namespace tryhard
             SchemeManager.TrySetFocusInLinks(ptr);
         }
 
-        private void DrawingPage_Paint(object sender, PaintEventArgs e)
+        private void SchemePage_Paint(object sender, PaintEventArgs e)
         {
             if (SchemeManager.Links.Count != 0)
             {
