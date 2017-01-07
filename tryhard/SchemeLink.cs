@@ -12,21 +12,22 @@ namespace tryhard
 
     public class SchemeLink
     {
-        /* Properties */
-
-        public int FirstBlockIndex  { get; set; }
-        public int SecondBlockIndex { get; set; }
-        public bool isFocus { get; set; }
-
-        /* Fields */
-
-        private Point[] Points;
+        //
+        //Properties
+        //
+        public int  FirstBlockIndex  { get; set; }
+        public int  SecondBlockIndex { get; set; }
+        public bool isFocus          { get; set; }
+        //
+        //Fields
+        //
+        private Point[]  Points;
         private LineType FirstLine;
-        private Color ArrowColor;
-        private Color SelectArrowColor;
-
-        /* Methods */
-
+        private Color    ArrowColor;
+        private Color    SelectArrowColor;
+        //
+        //Methods
+        //
         public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
             Points           = new Point[4];
@@ -36,7 +37,9 @@ namespace tryhard
             SecondBlockIndex = ASecondBlockIndex;
             isFocus          = true;
         }
-
+        //
+        //take point location
+        //
         public Point GetFirstBlockPointLocation(MainForm AForm)
         {
             SchemeBlock Block = AForm.SchemeManager.Blocks[FirstBlockIndex];
@@ -50,22 +53,20 @@ namespace tryhard
             return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
                              Block.PointLocation.Y + Block.BlockBody.Location.Y);
         }
-
+        //
+        //check link to delete
+        //
         public bool CheckDeletedLink(int AIndex)
         {
-            if ((AIndex == FirstBlockIndex)||(AIndex == SecondBlockIndex))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            if ((AIndex == FirstBlockIndex)||(AIndex == SecondBlockIndex)) { return true;  }
+                                                                      else { return false; }
         }
-
+        //
+        //draw link
+        //
         public void Draw(MainForm AForm, PaintEventArgs e)
         {
-            Pen pen   = new Pen(this.ArrowColor);
+            Pen pen = new Pen(this.ArrowColor);
 
             if (this.isFocus)
             {
@@ -96,14 +97,12 @@ namespace tryhard
             }
 
             DrawPointer(e, pen);
-
         }
 
         private void DrawPointer(PaintEventArgs e, Pen p)
         {
             Point[] Ptr = new Point[3];
-
-            Brush b = new SolidBrush(p.Color);
+            Brush   b   = new SolidBrush(p.Color);
 
             int Width = 40;
 
@@ -144,7 +143,9 @@ namespace tryhard
             e.Graphics.DrawPolygon(p, Ptr);
             e.Graphics.FillPolygon(b, Ptr);
         }
-
+        //
+        //work with focus
+        //
         public void TrySetFocus(Point Coord)
         {
             if (FirstLine == LineType.LTHorizontal)
@@ -167,16 +168,9 @@ namespace tryhard
             int min;
             int max;
 
-            if (Pnt0 <= Pnt1)
-            {
-                min = Pnt0;
-                max = Pnt1;
-            }
-            else
-            {
-                min = Pnt1;
-                max = Pnt0;
-            }
+            if (Pnt0 <= Pnt1) { min = Pnt0; max = Pnt1; }
+                         else { min = Pnt1; max = Pnt0; }
+
             if ((min - SelectOffset <= Pnt2) && (Pnt2 <= max + SelectOffset))
             {
                 if ((Pnt0_1 - SelectOffset <= Pnt2_1) && (Pnt2_1 <= Pnt0_1 + SelectOffset))
