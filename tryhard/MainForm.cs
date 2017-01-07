@@ -22,8 +22,6 @@ namespace tryhard
         public SchemeManager SchemeManager;
         public CalculationManager CalcManager;
 
-        private Point[] DrawingPanelPoints = new Point[6] { new Point(0, -45), new Point(120, -45), new Point(130, 0), new Point(820, 0), new Point(820, 655), new Point(0, 655) };
-        private Point[] CalcPanelPoints    = new Point[8] { new Point(0, 0), new Point(120, 0), new Point(120, -45), new Point(240, -45), new Point(250, 0), new Point(820, 0), new Point(820, 655), new Point(0, 655) };
         /* Methods */
 
         public MainForm()
