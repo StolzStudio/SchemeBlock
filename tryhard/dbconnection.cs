@@ -49,13 +49,16 @@ namespace tryhard
 
         public List<string> GetListTables ()
         {
+            List<string> UnusedTables = new List<string>() { "equipment_matching", "oil_quality" };
             cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT name FROM sqlite_master WHERE type = 'table';";
             reader = cmd.ExecuteReader();
             List<string> list_tables = new List<string>();
             while (reader.Read())
             {
-                list_tables.Add(reader["name"].ToString());
+                string table_name = reader["name"].ToString();
+                if (!UnusedTables.Contains(table_name))
+                    list_tables.Add(table_name);
             }
             return list_tables;
         }
