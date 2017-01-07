@@ -81,12 +81,14 @@ namespace tryhard
             this.MeetPanel = new System.Windows.Forms.Panel();
             this.GoCalcPanelButton = new System.Windows.Forms.Button();
             this.GoDrawingPanelButton = new System.Windows.Forms.Button();
+            this.ControlsPanel = new System.Windows.Forms.Panel();
             this.PagesControl = new System.Windows.Forms.TabControl();
             this.DrawingPage = new tryhard.DrawTabPage();
             this.CalcPage = new tryhard.DrawTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.MeetPanel.SuspendLayout();
+            this.ControlsPanel.SuspendLayout();
             this.PagesControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +97,7 @@ namespace tryhard
             this.AddBlockButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddBlockButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddBlockButton.Location = new System.Drawing.Point(855, 15);
+            this.AddBlockButton.Location = new System.Drawing.Point(0, 0);
             this.AddBlockButton.Name = "AddBlockButton";
             this.AddBlockButton.Size = new System.Drawing.Size(70, 70);
             this.AddBlockButton.TabIndex = 1;
@@ -111,7 +113,7 @@ namespace tryhard
             this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EquipmentCB.FormattingEnabled = true;
-            this.EquipmentCB.Location = new System.Drawing.Point(940, 50);
+            this.EquipmentCB.Location = new System.Drawing.Point(85, 35);
             this.EquipmentCB.Name = "EquipmentCB";
             this.EquipmentCB.Size = new System.Drawing.Size(145, 28);
             this.EquipmentCB.TabIndex = 2;
@@ -124,7 +126,7 @@ namespace tryhard
             this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ModelCB.FormattingEnabled = true;
-            this.ModelCB.Location = new System.Drawing.Point(1105, 50);
+            this.ModelCB.Location = new System.Drawing.Point(250, 35);
             this.ModelCB.Name = "ModelCB";
             this.ModelCB.Size = new System.Drawing.Size(145, 28);
             this.ModelCB.TabIndex = 3;
@@ -135,7 +137,7 @@ namespace tryhard
             this.EquipmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EquipmentLabel.AutoSize = true;
             this.EquipmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EquipmentLabel.Location = new System.Drawing.Point(940, 15);
+            this.EquipmentLabel.Location = new System.Drawing.Point(85, 0);
             this.EquipmentLabel.Name = "EquipmentLabel";
             this.EquipmentLabel.Size = new System.Drawing.Size(159, 18);
             this.EquipmentLabel.TabIndex = 4;
@@ -146,7 +148,7 @@ namespace tryhard
             this.ModelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ModelLabel.AutoSize = true;
             this.ModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModelLabel.Location = new System.Drawing.Point(1105, 15);
+            this.ModelLabel.Location = new System.Drawing.Point(250, 0);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(68, 18);
             this.ModelLabel.TabIndex = 5;
@@ -166,12 +168,12 @@ namespace tryhard
             this.name,
             this.Parameters});
             this.DataGridView.EnableHeadersVisualStyles = false;
-            this.DataGridView.Location = new System.Drawing.Point(940, 115);
+            this.DataGridView.Location = new System.Drawing.Point(85, 85);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
             this.DataGridView.RowTemplate.Height = 20;
-            this.DataGridView.Size = new System.Drawing.Size(310, 299);
+            this.DataGridView.Size = new System.Drawing.Size(310, 363);
             this.DataGridView.TabIndex = 10;
             // 
             // name
@@ -207,7 +209,7 @@ namespace tryhard
             this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CalcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalcButton.Location = new System.Drawing.Point(715, 15);
+            this.CalcButton.Location = new System.Drawing.Point(275, 451);
             this.CalcButton.Name = "CalcButton";
             this.CalcButton.Size = new System.Drawing.Size(120, 30);
             this.CalcButton.TabIndex = 12;
@@ -220,7 +222,7 @@ namespace tryhard
             this.DeleteBlockButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteBlockButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DeleteBlockButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteBlockButton.Location = new System.Drawing.Point(855, 115);
+            this.DeleteBlockButton.Location = new System.Drawing.Point(0, 100);
             this.DeleteBlockButton.Name = "DeleteBlockButton";
             this.DeleteBlockButton.Size = new System.Drawing.Size(70, 70);
             this.DeleteBlockButton.TabIndex = 13;
@@ -242,9 +244,9 @@ namespace tryhard
             // 
             this.GoCalcPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoCalcPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GoCalcPanelButton.Location = new System.Drawing.Point(254, 271);
+            this.GoCalcPanelButton.Location = new System.Drawing.Point(500, 275);
             this.GoCalcPanelButton.Name = "GoCalcPanelButton";
-            this.GoCalcPanelButton.Size = new System.Drawing.Size(266, 75);
+            this.GoCalcPanelButton.Size = new System.Drawing.Size(260, 75);
             this.GoCalcPanelButton.TabIndex = 1;
             this.GoCalcPanelButton.Text = "Go to calc panel";
             this.GoCalcPanelButton.UseVisualStyleBackColor = true;
@@ -254,13 +256,28 @@ namespace tryhard
             // 
             this.GoDrawingPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoDrawingPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GoDrawingPanelButton.Location = new System.Drawing.Point(254, 143);
+            this.GoDrawingPanelButton.Location = new System.Drawing.Point(500, 145);
             this.GoDrawingPanelButton.Name = "GoDrawingPanelButton";
-            this.GoDrawingPanelButton.Size = new System.Drawing.Size(266, 75);
+            this.GoDrawingPanelButton.Size = new System.Drawing.Size(260, 75);
             this.GoDrawingPanelButton.TabIndex = 0;
             this.GoDrawingPanelButton.Text = "Go to drawing panel";
             this.GoDrawingPanelButton.UseVisualStyleBackColor = true;
             this.GoDrawingPanelButton.Click += new System.EventHandler(this.ShowDrawingPanelButton_Click);
+            // 
+            // ControlsPanel
+            // 
+            this.ControlsPanel.Controls.Add(this.DataGridView);
+            this.ControlsPanel.Controls.Add(this.AddBlockButton);
+            this.ControlsPanel.Controls.Add(this.CalcButton);
+            this.ControlsPanel.Controls.Add(this.EquipmentCB);
+            this.ControlsPanel.Controls.Add(this.DeleteBlockButton);
+            this.ControlsPanel.Controls.Add(this.ModelCB);
+            this.ControlsPanel.Controls.Add(this.EquipmentLabel);
+            this.ControlsPanel.Controls.Add(this.ModelLabel);
+            this.ControlsPanel.Location = new System.Drawing.Point(855, 15);
+            this.ControlsPanel.Name = "ControlsPanel";
+            this.ControlsPanel.Size = new System.Drawing.Size(395, 486);
+            this.ControlsPanel.TabIndex = 15;
             // 
             // PagesControl
             // 
@@ -302,17 +319,10 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.ControlsPanel);
             this.Controls.Add(this.MeetPanel);
             this.Controls.Add(this.PagesControl);
-            this.Controls.Add(this.DeleteBlockButton);
-            this.Controls.Add(this.CalcButton);
             this.Controls.Add(this.PictureBox);
-            this.Controls.Add(this.DataGridView);
-            this.Controls.Add(this.ModelLabel);
-            this.Controls.Add(this.EquipmentLabel);
-            this.Controls.Add(this.ModelCB);
-            this.Controls.Add(this.EquipmentCB);
-            this.Controls.Add(this.AddBlockButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
@@ -320,9 +330,10 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.MeetPanel.ResumeLayout(false);
+            this.ControlsPanel.ResumeLayout(false);
+            this.ControlsPanel.PerformLayout();
             this.PagesControl.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -344,6 +355,7 @@ namespace tryhard
         private TabControl PagesControl;
         public DrawTabPage DrawingPage;
         public DrawTabPage CalcPage;
+        private Panel ControlsPanel;
     }
 }
 

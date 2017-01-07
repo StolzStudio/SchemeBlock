@@ -28,6 +28,7 @@ namespace tryhard
         {
             Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
+            ControlsPanel.Visible = false;
             SchemeManager = new SchemeManager(this);
             CalcManager = new CalculationManager();
             FillEquipmentCB();
@@ -170,12 +171,14 @@ namespace tryhard
         {
             MeetPanel.SendToBack();
             PagesControl.SelectTab(DrawingPage);
+            ControlsPanel.Visible = true;
         }
 
         private void ShowCalcPanelButton_Click(object sender, EventArgs e)
         {
             MeetPanel.SendToBack();
             PagesControl.SelectTab(CalcPage);
+            ControlsPanel.Visible = true;
         }
 
         private void CalcPanel_Click(object sender, EventArgs e)
