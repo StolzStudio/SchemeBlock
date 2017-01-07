@@ -22,6 +22,8 @@ namespace tryhard
         public SchemeManager SchemeManager;
         public CalculationManager CalcManager;
 
+        private Point[] DrawingPanelPoints = new Point[6] { new Point(0, -45), new Point(120, -45), new Point(130, 0), new Point(820, 0), new Point(820, 655), new Point(0, 655) };
+        private Point[] CalcPanelPoints    = new Point[8] { new Point(0, 0), new Point(120, 0), new Point(120, -45), new Point(240, -45), new Point(250, 0), new Point(820, 0), new Point(820, 655), new Point(0, 655) };
         /* Methods */
 
         public MainForm()
@@ -31,23 +33,11 @@ namespace tryhard
             SchemeManager = new SchemeManager(this);
             CalcManager = new CalculationManager();
             FillEquipmentCB();
-            DrawingPanelOffset = DrawingPanel.Location;
         }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
             SchemeManager.isAddBlockButtonClick = true;
-        }
-
-        private void DrawingPanel_Paint(object sender, PaintEventArgs e)
-        {
-            if (SchemeManager.Links.Count != 0)
-            {
-                foreach(SchemeLink Link in SchemeManager.Links)
-                {
-                    Link.Draw(this, e);
-                }
-            }
         }
 
         /* Equipment ComboBoxes */
@@ -104,23 +94,6 @@ namespace tryhard
             }
         }
 
-        private void DrawingPanel_Click(object sender, EventArgs e)
-        {
-            SchemeManager.ClearLinksFocus();
-            SchemeManager.ClearBlocksFocus();
-
-            Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= DrawingPanel.Location.X;
-            ptr.Y -= DrawingPanel.Location.Y;
-            if (SchemeManager.isAddBlockButtonClick)
-            {
-                ptr.X -= SchemeBlock.BlockBodyWidth / 2;
-                ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
-                SchemeManager.AddBlock(ptr);
-            }
-            SchemeManager.TrySetFocusInLinks(ptr);
-        }
-
         public List<Dictionary<int, CalcBlock>> GetBlocksCombinations()
         {
             /* Fill Dict */
@@ -172,15 +145,15 @@ namespace tryhard
 
             if (SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].isFocus)
             {
-                DrawingPanel.Controls.Remove(SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].BlockBody);
+                DrawingPage.Controls.Remove(SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].BlockBody);
                 SchemeManager.Blocks.Remove(SchemeManager.SelectedBlockIndex);
                 SchemeManager.isHaveSelectedBlock = false;
                 SchemeManager.SelectedBlockIndex = -1;
             }
 
 
-            DrawingPanel_Click(sender, e);
-            DrawingPanel.Invalidate();
+            DrawingPage_Click(sender, e);
+            DrawingPage.Invalidate();
         }
 
         private bool IsLinkNull(SchemeLink TestLink)
@@ -197,12 +170,47 @@ namespace tryhard
 
         private void ShowDrawingPanelButton_Click(object sender, EventArgs e)
         {
-            DrawingPanel.BringToFront();
+            MeetPanel.SendToBack();
+            PagesControl.SelectTab(DrawingPage);
         }
 
         private void ShowCalcPanelButton_Click(object sender, EventArgs e)
         {
-            CalcPanel.BringToFront();
+            MeetPanel.SendToBack();
+            PagesControl.SelectTab(CalcPage);
+        }
+
+        private void CalcPanel_Click(object sender, EventArgs e)
+        {
+            ShowCalcPanelButton_Click(sender, e);
+        }
+
+        private void DrawingPage_Click(object sender, EventArgs e)
+        {
+            SchemeManager.ClearLinksFocus();
+            SchemeManager.ClearBlocksFocus();
+
+            Point ptr = PointToClient(Cursor.Position);
+            ptr.X -= PagesControl.Location.X;
+            ptr.Y -= PagesControl.Location.Y;
+            if (SchemeManager.isAddBlockButtonClick)
+            {
+                ptr.X -= SchemeBlock.BlockBodyWidth / 2;
+                ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
+                SchemeManager.AddBlock(ptr);
+            }
+            SchemeManager.TrySetFocusInLinks(ptr);
+        }
+
+        private void DrawingPage_Paint(object sender, PaintEventArgs e)
+        {
+            if (SchemeManager.Links.Count != 0)
+            {
+                foreach (SchemeLink Link in SchemeManager.Links)
+                {
+                    Link.Draw(this, e);
+                }
+            }
         }
     }
 }

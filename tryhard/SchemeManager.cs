@@ -55,7 +55,7 @@ namespace tryhard
         public void AddSchemeLink(SchemeLink ANewLink)
         {
             Links.Add(ANewLink);
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
 
         public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
@@ -74,7 +74,7 @@ namespace tryhard
                 link.isFocus = false;
             }
 
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
         
         public void ClearBlocksFocus()
@@ -84,7 +84,7 @@ namespace tryhard
                 Blocks[key].ClearFocus();
             }
 
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
 
         public void TrySetFocusInLinks(Point Coord)
@@ -97,7 +97,7 @@ namespace tryhard
                     Form.DeleteBlockButton.Visible = true;
                 }
             }
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
     }
 }

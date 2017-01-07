@@ -61,7 +61,7 @@ namespace tryhard
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Paint     += new PaintEventHandler(this.SchemeBodyRedraw);
-            this.Form.DrawingPanel.Controls.Add(BlockBody);
+            this.Form.DrawingPage.Controls.Add(BlockBody);
             this.SetFocus();
 
             /* BlockClassLabel */
@@ -185,7 +185,7 @@ namespace tryhard
                 this.BlockBody.Location = Pnt;
                 this.BlockBody.Invalidate();
             }
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
 
         private void SchemeBodyMouseUp(object sender, MouseEventArgs e)
@@ -199,13 +199,13 @@ namespace tryhard
                 isCtrlDown = false;
             }
             isMouseDown = false;
-            Form.DrawingPanel.Invalidate();
+            Form.DrawingPage.Invalidate();
         }
 
         private bool isPointValidate(Point Pnt)
         {
-            if (Pnt.X + this.BlockBody.Width <= Form.DrawingPanel.Width &&
-                Pnt.Y + this.BlockBody.Height <= Form.DrawingPanel.Height)
+            if (Pnt.X + this.BlockBody.Width <= Form.DrawingPage.Width &&
+                Pnt.Y + this.BlockBody.Height <= Form.DrawingPage.Height)
             {
                 return true;
             }
