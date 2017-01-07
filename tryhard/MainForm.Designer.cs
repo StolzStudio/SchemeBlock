@@ -206,10 +206,10 @@ namespace tryhard
             // 
             // CalcButton
             // 
-            this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalcButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CalcButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CalcButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CalcButton.Location = new System.Drawing.Point(275, 451);
+            this.CalcButton.Location = new System.Drawing.Point(275, 455);
             this.CalcButton.Name = "CalcButton";
             this.CalcButton.Size = new System.Drawing.Size(120, 30);
             this.CalcButton.TabIndex = 12;
@@ -233,6 +233,9 @@ namespace tryhard
             // 
             // MeetPanel
             // 
+            this.MeetPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MeetPanel.Controls.Add(this.GoObjectPageButton);
             this.MeetPanel.Controls.Add(this.GoDrawingPageButton);
             this.MeetPanel.Location = new System.Drawing.Point(15, 15);
@@ -242,6 +245,8 @@ namespace tryhard
             // 
             // GoObjectPageButton
             // 
+            this.GoObjectPageButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GoObjectPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoObjectPageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GoObjectPageButton.Location = new System.Drawing.Point(500, 275);
@@ -254,6 +259,9 @@ namespace tryhard
             // 
             // GoDrawingPageButton
             // 
+            this.GoDrawingPageButton.AllowDrop = true;
+            this.GoDrawingPageButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.GoDrawingPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoDrawingPageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GoDrawingPageButton.Location = new System.Drawing.Point(500, 145);
@@ -266,6 +274,8 @@ namespace tryhard
             // 
             // ControlsPanel
             // 
+            this.ControlsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ControlsPanel.Controls.Add(this.DataGridView);
             this.ControlsPanel.Controls.Add(this.AddBlockButton);
             this.ControlsPanel.Controls.Add(this.CalcButton);
@@ -281,6 +291,9 @@ namespace tryhard
             // 
             // PagesControl
             // 
+            this.PagesControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PagesControl.Controls.Add(this.SchemePage);
             this.PagesControl.Controls.Add(this.ObjectPage);
             this.PagesControl.Location = new System.Drawing.Point(15, 15);
