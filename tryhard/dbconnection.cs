@@ -48,11 +48,16 @@ namespace tryhard
             connection.Close();
         }
 
-        public List<string> GetListTables ()
+        private void ReaderLoad(string ACommandText)
         {
             cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT name FROM sqlite_master WHERE type = 'table';";
+            cmd.CommandText = ACommandText;
             reader = cmd.ExecuteReader();
+        }
+
+        public List<string> GetListTables ()
+        {
+            ReaderLoad("SELECT name FROM sqlite_master WHERE type = 'table';");
             List<string> list_tables = new List<string>();
             while (reader.Read())
             {
@@ -65,9 +70,7 @@ namespace tryhard
 
         public List<string> GetListRecordsWithId(string ATableName, string AFieldName)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT id, " + AFieldName + " FROM " + ATableName + ";";
-            reader = cmd.ExecuteReader();
+            ReaderLoad("SELECT id, " + AFieldName + " FROM " + ATableName + ";");
             List<string> list_records = new List<string>();
             while (reader.Read())
             {
@@ -79,9 +82,7 @@ namespace tryhard
 
         public List<string> GetListRecordsId(string ATableName)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT id FROM " + ATableName + ";";
-            reader = cmd.ExecuteReader();
+            ReaderLoad("SELECT id FROM " + ATableName + ";");
             List<string> list_id= new List<string>();
             while (reader.Read())
             {
@@ -92,9 +93,7 @@ namespace tryhard
 
         public List<string> GetListTableRows(string ATableName)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "pragma table_info(" + ATableName + ");";
-            reader = cmd.ExecuteReader();
+            ReaderLoad("pragma table_info(" + ATableName + ");");
             List<string> list_rows = new List<string>();
             while (reader.Read())
             {
@@ -105,9 +104,7 @@ namespace tryhard
 
         public List<string> GetFieldData(string ATableName, string AFieldId)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM " + ATableName + " WHERE id = " + AFieldId;
-            reader = cmd.ExecuteReader();
+            ReaderLoad("SELECT * FROM " + ATableName + " WHERE id = " + AFieldId);
             List<string> list_data = new List<string>();
             while (reader.Read())
             {
@@ -121,9 +118,7 @@ namespace tryhard
 
         public string GetStringValueOfParameter(string ATableName, string AFieldId, string AParameter)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId;
-            reader = cmd.ExecuteReader();
+            ReaderLoad("SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId);
             string Value = null;
             while (reader.Read())
             {
@@ -134,9 +129,7 @@ namespace tryhard
 
         public int GetIntValueOfParameter(string ATableName, string AFieldId, string AParameter)
         {
-            cmd = connection.CreateCommand();
-            cmd.CommandText = "SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId;
-            reader = cmd.ExecuteReader();
+            ReaderLoad("SELECT " + AParameter + " FROM " + ATableName + " WHERE id = " + AFieldId);
             int Value = 0;
             while (reader.Read())
             {   
