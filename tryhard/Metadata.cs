@@ -112,10 +112,13 @@ namespace tryhard
         public List<string> TablesList = new List<string>();
         public DBConnection Database = new DBConnection();
         public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
+        public Dictionary<string, Dictionary<string, bool>> MatchingTable = new Dictionary<string, Dictionary<string, bool>>();
+        private string DictionaryNamesPath = "../Databases/dictionary.txt";
         private string RIdentificator = "id";
         private string DictSeparator = "%";
         private string InputIdentificator = "input";
         private string OutputIdentificator = "output";
+        private string MatchingTableName = "equipment_matching";
 
         /* Methods */
 
@@ -123,12 +126,11 @@ namespace tryhard
         {
             if (Database.Connect(ADataBasePath) == 1)
             {
-                FillDictionaryNames("../Databases/dictionary.txt");
+                FillDictionaryNames(DictionaryNamesPath);
                 TablesList = Database.GetListTables();
                 foreach(string TableName in TablesList)
-                {
                     CreateTable(TableName, Database.GetListTableRows(TableName));
-                }
+                MatchingTable = Database.GetMatchingDict(MatchingTableName);
                 CheckReferensesInTables();
                 CheckInputOutputParameters();
             }
@@ -215,10 +217,8 @@ namespace tryhard
         }
 
         public bool isPossibleLink(string AFirstTable, string ASecondTable)
-        {
-            CTable FirstTable = GetTableOfName(AFirstTable);
-            CTable SecondTable = GetTableOfName(ASecondTable);        
-            return FirstTable.isPossibleLinkWithTable(SecondTable);
+        {   
+            return MatchingTable[AFirstTable][ASecondTable];
         }
 
         public string GetCommonParameterForLink(string AFirstTable, string ASecondTable)

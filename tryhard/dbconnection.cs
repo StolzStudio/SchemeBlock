@@ -68,6 +68,22 @@ namespace tryhard
             return list_tables;
         }
 
+        public Dictionary<string, Dictionary<string, bool>> GetMatchingDict(string ATableName)
+        {
+            List<string> rows_name = GetListTableRows(ATableName);
+            if (rows_name.Contains("name")) rows_name.Remove("name");
+            ReaderLoad("SELECT * FROM " + ATableName + ";");
+            Dictionary<string, Dictionary<string, bool>> result_dict = new Dictionary<string, Dictionary<string, bool>>();
+            while (reader.Read())
+            {
+                Dictionary<string, bool> temp_dict = new Dictionary<string, bool>();
+                for (int i = 0; i < rows_name.Count; i++)
+                    temp_dict.Add(rows_name[i], (bool)reader[rows_name[i]]);
+                result_dict.Add(reader["name"].ToString(), temp_dict);
+            }
+            return result_dict;
+        }
+
         public List<string> GetListRecordsWithId(string ATableName, string AFieldName)
         {
             ReaderLoad("SELECT id, " + AFieldName + " FROM " + ATableName + ";");
