@@ -106,19 +106,23 @@ namespace tryhard
 
     public class CMeta
     {
+
         /* Fields */
 
+        public DBConnection Database = new DBConnection();
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
-        public DBConnection Database = new DBConnection();
         public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
         public Dictionary<string, Dictionary<string, bool>> MatchingTable = new Dictionary<string, Dictionary<string, bool>>();
-        private string DictionaryNamesPath = "../Databases/dictionary.txt";
-        private string RIdentificator = "id";
-        private string DictSeparator = "%";
-        private string InputIdentificator = "input";
-        private string OutputIdentificator = "output";
-        private string MatchingTableName = "equipment_matching";
+
+        /* Consts */
+
+        private const string DictionaryNamesPath = "../Databases/dictionary.txt";
+        private const string RIdentificator = "id";
+        private const string DictSeparator = "%";
+        private const string InputIdentificator = "input";
+        private const string OutputIdentificator = "output";
+        private const string MatchingTableName = "equipment_matching";
 
         /* Methods */
 
