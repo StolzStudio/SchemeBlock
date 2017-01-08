@@ -10,7 +10,10 @@ namespace tryhard
     {
         /* Field */
 
-        private List<string> UnvisibleTables = new List<string>() { "equipment_matching", "oil_quality" };
+        private List<string> UnvisibleTables = new List<string>()
+        {
+            "equipment_matching", "oil_quality", "tables_of_equipments", "tables_of_modules"
+        };
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
         private SQLiteDataReader reader = null;
