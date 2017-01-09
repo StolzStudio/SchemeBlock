@@ -173,14 +173,7 @@ namespace tryhard
 
         private bool IsLinkNull(SchemeLink TestLink)
         {
-            if (TestLink == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return TestLink == null;
         }
 
         private void ShowObjectPageButton_Click(object sender, EventArgs e)
