@@ -88,36 +88,42 @@ namespace tryhard
             this.ClassName.HeaderText = "Класс оборудования";
             this.ClassName.Name = "ClassName";
             this.ClassName.ReadOnly = true;
+            this.ClassName.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // ModelName
             // 
             this.ModelName.HeaderText = "Название оборудования";
             this.ModelName.Name = "ModelName";
             this.ModelName.ReadOnly = true;
+            this.ModelName.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Count
             // 
             this.Count.HeaderText = "Количество";
             this.Count.Name = "Count";
             this.Count.ReadOnly = true;
+            this.Count.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // WeightCol
             // 
             this.WeightCol.HeaderText = "Масса";
             this.WeightCol.Name = "WeightCol";
             this.WeightCol.ReadOnly = true;
+            this.WeightCol.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // VolumeCol
             // 
             this.VolumeCol.HeaderText = "Объем";
             this.VolumeCol.Name = "VolumeCol";
             this.VolumeCol.ReadOnly = true;
+            this.VolumeCol.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // Cost
             // 
             this.Cost.HeaderText = "Стоимость";
             this.Cost.Name = "Cost";
             this.Cost.ReadOnly = true;
+            this.Cost.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationsGridView
             // 
@@ -152,24 +158,28 @@ namespace tryhard
             this.CombinationNum.HeaderText = "Номер комбинации";
             this.CombinationNum.Name = "CombinationNum";
             this.CombinationNum.ReadOnly = true;
+            this.CombinationNum.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationWeight
             // 
             this.CombinationWeight.HeaderText = "Масса";
             this.CombinationWeight.Name = "CombinationWeight";
             this.CombinationWeight.ReadOnly = true;
+            this.CombinationWeight.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationVolume
             // 
             this.CombinationVolume.HeaderText = "Объем";
             this.CombinationVolume.Name = "CombinationVolume";
             this.CombinationVolume.ReadOnly = true;
+            this.CombinationVolume.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationCost
             // 
             this.CombinationCost.HeaderText = "Стоимость";
             this.CombinationCost.Name = "CombinationCost";
             this.CombinationCost.ReadOnly = true;
+            this.CombinationCost.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // ResultForm
             // 

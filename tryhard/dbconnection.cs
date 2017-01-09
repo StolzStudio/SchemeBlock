@@ -10,7 +10,10 @@ namespace tryhard
     {
         /* Field */
 
-        private List<string> UnvisibleTables = new List<string>() { "equipment_matching", "oil_quality" };
+        private List<string> UnvisibleTables = new List<string>()
+        {
+            "equipment_matching", "oil_quality", "tables_of_equipments", "tables_of_modules"
+        };
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
         private SQLiteDataReader reader = null;
@@ -66,6 +69,22 @@ namespace tryhard
                     list_tables.Add(table_name);
             }
             return list_tables;
+        }
+
+        public Dictionary<string, Dictionary<string, bool>> GetMatchingDict(string ATableName)
+        {
+            List<string> cols_name = GetListTableRows(ATableName);
+            if (cols_name.Contains("name")) cols_name.Remove("name");
+            ReaderLoad("SELECT * FROM " + ATableName + ";");
+            Dictionary<string, Dictionary<string, bool>> result_dict = new Dictionary<string, Dictionary<string, bool>>();
+            while (reader.Read())
+            {
+                Dictionary<string, bool> temp_dict = new Dictionary<string, bool>();
+                for (int i = 0; i < cols_name.Count; i++)
+                    temp_dict.Add(cols_name[i], (bool)reader[cols_name[i]]);
+                result_dict.Add(reader["name"].ToString(), temp_dict);
+            }
+            return result_dict;
         }
 
         public List<string> GetListRecordsWithId(string ATableName, string AFieldName)

@@ -106,16 +106,23 @@ namespace tryhard
 
     public class CMeta
     {
+
         /* Fields */
 
+        public DBConnection Database = new DBConnection();
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
-        public DBConnection Database = new DBConnection();
         public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
-        private string RIdentificator = "id";
-        private string DictSeparator = "%";
-        private string InputIdentificator = "input";
-        private string OutputIdentificator = "output";
+        public Dictionary<string, Dictionary<string, bool>> MatchingTable = new Dictionary<string, Dictionary<string, bool>>();
+
+        /* Consts */
+
+        private const string DictionaryNamesPath = "../Databases/dictionary.txt";
+        private const string RIdentificator = "id";
+        private const string DictSeparator = "%";
+        private const string InputIdentificator = "input";
+        private const string OutputIdentificator = "output";
+        private const string MatchingTableName = "equipment_matching";
 
         /* Methods */
 
@@ -123,12 +130,11 @@ namespace tryhard
         {
             if (Database.Connect(ADataBasePath) == 1)
             {
-                FillDictionaryNames("../Databases/dictionary.txt");
+                FillDictionaryNames(DictionaryNamesPath);
                 TablesList = Database.GetListTables();
                 foreach(string TableName in TablesList)
-                {
                     CreateTable(TableName, Database.GetListTableRows(TableName));
-                }
+                MatchingTable = Database.GetMatchingDict(MatchingTableName);
                 CheckReferensesInTables();
                 CheckInputOutputParameters();
             }
@@ -215,10 +221,8 @@ namespace tryhard
         }
 
         public bool isPossibleLink(string AFirstTable, string ASecondTable)
-        {
-            CTable FirstTable = GetTableOfName(AFirstTable);
-            CTable SecondTable = GetTableOfName(ASecondTable);        
-            return FirstTable.isPossibleLinkWithTable(SecondTable);
+        {   
+            return MatchingTable[AFirstTable][ASecondTable];
         }
 
         public string GetCommonParameterForLink(string AFirstTable, string ASecondTable)
