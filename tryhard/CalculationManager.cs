@@ -30,13 +30,13 @@ namespace tryhard
 
         public CalcBlock(CalcBlock AOther)
         {
-            AOther.Index = Index;
-            AOther.Count = Count;
-            AOther.isDone = isDone;
-            AOther.BlockClass = BlockClass;
-            AOther.BlockId = BlockId;
-            AOther.InputLinks = InputLinks;
-            AOther.OutputLinks = OutputLinks;
+            Index = AOther.Index;
+            Count = AOther.Count;
+            isDone = AOther.isDone;
+            BlockClass = AOther.BlockClass;
+            BlockId = AOther.BlockId;
+            InputLinks.AddRange(AOther.InputLinks);
+            OutputLinks.AddRange(AOther.OutputLinks);
         }
     }
 
