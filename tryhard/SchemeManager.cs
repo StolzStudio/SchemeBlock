@@ -51,6 +51,12 @@ namespace tryhard
             block_counter++;
             isAddBlockButtonClick = false;
         }
+        
+        public void ChangeSelectBlock()
+        {
+            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ModelCB.SelectedIndex];
+            Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ModelCB.SelectedItem;
+        }
 
         public void AddSchemeLink(SchemeLink ANewLink)
         {

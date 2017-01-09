@@ -55,6 +55,11 @@ namespace tryhard
         private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], SchemeManager.ItemsIdList[ModelCB.SelectedIndex]);
+
+            if (SchemeManager.isHaveSelectedBlock)
+            {
+                SchemeManager.ChangeSelectBlock();
+            }
         }
 
         public void SetComboBoxes(string AEquipmentName, string AModelName)
@@ -210,6 +215,9 @@ namespace tryhard
 
         private void SchemePage_Paint(object sender, PaintEventArgs e)
         {
+            if (SchemeManager.isHaveSelectedBlock) { EquipmentCB.Enabled = false; }
+                                              else { EquipmentCB.Enabled = true;  }
+
             if (SchemeManager.Links.Count != 0)
             {
                 foreach (SchemeLink Link in SchemeManager.Links)
