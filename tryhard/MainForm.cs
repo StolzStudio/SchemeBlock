@@ -138,9 +138,13 @@ namespace tryhard
 
             for (int i = 0; i < LinksArr.Length; i++)
             {
-                if (LinksArr[i].CheckDeletedLink(SchemeManager.SelectedBlockIndex))
+                if (!SchemeManager.isHaveSelectedBlock)
                 {
-                    LinksArr[i] = null;
+                    if (LinksArr[i].isFocus) { LinksArr[i] = null; }
+                }
+                else
+                {
+                    if (LinksArr[i].CheckDeletedLink(SchemeManager.SelectedBlockIndex)) { LinksArr[i] = null; }
                 }
             }
 
