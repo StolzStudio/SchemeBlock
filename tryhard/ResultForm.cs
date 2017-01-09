@@ -68,6 +68,7 @@ namespace tryhard
                     weight = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "weight_equipment");
                     volume = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "volume_equipment");
                 }
+                string ModelName = MForm.Meta.GetStringValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "name");
                 CombinationGridView.Rows.Add(CMeta.DictionaryName[ACombination[Key].BlockClass], ModelName,
                                              ACombination[Key].Count, weight, volume, cost);
             }
