@@ -42,19 +42,15 @@ namespace tryhard
 
     public class CalculationManager
     {
-        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, 
-                                                                                   Dictionary<int, CalcBlock> BaseBlocks)
+        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BaseBlocks)
         {
-            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
-            List<Dictionary<int, CalcBlock>> NotCountedCombinations = new List<Dictionary<int, CalcBlock>>();
-            NotCountedCombinations = GetAllCombinations(AMeta, BaseBlocks);
-            foreach (Dictionary<int, CalcBlock> Combination in NotCountedCombinations)
-                Combinations.Add(CalculateBlocksCombination(AMeta, Combination));
+            List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(AMeta, BaseBlocks);
+            CalculateBlocksCombinations(AMeta, ref Combinations);
             return Combinations;
         }
 
         private List<Dictionary<int, CalcBlock>> GetAllCombinations(CMeta AMeta,
-                                                                           Dictionary<int, CalcBlock> BaseBlocks)
+                                                                    Dictionary<int, CalcBlock> BaseBlocks)
         {
             Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
             List<int> BlockKeys = new List<int>();
@@ -80,7 +76,8 @@ namespace tryhard
         }
         
         private List<Dictionary<int, CalcBlock>> GetCombination(Dictionary<int, CalcBlock> ACombination,
-            List<int> ABlockKeys, int ABlockKeysIdx, Dictionary<string, List<string>> AAllFieldsId)
+                                                                List<int> ABlockKeys, int ABlockKeysIdx, 
+                                                                Dictionary<string, List<string>> AAllFieldsId)
         {
             List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
             if (ABlockKeysIdx < ABlockKeys.Count)
@@ -99,68 +96,69 @@ namespace tryhard
             return Combinations;
         }
 
-        private Dictionary<int, CalcBlock> CalculateBlocksCombination(CMeta AMeta,
-                                                                             Dictionary<int, CalcBlock> BlocksCombination)
+        private void CalculateBlocksCombinations(CMeta AMeta, ref List<Dictionary<int, CalcBlock>> BlocksCombinations)
         {
-            bool isAllBlocksCalculated = false;
-            while (!isAllBlocksCalculated)
+            foreach (Dictionary<int, CalcBlock> BlocksCombination in BlocksCombinations)
             {
-                isAllBlocksCalculated = true;
-                foreach (int Key in BlocksCombination.Keys)
+                bool isAllBlocksCalculated = false;
+                while (!isAllBlocksCalculated)
                 {
-                    if ((BlocksCombination[Key].InputLinks.Count != 0) || (BlocksCombination[Key].OutputLinks.Count != 0))
+                    isAllBlocksCalculated = true;
+                    foreach (int Key in BlocksCombination.Keys)
                     {
-                        if (BlocksCombination[Key].BlockClass == "field_parameters")
+                        if ((BlocksCombination[Key].InputLinks.Count != 0) || (BlocksCombination[Key].OutputLinks.Count != 0))
                         {
-                            int link_key = BlocksCombination[Key].OutputLinks[0];
-                            int field_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
-                                                                                 BlocksCombination[Key].BlockId, "amount_holes");
-                            int dk_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
-                                                                              BlocksCombination[link_key].BlockId, "amount_holes");
-                            int field_fluid = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
-                                                                           BlocksCombination[Key].BlockId, "fluid_output");
-                            int dk_fluid = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
-                                                                        BlocksCombination[link_key].BlockId, "fluid_input");
-                            int dk_count = dk_amount_holes * BlocksCombination[link_key].Count;
-                            int field_count = field_amount_holes * BlocksCombination[Key].Count;
-                            if (dk_count < field_count)
+                            if (BlocksCombination[Key].BlockClass == "field_parameters")
                             {
-                                BlocksCombination[link_key].Count = field_count / dk_count;
-                                if (field_count % dk_count != 0)
+                                int link_key = BlocksCombination[Key].OutputLinks[0];
+                                int field_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
+                                                                                     BlocksCombination[Key].BlockId, "amount_holes");
+                                int dk_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
+                                                                                  BlocksCombination[link_key].BlockId, "amount_holes");
+                                int field_fluid = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
+                                                                               BlocksCombination[Key].BlockId, "fluid_output");
+                                int dk_fluid = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
+                                                                            BlocksCombination[link_key].BlockId, "fluid_input");
+                                int dk_count = dk_amount_holes * BlocksCombination[link_key].Count;
+                                int field_count = field_amount_holes * BlocksCombination[Key].Count;
+                                if (dk_count < field_count)
                                 {
-                                    BlocksCombination[link_key].Count += 1;
-                                }
-                                BlocksCombination[link_key].isDone = false;
-                            }
-                            BlocksCombination[link_key].isDone = true;
-                        }
-                        else
-                        {
-                            foreach (int link_key in BlocksCombination[Key].OutputLinks)
-                            {
-                                string common_parametr = AMeta.GetCommonParameterForLink(BlocksCombination[Key].BlockClass,
-                                                                                         BlocksCombination[link_key].BlockClass);
-                                int first_block_output = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
-                                                                                      BlocksCombination[Key].BlockId, common_parametr + "_output");
-                                int second_block_input = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
-                                                                                      BlocksCombination[link_key].BlockId, common_parametr + "_input");
-                                int first_block_count = first_block_output * BlocksCombination[Key].Count;
-                                int second_block_count = second_block_input * BlocksCombination[link_key].Count;
-                                if (second_block_count < first_block_count)
-                                {
-                                    BlocksCombination[link_key].Count = first_block_count / second_block_count;
-                                    if (first_block_count % second_block_count != 0)
+                                    BlocksCombination[link_key].Count = field_count / dk_count;
+                                    if (field_count % dk_count != 0)
                                     {
                                         BlocksCombination[link_key].Count += 1;
                                     }
                                     BlocksCombination[link_key].isDone = false;
+                                }
+                                BlocksCombination[link_key].isDone = true;
+                            }
+                            else
+                            {
+                                foreach (int link_key in BlocksCombination[Key].OutputLinks)
+                                {
+                                    string common_parametr = AMeta.GetCommonParameterForLink(BlocksCombination[Key].BlockClass,
+                                                                                             BlocksCombination[link_key].BlockClass);
+                                    int first_block_output = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
+                                                                                          BlocksCombination[Key].BlockId, common_parametr + "_output");
+                                    int second_block_input = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
+                                                                                          BlocksCombination[link_key].BlockId, common_parametr + "_input");
+                                    int first_block_count = first_block_output * BlocksCombination[Key].Count;
+                                    int second_block_count = second_block_input * BlocksCombination[link_key].Count;
+                                    if (second_block_count < first_block_count)
+                                    {
+                                        BlocksCombination[link_key].Count = first_block_count / second_block_count;
+                                        if (first_block_count % second_block_count != 0)
+                                        {
+                                            BlocksCombination[link_key].Count += 1;
+                                        }
+                                        BlocksCombination[link_key].isDone = false;
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            return BlocksCombination;
         }
     }
 }
