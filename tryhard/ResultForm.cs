@@ -13,71 +13,90 @@ namespace tryhard
     public partial class ResultForm : Form
     {
         private MainForm MForm;
-        private List<Dictionary<int, CalcBlock>> BlocksCombinations;
+        private List<Dictionary<int, CalcBlock>> Combinations;
+        private List<List<int>> ParametersCombinations;
 
         public ResultForm(MainForm AForm, List<Dictionary<int, CalcBlock>> ACalcBlocks)
         {
             MForm = AForm;
             InitializeComponent();
+            Combinations = new List<Dictionary<int, CalcBlock>>(ACalcBlocks);
+            CalcParametersCombinations();
             FillGrids(ACalcBlocks);
         }
 
-        public void FillCombinationsGridView(int AId, int AWeight, int AVolume, int ACost)
+        private void CalcParametersCombinations()
         {
-            CombinationsGridView.Rows.Add(AId, AWeight, AVolume, ACost);
+            ParametersCombinations = new List<List<int>>();
+            foreach (Dictionary<int, CalcBlock> Combination in Combinations)
+            {
+                int common_weight = 0;
+                int common_volume = 0;
+                int common_cost = 0;
+                foreach (int Key in Combination.Keys)
+                {
+                    int cost = 0;
+                    int weight = 0;
+                    int volume = 0;
+                    if (Combination[Key].BlockClass != "field_parameters")
+                    {
+                        cost = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "cost_equipment");
+                        weight = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "weight_equipment");
+                        volume = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "volume_equipment");
+                    }
+                    string ModelName = MForm.Meta.GetStringValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "name");
+                    weight = weight * Combination[Key].Count;
+                    volume = volume * Combination[Key].Count;
+                    cost = cost * Combination[Key].Count;
+                    common_weight += weight;
+                    common_volume += volume;
+                    common_cost += cost;
+                }
+                ParametersCombinations.Add(new List<int>() { common_weight, common_volume, common_cost });
+            }
         }
 
-        public void FillCombinationGridView(int AIndex, Dictionary<int, CalcBlock> ACalcBlocks)
+        public void FillCombinationGridView(int AIndex, Dictionary<int, CalcBlock> ACombination)
         {
             CombinationGridView.Rows.Clear();
-            int common_weight = 0;
-            int common_volume = 0;
-            int common_cost = 0;
-            foreach (int Key in ACalcBlocks.Keys)
+            foreach (int Key in ACombination.Keys)
             {
-                int cost = 0;
-                int weight = 0;
-                int volume = 0;
-                if (ACalcBlocks[Key].BlockClass != "field_parameters")
+                int cost = 0, weight = 0, volume = 0;
+                if (ACombination[Key].BlockClass != "field_parameters")
                 {
-                    cost = MForm.Meta.GetIntValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "cost_equipment");
-                    weight = MForm.Meta.GetIntValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "weight_equipment");
-                    volume = MForm.Meta.GetIntValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "volume_equipment");
+                    cost = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "cost_equipment");
+                    weight = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "weight_equipment");
+                    volume = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "volume_equipment");
                 }
-                string ModelName = MForm.Meta.GetStringValueOfParameter(ACalcBlocks[Key].BlockClass, ACalcBlocks[Key].BlockId, "name");
-                weight = weight * ACalcBlocks[Key].Count;
-                volume = volume * ACalcBlocks[Key].Count;
-                cost = cost * ACalcBlocks[Key].Count;
-                if (AIndex == 0)
-                {
-                    CombinationGridView.Rows.Add(CMeta.DictionaryName[ACalcBlocks[Key].BlockClass], ModelName,
-                                                 ACalcBlocks[Key].Count, weight, volume, cost);
-                }
-                common_weight += weight;
-                common_volume += volume;
-                common_cost += cost;
+                CombinationGridView.Rows.Add(CMeta.DictionaryName[ACombination[Key].BlockClass], ModelName,
+                                             ACombination[Key].Count, weight, volume, cost);
             }
-            if (AIndex != 0)
-                FillCombinationsGridView(AIndex, common_weight, common_volume, common_cost);
-            if (AIndex == 0)
-                CombinationGridView.Rows.Add("", "", "Итого: ", common_weight, common_volume, common_cost);
+            CombinationGridView.Rows.Add("", "", "Итого: ", ParametersCombinations[AIndex][0],
+                                                            ParametersCombinations[AIndex][1],
+                                                            ParametersCombinations[AIndex][2]);
         }
 
         public void FillGrids(List<Dictionary<int, CalcBlock>> ACombinationsBlocks)
         {
-            BlocksCombinations = new List<Dictionary<int, CalcBlock>> (ACombinationsBlocks);
-            int i = 0;
-            foreach (Dictionary<int, CalcBlock> CalcBlocks in BlocksCombinations)
+            /*Fill Combinations */
+
+            for (int i = 0; i < ParametersCombinations.Count; i++)
             {
-                FillCombinationGridView(i, CalcBlocks);
-                i++;
+                CombinationsGridView.Rows.Add(i, ParametersCombinations[i][0], 
+                                                 ParametersCombinations[i][1], 
+                                                 ParametersCombinations[i][2]);
             }
+
+            FillCombinationGridView(0, Combinations[0]);
         }
 
         private void CombinationsGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < BlocksCombinations.Count)
-                FillCombinationGridView(0, (BlocksCombinations[e.RowIndex]));
+            if (e.RowIndex >= 0 && e.RowIndex < Combinations.Count)
+            {
+                int Index = (int)CombinationsGridView.Rows[e.RowIndex].Cells[0].Value;
+                FillCombinationGridView(Index, Combinations[Index]);
+            }
         }
     }
 }

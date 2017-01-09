@@ -179,7 +179,7 @@ namespace tryhard
             this.CombinationCost.HeaderText = "Стоимость";
             this.CombinationCost.Name = "CombinationCost";
             this.CombinationCost.ReadOnly = true;
-            this.CombinationCost.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //this.CombinationCost.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // ResultForm
             // 
