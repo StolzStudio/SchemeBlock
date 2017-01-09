@@ -26,6 +26,7 @@ namespace tryhard
 
         private string[] EquipmentLabelText = new string[2] { "Класс оборудования:", "Класс детали:" };
 
+        private Point PageOffsetInPageControl = new Point(20, 38);
         /* Methods */
 
         public MainForm()
@@ -192,8 +193,8 @@ namespace tryhard
             SchemeManager.ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= PagesControl.Location.X;
-            ptr.Y -= PagesControl.Location.Y;
+            ptr.X -= PageOffsetInPageControl.X;
+            ptr.Y -= PageOffsetInPageControl.Y;
             if (SchemeManager.isAddBlockButtonClick)
             {
                 ptr.X -= SchemeBlock.BlockBodyWidth / 2;
