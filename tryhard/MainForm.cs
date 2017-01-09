@@ -231,6 +231,8 @@ namespace tryhard
         {
           // MessageBox.Show("You are in the TabControl.SelectedIndexChanged event.");
             DeleteBlockButton.Visible = false;
+            EquipmentCB.Enabled       = true;
+
             if (PagesControl.SelectedTab == SchemePage)
             {
                 SetControlsPanel(PageType.SchemeType);

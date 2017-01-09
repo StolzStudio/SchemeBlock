@@ -54,8 +54,8 @@ namespace tryhard
         
         public void ChangeSelectBlock()
         {
-            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ModelCB.SelectedIndex];
             Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ModelCB.SelectedItem;
+            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ModelCB.SelectedIndex];
         }
 
         public void AddSchemeLink(SchemeLink ANewLink)
