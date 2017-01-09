@@ -158,28 +158,24 @@ namespace tryhard
             this.CombinationNum.HeaderText = "Номер комбинации";
             this.CombinationNum.Name = "CombinationNum";
             this.CombinationNum.ReadOnly = true;
-            this.CombinationNum.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationWeight
             // 
             this.CombinationWeight.HeaderText = "Масса";
             this.CombinationWeight.Name = "CombinationWeight";
             this.CombinationWeight.ReadOnly = true;
-            this.CombinationWeight.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationVolume
             // 
             this.CombinationVolume.HeaderText = "Объем";
             this.CombinationVolume.Name = "CombinationVolume";
             this.CombinationVolume.ReadOnly = true;
-            this.CombinationVolume.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // CombinationCost
             // 
             this.CombinationCost.HeaderText = "Стоимость";
             this.CombinationCost.Name = "CombinationCost";
             this.CombinationCost.ReadOnly = true;
-            //this.CombinationCost.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // ResultForm
             // 
