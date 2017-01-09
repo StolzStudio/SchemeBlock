@@ -301,6 +301,7 @@ namespace tryhard
             this.PagesControl.SelectedIndex = 0;
             this.PagesControl.Size = new System.Drawing.Size(820, 655);
             this.PagesControl.TabIndex = 2;
+            this.PagesControl.SelectedIndexChanged += new System.EventHandler(this.PagesControl_SelectedIndexChanged);
             // 
             // SchemePage
             // 
@@ -312,7 +313,7 @@ namespace tryhard
             this.SchemePage.TabIndex = 0;
             this.SchemePage.Text = "Scheme Page";
             this.SchemePage.UseVisualStyleBackColor = true;
-            this.SchemePage.Click += new System.EventHandler(this.ShemePage_Click);
+            this.SchemePage.Click += new System.EventHandler(this.SchemePage_Click);
             this.SchemePage.Paint += new System.Windows.Forms.PaintEventHandler(this.SchemePage_Paint);
             // 
             // ObjectPage

@@ -13,6 +13,8 @@ using System.IO;
 
 namespace tryhard
 {
+    public enum PageType { SchemeType, ObjectType }
+
     public partial class MainForm : Form
     {
         /* Fields */
@@ -21,6 +23,8 @@ namespace tryhard
       
         public SchemeManager SchemeManager;
         public CalculationManager CalcManager;
+
+        private string[] EquipmentLabelText = new string[2] { "Класс оборудования:", "Класс детали:" };
 
         /* Methods */
 
@@ -151,8 +155,9 @@ namespace tryhard
             }
 
 
-            ShemePage_Click(sender, e);
+            SchemePage_Click(sender, e);
             SchemePage.Invalidate();
+            DeleteBlockButton.Visible = false;
         }
 
         private bool IsLinkNull(SchemeLink TestLink)
@@ -181,7 +186,7 @@ namespace tryhard
             ControlsPanel.Visible = true;
         }
 
-        private void ShemePage_Click(object sender, EventArgs e)
+        private void SchemePage_Click(object sender, EventArgs e)
         {
             SchemeManager.ClearLinksFocus();
             SchemeManager.ClearBlocksFocus();
@@ -206,6 +211,42 @@ namespace tryhard
                 {
                     Link.Draw(this, e);
                 }
+            }
+        }
+
+        private void PagesControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          // MessageBox.Show("You are in the TabControl.SelectedIndexChanged event.");
+            DeleteBlockButton.Visible = false;
+            if (PagesControl.SelectedTab == SchemePage)
+            {
+                SetControlsPanel(PageType.SchemeType);
+            }
+            else if (PagesControl.SelectedTab == ObjectPage)
+            {
+                // как я понял, всегда по дефолту выбрана первая страница и после тестов выяснилось, что
+                // это функция работает при смене на отличную от первой страницы
+                // в общем, вот здесь переключение на вторую страницу
+                SetControlsPanel(PageType.ObjectType);
+            }
+        }
+
+        private void SetControlsPanel(PageType APageType)
+        {
+            //функция по заполнению комбобоксов
+            EquipmentCB.Items.Clear();
+            ModelCB.Items.Clear();
+
+            if (APageType == PageType.SchemeType)
+            {
+                this.EquipmentLabel.Text = EquipmentLabelText[0];
+                FillEquipmentCB();
+                //заполнить для схемы
+            }
+            else if (APageType == PageType.ObjectType)
+            {
+                this.EquipmentLabel.Text = EquipmentLabelText[1];
+                //заполнить комбобоксы для объекта
             }
         }
     }
