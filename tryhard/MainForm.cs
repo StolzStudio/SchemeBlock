@@ -13,6 +13,8 @@ using System.IO;
 
 namespace tryhard
 {
+    public enum PageType { SchemeType, ObjectType }
+
     public partial class MainForm : Form
     {
         /* Fields */
@@ -22,6 +24,9 @@ namespace tryhard
         public SchemeManager SchemeManager;
         public CalculationManager CalcManager;
 
+        private string[] EquipmentLabelText = new string[2] { "Класс оборудования:", "Класс детали:" };
+
+        private Point PageOffsetInPageControl = new Point(20, 38);
         /* Methods */
 
         public MainForm()
@@ -50,6 +55,11 @@ namespace tryhard
         private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], SchemeManager.ItemsIdList[ModelCB.SelectedIndex]);
+
+            if (SchemeManager.isHaveSelectedBlock)
+            {
+                SchemeManager.ChangeSelectBlock();
+            }
         }
 
         public void SetComboBoxes(string AEquipmentName, string AModelName)
@@ -133,9 +143,13 @@ namespace tryhard
 
             for (int i = 0; i < LinksArr.Length; i++)
             {
-                if (LinksArr[i].CheckDeletedLink(SchemeManager.SelectedBlockIndex))
+                if (!SchemeManager.isHaveSelectedBlock)
                 {
-                    LinksArr[i] = null;
+                    if (LinksArr[i].isFocus) { LinksArr[i] = null; }
+                }
+                else
+                {
+                    if (LinksArr[i].CheckDeletedLink(SchemeManager.SelectedBlockIndex)) { LinksArr[i] = null; }
                 }
             }
 
@@ -151,8 +165,9 @@ namespace tryhard
             }
 
 
-            ShemePage_Click(sender, e);
+            SchemePage_Click(sender, e);
             SchemePage.Invalidate();
+            DeleteBlockButton.Visible = false;
         }
 
         private bool IsLinkNull(SchemeLink TestLink)
@@ -181,14 +196,14 @@ namespace tryhard
             ControlsPanel.Visible = true;
         }
 
-        private void ShemePage_Click(object sender, EventArgs e)
+        private void SchemePage_Click(object sender, EventArgs e)
         {
             SchemeManager.ClearLinksFocus();
             SchemeManager.ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= PagesControl.Location.X;
-            ptr.Y -= PagesControl.Location.Y;
+            ptr.X -= PageOffsetInPageControl.X;
+            ptr.Y -= PageOffsetInPageControl.Y;
             if (SchemeManager.isAddBlockButtonClick)
             {
                 ptr.X -= SchemeBlock.BlockBodyWidth / 2;
@@ -200,12 +215,53 @@ namespace tryhard
 
         private void SchemePage_Paint(object sender, PaintEventArgs e)
         {
+            if (SchemeManager.isHaveSelectedBlock) { EquipmentCB.Enabled = false; }
+                                              else { EquipmentCB.Enabled = true;  }
+
             if (SchemeManager.Links.Count != 0)
             {
                 foreach (SchemeLink Link in SchemeManager.Links)
                 {
                     Link.Draw(this, e);
                 }
+            }
+        }
+
+        private void PagesControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          // MessageBox.Show("You are in the TabControl.SelectedIndexChanged event.");
+            DeleteBlockButton.Visible = false;
+            EquipmentCB.Enabled       = true;
+
+            if (PagesControl.SelectedTab == SchemePage)
+            {
+                SetControlsPanel(PageType.SchemeType);
+            }
+            else if (PagesControl.SelectedTab == ObjectPage)
+            {
+                // как я понял, всегда по дефолту выбрана первая страница и после тестов выяснилось, что
+                // это функция работает при смене на отличную от первой страницы
+                // в общем, вот здесь переключение на вторую страницу
+                SetControlsPanel(PageType.ObjectType);
+            }
+        }
+
+        private void SetControlsPanel(PageType APageType)
+        {
+            //функция по заполнению комбобоксов
+            EquipmentCB.Items.Clear();
+            ModelCB.Items.Clear();
+
+            if (APageType == PageType.SchemeType)
+            {
+                this.EquipmentLabel.Text = EquipmentLabelText[0];
+                FillEquipmentCB();
+                //заполнить для схемы
+            }
+            else if (APageType == PageType.ObjectType)
+            {
+                this.EquipmentLabel.Text = EquipmentLabelText[1];
+                //заполнить комбобоксы для объекта
             }
         }
     }

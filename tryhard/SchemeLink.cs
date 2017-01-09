@@ -35,7 +35,7 @@ namespace tryhard
             SelectArrowColor = Color.IndianRed;
             FirstBlockIndex  = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
-            isFocus          = true;
+            isFocus          = false;
         }
         //
         //take point location
