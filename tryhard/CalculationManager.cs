@@ -50,50 +50,67 @@ namespace tryhard
         }
 
         private List<Dictionary<int, CalcBlock>> GetAllCombinations(CMeta AMeta,
-                                                                    Dictionary<int, CalcBlock> BaseBlocks)
+                                                                    Dictionary<int, CalcBlock> ABaseBlocks)
         {
             Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
             List<int> BlockKeys = new List<int>();
             int FirstKey = -1;
-            foreach (int Key in BaseBlocks.Keys)
+            int CombinationsCount = 1;
+            foreach (int Key in ABaseBlocks.Keys)
             {
                 BlockKeys.Add(Key);
-                if (!AllFieldsId.ContainsKey(BaseBlocks[Key].BlockClass))
+                if (!AllFieldsId.ContainsKey(ABaseBlocks[Key].BlockClass))
                 {
-                    string TableName = BaseBlocks[Key].BlockClass;
+                    string TableName = ABaseBlocks[Key].BlockClass;
                     AllFieldsId.Add(TableName, AMeta.GetTableOfName(TableName).IdList);
                 }
+                CombinationsCount *= AllFieldsId[ABaseBlocks[Key].BlockClass].Count;
             }
-            List<Dictionary<int, CalcBlock>> AllCombinations = new List<Dictionary<int, CalcBlock>>();
+
+            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
             int BlockKeysIdx = 0;
-            foreach (string FieldId in AllFieldsId[BaseBlocks[BlockKeys[BlockKeysIdx]].BlockClass])
+            foreach (string FieldId in AllFieldsId[ABaseBlocks[BlockKeys[BlockKeysIdx]].BlockClass])
             {
-                Dictionary<int, CalcBlock> Combination = new Dictionary<int, CalcBlock>(BaseBlocks);
-                Combination[BlockKeys[BlockKeysIdx]].BlockId = FieldId;
-                AllCombinations.AddRange(GetCombination(Combination, BlockKeys, BlockKeysIdx + 1, AllFieldsId));
+                List<string> FieldIdSequence = new List<string>() { FieldId };
+                FillCombination(FieldIdSequence, BlockKeysIdx + 1, ref BlockKeys, ref ABaseBlocks, ref AllFieldsId, ref Combinations);
             }
-            return AllCombinations;
+            return Combinations;
         }
         
-        private List<Dictionary<int, CalcBlock>> GetCombination(Dictionary<int, CalcBlock> ACombination,
-                                                                List<int> ABlockKeys, int ABlockKeysIdx, 
-                                                                Dictionary<string, List<string>> AAllFieldsId)
+        private void FillCombination(List<string> AFieldIdSequense,
+                                     int ABlockKeysIdx,
+                                     ref List<int> ABlockKeys,
+                                     ref Dictionary<int, CalcBlock> ABaseBlocks,
+                                     ref Dictionary<string, List<string>> AAllFieldsId,
+                                     ref List<Dictionary<int, CalcBlock>> ACombinations)
         {
-            List<Dictionary<int, CalcBlock>> Combinations = new List<Dictionary<int, CalcBlock>>();
             if (ABlockKeysIdx < ABlockKeys.Count)
             {
-                foreach (string FieldId in AAllFieldsId[ACombination[ABlockKeys[ABlockKeysIdx]].BlockClass])
+                foreach (string FieldId in AAllFieldsId[ABaseBlocks[ABlockKeys[ABlockKeysIdx]].BlockClass])
                 {
-                    Dictionary<int, CalcBlock> Combination;// = new Dictionary<int, CalcBlock>(ACombination);
-                    Combination = new Dictionary<int, CalcBlock>(ACombination);
-                    Combination[ABlockKeys[ABlockKeysIdx]].BlockId = FieldId;
-                    Combinations.AddRange(GetCombination(Combination, ABlockKeys, ABlockKeysIdx + 1, AAllFieldsId));
+                    List<string> FieldIdSequence = new List<string>(AFieldIdSequense);
+                    FieldIdSequence.Add(FieldId);
+                    FillCombination(FieldIdSequence, ABlockKeysIdx + 1, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations);
                 }
             } else
             {
-                Combinations.Add(ACombination);
+                ACombinations.Add(TranslateSeqInBlocksCombination(AFieldIdSequense, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations));
             }
-            return Combinations;
+        }
+
+        private Dictionary<int, CalcBlock> TranslateSeqInBlocksCombination(List<string> AFieldIdSequense,
+                                                                           ref List<int> ABlockKeys,
+                                                                           ref Dictionary<int, CalcBlock> ABaseBlocks,
+                                                                           ref Dictionary<string, List<string>> AAllFieldsId,
+                                                                           ref List<Dictionary<int, CalcBlock>> ACombinations)
+        {
+            Dictionary<int, CalcBlock> Combination = new Dictionary<int, CalcBlock>();
+            for (int i = 0; i < ABlockKeys.Count; i++)
+            {
+                Combination.Add(ABlockKeys[i], new CalcBlock(ABaseBlocks[ABlockKeys[i]]));
+                Combination[ABlockKeys[i]].BlockId = AFieldIdSequense[i];
+            }
+            return Combination;
         }
 
         private void CalculateBlocksCombinations(CMeta AMeta, ref List<Dictionary<int, CalcBlock>> BlocksCombinations)
