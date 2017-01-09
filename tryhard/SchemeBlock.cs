@@ -183,7 +183,7 @@ namespace tryhard
             }
 
             Form.SetComboBoxes(this.BlockClass, this.BlockId);
-
+            Form.SchemeManager.ClearLinksFocus();
             CheckFocus();
         }
 

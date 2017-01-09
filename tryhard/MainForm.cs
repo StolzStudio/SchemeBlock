@@ -49,6 +49,7 @@ namespace tryhard
         private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ModelCB.Items.Clear();
+            SchemeManager.ClearBlocksFocus();
             FillModelCB(CMeta.DictionaryName[(string)((ComboBox)sender).SelectedItem]);
         }
 
@@ -184,14 +185,14 @@ namespace tryhard
 
         private void ShowObjectPageButton_Click(object sender, EventArgs e)
         {
-            MeetPanel.SendToBack();
+            MeetPanel.Visible = false;
             PagesControl.SelectTab(ObjectPage);
             ControlsPanel.Visible = true;
         }
 
         private void ShowSchemePageButton_Click(object sender, EventArgs e)
         {
-            MeetPanel.SendToBack();
+            MeetPanel.Visible = false;
             PagesControl.SelectTab(SchemePage);
             ControlsPanel.Visible = true;
         }
@@ -215,9 +216,6 @@ namespace tryhard
 
         private void SchemePage_Paint(object sender, PaintEventArgs e)
         {
-            if (SchemeManager.isHaveSelectedBlock) { EquipmentCB.Enabled = false; }
-                                              else { EquipmentCB.Enabled = true;  }
-
             if (SchemeManager.Links.Count != 0)
             {
                 foreach (SchemeLink Link in SchemeManager.Links)
@@ -229,9 +227,7 @@ namespace tryhard
 
         private void PagesControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-          // MessageBox.Show("You are in the TabControl.SelectedIndexChanged event.");
             DeleteBlockButton.Visible = false;
-            EquipmentCB.Enabled       = true;
 
             if (PagesControl.SelectedTab == SchemePage)
             {
