@@ -43,11 +43,6 @@ namespace tryhard
             SchemeManager.isAddBlockButtonClick = true;
         }
 
-        private void CountTectBox_TextChanged(object sender, System.EventArgs e)
-        {
-
-        }
-
         /* Equipment ComboBoxes */
 
         private void ObjectTypeCBSelectedIndexChanged(object sender, System.EventArgs e)
