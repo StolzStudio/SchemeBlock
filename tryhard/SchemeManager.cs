@@ -37,11 +37,11 @@ namespace tryhard
         {
             if (!isOilFieldAdd)
             {
-                isOilFieldAdd = (string)Form.EquipmentCB.SelectedItem == "Месторождение";
+                isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
             } 
             Blocks.Add(block_counter, new SchemeBlock(block_counter,
-                       CMeta.DictionaryName[(string)Form.EquipmentCB.SelectedItem],
-                       ItemsIdList[Form.ModelCB.SelectedIndex], Pos, Form));
+                       CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem],
+                       ItemsIdList[Form.ObjectModelCB.SelectedIndex], Pos, Form));
 
             foreach (int Key in Blocks.Keys)
             {
@@ -54,8 +54,8 @@ namespace tryhard
         
         public void ChangeSelectBlock()
         {
-            Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ModelCB.SelectedItem;
-            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ModelCB.SelectedIndex];
+            Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ObjectModelCB.SelectedItem;
+            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
         }
 
         public void AddSchemeLink(SchemeLink ANewLink)

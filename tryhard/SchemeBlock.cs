@@ -51,7 +51,7 @@ namespace tryhard
 
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
 
-            this.InitializeComponent(ABlockClass, (string)Form.ModelCB.SelectedItem, APosition);
+            this.InitializeComponent(ABlockClass, (string)Form.ObjectModelCB.SelectedItem, APosition);
         }
 
         private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)

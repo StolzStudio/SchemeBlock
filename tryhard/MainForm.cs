@@ -36,7 +36,7 @@ namespace tryhard
             ControlsPanel.Visible = false;
             SchemeManager = new SchemeManager(this);
             CalcManager = new CalculationManager();
-            FillEquipmentCB();
+            FillObjectTypeCB();
         }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
@@ -46,16 +46,16 @@ namespace tryhard
 
         /* Equipment ComboBoxes */
 
-        private void EquipmentCBSelectedIndexChanged(object sender, System.EventArgs e)
+        private void ObjectTypeCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            ModelCB.Items.Clear();
+            ObjectModelCB.Items.Clear();
             SchemeManager.ClearBlocksFocus();
-            FillModelCB(CMeta.DictionaryName[(string)((ComboBox)sender).SelectedItem]);
+            FillObjectModelCB(CMeta.DictionaryName[(string)((ComboBox)sender).SelectedItem]);
         }
 
-        private void ModelCBSelectedIndexChanged(object sender, System.EventArgs e)
+        private void ObjectModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FillParametersGrid(CMeta.DictionaryName[(string)EquipmentCB.SelectedItem], SchemeManager.ItemsIdList[ModelCB.SelectedIndex]);
+            FillParametersGrid(CMeta.DictionaryName[(string)ObjectTypeCB.SelectedItem], SchemeManager.ItemsIdList[ObjectModelCB.SelectedIndex]);
 
             if (SchemeManager.isHaveSelectedBlock)
             {
@@ -63,34 +63,34 @@ namespace tryhard
             }
         }
 
-        public void SetComboBoxes(string AEquipmentName, string AModelName)
+        public void SetComboBoxes(string AObjectTypeName, string AObjectModelName)
         {
-            EquipmentCB.SelectedIndex = Meta.TablesList.IndexOf(AEquipmentName);
-            ModelCB.SelectedIndex = SchemeManager.ItemsIdList.IndexOf(AModelName);
+            ObjectTypeCB.SelectedIndex = Meta.TablesList.IndexOf(AObjectTypeName);
+            ObjectModelCB.SelectedIndex = SchemeManager.ItemsIdList.IndexOf(AObjectModelName);
         }
 
-        private void FillEquipmentCB()
+        private void FillObjectTypeCB()
         {
             foreach (string Equipment in Meta.TablesList)
             {
-                EquipmentCB.Items.Add(CMeta.DictionaryName[Equipment]);
+                ObjectTypeCB.Items.Add(CMeta.DictionaryName[Equipment]);
             }
-            EquipmentCB.SelectedIndex = 0;
-            EquipmentCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ObjectTypeCB.SelectedIndex = 0;
+            ObjectTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
 
-        private void FillModelCB(string AEquipmentName)
+        private void FillObjectModelCB(string AObjectTypeName)
         {
-            ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            List<string> items = Meta.GetListRecordsWithId(AEquipmentName, "name");
+            ObjectModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            List<string> items = Meta.GetListRecordsWithId(AObjectTypeName, "name");
             SchemeManager.ItemsIdList.Clear();
             for (int i = 0; i < items.Count; i += 2)
             {
                 SchemeManager.ItemsIdList.Add(items[i]);
-                ModelCB.Items.Add(items[i + 1]);
+                ObjectModelCB.Items.Add(items[i + 1]);
             }
-            ModelCB.SelectedIndex = 0;
-            ModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ObjectModelCB.SelectedIndex = 0;
+            ObjectModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
 
         private void FillParametersGrid(string ATableName, string AFieldId)
@@ -238,13 +238,12 @@ namespace tryhard
         private void SetControlsPanel(PageType APageType)
         {
             //функция по заполнению комбобоксов
-            EquipmentCB.Items.Clear();
-            ModelCB.Items.Clear();
-
+            ObjectTypeCB.Items.Clear();
+            ObjectModelCB.Items.Clear();
             if (APageType == PageType.SchemeType)
             {
                 this.EquipmentLabel.Text = EquipmentLabelText[0];
-                FillEquipmentCB();
+                FillObjectTypeCB();
                 //заполнить для схемы
             }
             else if (APageType == PageType.ObjectType)

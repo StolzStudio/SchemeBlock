@@ -68,8 +68,8 @@ namespace tryhard
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AddBlockButton = new System.Windows.Forms.Button();
-            this.EquipmentCB = new System.Windows.Forms.ComboBox();
-            this.ModelCB = new System.Windows.Forms.ComboBox();
+            this.ObjectTypeCB = new System.Windows.Forms.ComboBox();
+            this.ObjectModelCB = new System.Windows.Forms.ComboBox();
             this.EquipmentLabel = new System.Windows.Forms.Label();
             this.ModelLabel = new System.Windows.Forms.Label();
             this.DataGridView = new System.Windows.Forms.DataGridView();
@@ -106,31 +106,31 @@ namespace tryhard
             this.AddBlockButton.UseVisualStyleBackColor = true;
             this.AddBlockButton.Click += new System.EventHandler(this.AddBlockButton_Click);
             // 
-            // EquipmentCB
+            // ObjectTypeCB
             // 
-            this.EquipmentCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EquipmentCB.BackColor = System.Drawing.Color.White;
-            this.EquipmentCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.EquipmentCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EquipmentCB.FormattingEnabled = true;
-            this.EquipmentCB.Location = new System.Drawing.Point(85, 35);
-            this.EquipmentCB.Name = "EquipmentCB";
-            this.EquipmentCB.Size = new System.Drawing.Size(145, 28);
-            this.EquipmentCB.TabIndex = 2;
-            this.EquipmentCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
+            this.ObjectTypeCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ObjectTypeCB.BackColor = System.Drawing.Color.White;
+            this.ObjectTypeCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ObjectTypeCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ObjectTypeCB.FormattingEnabled = true;
+            this.ObjectTypeCB.Location = new System.Drawing.Point(85, 35);
+            this.ObjectTypeCB.Name = "ObjectTypeCB";
+            this.ObjectTypeCB.Size = new System.Drawing.Size(145, 28);
+            this.ObjectTypeCB.TabIndex = 2;
+            this.ObjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
             // 
-            // ModelCB
+            // ObjectModelCB
             // 
-            this.ModelCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModelCB.BackColor = System.Drawing.Color.White;
-            this.ModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModelCB.FormattingEnabled = true;
-            this.ModelCB.Location = new System.Drawing.Point(250, 35);
-            this.ModelCB.Name = "ModelCB";
-            this.ModelCB.Size = new System.Drawing.Size(145, 28);
-            this.ModelCB.TabIndex = 3;
-            this.ModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
+            this.ObjectModelCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ObjectModelCB.BackColor = System.Drawing.Color.White;
+            this.ObjectModelCB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ObjectModelCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ObjectModelCB.FormattingEnabled = true;
+            this.ObjectModelCB.Location = new System.Drawing.Point(250, 35);
+            this.ObjectModelCB.Name = "ObjectModelCB";
+            this.ObjectModelCB.Size = new System.Drawing.Size(145, 28);
+            this.ObjectModelCB.TabIndex = 3;
+            this.ObjectModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
             // 
             // EquipmentLabel
             // 
@@ -279,9 +279,9 @@ namespace tryhard
             this.ControlsPanel.Controls.Add(this.DataGridView);
             this.ControlsPanel.Controls.Add(this.AddBlockButton);
             this.ControlsPanel.Controls.Add(this.CalcButton);
-            this.ControlsPanel.Controls.Add(this.EquipmentCB);
+            this.ControlsPanel.Controls.Add(this.ObjectTypeCB);
             this.ControlsPanel.Controls.Add(this.DeleteBlockButton);
-            this.ControlsPanel.Controls.Add(this.ModelCB);
+            this.ControlsPanel.Controls.Add(this.ObjectModelCB);
             this.ControlsPanel.Controls.Add(this.EquipmentLabel);
             this.ControlsPanel.Controls.Add(this.ModelLabel);
             this.ControlsPanel.Location = new System.Drawing.Point(855, 15);
@@ -353,8 +353,8 @@ namespace tryhard
 
         #endregion
         private Button AddBlockButton;
-        public  ComboBox EquipmentCB;
-        public  ComboBox ModelCB;
+        public  ComboBox ObjectTypeCB;
+        public  ComboBox ObjectModelCB;
         private Label EquipmentLabel;
         private Label ModelLabel;
         private DataGridView DataGridView;
