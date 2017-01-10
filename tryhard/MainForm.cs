@@ -43,6 +43,11 @@ namespace tryhard
             SchemeManager.isAddBlockButtonClick = true;
         }
 
+        private void CountTectBox_TextChanged(object sender, System.EventArgs e)
+        {
+
+        }
+
         /* Equipment ComboBoxes */
 
         private void ObjectTypeCBSelectedIndexChanged(object sender, System.EventArgs e)
@@ -145,7 +150,19 @@ namespace tryhard
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
-                ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
+                if (SchemeManager.Blocks.Count == 0)
+                {
+                    string message = "Кажется вы не выбрали ни одной детали";
+                    string caption = "Ошибка в составлении схемы";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    return;
+                }
+                else
+                {
+                    ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
+                }
             }         
             ResForm.ShowDialog();
         }
@@ -263,6 +280,15 @@ namespace tryhard
                 this.EquipmentLabel.Text = EquipmentLabelText[1];
                 FillObjectTypeCB(Meta.ObjectTablesList);
             }
+        }
+
+        private void CountDomain_SelectedItemChanged(object sender, EventArgs e)
+        {
+            if (SchemeManager.isHaveSelectedBlock)
+            {
+                SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].Count = (int)CountDomain.SelectedItem;
+            }
+            //SchemeManager.Blocks[SchemeManager.SelectedBlockIndex]
         }
     }
 }
