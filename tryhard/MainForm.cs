@@ -59,8 +59,7 @@ namespace tryhard
         private void ObjectModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             FillParametersGrid(CMeta.DictionaryName[(string)ObjectTypeCB.SelectedItem], 
-                               SchemeManager[SchemeManagerNumber].ItemsIdList[ObjectModelCB.SelectedIndex]
-                              );
+                               SchemeManager[SchemeManagerNumber].ItemsIdList[ObjectModelCB.SelectedIndex]);
 
             if (SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
             {
@@ -70,8 +69,16 @@ namespace tryhard
 
         public void SetComboBoxes(string AObjectTypeName, string AObjectModelName)
         {
-           ObjectTypeCB.SelectedIndex = Meta.TablesList.IndexOf(AObjectTypeName);
-           ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
+            if (PagesControl.SelectedTab == SchemePage)
+            {
+                ObjectTypeCB.SelectedIndex = Meta.EquipmentTablesList.IndexOf(AObjectTypeName);
+                ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
+            }
+            else if (PagesControl.SelectedTab == ObjectPage)
+            {
+                ObjectTypeCB.SelectedIndex = Meta.ObjectTablesList.IndexOf(AObjectTypeName);
+                ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
+            }
         }
 
         private void FillObjectTypeCB(List<string> AResource)
@@ -254,16 +261,15 @@ namespace tryhard
         private void PagesControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             DeleteBlockButton.Visible = false;
-
             if (PagesControl.SelectedTab == SchemePage)
             {
-                SetControlsPanel(PageType.SchemeType);
                 SchemeManagerNumber = 0;
+                SetControlsPanel(PageType.SchemeType);
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
-                SetControlsPanel(PageType.ObjectType);
                 SchemeManagerNumber = 1;
+                SetControlsPanel(PageType.ObjectType);
             }
         }
 
@@ -293,15 +299,6 @@ namespace tryhard
         private void ObjectPage_Paint(object sender, PaintEventArgs e)
         {
             SchemePage_Paint(sender, e);
-        }
-
-        private void CountDomain_SelectedItemChanged(object sender, EventArgs e)
-        {
-            if (SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
-            {
-                SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].Count = (int)CountDomain.SelectedItem;
-            }
-            //SchemeManager.Blocks[SchemeManager.SelectedBlockIndex]
         }
     }
 }
