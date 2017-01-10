@@ -151,7 +151,19 @@ namespace tryhard
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
-                ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
+                if (SchemeManager[SchemeManagerNumber].Blocks.Count == 0)
+                {
+                    string message = "Кажется вы не выбрали ни одной детали";
+                    string caption = "Ошибка в составлении схемы";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    return;
+                }
+                else
+                {
+                    ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
+                }
             }         
             ResForm.ShowDialog();
         }
@@ -281,6 +293,15 @@ namespace tryhard
         private void ObjectPage_Paint(object sender, PaintEventArgs e)
         {
             SchemePage_Paint(sender, e);
+        }
+
+        private void CountDomain_SelectedItemChanged(object sender, EventArgs e)
+        {
+            if (SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
+            {
+                SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].Count = (int)CountDomain.SelectedItem;
+            }
+            //SchemeManager.Blocks[SchemeManager.SelectedBlockIndex]
         }
     }
 }
