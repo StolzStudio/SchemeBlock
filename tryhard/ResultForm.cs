@@ -40,9 +40,9 @@ namespace tryhard
                     int volume = 0;
                     if (Combination[Key].BlockClass != "field_parameters")
                     {
-                        cost = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "cost_equipment");
-                        weight = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "weight_equipment");
-                        volume = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "volume_equipment");
+                        cost = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "cost");
+                        weight = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "weight");
+                        volume = MForm.Meta.GetIntValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "volume");
                     }
                     string ModelName = MForm.Meta.GetStringValueOfParameter(Combination[Key].BlockClass, Combination[Key].BlockId, "name");
                     weight = weight * Combination[Key].Count;
@@ -64,9 +64,9 @@ namespace tryhard
                 int cost = 0, weight = 0, volume = 0;
                 if (ACombination[Key].BlockClass != "field_parameters")
                 {
-                    cost = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "cost_equipment");
-                    weight = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "weight_equipment");
-                    volume = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "volume_equipment");
+                    cost = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "cost");
+                    weight = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "weight");
+                    volume = MForm.Meta.GetIntValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "volume");
                 }
                 string ModelName = MForm.Meta.GetStringValueOfParameter(ACombination[Key].BlockClass, ACombination[Key].BlockId, "name");
                 CombinationGridView.Rows.Add(CMeta.DictionaryName[ACombination[Key].BlockClass], ModelName,

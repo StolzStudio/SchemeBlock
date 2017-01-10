@@ -39,15 +39,17 @@ namespace tryhard
         //
         public string BlockClass { get; set; }
         public string BlockId { get; set; }
+        public int Count { get; set; }
         //
         //Methods
         //
-        public SchemeBlock(int AIndex, string ABlockClass, string ABlockId, Point APosition, MainForm AForm)
+        public SchemeBlock(int AIndex, string ABlockClass, string ABlockId, Point APosition, MainForm AForm, int ACount = 1)
         {
             Form       = AForm;
             Index      = AIndex;
             BlockClass = ABlockClass;
             BlockId    = ABlockId;
+            Count = ACount;
 
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
 

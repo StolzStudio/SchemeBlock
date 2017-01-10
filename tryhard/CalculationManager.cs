@@ -21,12 +21,12 @@ namespace tryhard
         public int    Count      { get; set; }
 
 
-        public CalcBlock(int AIndex, string ABlockClass, string ABlockId)
+        public CalcBlock(int AIndex, string ABlockClass, string ABlockId, int ACount = 1)
         {
             Index = AIndex;
             BlockClass = ABlockClass;
             BlockId= ABlockId;
-            Count = 1;
+            Count = ACount;
         }
 
         public CalcBlock(CalcBlock AOther)
@@ -43,10 +43,11 @@ namespace tryhard
 
     public class CalculationManager
     {
-        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BaseBlocks)
+        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BaseBlocks, PageType APageType)
         {
             List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(AMeta, BaseBlocks);
-            CalculateBlocksCombinations(AMeta, ref Combinations);
+            if (APageType == PageType.SchemeType)
+                CalculateBlocksCombinations(AMeta, ref Combinations);
             return Combinations;
         }
 

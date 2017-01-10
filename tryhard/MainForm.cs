@@ -104,30 +104,34 @@ namespace tryhard
             }
         }
 
-        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations()
+        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations(PageType APageType)
         {
             /* Fill Dict */
 
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
             foreach (int Key in SchemeManager.Blocks.Keys)
-                CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager.Blocks[Key].BlockClass, SchemeManager.Blocks[Key].BlockId));
+                CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager.Blocks[Key].BlockClass, 
+                                                       SchemeManager.Blocks[Key].BlockId, 
+                                                       SchemeManager.Blocks[Key].Count));
 
             /* Fill Links at Blocks */
 
-            foreach (SchemeLink Link in SchemeManager.Links)
+            if (APageType == PageType.SchemeType)
             {
-                CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
-                CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
+                foreach (SchemeLink Link in SchemeManager.Links)
+                {
+                    CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
+                    CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
+                }
             }
             return CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks);
         }  
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
-            PageType ControlPanelType;
+            ResultForm ResForm = null;
             if (PagesControl.SelectedTab == SchemePage)
             {
-                ControlPanelType = PageType.SchemeType;
                 if (!SchemeManager.isOilFieldAdd)
                 {
                     string message = "Кажется вы забыли добавить месторождение";
@@ -137,12 +141,12 @@ namespace tryhard
                     result = MessageBox.Show(message, caption, buttons);
                     return;
                 }
+                ResForm = new ResultForm(this, GetBlocksCombinations(PageType.SchemeType));
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
-                ControlPanelType = PageType.ObjectType;
+                ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
             }         
-            ResultForm ResForm = new ResultForm(this, GetBlocksCombinations());
             ResForm.ShowDialog();
         }
 
