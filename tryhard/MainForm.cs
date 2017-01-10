@@ -281,14 +281,5 @@ namespace tryhard
                 FillObjectTypeCB(Meta.ObjectTablesList);
             }
         }
-
-        private void CountDomain_SelectedItemChanged(object sender, EventArgs e)
-        {
-            if (SchemeManager.isHaveSelectedBlock)
-            {
-                SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].Count = (int)CountDomain.SelectedItem;
-            }
-            //SchemeManager.Blocks[SchemeManager.SelectedBlockIndex]
-        }
     }
 }

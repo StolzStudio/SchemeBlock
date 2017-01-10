@@ -82,8 +82,6 @@ namespace tryhard
             this.GoObjectPageButton = new System.Windows.Forms.Button();
             this.GoDrawingPageButton = new System.Windows.Forms.Button();
             this.ControlsPanel = new System.Windows.Forms.Panel();
-            this.CountDomain = new System.Windows.Forms.DomainUpDown();
-            this.CountLabel = new System.Windows.Forms.Label();
             this.PagesControl = new System.Windows.Forms.TabControl();
             this.SchemePage = new tryhard.DrawTabPage();
             this.ObjectPage = new tryhard.DrawTabPage();
@@ -278,8 +276,6 @@ namespace tryhard
             // 
             this.ControlsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ControlsPanel.Controls.Add(this.CountDomain);
-            this.ControlsPanel.Controls.Add(this.CountLabel);
             this.ControlsPanel.Controls.Add(this.DataGridView);
             this.ControlsPanel.Controls.Add(this.AddBlockButton);
             this.ControlsPanel.Controls.Add(this.CalcButton);
@@ -292,47 +288,6 @@ namespace tryhard
             this.ControlsPanel.Name = "ControlsPanel";
             this.ControlsPanel.Size = new System.Drawing.Size(395, 486);
             this.ControlsPanel.TabIndex = 15;
-            // 
-            // CountDomain
-            // 
-            this.CountDomain.Items.Add("1");
-            this.CountDomain.Items.Add("2");
-            this.CountDomain.Items.Add("3");
-            this.CountDomain.Items.Add("4");
-            this.CountDomain.Items.Add("5");
-            this.CountDomain.Items.Add("6");
-            this.CountDomain.Items.Add("7");
-            this.CountDomain.Items.Add("8");
-            this.CountDomain.Items.Add("9");
-            this.CountDomain.Items.Add("10");
-            this.CountDomain.Items.Add("11");
-            this.CountDomain.Items.Add("12");
-            this.CountDomain.Items.Add("13");
-            this.CountDomain.Items.Add("14");
-            this.CountDomain.Items.Add("15");
-            this.CountDomain.Items.Add("16");
-            this.CountDomain.Items.Add("17");
-            this.CountDomain.Items.Add("18");
-            this.CountDomain.Items.Add("19");
-            this.CountDomain.Items.Add("20");
-            this.CountDomain.Location = new System.Drawing.Point(187, 62);
-            this.CountDomain.Name = "CountDomain";
-            this.CountDomain.ReadOnly = true;
-            this.CountDomain.Size = new System.Drawing.Size(46, 20);
-            this.CountDomain.TabIndex = 16;
-            this.CountDomain.Text = "1";
-            this.CountDomain.SelectedItemChanged += new System.EventHandler(this.CountDomain_SelectedItemChanged);
-            // 
-            // CountLabel
-            // 
-            this.CountLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CountLabel.AutoSize = true;
-            this.CountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CountLabel.Location = new System.Drawing.Point(85, 62);
-            this.CountLabel.Name = "CountLabel";
-            this.CountLabel.Size = new System.Drawing.Size(96, 18);
-            this.CountLabel.TabIndex = 15;
-            this.CountLabel.Text = "Количество:";
             // 
             // PagesControl
             // 
@@ -415,8 +370,6 @@ namespace tryhard
         public DrawTabPage SchemePage;
         public DrawTabPage ObjectPage;
         private Panel ControlsPanel;
-        private Label CountLabel;
-        private DomainUpDown CountDomain;
     }
 }
 
