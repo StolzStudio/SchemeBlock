@@ -6,9 +6,9 @@ fluid_output%Выход флюида
 reverse_water_input%Вход обратной воды
 people_gang_demand%Потребность чел/смена
 kw_h_demand%Потребность Кв/ч
-weight_equipment%Масса оборудования
-volume_equipment%Объем оборудования
-cost_equipment%Стоимость оборудования
+weight%Масса
+volume%Объем
+cost%Стоимость
 pressure_gradient%Градиент давления
 max_fluid_output%Максимальный выход флюида
 reserve_days_rvp%Запас воды по РВП
@@ -42,3 +42,11 @@ rtn%РТН
 ukpg%УКПГ
 ukppv%УКППВ
 upn%УПН
+diameter%Диаметр
+material%Материал
+length%Длина
+input_substance%Вход вещества
+output_substance%Выход вещества
+pipe%Труба
+pump%Насос
+bolt%Болт

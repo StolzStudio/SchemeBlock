@@ -36,7 +36,6 @@ namespace tryhard
             ControlsPanel.Visible = false;
             SchemeManager = new SchemeManager(this);
             CalcManager = new CalculationManager();
-            FillObjectTypeCB();
         }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
@@ -69,11 +68,12 @@ namespace tryhard
             ObjectModelCB.SelectedIndex = SchemeManager.ItemsIdList.IndexOf(AObjectModelName);
         }
 
-        private void FillObjectTypeCB()
+        private void FillObjectTypeCB(List<string> AResource)
         {
-            foreach (string Equipment in Meta.TablesList)
+
+            foreach (string Item in AResource)
             {
-                ObjectTypeCB.Items.Add(CMeta.DictionaryName[Equipment]);
+                ObjectTypeCB.Items.Add(CMeta.DictionaryName[Item]);
             }
             ObjectTypeCB.SelectedIndex = 0;
             ObjectTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -124,15 +124,24 @@ namespace tryhard
 
         private void CalcButton_Click(object sender, EventArgs e)
         {
-            if (!SchemeManager.isOilFieldAdd)
+            PageType ControlPanelType;
+            if (PagesControl.SelectedTab == SchemePage)
             {
-                string message = "Кажется вы забыли добавить месторождение";
-                string caption = "Ошибка в составлении схемы";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
-                result = MessageBox.Show(message, caption, buttons);
-                return;
+                ControlPanelType = PageType.SchemeType;
+                if (!SchemeManager.isOilFieldAdd)
+                {
+                    string message = "Кажется вы забыли добавить месторождение";
+                    string caption = "Ошибка в составлении схемы";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    return;
+                }
             }
+            else if (PagesControl.SelectedTab == ObjectPage)
+            {
+                ControlPanelType = PageType.ObjectType;
+            }         
             ResultForm ResForm = new ResultForm(this, GetBlocksCombinations());
             ResForm.ShowDialog();
         }
@@ -181,6 +190,7 @@ namespace tryhard
             MeetPanel.Visible = false;
             PagesControl.SelectTab(ObjectPage);
             ControlsPanel.Visible = true;
+            SetControlsPanel(PageType.ObjectType);
         }
 
         private void ShowSchemePageButton_Click(object sender, EventArgs e)
@@ -188,6 +198,7 @@ namespace tryhard
             MeetPanel.Visible = false;
             PagesControl.SelectTab(SchemePage);
             ControlsPanel.Visible = true;
+            SetControlsPanel(PageType.SchemeType);
         }
 
         private void SchemePage_Click(object sender, EventArgs e)
@@ -228,28 +239,25 @@ namespace tryhard
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
-                // как я понял, всегда по дефолту выбрана первая страница и после тестов выяснилось, что
-                // это функция работает при смене на отличную от первой страницы
-                // в общем, вот здесь переключение на вторую страницу
                 SetControlsPanel(PageType.ObjectType);
             }
         }
 
+        /* Заполнение CB в зависимости от типа Page */
+
         private void SetControlsPanel(PageType APageType)
         {
-            //функция по заполнению комбобоксов
-            ObjectTypeCB.Items.Clear();
             ObjectModelCB.Items.Clear();
+            ObjectTypeCB.Items.Clear();
             if (APageType == PageType.SchemeType)
             {
                 this.EquipmentLabel.Text = EquipmentLabelText[0];
-                FillObjectTypeCB();
-                //заполнить для схемы
+                FillObjectTypeCB(Meta.EquipmentTablesList);
             }
             else if (APageType == PageType.ObjectType)
             {
                 this.EquipmentLabel.Text = EquipmentLabelText[1];
-                //заполнить комбобоксы для объекта
+                FillObjectTypeCB(Meta.ObjectTablesList);
             }
         }
     }

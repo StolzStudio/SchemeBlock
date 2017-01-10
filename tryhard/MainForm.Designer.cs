@@ -117,7 +117,7 @@ namespace tryhard
             this.ObjectTypeCB.Name = "ObjectTypeCB";
             this.ObjectTypeCB.Size = new System.Drawing.Size(145, 28);
             this.ObjectTypeCB.TabIndex = 2;
-            this.ObjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.EquipmentCBSelectedIndexChanged);
+            this.ObjectTypeCB.SelectedIndexChanged += new System.EventHandler(this.ObjectTypeCBSelectedIndexChanged);
             // 
             // ObjectModelCB
             // 
@@ -130,7 +130,7 @@ namespace tryhard
             this.ObjectModelCB.Name = "ObjectModelCB";
             this.ObjectModelCB.Size = new System.Drawing.Size(145, 28);
             this.ObjectModelCB.TabIndex = 3;
-            this.ObjectModelCB.SelectedIndexChanged += new System.EventHandler(this.ModelCBSelectedIndexChanged);
+            this.ObjectModelCB.SelectedIndexChanged += new System.EventHandler(this.ObjectModelCBSelectedIndexChanged);
             // 
             // EquipmentLabel
             // 

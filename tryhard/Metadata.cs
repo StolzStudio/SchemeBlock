@@ -113,7 +113,7 @@ namespace tryhard
         public List<CTable> Tables = new List<CTable>();
         public List<string> TablesList = new List<string>();
         public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
-        public Dictionary<string, Dictionary<string, bool>> MatchingTable = new Dictionary<string, Dictionary<string, bool>>();
+        public Dictionary<string, Dictionary<string, bool>> EquipmentMatchingTable = new Dictionary<string, Dictionary<string, bool>>();
 
         /* Consts */
 
@@ -122,7 +122,11 @@ namespace tryhard
         private const string DictSeparator = "%";
         private const string InputIdentificator = "input";
         private const string OutputIdentificator = "output";
-        private const string MatchingTableName = "equipment_matching";
+        private const string EquipmentMatchingTableName = "equipment_matching";
+        public List<string> ObjectTablesList = new List<string>() { "pipe", "pump", "bolt" };
+        public List<string> EquipmentTablesList = new List<string>() { "dk", "dks", "field_parameters", "fu",
+                                                                       "nnpv", "rpv", "rr", "rtn", "ukpg",
+                                                                       "ukppv", "upn"};
 
         /* Methods */
 
@@ -134,7 +138,7 @@ namespace tryhard
                 TablesList = Database.GetListTables();
                 foreach(string TableName in TablesList)
                     CreateTable(TableName, Database.GetListTableRows(TableName));
-                MatchingTable = Database.GetMatchingDict(MatchingTableName);
+                EquipmentMatchingTable = Database.GetMatchingDict(EquipmentMatchingTableName);
                 CheckReferensesInTables();
                 CheckInputOutputParameters();
             }
@@ -222,7 +226,7 @@ namespace tryhard
 
         public bool isPossibleLink(string AFirstTable, string ASecondTable)
         {   
-            return MatchingTable[AFirstTable][ASecondTable];
+            return EquipmentMatchingTable[AFirstTable][ASecondTable];
         }
 
         public string GetCommonParameterForLink(string AFirstTable, string ASecondTable)

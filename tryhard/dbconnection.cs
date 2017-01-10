@@ -12,7 +12,7 @@ namespace tryhard
 
         private List<string> UnvisibleTables = new List<string>()
         {
-            "equipment_matching", "oil_quality", "tables_of_equipments", "tables_of_modules"
+            "equipment_matching", "oil_quality"
         };
         private SQLiteConnection connection = null;
         private SQLiteCommand cmd = null;
