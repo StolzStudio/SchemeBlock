@@ -69,7 +69,15 @@ namespace tryhard
             this.BlockBody.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
             this.BlockBody.MouseUp   += new MouseEventHandler(this.SchemeBodyMouseUp);
             this.BlockBody.Paint     += new PaintEventHandler(this.SchemeBodyRedraw);
-            this.Form.SchemePage.Controls.Add(BlockBody);
+
+            if (Form.SchemeManagerNumber == 0)
+            {
+                this.Form.SchemePage.Controls.Add(BlockBody);
+            }
+            else if (Form.SchemeManagerNumber == 1)
+            {
+                this.Form.ObjectPage.Controls.Add(BlockBody);
+            }
             this.SetFocus();
             //
             //BlockClassLabel
@@ -116,8 +124,8 @@ namespace tryhard
         {
             this.isFocus = true;
 
-            Form.SchemeManager.isHaveSelectedBlock = true;
-            Form.SchemeManager.SelectedBlockIndex  = this.Index;
+            Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
+            Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
 
             Graphics g = this.BlockBody.CreateGraphics();
 
@@ -134,9 +142,9 @@ namespace tryhard
 
         public void ClearFocus()
         {
-            Form.SchemeManager.isHaveSelectedBlock = false;
-            Form.DeleteBlockButton.Visible         = false;
-            this.isFocus                           = false;
+            Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
+            Form.DeleteBlockButton.Visible = false;
+            this.isFocus = false;
 
             this.BlockBody.Invalidate();
         }
@@ -145,9 +153,9 @@ namespace tryhard
         {
             if (!isFocus)
             {
-                foreach (int Key in Form.SchemeManager.Blocks.Keys)
+                foreach (int Key in Form.SchemeManager[Form.SchemeManagerNumber].Blocks.Keys)
                 {
-                    Form.SchemeManager.Blocks[Key].ClearFocus();
+                    Form.SchemeManager[Form.SchemeManagerNumber].Blocks[Key].ClearFocus();
                 }
                 this.SetFocus();
             }
@@ -165,27 +173,28 @@ namespace tryhard
             if (Control.ModifierKeys == Keys.Control) { isCtrlDown = true;  }
                                                  else { isCtrlDown = false; }
 
-            if ((Form.SchemeManager.isHaveSelectedBlock) && (Form.SchemeManager.SelectedBlockIndex != this.Index) && isCtrlDown)
+            if ((Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock) && 
+                (Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.SchemeManager.CheckLink(Form.SchemeManager.SelectedBlockIndex, this.Index) && 
-                     Form.Meta.isPossibleLink(Form.SchemeManager.Blocks[Form.SchemeManager.SelectedBlockIndex].BlockClass, this.BlockClass))
+                if (!Form.SchemeManager[Form.SchemeManagerNumber].CheckLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index) && 
+                     Form.Meta.isPossibleLink(Form.SchemeManager[Form.SchemeManagerNumber].Blocks[Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex].BlockClass, this.BlockClass))
                 {
-                    Form.SchemeManager.isHaveSelectedBlock = false;
+                    Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
                     isCtrlDown                             = false;
 
-                    Form.SchemeManager.ClearLinksFocus();
-                    Form.SchemeManager.AddSchemeLink(new SchemeLink(Form.SchemeManager.SelectedBlockIndex, this.Index));
+                    Form.SchemeManager[Form.SchemeManagerNumber].ClearLinksFocus();
+                    Form.SchemeManager[Form.SchemeManagerNumber].AddSchemeLink(new SchemeLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index));
                 }
             }
             else
             {
-                Form.SchemeManager.isHaveSelectedBlock = true;
-                Form.SchemeManager.SelectedBlockIndex  = this.Index;
+                Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
+                Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
             }
 
             Form.SetComboBoxes(this.BlockClass, this.BlockId);
-            Form.SchemeManager.ClearLinksFocus();
+            Form.SchemeManager[Form.SchemeManagerNumber].ClearLinksFocus();
             CheckFocus();
         }
 

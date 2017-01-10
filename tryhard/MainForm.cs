@@ -20,13 +20,15 @@ namespace tryhard
         /* Fields */
 
         public System.Drawing.Point DrawingPanelOffset;
-      
-        public SchemeManager SchemeManager;
+        public int SchemeManagerNumber = 0;
+        public SchemeManager[] SchemeManager;
         public CalculationManager CalcManager;
 
         private string[] EquipmentLabelText = new string[2] { "Класс оборудования:", "Класс детали:" };
 
         private Point PageOffsetInPageControl = new Point(20, 38);
+
+        
         /* Methods */
 
         public MainForm()
@@ -34,13 +36,15 @@ namespace tryhard
             Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
             ControlsPanel.Visible = false;
-            SchemeManager = new SchemeManager(this);
+            SchemeManager = new SchemeManager[2];
+            SchemeManager[0] = new SchemeManager(this);
+            SchemeManager[1] = new SchemeManager(this);
             CalcManager = new CalculationManager();
         }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
         {
-            SchemeManager.isAddBlockButtonClick = true;
+            SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = true;
         }
 
         /* Equipment ComboBoxes */
@@ -48,24 +52,26 @@ namespace tryhard
         private void ObjectTypeCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
             ObjectModelCB.Items.Clear();
-            SchemeManager.ClearBlocksFocus();
+            SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
             FillObjectModelCB(CMeta.DictionaryName[(string)((ComboBox)sender).SelectedItem]);
         }
 
         private void ObjectModelCBSelectedIndexChanged(object sender, System.EventArgs e)
         {
-            FillParametersGrid(CMeta.DictionaryName[(string)ObjectTypeCB.SelectedItem], SchemeManager.ItemsIdList[ObjectModelCB.SelectedIndex]);
+            FillParametersGrid(CMeta.DictionaryName[(string)ObjectTypeCB.SelectedItem], 
+                               SchemeManager[SchemeManagerNumber].ItemsIdList[ObjectModelCB.SelectedIndex]
+                              );
 
-            if (SchemeManager.isHaveSelectedBlock)
+            if (SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
             {
-                SchemeManager.ChangeSelectBlock();
+                SchemeManager[SchemeManagerNumber].ChangeSelectBlock();
             }
         }
 
         public void SetComboBoxes(string AObjectTypeName, string AObjectModelName)
         {
-            ObjectTypeCB.SelectedIndex = Meta.TablesList.IndexOf(AObjectTypeName);
-            ObjectModelCB.SelectedIndex = SchemeManager.ItemsIdList.IndexOf(AObjectModelName);
+           ObjectTypeCB.SelectedIndex = Meta.TablesList.IndexOf(AObjectTypeName);
+           ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
         }
 
         private void FillObjectTypeCB(List<string> AResource)
@@ -83,10 +89,10 @@ namespace tryhard
         {
             ObjectModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             List<string> items = Meta.GetListRecordsWithId(AObjectTypeName, "name");
-            SchemeManager.ItemsIdList.Clear();
+            SchemeManager[SchemeManagerNumber].ItemsIdList.Clear();
             for (int i = 0; i < items.Count; i += 2)
             {
-                SchemeManager.ItemsIdList.Add(items[i]);
+                SchemeManager[SchemeManagerNumber].ItemsIdList.Add(items[i]);
                 ObjectModelCB.Items.Add(items[i + 1]);
             }
             ObjectModelCB.SelectedIndex = 0;
@@ -109,16 +115,16 @@ namespace tryhard
             /* Fill Dict */
 
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
-            foreach (int Key in SchemeManager.Blocks.Keys)
-                CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager.Blocks[Key].BlockClass, 
-                                                       SchemeManager.Blocks[Key].BlockId, 
-                                                       SchemeManager.Blocks[Key].Count));
+            foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
+                CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager[SchemeManagerNumber].Blocks[Key].BlockClass, 
+                                                       SchemeManager[SchemeManagerNumber].Blocks[Key].BlockId, 
+                                                       SchemeManager[SchemeManagerNumber].Blocks[Key].Count));
 
             /* Fill Links at Blocks */
 
             if (APageType == PageType.SchemeType)
             {
-                foreach (SchemeLink Link in SchemeManager.Links)
+                foreach (SchemeLink Link in SchemeManager[SchemeManagerNumber].Links)
                 {
                     CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                     CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
@@ -132,7 +138,7 @@ namespace tryhard
             ResultForm ResForm = null;
             if (PagesControl.SelectedTab == SchemePage)
             {
-                if (!SchemeManager.isOilFieldAdd)
+                if (!SchemeManager[SchemeManagerNumber].isOilFieldAdd)
                 {
                     string message = "Кажется вы забыли добавить месторождение";
                     string caption = "Ошибка в составлении схемы";
@@ -152,30 +158,30 @@ namespace tryhard
 
         private void DeleteBlockButton_Click(object sender, EventArgs e)
         {
-            SchemeLink[] LinksArr = SchemeManager.Links.ToArray();
-            SchemeManager.Links.Clear();
+            SchemeLink[] LinksArr = SchemeManager[SchemeManagerNumber].Links.ToArray();
+            SchemeManager[SchemeManagerNumber].Links.Clear();
 
             for (int i = 0; i < LinksArr.Length; i++)
             {
-                if (!SchemeManager.isHaveSelectedBlock)
+                if (!SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
                 {
                     if (LinksArr[i].isFocus) { LinksArr[i] = null; }
                 }
                 else
                 {
-                    if (LinksArr[i].CheckDeletedLink(SchemeManager.SelectedBlockIndex)) { LinksArr[i] = null; }
+                    if (LinksArr[i].CheckDeletedLink(SchemeManager[SchemeManagerNumber].SelectedBlockIndex)) { LinksArr[i] = null; }
                 }
             }
 
             LinksArr = LinksArr.Where(x => !IsLinkNull(x)).ToArray();
-            SchemeManager.Links = LinksArr.ToList();
+            SchemeManager[SchemeManagerNumber].Links = LinksArr.ToList();
 
-            if (SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].isFocus)
+            if (SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
             {
-                SchemePage.Controls.Remove(SchemeManager.Blocks[SchemeManager.SelectedBlockIndex].BlockBody);
-                SchemeManager.Blocks.Remove(SchemeManager.SelectedBlockIndex);
-                SchemeManager.isHaveSelectedBlock = false;
-                SchemeManager.SelectedBlockIndex = -1;
+                SchemePage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
+                SchemeManager[SchemeManagerNumber].Blocks.Remove(SchemeManager[SchemeManagerNumber].SelectedBlockIndex);
+                SchemeManager[SchemeManagerNumber].isHaveSelectedBlock = false;
+                SchemeManager[SchemeManagerNumber].SelectedBlockIndex = -1;
             }
 
 
@@ -207,26 +213,26 @@ namespace tryhard
 
         private void SchemePage_Click(object sender, EventArgs e)
         {
-            SchemeManager.ClearLinksFocus();
-            SchemeManager.ClearBlocksFocus();
+            SchemeManager[SchemeManagerNumber].ClearLinksFocus();
+            SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
             ptr.X -= PageOffsetInPageControl.X;
             ptr.Y -= PageOffsetInPageControl.Y;
-            if (SchemeManager.isAddBlockButtonClick)
+            if (SchemeManager[SchemeManagerNumber].isAddBlockButtonClick)
             {
                 ptr.X -= SchemeBlock.BlockBodyWidth / 2;
                 ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
-                SchemeManager.AddBlock(ptr);
+                SchemeManager[SchemeManagerNumber].AddBlock(ptr);
             }
-            SchemeManager.TrySetFocusInLinks(ptr);
+            SchemeManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
         }
 
         private void SchemePage_Paint(object sender, PaintEventArgs e)
         {
-            if (SchemeManager.Links.Count != 0)
+            if (SchemeManager[SchemeManagerNumber].Links.Count != 0)
             {
-                foreach (SchemeLink Link in SchemeManager.Links)
+                foreach (SchemeLink Link in SchemeManager[SchemeManagerNumber].Links)
                 {
                     Link.Draw(this, e);
                 }
@@ -240,10 +246,12 @@ namespace tryhard
             if (PagesControl.SelectedTab == SchemePage)
             {
                 SetControlsPanel(PageType.SchemeType);
+                SchemeManagerNumber = 0;
             }
             else if (PagesControl.SelectedTab == ObjectPage)
             {
                 SetControlsPanel(PageType.ObjectType);
+                SchemeManagerNumber = 1;
             }
         }
 
@@ -263,6 +271,16 @@ namespace tryhard
                 this.EquipmentLabel.Text = EquipmentLabelText[1];
                 FillObjectTypeCB(Meta.ObjectTablesList);
             }
+        }
+
+        private void ObjectPage_Click(object sender, EventArgs e)
+        {
+            SchemePage_Click(sender, e);
+        }
+
+        private void ObjectPage_Paint(object sender, PaintEventArgs e)
+        {
+            SchemePage_Paint(sender, e);
         }
     }
 }

@@ -326,6 +326,8 @@ namespace tryhard
             this.ObjectPage.TabIndex = 1;
             this.ObjectPage.Text = "Object Page";
             this.ObjectPage.UseVisualStyleBackColor = true;
+            this.ObjectPage.Click += new System.EventHandler(this.ObjectPage_Click);
+            this.ObjectPage.Paint += new System.Windows.Forms.PaintEventHandler(this.ObjectPage_Paint);
             // 
             // MainForm
             // 
@@ -333,8 +335,8 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.ControlsPanel);
             this.Controls.Add(this.MeetPanel);
+            this.Controls.Add(this.ControlsPanel);
             this.Controls.Add(this.PagesControl);
             this.Controls.Add(this.PictureBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

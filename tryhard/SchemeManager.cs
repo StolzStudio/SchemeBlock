@@ -15,9 +15,9 @@ namespace tryhard
         public bool isHaveSelectedBlock;
         public bool isOilFieldAdd;
 
-        public Dictionary<int, SchemeBlock> Blocks = new Dictionary<int, SchemeBlock>();
-        public List<SchemeLink> Links = new List<SchemeLink>();
-        public List<string> ItemsIdList = new List<string>();
+        public Dictionary<int, SchemeBlock> Blocks;
+        public List<SchemeLink> Links;
+        public List<string> ItemsIdList;
 
         private MainForm Form;
         private int block_counter;
@@ -25,6 +25,11 @@ namespace tryhard
         public SchemeManager(MainForm AForm)
         {
             SelectedBlockIndex = -1;
+
+            Blocks = new Dictionary<int, SchemeBlock>();
+            Links = new List<SchemeLink>();
+            ItemsIdList = new List<string>();
+
             isAddBlockButtonClick = false;
             isHaveSelectedBlock = false;
             isOilFieldAdd = false;
@@ -38,10 +43,10 @@ namespace tryhard
             if (!isOilFieldAdd)
             {
                 isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
-            } 
-            Blocks.Add(block_counter, new SchemeBlock(block_counter,
-                       CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem],
-                       ItemsIdList[Form.ObjectModelCB.SelectedIndex], Pos, Form));
+            }
+            string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
+            string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
+            Blocks.Add(block_counter, new SchemeBlock(block_counter, st, cd, Pos, Form));
 
             foreach (int Key in Blocks.Keys)
             {
