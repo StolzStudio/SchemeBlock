@@ -30,39 +30,37 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.ProjectListBox = new System.Windows.Forms.ListBox();
+            this.ProjectsListBox = new System.Windows.Forms.ListBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.RosneftPicture = new System.Windows.Forms.PictureBox();
-            this.AddComplexButton = new System.Windows.Forms.Button();
-            this.AddDeviceButton = new System.Windows.Forms.Button();
+            this.WelcomeProgramLabel = new System.Windows.Forms.Label();
+            this.DecoratingPanel1 = new System.Windows.Forms.Panel();
+            this.ProgramVersionLabel = new System.Windows.Forms.Label();
+            this.OpenAnotherProjectLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.CreateNewProjectPanel = new System.Windows.Forms.Panel();
+            this.MainDescriptionLabel = new System.Windows.Forms.Label();
+            this.DescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).BeginInit();
+            this.CreateNewProjectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // ProjectsListBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ваши проекты:";
-            // 
-            // ProjectListBox
-            // 
-            this.ProjectListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ProjectListBox.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectListBox.FormattingEnabled = true;
-            this.ProjectListBox.ItemHeight = 25;
-            this.ProjectListBox.Items.AddRange(new object[] {
+            this.ProjectsListBox.BackColor = System.Drawing.Color.Beige;
+            this.ProjectsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProjectsListBox.Font = new System.Drawing.Font("Javanese Text", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectsListBox.FormattingEnabled = true;
+            this.ProjectsListBox.ItemHeight = 43;
+            this.ProjectsListBox.Items.AddRange(new object[] {
             "project1",
             "project2",
             "project3"});
-            this.ProjectListBox.Location = new System.Drawing.Point(19, 49);
-            this.ProjectListBox.Name = "ProjectListBox";
-            this.ProjectListBox.Size = new System.Drawing.Size(275, 477);
-            this.ProjectListBox.TabIndex = 1;
+            this.ProjectsListBox.Location = new System.Drawing.Point(0, 0);
+            this.ProjectsListBox.Name = "ProjectsListBox";
+            this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
+            this.ProjectsListBox.TabIndex = 1;
             // 
             // imageList1
             // 
@@ -76,65 +74,150 @@
             this.RosneftPicture.ErrorImage = ((System.Drawing.Image)(resources.GetObject("RosneftPicture.ErrorImage")));
             this.RosneftPicture.Image = ((System.Drawing.Image)(resources.GetObject("RosneftPicture.Image")));
             this.RosneftPicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("RosneftPicture.InitialImage")));
-            this.RosneftPicture.Location = new System.Drawing.Point(234, 373);
+            this.RosneftPicture.Location = new System.Drawing.Point(573, 337);
             this.RosneftPicture.Name = "RosneftPicture";
             this.RosneftPicture.Size = new System.Drawing.Size(363, 180);
             this.RosneftPicture.TabIndex = 2;
             this.RosneftPicture.TabStop = false;
             this.RosneftPicture.WaitOnLoad = true;
             // 
-            // AddComplexButton
+            // WelcomeProgramLabel
             // 
-            this.AddComplexButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddComplexButton.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddComplexButton.Location = new System.Drawing.Point(324, 49);
-            this.AddComplexButton.Name = "AddComplexButton";
-            this.AddComplexButton.Size = new System.Drawing.Size(244, 76);
-            this.AddComplexButton.TabIndex = 3;
-            this.AddComplexButton.Text = "Создать новый комплекс";
-            this.AddComplexButton.UseVisualStyleBackColor = true;
-            this.AddComplexButton.Click += new System.EventHandler(this.AddComplexButton_Click);
+            this.WelcomeProgramLabel.AutoSize = true;
+            this.WelcomeProgramLabel.Font = new System.Drawing.Font("Javanese Text", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WelcomeProgramLabel.Location = new System.Drawing.Point(362, 82);
+            this.WelcomeProgramLabel.Name = "WelcomeProgramLabel";
+            this.WelcomeProgramLabel.Size = new System.Drawing.Size(546, 49);
+            this.WelcomeProgramLabel.TabIndex = 5;
+            this.WelcomeProgramLabel.Text = "Добро пожаловать в Gaby";
             // 
-            // AddDeviceButton
+            // DecoratingPanel1
             // 
-            this.AddDeviceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddDeviceButton.Font = new System.Drawing.Font("Nirmala UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddDeviceButton.Location = new System.Drawing.Point(324, 131);
-            this.AddDeviceButton.Name = "AddDeviceButton";
-            this.AddDeviceButton.Size = new System.Drawing.Size(244, 76);
-            this.AddDeviceButton.TabIndex = 4;
-            this.AddDeviceButton.Text = "Создать новое оборудование";
-            this.AddDeviceButton.UseVisualStyleBackColor = true;
-            this.AddDeviceButton.Click += new System.EventHandler(this.AddDeviceButton_Click);
+            this.DecoratingPanel1.BackColor = System.Drawing.Color.Orange;
+            this.DecoratingPanel1.Location = new System.Drawing.Point(346, 194);
+            this.DecoratingPanel1.Name = "DecoratingPanel1";
+            this.DecoratingPanel1.Size = new System.Drawing.Size(577, 2);
+            this.DecoratingPanel1.TabIndex = 6;
+            // 
+            // ProgramVersionLabel
+            // 
+            this.ProgramVersionLabel.AutoSize = true;
+            this.ProgramVersionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProgramVersionLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ProgramVersionLabel.Location = new System.Drawing.Point(545, 153);
+            this.ProgramVersionLabel.Name = "ProgramVersionLabel";
+            this.ProgramVersionLabel.Size = new System.Drawing.Size(189, 23);
+            this.ProgramVersionLabel.TabIndex = 7;
+            this.ProgramVersionLabel.Text = "version 0.1 (0.A127)";
+            // 
+            // OpenAnotherProjectLabel
+            // 
+            this.OpenAnotherProjectLabel.AutoSize = true;
+            this.OpenAnotherProjectLabel.BackColor = System.Drawing.Color.Beige;
+            this.OpenAnotherProjectLabel.Font = new System.Drawing.Font("Javanese Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenAnotherProjectLabel.ForeColor = System.Drawing.Color.Black;
+            this.OpenAnotherProjectLabel.Location = new System.Drawing.Point(151, 492);
+            this.OpenAnotherProjectLabel.Name = "OpenAnotherProjectLabel";
+            this.OpenAnotherProjectLabel.Size = new System.Drawing.Size(172, 16);
+            this.OpenAnotherProjectLabel.TabIndex = 8;
+            this.OpenAnotherProjectLabel.Text = "Открыть другой проект...";
+            this.OpenAnotherProjectLabel.Click += new System.EventHandler(this.OpenAnotherProjectLabel_Click);
+            this.OpenAnotherProjectLabel.MouseEnter += new System.EventHandler(this.OpenAnotherProjectLabel_MouseEnter);
+            this.OpenAnotherProjectLabel.MouseLeave += new System.EventHandler(this.OpenAnotherProjectLabel_MouseLeave);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.Location = new System.Drawing.Point(346, 329);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(577, 2);
+            this.panel1.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Orange;
+            this.panel2.Location = new System.Drawing.Point(346, 260);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(577, 2);
+            this.panel2.TabIndex = 8;
+            // 
+            // CreateNewProjectPanel
+            // 
+            this.CreateNewProjectPanel.Controls.Add(this.DescriptionLabel);
+            this.CreateNewProjectPanel.Controls.Add(this.MainDescriptionLabel);
+            this.CreateNewProjectPanel.Location = new System.Drawing.Point(346, 200);
+            this.CreateNewProjectPanel.Name = "CreateNewProjectPanel";
+            this.CreateNewProjectPanel.Size = new System.Drawing.Size(577, 57);
+            this.CreateNewProjectPanel.TabIndex = 9;
+            this.CreateNewProjectPanel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
+            this.CreateNewProjectPanel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
+            this.CreateNewProjectPanel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
+            // 
+            // MainDescriptionLabel
+            // 
+            this.MainDescriptionLabel.AutoSize = true;
+            this.MainDescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainDescriptionLabel.Location = new System.Drawing.Point(3, 0);
+            this.MainDescriptionLabel.Name = "MainDescriptionLabel";
+            this.MainDescriptionLabel.Size = new System.Drawing.Size(301, 45);
+            this.MainDescriptionLabel.TabIndex = 0;
+            this.MainDescriptionLabel.Text = "Создать новый проект";
+            this.MainDescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
+            this.MainDescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
+            this.MainDescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
+            // 
+            // DescriptionLabel
+            // 
+            this.DescriptionLabel.AutoSize = true;
+            this.DescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DescriptionLabel.Location = new System.Drawing.Point(8, 35);
+            this.DescriptionLabel.Name = "DescriptionLabel";
+            this.DescriptionLabel.Size = new System.Drawing.Size(429, 18);
+            this.DescriptionLabel.TabIndex = 1;
+            this.DescriptionLabel.Text = "Начните создавать строение, комплекс или оборудование";
+            this.DescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
+            this.DescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
+            this.DescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
             // 
             // WelcomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(596, 552);
-            this.Controls.Add(this.AddDeviceButton);
-            this.Controls.Add(this.AddComplexButton);
-            this.Controls.Add(this.ProjectListBox);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(935, 517);
+            this.Controls.Add(this.CreateNewProjectPanel);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.OpenAnotherProjectLabel);
+            this.Controls.Add(this.ProgramVersionLabel);
+            this.Controls.Add(this.DecoratingPanel1);
+            this.Controls.Add(this.WelcomeProgramLabel);
+            this.Controls.Add(this.ProjectsListBox);
             this.Controls.Add(this.RosneftPicture);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "WelcomeForm";
             this.Text = "Gaby - стартовая страница";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WelcomeForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).EndInit();
+            this.CreateNewProjectPanel.ResumeLayout(false);
+            this.CreateNewProjectPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox ProjectListBox;
+        private System.Windows.Forms.ListBox ProjectsListBox;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.PictureBox RosneftPicture;
-        private System.Windows.Forms.Button AddComplexButton;
-        private System.Windows.Forms.Button AddDeviceButton;
+        private System.Windows.Forms.Label WelcomeProgramLabel;
+        private System.Windows.Forms.Panel DecoratingPanel1;
+        private System.Windows.Forms.Label ProgramVersionLabel;
+        private System.Windows.Forms.Label OpenAnotherProjectLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel CreateNewProjectPanel;
+        private System.Windows.Forms.Label DescriptionLabel;
+        private System.Windows.Forms.Label MainDescriptionLabel;
     }
 }

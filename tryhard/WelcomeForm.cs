@@ -19,23 +19,8 @@ namespace tryhard
             isUserGoFuther = false;
 
             InitializeComponent();
-        }
 
-        private void AddComplexButton_Click(object sender, EventArgs e)
-        {
-            UserGoFuther();
-
-        }
-
-        private void AddDeviceButton_Click(object sender, EventArgs e)
-        {
-            UserGoFuther();
-        }
-
-        private void UserGoFuther()
-        {
-            isUserGoFuther = true;
-            this.Close();
+            LoadPogectsListItems();
         }
 
         private void WelcomeForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -44,6 +29,58 @@ namespace tryhard
             {
                 Application.Exit();
             }
+        }
+
+        private void LoadPogectsListItems()
+        {
+            List<string> ProjectsList = new List<string>();
+            //обращение к мете, чтобы она дала список проектов
+            foreach(string Element in ProjectsList)
+            {
+                ProjectsListBox.Items.Add(Element);
+            }
+        }
+
+        private void UserGoFuther()
+        {
+            isUserGoFuther = true;
+            this.Close();
+        }
+        //
+        //work with OpenAnotherProjectLabel
+        //
+        private void OpenAnotherProjectLabel_MouseEnter(object sender, EventArgs e)
+        {
+            OpenAnotherProjectLabel.ForeColor = Color.Orange;
+        }
+
+        private void OpenAnotherProjectLabel_MouseLeave(object sender, EventArgs e)
+        {
+            OpenAnotherProjectLabel.ForeColor = Color.Black;
+        }
+        //
+        //work with CreateNewProjectPanel
+        //
+        private void CreateNewProjectPanel_MouseEnter(object sender, EventArgs e)
+        {
+            MainDescriptionLabel.ForeColor = Color.Orange;
+            DescriptionLabel.ForeColor     = Color.Orange;
+        }
+
+        private void CreateNewProjectPanel_MouseLeave(object sender, EventArgs e)
+        {
+            MainDescriptionLabel.ForeColor = Color.Black;
+            DescriptionLabel.ForeColor     = Color.Black;
+        }
+
+        private void CreateNewProjectPanel_Click(object sender, EventArgs e)
+        {
+            UserGoFuther();
+        }
+
+        private void OpenAnotherProjectLabel_Click(object sender, EventArgs e)
+        {
+            //загрузка файла из сторонней папки и открытие его
         }
     }
 }
