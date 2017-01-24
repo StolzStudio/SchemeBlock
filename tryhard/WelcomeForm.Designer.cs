@@ -40,8 +40,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CreateNewProjectPanel = new System.Windows.Forms.Panel();
-            this.MainDescriptionLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
+            this.MainDescriptionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).BeginInit();
             this.CreateNewProjectPanel.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,7 @@
             // 
             this.ProjectsListBox.BackColor = System.Drawing.Color.Beige;
             this.ProjectsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProjectsListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.ProjectsListBox.Font = new System.Drawing.Font("Javanese Text", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectsListBox.FormattingEnabled = true;
             this.ProjectsListBox.ItemHeight = 43;
@@ -61,6 +62,7 @@
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
             this.ProjectsListBox.TabIndex = 1;
+            this.ProjectsListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ProjectsListBox_DrawItem);
             // 
             // imageList1
             // 
@@ -153,19 +155,6 @@
             this.CreateNewProjectPanel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
             this.CreateNewProjectPanel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
             // 
-            // MainDescriptionLabel
-            // 
-            this.MainDescriptionLabel.AutoSize = true;
-            this.MainDescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainDescriptionLabel.Location = new System.Drawing.Point(3, 0);
-            this.MainDescriptionLabel.Name = "MainDescriptionLabel";
-            this.MainDescriptionLabel.Size = new System.Drawing.Size(301, 45);
-            this.MainDescriptionLabel.TabIndex = 0;
-            this.MainDescriptionLabel.Text = "Создать новый проект";
-            this.MainDescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
-            this.MainDescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
-            this.MainDescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
-            // 
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
@@ -178,6 +167,19 @@
             this.DescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
             this.DescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
             this.DescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
+            // 
+            // MainDescriptionLabel
+            // 
+            this.MainDescriptionLabel.AutoSize = true;
+            this.MainDescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainDescriptionLabel.Location = new System.Drawing.Point(3, 0);
+            this.MainDescriptionLabel.Name = "MainDescriptionLabel";
+            this.MainDescriptionLabel.Size = new System.Drawing.Size(301, 45);
+            this.MainDescriptionLabel.TabIndex = 0;
+            this.MainDescriptionLabel.Text = "Создать новый проект";
+            this.MainDescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
+            this.MainDescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
+            this.MainDescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
             // 
             // WelcomeForm
             // 

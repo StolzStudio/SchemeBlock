@@ -82,5 +82,24 @@ namespace tryhard
         {
             //загрузка файла из сторонней папки и открытие его
         }
+
+        private void ProjectsListBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+           
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e = new DrawItemEventArgs(e.Graphics,
+                                          e.Font,
+                                          e.Bounds,
+                                          e.Index,
+                                          e.State ^ DrawItemState.Selected,
+                                          e.ForeColor,
+                                          Color.Orange);
+
+            e.DrawBackground();   
+            e.Graphics.DrawString(ProjectsListBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+            e.DrawFocusRectangle();
+
+        }
     }
 }
