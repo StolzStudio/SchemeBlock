@@ -177,8 +177,7 @@ namespace tryhard
                 (Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.SchemeManager[Form.SchemeManagerNumber].CheckLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index) && 
-                     Form.Meta.isPossibleLink(Form.SchemeManager[Form.SchemeManagerNumber].Blocks[Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex].BlockClass, this.BlockClass))
+                if (!Form.SchemeManager[Form.SchemeManagerNumber].CheckLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index))
                 {
                     Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
                     isCtrlDown                             = false;
@@ -193,7 +192,7 @@ namespace tryhard
                 Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
             }
 
-            Form.SetComboBoxes(this.BlockClass, this.BlockId);
+            //Form.SetComboBoxes(this.BlockClass, this.BlockId);
             Form.SchemeManager[Form.SchemeManagerNumber].ClearLinksFocus();
             CheckFocus();
         }

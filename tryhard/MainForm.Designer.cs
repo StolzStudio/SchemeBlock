@@ -104,7 +104,6 @@ namespace tryhard
             this.PagesControl.SelectedIndex = 0;
             this.PagesControl.Size = new System.Drawing.Size(846, 643);
             this.PagesControl.TabIndex = 2;
-            this.PagesControl.SelectedIndexChanged += new System.EventHandler(this.PagesControl_SelectedIndexChanged);
             // 
             // SchemePage
             // 

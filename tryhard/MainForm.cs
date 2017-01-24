@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 using System.Drawing.Text;
 using System.IO;
 
@@ -24,8 +23,6 @@ namespace tryhard
         public SchemeManager[] SchemeManager;
         public CalculationManager CalcManager;
 
-        private string[] EquipmentLabelText = new string[2] { "Класс оборудования:", "Класс детали:" };
-
         private Point PageOffsetInPageControl = new Point(20, 38);
 
         
@@ -33,9 +30,8 @@ namespace tryhard
 
         public MainForm()
         {
-            Meta = new CMeta("../Databases/database.db");
+            //Meta = new CMeta("../Databases/database.db");
             InitializeComponent();
-            //ControlsPanel.Visible = false;
             SchemeManager = new SchemeManager[2];
             SchemeManager[0] = new SchemeManager(this);
             SchemeManager[1] = new SchemeManager(this);
@@ -48,74 +44,6 @@ namespace tryhard
         }
 
         /* Equipment ComboBoxes */
-
-        private void ObjectTypeCBSelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            //ObjectModelCB.Items.Clear();
-            SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
-            FillObjectModelCB(CMeta.DictionaryName[(string)((ComboBox)sender).SelectedItem]);
-        }
-
-        private void ObjectModelCBSelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            //FillParametersGrid(CMeta.DictionaryName[(string)ObjectTypeCB.SelectedItem], 
-            //                   SchemeManager[SchemeManagerNumber].ItemsIdList[ObjectModelCB.SelectedIndex]);
-
-            if (SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
-            {
-                SchemeManager[SchemeManagerNumber].ChangeSelectBlock();
-            }
-        }
-
-        public void SetComboBoxes(string AObjectTypeName, string AObjectModelName)
-        {
-            if (PagesControl.SelectedTab == SchemePage)
-            {
-                //ObjectTypeCB.SelectedIndex = Meta.EquipmentTablesList.IndexOf(AObjectTypeName);
-                //ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
-            }
-            else if (PagesControl.SelectedTab == ObjectPage)
-            {
-                //ObjectTypeCB.SelectedIndex = Meta.ObjectTablesList.IndexOf(AObjectTypeName);
-                //ObjectModelCB.SelectedIndex = SchemeManager[SchemeManagerNumber].ItemsIdList.IndexOf(AObjectModelName);
-            }
-        }
-
-        private void FillObjectTypeCB(List<string> AResource)
-        {
-
-            foreach (string Item in AResource)
-            {
-                //ObjectTypeCB.Items.Add(CMeta.DictionaryName[Item]);
-            }
-            //ObjectTypeCB.SelectedIndex = 0;
-            //DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        }
-
-        private void FillObjectModelCB(string AObjectTypeName)
-        {
-            //ObjectModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            List<string> items = Meta.GetListRecordsWithId(AObjectTypeName, "name");
-            SchemeManager[SchemeManagerNumber].ItemsIdList.Clear();
-            for (int i = 0; i < items.Count; i += 2)
-            {
-                SchemeManager[SchemeManagerNumber].ItemsIdList.Add(items[i]);
-            //    ObjectModelCB.Items.Add(items[i + 1]);
-            }
-            //ObjectModelCB.SelectedIndex = 0;
-            //ObjectModelCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        }
-
-        private void FillParametersGrid(string ATableName, string AFieldId)
-        {
-            //DataGridView.Rows.Clear();
-            List<string> FieldData = Meta.GetFieldData(ATableName, AFieldId);
-            List<string> NameCols = Meta.GetListFieldOfTableName(ATableName);
-            for (int i = 0; i < FieldData.Count(); i++)
-            {
-            //    DataGridView.Rows.Add(CMeta.DictionaryName[NameCols[i]], FieldData[i]);
-            }
-        }
 
         public List<Dictionary<int, CalcBlock>> GetBlocksCombinations(PageType APageType)
         {
@@ -139,41 +67,6 @@ namespace tryhard
             }
             return CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
         }  
-
-        private void CalcButton_Click(object sender, EventArgs e)
-        {
-            ResultForm ResForm = null;
-            if (PagesControl.SelectedTab == SchemePage)
-            {
-                if (!SchemeManager[SchemeManagerNumber].isOilFieldAdd)
-                {
-                    string message = "Кажется вы забыли добавить месторождение";
-                    string caption = "Ошибка в составлении схемы";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
-                    result = MessageBox.Show(message, caption, buttons);
-                    return;
-                }
-                ResForm = new ResultForm(this, GetBlocksCombinations(PageType.SchemeType));
-            }
-            else if (PagesControl.SelectedTab == ObjectPage)
-            {
-                if (SchemeManager[SchemeManagerNumber].Blocks.Count == 0)
-                {
-                    string message = "Кажется вы не выбрали ни одной детали";
-                    string caption = "Ошибка в составлении схемы";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    DialogResult result;
-                    result = MessageBox.Show(message, caption, buttons);
-                    return;
-                }
-                else
-                {
-                    ResForm = new ResultForm(this, GetBlocksCombinations(PageType.ObjectType));
-                }
-            }         
-            ResForm.ShowDialog();
-        }
 
         private void DeleteBlockButton_Click(object sender, EventArgs e)
         {
@@ -217,15 +110,11 @@ namespace tryhard
         private void ShowObjectPageButton_Click(object sender, EventArgs e)
         {
             PagesControl.SelectTab(ObjectPage);
-            //ControlsPanel.Visible = true;
-            SetControlsPanel(PageType.ObjectType);
         }
 
         private void ShowSchemePageButton_Click(object sender, EventArgs e)
         {
             PagesControl.SelectTab(SchemePage);
-            //ControlsPanel.Visible = true;
-            SetControlsPanel(PageType.SchemeType);
         }
 
         private void SchemePage_Click(object sender, EventArgs e)
@@ -253,39 +142,6 @@ namespace tryhard
                 {
                     Link.Draw(this, e);
                 }
-            }
-        }
-
-        private void PagesControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //DeleteBlockButton.Visible = false;
-            if (PagesControl.SelectedTab == SchemePage)
-            {
-                SchemeManagerNumber = 0;
-                SetControlsPanel(PageType.SchemeType);
-            }
-            else if (PagesControl.SelectedTab == ObjectPage)
-            {
-                SchemeManagerNumber = 1;
-                SetControlsPanel(PageType.ObjectType);
-            }
-        }
-
-        /* Заполнение CB в зависимости от типа Page */
-
-        private void SetControlsPanel(PageType APageType)
-        {
-            //ObjectModelCB.Items.Clear();
-            //ObjectTypeCB.Items.Clear();
-            if (APageType == PageType.SchemeType)
-            {
-            //    this.EquipmentLabel.Text = EquipmentLabelText[0];
-                FillObjectTypeCB(Meta.EquipmentTablesList);
-            }
-            else if (APageType == PageType.ObjectType)
-            {
-            //    this.EquipmentLabel.Text = EquipmentLabelText[1];
-                FillObjectTypeCB(Meta.ObjectTablesList);
             }
         }
 

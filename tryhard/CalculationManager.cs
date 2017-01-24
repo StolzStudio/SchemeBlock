@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Linq;
 
 namespace tryhard
@@ -64,7 +63,7 @@ namespace tryhard
                 if (!AllFieldsId.ContainsKey(ABaseBlocks[Key].BlockClass))
                 {
                     string TableName = ABaseBlocks[Key].BlockClass;
-                    AllFieldsId.Add(TableName, AMeta.GetTableOfName(TableName).IdList);
+                    //AllFieldsId.Add(TableName, AMeta.GetTableOfName(TableName).IdList);
                 }
                 CombinationsCount *= AllFieldsId[ABaseBlocks[Key].BlockClass].Count;
             }
@@ -127,7 +126,7 @@ namespace tryhard
                     {
                         if ((BlocksCombination[Key].InputLinks.Count != 0) || (BlocksCombination[Key].OutputLinks.Count != 0))
                         {
-                            if (BlocksCombination[Key].BlockClass == "field_parameters")
+                            /*if (BlocksCombination[Key].BlockClass == "field_parameters")
                             {
                                 int link_key = BlocksCombination[Key].OutputLinks[0];
                                 int field_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
@@ -173,7 +172,7 @@ namespace tryhard
                                         BlocksCombination[link_key].isDone = false;
                                     }
                                 }
-                            }
+                            }*/
                         }
                     }
                 }
