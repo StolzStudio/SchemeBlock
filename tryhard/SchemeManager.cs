@@ -42,11 +42,11 @@ namespace tryhard
         {
             if (!isOilFieldAdd)
             {
-                isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
+                //isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
             }
-            string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
-            string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
-            Blocks.Add(block_counter, new SchemeBlock(block_counter, st, cd, Pos, Form));
+            //string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
+            //string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
+            //Blocks.Add(block_counter, new SchemeBlock(block_counter, st, cd, Pos, Form));
 
             foreach (int Key in Blocks.Keys)
             {
@@ -59,8 +59,8 @@ namespace tryhard
         
         public void ChangeSelectBlock()
         {
-            Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ObjectModelCB.SelectedItem;
-            Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
+            //Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ObjectModelCB.SelectedItem;
+            //Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
         }
 
         public void AddSchemeLink(SchemeLink ANewLink)
@@ -105,7 +105,7 @@ namespace tryhard
                 link.TrySetFocus(Coord);
                 if (link.isFocus)
                 {
-                    Form.DeleteBlockButton.Visible = true;
+                //    Form.DeleteBlockButton.Visible = true;
                 }
             }
             Form.SchemePage.Invalidate();
