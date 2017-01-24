@@ -53,7 +53,7 @@ namespace tryhard
 
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
 
-            this.InitializeComponent(ABlockClass, (string)Form.ObjectModelCB.SelectedItem, APosition);
+            //this.InitializeComponent(ABlockClass, (string)Form.ObjectModelCB.SelectedItem, APosition);
         }
 
         private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)
@@ -137,13 +137,13 @@ namespace tryhard
                             BlockBodyWidth, 
                             BlockBodyHeight);
 
-            Form.DeleteBlockButton.Visible = true;
+            //Form.DeleteBlockButton.Visible = true;
         }
 
         public void ClearFocus()
         {
             Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
-            Form.DeleteBlockButton.Visible = false;
+            //Form.DeleteBlockButton.Visible = false;
             this.isFocus = false;
 
             this.BlockBody.Invalidate();
