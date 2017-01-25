@@ -1,0 +1,29 @@
+[
+	{
+		"Id": 0,
+		"Name": "pump_0",
+		"Input": 40,
+		"Output": 40,
+		"Weight": 190,
+		"Volume": 50,
+		"Cost": 30000
+	},
+	{
+		"Id": 1,
+		"Name": "pump_1",
+		"Input": 20,
+		"Output": 20,
+		"Weight": 100,
+		"Volume": 30,
+		"Cost": 20000
+	},
+	{
+		"Id": 2,
+		"Name": "pump_2",
+		"Input": 10,
+		"Output": 10,
+		"Weight": 70,
+		"Volume": 15,
+		"Cost": 10000
+	}
+]
