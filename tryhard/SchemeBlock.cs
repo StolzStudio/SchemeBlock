@@ -137,6 +137,7 @@ namespace tryhard
                             BlockBodyWidth, 
                             BlockBodyHeight);
 
+            BlockBody.BringToFront();
             //Form.DeleteBlockButton.Visible = true;
         }
 
