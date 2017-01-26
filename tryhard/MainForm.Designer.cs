@@ -71,17 +71,19 @@ namespace tryhard
             this.EditingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
             this.ProjectTreeLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
             this.MainPage = new tryhard.DrawPage();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // FileMenuItem
@@ -114,20 +116,6 @@ namespace tryhard
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // ProjectTreeListBox
-            // 
-            this.ProjectTreeListBox.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectTreeListBox.FormattingEnabled = true;
-            this.ProjectTreeListBox.ItemHeight = 16;
-            this.ProjectTreeListBox.Items.AddRange(new object[] {
-            "Месторождение",
-            "КД",
-            "УПК"});
-            this.ProjectTreeListBox.Location = new System.Drawing.Point(1009, 49);
-            this.ProjectTreeListBox.Name = "ProjectTreeListBox";
-            this.ProjectTreeListBox.Size = new System.Drawing.Size(243, 308);
-            this.ProjectTreeListBox.TabIndex = 17;
-            // 
             // ProjectTreeLabel
             // 
             this.ProjectTreeLabel.AutoSize = true;
@@ -140,26 +128,29 @@ namespace tryhard
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Orange;
             this.panel1.Controls.Add(this.ProjectTreeLabel);
-            this.panel1.Location = new System.Drawing.Point(1009, 27);
+            this.panel1.Location = new System.Drawing.Point(4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(243, 22);
             this.panel1.TabIndex = 19;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1009, 380);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 322);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(243, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(243, 331);
             this.dataGridView1.TabIndex = 20;
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Orange;
             this.panel2.Controls.Add(this.PropertiesLabel);
-            this.panel2.Location = new System.Drawing.Point(1009, 357);
+            this.panel2.Location = new System.Drawing.Point(4, 299);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(243, 22);
             this.panel2.TabIndex = 21;
@@ -174,8 +165,40 @@ namespace tryhard
             this.PropertiesLabel.TabIndex = 18;
             this.PropertiesLabel.Text = "Свойства";
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.ProjectTreeListBox);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.panel1);
+            this.panel3.Location = new System.Drawing.Point(1009, 27);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(255, 653);
+            this.panel3.TabIndex = 0;
+            // 
+            // ProjectTreeListBox
+            // 
+            this.ProjectTreeListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProjectTreeListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProjectTreeListBox.FormattingEnabled = true;
+            this.ProjectTreeListBox.ItemHeight = 19;
+            this.ProjectTreeListBox.Items.AddRange(new object[] {
+            "кдс",
+            "месторождение",
+            "упс"});
+            this.ProjectTreeListBox.Location = new System.Drawing.Point(3, 28);
+            this.ProjectTreeListBox.Name = "ProjectTreeListBox";
+            this.ProjectTreeListBox.Size = new System.Drawing.Size(244, 270);
+            this.ProjectTreeListBox.TabIndex = 22;
+            // 
             // MainPage
             // 
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.MainPage.Location = new System.Drawing.Point(0, 27);
             this.MainPage.Name = "MainPage";
@@ -190,11 +213,8 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.MainPage);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.ProjectTreeListBox);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -208,6 +228,7 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,13 +239,14 @@ namespace tryhard
         private ToolStripMenuItem EditingMenuItem;
         private ToolStripMenuItem InfoMenuItem;
         private MenuStrip menuStrip1;
-        private ListBox ProjectTreeListBox;
         private Label ProjectTreeLabel;
         private Panel panel1;
         private DataGridView dataGridView1;
         private Panel panel2;
         private Label PropertiesLabel;
         public DrawPage MainPage;
+        private Panel panel3;
+        private ListBox ProjectTreeListBox;
     }
 }
 

@@ -88,7 +88,7 @@ namespace tryhard
 
             if (SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
             {
-                //SchemePage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
+                MainPage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
                 SchemeManager[SchemeManagerNumber].Blocks.Remove(SchemeManager[SchemeManagerNumber].SelectedBlockIndex);
                 SchemeManager[SchemeManagerNumber].isHaveSelectedBlock = false;
                 SchemeManager[SchemeManagerNumber].SelectedBlockIndex = -1;
