@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using LiteDB;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace tryhard
 {
-    public enum FieldTypes { };
+    public class CBaseObject
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
 
     public class CReferenseTableInfo
     {
@@ -24,10 +32,8 @@ namespace tryhard
         /* Properties */
 
         public string Name { get; set; }
-        public string Caption { get; set; }
         public int Width { get; set; }
         public int TableTag { get; set; }
-        public FieldTypes Type { get; set; }
         public CReferenseTableInfo Reference { get; set; }
 
         /* Methods */
@@ -35,7 +41,6 @@ namespace tryhard
         public CField(string AName, string ACaption)
         {
             Name = AName;
-            Caption = ACaption;
         }
     }
 
@@ -72,7 +77,7 @@ namespace tryhard
         {
             foreach (string field_name in FieldsList)
             {
-                Fields.Add(new CField(field_name, CMeta.DictionaryName[field_name]));
+                //Fields.Add(new CField(field_name, CMeta.DictionaryName[field_name]));
             }   
         }
 
@@ -105,41 +110,9 @@ namespace tryhard
 
     public class CMeta
     {
-
-        /* Fields */
-
-        public List<CTable> Tables = new List<CTable>();
-        public List<string> TablesList = new List<string>();
-        public static Dictionary<string, string> DictionaryName = new Dictionary<string, string>();
-        public Dictionary<string, Dictionary<string, bool>> EquipmentMatchingTable = new Dictionary<string, Dictionary<string, bool>>();
-
-        /* Methods */
-
-        public CMeta(string ADataBasePath)
+        public CMeta(string APath)
         {
-
-        }
-
-        public void CreateTable(string ATableName, List<string> ANameFields)
-        {
-
-        }
-
-        public void DeleteTable(string ATableName)
-        {
-            for (int i = 0; i < Tables.Count; i++)
-            {
-                if (ATableName == Tables[i].Name)
-                {
-                    Tables.RemoveAt(i);
-                    return;
-                }
-            }
-        }
-
-        public void DeleteTable(int ATableIndex)
-        {
-            Tables.RemoveAt(ATableIndex);
+            
         }
     }
 }   

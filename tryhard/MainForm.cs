@@ -30,7 +30,7 @@ namespace tryhard
 
         public MainForm()
         {
-            //Meta = new CMeta("../Databases/database.db");
+            Meta = new CMeta("../Databases/file.db");
             InitializeComponent();
             SchemeManager = new SchemeManager[2];
             SchemeManager[0] = new SchemeManager(this);
