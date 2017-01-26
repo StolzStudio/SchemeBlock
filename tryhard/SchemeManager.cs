@@ -46,7 +46,7 @@ namespace tryhard
             }
             //string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
             //string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
-            //Blocks.Add(block_counter, new SchemeBlock(block_counter, st, cd, Pos, Form));
+            Blocks.Add(block_counter, new SchemeBlock(block_counter, "type", "class", Pos, Form));
 
             foreach (int Key in Blocks.Keys)
             {
@@ -66,7 +66,7 @@ namespace tryhard
         public void AddSchemeLink(SchemeLink ANewLink)
         {
             Links.Add(ANewLink);
-            Form.SchemePage.Invalidate();
+            Form.MainPage.Invalidate();
         }
 
         public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
@@ -85,7 +85,7 @@ namespace tryhard
                 link.isFocus = false;
             }
 
-            Form.SchemePage.Invalidate();
+           Form.MainPage.Invalidate();
         }
         
         public void ClearBlocksFocus()
@@ -95,7 +95,7 @@ namespace tryhard
                 Blocks[key].ClearFocus();
             }
 
-            Form.SchemePage.Invalidate();
+            Form.MainPage.Invalidate();
         }
 
         public void TrySetFocusInLinks(Point Coord)
@@ -108,7 +108,7 @@ namespace tryhard
                 //    Form.DeleteBlockButton.Visible = true;
                 }
             }
-            Form.SchemePage.Invalidate();
+            Form.MainPage.Invalidate();
         }
     }
 }

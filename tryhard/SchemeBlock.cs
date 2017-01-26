@@ -53,7 +53,7 @@ namespace tryhard
 
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
 
-            //this.InitializeComponent(ABlockClass, (string)Form.ObjectModelCB.SelectedItem, APosition);
+            this.InitializeComponent(ABlockClass, "test", APosition);
         }
 
         private void InitializeComponent(string ABlockClass, string ABlockModel, Point APosition)
@@ -72,11 +72,11 @@ namespace tryhard
 
             if (Form.SchemeManagerNumber == 0)
             {
-                this.Form.SchemePage.Controls.Add(BlockBody);
+                this.Form.MainPage.Controls.Add(BlockBody);
             }
             else if (Form.SchemeManagerNumber == 1)
             {
-                this.Form.ObjectPage.Controls.Add(BlockBody);
+             //   this.Form.ObjectPage.Controls.Add(BlockBody);
             }
             this.SetFocus();
             //
@@ -86,7 +86,7 @@ namespace tryhard
             this.BlockClassLabel.Location   = new Point(5, 5);
             this.BlockClassLabel.Width      = BlockBodyWidth - 10;
             this.BlockClassLabel.ForeColor  = Color.Black;
-            //this.BlockClassLabel.Text       = CMeta.DictionaryName[ABlockClass];
+            this.BlockClassLabel.Text       = ABlockClass;
             this.BlockClassLabel.TextAlign  = ContentAlignment.MiddleCenter;
             this.BlockClassLabel.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
             this.BlockClassLabel.MouseMove += new MouseEventHandler(this.SchemeBodyMouseMove);
@@ -137,6 +137,7 @@ namespace tryhard
                             BlockBodyWidth, 
                             BlockBodyHeight);
 
+            BlockBody.BringToFront();
             //Form.DeleteBlockButton.Visible = true;
         }
 
@@ -211,7 +212,7 @@ namespace tryhard
                 this.BlockBody.Invalidate();
             }
 
-            Form.SchemePage.Invalidate();
+            Form.MainPage.Invalidate();
         }
 
         private void SchemeBodyMouseUp(object sender, MouseEventArgs e)
@@ -220,13 +221,13 @@ namespace tryhard
                                                  else { isCtrlDown = false; }
             isMouseDown = false;
 
-            Form.SchemePage.Invalidate();
+            Form.MainPage.Invalidate();
         }
 
         private bool isPointValidate(Point Pnt)
         {
-            if (Pnt.X + this.BlockBody.Width <= Form.SchemePage.Width &&
-                Pnt.Y + this.BlockBody.Height <= Form.SchemePage.Height)
+            if (Pnt.X + this.BlockBody.Width <= Form.MainPage.Width &&
+                Pnt.Y + this.BlockBody.Height <= Form.MainPage.Height)
             {
                 return true;
             }

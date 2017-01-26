@@ -14,8 +14,11 @@ namespace tryhard
     {
         public bool isUserGoFuther { get; set; }
 
-        public WelcomeForm()
+        private ProjectConfig Config;
+
+        public WelcomeForm(ProjectConfig aConfig)
         {
+            Config         = aConfig;
             isUserGoFuther = false;
 
             InitializeComponent();

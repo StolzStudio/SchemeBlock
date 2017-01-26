@@ -79,6 +79,7 @@
     <Compile Include="MetaClasses.cs" />
     <Compile Include="Metadata.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchemeBlock.cs" />
     <Compile Include="SchemeLink.cs" />
