@@ -23,9 +23,6 @@ namespace tryhard
         public SchemeManager[] SchemeManager;
         public CalculationManager CalcManager;
         public bool isCtrlDown { get; set; }
-
-        private Point PageOffsetInPageControl = new Point(20, 38);
-
         
         /* Methods */
 
@@ -37,13 +34,12 @@ namespace tryhard
             SchemeManager[0] = new SchemeManager(this);
             SchemeManager[1] = new SchemeManager(this);
             CalcManager = new CalculationManager();
+
+            DrawingPanelOffset.X = MainPage.Location.X;
+            DrawingPanelOffset.Y = MainPage.Location.Y;
+
             isCtrlDown = false;
         }   
-
-        private void AddBlockButton_Click(object sender, EventArgs e)
-        {
-            SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = true;
-        }
 
         /* Equipment ComboBoxes */
 
@@ -109,16 +105,6 @@ namespace tryhard
             return TestLink == null;
         }
 
-        private void ShowObjectPageButton_Click(object sender, EventArgs e)
-        {
-     //       PagesControl.SelectTab(ObjectPage);
-        }
-
-        private void ShowSchemePageButton_Click(object sender, EventArgs e)
-        {
-      //      PagesControl.SelectTab(SchemePage);
-        }
-
         private void MainPage_Click(object sender, EventArgs e)
         {
             if (Control.ModifierKeys == Keys.Control)
@@ -130,8 +116,8 @@ namespace tryhard
             SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= PageOffsetInPageControl.X;
-            ptr.Y -= PageOffsetInPageControl.Y;
+            ptr.X -= DrawingPanelOffset.X;
+            ptr.Y -= DrawingPanelOffset.Y;
             if (SchemeManager[SchemeManagerNumber].isAddBlockButtonClick)
             {
                 ptr.X -= SchemeBlock.BlockBodyWidth / 2;
