@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 
 namespace tryhard
 {
-    public class DrawTabPage : TabPage
+    public class DrawPage : Panel
     {
-        public DrawTabPage()
+        public DrawPage()
         {
             this.DoubleBuffered = true;
             this.ResizeRedraw = true;
@@ -66,85 +66,23 @@ namespace tryhard
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.PictureBox = new System.Windows.Forms.PictureBox();
-            this.PagesControl = new System.Windows.Forms.TabControl();
-            this.SchemePage = new tryhard.DrawTabPage();
-            this.ObjectPage = new tryhard.DrawTabPage();
             this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
-            this.PagesControl.SuspendLayout();
+            this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
+            this.ProjectTreeLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.PropertiesLabel = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PictureBox
-            // 
-            this.PictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PictureBox.ErrorImage = ((System.Drawing.Image)(resources.GetObject("PictureBox.ErrorImage")));
-            this.PictureBox.ImageLocation = "Pictures/formpicture.jpg";
-            this.PictureBox.InitialImage = ((System.Drawing.Image)(resources.GetObject("PictureBox.InitialImage")));
-            this.PictureBox.Location = new System.Drawing.Point(855, 502);
-            this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(410, 180);
-            this.PictureBox.TabIndex = 11;
-            this.PictureBox.TabStop = false;
-            // 
-            // PagesControl
-            // 
-            this.PagesControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PagesControl.Controls.Add(this.SchemePage);
-            this.PagesControl.Controls.Add(this.ObjectPage);
-            this.PagesControl.Location = new System.Drawing.Point(3, 27);
-            this.PagesControl.Name = "PagesControl";
-            this.PagesControl.SelectedIndex = 0;
-            this.PagesControl.Size = new System.Drawing.Size(846, 643);
-            this.PagesControl.TabIndex = 2;
-            // 
-            // SchemePage
-            // 
-            this.SchemePage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SchemePage.Location = new System.Drawing.Point(4, 22);
-            this.SchemePage.Name = "SchemePage";
-            this.SchemePage.Padding = new System.Windows.Forms.Padding(3);
-            this.SchemePage.Size = new System.Drawing.Size(838, 617);
-            this.SchemePage.TabIndex = 0;
-            this.SchemePage.Text = "Scheme Page";
-            this.SchemePage.UseVisualStyleBackColor = true;
-            this.SchemePage.Click += new System.EventHandler(this.SchemePage_Click);
-            this.SchemePage.Paint += new System.Windows.Forms.PaintEventHandler(this.SchemePage_Paint);
-            // 
-            // ObjectPage
-            // 
-            this.ObjectPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ObjectPage.Location = new System.Drawing.Point(4, 22);
-            this.ObjectPage.Name = "ObjectPage";
-            this.ObjectPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ObjectPage.Size = new System.Drawing.Size(838, 617);
-            this.ObjectPage.TabIndex = 1;
-            this.ObjectPage.Text = "Object Page";
-            this.ObjectPage.UseVisualStyleBackColor = true;
-            this.ObjectPage.Click += new System.EventHandler(this.ObjectPage_Click);
-            this.ObjectPage.Paint += new System.Windows.Forms.PaintEventHandler(this.ObjectPage_Paint);
             // 
             // FileMenuItem
             // 
@@ -176,167 +114,117 @@ namespace tryhard
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // bindingNavigator1
+            // ProjectTreeListBox
             // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 24);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1264, 25);
-            this.bindingNavigator1.TabIndex = 17;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.ProjectTreeListBox.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProjectTreeListBox.FormattingEnabled = true;
+            this.ProjectTreeListBox.ItemHeight = 16;
+            this.ProjectTreeListBox.Items.AddRange(new object[] {
+            "Месторождение",
+            "КД",
+            "УПК"});
+            this.ProjectTreeListBox.Location = new System.Drawing.Point(1009, 49);
+            this.ProjectTreeListBox.Name = "ProjectTreeListBox";
+            this.ProjectTreeListBox.Size = new System.Drawing.Size(243, 308);
+            this.ProjectTreeListBox.TabIndex = 17;
             // 
-            // bindingNavigatorMoveFirstItem
+            // ProjectTreeLabel
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
+            this.ProjectTreeLabel.AutoSize = true;
+            this.ProjectTreeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProjectTreeLabel.Location = new System.Drawing.Point(3, 6);
+            this.ProjectTreeLabel.Name = "ProjectTreeLabel";
+            this.ProjectTreeLabel.Size = new System.Drawing.Size(95, 16);
+            this.ProjectTreeLabel.TabIndex = 18;
+            this.ProjectTreeLabel.Text = "Дерево проекта";
             // 
-            // bindingNavigatorMovePreviousItem
+            // panel1
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
+            this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.Controls.Add(this.ProjectTreeLabel);
+            this.panel1.Location = new System.Drawing.Point(1009, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(243, 22);
+            this.panel1.TabIndex = 19;
             // 
-            // bindingNavigatorSeparator
+            // dataGridView1
             // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(1009, 380);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(243, 300);
+            this.dataGridView1.TabIndex = 20;
             // 
-            // bindingNavigatorPositionItem
+            // panel2
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Положение";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Текущее положение";
+            this.panel2.BackColor = System.Drawing.Color.Orange;
+            this.panel2.Controls.Add(this.PropertiesLabel);
+            this.panel2.Location = new System.Drawing.Point(1009, 357);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(243, 22);
+            this.panel2.TabIndex = 21;
             // 
-            // bindingNavigatorCountItem
+            // PropertiesLabel
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(43, 22);
-            this.bindingNavigatorCountItem.Text = "для {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
+            this.PropertiesLabel.AutoSize = true;
+            this.PropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PropertiesLabel.Location = new System.Drawing.Point(3, 6);
+            this.PropertiesLabel.Name = "PropertiesLabel";
+            this.PropertiesLabel.Size = new System.Drawing.Size(58, 16);
+            this.PropertiesLabel.TabIndex = 18;
+            this.PropertiesLabel.Text = "Свойства";
             // 
-            // bindingNavigatorSeparator1
+            // MainPage
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Добавить";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Удалить";
+            this.MainPage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.MainPage.Location = new System.Drawing.Point(0, 27);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1003, 653);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Click += new System.EventHandler(this.MainPage_Click);
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.bindingNavigator1);
-            this.Controls.Add(this.PagesControl);
-            this.Controls.Add(this.PictureBox);
+            this.Controls.Add(this.MainPage);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ProjectTreeListBox);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
             this.Text = "Gaby";
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
-            this.PagesControl.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private PictureBox PictureBox;
-        public DrawTabPage ObjectPage;
-        public DrawTabPage SchemePage;
-        private TabControl PagesControl;
         private ToolStripMenuItem FileMenuItem;
         private ToolStripMenuItem EditingMenuItem;
         private ToolStripMenuItem InfoMenuItem;
         private MenuStrip menuStrip1;
-        private BindingNavigator bindingNavigator1;
-        private ToolStripButton bindingNavigatorAddNewItem;
-        private ToolStripLabel bindingNavigatorCountItem;
-        private ToolStripButton bindingNavigatorDeleteItem;
-        private ToolStripButton bindingNavigatorMoveFirstItem;
-        private ToolStripButton bindingNavigatorMovePreviousItem;
-        private ToolStripSeparator bindingNavigatorSeparator;
-        private ToolStripTextBox bindingNavigatorPositionItem;
-        private ToolStripSeparator bindingNavigatorSeparator1;
-        private ToolStripButton bindingNavigatorMoveNextItem;
-        private ToolStripButton bindingNavigatorMoveLastItem;
-        private ToolStripSeparator bindingNavigatorSeparator2;
+        private ListBox ProjectTreeListBox;
+        private Label ProjectTreeLabel;
+        private Panel panel1;
+        private DataGridView dataGridView1;
+        private Panel panel2;
+        private Label PropertiesLabel;
+        public DrawPage MainPage;
     }
 }
 

@@ -22,6 +22,7 @@ namespace tryhard
         public int SchemeManagerNumber = 0;
         public SchemeManager[] SchemeManager;
         public CalculationManager CalcManager;
+        public bool isCtrlDown { get; set; }
 
         private Point PageOffsetInPageControl = new Point(20, 38);
 
@@ -36,6 +37,7 @@ namespace tryhard
             SchemeManager[0] = new SchemeManager(this);
             SchemeManager[1] = new SchemeManager(this);
             CalcManager = new CalculationManager();
+            isCtrlDown = false;
         }   
 
         private void AddBlockButton_Click(object sender, EventArgs e)
@@ -90,15 +92,15 @@ namespace tryhard
 
             if (SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
             {
-                SchemePage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
+                //SchemePage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
                 SchemeManager[SchemeManagerNumber].Blocks.Remove(SchemeManager[SchemeManagerNumber].SelectedBlockIndex);
                 SchemeManager[SchemeManagerNumber].isHaveSelectedBlock = false;
                 SchemeManager[SchemeManagerNumber].SelectedBlockIndex = -1;
             }
 
 
-            SchemePage_Click(sender, e);
-            SchemePage.Invalidate();
+            //SchemePage_Click(sender, e);
+          //  SchemePage.Invalidate();
             //DeleteBlockButton.Visible = false;
         }
 
@@ -109,16 +111,21 @@ namespace tryhard
 
         private void ShowObjectPageButton_Click(object sender, EventArgs e)
         {
-            PagesControl.SelectTab(ObjectPage);
+     //       PagesControl.SelectTab(ObjectPage);
         }
 
         private void ShowSchemePageButton_Click(object sender, EventArgs e)
         {
-            PagesControl.SelectTab(SchemePage);
+      //      PagesControl.SelectTab(SchemePage);
         }
 
-        private void SchemePage_Click(object sender, EventArgs e)
+        private void MainPage_Click(object sender, EventArgs e)
         {
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = true;
+            }
+
             SchemeManager[SchemeManagerNumber].ClearLinksFocus();
             SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
 
@@ -132,9 +139,10 @@ namespace tryhard
                 SchemeManager[SchemeManagerNumber].AddBlock(ptr);
             }
             SchemeManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
+            SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = false;
         }
 
-        private void SchemePage_Paint(object sender, PaintEventArgs e)
+        private void MainPage_Paint(object sender, PaintEventArgs e)
         {
             if (SchemeManager[SchemeManagerNumber].Links.Count != 0)
             {
@@ -147,12 +155,12 @@ namespace tryhard
 
         private void ObjectPage_Click(object sender, EventArgs e)
         {
-            SchemePage_Click(sender, e);
+            MainPage_Click(sender, e);
         }
 
         private void ObjectPage_Paint(object sender, PaintEventArgs e)
         {
-            SchemePage_Paint(sender, e);
+            MainPage_Paint(sender, e);
         }
     }
 }

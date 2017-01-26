@@ -181,14 +181,14 @@
             this.MainDescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
             this.MainDescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
             this.MainDescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
-            //
-            //CreatingPanel
-            //
+            // 
+            // CreatingPanel
+            // 
             this.CreatingPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatingPanel.Name = "CreatingPanel";
             this.CreatingPanel.Size = new System.Drawing.Size(935, 517);
-            this.CreatingPanel.Visible = false;
             this.CreatingPanel.TabIndex = 10;
+            this.CreatingPanel.Visible = false;
             // 
             // WelcomeForm
             // 
@@ -197,7 +197,6 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(935, 517);
             this.Controls.Add(this.CreateNewProjectPanel);
-            this.Controls.Add(this.CreatingPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.OpenAnotherProjectLabel);
@@ -206,6 +205,7 @@
             this.Controls.Add(this.WelcomeProgramLabel);
             this.Controls.Add(this.ProjectsListBox);
             this.Controls.Add(this.RosneftPicture);
+            this.Controls.Add(this.CreatingPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "WelcomeForm";
             this.Text = "Gaby - стартовая страница";
