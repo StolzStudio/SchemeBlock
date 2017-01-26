@@ -62,7 +62,7 @@ namespace tryhard
         /// </summary>
         ///
 
-        public CMeta Meta;
+        public MetaDataManager MetaManager;
 
         private void InitializeComponent()
         {

@@ -30,7 +30,7 @@ namespace tryhard
 
         public MainForm()
         {
-            Meta = new CMeta("../Databases/file.db");
+            MetaManager = new MetaDataManager("../Databases/");
             InitializeComponent();
             SchemeManager = new SchemeManager[2];
             SchemeManager[0] = new SchemeManager(this);
@@ -65,7 +65,7 @@ namespace tryhard
                     CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
                 }
             }
-            return CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
+            return null; // CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
         }  
 
         private void DeleteBlockButton_Click(object sender, EventArgs e)
