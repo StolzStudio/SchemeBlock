@@ -66,7 +66,7 @@ namespace tryhard
             return CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
         }  
 
-        private void DeleteBlockButton_Click(object sender, EventArgs e)
+        private void DeleteElement(object sender, KeyPressEventArgs e)
         {
             SchemeLink[] LinksArr = SchemeManager[SchemeManagerNumber].Links.ToArray();
             SchemeManager[SchemeManagerNumber].Links.Clear();
@@ -95,9 +95,8 @@ namespace tryhard
             }
 
 
-            //SchemePage_Click(sender, e);
-          //  SchemePage.Invalidate();
-            //DeleteBlockButton.Visible = false;
+            MainPage_Click(sender, e);
+            MainPage.Invalidate();
         }
 
         private bool IsLinkNull(SchemeLink TestLink)
@@ -139,14 +138,12 @@ namespace tryhard
             }
         }
 
-        private void ObjectPage_Click(object sender, EventArgs e)
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            MainPage_Click(sender, e);
-        }
-
-        private void ObjectPage_Paint(object sender, PaintEventArgs e)
-        {
-            MainPage_Paint(sender, e);
+            if (e.KeyChar == 8)
+            {
+                DeleteElement(sender, e);
+            }
         }
     }
 }
