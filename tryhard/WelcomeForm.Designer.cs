@@ -42,16 +42,17 @@
             this.CreateNewProjectPanel = new System.Windows.Forms.Panel();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.MainDescriptionLabel = new System.Windows.Forms.Label();
+            this.CreatingPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).BeginInit();
             this.CreateNewProjectPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProjectsListBox
             // 
-            this.ProjectsListBox.BackColor = System.Drawing.Color.Beige;
+            this.ProjectsListBox.BackColor = System.Drawing.Color.OldLace;
             this.ProjectsListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ProjectsListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ProjectsListBox.Font = new System.Drawing.Font("Javanese Text", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectsListBox.FormattingEnabled = true;
             this.ProjectsListBox.ItemHeight = 43;
             this.ProjectsListBox.Items.AddRange(new object[] {
@@ -86,10 +87,10 @@
             // WelcomeProgramLabel
             // 
             this.WelcomeProgramLabel.AutoSize = true;
-            this.WelcomeProgramLabel.Font = new System.Drawing.Font("Javanese Text", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WelcomeProgramLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.WelcomeProgramLabel.Location = new System.Drawing.Point(362, 82);
             this.WelcomeProgramLabel.Name = "WelcomeProgramLabel";
-            this.WelcomeProgramLabel.Size = new System.Drawing.Size(546, 49);
+            this.WelcomeProgramLabel.Size = new System.Drawing.Size(551, 51);
             this.WelcomeProgramLabel.TabIndex = 5;
             this.WelcomeProgramLabel.Text = "Добро пожаловать в Gaby";
             // 
@@ -104,11 +105,11 @@
             // ProgramVersionLabel
             // 
             this.ProgramVersionLabel.AutoSize = true;
-            this.ProgramVersionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProgramVersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ProgramVersionLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ProgramVersionLabel.Location = new System.Drawing.Point(545, 153);
             this.ProgramVersionLabel.Name = "ProgramVersionLabel";
-            this.ProgramVersionLabel.Size = new System.Drawing.Size(189, 23);
+            this.ProgramVersionLabel.Size = new System.Drawing.Size(189, 25);
             this.ProgramVersionLabel.TabIndex = 7;
             this.ProgramVersionLabel.Text = "version 0.1 (0.A127)";
             // 
@@ -116,11 +117,11 @@
             // 
             this.OpenAnotherProjectLabel.AutoSize = true;
             this.OpenAnotherProjectLabel.BackColor = System.Drawing.Color.Beige;
-            this.OpenAnotherProjectLabel.Font = new System.Drawing.Font("Javanese Text", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenAnotherProjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OpenAnotherProjectLabel.ForeColor = System.Drawing.Color.Black;
             this.OpenAnotherProjectLabel.Location = new System.Drawing.Point(151, 492);
             this.OpenAnotherProjectLabel.Name = "OpenAnotherProjectLabel";
-            this.OpenAnotherProjectLabel.Size = new System.Drawing.Size(172, 16);
+            this.OpenAnotherProjectLabel.Size = new System.Drawing.Size(175, 17);
             this.OpenAnotherProjectLabel.TabIndex = 8;
             this.OpenAnotherProjectLabel.Text = "Открыть другой проект...";
             this.OpenAnotherProjectLabel.Click += new System.EventHandler(this.OpenAnotherProjectLabel_Click);
@@ -158,10 +159,10 @@
             // DescriptionLabel
             // 
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DescriptionLabel.Location = new System.Drawing.Point(8, 35);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(429, 18);
+            this.DescriptionLabel.Size = new System.Drawing.Size(459, 20);
             this.DescriptionLabel.TabIndex = 1;
             this.DescriptionLabel.Text = "Начните создавать строение, комплекс или оборудование";
             this.DescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
@@ -171,15 +172,23 @@
             // MainDescriptionLabel
             // 
             this.MainDescriptionLabel.AutoSize = true;
-            this.MainDescriptionLabel.Font = new System.Drawing.Font("Javanese Text", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainDescriptionLabel.Location = new System.Drawing.Point(3, 0);
             this.MainDescriptionLabel.Name = "MainDescriptionLabel";
-            this.MainDescriptionLabel.Size = new System.Drawing.Size(301, 45);
+            this.MainDescriptionLabel.Size = new System.Drawing.Size(244, 25);
             this.MainDescriptionLabel.TabIndex = 0;
             this.MainDescriptionLabel.Text = "Создать новый проект";
             this.MainDescriptionLabel.Click += new System.EventHandler(this.CreateNewProjectPanel_Click);
             this.MainDescriptionLabel.MouseEnter += new System.EventHandler(this.CreateNewProjectPanel_MouseEnter);
             this.MainDescriptionLabel.MouseLeave += new System.EventHandler(this.CreateNewProjectPanel_MouseLeave);
+            //
+            //CreatingPanel
+            //
+            this.CreatingPanel.Location = new System.Drawing.Point(0, 0);
+            this.CreatingPanel.Name = "CreatingPanel";
+            this.CreatingPanel.Size = new System.Drawing.Size(935, 517);
+            this.CreatingPanel.Visible = false;
+            this.CreatingPanel.TabIndex = 10;
             // 
             // WelcomeForm
             // 
@@ -188,6 +197,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(935, 517);
             this.Controls.Add(this.CreateNewProjectPanel);
+            this.Controls.Add(this.CreatingPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.OpenAnotherProjectLabel);
@@ -221,5 +231,6 @@
         private System.Windows.Forms.Panel CreateNewProjectPanel;
         private System.Windows.Forms.Label DescriptionLabel;
         private System.Windows.Forms.Label MainDescriptionLabel;
+        private System.Windows.Forms.Panel CreatingPanel;
     }
 }

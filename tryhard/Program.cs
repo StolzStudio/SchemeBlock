@@ -16,7 +16,9 @@ namespace tryhard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WelcomeForm());
+
+            ProjectConfig Config = new ProjectConfig();
+            Application.Run(new WelcomeForm(Config));
             Application.Run(new MainForm());
         }
     }
