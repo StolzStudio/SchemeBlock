@@ -28,10 +28,7 @@ namespace tryhard
 
         private void WelcomeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (!isUserGoFuther)
-            {
-                Application.Exit();
-            }
+           // Application.Exit();
         }
 
         private void LoadPogectsListItems()
@@ -47,6 +44,7 @@ namespace tryhard
         private void UserGoFuther()
         {
             isUserGoFuther = true;
+            Config.isUserGoFuther = true;
             this.Close();
         }
         //

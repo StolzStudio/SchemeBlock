@@ -19,7 +19,10 @@ namespace tryhard
 
             ProjectConfig Config = new ProjectConfig();
             Application.Run(new WelcomeForm(Config));
-            Application.Run(new MainForm());
+            if (Config.isUserGoFuther)
+            {
+                Application.Run(new MainForm());
+            }
         }
     }
 }
