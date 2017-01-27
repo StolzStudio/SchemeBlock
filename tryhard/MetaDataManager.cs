@@ -2,11 +2,26 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace tryhard
 {
     public class MetaDataManager
     {
+        private static MetaDataManager instance;
+        private MetaDataManager() { }
+        public static MetaDataManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MetaDataManager();
+                }
+                return instance;
+            }
+        }
+
         public Dictionary<string, List<BaseObject>> Objects;
         public Dictionary<string, List<string>> ObjectsInfo;
         public Dictionary<string, Type> ClassesTypes = new Dictionary<string, Type>() { { "Ukppv",  typeof(Ukppv) }, { "Bolt", typeof(Bolt) },
@@ -16,9 +31,25 @@ namespace tryhard
                                                                                         { "Upn",    typeof(Upn)   }, { "Dks",  typeof(Dks)  },
                                                                                         { "Dk",     typeof(Dk)    }, { "Rr",   typeof(Rr)   },
                                                                                                                      { "Fu",   typeof(Fu)   }};
-        public MetaDataManager(string APath)
+        public void Initialize(string APath)
         {
+            Dictionary<string, List<string>> ObjectsInfo = 
+                JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(GetJson(APath));
+            foreach (string Key in ObjectsInfo.Keys)
+            {
+                foreach (string ObjName in ObjectsInfo[Key])
+                {
+                    //получать листы кастованные к базе
+                }
+            }
+        }
 
+        private string GetJson(string APath)
+        {
+            StreamReader sr = new StreamReader(APath);
+            string json = sr.ReadToEnd();
+            sr.Close();
+            return json;
         }
     }
 }   

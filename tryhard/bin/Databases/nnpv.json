@@ -1,0 +1,57 @@
+[
+	{
+		"Id": 0,
+		"Name": "CNS63-1100",
+		"WaterInput": 3000,
+		"WaterOutput": 3000,
+		"PeopleDemand": 0,
+		"ElectricityDemand": 500,
+		"Weight": 3,
+		"Volume": 2,
+		"Cost": 4300000
+	},
+	{
+		"Id": 1,
+		"Name": "CNS180-1900M",
+		"WaterInput": 3000,
+		"WaterOutput": 3000,
+		"PeopleDemand": 1,
+		"ElectricityDemand": 1500,
+		"Weight": 5,
+		"Volume": 5,
+		"Cost": 3180000
+	},
+	{
+		"Id": 2,
+		"Name": "CNS180-1050",
+		"WaterInput": 3000,
+		"WaterOutput": 3000,
+		"PeopleDemand": 0,
+		"ElectricityDemand": 800,
+		"Weight": 4,
+		"Volume": 3,
+		"Cost": 12000000
+	},
+	{
+		"Id": 3,
+		"Name": "CNS240-1422",
+		"WaterInput": 3000,
+		"WaterOutput": 3000,
+		"PeopleDemand": 0,
+		"ElectricityDemand": 1200,
+		"Weight": 6,
+		"Volume": 4,
+		"Cost": 9000000
+	},
+	{
+		"Id": 4,
+		"Name": "CNS180-1422M",
+		"WaterInput": 3000,
+		"WaterOutput": 3000,
+		"PeopleDemand": 1,
+		"ElectricityDemand": 1300,
+		"Weight": 5,
+		"Volume": 4,
+		"Cost": 9500000
+	}
+]

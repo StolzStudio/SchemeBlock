@@ -1,0 +1,26 @@
+[
+	{
+		"Id": 0,
+		"Name": "rpv_0",
+		"WaterInput": 500,
+		"WaterOutput": 500,
+		"WaterVolume": 5000,
+		"PeopleDemand": 0,
+		"ElectricityDemand": 200,
+		"Weight": 600,
+		"Volume": 600,
+		"Cost": 15000000
+	},
+	{
+		"Id": 1,
+		"Name": "rpv_1",
+		"WaterInput": 1000,
+		"WaterOutput": 1000,
+		"WaterVolume": 10000,
+		"PeopleDemand": 1,
+		"ElectricityDemand": 500,
+		"Weight": 1200,
+		"Volume": 1200,
+		"Cost": 30000000
+	}
+]

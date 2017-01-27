@@ -1,0 +1,12 @@
+[
+	{
+		"Id": 0,
+		"Name": "fu_0",
+		"GasInput": 100,
+		"PeopleDemand": 0,
+		"ElectricityDemand": 0,
+		"Weight": 30,
+		"Volume": 15,
+		"Cost": 7500000
+	}
+]

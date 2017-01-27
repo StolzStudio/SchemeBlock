@@ -1,0 +1,24 @@
+[
+	{
+		"Id": 0,
+		"Name": "UKPPV_0",
+		"WaterInput": 480,
+		"WaterOutput": 480,
+		"PeopleDemand": 1,
+		"ElectricityDemand": 0,
+		"Weight": 55,
+		"Volume": 100,
+		"Cost": 70000000
+	},
+	{
+		"Id": 1,
+		"Name": "UKPPV_1",
+		"WaterInput": 250,
+		"WaterOutput": 250,
+		"PeopleDemand": 1,
+		"ElectricityDemand": 0,
+		"Weight": 30,
+		"Volume": 55,
+		"Cost": 40000000
+	}
+]

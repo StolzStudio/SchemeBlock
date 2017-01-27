@@ -28,7 +28,7 @@ namespace tryhard
 
         public MainForm()
         {
-            MetaManager = new MetaDataManager("../Databases/");
+            MetaDataManager.Instance.Initialize("../Databases/objectsinfo.json");
             InitializeComponent();
             SchemeManager = new SchemeManager[2];
             SchemeManager[0] = new SchemeManager(this);

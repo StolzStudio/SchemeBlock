@@ -42,6 +42,7 @@ namespace tryhard
 
     public class CalculationManager
     {
+        /*
         public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BaseBlocks, PageType APageType)
         {
             List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(AMeta, BaseBlocks);
@@ -126,7 +127,7 @@ namespace tryhard
                     {
                         if ((BlocksCombination[Key].InputLinks.Count != 0) || (BlocksCombination[Key].OutputLinks.Count != 0))
                         {
-                            /*if (BlocksCombination[Key].BlockClass == "field_parameters")
+                            if (BlocksCombination[Key].BlockClass == "field_parameters")
                             {
                                 int link_key = BlocksCombination[Key].OutputLinks[0];
                                 int field_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
@@ -172,11 +173,11 @@ namespace tryhard
                                         BlocksCombination[link_key].isDone = false;
                                     }
                                 }
-                            }*/
+                            }
                         }
                     }
                 }
             }
-        }
+        }*/
     }
 }

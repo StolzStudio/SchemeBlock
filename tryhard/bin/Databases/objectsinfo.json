@@ -1,0 +1,25 @@
+{
+	"Detail":
+	[
+		"bolt",
+		"pipe",
+		"pump"
+	],
+	"Equipment":
+	[
+		"fu",
+		"nnpv",
+		"rpv",
+		"rr",
+		"rtn",
+		"dk",
+		"dks",
+		"ukpg",
+		"ukppv",
+		"upn"
+	],
+	"Complex":
+	[
+		"complex"
+	]
+}
