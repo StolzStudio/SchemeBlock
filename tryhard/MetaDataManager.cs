@@ -24,20 +24,21 @@ namespace tryhard
 
         public Dictionary<string, List<BaseObject>> Objects;
         public Dictionary<string, List<string>> ObjectsInfo;
-        public Dictionary<string, Type> ClassesTypes = new Dictionary<string, Type>() { { "Ukppv",  typeof(Ukppv) }, { "Bolt", typeof(Bolt) },
-                                                                                        { "Pump",   typeof(Pump)  }, { "Pipe", typeof(Pipe) },
-                                                                                        { "Ukpg",   typeof(Ukpg)  }, { "Nnpv", typeof(Nnpv) },
-                                                                                        { "Rpv",    typeof(Rpv)   }, { "Rtn",  typeof(Rtn)  },
-                                                                                        { "Upn",    typeof(Upn)   }, { "Dks",  typeof(Dks)  },
-                                                                                        { "Dk",     typeof(Dk)    }, { "Rr",   typeof(Rr)   },
-                                                                                                                     { "Fu",   typeof(Fu)   }};
+        public Dictionary<string, Type> ClassesTypes = new Dictionary<string, Type>()
+                              { { "Ukppv",  typeof(Ukppv) }, { "Bolt", typeof(Bolt) },
+                                { "Pump",   typeof(Pump)  }, { "Pipe", typeof(Pipe) },
+                                { "Ukpg",   typeof(Ukpg)  }, { "Nnpv", typeof(Nnpv) },
+                                { "Rpv",    typeof(Rpv)   }, { "Rtn",  typeof(Rtn)  },
+                                { "Upn",    typeof(Upn)   }, { "Dks",  typeof(Dks)  },
+                                { "Dk",     typeof(Dk)    }, { "Rr",   typeof(Rr)   },
+                                                                { "Fu",   typeof(Fu)   }};
         public void Initialize(string APath)
         {
-            Dictionary<string, List<string>> ObjectsInfo = 
-                JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(GetJson(APath));
+            Dictionary<string, List<MetaObjectInfo>> ObjectsInfo = 
+                JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
             foreach (string Key in ObjectsInfo.Keys)
             {
-                foreach (string ObjName in ObjectsInfo[Key])
+                foreach (MetaObjectInfo ObjInfo in ObjectsInfo[Key])
                 {
                     //получать листы кастованные к базе
                 }

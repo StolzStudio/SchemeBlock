@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace tryhard
 {
+    public class MetaObjectInfo
+    {
+        public string Name { get; set; }
+        public List<string> PossibleLink { get; set; }
+    }
+
     public abstract class BaseObject
     {
         public int Id { get; set; }

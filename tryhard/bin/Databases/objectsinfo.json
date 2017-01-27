@@ -1,25 +1,97 @@
 {
-	"Detail":
+	"InfoClasses":
 	[
-		"bolt",
-		"pipe",
-		"pump"
+		{
+			"Name": "field_parameters",
+			"PossibleLink": []	
+		},
+		{
+			"Name": "oil_quality",
+			"PossibleLink": []	
+		},
+	],
+	"Detail":
+	[	
+		{
+			"Name": "bolt",
+			"PossibleLink": []
+		},
+		{
+			"Name": "pipe",
+			"PossibleLink": []
+		},
+		{
+			"Name": "pump",
+			"PossibleLink": []	
+		}
 	],
 	"Equipment":
 	[
-		"fu",
-		"nnpv",
-		"rpv",
-		"rr",
-		"rtn",
-		"dk",
-		"dks",
-		"ukpg",
-		"ukppv",
-		"upn"
+		{
+			"Name": "fu",
+			"PossibleLink": []
+		},
+		{
+			"Name": "nnpv",
+			"PossibleLink":
+			[ 
+				"dk",
+				"rpv",
+				"ukppv"
+			]
+		},
+		{
+			"Name": "rpv",
+			"PossibleLink":
+			[
+				"nnpv"
+			]
+		},
+		{
+			"Name": "rr",
+			"PossibleLink": []
+		},
+		{
+			"Name": "rtn",
+			"PossibleLink": []
+		},
+		{
+			"Name": "dk",
+			"PossibleLink":
+			[
+				"upn"
+			]
+		},
+		{
+			"Name": "dks",
+			"PossibleLink": []
+		},
+		{
+			"Name": "ukpg",
+			"PossibleLink":
+			[
+				"fu"
+			]
+		},
+		{
+			"Name": "ukppv",
+			"PossibleLink":
+			[
+				"nnpv"
+			]
+		},
+		{
+			"Name": "upn",
+			"PossibleLink":
+			[
+				"nnpv",
+				"ukpg",
+				"ukppv"
+			]
+		}
 	],
 	"Complex":
 	[
-		"complex"
+
 	]
 }
