@@ -188,7 +188,21 @@ namespace tryhard
             this.ProjectTreeListBox.Items.AddRange(new object[] {
             "кдс",
             "месторождение",
-            "упс"});
+            "упс",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"});
             this.ProjectTreeListBox.Location = new System.Drawing.Point(3, 28);
             this.ProjectTreeListBox.Name = "ProjectTreeListBox";
             this.ProjectTreeListBox.Size = new System.Drawing.Size(244, 270);

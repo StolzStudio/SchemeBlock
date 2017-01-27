@@ -11,18 +11,22 @@ namespace tryhard
     public class ProjectConfig
     {
         public string     Name { get; set; }
-        public CreateType Type { get; set; } 
-      //public string     Path { get; set; }
+        public CreateType Type { get; set; }
+
+        public bool isUserGoFuther { get; set; }
+        //public string     Path { get; set; }
 
         public ProjectConfig()
         {
-            SetConfigParameters("", CreateType.PCNone);
+            SetConfigParameters("", CreateType.PCNone, false);
         }
 
-        public void SetConfigParameters(string aName, CreateType aType)
+        public void SetConfigParameters(string aName, CreateType aType, bool aUserChoice)
         {
             Name = aName;
             Type = aType;
+
+            isUserGoFuther = aUserChoice;
         }
     }
 }
