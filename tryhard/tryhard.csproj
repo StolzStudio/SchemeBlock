@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="CalculationManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
