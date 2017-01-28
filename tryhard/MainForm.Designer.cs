@@ -73,16 +73,17 @@ namespace tryhard
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ProjectTreeLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
+            this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.MainPage = new tryhard.DrawPage();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
+            this.PropertiesPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +121,7 @@ namespace tryhard
             // 
             this.ProjectTreeLabel.AutoSize = true;
             this.ProjectTreeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectTreeLabel.Location = new System.Drawing.Point(3, 6);
+            this.ProjectTreeLabel.Location = new System.Drawing.Point(3, 4);
             this.ProjectTreeLabel.Name = "ProjectTreeLabel";
             this.ProjectTreeLabel.Size = new System.Drawing.Size(95, 16);
             this.ProjectTreeLabel.TabIndex = 18;
@@ -136,30 +137,30 @@ namespace tryhard
             this.panel1.Size = new System.Drawing.Size(243, 22);
             this.panel1.TabIndex = 19;
             // 
-            // dataGridView1
+            // PropertiesGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 322);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(243, 331);
-            this.dataGridView1.TabIndex = 20;
+            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Location = new System.Drawing.Point(4, 322);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 331);
+            this.PropertiesGridView.TabIndex = 20;
             // 
-            // panel2
+            // PropertiesPanel
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Orange;
-            this.panel2.Controls.Add(this.PropertiesLabel);
-            this.panel2.Location = new System.Drawing.Point(4, 299);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(243, 22);
-            this.panel2.TabIndex = 21;
+            this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
+            this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
+            this.PropertiesPanel.Location = new System.Drawing.Point(4, 299);
+            this.PropertiesPanel.Name = "PropertiesPanel";
+            this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
+            this.PropertiesPanel.TabIndex = 21;
             // 
             // PropertiesLabel
             // 
             this.PropertiesLabel.AutoSize = true;
             this.PropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.PropertiesLabel.Location = new System.Drawing.Point(3, 6);
+            this.PropertiesLabel.Location = new System.Drawing.Point(3, 4);
             this.PropertiesLabel.Name = "PropertiesLabel";
             this.PropertiesLabel.Size = new System.Drawing.Size(58, 16);
             this.PropertiesLabel.TabIndex = 18;
@@ -169,9 +170,10 @@ namespace tryhard
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.ObjectsTreeView);
             this.panel3.Controls.Add(this.ProjectTreeListBox);
-            this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.PropertiesPanel);
+            this.panel3.Controls.Add(this.PropertiesGridView);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Location = new System.Drawing.Point(1009, 27);
             this.panel3.Name = "panel3";
@@ -208,6 +210,13 @@ namespace tryhard
             this.ProjectTreeListBox.Size = new System.Drawing.Size(244, 270);
             this.ProjectTreeListBox.TabIndex = 22;
             // 
+            // ObjectsTreeView
+            // 
+            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 26);
+            this.ObjectsTreeView.Name = "ObjectsTreeView";
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
+            this.ObjectsTreeView.TabIndex = 23;
+            // 
             // MainPage
             // 
             this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -241,9 +250,9 @@ namespace tryhard
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
+            this.PropertiesPanel.ResumeLayout(false);
+            this.PropertiesPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -257,12 +266,13 @@ namespace tryhard
         private MenuStrip menuStrip1;
         private Label ProjectTreeLabel;
         private Panel panel1;
-        private DataGridView dataGridView1;
-        private Panel panel2;
+        private DataGridView PropertiesGridView;
+        private Panel PropertiesPanel;
         private Label PropertiesLabel;
         public DrawPage MainPage;
         private Panel panel3;
         private ListBox ProjectTreeListBox;
+        private TreeView ObjectsTreeView;
     }
 }
 

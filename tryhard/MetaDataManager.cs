@@ -24,11 +24,12 @@ namespace tryhard
 
         private string ObjFilesDir = "../Databases/";
         private string ObjFileFormat = ".json";
-        public Dictionary<string, List<BaseObject>> Objects = new Dictionary<string, List<BaseObject>>();
+        public Dictionary<string, List<BaseObject>> Objects;
         public Dictionary<string, List<string>> ObjectsInfo;
         public void Initialize(string APath)
         {
-            Dictionary<string, List<MetaObjectInfo>> ObjectsInfo = 
+            Objects = new Dictionary<string, List<BaseObject>>();
+            Dictionary<string, List<MetaObjectInfo>> ObjectsInfo =
                 JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
             foreach (string Key in ObjectsInfo.Keys)
             {
@@ -37,13 +38,25 @@ namespace tryhard
                     Objects.Add(ObjInfo.Name, DeserializeMetaObjects(ObjInfo.Name));
                 }
             }
+            PrintAllProperties(Objects["bolt"][0]);
+        }
+
+        private void PrintAllProperties(object AObject)
+        {
+            foreach (var Property in AObject.GetType().GetProperties())
+            {
+                Console.WriteLine(Property.Name + " " + Property.GetValue(AObject));
+            }
         }
 
         private List<BaseObject> DeserializeMetaObjects(string AObjectName)
         {
+            Dictionary<string, System.Type> t = new Dictionary<string, System.Type>() { { "bolt", typeof(Bolt) } };
+
             List<BaseObject> result = new List<BaseObject>();
             string ObjectPath = ObjFilesDir + AObjectName+ ObjFileFormat;
             string json = GetJson(ObjectPath);
+            System.Type st = t["bolt"];
             switch (AObjectName)
             {
                 case "field_parameters": result.AddRange(JsonConvert.DeserializeObject<List<FieldParameters>>(json)); break;

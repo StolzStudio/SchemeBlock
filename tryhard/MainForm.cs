@@ -30,6 +30,8 @@ namespace tryhard
         {
             MetaDataManager.Instance.Initialize("../Databases/objectsinfo.json");
             InitializeComponent();
+            FillTree();
+
             SchemeManager = new SchemeManager[2];
             SchemeManager[0] = new SchemeManager(this);
             SchemeManager[1] = new SchemeManager(this);
@@ -40,6 +42,15 @@ namespace tryhard
 
             isCtrlDown = false;
         }   
+
+        public void FillTree()
+        {
+            TreeNode node = new TreeNode("Node");
+            node.Nodes.Add(new TreeNode("Node 1.1"));
+            node.Nodes.Add(new TreeNode("Node 1.2"));
+            node.Nodes.Add(new TreeNode("Node 1.3"));
+            ObjectsTreeView.Nodes.Add(node);
+        }
 
         /* Equipment ComboBoxes */
 
