@@ -70,19 +70,20 @@ namespace tryhard
             this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuStrip = new System.Windows.Forms.MenuStrip();
+            this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EquipmentsEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ComplexEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProjectTreeLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.MainPage = new tryhard.DrawPage();
-            this.menuStrip1.SuspendLayout();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.MenuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -105,17 +106,39 @@ namespace tryhard
             this.InfoMenuItem.Size = new System.Drawing.Size(65, 20);
             this.InfoMenuItem.Text = "Справка";
             // 
-            // menuStrip1
+            // MenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileMenuItem,
             this.EditingMenuItem,
+            this.EditorMenuItem,
             this.InfoMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.MenuStrip.Name = "MenuStrip";
+            this.MenuStrip.Size = new System.Drawing.Size(1264, 24);
+            this.MenuStrip.TabIndex = 16;
+            this.MenuStrip.Text = "menuStrip1";
+            // 
+            // EditorMenuItem
+            // 
+            this.EditorMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EquipmentsEditorMenuItem,
+            this.ComplexEditorMenuItem});
+            this.EditorMenuItem.Name = "EditorMenuItem";
+            this.EditorMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.EditorMenuItem.Text = "Редактор";
+            // 
+            // EquipmentsEditorMenuItem
+            // 
+            this.EquipmentsEditorMenuItem.Name = "EquipmentsEditorMenuItem";
+            this.EquipmentsEditorMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.EquipmentsEditorMenuItem.Text = "Редактор оборудования";
+            // 
+            // ComplexEditorMenuItem
+            // 
+            this.ComplexEditorMenuItem.Name = "ComplexEditorMenuItem";
+            this.ComplexEditorMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.ComplexEditorMenuItem.Text = "Редактор комплексов";
             // 
             // ProjectTreeLabel
             // 
@@ -137,21 +160,12 @@ namespace tryhard
             this.panel1.Size = new System.Drawing.Size(243, 22);
             this.panel1.TabIndex = 19;
             // 
-            // PropertiesGridView
-            // 
-            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PropertiesGridView.Location = new System.Drawing.Point(4, 322);
-            this.PropertiesGridView.Name = "PropertiesGridView";
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 331);
-            this.PropertiesGridView.TabIndex = 20;
-            // 
             // PropertiesPanel
             // 
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(4, 299);
+            this.PropertiesPanel.Location = new System.Drawing.Point(4, 300);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -170,49 +184,18 @@ namespace tryhard
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.propertyGrid1);
             this.panel3.Controls.Add(this.ObjectsTreeView);
-            this.panel3.Controls.Add(this.ProjectTreeListBox);
             this.panel3.Controls.Add(this.PropertiesPanel);
-            this.panel3.Controls.Add(this.PropertiesGridView);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Location = new System.Drawing.Point(1009, 27);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(255, 653);
             this.panel3.TabIndex = 0;
             // 
-            // ProjectTreeListBox
-            // 
-            this.ProjectTreeListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjectTreeListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectTreeListBox.FormattingEnabled = true;
-            this.ProjectTreeListBox.ItemHeight = 19;
-            this.ProjectTreeListBox.Items.AddRange(new object[] {
-            "кдс",
-            "месторождение",
-            "упс",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14"});
-            this.ProjectTreeListBox.Location = new System.Drawing.Point(3, 28);
-            this.ProjectTreeListBox.Name = "ProjectTreeListBox";
-            this.ProjectTreeListBox.Size = new System.Drawing.Size(244, 270);
-            this.ProjectTreeListBox.TabIndex = 22;
-            // 
             // ObjectsTreeView
             // 
-            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 26);
+            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
             this.ObjectsTreeView.TabIndex = 23;
@@ -230,6 +213,13 @@ namespace tryhard
             this.MainPage.Click += new System.EventHandler(this.MainPage_Click);
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(4, 322);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(243, 327);
+            this.propertyGrid1.TabIndex = 24;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,19 +228,18 @@ namespace tryhard
             this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.MainPage);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.MenuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.MenuStrip;
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "MainForm";
             this.Text = "Gaby";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MenuStrip.ResumeLayout(false);
+            this.MenuStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -263,16 +252,18 @@ namespace tryhard
         private ToolStripMenuItem FileMenuItem;
         private ToolStripMenuItem EditingMenuItem;
         private ToolStripMenuItem InfoMenuItem;
-        private MenuStrip menuStrip1;
+        private MenuStrip MenuStrip;
         private Label ProjectTreeLabel;
         private Panel panel1;
-        private DataGridView PropertiesGridView;
         private Panel PropertiesPanel;
         private Label PropertiesLabel;
         public DrawPage MainPage;
         private Panel panel3;
-        private ListBox ProjectTreeListBox;
         private TreeView ObjectsTreeView;
+        private ToolStripMenuItem EditorMenuItem;
+        private ToolStripMenuItem EquipmentsEditorMenuItem;
+        private ToolStripMenuItem ComplexEditorMenuItem;
+        private PropertyGrid propertyGrid1;
     }
 }
 
