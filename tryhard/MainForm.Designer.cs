@@ -74,18 +74,18 @@ namespace tryhard
             this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EquipmentsEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ComplexEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ProjectTreeLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.AvailableObjectsLabel = new System.Windows.Forms.Label();
+            this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.MainPage = new tryhard.DrawPage();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.MenuStrip.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FileMenuItem
@@ -140,25 +140,25 @@ namespace tryhard
             this.ComplexEditorMenuItem.Size = new System.Drawing.Size(206, 22);
             this.ComplexEditorMenuItem.Text = "Редактор комплексов";
             // 
-            // ProjectTreeLabel
+            // AvailableObjectsLabel
             // 
-            this.ProjectTreeLabel.AutoSize = true;
-            this.ProjectTreeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectTreeLabel.Location = new System.Drawing.Point(3, 4);
-            this.ProjectTreeLabel.Name = "ProjectTreeLabel";
-            this.ProjectTreeLabel.Size = new System.Drawing.Size(95, 16);
-            this.ProjectTreeLabel.TabIndex = 18;
-            this.ProjectTreeLabel.Text = "Дерево проекта";
+            this.AvailableObjectsLabel.AutoSize = true;
+            this.AvailableObjectsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvailableObjectsLabel.Location = new System.Drawing.Point(3, 4);
+            this.AvailableObjectsLabel.Name = "AvailableObjectsLabel";
+            this.AvailableObjectsLabel.Size = new System.Drawing.Size(119, 16);
+            this.AvailableObjectsLabel.TabIndex = 18;
+            this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
-            // panel1
+            // AvailableObjectsPanel
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Orange;
-            this.panel1.Controls.Add(this.ProjectTreeLabel);
-            this.panel1.Location = new System.Drawing.Point(4, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(243, 22);
-            this.panel1.TabIndex = 19;
+            this.AvailableObjectsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AvailableObjectsPanel.BackColor = System.Drawing.Color.Orange;
+            this.AvailableObjectsPanel.Controls.Add(this.AvailableObjectsLabel);
+            this.AvailableObjectsPanel.Location = new System.Drawing.Point(4, 3);
+            this.AvailableObjectsPanel.Name = "AvailableObjectsPanel";
+            this.AvailableObjectsPanel.Size = new System.Drawing.Size(243, 22);
+            this.AvailableObjectsPanel.TabIndex = 19;
             // 
             // PropertiesPanel
             // 
@@ -180,18 +180,18 @@ namespace tryhard
             this.PropertiesLabel.TabIndex = 18;
             this.PropertiesLabel.Text = "Свойства";
             // 
-            // panel3
+            // panel
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.propertyGrid1);
-            this.panel3.Controls.Add(this.ObjectsTreeView);
-            this.panel3.Controls.Add(this.PropertiesPanel);
-            this.panel3.Controls.Add(this.panel1);
-            this.panel3.Location = new System.Drawing.Point(1009, 27);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(255, 653);
-            this.panel3.TabIndex = 0;
+            this.panel.Controls.Add(this.PropertyGrid);
+            this.panel.Controls.Add(this.ObjectsTreeView);
+            this.panel.Controls.Add(this.PropertiesPanel);
+            this.panel.Controls.Add(this.AvailableObjectsPanel);
+            this.panel.Location = new System.Drawing.Point(1009, 27);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(255, 653);
+            this.panel.TabIndex = 0;
             // 
             // ObjectsTreeView
             // 
@@ -213,12 +213,12 @@ namespace tryhard
             this.MainPage.Click += new System.EventHandler(this.MainPage_Click);
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             // 
-            // propertyGrid1
+            // PropertyGrid
             // 
-            this.propertyGrid1.Location = new System.Drawing.Point(4, 322);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(243, 327);
-            this.propertyGrid1.TabIndex = 24;
+            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
+            this.PropertyGrid.Name = "PropertyGrid";
+            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
+            this.PropertyGrid.TabIndex = 24;
             // 
             // MainForm
             // 
@@ -226,7 +226,7 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.MainPage);
             this.Controls.Add(this.MenuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -238,11 +238,11 @@ namespace tryhard
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.AvailableObjectsPanel.ResumeLayout(false);
+            this.AvailableObjectsPanel.PerformLayout();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,17 +253,17 @@ namespace tryhard
         private ToolStripMenuItem EditingMenuItem;
         private ToolStripMenuItem InfoMenuItem;
         private MenuStrip MenuStrip;
-        private Label ProjectTreeLabel;
-        private Panel panel1;
+        private Label AvailableObjectsLabel;
+        private Panel AvailableObjectsPanel;
         private Panel PropertiesPanel;
         private Label PropertiesLabel;
         public DrawPage MainPage;
-        private Panel panel3;
+        private Panel panel;
         private TreeView ObjectsTreeView;
         private ToolStripMenuItem EditorMenuItem;
         private ToolStripMenuItem EquipmentsEditorMenuItem;
         private ToolStripMenuItem ComplexEditorMenuItem;
-        private PropertyGrid propertyGrid1;
+        private PropertyGrid PropertyGrid;
     }
 }
 
