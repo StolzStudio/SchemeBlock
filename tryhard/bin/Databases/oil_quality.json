@@ -1,0 +1,9 @@
+[
+	{
+		"Id": 0,
+		"Name": "fluid_0",
+		"OilProportion": 0.53,
+		"GasProportion": 0.17,
+		"WaterProportion": 0.30
+	}
+]
