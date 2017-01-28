@@ -16,31 +16,52 @@ namespace tryhard
     {
         public int Id { get; set; }
         public string Name { get; set; }
+    }
+
+    public class MaterialObject : BaseObject
+    {
         public int Weight { get; set; }
         public int Volume { get; set; }
         public int Cost { get; set; }
     }
 
-    public class Bolt
+    public class FieldParameters : BaseObject
+    {
+        public int FluidOutput { get; set; }
+        public int HolesAmount { get; set; }
+        public int OilQualityId { get; set; }
+        public int WaterInput { get; set; }
+        public int ReserveDaysRvp { get; set; }
+        public int ReserveDaysRtn { get; set; }
+    }
+
+    public class OilQuality : BaseObject
+    {
+        public float OilProportion { get; set; }
+        public float GasProportion { get; set; }
+        public float WaterProportion { get; set; }
+    }
+
+    public class Bolt : MaterialObject
     {
         public int Diameter { get; set; }
         public string Material { get; set; }
     }
 
-    public class Pump
+    public class Pump : MaterialObject
     {
         public int Input { get; set; }
         public int Output { get; set; }
     }
 
-    public class Pipe
+    public class Pipe : MaterialObject
     {
         public int Diameter { get; set; }
         public string Material { get; set; }
         public int Length { get; set; }
     }
 
-    public class ComplicatedObject : BaseObject
+    public class ComplicatedObject : MaterialObject
     {
         public int PeopleDemand { get; set; }
         public int ElectricityDemand { get; set; }
