@@ -25,12 +25,11 @@ namespace tryhard
         private string ObjFilesDir = "../Databases/";
         private string ObjFileFormat = ".json";
         public Dictionary<string, List<BaseObject>> Objects;
-        public Dictionary<string, List<string>> ObjectsInfo;
+        public Dictionary<string, List<MetaObjectInfo>> ObjectsInfo;
         public void Initialize(string APath)
         {
             Objects = new Dictionary<string, List<BaseObject>>();
-            Dictionary<string, List<MetaObjectInfo>> ObjectsInfo =
-                JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
+            ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
             foreach (string Key in ObjectsInfo.Keys)
             {
                 foreach (MetaObjectInfo ObjInfo in ObjectsInfo[Key])
@@ -38,7 +37,17 @@ namespace tryhard
                     Objects.Add(ObjInfo.Name, DeserializeMetaObjects(ObjInfo.Name));
                 }
             }
-            PrintAllProperties(Objects["bolt"][0]);
+        }
+
+        public List<string> ObjectTypes
+        {
+            get
+            {
+                List<string> result = new List<string>();
+                foreach (string Key in ObjectsInfo.Keys.Where(k => k != "InfoClasses"))
+                    result.Add(Key);
+                return result;
+            }
         }
 
         private void PrintAllProperties(object AObject)
