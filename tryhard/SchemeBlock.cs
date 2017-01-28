@@ -49,7 +49,7 @@ namespace tryhard
             Index      = AIndex;
             BlockClass = ABlockClass;
             BlockId    = ABlockId;
-            Count = ACount;
+            Count      = ACount;
 
             PointLocation = new Point(BlockBodyWidth / 2, BlockBodyHeight / 2);
 
@@ -86,6 +86,7 @@ namespace tryhard
             this.BlockClassLabel.Location   = new Point(5, 5);
             this.BlockClassLabel.Width      = BlockBodyWidth - 10;
             this.BlockClassLabel.ForeColor  = Color.Black;
+            this.BlockClassLabel.BackColor  = Color.FromArgb(244, 188, 66);
             this.BlockClassLabel.Text       = ABlockClass;
             this.BlockClassLabel.TextAlign  = ContentAlignment.MiddleCenter;
             this.BlockClassLabel.MouseDown += new MouseEventHandler(this.SchemeBodyMouseDown);
@@ -98,6 +99,7 @@ namespace tryhard
             this.BlockModelLabel.Location   = new Point(5, 30);
             this.BlockModelLabel.Width      = BlockBodyWidth - 10;
             this.BlockModelLabel.ForeColor  = Color.FromArgb(128, 128, 128);
+            this.BlockModelLabel.BackColor  = Color.FromArgb(244, 188, 66);
             this.BlockModelLabel.Text       = ABlockModel;
             this.BlockModelLabel.TextAlign  = ContentAlignment.MiddleCenter;
             this.BlockModelLabel.Font       = new Font(BlockModelLabel.Font.Name, 6, BlockModelLabel.Font.Style);

@@ -15,7 +15,7 @@ namespace tryhard
         public bool isHaveSelectedBlock;
         public bool isOilFieldAdd;
 
-        public Dictionary<int, SchemeBlock> Blocks;
+        public Dictionary<int, Block> Blocks;
         public List<SchemeLink> Links;
         public List<string> ItemsIdList;
 
@@ -26,7 +26,7 @@ namespace tryhard
         {
             SelectedBlockIndex = -1;
 
-            Blocks = new Dictionary<int, SchemeBlock>();
+            Blocks = new Dictionary<int, Block>();
             Links = new List<SchemeLink>();
             ItemsIdList = new List<string>();
 
@@ -46,7 +46,7 @@ namespace tryhard
             }
             //string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
             //string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
-            Blocks.Add(block_counter, new SchemeBlock(block_counter, "type", "class", Pos, Form));
+            Blocks.Add(block_counter, new Block(block_counter, "type", "class", Pos, Form.MainPage.Location));
 
             foreach (int Key in Blocks.Keys)
             {

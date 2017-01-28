@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace tryhard
 {
-    class Block
+    public class Block
     {
         //
         //Consts
@@ -22,8 +22,8 @@ namespace tryhard
         public bool isFocus = false;
         public int  Index   = 0;
 
-        private string ClassText;
-        private string ModelText;
+        public  string ClassText { get; set; }
+        public  string ModelText { get; set; }
         public  Point  Location;
         private Point  TextLocation;
 

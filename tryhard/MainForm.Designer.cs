@@ -77,7 +77,6 @@ namespace tryhard
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ProjectTreeListBox = new System.Windows.Forms.ListBox();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.MainPage = new tryhard.DrawPage();
             this.menuStrip1.SuspendLayout();
@@ -160,6 +159,7 @@ namespace tryhard
             // 
             this.PropertiesLabel.AutoSize = true;
             this.PropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PropertiesLabel.ForeColor = System.Drawing.Color.Black;
             this.PropertiesLabel.Location = new System.Drawing.Point(3, 4);
             this.PropertiesLabel.Name = "PropertiesLabel";
             this.PropertiesLabel.Size = new System.Drawing.Size(58, 16);
@@ -171,7 +171,6 @@ namespace tryhard
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.ObjectsTreeView);
-            this.panel3.Controls.Add(this.ProjectTreeListBox);
             this.panel3.Controls.Add(this.PropertiesPanel);
             this.panel3.Controls.Add(this.PropertiesGridView);
             this.panel3.Controls.Add(this.panel1);
@@ -180,38 +179,10 @@ namespace tryhard
             this.panel3.Size = new System.Drawing.Size(255, 653);
             this.panel3.TabIndex = 0;
             // 
-            // ProjectTreeListBox
-            // 
-            this.ProjectTreeListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjectTreeListBox.Font = new System.Drawing.Font("Microsoft YaHei", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProjectTreeListBox.FormattingEnabled = true;
-            this.ProjectTreeListBox.ItemHeight = 19;
-            this.ProjectTreeListBox.Items.AddRange(new object[] {
-            "кдс",
-            "месторождение",
-            "упс",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14"});
-            this.ProjectTreeListBox.Location = new System.Drawing.Point(3, 28);
-            this.ProjectTreeListBox.Name = "ProjectTreeListBox";
-            this.ProjectTreeListBox.Size = new System.Drawing.Size(244, 270);
-            this.ProjectTreeListBox.TabIndex = 22;
-            // 
             // ObjectsTreeView
             // 
+            this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ObjectsTreeView.Location = new System.Drawing.Point(4, 26);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
@@ -271,7 +242,6 @@ namespace tryhard
         private Label PropertiesLabel;
         public DrawPage MainPage;
         private Panel panel3;
-        private ListBox ProjectTreeListBox;
         private TreeView ObjectsTreeView;
     }
 }

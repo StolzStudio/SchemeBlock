@@ -23,7 +23,7 @@ namespace tryhard
         public SchemeManager[] SchemeManager;
         public CalculationManager CalcManager;
         public bool isCtrlDown { get; set; }
-        
+
         /* Methods */
 
         public MainForm()
@@ -59,10 +59,10 @@ namespace tryhard
             /* Fill Dict */
 
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
-            foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
-                CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager[SchemeManagerNumber].Blocks[Key].BlockClass, 
-                                                       SchemeManager[SchemeManagerNumber].Blocks[Key].BlockId, 
-                                                       SchemeManager[SchemeManagerNumber].Blocks[Key].Count));
+            //foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
+            //    CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager[SchemeManagerNumber].Blocks[Key].ClassText,
+            //                                           SchemeManager[SchemeManagerNumber].Blocks[Key].ModelText,
+            //                                           SchemeManager[SchemeManagerNumber].Blocks[Key].Count));
 
             /* Fill Links at Blocks */
 
@@ -99,7 +99,7 @@ namespace tryhard
 
             if (SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
             {
-                MainPage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
+               // MainPage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
                 SchemeManager[SchemeManagerNumber].Blocks.Remove(SchemeManager[SchemeManagerNumber].SelectedBlockIndex);
                 SchemeManager[SchemeManagerNumber].isHaveSelectedBlock = false;
                 SchemeManager[SchemeManagerNumber].SelectedBlockIndex = -1;
@@ -145,6 +145,13 @@ namespace tryhard
                 foreach (SchemeLink Link in SchemeManager[SchemeManagerNumber].Links)
                 {
                     Link.Draw(this, e);
+                }
+            }
+            if (SchemeManager[SchemeManagerNumber].Blocks.Count != 0)
+            {
+                foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
+                {
+                    SchemeManager[SchemeManagerNumber].Blocks[Key].Draw(e.Graphics);
                 }
             }
         }
