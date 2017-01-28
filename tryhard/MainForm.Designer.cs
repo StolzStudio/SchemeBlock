@@ -80,8 +80,8 @@ namespace tryhard
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
+            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
@@ -135,6 +135,7 @@ namespace tryhard
             this.EquipmentsEditorMenuItem.Name = "EquipmentsEditorMenuItem";
             this.EquipmentsEditorMenuItem.Size = new System.Drawing.Size(206, 22);
             this.EquipmentsEditorMenuItem.Text = "Редактор оборудования";
+            this.EquipmentsEditorMenuItem.Click += new System.EventHandler(this.EquipmentsEditorMenuItem_Click);
             // 
             // ComplexEditorMenuItem
             // 
@@ -189,8 +190,8 @@ namespace tryhard
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
-            this.panel.Controls.Add(this.PossibilityLinkView);
             this.panel.Controls.Add(this.PropertyGrid);
+            this.panel.Controls.Add(this.PossibilityLinkView);
             this.panel.Location = new System.Drawing.Point(1009, 27);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(255, 653);
@@ -198,25 +199,29 @@ namespace tryhard
             // 
             // ObjectsTreeView
             // 
+            this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
             this.ObjectsTreeView.TabIndex = 23;
             // 
-            // PropertyGrid
-            // 
-            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
-            this.PropertyGrid.TabIndex = 24;
-            // 
             // PossibilityLinkView
             // 
+            this.PossibilityLinkView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PossibilityLinkView.Location = new System.Drawing.Point(4, 322);
             this.PossibilityLinkView.Name = "PossibilityLinkView";
             this.PossibilityLinkView.Size = new System.Drawing.Size(243, 327);
             this.PossibilityLinkView.TabIndex = 26;
+            // 
+            // PropertyGrid
+            // 
+            this.PropertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
+            this.PropertyGrid.Name = "PropertyGrid";
+            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
+            this.PropertyGrid.TabIndex = 24;
             // 
             // MainPage
             // 

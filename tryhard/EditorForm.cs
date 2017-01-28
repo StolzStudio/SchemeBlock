@@ -16,5 +16,20 @@ namespace tryhard
         {
             InitializeComponent();
         }
+
+        public EditorForm(string AObjectCategory, string AObjectType)
+        {
+            InitializeComponent();
+            FillStripControls(AObjectCategory, AObjectType);
+        }
+
+        private void FillStripControls(string AObjectCategory, string AObjectType)
+        {
+            CategoryStripComboBox.Items.Clear();
+            foreach (string obj in MetaDataManager.Instance.GetObjectTypesOfObjectCategory(AObjectCategory))
+                CategoryStripComboBox.Items.Add(obj);
+            if (AObjectType != "")
+                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(AObjectType);
+        }
     }
 }

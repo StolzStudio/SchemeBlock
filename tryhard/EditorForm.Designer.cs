@@ -30,27 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.SaveStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.CategoryStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.TypeStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.CategoryStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ModelNameStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.ModelNameStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.panel = new System.Windows.Forms.Panel();
+            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
             this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
-            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -59,7 +59,7 @@
             this.toolStripButton1,
             this.SaveStripButton,
             this.toolStripSeparator1,
-            this.CategoryStripLabel,
+            this.TypeStripLabel,
             this.CategoryStripComboBox,
             this.toolStripSeparator2,
             this.ModelNameStripLabel,
@@ -69,6 +69,15 @@
             this.toolStrip1.Size = new System.Drawing.Size(1302, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
             // 
             // SaveStripButton
             // 
@@ -84,14 +93,15 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // CategoryStripLabel
+            // TypeStripLabel
             // 
-            this.CategoryStripLabel.Name = "CategoryStripLabel";
-            this.CategoryStripLabel.Size = new System.Drawing.Size(66, 22);
-            this.CategoryStripLabel.Text = "Категория:";
+            this.TypeStripLabel.Name = "TypeStripLabel";
+            this.TypeStripLabel.Size = new System.Drawing.Size(78, 22);
+            this.TypeStripLabel.Text = "Тип объекта:";
             // 
             // CategoryStripComboBox
             // 
+            this.CategoryStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryStripComboBox.Name = "CategoryStripComboBox";
             this.CategoryStripComboBox.Size = new System.Drawing.Size(121, 25);
             // 
@@ -115,18 +125,27 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Controls.Add(this.PossibilityLinkView);
             this.panel.Controls.Add(this.PropertyGrid);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
+            this.panel.Controls.Add(this.PossibilityLinkView);
             this.panel.Location = new System.Drawing.Point(1047, 26);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(255, 663);
             this.panel.TabIndex = 1;
             // 
+            // PossibilityLinkView
+            // 
+            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 324);
+            this.PossibilityLinkView.Name = "PossibilityLinkView";
+            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
+            this.PossibilityLinkView.TabIndex = 25;
+            // 
             // PropertyGrid
             // 
+            this.PropertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyGrid.Location = new System.Drawing.Point(4, 323);
             this.PropertyGrid.Name = "PropertyGrid";
             this.PropertyGrid.Size = new System.Drawing.Size(243, 336);
@@ -134,6 +153,8 @@
             // 
             // ObjectsTreeView
             // 
+            this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
@@ -179,23 +200,6 @@
             this.AvailableObjectsLabel.TabIndex = 18;
             this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
-            // PossibilityLinkView
-            // 
-            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 324);
-            this.PossibilityLinkView.Name = "PossibilityLinkView";
-            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
-            this.PossibilityLinkView.TabIndex = 25;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,11 +213,11 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,7 +229,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton SaveStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel CategoryStripLabel;
+        private System.Windows.Forms.ToolStripLabel TypeStripLabel;
         private System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel ModelNameStripLabel;
