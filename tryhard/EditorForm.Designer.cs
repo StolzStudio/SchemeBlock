@@ -38,14 +38,17 @@
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
             this.PropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.DrawPage = new tryhard.DrawPage();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GoBackButton = new System.Windows.Forms.Button();
+            this.GoNextButton = new System.Windows.Forms.Button();
+            this.WorkPanel = new System.Windows.Forms.Panel();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -113,6 +116,8 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Controls.Add(this.GoNextButton);
+            this.panel.Controls.Add(this.GoBackButton);
             this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
@@ -137,8 +142,24 @@
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 308);
             this.PropertiesGridView.TabIndex = 26;
+            // 
+            // NameCol
+            // 
+            this.NameCol.HeaderText = "Название";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameCol.Width = 120;
+            // 
+            // ValueCol
+            // 
+            this.ValueCol.HeaderText = "Значение";
+            this.ValueCol.Name = "ValueCol";
+            this.ValueCol.ReadOnly = true;
+            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ValueCol.Width = 120;
             // 
             // ObjectsTreeView
             // 
@@ -199,22 +220,39 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            //
-            // NameCol
             // 
-            this.NameCol.HeaderText = "Название";
-            this.NameCol.Name = "NameCol";
-            this.NameCol.ReadOnly = true;
-            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameCol.Width = 120;
+            // GoBackButton
             // 
-            // ValueCol
+            this.GoBackButton.BackColor = System.Drawing.Color.White;
+            this.GoBackButton.Enabled = false;
+            this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoBackButton.Location = new System.Drawing.Point(4, 632);
+            this.GoBackButton.Name = "GoBackButton";
+            this.GoBackButton.Size = new System.Drawing.Size(122, 31);
+            this.GoBackButton.TabIndex = 27;
+            this.GoBackButton.Text = "back";
+            this.GoBackButton.UseVisualStyleBackColor = false;
+            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
             // 
-            this.ValueCol.HeaderText = "Значение";
-            this.ValueCol.Name = "ValueCol";
-            this.ValueCol.ReadOnly = true;
-            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ValueCol.Width = 120;
+            // GoNextButton
+            // 
+            this.GoNextButton.BackColor = System.Drawing.Color.White;
+            this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoNextButton.Location = new System.Drawing.Point(125, 632);
+            this.GoNextButton.Name = "GoNextButton";
+            this.GoNextButton.Size = new System.Drawing.Size(122, 31);
+            this.GoNextButton.TabIndex = 28;
+            this.GoNextButton.Text = "next";
+            this.GoNextButton.UseVisualStyleBackColor = false;
+            this.GoNextButton.Click += new System.EventHandler(this.GoNextButton_Click);
+            // 
+            // WorkPanel
+            // 
+            this.WorkPanel.BackColor = System.Drawing.Color.White;
+            this.WorkPanel.Location = new System.Drawing.Point(0, 26);
+            this.WorkPanel.Name = "WorkPanel";
+            this.WorkPanel.Size = new System.Drawing.Size(1045, 660);
+            this.WorkPanel.TabIndex = 0;
             // 
             // EditorForm
             // 
@@ -222,6 +260,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1302, 693);
+            this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
@@ -262,5 +301,8 @@
         public System.Windows.Forms.DataGridView PropertiesGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueCol;
+        private System.Windows.Forms.Button GoNextButton;
+        private System.Windows.Forms.Button GoBackButton;
+        private System.Windows.Forms.Panel WorkPanel;
     }
 }

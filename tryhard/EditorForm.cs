@@ -17,6 +17,7 @@ namespace tryhard
         private int SelectBlockIndex;
         private bool isMouseDown { get; set; }
         public Point ClickOffset { get; set; }
+        private bool isNextStep;
 
         public EditorForm()
         {
@@ -26,6 +27,9 @@ namespace tryhard
 
             DrawManager = new Manager(this.DrawPage);
             isMouseDown = false;
+            isNextStep = false;
+
+            DrawPage.BringToFront();
         }
 
         public EditorForm(string AObjectCategory, string AObjectType)
@@ -172,6 +176,30 @@ namespace tryhard
             {
                 DrawManager.DeleteElements();
                 DrawPage.Invalidate();
+            }
+        }
+
+        private void GoBackButton_Click(object sender, EventArgs e)
+        {
+            DrawPage.BringToFront();
+            GoBackButton.Enabled = false;
+            isNextStep = false;
+            GoNextButton.Text = "next";
+        }
+
+        private void GoNextButton_Click(object sender, EventArgs e)
+        {
+            if (!isNextStep)
+            {
+                WorkPanel.BringToFront();
+                GoBackButton.Enabled = true;
+                GoNextButton.Text = "save";
+                //код заполнения гридов
+                isNextStep = true;
+            }
+            else
+            {
+                //сохранение
             }
         }
     }
