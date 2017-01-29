@@ -82,14 +82,6 @@ namespace tryhard
             return null; // CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
         }  
 
-        private void DeleteElement(object sender, KeyPressEventArgs e)
-        {
-            DrawManager[SchemeManagerNumber].DeleteElements();
-
-            //MainPage_MouseDown(sender, e);
-            MainPage.Invalidate();
-        }
-
         private bool IsLinkNull(Link TestLink)
         {
             return TestLink == null;
@@ -104,7 +96,8 @@ namespace tryhard
         {
             if (e.KeyChar == 8)
             {
-                DeleteElement(sender, e);
+                DrawManager[SchemeManagerNumber].DeleteElements();
+                MainPage.Invalidate();
             }
         }
 

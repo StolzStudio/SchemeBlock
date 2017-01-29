@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.ToolStrip = new System.Windows.Forms.ToolStrip();
+            this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.TypeStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.CategoryStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -43,7 +44,7 @@
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
-            this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
@@ -66,6 +67,11 @@
             this.ToolStrip.Size = new System.Drawing.Size(1302, 25);
             this.ToolStrip.TabIndex = 0;
             this.ToolStrip.Text = "toolStrip1";
+            // 
+            // ToolStripSeparator
+            // 
+            this.ToolStripSeparator.Name = "ToolStripSeparator";
+            this.ToolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
             // TypeStripLabel
             // 
@@ -178,10 +184,17 @@
             this.AvailableObjectsLabel.TabIndex = 18;
             this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
-            // ToolStripSeparator
+            // DrawPage
             // 
-            this.ToolStripSeparator.Name = "ToolStripSeparator";
-            this.ToolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            this.DrawPage.BackColor = System.Drawing.Color.White;
+            this.DrawPage.Location = new System.Drawing.Point(0, 26);
+            this.DrawPage.Name = "DrawPage";
+            this.DrawPage.Size = new System.Drawing.Size(1045, 660);
+            this.DrawPage.TabIndex = 2;
+            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
+            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
+            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
+            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
             // EditorForm
             // 
@@ -189,10 +202,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1302, 693);
+            this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
+            this.KeyPreview = true;
             this.Name = "EditorForm";
             this.Text = "EditorForm";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditorForm_KeyPress);
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
             this.panel.ResumeLayout(false);
@@ -208,7 +224,6 @@
 
         #endregion
 
-        public DrawPage MainPage;
         private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.ToolStripLabel CategoryStripLabel;
         private System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
@@ -225,5 +240,6 @@
         private System.Windows.Forms.ToolStripComboBox TypeStripComboBox;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
+        private DrawPage DrawPage;
     }
 }
