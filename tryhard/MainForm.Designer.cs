@@ -72,16 +72,14 @@ namespace tryhard
             this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EquipmentsEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ComplexEditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
+            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
@@ -123,24 +121,9 @@ namespace tryhard
             // 
             // EditorMenuItem
             // 
-            this.EditorMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EquipmentsEditorMenuItem,
-            this.ComplexEditorMenuItem});
             this.EditorMenuItem.Name = "EditorMenuItem";
             this.EditorMenuItem.Size = new System.Drawing.Size(69, 20);
             this.EditorMenuItem.Text = "Редактор";
-            // 
-            // EquipmentsEditorMenuItem
-            // 
-            this.EquipmentsEditorMenuItem.Name = "EquipmentsEditorMenuItem";
-            this.EquipmentsEditorMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.EquipmentsEditorMenuItem.Text = "Редактор оборудования";
-            // 
-            // ComplexEditorMenuItem
-            // 
-            this.ComplexEditorMenuItem.Name = "ComplexEditorMenuItem";
-            this.ComplexEditorMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.ComplexEditorMenuItem.Text = "Редактор комплексов";
             // 
             // AvailableObjectsLabel
             // 
@@ -201,17 +184,10 @@ namespace tryhard
             // 
             this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 26);
+            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
             this.ObjectsTreeView.TabIndex = 23;
-            // 
-            // PropertyGrid
-            // 
-            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
-            this.PropertyGrid.TabIndex = 24;
             // 
             // PossibilityLinkView
             // 
@@ -220,6 +196,13 @@ namespace tryhard
             this.PossibilityLinkView.Name = "PossibilityLinkView";
             this.PossibilityLinkView.Size = new System.Drawing.Size(243, 327);
             this.PossibilityLinkView.TabIndex = 26;
+            // 
+            // PropertyGrid
+            // 
+            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
+            this.PropertyGrid.Name = "PropertyGrid";
+            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
+            this.PropertyGrid.TabIndex = 24;
             // 
             // MainPage
             // 
@@ -276,8 +259,6 @@ namespace tryhard
         private Panel panel;
         private TreeView ObjectsTreeView;
         private ToolStripMenuItem EditorMenuItem;
-        private ToolStripMenuItem EquipmentsEditorMenuItem;
-        private ToolStripMenuItem ComplexEditorMenuItem;
         private PropertyGrid PropertyGrid;
         private DataGridView PossibilityLinkView;
     }
