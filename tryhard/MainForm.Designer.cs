@@ -80,11 +80,13 @@ namespace tryhard
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
             this.MainPage = new tryhard.DrawPage();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // FileMenuItem
@@ -170,6 +172,7 @@ namespace tryhard
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
@@ -211,6 +214,14 @@ namespace tryhard
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
+            // PropertiesGridView
+            // 
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Location = new System.Drawing.Point(4, 322);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.TabIndex = 27;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +246,7 @@ namespace tryhard
             this.PropertiesPanel.PerformLayout();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,6 +266,7 @@ namespace tryhard
         private TreeView ObjectsTreeView;
         private ToolStripMenuItem EditorMenuItem;
         private DataGridView PossibilityLinkView;
+        private DataGridView PropertiesGridView;
     }
 }
 

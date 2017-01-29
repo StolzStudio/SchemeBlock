@@ -43,11 +43,13 @@
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -105,6 +107,7 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.PossibilityLinkView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
@@ -174,6 +177,14 @@
             this.ToolStripSeparator.Name = "ToolStripSeparator";
             this.ToolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
+            // PropertiesGridView
+            // 
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Location = new System.Drawing.Point(4, 324);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.TabIndex = 26;
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +203,7 @@
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +227,6 @@
         private System.Windows.Forms.ToolStripComboBox TypeStripComboBox;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
+        private System.Windows.Forms.DataGridView PropertiesGridView;
     }
 }
