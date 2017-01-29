@@ -220,6 +220,18 @@ namespace tryhard
             }
         }
 
+        private void FillPropertiesGridView(string ACategory, string AType, int AId)
+        {
+            PropertiesGridView.Rows.Clear();
+            foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[ACategory].Where(obj=>obj.Name == AType))
+                foreach (string APropertyName in AObjectInfo.Properties)
+                {
+                    IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
+                    foreach (BaseObject obj in base_object)
+                        PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                }
+        }
+
         private void GoBackButton_Click(object sender, EventArgs e)
         {
             MainPage.BringToFront();
@@ -248,6 +260,7 @@ namespace tryhard
         {
             if (ObjectsTreeView.SelectedNode.Parent == null)
                 ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
+            FillPropertiesGridView("Complex", ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
     }
 }
