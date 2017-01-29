@@ -12,20 +12,13 @@ namespace tryhard
 {
     public partial class EditorForm : Form
     {
-        public bool isEditMode { get; set; } = true;
-        public Manager DrawManager;
-        private int SelectBlockIndex;
-        private bool isMouseDown { get; set; }
-        public Point ClickOffset { get; set; }
+        public bool isEditMode { get; set; } = false;
 
         public EditorForm()
         {
             InitializeComponent();
             FillCategoryStripComboBox();
             FillObjectTreeView();
-
-            DrawManager = new Manager(this.DrawPage);
-            isMouseDown = false;
         }
 
         public EditorForm(string AObjectCategory, string AObjectType)
@@ -49,7 +42,7 @@ namespace tryhard
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == needed_category);
             }
             else
-                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex");
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail");
             foreach (string CategoryName in Categories)
             {
                 TreeNode node = new TreeNode(CategoryName);
@@ -63,7 +56,7 @@ namespace tryhard
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
             CategoryStripComboBox.Items.Clear();
-            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
+            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail"))
                 CategoryStripComboBox.Items.Add(CategoryName);
             if (ACategoryPriopity != null)
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);
@@ -96,83 +89,6 @@ namespace tryhard
                 CategoryStripComboBox.Items.Add(obj);
             if (AObjectType != "")
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(AObjectType);
-        }
-
-        private void DrawPage_MouseDown(object sender, MouseEventArgs e)
-        {
-            isMouseDown = true;
-
-            DrawManager.ClearLinksFocus();
-            DrawManager.ClearBlocksFocus();
-
-            Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= DrawPage.Location.X;
-            ptr.Y -= DrawPage.Location.Y;
-
-            ClickOffset = ptr;
-
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                DrawManager.TrySetFocusInBlocks(ptr);
-
-                if (DrawManager.SelectedBlockIndex == -1)
-                {
-                    ptr.X -= Block.BlockWidth / 2;
-                    ptr.Y -= Block.BlockHeight / 2;
-                    DrawManager.AddBlock(ptr);
-                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-                }
-                else
-                {
-                    if (this.SelectBlockIndex != DrawManager.SelectedBlockIndex)
-                    {
-                        DrawManager.ClearLinksFocus();
-                        DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
-                    }
-                }
-            }
-            else
-            {
-                DrawManager.TrySetFocusInLinks(ptr);
-                DrawManager.TrySetFocusInBlocks(ptr);
-
-                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-            }
-            if (this.SelectBlockIndex != -1)
-            {
-                ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
-                                        ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
-            }
-        }
-
-        private void DrawPage_MouseMove(object sender, MouseEventArgs e)
-        {
-            if ((this.isMouseDown) && (SelectBlockIndex != -1))
-            {
-                Point Pnt = this.PointToClient(Cursor.Position);
-                DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset);
-            }
-
-            DrawPage.Invalidate();
-        }
-
-        private void DrawPage_MouseUp(object sender, MouseEventArgs e)
-        {
-            this.isMouseDown = false;
-        }
-
-        private void DrawPage_Paint(object sender, PaintEventArgs e)
-        {
-            DrawManager.DrawElements(e.Graphics);
-        }
-
-        private void EditorForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 8)
-            {
-                DrawManager.DeleteElements();
-                DrawPage.Invalidate();
-            }
         }
     }
 }

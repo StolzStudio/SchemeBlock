@@ -41,10 +41,7 @@ namespace tryhard
 
         public IEnumerable<string> ObjectCategories
         {
-            get
-            {
-                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");
-            }
+            get { return ObjectsInfo.Keys.Where(k => k != "InfoClasses"); }
         }
 
         public List<string> GetObjectTypesOfObjectCategory(string AObjectType)
