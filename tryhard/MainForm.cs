@@ -146,12 +146,12 @@ namespace tryhard
                 DrawManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
                 DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
                 
-                this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;
-                if (this.SelectBlockIndex != -1)
-                {
-                    ClickOffset = new Point(ptr.X - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.X,
-                                            ptr.Y - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.Y);
-                }
+                this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;        
+            }
+            if (this.SelectBlockIndex != -1)
+            {
+                ClickOffset = new Point(ptr.X - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.X,
+                                        ptr.Y - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.Y);
             }
             //MainPage_Click(sender, e);
             //this.isMouseDown = true;
