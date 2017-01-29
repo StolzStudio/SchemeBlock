@@ -158,5 +158,11 @@ namespace tryhard
                 DeleteElement(sender, e);
             }
         }
+
+        private void EditorMenuItem_Click(object sender, EventArgs e)
+        {
+            EditorForm editorForm = new EditorForm();
+            editorForm.Show();
+        }
     }
 }

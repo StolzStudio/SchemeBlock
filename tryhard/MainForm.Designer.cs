@@ -124,6 +124,7 @@ namespace tryhard
             this.EditorMenuItem.Name = "EditorMenuItem";
             this.EditorMenuItem.Size = new System.Drawing.Size(69, 20);
             this.EditorMenuItem.Text = "Редактор";
+            this.EditorMenuItem.Click += new System.EventHandler(this.EditorMenuItem_Click);
             // 
             // AvailableObjectsLabel
             // 

@@ -30,23 +30,23 @@ namespace tryhard
         {
             Objects = new Dictionary<string, List<BaseObject>>();
             ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
-            foreach (string Key in ObjectsInfo.Keys)
+            foreach (string Category in ObjectsInfo.Keys)
             {
-                foreach (MetaObjectInfo ObjInfo in ObjectsInfo[Key])
+                foreach (MetaObjectInfo ObjectType in ObjectsInfo[Category])
                 {
-                    Objects.Add(ObjInfo.Name, DeserializeMetaObjects(ObjInfo.Name));
+                    Objects.Add(ObjectType.Name, DeserializeMetaObjects(ObjectType.Name));
                 }
             }
         }
 
-        public List<string> ObjectTypes
+        public IEnumerable<string> ObjectCategories
         {
             get
             {
-                List<string> result = new List<string>();
-                foreach (string Key in ObjectsInfo.Keys.Where(k => k != "InfoClasses"))
-                    result.Add(Key);
-                return result;
+                //List<string> Categories = new List<string>();
+                //foreach (string Category in ObjectsInfo.Keys.Where(k => k != "InfoClasses"))
+                //    Categories.Add(Category);
+                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");//Categories;
             }
         }
 
@@ -56,6 +56,11 @@ namespace tryhard
             {
                 Console.WriteLine(Property.Name + " " + Property.GetValue(AObject));
             }
+        }
+
+        public IEnumerable<string> GetObjectTypesByCategory(string ACategory)
+        {
+            return ObjectsInfo[ACategory].Select(k => k.Name);
         }
 
         private List<BaseObject> DeserializeMetaObjects(string AObjectName)

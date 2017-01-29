@@ -38,27 +38,29 @@
             this.ModelNameStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.ModelNameStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.panel = new System.Windows.Forms.Panel();
+            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
             this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
-            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.TypeStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.TypeStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
             this.SaveStripButton,
             this.toolStripSeparator1,
+            this.TypeStripLabel,
+            this.TypeStripComboBox,
             this.CategoryStripLabel,
             this.CategoryStripComboBox,
             this.toolStripSeparator2,
@@ -77,7 +79,7 @@
             this.SaveStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveStripButton.Name = "SaveStripButton";
             this.SaveStripButton.Size = new System.Drawing.Size(23, 22);
-            this.SaveStripButton.Text = "toolStripButton1";
+            this.SaveStripButton.Text = "Сохранить модель";
             // 
             // toolStripSeparator1
             // 
@@ -92,6 +94,7 @@
             // 
             // CategoryStripComboBox
             // 
+            this.CategoryStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryStripComboBox.Name = "CategoryStripComboBox";
             this.CategoryStripComboBox.Size = new System.Drawing.Size(121, 25);
             // 
@@ -124,6 +127,14 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(255, 663);
             this.panel.TabIndex = 1;
+            // 
+            // PossibilityLinkView
+            // 
+            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 324);
+            this.PossibilityLinkView.Name = "PossibilityLinkView";
+            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
+            this.PossibilityLinkView.TabIndex = 25;
             // 
             // PropertyGrid
             // 
@@ -179,22 +190,17 @@
             this.AvailableObjectsLabel.TabIndex = 18;
             this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
-            // PossibilityLinkView
+            // TypeStripLabel
             // 
-            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 324);
-            this.PossibilityLinkView.Name = "PossibilityLinkView";
-            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
-            this.PossibilityLinkView.TabIndex = 25;
+            this.TypeStripLabel.Name = "TypeStripLabel";
+            this.TypeStripLabel.Size = new System.Drawing.Size(31, 22);
+            this.TypeStripLabel.Text = "Тип:";
             // 
-            // toolStripButton1
+            // TypeStripComboBox
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.TypeStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TypeStripComboBox.Name = "TypeStripComboBox";
+            this.TypeStripComboBox.Size = new System.Drawing.Size(121, 25);
             // 
             // EditorForm
             // 
@@ -209,11 +215,11 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +244,7 @@
         private System.Windows.Forms.Label PropertiesLabel;
         private System.Windows.Forms.Panel AvailableObjectsPanel;
         private System.Windows.Forms.Label AvailableObjectsLabel;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripLabel TypeStripLabel;
+        private System.Windows.Forms.ToolStripComboBox TypeStripComboBox;
     }
 }
