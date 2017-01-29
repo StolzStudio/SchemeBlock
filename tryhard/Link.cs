@@ -10,61 +10,59 @@ namespace tryhard
 {
     public enum LineType { LTHorizontal, LTVertical };
 
-    public class SchemeLink
+    public class Link
     {
         //
         //Properties
         //
-        public int  FirstBlockIndex  { get; set; }
-        public int  SecondBlockIndex { get; set; }
-        public bool isFocus          { get; set; }
+        public int FirstBlockIndex { get; set; }
+        public int SecondBlockIndex { get; set; }
+        public bool isFocus { get; set; }
         //
         //Fields
         //
-        private Point[]  Points;
+        private Point[] Points;
         private LineType FirstLine;
-        private Color    ArrowColor;
-        private Color    SelectArrowColor;
+        private Color ArrowColor;
+        private Color SelectArrowColor;
         //
         //Methods
         //
-        public SchemeLink(int AFirstBlockIndex, int ASecondBlockIndex)
+        public Link(int AFirstBlockIndex, int ASecondBlockIndex)
         {
-            Points           = new Point[4];
-            ArrowColor       = Color.DarkSlateBlue;
+            Points = new Point[4];
+            ArrowColor = Color.DarkSlateBlue;
             SelectArrowColor = Color.IndianRed;
-            FirstBlockIndex  = AFirstBlockIndex;
+            FirstBlockIndex = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
-            isFocus          = false;
+            isFocus = false;
         }
         //
         //take point location
         //
-        //public Point GetFirstBlockPointLocation(MainForm AForm)
-        //{
-        //    SchemeBlock Block = AForm.SchemeManager[AForm.SchemeManagerNumber].Blocks[FirstBlockIndex];
-        //    return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
-        //                     Block.PointLocation.Y + Block.BlockBody.Location.Y);
-        //}
+        public Point GetFirstBlockPointLocation(Dictionary<int, Block> aBlocks)
+        {
+            Block Result = aBlocks[FirstBlockIndex];
+            return new Point(Result.Location.X + (Block.BlockWidth / 2),
+                             Result.Location.Y + (Block.BlockHeight / 2));
+        }
 
-        //public Point GetSecondBlockPointLocation(MainForm AForm)
-        //{
-        //    SchemeBlock Block = AForm.SchemeManager[AForm.SchemeManagerNumber].Blocks[SecondBlockIndex];
-        //    return new Point(Block.PointLocation.X + Block.BlockBody.Location.X,
-        //                     Block.PointLocation.Y + Block.BlockBody.Location.Y);
-        //}
-        //
-        //check link to delete
-        //
+        public Point GetSecondBlockPointLocation(Dictionary<int, Block> aBlocks)
+        {
+            Block Result = aBlocks[SecondBlockIndex];
+            return new Point(Result.Location.X + (Block.BlockWidth / 2),
+                             Result.Location.Y + (Block.BlockHeight / 2));
+        }
+
         public bool CheckDeletedLink(int AIndex)
         {
-            if ((AIndex == FirstBlockIndex)||(AIndex == SecondBlockIndex)) { return true;  }
-                                                                      else { return false; }
+            if ((AIndex == FirstBlockIndex) || (AIndex == SecondBlockIndex)) { return true; }
+            else { return false; }
         }
         //
         //draw link
         //
-        public void Draw(MainForm AForm, PaintEventArgs e)
+        public void Draw(Dictionary<int, Block> aBlocks, Graphics g)
         {
             Pen pen = new Pen(this.ArrowColor);
 
@@ -78,8 +76,8 @@ namespace tryhard
                 pen.Width = 1.5F;
             }
 
-            //Points[0] = GetFirstBlockPointLocation(AForm);
-            //Points[2] = GetSecondBlockPointLocation(AForm);
+            Points[0] = GetFirstBlockPointLocation(aBlocks);
+            Points[2] = GetSecondBlockPointLocation(aBlocks);
 
             if (Math.Abs(Math.Abs(Points[0].X) - Math.Abs(Points[2].X)) <
                 Math.Abs(Math.Abs(Points[0].Y) - Math.Abs(Points[2].Y)))
@@ -93,16 +91,16 @@ namespace tryhard
 
             for (int i = 0; i < 2; i++)
             {
-                e.Graphics.DrawLine(pen, Points[i], Points[i + 1]);
+                g.DrawLine(pen, Points[i], Points[i + 1]);
             }
 
-            DrawPointer(e, pen);
+            DrawPointer(g, pen);
         }
 
-        private void DrawPointer(PaintEventArgs e, Pen p)
+        private void DrawPointer(Graphics g, Pen p)
         {
             Point[] Ptr = new Point[3];
-            Brush   b   = new SolidBrush(p.Color);
+            Brush b = new SolidBrush(p.Color);
 
             int Width = 40;
 
@@ -137,11 +135,11 @@ namespace tryhard
                     Ptr[0] = new Point(Points[2].X - Width, Points[1].Y);
                     Ptr[1] = new Point(Points[2].X - Width - 10, Points[1].Y + 5);
                     Ptr[2] = new Point(Points[2].X - Width - 10, Points[1].Y - 5);
-                } 
+                }
             }
 
-            e.Graphics.DrawPolygon(p, Ptr);
-            e.Graphics.FillPolygon(b, Ptr);
+            g.DrawPolygon(p, Ptr);
+            g.FillPolygon(b, Ptr);
         }
         //
         //work with focus
@@ -169,7 +167,7 @@ namespace tryhard
             int max;
 
             if (Pnt0 <= Pnt1) { min = Pnt0; max = Pnt1; }
-                         else { min = Pnt1; max = Pnt0; }
+            else { min = Pnt1; max = Pnt0; }
 
             if ((min - SelectOffset <= Pnt2) && (Pnt2 <= max + SelectOffset))
             {

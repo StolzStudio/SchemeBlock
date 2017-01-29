@@ -20,7 +20,7 @@ namespace tryhard
 
         public System.Drawing.Point DrawingPanelOffset;
         public int SchemeManagerNumber = 0;
-        public SchemeManager[] SchemeManager;
+        public Manager[] DrawManager;
         public CalculationManager CalcManager;
         public bool isCtrlDown { get; set; }
 
@@ -32,9 +32,9 @@ namespace tryhard
             InitializeComponent();
             FillTree();
 
-            SchemeManager = new SchemeManager[2];
-            SchemeManager[0] = new SchemeManager(this);
-            SchemeManager[1] = new SchemeManager(this);
+            DrawManager = new Manager[2];
+            DrawManager[0] = new Manager(this.MainPage);
+            DrawManager[1] = new Manager(this.MainPage);
             CalcManager = new CalculationManager();
 
             DrawingPanelOffset.X = MainPage.Location.X;
@@ -68,7 +68,7 @@ namespace tryhard
 
             if (APageType == PageType.SchemeType)
             {
-                foreach (SchemeLink Link in SchemeManager[SchemeManagerNumber].Links)
+                foreach (Link Link in DrawManager[SchemeManagerNumber].Links)
                 {
                     CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
                     CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
@@ -79,30 +79,29 @@ namespace tryhard
 
         private void DeleteElement(object sender, KeyPressEventArgs e)
         {
-            SchemeLink[] LinksArr = SchemeManager[SchemeManagerNumber].Links.ToArray();
-            SchemeManager[SchemeManagerNumber].Links.Clear();
+            Link[] LinksArr = DrawManager[SchemeManagerNumber].Links.ToArray();
+            DrawManager[SchemeManagerNumber].Links.Clear();
 
             for (int i = 0; i < LinksArr.Length; i++)
             {
-                if (!SchemeManager[SchemeManagerNumber].isHaveSelectedBlock)
+                if (!DrawManager[SchemeManagerNumber].isHaveSelectedBlock)
                 {
                     if (LinksArr[i].isFocus) { LinksArr[i] = null; }
                 }
                 else
                 {
-                    if (LinksArr[i].CheckDeletedLink(SchemeManager[SchemeManagerNumber].SelectedBlockIndex)) { LinksArr[i] = null; }
+                    if (LinksArr[i].CheckDeletedLink(DrawManager[SchemeManagerNumber].SelectedBlockIndex)) { LinksArr[i] = null; }
                 }
             }
 
             LinksArr = LinksArr.Where(x => !IsLinkNull(x)).ToArray();
-            SchemeManager[SchemeManagerNumber].Links = LinksArr.ToList();
+            DrawManager[SchemeManagerNumber].Links = LinksArr.ToList();
 
-            if (SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
+            if (DrawManager[SchemeManagerNumber].Blocks[DrawManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
             {
-               // MainPage.Controls.Remove(SchemeManager[SchemeManagerNumber].Blocks[SchemeManager[SchemeManagerNumber].SelectedBlockIndex].BlockBody);
-                SchemeManager[SchemeManagerNumber].Blocks.Remove(SchemeManager[SchemeManagerNumber].SelectedBlockIndex);
-                SchemeManager[SchemeManagerNumber].isHaveSelectedBlock = false;
-                SchemeManager[SchemeManagerNumber].SelectedBlockIndex = -1;
+                DrawManager[SchemeManagerNumber].Blocks.Remove(DrawManager[SchemeManagerNumber].SelectedBlockIndex);
+                DrawManager[SchemeManagerNumber].isHaveSelectedBlock = false;
+                DrawManager[SchemeManagerNumber].SelectedBlockIndex = -1;
             }
 
 
@@ -110,50 +109,46 @@ namespace tryhard
             MainPage.Invalidate();
         }
 
-        private bool IsLinkNull(SchemeLink TestLink)
+        private bool IsLinkNull(Link TestLink)
         {
             return TestLink == null;
         }
 
         private void MainPage_Click(object sender, EventArgs e)
         {
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = true;
-            }
-
-            SchemeManager[SchemeManagerNumber].ClearLinksFocus();
-            SchemeManager[SchemeManagerNumber].ClearBlocksFocus();
+            DrawManager[SchemeManagerNumber].ClearLinksFocus();
+            DrawManager[SchemeManagerNumber].ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
             ptr.X -= DrawingPanelOffset.X;
             ptr.Y -= DrawingPanelOffset.Y;
-            if (SchemeManager[SchemeManagerNumber].isAddBlockButtonClick)
+
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                DrawManager[SchemeManagerNumber].isAddBlockButtonClick = true;
+            }
+
+            foreach (int Key in DrawManager[SchemeManagerNumber].Blocks.Keys)
+            {
+                if (DrawManager[SchemeManagerNumber].Blocks[Key].CheckFocus(ptr))
+                {
+                    DrawManager[SchemeManagerNumber].isAddBlockButtonClick = false;
+                }
+            }
+            
+            if (DrawManager[SchemeManagerNumber].isAddBlockButtonClick)
             {
                 ptr.X -= SchemeBlock.BlockBodyWidth / 2;
                 ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
-                SchemeManager[SchemeManagerNumber].AddBlock(ptr);
+                DrawManager[SchemeManagerNumber].AddBlock(ptr);
             }
-            SchemeManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
-            SchemeManager[SchemeManagerNumber].isAddBlockButtonClick = false;
+            DrawManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
+            DrawManager[SchemeManagerNumber].isAddBlockButtonClick = false;
         }
 
         private void MainPage_Paint(object sender, PaintEventArgs e)
         {
-            if (SchemeManager[SchemeManagerNumber].Links.Count != 0)
-            {
-                foreach (SchemeLink Link in SchemeManager[SchemeManagerNumber].Links)
-                {
-                    Link.Draw(this, e);
-                }
-            }
-            if (SchemeManager[SchemeManagerNumber].Blocks.Count != 0)
-            {
-                foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
-                {
-                    SchemeManager[SchemeManagerNumber].Blocks[Key].Draw(e.Graphics);
-                }
-            }
+            DrawManager[SchemeManagerNumber].DrawElements(e.Graphics);
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)

@@ -15,17 +15,24 @@ namespace tryhard
         //Consts
         //
         public const int BlockWidth  = 80;
-        public const int BlockHeight = 80; 
+        public const int BlockHeight = 80;
+        //
+        //Properties
+        //
+        public string ClassText { get; set; }
+        public string ModelText { get; set; }
+        public int    Count     { get; set; }
         //
         //Fields
         //
         public bool isFocus = false;
         public int  Index   = 0;
 
-        public  string ClassText { get; set; }
-        public  string ModelText { get; set; }
-        public  Point  Location;
-        private Point  TextLocation;
+        
+
+        public  Point Location;
+        private Point TextLocation;
+        public  Point PointLocation;
 
         private int   TextOffsetX = 0;
         private int   TextOffsetY = 25;
@@ -86,6 +93,16 @@ namespace tryhard
         public void ClearFocus()
         {
             this.isFocus = false;
+        }
+
+        public bool CheckFocus(Point aMouseLocation)
+        {
+            if (((this.Location.X <= aMouseLocation.X)&&(aMouseLocation.X <= this.Location.X + BlockWidth))&&
+                ((this.Location.Y <= aMouseLocation.Y)&&(aMouseLocation.Y <= this.Location.Y + BlockHeight)))
+            {
+                SetFocus();
+            }
+            return this.isFocus;
         }
         //
         //Draw

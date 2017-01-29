@@ -126,8 +126,8 @@ namespace tryhard
         {
             this.isFocus = true;
 
-            Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
-            Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
+            Form.DrawManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
+            Form.DrawManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
 
             Graphics g = this.BlockBody.CreateGraphics();
 
@@ -145,7 +145,7 @@ namespace tryhard
 
         public void ClearFocus()
         {
-            Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
+            Form.DrawManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
             //Form.DeleteBlockButton.Visible = false;
             this.isFocus = false;
 
@@ -156,9 +156,9 @@ namespace tryhard
         {
             if (!isFocus)
             {
-                foreach (int Key in Form.SchemeManager[Form.SchemeManagerNumber].Blocks.Keys)
+                foreach (int Key in Form.DrawManager[Form.SchemeManagerNumber].Blocks.Keys)
                 {
-                    Form.SchemeManager[Form.SchemeManagerNumber].Blocks[Key].ClearFocus();
+                    Form.DrawManager[Form.SchemeManagerNumber].Blocks[Key].ClearFocus();
                 }
                 this.SetFocus();
             }
@@ -176,27 +176,27 @@ namespace tryhard
             if (Control.ModifierKeys == Keys.Control) { isCtrlDown = true;  }
                                                  else { isCtrlDown = false; }
 
-            if ((Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock) && 
-                (Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex != this.Index) && isCtrlDown)
+            if ((Form.DrawManager[Form.SchemeManagerNumber].isHaveSelectedBlock) && 
+                (Form.DrawManager[Form.SchemeManagerNumber].SelectedBlockIndex != this.Index) && isCtrlDown)
             {
                 Panel Pnl = sender as Panel;
-                if (!Form.SchemeManager[Form.SchemeManagerNumber].CheckLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index))
+                if (!Form.DrawManager[Form.SchemeManagerNumber].CheckLink(Form.DrawManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index))
                 {
-                    Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
+                    Form.DrawManager[Form.SchemeManagerNumber].isHaveSelectedBlock = false;
                     isCtrlDown                             = false;
 
-                    Form.SchemeManager[Form.SchemeManagerNumber].ClearLinksFocus();
-                    Form.SchemeManager[Form.SchemeManagerNumber].AddSchemeLink(new SchemeLink(Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index));
+                    Form.DrawManager[Form.SchemeManagerNumber].ClearLinksFocus();
+                    Form.DrawManager[Form.SchemeManagerNumber].AddLink(new Link(Form.DrawManager[Form.SchemeManagerNumber].SelectedBlockIndex, this.Index));
                 }
             }
             else
             {
-                Form.SchemeManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
-                Form.SchemeManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
+                Form.DrawManager[Form.SchemeManagerNumber].isHaveSelectedBlock = true;
+                Form.DrawManager[Form.SchemeManagerNumber].SelectedBlockIndex  = this.Index;
             }
 
             //Form.SetComboBoxes(this.BlockClass, this.BlockId);
-            Form.SchemeManager[Form.SchemeManagerNumber].ClearLinksFocus();
+            Form.DrawManager[Form.SchemeManagerNumber].ClearLinksFocus();
             CheckFocus();
         }
 

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace tryhard
 {
-    public class SchemeManager
+    public class Manager
     {
         public int SelectedBlockIndex;
         public bool isAddBlockButtonClick;
@@ -16,27 +16,27 @@ namespace tryhard
         public bool isOilFieldAdd;
 
         public Dictionary<int, Block> Blocks;
-        public List<SchemeLink> Links;
+        public List<Link> Links;
         public List<string> ItemsIdList;
 
-        private MainForm Form;
+        private DrawPage Page;
         private int block_counter;
 
-        public SchemeManager(MainForm AForm)
+        public Manager(DrawPage aPage)
         {
             SelectedBlockIndex = -1;
 
             Blocks = new Dictionary<int, Block>();
-            Links = new List<SchemeLink>();
+            Links = new List<Link>();
             ItemsIdList = new List<string>();
 
             isAddBlockButtonClick = false;
             isHaveSelectedBlock = false;
             isOilFieldAdd = false;
 
-            Form = AForm;
+            Page = aPage;
             block_counter = 1;
-    }
+        }
 
         public void AddBlock(Point Pos)
         {
@@ -44,9 +44,8 @@ namespace tryhard
             {
                 //isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
             }
-            //string st = CMeta.DictionaryName[(string)Form.ObjectTypeCB.SelectedItem];
-            //string cd = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
-            Blocks.Add(block_counter, new Block(block_counter, "type", "class", Pos, Form.MainPage.Location));
+
+            Blocks.Add(block_counter, new Block(block_counter, "type", "class", Pos, Page.Location));
 
             foreach (int Key in Blocks.Keys)
             {
@@ -56,22 +55,22 @@ namespace tryhard
             block_counter++;
             isAddBlockButtonClick = false;
         }
-        
+
         public void ChangeSelectBlock()
         {
             //Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ObjectModelCB.SelectedItem;
             //Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
         }
 
-        public void AddSchemeLink(SchemeLink ANewLink)
+        public void AddLink(Link ANewLink)
         {
             Links.Add(ANewLink);
-            Form.MainPage.Invalidate();
+            Page.Invalidate();
         }
 
         public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
         {
-            foreach (SchemeLink Link in Links)
+            foreach (Link Link in Links)
             {
                 return (Link.FirstBlockIndex == AFirstBlockIndex) && (Link.SecondBlockIndex == ASecondBlockIndex);
             }
@@ -80,14 +79,14 @@ namespace tryhard
 
         public void ClearLinksFocus()
         {
-            foreach(SchemeLink link in Links)
+            foreach (Link link in Links)
             {
                 link.isFocus = false;
             }
 
-           Form.MainPage.Invalidate();
+            Page.Invalidate();
         }
-        
+
         public void ClearBlocksFocus()
         {
             foreach (int key in Blocks.Keys)
@@ -95,20 +94,34 @@ namespace tryhard
                 Blocks[key].ClearFocus();
             }
 
-            Form.MainPage.Invalidate();
+            Page.Invalidate();
         }
 
         public void TrySetFocusInLinks(Point Coord)
         {
-            foreach(SchemeLink link in Links)
+            foreach (Link link in Links)
             {
                 link.TrySetFocus(Coord);
-                if (link.isFocus)
+            }
+            Page.Invalidate();
+        }
+
+        public void DrawElements(Graphics g)
+        {
+            if (Links.Count != 0)
+            {
+                foreach (Link Link in Links)
                 {
-                //    Form.DeleteBlockButton.Visible = true;
+                    Link.Draw(this.Blocks, g);
                 }
             }
-            Form.MainPage.Invalidate();
+            if (Blocks.Count != 0)
+            {
+                foreach (int Key in Blocks.Keys)
+                {
+                    Blocks[Key].Draw(g);
+                }
+            }
         }
     }
 }
