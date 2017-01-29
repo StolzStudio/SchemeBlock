@@ -50,6 +50,14 @@ namespace tryhard
             }
         }
 
+        public List<string> GetObjectTypesOfObjectCategory(string AObjectType)
+        {
+            List<string> result = new List<string>();
+            foreach (MetaObjectInfo obj in ObjectsInfo[AObjectType])
+                result.Add(obj.Name);
+            return result;
+        }
+
         private void PrintAllProperties(object AObject)
         {
             foreach (var Property in AObject.GetType().GetProperties())
