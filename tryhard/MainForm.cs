@@ -116,8 +116,8 @@ namespace tryhard
             DrawManager[SchemeManagerNumber].ClearBlocksFocus();
 
             Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= DrawingPanelOffset.X;
-            ptr.Y -= DrawingPanelOffset.Y;
+            ptr.X -= MainPage.Location.X;
+            ptr.Y -= MainPage.Location.Y;
 
             ClickOffset = ptr;
 
@@ -143,9 +143,15 @@ namespace tryhard
             }
             else
             {
-                DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
                 DrawManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
+                DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
+                
                 this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;
+                if (this.SelectBlockIndex != -1)
+                {
+                    ClickOffset = new Point(ptr.X - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.X,
+                                            ptr.Y - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.Y);
+                }
             }
             //MainPage_Click(sender, e);
             //this.isMouseDown = true;
@@ -181,13 +187,10 @@ namespace tryhard
         {
             if ((this.isMouseDown)&&(SelectBlockIndex != -1))
             {
-                Point C = new Point(ClickOffset.X - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.X,
-                                    ClickOffset.Y - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.Y);
-
                 Point Pnt = this.PointToClient(Cursor.Position);
-                DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Move(Pnt, C);
+                DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Move(Pnt, ClickOffset);
             }
-
+            
             MainPage.Invalidate();
         }
 

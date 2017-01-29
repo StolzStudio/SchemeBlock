@@ -164,6 +164,7 @@ namespace tryhard
                 if (Blocks[Key].CheckFocus(Coord))
                 {
                     isHaveSelectedBlock = true;
+                    ClearLinksFocus();
                     SelectedBlockIndex = Key;
                 }
             }
