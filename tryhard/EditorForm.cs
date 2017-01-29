@@ -12,38 +12,37 @@ namespace tryhard
 {
     public partial class EditorForm : Form
     {
-        public bool isEditMode { get; set; } = false;
+        public bool isEditMode { get; set; } = true;
 
         public EditorForm()
         {
             InitializeComponent();
-            FillObjectTreeView();
             FillCategoryStripComboBox();
+            FillObjectTreeView();
         }
 
         private void FillObjectTreeView()
         {
             ObjectsTreeView.Nodes.Clear();
+            IEnumerable<string> Categories;
             if (isEditMode)
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == (string)(CategoryStripComboBox.SelectedItem));
+            else
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail");
+            foreach (string CategoryName in Categories)
             {
-
-            } else
-            {
-                foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
-                {
-                    TreeNode node = new TreeNode(CategoryName);
-                    foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
-                        node.Nodes.Add(new TreeNode(TypeName));
-                    ObjectsTreeView.Nodes.Add(node);
-                    node.ExpandAll();
-                }
+                TreeNode node = new TreeNode(CategoryName);
+                foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
+                    node.Nodes.Add(new TreeNode(TypeName));
+                ObjectsTreeView.Nodes.Add(node);
+                node.ExpandAll();
             }
         }
 
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
             CategoryStripComboBox.Items.Clear();
-            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
+            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail"))
                 CategoryStripComboBox.Items.Add(CategoryName);
             if (ACategoryPriopity != null)
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);
@@ -65,11 +64,10 @@ namespace tryhard
         private void CategoryStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
-        }
-
-        public void FillStripControls()
-        {
-
+            if (isEditMode)
+            {
+                FillObjectTreeView();
+            }
         }
     }
 }
