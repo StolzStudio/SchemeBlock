@@ -6,6 +6,18 @@ using Newtonsoft.Json;
 
 namespace tryhard
 {
+    public class IdNameInfo
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public IdNameInfo(int AId, string AName)
+        {
+            Id = AId;
+            Name = AName;
+        }
+    }
+
     public class MetaDataManager
     {
         private static MetaDataManager instance;
@@ -44,12 +56,17 @@ namespace tryhard
             get { return ObjectsInfo.Keys.Where(k => k != "InfoClasses"); }
         }
 
-        public List<string> GetObjectTypesOfObjectCategory(string AObjectType)
+        public List<string> GetObjectTypesOfObjectCategory(string AObjectCategory)
         {
             List<string> result = new List<string>();
-            foreach (MetaObjectInfo obj in ObjectsInfo[AObjectType])
+            foreach (MetaObjectInfo obj in ObjectsInfo[AObjectCategory])
                 result.Add(obj.Name);
             return result;
+        }
+
+        public IEnumerable<IdNameInfo> GetObjectsIdNameInfoByType(string AObjectsType)
+        {
+            return Objects[AObjectsType].Select(k => new IdNameInfo(k.Id, k.Name));
         }
 
         private void PrintAllProperties(object AObject)

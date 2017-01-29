@@ -249,7 +249,7 @@
             // WorkPanel
             // 
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(0, 26);
+            this.WorkPanel.Location = new System.Drawing.Point(3, 28);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1045, 660);
             this.WorkPanel.TabIndex = 0;

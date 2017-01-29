@@ -33,7 +33,7 @@ namespace tryhard
         {
             MetaDataManager.Instance.Initialize("../Databases/objectsinfo.json");
             InitializeComponent();
-            FillTree();
+            FillObjectTreeView();
 
             DrawManager = new Manager(this.MainPage);
             CalcManager = new CalculationManager();
@@ -46,15 +46,6 @@ namespace tryhard
 
             MainPage.BringToFront();
         }   
-
-        public void FillTree()
-        {
-            TreeNode node = new TreeNode("Node");
-            node.Nodes.Add(new TreeNode("Node 1.1"));
-            node.Nodes.Add(new TreeNode("Node 1.2"));
-            node.Nodes.Add(new TreeNode("Node 1.3"));
-            ObjectsTreeView.Nodes.Add(node);
-        }
 
         /* Equipment ComboBoxes */
 
@@ -167,6 +158,28 @@ namespace tryhard
         {
             EditorForm editorForm = new EditorForm();
             editorForm.Show();
+        }
+
+        public void FillObjectTreeView()
+        {
+            ObjectsTreeView.Nodes.Clear();
+            IEnumerable<string> Categories;
+            Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == "Complex");
+            foreach (string CategoryName in Categories)
+            {
+                foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
+                {
+                    TreeNode node = new TreeNode(TypeName);
+                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
+                    {
+                        TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
+                        node_child.Tag = ObjectIdNameInfo.Id;
+                        node.Nodes.Add(node_child);
+                    }
+                    ObjectsTreeView.Nodes.Add(node);
+                    node.ExpandAll();
+                }              
+            }
         }
 
         private void GoBackButton_Click(object sender, EventArgs e)
