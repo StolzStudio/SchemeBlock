@@ -12,7 +12,7 @@ namespace tryhard
 {
     public partial class EditorForm : Form
     {
-        public bool isEditMode { get; set; } = true;
+        public bool isEditMode { get; set; } = false;
         public Manager DrawManager;
         private int SelectBlockIndex;
         private bool isMouseDown { get; set; }
@@ -53,7 +53,7 @@ namespace tryhard
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == needed_category);
             }
             else
-                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex");
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail");
             foreach (string CategoryName in Categories)
             {
                 TreeNode node = new TreeNode(CategoryName);
@@ -67,7 +67,7 @@ namespace tryhard
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
             CategoryStripComboBox.Items.Clear();
-            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
+            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail"))
                 CategoryStripComboBox.Items.Add(CategoryName);
             if (ACategoryPriopity != null)
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);

@@ -142,7 +142,7 @@
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 308);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 339);
             this.PropertiesGridView.TabIndex = 26;
             // 
             // NameCol
@@ -212,7 +212,7 @@
             // DrawPage
             // 
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(0, 26);
+            this.DrawPage.Location = new System.Drawing.Point(3, 29);
             this.DrawPage.Name = "DrawPage";
             this.DrawPage.Size = new System.Drawing.Size(1045, 660);
             this.DrawPage.TabIndex = 2;
