@@ -25,6 +25,7 @@ namespace tryhard
         private int SelectBlockIndex;
         private bool isCtrlDown  { get; set; }
         private bool isMouseDown { get; set; }
+        public Point ClickOffset { get; set; }
 
 
         /* Methods */
@@ -118,6 +119,8 @@ namespace tryhard
             ptr.X -= DrawingPanelOffset.X;
             ptr.Y -= DrawingPanelOffset.Y;
 
+            ClickOffset = ptr;
+
             if (Control.ModifierKeys == Keys.Control)
             { 
                 DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
@@ -134,13 +137,14 @@ namespace tryhard
                     if (this.SelectBlockIndex != DrawManager[SchemeManagerNumber].SelectedBlockIndex)
                     {
                         DrawManager[SchemeManagerNumber].ClearLinksFocus();
-                        DrawManager[SchemeManagerNumber].AddLink(new Link(DrawManager[SchemeManagerNumber].SelectedBlockIndex, this.SelectBlockIndex));
+                        DrawManager[SchemeManagerNumber].AddLink(new Link(this.SelectBlockIndex, DrawManager[SchemeManagerNumber].SelectedBlockIndex));
                     }
                 }
             }
             else
             {
                 DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
+                DrawManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
                 this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;
             }
             //MainPage_Click(sender, e);
@@ -177,8 +181,11 @@ namespace tryhard
         {
             if ((this.isMouseDown)&&(SelectBlockIndex != -1))
             {
+                Point C = new Point(ClickOffset.X - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.X,
+                                    ClickOffset.Y - DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Location.Y);
+
                 Point Pnt = this.PointToClient(Cursor.Position);
-                DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Move(Pnt);
+                DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Move(Pnt, C);
             }
 
             MainPage.Invalidate();

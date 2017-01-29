@@ -22,7 +22,6 @@ namespace tryhard
         public string ClassText   { get; set; }
         public string ModelText   { get; set; }
         public int    Count       { get; set; }
-        public Point  ClickOffset { get; set; } 
         //
         //Fields
         //
@@ -66,12 +65,12 @@ namespace tryhard
             TextOffsetX = (BlockWidth - (int)size.Width) / 2;
         }
 
-        public void Move(Point aLocation)
+        public void Move(Point aLocation, Point aClickOffset)
         {
             Point Pnt = this.PointNormalize(aLocation);
            
-            Pnt.X -= ClickOffset.X;
-            Pnt.Y -= ClickOffset.Y;
+            Pnt.X -= aClickOffset.X;
+            Pnt.Y -= aClickOffset.Y;
 
             this.Location = Pnt;
             SetTextLocation();
