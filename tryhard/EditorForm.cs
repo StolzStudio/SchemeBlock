@@ -18,9 +18,10 @@ namespace tryhard
         {
             InitializeComponent();
             FillObjectTreeView();
+            FillCategoryStripComboBox();
         }
 
-        public void FillObjectTreeView()
+        private void FillObjectTreeView()
         {
             ObjectsTreeView.Nodes.Clear();
             if (isEditMode)
@@ -34,8 +35,36 @@ namespace tryhard
                     foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                         node.Nodes.Add(new TreeNode(TypeName));
                     ObjectsTreeView.Nodes.Add(node);
+                    node.ExpandAll();
                 }
             }
+        }
+
+        private void FillCategoryStripComboBox(string ACategoryPriopity = null)
+        {
+            CategoryStripComboBox.Items.Clear();
+            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
+                CategoryStripComboBox.Items.Add(CategoryName);
+            if (ACategoryPriopity != null)
+                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);
+            else
+                CategoryStripComboBox.SelectedIndex = 0;
+        }
+
+        private void FillTypeStripComboBox(string ACategory, string ATypePriopity = null)
+        {
+            TypeStripComboBox.Items.Clear();
+            foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(ACategory))
+                TypeStripComboBox.Items.Add(TypeName);
+            if (ATypePriopity != null)
+                TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(ATypePriopity);
+            else
+                TypeStripComboBox.SelectedIndex = 0;
+        }
+
+        private void CategoryStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
         }
 
         public void FillStripControls()

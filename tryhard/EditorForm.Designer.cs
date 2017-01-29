@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorForm));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ToolStrip = new System.Windows.Forms.ToolStrip();
             this.SaveStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.CategoryStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.CategoryStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ModelNameStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.ModelNameStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.panel = new System.Windows.Forms.Panel();
@@ -47,30 +47,32 @@
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.TypeStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.TypeStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStrip1.SuspendLayout();
+            this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // ToolStrip
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SaveStripButton,
-            this.toolStripSeparator1,
+            this.ToolStripSeparator,
             this.TypeStripLabel,
-            this.TypeStripComboBox,
-            this.CategoryStripLabel,
             this.CategoryStripComboBox,
-            this.toolStripSeparator2,
+            this.ToolStripSeparator1,
+            this.CategoryStripLabel,
+            this.TypeStripComboBox,
+            this.ToolStripSeparator2,
             this.ModelNameStripLabel,
             this.ModelNameStripTextBox});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1302, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.ToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.ToolStrip.Name = "ToolStrip";
+            this.ToolStrip.Size = new System.Drawing.Size(1302, 25);
+            this.ToolStrip.TabIndex = 0;
+            this.ToolStrip.Text = "toolStrip1";
             // 
             // SaveStripButton
             // 
@@ -81,27 +83,28 @@
             this.SaveStripButton.Size = new System.Drawing.Size(23, 22);
             this.SaveStripButton.Text = "Сохранить модель";
             // 
-            // toolStripSeparator1
+            // ToolStripSeparator
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.ToolStripSeparator.Name = "ToolStripSeparator";
+            this.ToolStripSeparator.Size = new System.Drawing.Size(6, 25);
             // 
             // CategoryStripLabel
             // 
             this.CategoryStripLabel.Name = "CategoryStripLabel";
-            this.CategoryStripLabel.Size = new System.Drawing.Size(66, 22);
-            this.CategoryStripLabel.Text = "Категория:";
+            this.CategoryStripLabel.Size = new System.Drawing.Size(31, 22);
+            this.CategoryStripLabel.Text = "Тип:";
             // 
             // CategoryStripComboBox
             // 
             this.CategoryStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryStripComboBox.Name = "CategoryStripComboBox";
             this.CategoryStripComboBox.Size = new System.Drawing.Size(121, 25);
+            this.CategoryStripComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryStripComboBox_SelectedIndexChanged);
             // 
-            // toolStripSeparator2
+            // ToolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.ToolStripSeparator2.Name = "ToolStripSeparator2";
+            this.ToolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // ModelNameStripLabel
             // 
@@ -193,14 +196,19 @@
             // TypeStripLabel
             // 
             this.TypeStripLabel.Name = "TypeStripLabel";
-            this.TypeStripLabel.Size = new System.Drawing.Size(31, 22);
-            this.TypeStripLabel.Text = "Тип:";
+            this.TypeStripLabel.Size = new System.Drawing.Size(66, 22);
+            this.TypeStripLabel.Text = "Категория:";
             // 
             // TypeStripComboBox
             // 
             this.TypeStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeStripComboBox.Name = "TypeStripComboBox";
             this.TypeStripComboBox.Size = new System.Drawing.Size(121, 25);
+            // 
+            // ToolStripSeparator1
+            // 
+            this.ToolStripSeparator1.Name = "ToolStripSeparator1";
+            this.ToolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // EditorForm
             // 
@@ -209,11 +217,11 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1302, 693);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.ToolStrip);
             this.Name = "EditorForm";
             this.Text = "EditorForm";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.ToolStrip.ResumeLayout(false);
+            this.ToolStrip.PerformLayout();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
@@ -228,12 +236,12 @@
         #endregion
 
         public DrawPage MainPage;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.ToolStripButton SaveStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
         private System.Windows.Forms.ToolStripLabel CategoryStripLabel;
         private System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel ModelNameStripLabel;
         private System.Windows.Forms.ToolStripTextBox ModelNameStripTextBox;
         private System.Windows.Forms.Panel panel;
@@ -246,5 +254,6 @@
         private System.Windows.Forms.Label AvailableObjectsLabel;
         private System.Windows.Forms.ToolStripLabel TypeStripLabel;
         private System.Windows.Forms.ToolStripComboBox TypeStripComboBox;
+        private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
     }
 }
