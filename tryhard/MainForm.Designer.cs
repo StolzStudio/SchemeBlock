@@ -83,8 +83,8 @@ namespace tryhard
             this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MainPage = new tryhard.DrawPage();
             this.WorkPanel = new System.Windows.Forms.Panel();
+            this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -249,6 +249,14 @@ namespace tryhard
             this.ValueCol.ReadOnly = true;
             this.ValueCol.Width = 120;
             // 
+            // WorkPanel
+            // 
+            this.WorkPanel.BackColor = System.Drawing.Color.White;
+            this.WorkPanel.Location = new System.Drawing.Point(0, 27);
+            this.WorkPanel.Name = "WorkPanel";
+            this.WorkPanel.Size = new System.Drawing.Size(1007, 653);
+            this.WorkPanel.TabIndex = 0;
+            // 
             // MainPage
             // 
             this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -260,17 +268,10 @@ namespace tryhard
             this.MainPage.Size = new System.Drawing.Size(1007, 653);
             this.MainPage.TabIndex = 22;
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
-            // WorkPanel
-            // 
-            this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(0, 27);
-            this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1007, 653);
-            this.WorkPanel.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -278,10 +279,10 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.MainPage);
             this.Controls.Add(this.MenuStrip);
+            this.Controls.Add(this.WorkPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;

@@ -237,7 +237,7 @@
             // DrawPage
             // 
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(3, 29);
+            this.DrawPage.Location = new System.Drawing.Point(0, 27);
             this.DrawPage.Name = "DrawPage";
             this.DrawPage.Size = new System.Drawing.Size(1045, 660);
             this.DrawPage.TabIndex = 2;
