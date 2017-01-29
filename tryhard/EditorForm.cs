@@ -154,7 +154,7 @@ namespace tryhard
             if ((this.isMouseDown) && (SelectBlockIndex != -1))
             {
                 Point Pnt = this.PointToClient(Cursor.Position);
-                DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset);
+                DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(DrawPage.Width, DrawPage.Height));
             }
 
             DrawPage.Invalidate();

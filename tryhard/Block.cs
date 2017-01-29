@@ -65,14 +65,22 @@ namespace tryhard
             TextOffsetX = (BlockWidth - (int)size.Width) / 2;
         }
 
-        public void Move(Point aLocation, Point aClickOffset)
+        public void Move(Point aLocation, Point aClickOffset, Point aPageSize)
         {
             Point Pnt = this.PointNormalize(aLocation);
            
             Pnt.X -= aClickOffset.X;
             Pnt.Y -= aClickOffset.Y;
 
-            this.Location = Pnt;
+            int offset = 2;
+            if ((0 + offset <= Pnt.X) && ((Pnt.X + BlockWidth) <= (aPageSize.X - offset)))
+            {
+                this.Location.X = Pnt.X;   
+            }
+            if ((0 + offset <= Pnt.Y) && ((Pnt.Y + BlockHeight) <= (aPageSize.Y - offset)))
+            {
+                this.Location.Y = Pnt.Y;
+            }
             SetTextLocation();
         }
 
