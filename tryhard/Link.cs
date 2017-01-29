@@ -17,6 +17,7 @@ namespace tryhard
         //
         public int FirstBlockIndex { get; set; }
         public int SecondBlockIndex { get; set; }
+        public string ParameterName { get; set; }
         public bool isFocus { get; set; }
         //
         //Fields
