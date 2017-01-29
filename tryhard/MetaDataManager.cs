@@ -43,10 +43,7 @@ namespace tryhard
         {
             get
             {
-                //List<string> Categories = new List<string>();
-                //foreach (string Category in ObjectsInfo.Keys.Where(k => k != "InfoClasses"))
-                //    Categories.Add(Category);
-                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");//Categories;
+                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");
             }
         }
 
@@ -81,7 +78,10 @@ namespace tryhard
             System.Type st = t["bolt"];
             switch (AObjectName)
             {
+                case "integrated_complex": result.AddRange(JsonConvert.DeserializeObject<List<IntegratedComplex>>(json)); break;
+                case "processing_complex": result.AddRange(JsonConvert.DeserializeObject<List<ProcessingComplex>>(json)); break;
                 case "field_parameters": result.AddRange(JsonConvert.DeserializeObject<List<FieldParameters>>(json)); break;
+                case "mining_complex": result.AddRange(JsonConvert.DeserializeObject<List<MiningComplex>>(json)); break;
                 case "oil_quality": result.AddRange(JsonConvert.DeserializeObject<List<OilQuality>>(json)); break;
                 case "ukppv": result.AddRange(JsonConvert.DeserializeObject<List<Ukppv>>(json)); break;
                 case "bolt": result.AddRange(JsonConvert.DeserializeObject<List<Bolt>>(json)); break;

@@ -37,17 +37,18 @@
             this.TypeStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
-            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.DrawPage = new tryhard.DrawPage();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -112,8 +113,7 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Controls.Add(this.PossibilityLinkView);
-            this.panel.Controls.Add(this.PropertyGrid);
+            this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
@@ -122,23 +122,27 @@
             this.panel.Size = new System.Drawing.Size(255, 663);
             this.panel.TabIndex = 1;
             // 
-            // PossibilityLinkView
+            // PropertiesGridView
             // 
-            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 324);
-            this.PossibilityLinkView.Name = "PossibilityLinkView";
-            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
-            this.PossibilityLinkView.TabIndex = 25;
-            // 
-            // PropertyGrid
-            // 
-            this.PropertyGrid.Location = new System.Drawing.Point(4, 323);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(243, 336);
-            this.PropertyGrid.TabIndex = 24;
+            this.PropertiesGridView.AllowUserToAddRows = false;
+            this.PropertiesGridView.AllowUserToResizeColumns = false;
+            this.PropertiesGridView.AllowUserToResizeRows = false;
+            this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameCol,
+            this.ValueCol});
+            this.PropertiesGridView.Location = new System.Drawing.Point(4, 324);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.ReadOnly = true;
+            this.PropertiesGridView.RowHeadersVisible = false;
+            this.PropertiesGridView.RowTemplate.Height = 20;
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.TabIndex = 26;
             // 
             // ObjectsTreeView
             // 
+            this.ObjectsTreeView.BackColor = System.Drawing.SystemColors.Window;
             this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
@@ -195,6 +199,22 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
+            //
+            // NameCol
+            // 
+            this.NameCol.HeaderText = "Название";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameCol.Width = 120;
+            // 
+            // ValueCol
+            // 
+            this.ValueCol.HeaderText = "Значение";
+            this.ValueCol.Name = "ValueCol";
+            this.ValueCol.ReadOnly = true;
+            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ValueCol.Width = 120;
             // 
             // EditorForm
             // 
@@ -212,7 +232,7 @@
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
             this.panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
@@ -229,8 +249,6 @@
         private System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.Panel panel;
-        private System.Windows.Forms.DataGridView PossibilityLinkView;
-        private System.Windows.Forms.PropertyGrid PropertyGrid;
         private System.Windows.Forms.TreeView ObjectsTreeView;
         private System.Windows.Forms.Panel PropertiesPanel;
         private System.Windows.Forms.Label PropertiesLabel;
@@ -241,5 +259,8 @@
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
         private DrawPage DrawPage;
+        public System.Windows.Forms.DataGridView PropertiesGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValueCol;
     }
 }

@@ -72,20 +72,21 @@ namespace tryhard
             this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AvailableObjectsLabel = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
+            this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
-            this.panel = new System.Windows.Forms.Panel();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
-            this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-            this.MainPage = new tryhard.DrawPage();
+            this.panel = new System.Windows.Forms.Panel();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // FileMenuItem
@@ -126,15 +127,20 @@ namespace tryhard
             this.EditorMenuItem.Text = "Редактор";
             this.EditorMenuItem.Click += new System.EventHandler(this.EditorMenuItem_Click);
             // 
-            // AvailableObjectsLabel
+            // MainPage
             // 
-            this.AvailableObjectsLabel.AutoSize = true;
-            this.AvailableObjectsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AvailableObjectsLabel.Location = new System.Drawing.Point(3, 4);
-            this.AvailableObjectsLabel.Name = "AvailableObjectsLabel";
-            this.AvailableObjectsLabel.Size = new System.Drawing.Size(119, 16);
-            this.AvailableObjectsLabel.TabIndex = 18;
-            this.AvailableObjectsLabel.Text = "Доступные объекты";
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.MainPage.Location = new System.Drawing.Point(0, 27);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1007, 653);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // AvailableObjectsPanel
             // 
@@ -145,6 +151,16 @@ namespace tryhard
             this.AvailableObjectsPanel.Name = "AvailableObjectsPanel";
             this.AvailableObjectsPanel.Size = new System.Drawing.Size(243, 22);
             this.AvailableObjectsPanel.TabIndex = 19;
+            // 
+            // AvailableObjectsLabel
+            // 
+            this.AvailableObjectsLabel.AutoSize = true;
+            this.AvailableObjectsLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AvailableObjectsLabel.Location = new System.Drawing.Point(3, 4);
+            this.AvailableObjectsLabel.Name = "AvailableObjectsLabel";
+            this.AvailableObjectsLabel.Size = new System.Drawing.Size(119, 16);
+            this.AvailableObjectsLabel.TabIndex = 18;
+            this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
             // PropertiesPanel
             // 
@@ -167,20 +183,6 @@ namespace tryhard
             this.PropertiesLabel.TabIndex = 18;
             this.PropertiesLabel.Text = "Свойства";
             // 
-            // panel
-            // 
-            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Controls.Add(this.ObjectsTreeView);
-            this.panel.Controls.Add(this.PropertiesPanel);
-            this.panel.Controls.Add(this.AvailableObjectsPanel);
-            this.panel.Controls.Add(this.PossibilityLinkView);
-            this.panel.Controls.Add(this.PropertyGrid);
-            this.panel.Location = new System.Drawing.Point(1009, 27);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(255, 653);
-            this.panel.TabIndex = 0;
-            // 
             // ObjectsTreeView
             // 
             this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -190,35 +192,47 @@ namespace tryhard
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
             this.ObjectsTreeView.TabIndex = 23;
             // 
-            // PossibilityLinkView
+            // panel
             // 
-            this.PossibilityLinkView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PossibilityLinkView.Location = new System.Drawing.Point(4, 322);
-            this.PossibilityLinkView.Name = "PossibilityLinkView";
-            this.PossibilityLinkView.Size = new System.Drawing.Size(243, 327);
-            this.PossibilityLinkView.TabIndex = 26;
-            // 
-            // PropertyGrid
-            // 
-            this.PropertyGrid.Location = new System.Drawing.Point(4, 322);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(243, 327);
-            this.PropertyGrid.TabIndex = 24;
-            // 
-            // MainPage
-            // 
-            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPage.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.MainPage.Location = new System.Drawing.Point(0, 27);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1007, 653);
-            this.MainPage.TabIndex = 22;
-            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
-            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
-            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
-            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
+            this.panel.Controls.Add(this.PropertiesGridView);
+            this.panel.Controls.Add(this.ObjectsTreeView);
+            this.panel.Controls.Add(this.PropertiesPanel);
+            this.panel.Controls.Add(this.AvailableObjectsPanel);
+            this.panel.Location = new System.Drawing.Point(1009, 27);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(255, 653);
+            this.panel.TabIndex = 0;
+            // 
+            // PropertiesGridView
+            // 
+            this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameCol,
+            this.ValueCol});
+            this.PropertiesGridView.Location = new System.Drawing.Point(4, 322);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.ReadOnly = true;
+            this.PropertiesGridView.RowHeadersVisible = false;
+            this.PropertiesGridView.RowTemplate.Height = 20;
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.TabIndex = 27;
+            // 
+            // NameCol
+            // 
+            this.NameCol.HeaderText = "Название";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            this.NameCol.Width = 120;
+            // 
+            // ValueCol
+            // 
+            this.ValueCol.HeaderText = "Значение";
+            this.ValueCol.Name = "ValueCol";
+            this.ValueCol.ReadOnly = true;
+            this.ValueCol.Width = 120;
             // 
             // MainForm
             // 
@@ -243,7 +257,7 @@ namespace tryhard
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PossibilityLinkView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,16 +268,17 @@ namespace tryhard
         private ToolStripMenuItem EditingMenuItem;
         private ToolStripMenuItem InfoMenuItem;
         private MenuStrip MenuStrip;
-        private Label AvailableObjectsLabel;
+        public DrawPage MainPage;
+        private ToolStripMenuItem EditorMenuItem;
         private Panel AvailableObjectsPanel;
+        private Label AvailableObjectsLabel;
         private Panel PropertiesPanel;
         private Label PropertiesLabel;
-        public DrawPage MainPage;
-        private Panel panel;
         private TreeView ObjectsTreeView;
-        private ToolStripMenuItem EditorMenuItem;
-        private PropertyGrid PropertyGrid;
-        private DataGridView PossibilityLinkView;
+        private Panel panel;
+        public DataGridView PropertiesGridView;
+        private DataGridViewTextBoxColumn NameCol;
+        private DataGridViewTextBoxColumn ValueCol;
     }
 }
 

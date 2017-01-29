@@ -28,6 +28,12 @@ namespace tryhard
             isMouseDown = false;
         }
 
+        public EditorForm(string AObjectCategory, string AObjectType)
+        {
+            InitializeComponent();
+            FillStripControls(AObjectCategory, AObjectType);
+        }
+
         private void FillObjectTreeView()
         {
             ObjectsTreeView.Nodes.Clear();
@@ -81,12 +87,6 @@ namespace tryhard
             FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
             if (isEditMode)
                 FillObjectTreeView();
-        }
-
-        public EditorForm(string AObjectCategory, string AObjectType)
-        {
-            InitializeComponent();
-            FillStripControls(AObjectCategory, AObjectType);
         }
 
         private void FillStripControls(string AObjectCategory, string AObjectType)

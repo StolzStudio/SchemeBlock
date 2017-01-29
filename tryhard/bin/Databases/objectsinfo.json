@@ -3,33 +3,94 @@
 	[
 		{
 			"Name": "field_parameters",
-			"PossibleLink": []	
+			"PossibleLink": [],	
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"FluidOutput",
+				"HolesAmount",
+				"OilQualityId",
+				"WaterInput",
+				"ReserveDaysRvp",
+				"ReserveDaysRtn"
+			]
 		},
 		{
 			"Name": "oil_quality",
-			"PossibleLink": []	
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"OilProportion",
+				"GasProportion",
+				"WaterProportion"
+			]
 		},
 	],
 	"Detail":
 	[	
 		{
 			"Name": "bolt",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"Diameter",
+				"Material",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "pipe",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"Diameter",
+				"Material",
+				"Length",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "pump",
-			"PossibleLink": []	
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"Input",
+				"Output",
+				"Weight",
+				"Volume",
+				"Cost"
+			]	
 		}
 	],
 	"Equipment":
 	[
 		{
 			"Name": "fu",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"GasInput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "nnpv",
@@ -38,6 +99,18 @@
 				"dk",
 				"rpv",
 				"ukppv"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"WaterInput",
+				"WaterOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		},
 		{
@@ -45,32 +118,109 @@
 			"PossibleLink":
 			[
 				"nnpv"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"WaterInput",
+				"WaterOutput",
+				"WaterVolume",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		},
 		{
 			"Name": "rr",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"MaxReagentInput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "rtn",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"OilInput",
+				"OilOutput",
+				"OilVolume",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "dk",
 			"PossibleLink":
 			[
 				"upn"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"HolesAmount",
+				"FluidInput",
+				"FluidOutput",
+				"WaterInput",
+				"ReagentInput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		},
 		{
 			"Name": "dks",
-			"PossibleLink": []
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"PressureGradient",
+				"GasInput",
+				"GasOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
 		},
 		{
 			"Name": "ukpg",
 			"PossibleLink":
 			[
 				"fu"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"WetGasInput",
+				"GasOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		},
 		{
@@ -78,6 +228,18 @@
 			"PossibleLink":
 			[
 				"nnpv"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"WaterInput",
+				"WaterOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		},
 		{
@@ -87,11 +249,74 @@
 				"nnpv",
 				"ukpg",
 				"ukppv"
+			],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"FluidInput",
+				"OilOutput",
+				"WetGasOutput",
+				"WaterOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
 			]
 		}
 	],
 	"Complex":
 	[
-
+		{
+			"Name": "mining_complex",
+			"PossibleLink": [ ],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"FluidOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
+			"Name": "processing_complex",
+			"PossibleLink": [ ],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"FluidInput",
+				"OilOutput",
+				"GasOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
+			"Name": "integrated_complex",
+			"PossibleLink": [ ],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"FluidInput",
+				"FluidOutput",
+				"OilOutput",
+				"GasOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		}
 	]
 }

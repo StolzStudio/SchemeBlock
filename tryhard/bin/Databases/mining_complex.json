@@ -1,0 +1,22 @@
+[
+	{
+		"Id": 0,
+		"Name": "MC-9000",
+		"FluidOutput": 9000,
+		"PeopleDemand": 54,
+		"ElectricityDemand": 2400,
+		"Weight": 15000000,
+		"Volume": 200000,
+		"Cost": 3000000000
+	},
+	{
+		"Id": 1,
+		"Name": "MC-15000",
+		"FluidOutput": 15000,
+		"PeopleDemand": 34,
+		"ElectricityDemand": 5000,
+		"Weight": 25000000,
+		"Volume": 400000,
+		"Cost": 7000000000
+	}
+]
