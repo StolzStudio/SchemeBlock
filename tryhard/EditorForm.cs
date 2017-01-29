@@ -123,7 +123,7 @@ namespace tryhard
                 {
                     ptr.X -= Block.BlockWidth / 2;
                     ptr.Y -= Block.BlockHeight / 2;
-                    DrawManager.AddBlock(ptr);
+                    //DrawManager.AddBlock(ptr);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
                 else

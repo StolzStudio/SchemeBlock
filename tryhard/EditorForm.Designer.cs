@@ -54,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
+            this.DrawPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -131,7 +132,7 @@
             // 
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(127, 613);
+            this.GoNextButton.Location = new System.Drawing.Point(127, 612);
             this.GoNextButton.Name = "GoNextButton";
             this.GoNextButton.Size = new System.Drawing.Size(122, 37);
             this.GoNextButton.TabIndex = 28;
@@ -144,7 +145,7 @@
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(6, 613);
+            this.GoBackButton.Location = new System.Drawing.Point(6, 612);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(122, 37);
             this.GoBackButton.TabIndex = 27;
@@ -167,7 +168,7 @@
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 285);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 284);
             this.PropertiesGridView.TabIndex = 26;
             // 
             // NameCol
@@ -237,10 +238,11 @@
             // DrawPage
             // 
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(0, 27);
+            this.DrawPage.Controls.Add(this.WorkPanel);
+            this.DrawPage.Location = new System.Drawing.Point(2, 29);
             this.DrawPage.Name = "DrawPage";
             this.DrawPage.Size = new System.Drawing.Size(1007, 653);
-            this.DrawPage.TabIndex = 2;
+            this.DrawPage.TabIndex = 0;
             this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
@@ -249,10 +251,10 @@
             // WorkPanel
             // 
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(3, 29);
+            this.WorkPanel.Location = new System.Drawing.Point(0, 0);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1007, 653);
-            this.WorkPanel.TabIndex = 0;
+            this.WorkPanel.TabIndex = 2;
             // 
             // EditorForm
             // 
@@ -260,7 +262,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
@@ -277,6 +278,7 @@
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
+            this.DrawPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

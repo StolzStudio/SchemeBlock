@@ -128,9 +128,9 @@ namespace tryhard
             g.DrawRectangle(FigurePen, Figure);
             g.FillRectangle(FigureBrush, Figure);
 
-            DrawText(g, new Font("Microsoft YaHei", 12), new SolidBrush(Color.Black), ClassText);
+            DrawText(g, new Font("Microsoft YaHei", 6), new SolidBrush(Color.Black), ClassText);
             Location.Y += 15;
-            DrawText(g, new Font("Microsoft YaHei", 10), new SolidBrush(Color.DimGray), ModelText);
+            DrawText(g, new Font("Microsoft YaHei", 7), new SolidBrush(Color.DimGray), ModelText);
             Location.Y -= 15;
 
         }

@@ -36,14 +36,9 @@ namespace tryhard
             block_counter = 1;
         }
 
-        public void AddBlock(Point Pos)
+        public void AddBlock(Point Pos, string ABlockType, string ABlockModel)
         {
-            if (!isOilFieldAdd)
-            {
-                //isOilFieldAdd = (string)Form.ObjectTypeCB.SelectedItem == "Месторождение";
-            }
-
-            Blocks.Add(block_counter, new Block(block_counter, "type", "class", Pos, Page.Location));
+            Blocks.Add(block_counter, new Block(block_counter, ABlockType, ABlockModel, Pos, Page.Location));
 
             foreach (int Key in Blocks.Keys)
             {

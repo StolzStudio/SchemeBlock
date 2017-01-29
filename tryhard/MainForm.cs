@@ -91,6 +91,25 @@ namespace tryhard
             }
         }
 
+        private void SelectTreeNode()
+        {
+            int i = DrawManager.SelectedBlockIndex;
+            foreach (TreeNode node in ObjectsTreeView.Nodes)
+            {
+                if (DrawManager.Blocks[i].ClassText == node.Text)
+                {
+                    foreach (TreeNode node_child in node.Nodes)
+                    {
+                        if (DrawManager.Blocks[i].ModelText == node_child.Text)
+                        {
+                            ObjectsTreeView.SelectedNode = node_child;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         private void MainPage_MouseDown(object sender, MouseEventArgs e)
         {
             isMouseDown = true;
@@ -112,7 +131,7 @@ namespace tryhard
                 {
                     ptr.X -= Block.BlockWidth / 2;
                     ptr.Y -= Block.BlockHeight / 2;
-                    DrawManager.AddBlock(ptr);
+                    DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
                 else
@@ -127,14 +146,14 @@ namespace tryhard
             else
             {
                 DrawManager.TrySetFocusInLinks(ptr);
-                DrawManager.TrySetFocusInBlocks(ptr);
-                
-                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;        
+                DrawManager.TrySetFocusInBlocks(ptr);               
+                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
             }
             if (this.SelectBlockIndex != -1)
             {
                 ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
                                         ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
+                SelectTreeNode();
             }
         }
 
@@ -144,8 +163,7 @@ namespace tryhard
             {
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(MainPage.Width, MainPage.Height));
-            }
-            
+            }           
             MainPage.Invalidate();
         }
 
@@ -224,6 +242,12 @@ namespace tryhard
             {
                 //сохранение
             }
+        }
+
+        private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (ObjectsTreeView.SelectedNode.Parent == null)
+                ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
         }
     }
 }
