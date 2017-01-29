@@ -28,7 +28,7 @@ namespace tryhard
             if (isEditMode)
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == (string)(CategoryStripComboBox.SelectedItem));
             else
-                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail");
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex");
             foreach (string CategoryName in Categories)
             {
                 TreeNode node = new TreeNode(CategoryName);
@@ -42,7 +42,7 @@ namespace tryhard
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
             CategoryStripComboBox.Items.Clear();
-            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail"))
+            foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex"))
                 CategoryStripComboBox.Items.Add(CategoryName);
             if (ACategoryPriopity != null)
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);
