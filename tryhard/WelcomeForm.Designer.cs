@@ -45,6 +45,7 @@
             this.CreatingPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).BeginInit();
             this.CreateNewProjectPanel.SuspendLayout();
+            this.CreatingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProjectsListBox
@@ -59,7 +60,7 @@
             "project1",
             "project2",
             "project3"});
-            this.ProjectsListBox.Location = new System.Drawing.Point(0, 0);
+            this.ProjectsListBox.Location = new System.Drawing.Point(3, 1);
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
             this.ProjectsListBox.TabIndex = 1;
@@ -119,7 +120,7 @@
             this.OpenAnotherProjectLabel.BackColor = System.Drawing.Color.Beige;
             this.OpenAnotherProjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OpenAnotherProjectLabel.ForeColor = System.Drawing.Color.Black;
-            this.OpenAnotherProjectLabel.Location = new System.Drawing.Point(151, 492);
+            this.OpenAnotherProjectLabel.Location = new System.Drawing.Point(140, 481);
             this.OpenAnotherProjectLabel.Name = "OpenAnotherProjectLabel";
             this.OpenAnotherProjectLabel.Size = new System.Drawing.Size(175, 17);
             this.OpenAnotherProjectLabel.TabIndex = 8;
@@ -184,6 +185,8 @@
             // 
             // CreatingPanel
             // 
+            this.CreatingPanel.Controls.Add(this.OpenAnotherProjectLabel);
+            this.CreatingPanel.Controls.Add(this.ProjectsListBox);
             this.CreatingPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatingPanel.Name = "CreatingPanel";
             this.CreatingPanel.Size = new System.Drawing.Size(935, 517);
@@ -199,11 +202,9 @@
             this.Controls.Add(this.CreateNewProjectPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.OpenAnotherProjectLabel);
             this.Controls.Add(this.ProgramVersionLabel);
             this.Controls.Add(this.DecoratingPanel1);
             this.Controls.Add(this.WelcomeProgramLabel);
-            this.Controls.Add(this.ProjectsListBox);
             this.Controls.Add(this.RosneftPicture);
             this.Controls.Add(this.CreatingPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -213,6 +214,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).EndInit();
             this.CreateNewProjectPanel.ResumeLayout(false);
             this.CreateNewProjectPanel.PerformLayout();
+            this.CreatingPanel.ResumeLayout(false);
+            this.CreatingPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

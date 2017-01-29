@@ -68,7 +68,7 @@
             this.ToolStripSeparator2});
             this.ToolStrip.Location = new System.Drawing.Point(0, 0);
             this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.Size = new System.Drawing.Size(1302, 25);
+            this.ToolStrip.Size = new System.Drawing.Size(1264, 25);
             this.ToolStrip.TabIndex = 0;
             this.ToolStrip.Text = "toolStrip1";
             // 
@@ -122,16 +122,16 @@
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
-            this.panel.Location = new System.Drawing.Point(1047, 26);
+            this.panel.Location = new System.Drawing.Point(1009, 29);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(255, 663);
+            this.panel.Size = new System.Drawing.Size(255, 653);
             this.panel.TabIndex = 1;
             // 
             // GoNextButton
             // 
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(125, 626);
+            this.GoNextButton.Location = new System.Drawing.Point(127, 613);
             this.GoNextButton.Name = "GoNextButton";
             this.GoNextButton.Size = new System.Drawing.Size(122, 37);
             this.GoNextButton.TabIndex = 28;
@@ -144,7 +144,7 @@
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(4, 626);
+            this.GoBackButton.Location = new System.Drawing.Point(6, 613);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(122, 37);
             this.GoBackButton.TabIndex = 27;
@@ -162,12 +162,12 @@
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(4, 324);
+            this.PropertiesGridView.Location = new System.Drawing.Point(6, 325);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 302);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 285);
             this.PropertiesGridView.TabIndex = 26;
             // 
             // NameCol
@@ -189,9 +189,9 @@
             // ObjectsTreeView
             // 
             this.ObjectsTreeView.BackColor = System.Drawing.SystemColors.Window;
-            this.ObjectsTreeView.Location = new System.Drawing.Point(4, 25);
+            this.ObjectsTreeView.Location = new System.Drawing.Point(6, 22);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
-            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 274);
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 278);
             this.ObjectsTreeView.TabIndex = 23;
             // 
             // PropertiesPanel
@@ -199,7 +199,7 @@
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(4, 302);
+            this.PropertiesPanel.Location = new System.Drawing.Point(6, 303);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -219,7 +219,7 @@
             this.AvailableObjectsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AvailableObjectsPanel.BackColor = System.Drawing.Color.Orange;
             this.AvailableObjectsPanel.Controls.Add(this.AvailableObjectsLabel);
-            this.AvailableObjectsPanel.Location = new System.Drawing.Point(4, 3);
+            this.AvailableObjectsPanel.Location = new System.Drawing.Point(6, 0);
             this.AvailableObjectsPanel.Name = "AvailableObjectsPanel";
             this.AvailableObjectsPanel.Size = new System.Drawing.Size(243, 22);
             this.AvailableObjectsPanel.TabIndex = 19;
@@ -239,7 +239,7 @@
             this.DrawPage.BackColor = System.Drawing.Color.White;
             this.DrawPage.Location = new System.Drawing.Point(3, 29);
             this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1045, 660);
+            this.DrawPage.Size = new System.Drawing.Size(1007, 653);
             this.DrawPage.TabIndex = 2;
             this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
@@ -249,9 +249,9 @@
             // WorkPanel
             // 
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(0, 27);
+            this.WorkPanel.Location = new System.Drawing.Point(3, 29);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1045, 660);
+            this.WorkPanel.Size = new System.Drawing.Size(1007, 653);
             this.WorkPanel.TabIndex = 0;
             // 
             // EditorForm
@@ -259,12 +259,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1302, 693);
+            this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EditorForm";
             this.Text = "EditorForm";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditorForm_KeyPress);
