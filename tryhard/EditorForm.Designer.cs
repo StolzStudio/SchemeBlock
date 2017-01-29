@@ -237,7 +237,7 @@
             // DrawPage
             // 
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(3, 29);
+            this.DrawPage.Location = new System.Drawing.Point(0, 27);
             this.DrawPage.Name = "DrawPage";
             this.DrawPage.Size = new System.Drawing.Size(1045, 660);
             this.DrawPage.TabIndex = 2;
@@ -249,7 +249,11 @@
             // WorkPanel
             // 
             this.WorkPanel.BackColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.WorkPanel.Location = new System.Drawing.Point(3, 28);
+=======
+            this.WorkPanel.Location = new System.Drawing.Point(0, 27);
+>>>>>>> 3ff1643ffbcf0ec88791bef9d7cc5a4c7063f19d
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1045, 660);
             this.WorkPanel.TabIndex = 0;
