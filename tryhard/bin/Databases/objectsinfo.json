@@ -270,7 +270,11 @@
 	[
 		{
 			"Name": "mining_complex",
-			"PossibleLink": [ ],
+			"PossibleLink": 
+			[ 
+				"processing_complex",
+				"integrated_complex"
+			],
 			"Properties":
 			[
 				"Id",
@@ -302,7 +306,10 @@
 		},
 		{
 			"Name": "integrated_complex",
-			"PossibleLink": [ ],
+			"PossibleLink": 
+			[
+				"processing_complex"
+			],
 			"Properties":
 			[
 				"Id",

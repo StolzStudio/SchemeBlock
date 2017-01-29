@@ -49,12 +49,12 @@
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.DrawPage = new tryhard.DrawPage();
             this.WorkPanel = new System.Windows.Forms.Panel();
+            this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
-            this.DrawPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -130,6 +130,7 @@
             // 
             // GoNextButton
             // 
+            this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoNextButton.Location = new System.Drawing.Point(127, 612);
@@ -142,6 +143,7 @@
             // 
             // GoBackButton
             // 
+            this.GoBackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -158,6 +160,7 @@
             this.PropertiesGridView.AllowUserToAddRows = false;
             this.PropertiesGridView.AllowUserToResizeColumns = false;
             this.PropertiesGridView.AllowUserToResizeRows = false;
+            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -189,6 +192,8 @@
             // 
             // ObjectsTreeView
             // 
+            this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ObjectsTreeView.BackColor = System.Drawing.SystemColors.Window;
             this.ObjectsTreeView.Location = new System.Drawing.Point(6, 22);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
@@ -237,11 +242,13 @@
             // 
             // DrawPage
             // 
+            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Controls.Add(this.WorkPanel);
-            this.DrawPage.Location = new System.Drawing.Point(2, 29);
+            this.DrawPage.Location = new System.Drawing.Point(6, 29);
             this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1007, 653);
+            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
             this.DrawPage.TabIndex = 0;
             this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
@@ -250,11 +257,27 @@
             // 
             // WorkPanel
             // 
+            this.WorkPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(0, 0);
+            this.WorkPanel.Location = new System.Drawing.Point(5, 29);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1007, 653);
+            this.WorkPanel.Size = new System.Drawing.Size(1003, 649);
             this.WorkPanel.TabIndex = 2;
+            // 
+            // AddNewObjectButton
+            // 
+            this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewObjectButton.BackColor = System.Drawing.Color.White;
+            this.AddNewObjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddNewObjectButton.Location = new System.Drawing.Point(1015, 1);
+            this.AddNewObjectButton.Name = "AddNewObjectButton";
+            this.AddNewObjectButton.Size = new System.Drawing.Size(243, 23);
+            this.AddNewObjectButton.TabIndex = 2;
+            this.AddNewObjectButton.Text = "Создать новый объект";
+            this.AddNewObjectButton.UseVisualStyleBackColor = false;
+            this.AddNewObjectButton.Click += new System.EventHandler(this.AddNewObjectButton_Click);
             // 
             // EditorForm
             // 
@@ -262,6 +285,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.WorkPanel);
+            this.Controls.Add(this.AddNewObjectButton);
             this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
@@ -278,7 +303,6 @@
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
-            this.DrawPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +331,6 @@
         private System.Windows.Forms.Button GoNextButton;
         private System.Windows.Forms.Button GoBackButton;
         private System.Windows.Forms.Panel WorkPanel;
+        private System.Windows.Forms.Button AddNewObjectButton;
     }
 }

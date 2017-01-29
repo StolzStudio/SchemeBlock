@@ -201,6 +201,7 @@ namespace tryhard
             this.PropertiesGridView.AllowUserToAddRows = false;
             this.PropertiesGridView.AllowUserToResizeColumns = false;
             this.PropertiesGridView.AllowUserToResizeRows = false;
+            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -232,6 +233,7 @@ namespace tryhard
             // 
             // GoNextButton
             // 
+            this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GoNextButton.Location = new System.Drawing.Point(126, 613);
@@ -244,6 +246,7 @@ namespace tryhard
             // 
             // GoBackButton
             // 
+            this.GoBackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -260,7 +263,7 @@ namespace tryhard
             this.WorkPanel.BackColor = System.Drawing.Color.White;
             this.WorkPanel.Location = new System.Drawing.Point(3, 28);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1006, 653);
+            this.WorkPanel.Size = new System.Drawing.Size(1006, 650);
             this.WorkPanel.TabIndex = 0;
             // 
             // MainPage
@@ -271,7 +274,7 @@ namespace tryhard
             this.MainPage.BackColor = System.Drawing.Color.White;
             this.MainPage.Location = new System.Drawing.Point(4, 28);
             this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1006, 653);
+            this.MainPage.Size = new System.Drawing.Size(1006, 650);
             this.MainPage.TabIndex = 22;
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);

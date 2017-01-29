@@ -69,6 +69,13 @@ namespace tryhard
             return Objects[AObjectsType].Select(k => new IdNameInfo(k.Id, k.Name));
         }
 
+        public bool isPossibleLink(string ACategory, string AFirstObjectType, string ASecondObjectType)
+        {
+            foreach (MetaObjectInfo FirstObjectInfo in this.ObjectsInfo[ACategory].Where(obj=>obj.Name == AFirstObjectType))
+                return FirstObjectInfo.PossibleLink.Contains(ASecondObjectType);
+            return false;
+        }
+
         private void PrintAllProperties(object AObject)
         {
             foreach (var Property in AObject.GetType().GetProperties())

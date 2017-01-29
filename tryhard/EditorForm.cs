@@ -202,5 +202,10 @@ namespace tryhard
                 //сохранение
             }
         }
+
+        private void AddNewObjectButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

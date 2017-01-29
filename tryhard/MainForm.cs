@@ -43,6 +43,7 @@ namespace tryhard
 
             isMouseDown = false;
             isNextStep = false;
+            GoNextButton.Enabled = false;
 
             MainPage.BringToFront();
         }   
@@ -136,7 +137,9 @@ namespace tryhard
                 }
                 else
                 {
-                    if (this.SelectBlockIndex != DrawManager.SelectedBlockIndex)
+                    if ((this.SelectBlockIndex != DrawManager.SelectedBlockIndex) && 
+                        MetaDataManager.Instance.isPossibleLink("Complex", DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                                           DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
                     {
                         DrawManager.ClearLinksFocus();
                         DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
@@ -189,10 +192,10 @@ namespace tryhard
 
             DrawManager.TrySetFocusInBlocks(ptr);
             this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-
+            Console.WriteLine(this.SelectBlockIndex.ToString());
             if (this.SelectBlockIndex != -1)
             {
-                MessageBox.Show(this.SelectBlockIndex.ToString());
+                Console.WriteLine(this.SelectBlockIndex.ToString());
                 //здесь пиздатая функция твоя
                 //чтобы обратиться к выбранному блоку DrawManager.Blocks[SelectBlockIndex]
             }
