@@ -7,6 +7,7 @@
 		"ElectricityDemand": 30,
 		"Weight": 5,
 		"Volume": 10,
-		"Cost": 150000
+		"Cost": 150000,
+		"Structure": []
 	}
 ]

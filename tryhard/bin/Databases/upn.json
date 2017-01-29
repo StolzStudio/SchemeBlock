@@ -10,7 +10,9 @@
 		"ElectricityDemand": 0,
 		"Weight": 12,
 		"Volume": 20,
-		"Cost": 16200000
+		"Cost": 16200000,
+		"Structure": []
+
 	},
 	{
 		"Id": 1,
@@ -23,7 +25,8 @@
 		"ElectricityDemand": 0,
 		"Weight": 20,
 		"Volume": 30,
-		"Cost": 25200000
+		"Cost": 25200000,
+		"Structure": []
 	},
 	{
 		"Id": 2,
@@ -36,7 +39,8 @@
 		"ElectricityDemand": 0,
 		"Weight": 40,
 		"Volume": 50,
-		"Cost": 44100000
+		"Cost": 44100000,
+		"Structure": []
 	},
 	{
 		"Id": 3,
@@ -49,6 +53,7 @@
 		"ElectricityDemand": 0,
 		"Weight": 50,
 		"Volume": 70,
-		"Cost": 63000000
+		"Cost": 63000000,
+		"Structure": []
 	}
 ]

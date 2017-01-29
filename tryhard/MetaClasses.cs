@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace tryhard
 {
@@ -11,6 +12,21 @@ namespace tryhard
         public string Name { get; set; }
         public List<string> PossibleLink { get; set; }
         public List<string> Properties { get; set; }
+    }
+
+    public class LinkStructuralObject
+    {
+        public int FirstBlockIndex { get; set; }
+        public int SecondBlockIndex { get; set; }
+        public string LinkParameter { get; set; }
+    }
+
+    public class StructuralObject
+    {
+        public int Id { get; set; }
+        public string Type { get; set; }
+        public Point Coordinates { get; set; }
+        public List<LinkStructuralObject> Links { get; set; }
     }
 
     public abstract class BaseObject
@@ -24,6 +40,7 @@ namespace tryhard
         public long Weight { get; set; }
         public long Volume { get; set; }
         public long Cost { get; set; }
+        public List<StructuralObject> Structure { get; set; }
     }
 
     public class FieldParameters : BaseObject

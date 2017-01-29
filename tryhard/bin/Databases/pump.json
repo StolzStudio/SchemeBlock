@@ -6,7 +6,8 @@
 		"Output": 40,
 		"Weight": 190,
 		"Volume": 50,
-		"Cost": 30000
+		"Cost": 30000,
+		"Structure": []
 	},
 	{
 		"Id": 1,
@@ -15,7 +16,8 @@
 		"Output": 20,
 		"Weight": 100,
 		"Volume": 30,
-		"Cost": 20000
+		"Cost": 20000,
+		"Structure": []
 	},
 	{
 		"Id": 2,
@@ -24,6 +26,7 @@
 		"Output": 10,
 		"Weight": 70,
 		"Volume": 15,
-		"Cost": 10000
+		"Cost": 10000,
+		"Structure": []
 	}
 ]

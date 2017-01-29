@@ -6,7 +6,8 @@
 		"Material": "steel",
 		"Weight": 3,
 		"Volume": 2,
-		"Cost": 5
+		"Cost": 5,
+		"Structure": []
 	},
 	{
 		"Id": 1,
@@ -15,7 +16,8 @@
 		"Material": "steel",
 		"Weight": 1,
 		"Volume": 1,
-		"Cost": 2
+		"Cost": 2,
+		"Structure": []
 	},
 	{
 		"Id": 2,
@@ -24,6 +26,7 @@
 		"Material": "steel",
 		"Weight": 2,
 		"Volume": 1,
-		"Cost": 3
+		"Cost": 3,
+		"Structure": []
 	}
 ]

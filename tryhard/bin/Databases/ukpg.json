@@ -8,7 +8,8 @@
 		"ElectricityDemand": 750,
 		"Weight": 50,
 		"Volume": 120,
-		"Cost": 15000000
+		"Cost": 15000000,
+		"Structure": []
 	},
 	{
 		"Id": 1,
@@ -19,6 +20,7 @@
 		"ElectricityDemand": 150,
 		"Weight": 70,
 		"Volume": 300,
-		"Cost": 29000000
+		"Cost": 29000000,
+		"Structure": []
 	}
 ]

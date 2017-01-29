@@ -7,7 +7,8 @@
 		"Length": 25,
 		"Weight": 2,
 		"Volume": 10,
-		"Cost": 300
+		"Cost": 300,
+		"Structure": []
 	},
 	{
 		"Id": 1,
@@ -17,7 +18,8 @@
 		"Length": 25,
 		"Weight": 10,
 		"Volume": 25,
-		"Cost": 500
+		"Cost": 500,
+		"Structure": []
 	},
 	{
 		"Id": 2,
@@ -27,6 +29,7 @@
 		"Length": 10,
 		"Weight": 4,
 		"Volume": 5,
-		"Cost": 150
+		"Cost": 150,
+		"Structure": []
 	}
 ]
