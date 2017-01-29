@@ -26,7 +26,15 @@ namespace tryhard
             ObjectsTreeView.Nodes.Clear();
             IEnumerable<string> Categories;
             if (isEditMode)
-                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == (string)(CategoryStripComboBox.SelectedItem));
+            {
+                string needed_category = "";
+                switch ((string)(CategoryStripComboBox.SelectedItem))
+                {
+                    case "Equipment": needed_category = "Detail"; break;
+                    case "Complex": needed_category = "Equipment"; break;
+                }
+                Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == needed_category);
+            }
             else
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Complex");
             foreach (string CategoryName in Categories)
@@ -65,9 +73,7 @@ namespace tryhard
         {
             FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
             if (isEditMode)
-            {
                 FillObjectTreeView();
-            }
         }
 
         public EditorForm(string AObjectCategory, string AObjectType)
