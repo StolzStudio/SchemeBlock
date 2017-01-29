@@ -19,16 +19,15 @@ namespace tryhard
         //
         //Properties
         //
-        public string ClassText { get; set; }
-        public string ModelText { get; set; }
-        public int    Count     { get; set; }
+        public string ClassText   { get; set; }
+        public string ModelText   { get; set; }
+        public int    Count       { get; set; }
+        public Point  ClickOffset { get; set; } 
         //
         //Fields
         //
         public bool isFocus = false;
-        public int  Index   = 0;
-
-        
+        public int  Index   = 0; 
 
         public  Point Location;
         private Point TextLocation;
@@ -70,15 +69,15 @@ namespace tryhard
         public void Move(Point aLocation)
         {
             Point Pnt = this.PointNormalize(aLocation);
-
-            //Pnt.X -= this.ClickOffset.X;
-            //Pnt.Y -= this.ClickOffset.Y;
+           
+            Pnt.X -= ClickOffset.X;
+            Pnt.Y -= ClickOffset.Y;
 
             this.Location = Pnt;
             SetTextLocation();
         }
 
-        private Point PointNormalize(Point Pnt)
+        public Point PointNormalize(Point Pnt)
         {
             return new Point(Pnt.X - PageOffset.X, Pnt.Y - PageOffset.Y);
         }

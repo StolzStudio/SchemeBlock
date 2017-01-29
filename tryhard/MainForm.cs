@@ -22,7 +22,10 @@ namespace tryhard
         public int SchemeManagerNumber = 0;
         public Manager[] DrawManager;
         public CalculationManager CalcManager;
-        public bool isCtrlDown { get; set; }
+        private int SelectBlockIndex;
+        private bool isCtrlDown  { get; set; }
+        private bool isMouseDown { get; set; }
+
 
         /* Methods */
 
@@ -40,7 +43,8 @@ namespace tryhard
             DrawingPanelOffset.X = MainPage.Location.X;
             DrawingPanelOffset.Y = MainPage.Location.Y;
 
-            isCtrlDown = false;
+            isCtrlDown  = false;
+            isMouseDown = false;
         }   
 
         public void FillTree()
@@ -79,71 +83,15 @@ namespace tryhard
 
         private void DeleteElement(object sender, KeyPressEventArgs e)
         {
-            Link[] LinksArr = DrawManager[SchemeManagerNumber].Links.ToArray();
-            DrawManager[SchemeManagerNumber].Links.Clear();
+            DrawManager[SchemeManagerNumber].DeleteElements();
 
-            for (int i = 0; i < LinksArr.Length; i++)
-            {
-                if (!DrawManager[SchemeManagerNumber].isHaveSelectedBlock)
-                {
-                    if (LinksArr[i].isFocus) { LinksArr[i] = null; }
-                }
-                else
-                {
-                    if (LinksArr[i].CheckDeletedLink(DrawManager[SchemeManagerNumber].SelectedBlockIndex)) { LinksArr[i] = null; }
-                }
-            }
-
-            LinksArr = LinksArr.Where(x => !IsLinkNull(x)).ToArray();
-            DrawManager[SchemeManagerNumber].Links = LinksArr.ToList();
-
-            if (DrawManager[SchemeManagerNumber].Blocks[DrawManager[SchemeManagerNumber].SelectedBlockIndex].isFocus)
-            {
-                DrawManager[SchemeManagerNumber].Blocks.Remove(DrawManager[SchemeManagerNumber].SelectedBlockIndex);
-                DrawManager[SchemeManagerNumber].isHaveSelectedBlock = false;
-                DrawManager[SchemeManagerNumber].SelectedBlockIndex = -1;
-            }
-
-
-            MainPage_Click(sender, e);
+            //MainPage_MouseDown(sender, e);
             MainPage.Invalidate();
         }
 
         private bool IsLinkNull(Link TestLink)
         {
             return TestLink == null;
-        }
-
-        private void MainPage_Click(object sender, EventArgs e)
-        {
-            DrawManager[SchemeManagerNumber].ClearLinksFocus();
-            DrawManager[SchemeManagerNumber].ClearBlocksFocus();
-
-            Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= DrawingPanelOffset.X;
-            ptr.Y -= DrawingPanelOffset.Y;
-
-            if (Control.ModifierKeys == Keys.Control)
-            {
-                DrawManager[SchemeManagerNumber].isAddBlockButtonClick = true;
-            }
-
-            foreach (int Key in DrawManager[SchemeManagerNumber].Blocks.Keys)
-            {
-                if (DrawManager[SchemeManagerNumber].Blocks[Key].CheckFocus(ptr))
-                {
-                    DrawManager[SchemeManagerNumber].isAddBlockButtonClick = false;
-                }
-            }
-            
-            if (DrawManager[SchemeManagerNumber].isAddBlockButtonClick)
-            {
-                ptr.X -= SchemeBlock.BlockBodyWidth / 2;
-                ptr.Y -= SchemeBlock.BlockBodyHeight / 2;
-                DrawManager[SchemeManagerNumber].AddBlock(ptr);
-            }
-            DrawManager[SchemeManagerNumber].TrySetFocusInLinks(ptr);
-            DrawManager[SchemeManagerNumber].isAddBlockButtonClick = false;
         }
 
         private void MainPage_Paint(object sender, PaintEventArgs e)
@@ -157,6 +105,88 @@ namespace tryhard
             {
                 DeleteElement(sender, e);
             }
+        }
+
+        private void MainPage_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMouseDown = true;
+
+            DrawManager[SchemeManagerNumber].ClearLinksFocus();
+            DrawManager[SchemeManagerNumber].ClearBlocksFocus();
+
+            Point ptr = PointToClient(Cursor.Position);
+            ptr.X -= DrawingPanelOffset.X;
+            ptr.Y -= DrawingPanelOffset.Y;
+
+            if (Control.ModifierKeys == Keys.Control)
+            { 
+                DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
+
+                if (DrawManager[SchemeManagerNumber].SelectedBlockIndex == -1)
+                {
+                    ptr.X -= Block.BlockWidth / 2;
+                    ptr.Y -= Block.BlockHeight / 2;
+                    DrawManager[SchemeManagerNumber].AddBlock(ptr);
+                    this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;
+                }
+                else
+                {
+                    if (this.SelectBlockIndex != DrawManager[SchemeManagerNumber].SelectedBlockIndex)
+                    {
+                        DrawManager[SchemeManagerNumber].ClearLinksFocus();
+                        DrawManager[SchemeManagerNumber].AddLink(new Link(DrawManager[SchemeManagerNumber].SelectedBlockIndex, this.SelectBlockIndex));
+                    }
+                }
+            }
+            else
+            {
+                DrawManager[SchemeManagerNumber].TrySetFocusInBlocks(ptr);
+                this.SelectBlockIndex = DrawManager[SchemeManagerNumber].SelectedBlockIndex;
+            }
+            //MainPage_Click(sender, e);
+            //this.isMouseDown = true;
+
+            //if (Control.ModifierKeys == Keys.Control) { isCtrlDown = true; }
+            //else { isCtrlDown = false; }
+
+            // if ((DrawManager[SchemeManagerNumber].isHaveSelectedBlock) &&
+            //   (DrawManager[SchemeManagerNumber].SelectedBlockIndex != SelectBlockIndex) && isCtrlDown && (SelectBlockIndex != -1))
+            //{
+            //  if (!DrawManager[SchemeManagerNumber].CheckLink(DrawManager[SchemeManagerNumber].SelectedBlockIndex, SelectBlockIndex))
+            //{
+            //  DrawManager[SchemeManagerNumber].isHaveSelectedBlock = false;
+            //isCtrlDown = false;
+
+            //DrawManager[SchemeManagerNumber].ClearLinksFocus();
+            //DrawManager[SchemeManagerNumber].AddLink(new Link(DrawManager[SchemeManagerNumber].SelectedBlockIndex, SelectBlockIndex));
+            // }
+            //}
+            //else
+            //{
+            //   DrawManager[SchemeManagerNumber].isHaveSelectedBlock = true;
+            //  DrawManager[SchemeManagerNumber].SelectedBlockIndex = SelectBlockIndex;
+            //}
+
+            //Form.SetComboBoxes(this.BlockClass, this.BlockId);
+            //DrawManager[SchemeManagerNumber].ClearLinksFocus();
+
+
+        }
+
+        private void MainPage_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((this.isMouseDown)&&(SelectBlockIndex != -1))
+            {
+                Point Pnt = this.PointToClient(Cursor.Position);
+                DrawManager[SchemeManagerNumber].Blocks[SelectBlockIndex].Move(Pnt);
+            }
+
+            MainPage.Invalidate();
+        }
+
+        private void MainPage_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.isMouseDown = false;
         }
     }
 }

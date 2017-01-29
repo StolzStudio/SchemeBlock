@@ -11,7 +11,6 @@ namespace tryhard
     public class Manager
     {
         public int SelectedBlockIndex;
-        public bool isAddBlockButtonClick;
         public bool isHaveSelectedBlock;
         public bool isOilFieldAdd;
 
@@ -30,7 +29,6 @@ namespace tryhard
             Links = new List<Link>();
             ItemsIdList = new List<string>();
 
-            isAddBlockButtonClick = false;
             isHaveSelectedBlock = false;
             isOilFieldAdd = false;
 
@@ -52,8 +50,9 @@ namespace tryhard
                 Blocks[Key].ClearFocus();
             }
             Blocks[block_counter].SetFocus();
+            SelectedBlockIndex = block_counter;
             block_counter++;
-            isAddBlockButtonClick = false;
+            
         }
 
         public void ChangeSelectBlock()
@@ -94,6 +93,8 @@ namespace tryhard
                 Blocks[key].ClearFocus();
             }
 
+            isHaveSelectedBlock = false;
+            SelectedBlockIndex = -1;
             Page.Invalidate();
         }
 
@@ -120,6 +121,50 @@ namespace tryhard
                 foreach (int Key in Blocks.Keys)
                 {
                     Blocks[Key].Draw(g);
+                }
+            }
+        }
+
+        public void DeleteElements()
+        {
+            Link[] LinksArr = Links.ToArray();
+            Links.Clear();
+
+            for (int i = 0; i < LinksArr.Length; i++)
+            {
+                if (!isHaveSelectedBlock)
+                {
+                    if (LinksArr[i].isFocus) { LinksArr[i] = null; }
+                }
+                else
+                {
+                    if (LinksArr[i].CheckDeletedLink(SelectedBlockIndex)) { LinksArr[i] = null; }
+                }
+            }
+
+            LinksArr = LinksArr.Where(x => x != null).ToArray();
+            Links = LinksArr.ToList();
+
+            if (SelectedBlockIndex != -1)
+            {
+                if (Blocks[SelectedBlockIndex].isFocus)
+                {
+                    Blocks.Remove(SelectedBlockIndex);
+                    isHaveSelectedBlock = false;
+                    SelectedBlockIndex = -1;
+                }
+            }
+        }
+
+        public void TrySetFocusInBlocks(Point Coord)
+        {
+            SelectedBlockIndex = -1;
+            foreach (int Key in Blocks.Keys)
+            {
+                if (Blocks[Key].CheckFocus(Coord))
+                {
+                    isHaveSelectedBlock = true;
+                    SelectedBlockIndex = Key;
                 }
             }
         }

@@ -214,8 +214,10 @@ namespace tryhard
             this.MainPage.Name = "MainPage";
             this.MainPage.Size = new System.Drawing.Size(1007, 653);
             this.MainPage.TabIndex = 22;
-            this.MainPage.Click += new System.EventHandler(this.MainPage_Click);
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // MainForm
             // 
