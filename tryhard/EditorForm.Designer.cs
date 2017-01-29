@@ -123,6 +123,9 @@
             // 
             // PropertiesGridView
             // 
+            this.PropertiesGridView.AllowUserToAddRows = false;
+            this.PropertiesGridView.AllowUserToResizeColumns = false;
+            this.PropertiesGridView.AllowUserToResizeRows = false;
             this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -189,6 +192,7 @@
             this.NameCol.HeaderText = "Название";
             this.NameCol.Name = "NameCol";
             this.NameCol.ReadOnly = true;
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.NameCol.Width = 120;
             // 
             // ValueCol
@@ -196,6 +200,7 @@
             this.ValueCol.HeaderText = "Значение";
             this.ValueCol.Name = "ValueCol";
             this.ValueCol.ReadOnly = true;
+            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ValueCol.Width = 120;
             // 
             // EditorForm
@@ -238,8 +243,8 @@
         private System.Windows.Forms.ToolStripComboBox TypeStripComboBox;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator;
+        public System.Windows.Forms.DataGridView PropertiesGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueCol;
-        public System.Windows.Forms.DataGridView PropertiesGridView;
     }
 }

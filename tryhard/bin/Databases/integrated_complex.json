@@ -1,0 +1,28 @@
+[
+	{
+		"Id": 0,
+		"Name": "IC-9000",
+		"FluidInput": 9000,
+		"FluidOutput": 0,
+		"OilOutput": 5000,
+		"GasOutput":1000,
+		"PeopleDemand": 30,
+		"ElectricityDemand": 2500,
+		"Weight": 15000000,
+		"Volume": 120000,
+		"Cost": 1500000000
+	},
+	{
+		"Id": 1,
+		"Name": "IC-29000",
+		"FluidInput": 29000,
+		"FluidOutput": 5000,
+		"OilOutput": 18000,
+		"GasOutput": 5000,
+		"PeopleDemand": 90,
+		"ElectricityDemand": 5500,
+		"Weight": 55000000,
+		"Volume": 400000,
+		"Cost": 3500000000
+	}
+]
