@@ -43,7 +43,7 @@ namespace tryhard
         {
             get
             {
-                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");//Categories;
+                return ObjectsInfo.Keys.Where(k => k != "InfoClasses");
             }
         }
 

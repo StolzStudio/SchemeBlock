@@ -37,7 +37,6 @@
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
             this.PossibilityLinkView = new System.Windows.Forms.DataGridView();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
@@ -107,7 +106,6 @@
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.Controls.Add(this.PossibilityLinkView);
-            this.panel.Controls.Add(this.PropertyGrid);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
@@ -123,13 +121,6 @@
             this.PossibilityLinkView.Name = "PossibilityLinkView";
             this.PossibilityLinkView.Size = new System.Drawing.Size(243, 336);
             this.PossibilityLinkView.TabIndex = 25;
-            // 
-            // PropertyGrid
-            // 
-            this.PropertyGrid.Location = new System.Drawing.Point(4, 323);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(243, 336);
-            this.PropertyGrid.TabIndex = 24;
             // 
             // ObjectsTreeView
             // 
@@ -215,7 +206,6 @@
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.DataGridView PossibilityLinkView;
-        private System.Windows.Forms.PropertyGrid PropertyGrid;
         private System.Windows.Forms.TreeView ObjectsTreeView;
         private System.Windows.Forms.Panel PropertiesPanel;
         private System.Windows.Forms.Label PropertiesLabel;
