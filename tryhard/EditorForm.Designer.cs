@@ -37,6 +37,8 @@
             this.TypeStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
+            this.GoNextButton = new System.Windows.Forms.Button();
+            this.GoBackButton = new System.Windows.Forms.Button();
             this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +48,6 @@
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.DrawPage = new tryhard.DrawPage();
-            this.GoBackButton = new System.Windows.Forms.Button();
-            this.GoNextButton = new System.Windows.Forms.Button();
             this.WorkPanel = new System.Windows.Forms.Panel();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
@@ -127,6 +127,31 @@
             this.panel.Size = new System.Drawing.Size(255, 663);
             this.panel.TabIndex = 1;
             // 
+            // GoNextButton
+            // 
+            this.GoNextButton.BackColor = System.Drawing.Color.White;
+            this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoNextButton.Location = new System.Drawing.Point(125, 626);
+            this.GoNextButton.Name = "GoNextButton";
+            this.GoNextButton.Size = new System.Drawing.Size(122, 37);
+            this.GoNextButton.TabIndex = 28;
+            this.GoNextButton.Text = "next";
+            this.GoNextButton.UseVisualStyleBackColor = false;
+            this.GoNextButton.Click += new System.EventHandler(this.GoNextButton_Click);
+            // 
+            // GoBackButton
+            // 
+            this.GoBackButton.BackColor = System.Drawing.Color.White;
+            this.GoBackButton.Enabled = false;
+            this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.GoBackButton.Location = new System.Drawing.Point(4, 626);
+            this.GoBackButton.Name = "GoBackButton";
+            this.GoBackButton.Size = new System.Drawing.Size(122, 37);
+            this.GoBackButton.TabIndex = 27;
+            this.GoBackButton.Text = "back";
+            this.GoBackButton.UseVisualStyleBackColor = false;
+            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
+            // 
             // PropertiesGridView
             // 
             this.PropertiesGridView.AllowUserToAddRows = false;
@@ -142,7 +167,7 @@
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 339);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 302);
             this.PropertiesGridView.TabIndex = 26;
             // 
             // NameCol
@@ -220,31 +245,6 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            // 
-            // GoBackButton
-            // 
-            this.GoBackButton.BackColor = System.Drawing.Color.White;
-            this.GoBackButton.Enabled = false;
-            this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(4, 632);
-            this.GoBackButton.Name = "GoBackButton";
-            this.GoBackButton.Size = new System.Drawing.Size(122, 31);
-            this.GoBackButton.TabIndex = 27;
-            this.GoBackButton.Text = "back";
-            this.GoBackButton.UseVisualStyleBackColor = false;
-            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
-            // 
-            // GoNextButton
-            // 
-            this.GoNextButton.BackColor = System.Drawing.Color.White;
-            this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(125, 632);
-            this.GoNextButton.Name = "GoNextButton";
-            this.GoNextButton.Size = new System.Drawing.Size(122, 31);
-            this.GoNextButton.TabIndex = 28;
-            this.GoNextButton.Text = "next";
-            this.GoNextButton.UseVisualStyleBackColor = false;
-            this.GoNextButton.Click += new System.EventHandler(this.GoNextButton_Click);
             // 
             // WorkPanel
             // 
