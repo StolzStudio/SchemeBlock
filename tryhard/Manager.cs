@@ -124,6 +124,13 @@ namespace tryhard
             }
         }
 
+        public void DeleteAllElements()
+        {
+            Links.Clear();
+            Blocks.Clear();
+            SelectedBlockIndex = -1;
+        }
+
         public void DeleteElements()
         {
             Link[] LinksArr = Links.ToArray();

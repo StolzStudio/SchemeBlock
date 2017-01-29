@@ -199,6 +199,7 @@
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 278);
             this.ObjectsTreeView.TabIndex = 23;
+            this.ObjectsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ObjectsTreeView_AfterSelect);
             // 
             // PropertiesPanel
             // 
@@ -261,7 +262,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(5, 29);
+            this.WorkPanel.Location = new System.Drawing.Point(6, 28);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1003, 649);
             this.WorkPanel.TabIndex = 2;

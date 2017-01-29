@@ -55,10 +55,10 @@ namespace tryhard
             /* Fill Dict */
 
             Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
-            //foreach (int Key in SchemeManager[SchemeManagerNumber].Blocks.Keys)
-            //    CalcBlocks.Add(Key, new CalcBlock(Key, SchemeManager[SchemeManagerNumber].Blocks[Key].ClassText,
-            //                                           SchemeManager[SchemeManagerNumber].Blocks[Key].ModelText,
-            //                                           SchemeManager[SchemeManagerNumber].Blocks[Key].Count));
+            foreach (int Key in DrawManager.Blocks.Keys)
+                CalcBlocks.Add(Key, new CalcBlock(Key, DrawManager.Blocks[Key].ClassText,
+                                                       DrawManager.Blocks[Key].ModelText,
+                                                       DrawManager.Blocks[Key].Count));
 
             /* Fill Links at Blocks */
 
@@ -66,11 +66,11 @@ namespace tryhard
             {
                 foreach (Link Link in DrawManager.Links)
                 {
-                    CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(Link.SecondBlockIndex);
-                    CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(Link.FirstBlockIndex);
+                    CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(new LinkInfo(Link.SecondBlockIndex, Link.LinkParameter));
+                    CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(new LinkInfo(Link.FirstBlockIndex, Link.LinkParameter));
                 }
             }
-            return null; // CalcManager.CalculateBlocksCombinations(Meta, CalcBlocks, APageType);
+            return CalcManager.CalculateBlocksCombinations(CalcBlocks, APageType);
         }  
 
         private bool IsLinkNull(Link TestLink)

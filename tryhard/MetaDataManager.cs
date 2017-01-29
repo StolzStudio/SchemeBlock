@@ -56,6 +56,18 @@ namespace tryhard
             get { return ObjectsInfo.Keys.Where(k => k != "InfoClasses"); }
         }
 
+        public string GetCateroryNameByType(string AType)
+        {
+            foreach (string ACategory in ObjectsInfo.Keys)
+            {
+                foreach (MetaObjectInfo AObjectInfo in ObjectsInfo[ACategory].Where(obj => obj.Name == AType))
+                {
+                    return ACategory;
+                }
+            }
+            return "Equipment";
+        }
+
         public List<string> GetObjectTypesOfObjectCategory(string AObjectCategory)
         {
             List<string> result = new List<string>();

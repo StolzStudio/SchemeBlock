@@ -4,20 +4,33 @@ using System.Linq;
 
 namespace tryhard
 {
+    public class LinkInfo
+    {
+        public int Index { get; set; }
+        public string LinkParameter { get; set; }
+
+        public LinkInfo(int AIndex, string ALinkParameter)
+        {
+            Index = AIndex;
+            LinkParameter = ALinkParameter;
+        }
+    }
+
     public class CalcBlock
     {
         /* Fields */
 
-        public List<int> InputLinks  = new List<int>();
-        public List<int> OutputLinks = new List<int>();
+        public List<LinkInfo> InputLinks  = new List<LinkInfo>();
+        public List<LinkInfo> OutputLinks = new List<LinkInfo>();
 
         /* Properties */
 
-        public string BlockClass { get; set; }
-        public string BlockId    { get; set; }
-        public bool   isDone     { get; set; }
-        public int    Index      { get; set; }
-        public int    Count      { get; set; }
+        public string LinkParameter { get; set; }
+        public string BlockClass    { get; set; }
+        public string BlockId       { get; set; }
+        public bool   isDone        { get; set; }
+        public int    Index         { get; set; }
+        public int    Count         { get; set; }
 
 
         public CalcBlock(int AIndex, string ABlockClass, string ABlockId, int ACount = 1)
@@ -42,17 +55,16 @@ namespace tryhard
 
     public class CalculationManager
     {
-        /*
-        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(CMeta AMeta, Dictionary<int, CalcBlock> BaseBlocks, PageType APageType)
+        
+        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(Dictionary<int, CalcBlock> BaseBlocks, PageType APageType)
         {
-            List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(AMeta, BaseBlocks);
+            List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(BaseBlocks);
             if (APageType == PageType.SchemeType)
-                CalculateBlocksCombinations(AMeta, ref Combinations);
+                CalculateBlocksCombinations(ref Combinations);
             return Combinations;
         }
 
-        private List<Dictionary<int, CalcBlock>> GetAllCombinations(CMeta AMeta,
-                                                                    Dictionary<int, CalcBlock> ABaseBlocks)
+        private List<Dictionary<int, CalcBlock>> GetAllCombinations(Dictionary<int, CalcBlock> ABaseBlocks)
         {
             Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
             List<int> BlockKeys = new List<int>();
@@ -115,7 +127,7 @@ namespace tryhard
             return Combination;
         }
 
-        private void CalculateBlocksCombinations(CMeta AMeta, ref List<Dictionary<int, CalcBlock>> BlocksCombinations)
+        private void CalculateBlocksCombinations(ref List<Dictionary<int, CalcBlock>> BlocksCombinations)
         {
             foreach (Dictionary<int, CalcBlock> BlocksCombination in BlocksCombinations)
             {
@@ -129,7 +141,7 @@ namespace tryhard
                         {
                             if (BlocksCombination[Key].BlockClass == "field_parameters")
                             {
-                                int link_key = BlocksCombination[Key].OutputLinks[0];
+                                /*int link_key = BlocksCombination[Key].OutputLinks[0].Index;
                                 int field_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
                                                                                      BlocksCombination[Key].BlockId, "amount_holes");
                                 int dk_amount_holes = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
@@ -149,35 +161,35 @@ namespace tryhard
                                     }
                                     BlocksCombination[link_key].isDone = false;
                                 }
-                                BlocksCombination[link_key].isDone = true;
+                                BlocksCombination[link_key].isDone = true;*/
                             }
                             else
                             {
-                                foreach (int link_key in BlocksCombination[Key].OutputLinks)
+                                /*foreach (LinkInfo Link in BlocksCombination[Key].OutputLinks)
                                 {
                                     string common_parametr = AMeta.GetCommonParameterForLink(BlocksCombination[Key].BlockClass,
-                                                                                             BlocksCombination[link_key].BlockClass);
+                                                                                             BlocksCombination[Link.Index].BlockClass);
                                     int first_block_output = AMeta.GetIntValueOfParameter(BlocksCombination[Key].BlockClass,
                                                                                           BlocksCombination[Key].BlockId, common_parametr + "_output");
-                                    int second_block_input = AMeta.GetIntValueOfParameter(BlocksCombination[link_key].BlockClass,
-                                                                                          BlocksCombination[link_key].BlockId, common_parametr + "_input");
+                                    int second_block_input = AMeta.GetIntValueOfParameter(BlocksCombination[Link.Index].BlockClass,
+                                                                                          BlocksCombination[Link.Index].BlockId, common_parametr + "_input");
                                     int first_block_count = first_block_output * BlocksCombination[Key].Count;
-                                    int second_block_count = second_block_input * BlocksCombination[link_key].Count;
+                                    int second_block_count = second_block_input * BlocksCombination[Link.Index].Count;
                                     if (second_block_count < first_block_count)
                                     {
-                                        BlocksCombination[link_key].Count = first_block_count / second_block_count;
+                                        BlocksCombination[Link.Index].Count = first_block_count / second_block_count;
                                         if (first_block_count % second_block_count != 0)
                                         {
-                                            BlocksCombination[link_key].Count += 1;
+                                            BlocksCombination[Link.Index].Count += 1;
                                         }
-                                        BlocksCombination[link_key].isDone = false;
+                                        BlocksCombination[Link.Index].isDone = false;
                                     }
-                                }
+                                }*/
                             }
                         }
                     }
                 }
             }
-        }*/
+        }
     }
 }

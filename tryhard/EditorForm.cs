@@ -28,6 +28,8 @@ namespace tryhard
             DrawManager = new Manager(this.DrawPage);
             isMouseDown = false;
             isNextStep = false;
+            SetMode(false);
+            GoNextButton.Enabled = false;
 
             DrawPage.BringToFront();
         }
@@ -56,13 +58,33 @@ namespace tryhard
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail");
             foreach (string CategoryName in Categories)
             {
-                TreeNode node = new TreeNode(CategoryName);
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
-                    node.Nodes.Add(new TreeNode(TypeName));
-                ObjectsTreeView.Nodes.Add(node);
-                node.ExpandAll();
+                {
+                    TreeNode node = new TreeNode(TypeName);
+                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
+                    {
+                        TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
+                        node_child.Tag = ObjectIdNameInfo.Id;
+                        node.Nodes.Add(node_child);
+                    }
+                    ObjectsTreeView.Nodes.Add(node);
+                    node.ExpandAll();
+                }
             }
         }
+
+        private void SetMode(bool AEditMode)
+        {
+            isEditMode = AEditMode;
+            if (isEditMode)
+            {
+                ToolStrip.Enabled = true;
+            } else
+            {
+                ToolStrip.Enabled = false;
+            }
+        }
+
 
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
@@ -90,7 +112,11 @@ namespace tryhard
         {
             FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
             if (isEditMode)
+            {
                 FillObjectTreeView();
+                DrawManager.DeleteAllElements();
+                DrawPage.Invalidate();
+            }
         }
 
         private void FillStripControls(string AObjectCategory, string AObjectType)
@@ -100,6 +126,25 @@ namespace tryhard
                 CategoryStripComboBox.Items.Add(obj);
             if (AObjectType != "")
                 CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(AObjectType);
+        }
+
+        private void SelectTreeNode()
+        {
+            int i = DrawManager.SelectedBlockIndex;
+            foreach (TreeNode node in ObjectsTreeView.Nodes)
+            {
+                if (DrawManager.Blocks[i].ClassText == node.Text)
+                {
+                    foreach (TreeNode node_child in node.Nodes)
+                    {
+                        if (DrawManager.Blocks[i].ModelText == node_child.Text)
+                        {
+                            ObjectsTreeView.SelectedNode = node_child;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void DrawPage_MouseDown(object sender, MouseEventArgs e)
@@ -115,37 +160,51 @@ namespace tryhard
 
             ClickOffset = ptr;
 
-            if (Control.ModifierKeys == Keys.Control)
+            if (isEditMode)
             {
-                DrawManager.TrySetFocusInBlocks(ptr);
-
-                if (DrawManager.SelectedBlockIndex == -1)
+                if (Control.ModifierKeys == Keys.Control)
                 {
-                    ptr.X -= Block.BlockWidth / 2;
-                    ptr.Y -= Block.BlockHeight / 2;
-                    //DrawManager.AddBlock(ptr);
-                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    DrawManager.TrySetFocusInBlocks(ptr);
+
+                    if (DrawManager.SelectedBlockIndex == -1)
+                    {
+                        ptr.X -= Block.BlockWidth / 2;
+                        ptr.Y -= Block.BlockHeight / 2;
+                        DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text);
+                        this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    }
+                    else
+                    {
+                        if (this.SelectBlockIndex != DrawManager.SelectedBlockIndex)
+                        {
+                            string temp = "";
+                            if ((string)(CategoryStripComboBox.SelectedItem) == "Complex")
+                                temp = "Equipment";
+                            else
+                                temp = "Detail";
+                            if (MetaDataManager.Instance.isPossibleLink(temp,
+                                                                         DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                                         DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
+                            {
+                                DrawManager.ClearLinksFocus();
+                                DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    if (this.SelectBlockIndex != DrawManager.SelectedBlockIndex)
-                    {
-                        DrawManager.ClearLinksFocus();
-                        DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
-                    }
-                }
-            }
-            else
-            {
-                DrawManager.TrySetFocusInLinks(ptr);
-                DrawManager.TrySetFocusInBlocks(ptr);
+                    DrawManager.TrySetFocusInLinks(ptr);
+                    DrawManager.TrySetFocusInBlocks(ptr);
 
-                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-            }
-            if (this.SelectBlockIndex != -1)
-            {
-                ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
-                                        ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
+                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                }
+                if (this.SelectBlockIndex != -1)
+                {
+                    ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                            ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
+                    SelectTreeNode();
+                }
             }
         }
 
@@ -205,7 +264,30 @@ namespace tryhard
 
         private void AddNewObjectButton_Click(object sender, EventArgs e)
         {
+            SetMode(true);
+            FillObjectTreeView();
+            (sender as Button).Enabled = false;
+        }
 
+        private void FillPropertiesGridView(string ACategory, string AType, int AId)
+        {
+            PropertiesGridView.Rows.Clear();
+            foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[ACategory].Where(obj => obj.Name == AType))
+                foreach (string APropertyName in AObjectInfo.Properties)
+                {
+                    IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
+                    foreach (BaseObject obj in base_object)
+                        PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                }
+        }
+
+        private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (ObjectsTreeView.SelectedNode.Nodes.Count != 0)
+                if (ObjectsTreeView.SelectedNode.Parent == null)
+                    ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
+            FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text), 
+                                           ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
     }
 }
