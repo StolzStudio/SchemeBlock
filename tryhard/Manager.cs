@@ -103,6 +103,10 @@ namespace tryhard
             foreach (Link link in Links)
             {
                 link.TrySetFocus(Coord);
+                if (link.isFocus)
+                {
+                    return;
+                }
             }
             Page.Invalidate();
         }
