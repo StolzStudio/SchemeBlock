@@ -160,6 +160,26 @@ namespace tryhard
             editorForm.Show();
         }
 
+        private void MainPage_DoubleClick(object sender, EventArgs e)
+        {
+            DrawManager.ClearLinksFocus();
+            DrawManager.ClearBlocksFocus();
+
+            Point ptr = PointToClient(Cursor.Position);
+            ptr.X -= MainPage.Location.X;
+            ptr.Y -= MainPage.Location.Y;
+
+            DrawManager.TrySetFocusInBlocks(ptr);
+            this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+
+            if (this.SelectBlockIndex != -1)
+            {
+                MessageBox.Show(this.SelectBlockIndex.ToString());
+                //здесь пиздатая функция твоя
+                //чтобы обратиться к выбранному блоку DrawManager.Blocks[SelectBlockIndex]
+            }
+        }
+
         public void FillObjectTreeView()
         {
             ObjectsTreeView.Nodes.Clear();
