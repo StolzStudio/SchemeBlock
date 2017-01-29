@@ -43,9 +43,6 @@ namespace tryhard
         {
             get
             {
-                //List<string> Categories = new List<string>();
-                //foreach (string Category in ObjectsInfo.Keys.Where(k => k != "InfoClasses"))
-                //    Categories.Add(Category);
                 return ObjectsInfo.Keys.Where(k => k != "InfoClasses");//Categories;
             }
         }
