@@ -10,6 +10,7 @@ namespace tryhard
     {
         public string Name { get; set; }
         public List<string> PossibleLink { get; set; }
+        public List<string> Properties { get; set; }
     }
 
     public abstract class BaseObject
