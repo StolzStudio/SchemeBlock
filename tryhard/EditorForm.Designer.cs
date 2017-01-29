@@ -38,14 +38,14 @@
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
             this.PropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.DrawPage = new tryhard.DrawPage();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -137,8 +137,24 @@
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 336);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 339);
             this.PropertiesGridView.TabIndex = 26;
+            // 
+            // NameCol
+            // 
+            this.NameCol.HeaderText = "Название";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameCol.Width = 120;
+            // 
+            // ValueCol
+            // 
+            this.ValueCol.HeaderText = "Значение";
+            this.ValueCol.Name = "ValueCol";
+            this.ValueCol.ReadOnly = true;
+            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ValueCol.Width = 120;
             // 
             // ObjectsTreeView
             // 
@@ -191,7 +207,7 @@
             // DrawPage
             // 
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(0, 26);
+            this.DrawPage.Location = new System.Drawing.Point(3, 29);
             this.DrawPage.Name = "DrawPage";
             this.DrawPage.Size = new System.Drawing.Size(1045, 660);
             this.DrawPage.TabIndex = 2;
@@ -199,22 +215,6 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            //
-            // NameCol
-            // 
-            this.NameCol.HeaderText = "Название";
-            this.NameCol.Name = "NameCol";
-            this.NameCol.ReadOnly = true;
-            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameCol.Width = 120;
-            // 
-            // ValueCol
-            // 
-            this.ValueCol.HeaderText = "Значение";
-            this.ValueCol.Name = "ValueCol";
-            this.ValueCol.ReadOnly = true;
-            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ValueCol.Width = 120;
             // 
             // EditorForm
             // 
