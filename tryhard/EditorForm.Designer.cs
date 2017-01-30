@@ -321,7 +321,7 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Название";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.ReadOnly = true; 
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn1.Width = 120;
             // 

@@ -132,11 +132,14 @@ namespace tryhard
                 {
                     ptr.X -= Block.BlockWidth / 2;
                     ptr.Y -= Block.BlockHeight / 2;
+                    ClickOffset = new Point(Block.BlockWidth / 2, Block.BlockHeight / 2);
                     DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
                 else
                 {
+                    ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                            ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                     if ((this.SelectBlockIndex != DrawManager.SelectedBlockIndex) && 
                         MetaDataManager.Instance.isPossibleLink("Complex", DrawManager.Blocks[this.SelectBlockIndex].ClassText,
                                                                            DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
@@ -151,11 +154,14 @@ namespace tryhard
                 DrawManager.TrySetFocusInLinks(ptr);
                 DrawManager.TrySetFocusInBlocks(ptr);               
                 this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                if (this.SelectBlockIndex != -1)
+                {
+                    ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                            ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
+                }
             }
             if (this.SelectBlockIndex != -1)
             {
-                ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
-                                        ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                 SelectTreeNode();
             }
         }
