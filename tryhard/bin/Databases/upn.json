@@ -1,75 +1,70 @@
 [
-	{
-		"Id": 0,
-		"Name": "UPN_250",
-		"FluidInput": 250,
-		"OilOutput": 250,
-		"WetGasOutput": 10,
-		"WaterOutput": 62,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 12,
-		"Volume": 20,
-		"Cost": 16200000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-
-	},
-	{
-		"Id": 1,
-		"Name": "UPN_500",
-		"FluidInput": 500,
-		"OilOutput": 290,
-		"WetGasOutput": 85,
-		"WaterOutput": 125,
-		"PeopleDemand": 1,
-		"ElectricityDemand": 0,
-		"Weight": 20,
-		"Volume": 30,
-		"Cost": 25200000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 2,
-		"Name": "UPN_1000",
-		"FluidInput": 1000,
-		"OilOutput": 580,
-		"WetGasOutput": 170,
-		"WaterOutput": 250,
-		"PeopleDemand": 1,
-		"ElectricityDemand": 0,
-		"Weight": 40,
-		"Volume": 50,
-		"Cost": 44100000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 3,
-		"Name": "UPN_3000",
-		"FluidInput": 3000,
-		"OilOutput": 1740,
-		"WetGasOutput": 510,
-		"WaterOutput": 750,
-		"PeopleDemand": 1,
-		"ElectricityDemand": 0,
-		"Weight": 50,
-		"Volume": 70,
-		"Cost": 63000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "FluidInput": 250,
+    "OilOutput": 250,
+    "WetGasOutput": 10,
+    "WaterOutput": 62,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 12,
+    "Volume": 20,
+    "Cost": 16200000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "UPN_250"
+  },
+  {
+    "FluidInput": 500,
+    "OilOutput": 290,
+    "WetGasOutput": 85,
+    "WaterOutput": 125,
+    "PeopleDemand": 1,
+    "ElectricityDemand": 0,
+    "Weight": 20,
+    "Volume": 30,
+    "Cost": 25200000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "UPN_500"
+  },
+  {
+    "FluidInput": 1000,
+    "OilOutput": 580,
+    "WetGasOutput": 170,
+    "WaterOutput": 250,
+    "PeopleDemand": 1,
+    "ElectricityDemand": 0,
+    "Weight": 40,
+    "Volume": 50,
+    "Cost": 44100000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "UPN_1000"
+  },
+  {
+    "FluidInput": 3000,
+    "OilOutput": 1740,
+    "WetGasOutput": 510,
+    "WaterOutput": 750,
+    "PeopleDemand": 1,
+    "ElectricityDemand": 0,
+    "Weight": 50,
+    "Volume": 70,
+    "Cost": 63000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 3,
+    "Name": "UPN_3000"
+  }
 ]

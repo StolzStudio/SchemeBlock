@@ -1,70 +1,66 @@
 [
-	{
-		"Id": 0,
-		"Name": "RTN-25",
-		"OilInput": 25000,
-		"OilOutput": 25000,
-		"OilVolume": 25000,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 3200,
-		"Volume": 3000,
-		"Cost": 50000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 1,
-		"Name": "RTN-50",
-		"OilInput": 50000,
-		"OilOutput": 50000,
-		"OilVolume": 50000,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 6400,
-		"Volume": 6000,
-		"Cost": 70000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 2,
-		"Name": "RTN-100",
-		"OilInput": 100000,
-		"OilOutput": 100000,
-		"OilVolume": 100000,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 9200,
-		"Volume": 7000,
-		"Cost": 150000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 4,
-		"Name": "RTN-10",
-		"OilInput": 10000,
-		"OilOutput": 10000,
-		"OilVolume": 10000,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 1000,
-		"Volume": 500,
-		"Cost": 20000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "OilInput": 25000,
+    "OilOutput": 25000,
+    "OilVolume": 25000,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 3200,
+    "Volume": 3000,
+    "Cost": 50000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "RTN-25"
+  },
+  {
+    "OilInput": 50000,
+    "OilOutput": 50000,
+    "OilVolume": 50000,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 6400,
+    "Volume": 6000,
+    "Cost": 70000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "RTN-50"
+  },
+  {
+    "OilInput": 100000,
+    "OilOutput": 100000,
+    "OilVolume": 100000,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 9200,
+    "Volume": 7000,
+    "Cost": 150000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "RTN-100"
+  },
+  {
+    "OilInput": 10000,
+    "OilOutput": 10000,
+    "OilVolume": 10000,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 1000,
+    "Volume": 500,
+    "Cost": 20000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 4,
+    "Name": "RTN-10"
+  }
 ]

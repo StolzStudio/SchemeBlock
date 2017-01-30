@@ -271,7 +271,7 @@ namespace tryhard
             FillPropertiesGridView("Complex", ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
 
-        private void MainForm_Closing(Object sender, FormClosingEventArgs e)
+        private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             MetaDataManager.Instance.SerializeMetaObjects();
         }

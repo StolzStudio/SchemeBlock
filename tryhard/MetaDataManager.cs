@@ -110,8 +110,10 @@ namespace tryhard
         {
             foreach (string ObjectName in Objects.Keys)
             {
-                string json = JsonConvert.SerializeObject(MetaDataManager.Instance.Objects[ObjectName]);
+                string json = JsonConvert.SerializeObject(MetaDataManager.Instance.Objects[ObjectName], Formatting.Indented);
                 StreamWriter sw = new StreamWriter(ObjFilesDir + ObjectName + ObjFileFormat);
+                sw.Write(json);
+                sw.Close();
             }
         }
 

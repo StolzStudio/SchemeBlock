@@ -1,22 +1,22 @@
 [
-	{
-		"Id": 0,
-		"Name": "field_0",
-		"FluidOutput": 30000,
-		"HolesAmount": 10,
-		"OilQualityId": 0,
-		"WaterInput": 38000,
-		"ReserveDaysRvp": 3,
-		"ReserveDaysRtn": 20
-	},
-	{
-		"Id": 1,
-		"Name": "field_1",
-		"FluidOutput": 10000,
-		"HolesAmount": 13,
-		"OilQualityId": 0,
-		"WaterInput": 500,
-		"ReserveDaysRvp": 3,
-		"ReserveDaysRtn": 20
-	}
+  {
+    "FluidOutput": 30000,
+    "HolesAmount": 10,
+    "OilQualityId": 0,
+    "WaterInput": 38000,
+    "ReserveDaysRvp": 3,
+    "ReserveDaysRtn": 20,
+    "Id": 0,
+    "Name": "field_0"
+  },
+  {
+    "FluidOutput": 10000,
+    "HolesAmount": 13,
+    "OilQualityId": 0,
+    "WaterInput": 500,
+    "ReserveDaysRvp": 3,
+    "ReserveDaysRtn": 20,
+    "Id": 1,
+    "Name": "field_1"
+  }
 ]

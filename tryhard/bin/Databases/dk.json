@@ -1,59 +1,56 @@
 [
-	{
-		"Id": 0,
-		"Name": "DK-24 d100",
-		"HolesAmount": 24,
-		"FluidInput": 2400,
-		"FluidOutput": 2400,
-		"WaterInput": 0,
-		"ReagentInput": 0,
-		"PeopleDemand": 2,
-		"ElectricityDemand": 0,
-		"Weight": 35,
-		"Volume": 20,
-		"Cost": 50000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 1,
-		"Name": "DK-10 d150",
-		"HolesAmount": 10,
-		"FluidInput": 3000,
-		"FluidOutput": 3000,
-		"WaterInput": 0,
-		"ReagentInput": 0,
-		"PeopleDemand": 2,
-		"ElectricityDemand": 0,
-		"Weight": 25,
-		"Volume": 22,
-		"Cost": 70000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 2,
-		"Name": "DK-5 d200",
-		"HolesAmount": 5,
-		"FluidInput": 3750,
-		"FluidOutput": 3750,
-		"WaterInput": 0,
-		"ReagentInput": 0,
-		"PeopleDemand": 2,
-		"ElectricityDemand": 0,
-		"Weight": 25,
-		"Volume": 25,
-		"Cost": 80000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "HolesAmount": 24,
+    "FluidInput": 2400,
+    "FluidOutput": 2400,
+    "WaterInput": 0,
+    "ReagentInput": 0,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 0,
+    "Weight": 35,
+    "Volume": 20,
+    "Cost": 50000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "DK-24 d100"
+  },
+  {
+    "HolesAmount": 10,
+    "FluidInput": 3000,
+    "FluidOutput": 3000,
+    "WaterInput": 0,
+    "ReagentInput": 0,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 0,
+    "Weight": 25,
+    "Volume": 22,
+    "Cost": 70000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "DK-10 d150"
+  },
+  {
+    "HolesAmount": 5,
+    "FluidInput": 3750,
+    "FluidOutput": 3750,
+    "WaterInput": 0,
+    "ReagentInput": 0,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 0,
+    "Weight": 25,
+    "Volume": 25,
+    "Cost": 80000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "DK-5 d200"
+  }
 ]

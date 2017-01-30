@@ -1,17 +1,16 @@
 [
-	{
-		"Id": 0,
-		"Name": "fu_0",
-		"GasInput": 100,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 30,
-		"Volume": 15,
-		"Cost": 7500000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "GasInput": 100,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 30,
+    "Volume": 15,
+    "Cost": 7500000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "fu_0"
+  }
 ]

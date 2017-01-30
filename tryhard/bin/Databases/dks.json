@@ -1,19 +1,18 @@
 [
-	{
-		"Id": 0,
-		"Name": "DK-24 d100",
-		"PressureGradient": 1,
-		"GasInput": 1400,
-		"GasOutput": 1400,
-		"PeopleDemand": 0,
-		"ElectricityDemand": 0,
-		"Weight": 150,
-		"Volume": 20,
-		"Cost": 10000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "PressureGradient": 1,
+    "GasInput": 1400,
+    "GasOutput": 1400,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 150,
+    "Volume": 20,
+    "Cost": 10000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "DK-24 d100"
+  }
 ]

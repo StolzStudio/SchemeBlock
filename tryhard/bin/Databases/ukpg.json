@@ -1,34 +1,32 @@
 [
-	{
-		"Id": 0,
-		"Name": "UKPG_0",
-		"WetGasInput": 500,
-		"GasOutput": 450,
-		"PeopleDemand": 2,
-		"ElectricityDemand": 750,
-		"Weight": 50,
-		"Volume": 120,
-		"Cost": 15000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	},
-	{
-		"Id": 1,
-		"Name": "UKPG_1",
-		"WetGasInput": 700,
-		"GasOutput": 650,
-		"PeopleDemand": 3,
-		"ElectricityDemand": 150,
-		"Weight": 70,
-		"Volume": 300,
-		"Cost": 29000000,
-		"Structure":
-		{
-			"Objects": [ ],
-			"Links": [ ]
-		}
-	}
+  {
+    "WetGasInput": 500,
+    "GasOutput": 450,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 750,
+    "Weight": 50,
+    "Volume": 120,
+    "Cost": 15000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "UKPG_0"
+  },
+  {
+    "WetGasInput": 700,
+    "GasOutput": 650,
+    "PeopleDemand": 3,
+    "ElectricityDemand": 150,
+    "Weight": 70,
+    "Volume": 300,
+    "Cost": 29000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "UKPG_1"
+  }
 ]
