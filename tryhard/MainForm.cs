@@ -270,5 +270,10 @@ namespace tryhard
                 ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
             FillPropertiesGridView("Complex", ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
+
+        private void MainForm_Closing(Object sender, FormClosingEventArgs e)
+        {
+            MetaDataManager.Instance.SerializeMetaObjects();
+        }
     }
 }

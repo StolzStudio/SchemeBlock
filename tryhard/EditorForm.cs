@@ -324,6 +324,8 @@ namespace tryhard
                         else
                             obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
                     }
+                GoBackButton.PerformClick();
+                GoBackButton.PerformClick();
             }
         }
 

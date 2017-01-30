@@ -299,6 +299,7 @@ namespace tryhard
             this.Name = "MainForm";
             this.Text = "Gaby";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler();
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);

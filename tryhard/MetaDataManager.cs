@@ -101,6 +101,20 @@ namespace tryhard
             return ObjectsInfo[ACategory].Select(k => k.Name);
         }
 
+        public void FillObjectStructure(string AType, int AId, List<Link> ALinks, List<Block> ABlocks)
+        {
+
+        }
+
+        public void SerializeMetaObjects()
+        {
+            foreach (string ObjectName in Objects.Keys)
+            {
+                string json = JsonConvert.SerializeObject(MetaDataManager.Instance.Objects[ObjectName]);
+                StreamWriter sw = new StreamWriter(ObjFilesDir + ObjectName + ObjFileFormat);
+            }
+        }
+
         private List<BaseObject> DeserializeMetaObjects(string AObjectName)
         {
             Dictionary<string, System.Type> t = new Dictionary<string, System.Type>() { { "bolt", typeof(Bolt) } };
