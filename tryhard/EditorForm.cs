@@ -74,6 +74,7 @@ namespace tryhard
                     node.ExpandAll();
                 }
             }
+            ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0];
         }
 
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
@@ -191,7 +192,7 @@ namespace tryhard
                 {
                     DrawManager.TrySetFocusInBlocks(ptr);
 
-                    if (DrawManager.SelectedBlockIndex == -1)
+                    if ((DrawManager.SelectedBlockIndex == -1)&&(ObjectsTreeView.SelectedNode != null))
                     {
                         ptr.X -= Block.BlockWidth / 2;
                         ptr.Y -= Block.BlockHeight / 2;
