@@ -10,9 +10,23 @@ using System.Windows.Forms;
 
 namespace tryhard
 {
+    public struct ObjectNameParam
+    {
+        public string Class { get; set; }
+        public string Model { get; set; }
+
+        public ObjectNameParam(string aClassName, string aModelName)
+        {
+            Class = aClassName;
+            Model = aModelName;
+        }
+    }
+
     public partial class EditorForm : Form
     {
         public bool isEditMode { get; set; } = false;
+        public bool isEditObject { get; set; } = false;
+        public ObjectNameParam EditObject = new ObjectNameParam(null, null); 
         public Manager DrawManager;
         private int SelectBlockIndex;
         private bool isMouseDown { get; set; }
@@ -287,6 +301,8 @@ namespace tryhard
                 {
                     SetMode(false);
                     AddNewObjectButton.Enabled = true;
+                    EditObjectButton.Enabled = true;
+                    isEditObject = false;
                     GoNextButton.Enabled = false;
                     (sender as Button).Enabled = false;
                     DrawManager.DeleteAllElements();
@@ -361,6 +377,21 @@ namespace tryhard
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
             FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text), 
                                            ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+        }
+
+        private void EditObjectButton_Click(object sender, EventArgs e)
+        {
+            isEditObject = true;
+            EditObject.Class = ObjectsTreeView.SelectedNode.Parent.Text;
+            EditObject.Model = ObjectsTreeView.SelectedNode.Text;
+            SetMode(true);
+            FillObjectTreeView();
+            GoNextButton.Enabled = true;
+            GoBackButton.Enabled = true;
+            (sender as Button).Enabled = false;
+            AddNewObjectButton.Enabled = false;
+
+            TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(EditObject.Class);
         }
     }
 }

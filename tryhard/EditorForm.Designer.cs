@@ -48,8 +48,9 @@
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
             this.WorkPanel = new System.Windows.Forms.Panel();
-            this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.DrawPage = new tryhard.DrawPage();
+            this.AddNewObjectButton = new System.Windows.Forms.Button();
+            this.EditObjectButton = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -252,19 +253,6 @@
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
             // 
-            // AddNewObjectButton
-            // 
-            this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddNewObjectButton.BackColor = System.Drawing.Color.White;
-            this.AddNewObjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AddNewObjectButton.Location = new System.Drawing.Point(1015, 1);
-            this.AddNewObjectButton.Name = "AddNewObjectButton";
-            this.AddNewObjectButton.Size = new System.Drawing.Size(243, 23);
-            this.AddNewObjectButton.TabIndex = 2;
-            this.AddNewObjectButton.Text = "Создать новый объект";
-            this.AddNewObjectButton.UseVisualStyleBackColor = false;
-            this.AddNewObjectButton.Click += new System.EventHandler(this.AddNewObjectButton_Click);
-            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -280,12 +268,38 @@
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
+            // AddNewObjectButton
+            // 
+            this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNewObjectButton.BackColor = System.Drawing.Color.White;
+            this.AddNewObjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddNewObjectButton.Location = new System.Drawing.Point(1116, 0);
+            this.AddNewObjectButton.Name = "AddNewObjectButton";
+            this.AddNewObjectButton.Size = new System.Drawing.Size(142, 23);
+            this.AddNewObjectButton.TabIndex = 2;
+            this.AddNewObjectButton.Text = "Создать новый объект";
+            this.AddNewObjectButton.UseVisualStyleBackColor = false;
+            this.AddNewObjectButton.Click += new System.EventHandler(this.AddNewObjectButton_Click);
+            // 
+            // EditObjectButton
+            // 
+            this.EditObjectButton.BackColor = System.Drawing.Color.White;
+            this.EditObjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditObjectButton.Location = new System.Drawing.Point(1016, 0);
+            this.EditObjectButton.Name = "EditObjectButton";
+            this.EditObjectButton.Size = new System.Drawing.Size(101, 23);
+            this.EditObjectButton.TabIndex = 29;
+            this.EditObjectButton.Text = "Редактировать";
+            this.EditObjectButton.UseVisualStyleBackColor = false;
+            this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.EditObjectButton);
             this.Controls.Add(this.GoNextButton);
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.WorkPanel);
@@ -335,5 +349,6 @@
         private System.Windows.Forms.Button GoBackButton;
         private System.Windows.Forms.Panel WorkPanel;
         private System.Windows.Forms.Button AddNewObjectButton;
+        private System.Windows.Forms.Button EditObjectButton;
     }
 }
