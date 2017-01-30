@@ -185,8 +185,8 @@
             // 
             // CreatingPanel
             // 
-            this.CreatingPanel.Controls.Add(this.OpenAnotherProjectLabel);
             this.CreatingPanel.Controls.Add(this.ProjectsListBox);
+            this.CreatingPanel.Controls.Add(this.OpenAnotherProjectLabel);
             this.CreatingPanel.Location = new System.Drawing.Point(0, 0);
             this.CreatingPanel.Name = "CreatingPanel";
             this.CreatingPanel.Size = new System.Drawing.Size(935, 517);

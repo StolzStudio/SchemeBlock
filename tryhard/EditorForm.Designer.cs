@@ -117,8 +117,6 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Controls.Add(this.GoNextButton);
-            this.panel.Controls.Add(this.GoBackButton);
             this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
@@ -133,7 +131,7 @@
             this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(127, 612);
+            this.GoNextButton.Location = new System.Drawing.Point(1136, 641);
             this.GoNextButton.Name = "GoNextButton";
             this.GoNextButton.Size = new System.Drawing.Size(122, 37);
             this.GoNextButton.TabIndex = 28;
@@ -147,7 +145,7 @@
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(6, 612);
+            this.GoBackButton.Location = new System.Drawing.Point(1014, 641);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(122, 37);
             this.GoBackButton.TabIndex = 27;
@@ -249,8 +247,9 @@
             this.WorkPanel.BackColor = System.Drawing.Color.White;
             this.WorkPanel.Location = new System.Drawing.Point(6, 29);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1004, 653);
+            this.WorkPanel.Size = new System.Drawing.Size(1252, 653);
             this.WorkPanel.TabIndex = 2;
+            this.WorkPanel.Visible = false;
             // 
             // AddNewObjectButton
             // 
@@ -286,6 +285,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.GoNextButton);
+            this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.AddNewObjectButton);
             this.Controls.Add(this.DrawPage);

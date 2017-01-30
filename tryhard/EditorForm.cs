@@ -278,7 +278,7 @@ namespace tryhard
                 }
             }
             isNextStep = false;
-            DrawPage.BringToFront();
+            WorkPanel.Visible = false;
             
             
             FillObjectTreeView();
@@ -292,6 +292,8 @@ namespace tryhard
             {
                 WorkPanel.Visible = true;
                 WorkPanel.BringToFront();
+                (sender as Button).BringToFront();
+                GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
                 //код заполнения гридов
