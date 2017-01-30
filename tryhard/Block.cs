@@ -19,18 +19,16 @@ namespace tryhard
         //
         //Properties
         //
-        public string ClassText   { get; set; }
-        public string ModelText   { get; set; }
-        public int    Count       { get; set; }
+        public string ClassText { get; set; }
+        public string ModelText { get; set; }
+        public int    Count     { get; set; }
+        public int    Index     { get; set; }
         //
         //Fields
         //
+        public Point Location;
         public bool isFocus = false;
-        public int  Index   = 0; 
-
-        public  Point Location;
         private Point TextLocation;
-        public  Point PointLocation;
 
         private int   TextOffsetX = 0;
         private int   TextOffsetY = 25;
@@ -75,11 +73,11 @@ namespace tryhard
             int offset = 2;
             if ((0 + offset <= Pnt.X) && ((Pnt.X + BlockWidth) <= (aPageSize.X - offset)))
             {
-                this.Location.X = Pnt.X;   
+                Location.X = Pnt.X;   
             }
             if ((0 + offset <= Pnt.Y) && ((Pnt.Y + BlockHeight) <= (aPageSize.Y - offset)))
             {
-                this.Location.Y = Pnt.Y;
+                Location.Y = Pnt.Y;
             }
             SetTextLocation();
         }
