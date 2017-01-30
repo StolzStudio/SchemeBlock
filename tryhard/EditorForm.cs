@@ -297,7 +297,6 @@ namespace tryhard
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
                 SaveDataGridView.Visible = false;
-                //код заполнения гридов
                 isNextStep = true;
 
                 if (isEditObject)
@@ -315,7 +314,16 @@ namespace tryhard
             }
             else
             {
-                //сохранение
+                foreach (DataGridViewRow row in SaveDataGridView.Rows)
+                    foreach (BaseObject obj in MetaDataManager.Instance.Objects[EditObject.Type].Where(ob => ob.Id == EditObject.Id))
+                    {
+                        if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int32))
+                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, Convert.ToInt32(row.Cells[1].Value));
+                        else if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int64))
+                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, Convert.ToInt64(row.Cells[1].Value));
+                        else
+                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
+                    }
             }
         }
 
