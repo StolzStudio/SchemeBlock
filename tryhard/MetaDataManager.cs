@@ -103,7 +103,28 @@ namespace tryhard
 
         public void FillObjectStructure(string AType, int AId, List<Link> ALinks, List<Block> ABlocks)
         {
-
+            ObjectsStructure structure = new ObjectsStructure();
+            List<StructuralObject> objects = new List<StructuralObject>();
+            List<LinkStructuralObject> links = new List<LinkStructuralObject>();
+            foreach (Block block in ABlocks)
+            {
+                StructuralObject obj = new StructuralObject();
+                obj.Id = block.Id;
+                obj.Index = block.Index;
+                obj.Type = block.ClassText;
+                obj.Coordinates = block.Location;
+                objects.Add(obj);
+            }
+            foreach (Link link in ALinks)
+            {
+                LinkStructuralObject _link = new LinkStructuralObject();
+                _link.FirstBlockIndex = link.FirstBlockIndex;
+                _link.SecondBlockIndex = link.SecondBlockIndex;
+                _link.LinkParameter = link.LinkParameter;
+                links.Add(_link);
+            }
+            foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
+                Object.GetType().GetProperty("Structure").SetValue();
         }
 
         public void SerializeMetaObjects()

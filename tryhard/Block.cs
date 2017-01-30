@@ -23,6 +23,7 @@ namespace tryhard
         public string ModelText { get; set; }
         public int    Count     { get; set; }
         public int    Index     { get; set; }
+        public int    Id        { get; set; }
         //
         //Fields
         //
@@ -36,13 +37,14 @@ namespace tryhard
         //
         //Constructor
         //
-        public Block(int aIndex, string aClass, string aModel, Point aLocation, Point aPageOffset)
+        public Block(int aIndex, string aClass, string aModel, int aId, Point aLocation, Point aPageOffset)
         {
             Index      = aIndex;
             ClassText  = aClass;
             ModelText  = aModel;
             Location   = aLocation;
             PageOffset = aPageOffset;
+            Id = aId;
 
             SetFocus();
 

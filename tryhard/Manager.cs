@@ -36,9 +36,9 @@ namespace tryhard
             block_counter = 1;
         }
 
-        public void AddBlock(Point Pos, string ABlockType, string ABlockModel)
+        public void AddBlock(Point Pos, string ABlockType, string ABlockModel, int ABlockId)
         {
-            Blocks.Add(block_counter, new Block(block_counter, ABlockType, ABlockModel, Pos, Page.Location));
+            Blocks.Add(block_counter, new Block(block_counter, ABlockType, ABlockModel, ABlockId, Pos, Page.Location));
 
             foreach (int Key in Blocks.Keys)
             {

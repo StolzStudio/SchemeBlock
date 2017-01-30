@@ -133,7 +133,8 @@ namespace tryhard
                     ptr.X -= Block.BlockWidth / 2;
                     ptr.Y -= Block.BlockHeight / 2;
                     ClickOffset = new Point(Block.BlockWidth / 2, Block.BlockHeight / 2);
-                    DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text);
+                    DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text,
+                                        (int)ObjectsTreeView.SelectedNode.Tag);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
                 else
