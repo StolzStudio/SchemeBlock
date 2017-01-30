@@ -26,7 +26,6 @@ namespace tryhard
         public Point ClickOffset { get; set; }
         private bool isNextStep;
 
-
         /* Methods */
 
         public MainForm()

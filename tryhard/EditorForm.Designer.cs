@@ -47,9 +47,9 @@
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
-            this.DrawPage = new tryhard.DrawPage();
             this.WorkPanel = new System.Windows.Forms.Panel();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
+            this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -241,30 +241,15 @@
             this.AvailableObjectsLabel.TabIndex = 18;
             this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
-            // DrawPage
-            // 
-            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(6, 29);
-            this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
-            this.DrawPage.TabIndex = 0;
-            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
-            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
-            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
-            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            // 
             // WorkPanel
             // 
             this.WorkPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Location = new System.Drawing.Point(6, 28);
+            this.WorkPanel.Location = new System.Drawing.Point(6, 29);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1003, 649);
+            this.WorkPanel.Size = new System.Drawing.Size(1004, 653);
             this.WorkPanel.TabIndex = 2;
             // 
             // AddNewObjectButton
@@ -279,6 +264,21 @@
             this.AddNewObjectButton.Text = "Создать новый объект";
             this.AddNewObjectButton.UseVisualStyleBackColor = false;
             this.AddNewObjectButton.Click += new System.EventHandler(this.AddNewObjectButton_Click);
+            // 
+            // DrawPage
+            // 
+            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DrawPage.BackColor = System.Drawing.Color.White;
+            this.DrawPage.Location = new System.Drawing.Point(6, 29);
+            this.DrawPage.Name = "DrawPage";
+            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
+            this.DrawPage.TabIndex = 0;
+            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
+            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
+            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
+            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
             // EditorForm
             // 

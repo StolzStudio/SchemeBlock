@@ -18,6 +18,8 @@ namespace tryhard
         private bool isMouseDown { get; set; }
         public Point ClickOffset { get; set; }
         private bool isNextStep;
+        private List<string> ProgressStep = new List<string>() { "Start", "First", "Second", "Third" };
+        private int ProgressVal = 0;
 
         public EditorForm()
         {
@@ -31,6 +33,7 @@ namespace tryhard
             SetMode(false);
             GoNextButton.Enabled = false;
 
+            WorkPanel.Visible = false;
             DrawPage.BringToFront();
         }
 
@@ -72,19 +75,6 @@ namespace tryhard
                 }
             }
         }
-
-        private void SetMode(bool AEditMode)
-        {
-            isEditMode = AEditMode;
-            if (isEditMode)
-            {
-                ToolStrip.Enabled = true;
-            } else
-            {
-                ToolStrip.Enabled = false;
-            }
-        }
-
 
         private void FillCategoryStripComboBox(string ACategoryPriopity = null)
         {
@@ -144,6 +134,41 @@ namespace tryhard
                         }
                     }
                 }
+            }
+        }
+
+        private void SetProgressEnvironment(string AProgressStep)
+        {
+            if (ProgressVal > 3)
+                ProgressVal = 0;
+            switch (ProgressStep[ProgressVal])
+            {
+                case "Start":
+                    DrawPage.Visible = true;
+                    WorkPanel.Visible = false;
+                    DrawPage.BringToFront();
+                    GoBackButton.Enabled = false;
+                    isNextStep = false;
+                    GoNextButton.Text = "next";
+                    break;
+                case "First":
+                    DrawPage.Visible = true;
+                    WorkPanel.Visible = false;
+                    DrawPage.BringToFront();
+                    GoBackButton.Enabled = true;
+                    GoNextButton.Enabled = true;
+                    isNextStep = false;
+                    GoNextButton.Text = "next";
+                    break;
+                case "Second":
+                    DrawPage.Visible = false;
+                    WorkPanel.Visible = true;
+                    GoBackButton.Enabled = false;
+                    GoNextButton.Enabled = true;
+                    WorkPanel.BringToFront();
+                    break;
+                case "Third":
+                    break;
             }
         }
 
@@ -240,9 +265,12 @@ namespace tryhard
 
         private void GoBackButton_Click(object sender, EventArgs e)
         {
+            if (isEditMode)
+                isEditMode = false;
             DrawPage.BringToFront();
             GoBackButton.Enabled = false;
             isNextStep = false;
+            WorkPanel.Visible = false;
             GoNextButton.Text = "next";
         }
 
@@ -250,6 +278,7 @@ namespace tryhard
         {
             if (!isNextStep)
             {
+                WorkPanel.Visible = true;
                 WorkPanel.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
@@ -262,10 +291,24 @@ namespace tryhard
             }
         }
 
+        private void SetMode(bool AEditMode)
+        {
+            isEditMode = AEditMode;
+            if (isEditMode)
+            {
+                ToolStrip.Enabled = true;
+            }
+            else
+            {
+                ToolStrip.Enabled = false;
+            }
+        }
+
         private void AddNewObjectButton_Click(object sender, EventArgs e)
         {
             SetMode(true);
             FillObjectTreeView();
+            GoNextButton.Enabled= true;
             (sender as Button).Enabled = false;
         }
 
