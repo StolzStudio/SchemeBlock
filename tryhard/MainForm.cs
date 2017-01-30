@@ -31,6 +31,7 @@ namespace tryhard
         public MainForm()
         {
             MetaDataManager.Instance.Initialize("../Databases/objectsinfo.json");
+            FormsManager.Instance.Initialize(this);
             InitializeComponent();
             FillObjectTreeView();
 
@@ -176,8 +177,8 @@ namespace tryhard
 
         private void EditorMenuItem_Click(object sender, EventArgs e)
         {
-            EditorForm editorForm = new EditorForm();
-            editorForm.Show();
+            FormsManager.Instance.AddEditForm(new EditorForm());
+            FormsManager.Instance.EditForms.Last().Show();
         }
 
         private void MainPage_DoubleClick(object sender, EventArgs e)
@@ -194,10 +195,8 @@ namespace tryhard
             
             if (this.SelectBlockIndex != -1)
             {
-                EditorForm editorForm = new EditorForm();
-                editorForm.Show();
-                //здесь пиздатая функция твоя
-                //чтобы обратиться к выбранному блоку DrawManager.Blocks[SelectBlockIndex]
+                //FormsManager.Instance.AddEditForm(new EditorForm());
+                //FormsManager.Instance.EditForms.Last().Show();
             }
         }
 

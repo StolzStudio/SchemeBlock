@@ -56,6 +56,7 @@
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.SuspendLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditForm_Closing);
             // 
             // ToolStrip
             // 

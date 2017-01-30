@@ -43,7 +43,17 @@ namespace tryhard
             FillStripControls(AObjectCategory, AObjectType);
         }
 
-        private void FillObjectTreeView()
+        public void UpdateViewControls()
+        {
+            if (isEditMode)
+            {
+                FillCategoryStripComboBox((string)CategoryStripComboBox.SelectedItem);
+            }
+            else
+                FillObjectTreeView();
+        }
+
+        public void FillObjectTreeView()
         {
             ObjectsTreeView.Nodes.Clear();
             IEnumerable<string> Categories;
@@ -171,6 +181,11 @@ namespace tryhard
                 case "Third":
                     break;
             }
+        }
+
+        private void EditForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            FormsManager.Instance.DeleteEditForm(this);
         }
 
         private void DrawPage_MouseDown(object sender, MouseEventArgs e)
