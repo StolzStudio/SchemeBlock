@@ -286,6 +286,8 @@ namespace tryhard
                 {
                     SetMode(false);
                     AddNewObjectButton.Enabled = true;
+                    EditObjectButton.Enabled = true;
+                    isEditObject = false;
                     GoNextButton.Enabled = false;
                     (sender as Button).Enabled = false;
                     DrawManager.DeleteAllElements();
