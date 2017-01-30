@@ -37,7 +37,7 @@ namespace tryhard
             DrawPage.BringToFront();
         }
 
-        public EditorForm(string AObjectCategory, string AObjectType)
+        public EditorForm(string AObjectCategory, string AObjectType, string AId)
         {
             InitializeComponent();
             FillStripControls(AObjectCategory, AObjectType);

@@ -194,6 +194,8 @@ namespace tryhard
             
             if (this.SelectBlockIndex != -1)
             {
+                EditorForm editorForm = new EditorForm();
+                editorForm.Show();
                 //здесь пиздатая функция твоя
                 //чтобы обратиться к выбранному блоку DrawManager.Blocks[SelectBlockIndex]
             }
