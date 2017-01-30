@@ -7,7 +7,11 @@
 		"Weight": 3,
 		"Volume": 2,
 		"Cost": 5,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 1,
@@ -17,7 +21,11 @@
 		"Weight": 1,
 		"Volume": 1,
 		"Cost": 2,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 2,
@@ -27,6 +35,10 @@
 		"Weight": 2,
 		"Volume": 1,
 		"Cost": 3,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	}
 ]

@@ -10,7 +10,11 @@
 		"Weight": 3200,
 		"Volume": 3000,
 		"Cost": 50000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 1,
@@ -23,7 +27,11 @@
 		"Weight": 6400,
 		"Volume": 6000,
 		"Cost": 70000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 2,
@@ -36,7 +44,11 @@
 		"Weight": 9200,
 		"Volume": 7000,
 		"Cost": 150000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 4,
@@ -49,6 +61,10 @@
 		"Weight": 1000,
 		"Volume": 500,
 		"Cost": 20000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	}
 ]

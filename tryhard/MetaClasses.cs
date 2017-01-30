@@ -14,6 +14,12 @@ namespace tryhard
         public List<string> Properties { get; set; }
     }
 
+    public class ObjectsStructure
+    {
+        public List<StructuralObject> Objects { get; set; }
+        public List<LinkStructuralObject> Links { get; set; }
+    }
+
     public class LinkStructuralObject
     {
         public int FirstBlockIndex { get; set; }
@@ -24,9 +30,9 @@ namespace tryhard
     public class StructuralObject
     {
         public int Id { get; set; }
+        public int Index { get; set; }
         public string Type { get; set; }
         public Point Coordinates { get; set; }
-        public List<LinkStructuralObject> Links { get; set; }
     }
 
     public abstract class BaseObject
@@ -40,7 +46,7 @@ namespace tryhard
         public long Weight { get; set; }
         public long Volume { get; set; }
         public long Cost { get; set; }
-        public List<StructuralObject> Structure { get; set; }
+        public ObjectsStructure Structure { get; set; }
     }
 
     public class FieldParameters : BaseObject

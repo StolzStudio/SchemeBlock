@@ -8,6 +8,10 @@
 		"Weight": 5,
 		"Volume": 10,
 		"Cost": 150000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	}
 ]

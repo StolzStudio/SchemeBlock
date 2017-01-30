@@ -8,7 +8,11 @@
 		"Weight": 15000000,
 		"Volume": 200000,
 		"Cost": 3000000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	},
 	{
 		"Id": 1,
@@ -19,6 +23,10 @@
 		"Weight": 25000000,
 		"Volume": 400000,
 		"Cost": 7000000000,
-		"Structure": []
+		"Structure":
+		{
+			"Objects": [ ],
+			"Links": [ ]
+		}
 	}
 ]
