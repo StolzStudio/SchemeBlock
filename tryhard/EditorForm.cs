@@ -267,12 +267,23 @@ namespace tryhard
         private void GoBackButton_Click(object sender, EventArgs e)
         {
             if (isEditMode)
-                isEditMode = false;
-            DrawPage.BringToFront();
-            GoBackButton.Enabled = false;
+            {
+                if (!isNextStep)
+                {
+                    SetMode(false);
+                    AddNewObjectButton.Enabled = true;
+                    GoNextButton.Enabled = false;
+                    (sender as Button).Enabled = false;
+                    DrawManager.DeleteAllElements();
+                }
+            }
             isNextStep = false;
-            WorkPanel.Visible = false;
+            DrawPage.BringToFront();
+            
+            
+            FillObjectTreeView();
             GoNextButton.Text = "next";
+            DrawPage.Invalidate();
         }
 
         private void GoNextButton_Click(object sender, EventArgs e)
@@ -309,7 +320,8 @@ namespace tryhard
         {
             SetMode(true);
             FillObjectTreeView();
-            GoNextButton.Enabled= true;
+            GoNextButton.Enabled = true;
+            GoBackButton.Enabled = true;
             (sender as Button).Enabled = false;
         }
 
