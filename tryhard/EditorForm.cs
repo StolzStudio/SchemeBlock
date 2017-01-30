@@ -14,11 +14,13 @@ namespace tryhard
     {
         public string Class { get; set; }
         public string Model { get; set; }
+        public int Id { get; set; }
 
-        public ObjectNameParam(string aClassName, string aModelName)
+        public ObjectNameParam(string aClassName, string aModelName, int aId)
         {
             Class = aClassName;
             Model = aModelName;
+            Id = aId;
         }
     }
 
@@ -26,7 +28,7 @@ namespace tryhard
     {
         public bool isEditMode { get; set; } = false;
         public bool isEditObject { get; set; } = false;
-        public ObjectNameParam EditObject = new ObjectNameParam(null, null); 
+        public ObjectNameParam EditObject = new ObjectNameParam(); 
         public Manager DrawManager;
         private int SelectBlockIndex;
         private bool isMouseDown { get; set; }
@@ -327,8 +329,22 @@ namespace tryhard
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
+                SaveDataGridView.Visible = false;
                 //код заполнения гридов
                 isNextStep = true;
+
+                if (isEditObject)
+                {
+                    SaveDataGridView.Visible = true;
+                    SaveDataGridView.Rows.Clear();
+                    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo["Equipment"].Where(obj => obj.Name == EditObject.Class))
+                        foreach (string APropertyName in AObjectInfo.Properties)
+                        {
+                            IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[EditObject.Class].Where(obj => obj.Id == EditObject.Id);
+                            foreach (BaseObject obj in base_object)
+                                SaveDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                        }
+                }
             }
             else
             {
@@ -384,6 +400,7 @@ namespace tryhard
             isEditObject = true;
             EditObject.Class = ObjectsTreeView.SelectedNode.Parent.Text;
             EditObject.Model = ObjectsTreeView.SelectedNode.Text;
+            EditObject.Id = (int)ObjectsTreeView.SelectedNode.Tag;
             SetMode(true);
             FillObjectTreeView();
             GoNextButton.Enabled = true;
@@ -392,6 +409,7 @@ namespace tryhard
             AddNewObjectButton.Enabled = false;
 
             TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(EditObject.Class);
+            ToolStrip.Enabled = false;
         }
     }
 }
