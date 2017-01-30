@@ -192,10 +192,9 @@ namespace tryhard
 
             DrawManager.TrySetFocusInBlocks(ptr);
             this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-            Console.WriteLine(this.SelectBlockIndex.ToString());
+            
             if (this.SelectBlockIndex != -1)
             {
-                Console.WriteLine(this.SelectBlockIndex.ToString());
                 //здесь пиздатая функция твоя
                 //чтобы обратиться к выбранному блоку DrawManager.Blocks[SelectBlockIndex]
             }

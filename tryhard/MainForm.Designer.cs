@@ -277,6 +277,7 @@ namespace tryhard
             this.MainPage.Size = new System.Drawing.Size(1006, 650);
             this.MainPage.TabIndex = 22;
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
@@ -287,10 +288,10 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.MainPage);
             this.Controls.Add(this.MenuStrip);
+            this.Controls.Add(this.WorkPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
