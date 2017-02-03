@@ -270,6 +270,7 @@ namespace tryhard
             if (ObjectsTreeView.SelectedNode.Parent == null)
                 ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
             FillPropertiesGridView("Complex", ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+            DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)

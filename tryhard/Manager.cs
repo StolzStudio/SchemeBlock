@@ -16,7 +16,6 @@ namespace tryhard
 
         public Dictionary<int, Block> Blocks;
         public List<Link> Links;
-        public List<string> ItemsIdList;
 
         private DrawPage Page;
         private int block_counter;
@@ -27,7 +26,6 @@ namespace tryhard
 
             Blocks = new Dictionary<int, Block>();
             Links = new List<Link>();
-            ItemsIdList = new List<string>();
 
             isHaveSelectedBlock = false;
             isOilFieldAdd = false;
@@ -48,6 +46,13 @@ namespace tryhard
             SelectedBlockIndex = block_counter;
             block_counter++;
             
+        }
+
+        public void LoadStructureOfObject(string AType, int AId)
+        {
+            DeleteAllElements();
+            MetaDataManager.Instance.FillDrawingObjectStructure(AType, AId, ref Links, ref Blocks);
+            Page.Invalidate();
         }
 
         public void ChangeSelectBlock()

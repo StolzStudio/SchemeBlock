@@ -101,20 +101,21 @@ namespace tryhard
             return ObjectsInfo[ACategory].Select(k => k.Name);
         }
 
-        public void FillObjectStructure(string AType, int AId, List<Link> ALinks, List<Block> ABlocks)
+        public void FillObjectStructure(string AType, int AId, List<Link> ALinks, Dictionary<int, Block> ABlocks)
         {
             ObjectsStructure structure = new ObjectsStructure();
             List<StructuralObject> objects = new List<StructuralObject>();
             List<LinkStructuralObject> links = new List<LinkStructuralObject>();
-            foreach (Block block in ABlocks)
+            foreach (int Key in ABlocks.Keys)
             {
                 StructuralObject obj = new StructuralObject();
-                obj.Id = block.Id;
-                obj.Index = block.Index;
-                obj.Type = block.ClassText;
-                obj.Coordinates = block.Location;
+                obj.Id = ABlocks[Key].Id;
+                obj.Index = ABlocks[Key].Index;
+                obj.Type = ABlocks[Key].ClassText;
+                obj.Coordinates = ABlocks[Key].Location;
                 objects.Add(obj);
             }
+            structure.Objects = objects;
             foreach (Link link in ALinks)
             {
                 LinkStructuralObject _link = new LinkStructuralObject();
@@ -123,8 +124,21 @@ namespace tryhard
                 _link.LinkParameter = link.LinkParameter;
                 links.Add(_link);
             }
+            structure.Links = links;
             foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
-                Object.GetType().GetProperty("Structure").SetValue();
+                Object.GetType().GetProperty("Structure").SetValue(Object, structure);
+        }
+
+        public void FillDrawingObjectStructure(string AType, int AId, 
+                                               ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks)
+        {
+            ObjectsStructure ObjectStructure = new ObjectsStructure();
+            foreach (BaseObject Object in MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId))
+                ObjectStructure = (ObjectsStructure)Object.GetType().GetProperty("Structure").GetValue(Object);
+            foreach (LinkStructuralObject link in ObjectStructure.Links)
+                ALinks.Add(new Link(link));
+            foreach (StructuralObject structuralObject in ObjectStructure.Objects)
+                ABlocks.Add(structuralObject.Index, new Block(structuralObject));
         }
 
         public void SerializeMetaObjects()
@@ -136,6 +150,14 @@ namespace tryhard
                 sw.Write(json);
                 sw.Close();
             }
+        }
+
+        public BaseObject GetBaseObjectOfId(string AType, int AId)
+        {
+            object resultObject = new object();
+            foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
+                resultObject = Object;
+            return (BaseObject)resultObject;
         }
 
         private List<BaseObject> DeserializeMetaObjects(string AObjectName)

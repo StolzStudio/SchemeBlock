@@ -325,6 +325,8 @@ namespace tryhard
                         else
                             obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
                     }
+                MetaDataManager.Instance.FillObjectStructure(EditObject.Type, EditObject.Id,
+                                                             DrawManager.Links, DrawManager.Blocks);
                 GoBackButton.PerformClick();
                 GoBackButton.PerformClick();
             }

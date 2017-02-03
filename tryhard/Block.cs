@@ -50,6 +50,15 @@ namespace tryhard
 
             SetTextLocation();
         }
+
+        public Block(StructuralObject AStructuralObject)
+        {
+            Index = AStructuralObject.Index;
+            Id = AStructuralObject.Id;
+            ClassText = AStructuralObject.Type;
+            ModelText = MetaDataManager.Instance.GetBaseObjectOfId(ClassText, Id).Name;
+            Location = AStructuralObject.Coordinates;
+        }
         //
         //Work with location
         //

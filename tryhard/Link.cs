@@ -38,6 +38,16 @@ namespace tryhard
             SecondBlockIndex = ASecondBlockIndex;
             isFocus = false;
         }
+        public Link(LinkStructuralObject ALink)
+        {
+            Points = new Point[4];
+            ArrowColor = Color.DarkSlateBlue;
+            SelectArrowColor = Color.IndianRed;
+            FirstBlockIndex = ALink.FirstBlockIndex;
+            SecondBlockIndex = ALink.SecondBlockIndex;
+            LinkParameter = ALink.LinkParameter;
+            isFocus = false;
+        }
         //
         //take point location
         //
