@@ -212,7 +212,7 @@ namespace tryhard
                                                                          DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
                             {
                                 DrawManager.ClearLinksFocus();
-                                DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
+                                //DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
                             }
                         }
                     }
@@ -371,9 +371,20 @@ namespace tryhard
             if (ObjectsTreeView.SelectedNode.Nodes.Count != 0)
                 if (ObjectsTreeView.SelectedNode.Parent == null)
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
-            FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text), 
+            FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text),
                                            ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
-            DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+            if (!isEditMode)
+                DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+        }
+
+        private void ShowLinkPanel()
+        {
+            //
+        }
+
+        private void ShowPropertiesGridView()
+        {
+            PropertiesGridView.BringToFront();
         }
 
         private void EditObjectButton_Click(object sender, EventArgs e)

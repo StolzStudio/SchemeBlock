@@ -52,7 +52,44 @@
     "Volume": 400000,
     "Cost": 7000000000,
     "Structure": {
-      "Objects": [],
+      "Objects": [
+        {
+          "Id": 0,
+          "Index": 6,
+          "Type": "nnpv",
+          "Coordinates": "629, 197"
+        },
+        {
+          "Id": 0,
+          "Index": 7,
+          "Type": "nnpv",
+          "Coordinates": "708, 399"
+        },
+        {
+          "Id": 2,
+          "Index": 8,
+          "Type": "nnpv",
+          "Coordinates": "268, 284"
+        },
+        {
+          "Id": 2,
+          "Index": 9,
+          "Type": "nnpv",
+          "Coordinates": "365, 149"
+        },
+        {
+          "Id": 1,
+          "Index": 10,
+          "Type": "nnpv",
+          "Coordinates": "770, 176"
+        },
+        {
+          "Id": 3,
+          "Index": 11,
+          "Type": "nnpv",
+          "Coordinates": "436, 371"
+        }
+      ],
       "Links": []
     },
     "Id": 1,

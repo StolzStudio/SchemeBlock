@@ -17,7 +17,8 @@ namespace tryhard
         //
         public int FirstBlockIndex { get; set; }
         public int SecondBlockIndex { get; set; }
-        public string LinkParameter { get; set; }
+        public string LinkParameter { get; set; } = "";
+        public int LinkParameterValue { get; set; }
         public bool isFocus { get; set; }
         //
         //Fields
@@ -29,7 +30,8 @@ namespace tryhard
         //
         //Methods
         //
-        public Link(int AFirstBlockIndex, int ASecondBlockIndex)
+
+        public Link(int AFirstBlockIndex, int ASecondBlockIndex, string ALinkParameter, int ALinkParameterValue)
         {
             Points = new Point[4];
             ArrowColor = Color.DarkSlateBlue;
@@ -37,7 +39,10 @@ namespace tryhard
             FirstBlockIndex = AFirstBlockIndex;
             SecondBlockIndex = ASecondBlockIndex;
             isFocus = false;
+            LinkParameter = ALinkParameter;
+            LinkParameterValue = ALinkParameterValue;
         }
+
         public Link(LinkStructuralObject ALink)
         {
             Points = new Point[4];

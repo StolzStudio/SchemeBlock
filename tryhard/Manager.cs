@@ -51,6 +51,8 @@ namespace tryhard
         {
             DeleteAllElements();
             MetaDataManager.Instance.FillDrawingObjectStructure(AType, AId, ref Links, ref Blocks);
+            if (Blocks.Count != 0)
+                this.block_counter = Blocks.Max(block => block.Value.Index) + 1;
             Page.Invalidate();
         }
 
@@ -85,6 +87,24 @@ namespace tryhard
             Page.Invalidate();
         }
 
+        public Link GetFocusedLink()
+        {
+            for (int i = 0; i < Links.Count; i++)
+                if (Links[i].isFocus)
+                    return Links[i];
+            return null;
+        }
+
+        public void UpdateFocusedLink(string ALinkParaneter, int ALinkParaneterValue)
+        {
+            for (int i = 0; i < Links.Count; i++)
+                if (Links[i].isFocus)
+                {
+                    Links[i].LinkParameter = ALinkParaneter;
+                    Links[i].LinkParameterValue = ALinkParaneterValue;
+                }
+        }
+
         public void ClearBlocksFocus()
         {
             foreach (int key in Blocks.Keys)
@@ -94,19 +114,6 @@ namespace tryhard
 
             isHaveSelectedBlock = false;
             SelectedBlockIndex = -1;
-            Page.Invalidate();
-        }
-
-        public void TrySetFocusInLinks(Point Coord)
-        {
-            foreach (Link link in Links)
-            {
-                link.TrySetFocus(Coord);
-                if (link.isFocus)
-                {
-                    return;
-                }
-            }
             Page.Invalidate();
         }
 
@@ -166,7 +173,7 @@ namespace tryhard
             }
         }
 
-        public void TrySetFocusInBlocks(Point Coord)
+        public bool TrySetFocusInBlocks(Point Coord)
         {
             SelectedBlockIndex = -1;
             foreach (int Key in Blocks.Keys)
@@ -176,8 +183,25 @@ namespace tryhard
                     isHaveSelectedBlock = true;
                     ClearLinksFocus();
                     SelectedBlockIndex = Key;
+                    return true;
                 }
             }
+            return false;
+        }
+
+        public bool TrySetFocusInLinks(Point Coord)
+        {
+            foreach (Link link in Links)
+            {
+                link.TrySetFocus(Coord);
+                if (link.isFocus)
+                {
+                    Page.Invalidate();
+                    return true;
+                }
+            }
+            Page.Invalidate();
+            return false;
         }
     }
 }

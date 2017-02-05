@@ -25,6 +25,7 @@ namespace tryhard
         private bool isMouseDown { get; set; }
         public Point ClickOffset { get; set; }
         private bool isNextStep;
+        private int MarginInLinkPanel = 12;
 
         /* Methods */
 
@@ -137,7 +138,7 @@ namespace tryhard
                                         (int)ObjectsTreeView.SelectedNode.Tag);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
-                else
+                else if (this.SelectBlockIndex != -1)
                 {
                     ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
                                             ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
@@ -145,15 +146,27 @@ namespace tryhard
                         MetaDataManager.Instance.isPossibleLink("Complex", DrawManager.Blocks[this.SelectBlockIndex].ClassText,
                                                                            DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
                     {
-                        DrawManager.ClearLinksFocus();
-                        DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
+                        AddLink();
+                        DrawManager.ClearBlocksFocus();
+                        this.SelectBlockIndex = -1;
+                        DrawManager.Links[DrawManager.Links.Count - 1].isFocus = true;
+                        ShowLinkPanel();
                     }
                 }
             }
             else
-            {
-                DrawManager.TrySetFocusInLinks(ptr);
-                DrawManager.TrySetFocusInBlocks(ptr);               
+            {            
+                if (DrawManager.TrySetFocusInBlocks(ptr))
+                {
+                    ShowPropertiesPanel();
+                } else if (DrawManager.TrySetFocusInLinks(ptr))
+                {
+                    ShowLinkPanel();
+                } else
+                {
+                    ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
+                    ShowPropertiesPanel();
+                }
                 this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 if (this.SelectBlockIndex != -1)
                 {
@@ -186,6 +199,105 @@ namespace tryhard
         {
             FormsManager.Instance.AddEditForm(new EditorForm());
             FormsManager.Instance.EditForms.Last().Show();
+        }
+
+        private void ShowLinkPanel()
+        {
+            Link selectedLink = DrawManager.GetFocusedLink();
+            FillLinkPanel(selectedLink);
+            LinkInfoPanel.BringToFront();
+        }
+
+        private void AddLink()
+        {
+            DrawManager.ClearLinksFocus();
+            List<string> LinkableParameters =
+                MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                               DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText);
+            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                                               DrawManager.Blocks[this.SelectBlockIndex].Id);
+            
+            Link newLink = new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex, LinkableParameters[0],
+                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Output").GetValue(baseObject)));
+            DrawManager.AddLink(newLink);
+            FillLinkPanel(newLink);
+        }
+
+        private void FillLinkPanel(Link ALink)
+        {
+            List<string> LinkableParameters = 
+                MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
+                                                               DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
+            LinkInfoPanel.Controls.Clear();
+            LinkInfoPanel.Tag = 0;
+            for (int i = 0; i < LinkableParameters.Count; i++)
+            {
+                RadioButton radioBtn = new System.Windows.Forms.RadioButton();
+                radioBtn.AutoSize = true;
+                radioBtn.Location = new System.Drawing.Point(MarginInLinkPanel, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
+                radioBtn.Name = "radioButton" + i;
+                radioBtn.Size = new System.Drawing.Size(85, 17);
+                radioBtn.TabIndex = i;
+                radioBtn.TabStop = true;
+                radioBtn.Text = LinkableParameters[i];
+                radioBtn.Tag = i;
+                radioBtn.UseVisualStyleBackColor = true;
+                if (ALink.LinkParameter == LinkableParameters[i])
+                {
+                    radioBtn.Checked = true;
+                    LinkInfoPanel.Tag = i;
+                }
+                radioBtn.CheckedChanged += new System.EventHandler(radioButton_CheckedChanged);
+                LinkInfoPanel.Controls.Add(radioBtn);
+
+                NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
+                numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
+                numericalUpDown.Maximum = new decimal(new int[] {
+                1000000,
+                0,
+                0,
+                0});
+                numericalUpDown.Minimum = new decimal(new int[] {
+                1,
+                0,
+                0,
+                0});
+                numericalUpDown.Name = "numericUpDown" + i;
+                numericalUpDown.Size = new System.Drawing.Size(67, 20);
+                numericalUpDown.TabIndex = 2;
+                numericalUpDown.Tag = i;
+                numericalUpDown.ValueChanged+= new System.EventHandler(numericalUpDown_ValueChanged);
+                numericalUpDown.Value = new decimal(new int[] {
+                1,
+                0,
+                0,
+                0});
+                LinkInfoPanel.Controls.Add(numericalUpDown);
+            }
+            BaseObject selectObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText, 
+                                                                                 DrawManager.Blocks[ALink.FirstBlockIndex].Id);
+            (LinkInfoPanel.Controls[1] as NumericUpDown).Value = Convert.ToDecimal(ALink.LinkParameterValue);
+        }
+
+        private void numericalUpDown_ValueChanged(Object sender, EventArgs e)
+        {
+            UpdateLinkParameter((int)(sender as NumericUpDown).Tag);
+        }
+
+        private void radioButton_CheckedChanged(Object sender, EventArgs e)
+        {
+            UpdateLinkParameter((int)(sender as RadioButton).Tag);
+        }
+
+        private void UpdateLinkParameter(int AParameterIndex)
+        {
+            DrawManager.UpdateFocusedLink((LinkInfoPanel.Controls[AParameterIndex * 2] as RadioButton).Text,
+                                           Decimal.ToInt32((LinkInfoPanel.Controls[AParameterIndex * 2 + 1] as NumericUpDown).Value));
+        }
+
+        private void ShowPropertiesPanel()
+        {
+            PropertiesGridView.BringToFront();
         }
 
         private void MainPage_DoubleClick(object sender, EventArgs e)
@@ -239,6 +351,7 @@ namespace tryhard
                     foreach (BaseObject obj in base_object)
                         PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
                 }
+            ShowPropertiesPanel();
         }
 
         private void GoBackButton_Click(object sender, EventArgs e)
@@ -275,6 +388,11 @@ namespace tryhard
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             MetaDataManager.Instance.SerializeMetaObjects();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

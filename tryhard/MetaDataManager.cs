@@ -129,6 +129,26 @@ namespace tryhard
                 Object.GetType().GetProperty("Structure").SetValue(Object, structure);
         }
 
+        public List<string> GetLinkableParameters(string AFirstType, string ASecondType)
+        {
+            List<string> parametersFirstType = GetParametersByParamenterType(GetCateroryNameByType(AFirstType), AFirstType, "Output");
+            List<string> parametersSecondType = GetParametersByParamenterType(GetCateroryNameByType(ASecondType), ASecondType, "Input");
+            return parametersSecondType;
+        }
+
+        public List<string> GetParametersByParamenterType(string AObjectCategory, string AObjectType, string AParamenterType)
+        {
+            List<string> parameters = new List<string>();
+            foreach (MetaObjectInfo ObjectInfo in ObjectsInfo[AObjectCategory].Where(obj => obj.Name == AObjectType))
+                foreach (string Property in ObjectInfo.Properties)
+                {
+                    int matchPos = 0;
+                    if ((matchPos = Property.IndexOf(AParamenterType)) != -1)
+                        parameters.Add(Property.Substring(0, Property.Length - AParamenterType.Length));
+                }
+            return parameters;
+        }
+
         public void FillDrawingObjectStructure(string AType, int AId, 
                                                ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks)
         {
