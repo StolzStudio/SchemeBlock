@@ -373,6 +373,7 @@ namespace tryhard
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
             FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text), 
                                            ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+            DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
         }
 
         private void EditObjectButton_Click(object sender, EventArgs e)
