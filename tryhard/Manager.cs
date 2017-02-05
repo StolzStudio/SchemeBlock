@@ -42,10 +42,9 @@ namespace tryhard
             {
                 Blocks[Key].ClearFocus();
             }
-            Blocks[block_counter].SetFocus();
+            Blocks[block_counter].SetFocus(); 
             SelectedBlockIndex = block_counter;
             block_counter++;
-            
         }
 
         public void LoadStructureOfObject(string AType, int AId)

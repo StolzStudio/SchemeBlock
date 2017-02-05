@@ -119,7 +119,7 @@ namespace tryhard
             this.InfoMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(1264, 24);
+            this.MenuStrip.Size = new System.Drawing.Size(1348, 24);
             this.MenuStrip.TabIndex = 16;
             this.MenuStrip.Text = "menuStrip1";
             // 
@@ -155,7 +155,7 @@ namespace tryhard
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(5, 303);
+            this.PropertiesPanel.Location = new System.Drawing.Point(5, 348);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -177,7 +177,7 @@ namespace tryhard
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ObjectsTreeView.Location = new System.Drawing.Point(5, 22);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
-            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 278);
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 323);
             this.ObjectsTreeView.TabIndex = 23;
             this.ObjectsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ObjectsTreeView_AfterSelect);
             // 
@@ -191,9 +191,9 @@ namespace tryhard
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
-            this.panel.Location = new System.Drawing.Point(1010, 28);
+            this.panel.Location = new System.Drawing.Point(1094, 28);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(254, 654);
+            this.panel.Size = new System.Drawing.Size(254, 699);
             this.panel.TabIndex = 0;
             // 
             // PropertiesGridView
@@ -207,7 +207,7 @@ namespace tryhard
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(5, 325);
+            this.PropertiesGridView.Location = new System.Drawing.Point(5, 370);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
@@ -236,7 +236,7 @@ namespace tryhard
             this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(126, 613);
+            this.GoNextButton.Location = new System.Drawing.Point(126, 658);
             this.GoNextButton.Name = "GoNextButton";
             this.GoNextButton.Size = new System.Drawing.Size(122, 37);
             this.GoNextButton.TabIndex = 29;
@@ -250,7 +250,7 @@ namespace tryhard
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(5, 613);
+            this.GoBackButton.Location = new System.Drawing.Point(5, 658);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(122, 37);
             this.GoBackButton.TabIndex = 28;
@@ -274,7 +274,7 @@ namespace tryhard
             this.MainPage.BackColor = System.Drawing.Color.White;
             this.MainPage.Location = new System.Drawing.Point(4, 28);
             this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1006, 650);
+            this.MainPage.Size = new System.Drawing.Size(1090, 695);
             this.MainPage.TabIndex = 22;
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
@@ -287,7 +287,7 @@ namespace tryhard
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1348, 727);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.MainPage);
             this.Controls.Add(this.MenuStrip);
@@ -295,11 +295,12 @@ namespace tryhard
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
-            this.MinimumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1364, 766);
             this.Name = "MainForm";
             this.Text = "Gaby";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);

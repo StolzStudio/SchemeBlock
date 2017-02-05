@@ -48,12 +48,12 @@
             this.GoNextButton = new System.Windows.Forms.Button();
             this.GoBackButton = new System.Windows.Forms.Button();
             this.WorkPanel = new System.Windows.Forms.Panel();
-            this.DrawPage = new tryhard.DrawPage();
-            this.AddNewObjectButton = new System.Windows.Forms.Button();
-            this.EditObjectButton = new System.Windows.Forms.Button();
             this.SaveDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DrawPage = new tryhard.DrawPage();
+            this.AddNewObjectButton = new System.Windows.Forms.Button();
+            this.EditObjectButton = new System.Windows.Forms.Button();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -258,6 +258,39 @@
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
             // 
+            // SaveDataGridView
+            // 
+            this.SaveDataGridView.AllowUserToAddRows = false;
+            this.SaveDataGridView.AllowUserToResizeColumns = false;
+            this.SaveDataGridView.AllowUserToResizeRows = false;
+            this.SaveDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.SaveDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SaveDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.SaveDataGridView.Location = new System.Drawing.Point(52, 41);
+            this.SaveDataGridView.Name = "SaveDataGridView";
+            this.SaveDataGridView.RowHeadersVisible = false;
+            this.SaveDataGridView.RowTemplate.Height = 20;
+            this.SaveDataGridView.Size = new System.Drawing.Size(243, 284);
+            this.SaveDataGridView.TabIndex = 27;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 120;
+            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -297,41 +330,6 @@
             this.EditObjectButton.Text = "Редактировать";
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
-            // 
-            // SaveDataGridView
-            // 
-            this.SaveDataGridView.AllowUserToAddRows = false;
-            this.SaveDataGridView.AllowUserToResizeColumns = false;
-            this.SaveDataGridView.AllowUserToResizeRows = false;
-            this.SaveDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.SaveDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SaveDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.SaveDataGridView.Location = new System.Drawing.Point(52, 41);
-            this.SaveDataGridView.Name = "SaveDataGridView";
-            this.SaveDataGridView.ReadOnly = false;
-            this.SaveDataGridView.RowHeadersVisible = false;
-            this.SaveDataGridView.RowTemplate.Height = 20;
-            this.SaveDataGridView.Size = new System.Drawing.Size(243, 284);
-            this.SaveDataGridView.TabIndex = 27;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true; 
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Значение";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = false;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 120;
             // 
             // EditorForm
             // 
