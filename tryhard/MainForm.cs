@@ -263,7 +263,7 @@ namespace tryhard
                 0,
                 0});
                 numericalUpDown.Minimum = new decimal(new int[] {
-                1,
+                0,
                 0,
                 0,
                 0});
