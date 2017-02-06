@@ -140,9 +140,8 @@ namespace tryhard
                 }
                 else if (this.SelectBlockIndex != -1)
                 {
-                    ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
-                                            ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                     if ((this.SelectBlockIndex != DrawManager.SelectedBlockIndex) && 
+                        !DrawManager.CheckLink(this.SelectBlockIndex, DrawManager.SelectedBlockIndex) &&
                         MetaDataManager.Instance.isPossibleLink("Complex", DrawManager.Blocks[this.SelectBlockIndex].ClassText,
                                                                            DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
                     {
@@ -151,6 +150,12 @@ namespace tryhard
                         this.SelectBlockIndex = -1;
                         DrawManager.Links[DrawManager.Links.Count - 1].isFocus = true;
                         ShowLinkPanel();
+                    }
+                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    if (this.SelectBlockIndex != -1)
+                    {
+                        ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                                ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                     }
                 }
             }
