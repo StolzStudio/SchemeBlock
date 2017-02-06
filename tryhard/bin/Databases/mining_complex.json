@@ -37,6 +37,12 @@
           "Index": 5,
           "Type": "dk",
           "Coordinates": "693, 405"
+        },
+        {
+          "Id": 3,
+          "Index": 6,
+          "Type": "nnpv",
+          "Coordinates": "814, 139"
         }
       ],
       "Links": []

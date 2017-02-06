@@ -395,10 +395,5 @@ namespace tryhard
         {
             MetaDataManager.Instance.SerializeMetaObjects();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
