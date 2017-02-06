@@ -44,21 +44,42 @@ namespace tryhard
             InitializeComponent();
             FillCategoryStripComboBox();
             FillObjectTreeView();
+            SetDefaultSetting();
+        }
 
+        public EditorForm(string AObjectCategory, string AObjectType, int AId)
+        {
+            InitializeComponent();
+            FillStripControls(AObjectCategory, AObjectType);
+            FillObjectTreeView();
+            SetDefaultSetting();
+            SelectTreeViewNode(AObjectType, AId);
+        }
+
+        public void SetDefaultSetting()
+        {
             DrawManager = new Manager(this.DrawPage);
             isMouseDown = false;
             isNextStep = false;
             SetMode(false);
             GoNextButton.Enabled = false;
-
             WorkPanel.Visible = false;
             DrawPage.BringToFront();
         }
 
-        public EditorForm(string AObjectCategory, string AObjectType, string AId)
+        private void SelectTreeViewNode(string AObjectType, int AId)
         {
-            InitializeComponent();
-            FillStripControls(AObjectCategory, AObjectType);
+            foreach (TreeNode ObjectTypeNode in ObjectsTreeView.Nodes)
+                if (ObjectTypeNode.Text == AObjectType)
+                    foreach (TreeNode Node in ObjectTypeNode.Nodes)
+                    {
+                        string nodeName = MetaDataManager.Instance.GetBaseObjectOfId(AObjectType, AId).Name;
+                        if (Node.Text == nodeName)
+                        {
+                            ObjectsTreeView.SelectedNode = Node;
+                            return;
+                        }
+                    }
         }
 
         public void UpdateViewControls()
@@ -140,11 +161,7 @@ namespace tryhard
 
         private void FillStripControls(string AObjectCategory, string AObjectType)
         {
-            CategoryStripComboBox.Items.Clear();
-            foreach (string obj in MetaDataManager.Instance.GetObjectTypesOfObjectCategory(AObjectCategory))
-                CategoryStripComboBox.Items.Add(obj);
-            if (AObjectType != "")
-                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(AObjectType);
+            FillCategoryStripComboBox(AObjectCategory);
         }
 
         private void SelectTreeNode()

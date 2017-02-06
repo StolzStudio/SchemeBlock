@@ -319,8 +319,9 @@ namespace tryhard
             
             if (this.SelectBlockIndex != -1)
             {
-                //FormsManager.Instance.AddEditForm(new EditorForm());
-                //FormsManager.Instance.EditForms.Last().Show();
+                Block block = DrawManager.Blocks[this.SelectBlockIndex];
+                FormsManager.Instance.AddEditForm(new EditorForm("Complex", block.ClassText, block.Id));
+                FormsManager.Instance.EditForms.Last().Show();
             }
         }
 
