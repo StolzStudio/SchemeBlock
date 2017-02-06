@@ -234,7 +234,7 @@ namespace tryhard
                 MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
                                                                DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
             LinkInfoPanel.Controls.Clear();
-            LinkInfoPanel.Tag = 0;
+            LinkInfoPanel.Tag = -1;
             for (int i = 0; i < LinkableParameters.Count; i++)
             {
                 RadioButton radioBtn = new System.Windows.Forms.RadioButton();
@@ -271,12 +271,12 @@ namespace tryhard
                 numericalUpDown.Size = new System.Drawing.Size(67, 20);
                 numericalUpDown.TabIndex = 2;
                 numericalUpDown.Tag = i;
-                numericalUpDown.ValueChanged+= new System.EventHandler(numericalUpDown_ValueChanged);
                 numericalUpDown.Value = new decimal(new int[] {
                 1,
                 0,
                 0,
                 0});
+                numericalUpDown.ValueChanged += new System.EventHandler(numericalUpDown_ValueChanged);
                 LinkInfoPanel.Controls.Add(numericalUpDown);
             }
             BaseObject selectObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText, 
