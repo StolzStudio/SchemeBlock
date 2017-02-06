@@ -101,6 +101,11 @@ namespace tryhard
             return ObjectsInfo[ACategory].Select(k => k.Name);
         }
 
+        public IEnumerable<int> GetIdCortageByType(string AType)
+        {
+            return Objects[AType].Select(obj => obj.Id);
+        }
+
         public void FillObjectStructure(string AType, int AId, List<Link> ALinks, Dictionary<int, Block> ABlocks)
         {
             ObjectsStructure structure = new ObjectsStructure();
