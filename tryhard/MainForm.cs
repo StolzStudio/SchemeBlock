@@ -45,7 +45,7 @@ namespace tryhard
             isMouseDown = false;
             isNextStep = false;
             GoNextButton.Enabled = false;
-
+            UpStructurePanel.Visible = false;
             MainPage.BringToFront();
         }   
 
@@ -217,11 +217,11 @@ namespace tryhard
             List<string> LinkableParameters =
                 MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
                                                                DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText);
-            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
-                                                                               DrawManager.Blocks[this.SelectBlockIndex].Id);
+            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText,
+                                                                               DrawManager.Blocks[DrawManager.SelectedBlockIndex].Id);
             
             Link newLink = new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex, LinkableParameters[0],
-                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Output").GetValue(baseObject)));
+                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Input").GetValue(baseObject)));
             DrawManager.AddLink(newLink);
             FillLinkPanel(newLink);
         }
@@ -233,6 +233,8 @@ namespace tryhard
                                                                DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
             LinkInfoPanel.Controls.Clear();
             LinkInfoPanel.Tag = -1;
+            BaseObject secondObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.SecondBlockIndex].ClassText,
+                                                                     DrawManager.Blocks[ALink.SecondBlockIndex].Id);
             for (int i = 0; i < LinkableParameters.Count; i++)
             {
                 RadioButton radioBtn = new System.Windows.Forms.RadioButton();
@@ -256,7 +258,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                1000000,
+                Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject)),
                 0,
                 0,
                 0});
@@ -277,8 +279,6 @@ namespace tryhard
                 numericalUpDown.ValueChanged += new System.EventHandler(numericalUpDown_ValueChanged);
                 LinkInfoPanel.Controls.Add(numericalUpDown);
             }
-            BaseObject selectObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText, 
-                                                                                 DrawManager.Blocks[ALink.FirstBlockIndex].Id);
             (LinkInfoPanel.Controls[1] as NumericUpDown).Value = Convert.ToDecimal(ALink.LinkParameterValue);
         }
 
@@ -392,6 +392,11 @@ namespace tryhard
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             MetaDataManager.Instance.SerializeMetaObjects();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

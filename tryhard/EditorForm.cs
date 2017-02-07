@@ -203,6 +203,7 @@ namespace tryhard
                 ptr.Y = ptr.Y - DrawPage.Location.Y - ToolStrip.Location.Y;
 
                 ClickOffset = ptr;
+                Console.WriteLine("Click offset at mousedown: " + ptr.X + " " + ptr.Y);
 
                 if (Control.ModifierKeys == Keys.Control)
                 {
@@ -291,6 +292,8 @@ namespace tryhard
                                                                DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
             LinkInfoPanel.Controls.Clear();
             LinkInfoPanel.Tag = -1;
+            BaseObject secondObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.SecondBlockIndex].ClassText,
+                                                                     DrawManager.Blocks[ALink.SecondBlockIndex].Id);
             for (int i = 0; i < LinkableParameters.Count; i++)
             {
                 RadioButton radioBtn = new System.Windows.Forms.RadioButton();
@@ -314,7 +317,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                1000000,
+                Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject)),
                 0,
                 0,
                 0});
@@ -335,8 +338,6 @@ namespace tryhard
                 numericalUpDown.ValueChanged += new System.EventHandler(numericalUpDown_ValueChanged);
                 LinkInfoPanel.Controls.Add(numericalUpDown);
             }
-            BaseObject selectObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
-                                                                                 DrawManager.Blocks[ALink.FirstBlockIndex].Id);
             (LinkInfoPanel.Controls[1] as NumericUpDown).Value = Convert.ToDecimal(ALink.LinkParameterValue);
         }
 
@@ -372,6 +373,7 @@ namespace tryhard
         {
             if ((this.isMouseDown) && (SelectBlockIndex != -1))
             {
+                Console.WriteLine("Click offset at mousemove: " + ClickOffset.X + " " + ClickOffset.Y);
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(DrawPage.Width, DrawPage.Height));
             }

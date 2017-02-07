@@ -192,7 +192,6 @@ namespace tryhard
             List<BaseObject> result = new List<BaseObject>();
             string ObjectPath = ObjFilesDir + AObjectName+ ObjFileFormat;
             string json = GetJson(ObjectPath);
-            System.Type st = t["bolt"];
             switch (AObjectName)
             {
                 case "integrated_complex": result.AddRange(JsonConvert.DeserializeObject<List<IntegratedComplex>>(json)); break;

@@ -14,6 +14,12 @@ namespace tryhard
         public List<string> Properties { get; set; }
     }
 
+    public class ProjectInfo
+    {
+        public string Name { get; set; }
+        public ObjectsStructure Structure { get; set; }
+    }
+
     public class ObjectsStructure
     {
         public List<StructuralObject> Objects { get; set; }
