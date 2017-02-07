@@ -189,8 +189,8 @@ namespace tryhard
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
-            this.panel.Controls.Add(this.LinkInfoPanel);
             this.panel.Controls.Add(this.PropertiesGridView);
+            this.panel.Controls.Add(this.LinkInfoPanel);
             this.panel.Location = new System.Drawing.Point(1094, 28);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(254, 699);

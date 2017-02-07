@@ -199,8 +199,8 @@ namespace tryhard
                 DrawManager.ClearBlocksFocus();
 
                 Point ptr = PointToClient(Cursor.Position);
-                ptr.X -= DrawPage.Location.X;
-                ptr.Y -= DrawPage.Location.Y;
+                ptr.X = ptr.X - DrawPage.Location.X - ToolStrip.Location.X;
+                ptr.Y = ptr.Y - DrawPage.Location.Y - ToolStrip.Location.Y;
 
                 ClickOffset = ptr;
 
@@ -258,13 +258,14 @@ namespace tryhard
                         ShowPropertiesPanel();
                     }
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    if (this.SelectBlockIndex != -1)
+                    {
+                        ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                                ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
+                    }
                 }
                 if (this.SelectBlockIndex != -1)
-                {
-                    ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
-                                            ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                     SelectTreeNode();
-                }
             }
         }
 
@@ -374,7 +375,6 @@ namespace tryhard
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(DrawPage.Width, DrawPage.Height));
             }
-
             DrawPage.Invalidate();
         }
 
@@ -414,8 +414,7 @@ namespace tryhard
             }
             isNextStep = false;
             WorkPanel.Visible = false;
-            
-            
+               
             FillObjectTreeView();
             GoNextButton.Text = "next";
             DrawPage.Invalidate();

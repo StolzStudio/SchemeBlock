@@ -180,14 +180,12 @@ namespace tryhard
                 }
             }
             if (this.SelectBlockIndex != -1)
-            {
                 SelectTreeNode();
-            }
         }
 
         private void MainPage_MouseMove(object sender, MouseEventArgs e)
         {
-            if ((this.isMouseDown)&&(SelectBlockIndex != -1))
+            if ((this.isMouseDown) && (SelectBlockIndex != -1))
             {
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(MainPage.Width, MainPage.Height));
