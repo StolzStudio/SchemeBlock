@@ -38,6 +38,7 @@ namespace tryhard
         private bool isNextStep;
         private List<string> ProgressStep = new List<string>() { "Start", "First", "Second", "Third" };
         private int ProgressVal = 0;
+        private int MarginInLinkPanel = 12;
 
         public EditorForm()
         {
@@ -190,55 +191,72 @@ namespace tryhard
 
         private void DrawPage_MouseDown(object sender, MouseEventArgs e)
         {
-            isMouseDown = true;
-
-            DrawManager.ClearLinksFocus();
-            DrawManager.ClearBlocksFocus();
-
-            Point ptr = PointToClient(Cursor.Position);
-            ptr.X -= DrawPage.Location.X;
-            ptr.Y -= DrawPage.Location.Y;
-
-            ClickOffset = ptr;
-
             if (isEditMode)
             {
+                isMouseDown = true;
+
+                DrawManager.ClearLinksFocus();
+                DrawManager.ClearBlocksFocus();
+
+                Point ptr = PointToClient(Cursor.Position);
+                ptr.X -= DrawPage.Location.X;
+                ptr.Y -= DrawPage.Location.Y;
+
+                ClickOffset = ptr;
+
                 if (Control.ModifierKeys == Keys.Control)
                 {
                     DrawManager.TrySetFocusInBlocks(ptr);
 
-                    if ((DrawManager.SelectedBlockIndex == -1)&&(ObjectsTreeView.SelectedNode != null))
+                    if ((DrawManager.SelectedBlockIndex == -1) && (ObjectsTreeView.SelectedNode != null))
                     {
                         ptr.X -= Block.BlockWidth / 2;
                         ptr.Y -= Block.BlockHeight / 2;
-                        DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text,
-                                            (int)ObjectsTreeView.SelectedNode.Tag);
+                        ClickOffset = new Point(Block.BlockWidth / 2, Block.BlockHeight / 2);
+                        DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, 
+                                             ObjectsTreeView.SelectedNode.Text, (int)ObjectsTreeView.SelectedNode.Tag);
                         this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                     }
-                    else
+                    else if ((this.SelectBlockIndex != -1) && (this.SelectBlockIndex != DrawManager.SelectedBlockIndex))
                     {
-                        if (this.SelectBlockIndex != DrawManager.SelectedBlockIndex)
+                        string category = "";
+                        if ((string)(CategoryStripComboBox.SelectedItem) == "Complex")
+                            category = "Equipment";
+                        else
+                            category = "Detail";
+                        if ((!DrawManager.CheckLink(this.SelectBlockIndex, DrawManager.SelectedBlockIndex)) && 
+                            (MetaDataManager.Instance.isPossibleLink(category, 
+                                                                     DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                                     DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText)))
                         {
-                            string temp = "";
-                            if ((string)(CategoryStripComboBox.SelectedItem) == "Complex")
-                                temp = "Equipment";
-                            else
-                                temp = "Detail";
-                            if (MetaDataManager.Instance.isPossibleLink(temp,
-                                                                         DrawManager.Blocks[this.SelectBlockIndex].ClassText,
-                                                                         DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText))
-                            {
-                                DrawManager.ClearLinksFocus();
-                                //DrawManager.AddLink(new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex));
-                            }
+                            AddLink();
+                            DrawManager.ClearBlocksFocus();
+                            this.SelectBlockIndex = -1;
+                            DrawManager.Links[DrawManager.Links.Count - 1].isFocus = true;
+                            ShowLinkPanel();
+                        }
+                        this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                        if (this.SelectBlockIndex != -1)
+                        {
+                            ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
+                                                    ptr.Y - DrawManager.Blocks[SelectBlockIndex].Location.Y);
                         }
                     }
                 }
                 else
                 {
-                    DrawManager.TrySetFocusInLinks(ptr);
-                    DrawManager.TrySetFocusInBlocks(ptr);
-
+                    if (DrawManager.TrySetFocusInBlocks(ptr))
+                    {
+                        ShowPropertiesPanel();
+                    } else if (DrawManager.TrySetFocusInLinks(ptr))
+                    {
+                        ShowLinkPanel();
+                    }
+                    else
+                    {
+                        ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
+                        ShowPropertiesPanel();
+                    }
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
                 if (this.SelectBlockIndex != -1)
@@ -248,6 +266,105 @@ namespace tryhard
                     SelectTreeNode();
                 }
             }
+        }
+
+        private void AddLink()
+        {
+            DrawManager.ClearLinksFocus();
+            List<string> LinkableParameters =
+                MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                               DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText);
+            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
+                                                                               DrawManager.Blocks[this.SelectBlockIndex].Id);
+
+            Link newLink = new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex, LinkableParameters[0],
+                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Output").GetValue(baseObject)));
+            DrawManager.AddLink(newLink);
+            FillLinkPanel(newLink);
+        }
+
+        private void FillLinkPanel(Link ALink)
+        {
+            List<string> LinkableParameters =
+                MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
+                                                               DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
+            LinkInfoPanel.Controls.Clear();
+            LinkInfoPanel.Tag = -1;
+            for (int i = 0; i < LinkableParameters.Count; i++)
+            {
+                RadioButton radioBtn = new System.Windows.Forms.RadioButton();
+                radioBtn.AutoSize = true;
+                radioBtn.Location = new System.Drawing.Point(MarginInLinkPanel, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
+                radioBtn.Name = "radioButton" + i;
+                radioBtn.Size = new System.Drawing.Size(85, 17);
+                radioBtn.TabIndex = i;
+                radioBtn.TabStop = true;
+                radioBtn.Text = LinkableParameters[i];
+                radioBtn.Tag = i;
+                radioBtn.UseVisualStyleBackColor = true;
+                if (ALink.LinkParameter == LinkableParameters[i])
+                {
+                    radioBtn.Checked = true;
+                    LinkInfoPanel.Tag = i;
+                }
+                radioBtn.CheckedChanged += new System.EventHandler(radioButton_CheckedChanged);
+                LinkInfoPanel.Controls.Add(radioBtn);
+
+                NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
+                numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
+                numericalUpDown.Maximum = new decimal(new int[] {
+                1000000,
+                0,
+                0,
+                0});
+                numericalUpDown.Minimum = new decimal(new int[] {
+                0,
+                0,
+                0,
+                0});
+                numericalUpDown.Name = "numericUpDown" + i;
+                numericalUpDown.Size = new System.Drawing.Size(67, 20);
+                numericalUpDown.TabIndex = 2;
+                numericalUpDown.Tag = i;
+                numericalUpDown.Value = new decimal(new int[] {
+                1,
+                0,
+                0,
+                0});
+                numericalUpDown.ValueChanged += new System.EventHandler(numericalUpDown_ValueChanged);
+                LinkInfoPanel.Controls.Add(numericalUpDown);
+            }
+            BaseObject selectObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
+                                                                                 DrawManager.Blocks[ALink.FirstBlockIndex].Id);
+            (LinkInfoPanel.Controls[1] as NumericUpDown).Value = Convert.ToDecimal(ALink.LinkParameterValue);
+        }
+
+        private void numericalUpDown_ValueChanged(Object sender, EventArgs e)
+        {
+            UpdateLinkParameter((int)(sender as NumericUpDown).Tag);
+        }
+
+        private void radioButton_CheckedChanged(Object sender, EventArgs e)
+        {
+            UpdateLinkParameter((int)(sender as RadioButton).Tag);
+        }
+
+        private void UpdateLinkParameter(int AParameterIndex)
+        {
+            DrawManager.UpdateFocusedLink((LinkInfoPanel.Controls[AParameterIndex * 2] as RadioButton).Text,
+                                           Decimal.ToInt32((LinkInfoPanel.Controls[AParameterIndex * 2 + 1] as NumericUpDown).Value));
+        }
+
+        private void ShowLinkPanel()
+        {
+            Link selectedLink = DrawManager.GetFocusedLink();
+            FillLinkPanel(selectedLink);
+            LinkInfoPanel.BringToFront();
+        }
+
+        private void ShowPropertiesPanel()
+        {
+            PropertiesGridView.BringToFront();
         }
 
         private void DrawPage_MouseMove(object sender, MouseEventArgs e)
@@ -392,11 +509,6 @@ namespace tryhard
                                            ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
             if (!isEditMode)
                 DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
-        }
-
-        private void ShowLinkPanel()
-        {
-            //
         }
 
         private void ShowPropertiesGridView()

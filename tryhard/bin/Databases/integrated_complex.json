@@ -10,7 +10,38 @@
     "Volume": 120000,
     "Cost": 1500000000,
     "Structure": {
-      "Objects": [],
+      "Objects": [
+        {
+          "Id": 2,
+          "Index": 7,
+          "Type": "nnpv",
+          "Coordinates": "358, 120"
+        },
+        {
+          "Id": 0,
+          "Index": 8,
+          "Type": "rpv",
+          "Coordinates": "788, 157"
+        },
+        {
+          "Id": 0,
+          "Index": 9,
+          "Type": "rr",
+          "Coordinates": "527, 303"
+        },
+        {
+          "Id": 2,
+          "Index": 10,
+          "Type": "rtn",
+          "Coordinates": "905, 472"
+        },
+        {
+          "Id": 0,
+          "Index": 11,
+          "Type": "nnpv",
+          "Coordinates": "299, 406"
+        }
+      ],
       "Links": []
     },
     "Id": 0,
@@ -27,7 +58,38 @@
     "Volume": 400000,
     "Cost": 3500000000,
     "Structure": {
-      "Objects": [],
+      "Objects": [
+        {
+          "Id": 0,
+          "Index": 12,
+          "Type": "fu",
+          "Coordinates": "411, 124"
+        },
+        {
+          "Id": 2,
+          "Index": 13,
+          "Type": "nnpv",
+          "Coordinates": "829, 166"
+        },
+        {
+          "Id": 1,
+          "Index": 14,
+          "Type": "nnpv",
+          "Coordinates": "491, 277"
+        },
+        {
+          "Id": 0,
+          "Index": 15,
+          "Type": "nnpv",
+          "Coordinates": "737, 402"
+        },
+        {
+          "Id": 1,
+          "Index": 16,
+          "Type": "rpv",
+          "Coordinates": "697, 81"
+        }
+      ],
       "Links": []
     },
     "Id": 1,
