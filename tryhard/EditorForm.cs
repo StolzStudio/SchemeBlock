@@ -276,11 +276,11 @@ namespace tryhard
             List<string> LinkableParameters =
                 MetaDataManager.Instance.GetLinkableParameters(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
                                                                DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText);
-            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[this.SelectBlockIndex].ClassText,
-                                                                               DrawManager.Blocks[this.SelectBlockIndex].Id);
+            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[DrawManager.SelectedBlockIndex].ClassText,
+                                                                               DrawManager.Blocks[DrawManager.SelectedBlockIndex].Id);
 
             Link newLink = new Link(this.SelectBlockIndex, DrawManager.SelectedBlockIndex, LinkableParameters[0],
-                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Output").GetValue(baseObject)));
+                                    Convert.ToInt32(baseObject.GetType().GetProperty(LinkableParameters[0] + "Input").GetValue(baseObject)));
             DrawManager.AddLink(newLink);
             FillLinkPanel(newLink);
         }
