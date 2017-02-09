@@ -447,6 +447,7 @@ namespace tryhard
                                 SaveDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
                         }
                 }
+                CountManager m = new CountManager(ref DrawManager.Blocks);
             }
             else
             {
