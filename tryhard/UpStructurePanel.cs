@@ -10,15 +10,11 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
 
+
 namespace tryhard
 {
     public partial class MainForm : Form
     {
-        public void ShowUpStructurePanel()
-        {
-            UpStructurePanel.BringToFront();
-        }
-
 
     }
 }

@@ -56,11 +56,9 @@ namespace tryhard
     public class CalculationManager
     {
         
-        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(Dictionary<int, CalcBlock> BaseBlocks, PageType APageType)
+        public List<Dictionary<int, CalcBlock>> CalculateBlocksCombinations(Dictionary<int, CalcBlock> BaseBlocks)
         {
             List<Dictionary<int, CalcBlock>> Combinations = GetAllCombinations(BaseBlocks);
-            if (APageType == PageType.SchemeType)
-                CalculateBlocksCombinations(ref Combinations);
             return Combinations;
         }
 
