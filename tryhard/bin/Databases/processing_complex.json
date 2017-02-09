@@ -9,7 +9,32 @@
     "Volume": 180000,
     "Cost": 2000000000,
     "Structure": {
-      "Objects": [],
+      "Objects": [
+        {
+          "Id": 0,
+          "Index": 5,
+          "Type": "nnpv",
+          "Coordinates": "340, 155"
+        },
+        {
+          "Id": 0,
+          "Index": 6,
+          "Type": "fu",
+          "Coordinates": "641, 248"
+        },
+        {
+          "Id": 1,
+          "Index": 7,
+          "Type": "upn",
+          "Coordinates": "508, 359"
+        },
+        {
+          "Id": 0,
+          "Index": 8,
+          "Type": "dks",
+          "Coordinates": "190, 452"
+        }
+      ],
       "Links": []
     },
     "Id": 0,

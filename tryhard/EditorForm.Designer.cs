@@ -51,9 +51,10 @@
             this.SaveDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DrawPage = new tryhard.DrawPage();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
+            this.LinkInfoPanel = new System.Windows.Forms.Panel();
+            this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
@@ -123,10 +124,11 @@
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
+            this.panel.Controls.Add(this.PropertiesGridView);
+            this.panel.Controls.Add(this.LinkInfoPanel);
             this.panel.Location = new System.Drawing.Point(1009, 29);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(255, 653);
@@ -291,21 +293,6 @@
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn2.Width = 120;
             // 
-            // DrawPage
-            // 
-            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(6, 29);
-            this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
-            this.DrawPage.TabIndex = 0;
-            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
-            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
-            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
-            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            // 
             // AddNewObjectButton
             // 
             this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -331,13 +318,37 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
+            // LinkInfoPanel
+            // 
+            this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
+            this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 325);
+            this.LinkInfoPanel.Name = "LinkInfoPanel";
+            this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
+            this.LinkInfoPanel.TabIndex = 32;
+            // 
+            // DrawPage
+            // 
+            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DrawPage.BackColor = System.Drawing.Color.White;
+            this.DrawPage.Location = new System.Drawing.Point(6, 29);
+            this.DrawPage.Name = "DrawPage";
+            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
+            this.DrawPage.TabIndex = 0;
+            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
+            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
+            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
+            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1264, 682);
-            this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.EditObjectButton);
             this.Controls.Add(this.GoNextButton);
             this.Controls.Add(this.GoBackButton);
@@ -345,6 +356,7 @@
             this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
+            this.Controls.Add(this.WorkPanel);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EditorForm";
@@ -394,5 +406,6 @@
         public System.Windows.Forms.DataGridView SaveDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Panel LinkInfoPanel;
     }
 }

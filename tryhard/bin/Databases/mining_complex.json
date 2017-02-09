@@ -1,6 +1,6 @@
 [
   {
-    "FluidOutput": 9000,
+    "FluidOutput": 90000,
     "PeopleDemand": 54,
     "ElectricityDemand": 2400,
     "Weight": 15000000,
@@ -37,6 +37,12 @@
           "Index": 5,
           "Type": "dk",
           "Coordinates": "693, 405"
+        },
+        {
+          "Id": 3,
+          "Index": 6,
+          "Type": "nnpv",
+          "Coordinates": "814, 139"
         }
       ],
       "Links": []
@@ -57,7 +63,7 @@
           "Id": 0,
           "Index": 6,
           "Type": "nnpv",
-          "Coordinates": "629, 197"
+          "Coordinates": "635, 226"
         },
         {
           "Id": 0,
@@ -75,7 +81,7 @@
           "Id": 2,
           "Index": 9,
           "Type": "nnpv",
-          "Coordinates": "365, 149"
+          "Coordinates": "417, 83"
         },
         {
           "Id": 1,
@@ -88,6 +94,24 @@
           "Index": 11,
           "Type": "nnpv",
           "Coordinates": "436, 371"
+        },
+        {
+          "Id": 0,
+          "Index": 12,
+          "Type": "upn",
+          "Coordinates": "647, 9"
+        },
+        {
+          "Id": 0,
+          "Index": 13,
+          "Type": "dk",
+          "Coordinates": "411, 209"
+        },
+        {
+          "Id": 1,
+          "Index": 14,
+          "Type": "upn",
+          "Coordinates": "540, 292"
         }
       ],
       "Links": []
