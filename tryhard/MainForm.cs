@@ -52,7 +52,6 @@ namespace tryhard
             FormsManager.Instance.Initialize(this);
             InitializeComponent();
             FillObjectTreeView();
-            //OnChangedPage += ChangedPageEvent;
 
             DrawManager = new Manager(this.MainPage);
             CalcManager = new CalculationManager();
@@ -62,7 +61,6 @@ namespace tryhard
 
             isMouseDown = false;
             isNextStep = false;
-            //GoNextButton.Enabled = false;
             //UpStructurePanel.Visible = false;
            // MainPage.BringToFront();
         }   
@@ -376,31 +374,6 @@ namespace tryhard
             ShowPropertiesPanel();
         }
 
-        private void GoBackButton_Click(object sender, EventArgs e)
-        {
-            MainPage.BringToFront();
-            GoBackButton.Enabled = false;
-            isNextStep = false;
-            GoNextButton.Text = "next";
-        }
-
-        private void GoNextButton_Click(object sender, EventArgs e)
-        {
-            OnChangedPage(EventArgs.Empty);
-            if (!isNextStep)
-            {
-                WorkPanel.BringToFront();
-                GoBackButton.Enabled = true;
-                GoNextButton.Text = "save";
-                //код заполнения гридов
-                isNextStep = true;
-            }
-            else
-            {
-                //сохранение
-            }
-        }
-
         private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (ObjectsTreeView.SelectedNode.Parent == null)
@@ -416,6 +389,21 @@ namespace tryhard
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.BringToFront();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.SendToBack();
+        }
+
+        private void BackToSchemeButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.SendToBack();
         }
     }
 }
