@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="CalculationManager.cs" />
+    <Compile Include="CountManager.cs" />
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
