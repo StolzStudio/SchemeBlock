@@ -536,19 +536,20 @@ namespace tryhard
             // 
             // YWaterUpDown
             // 
+            this.YWaterUpDown.DecimalPlaces = 2;
             this.YWaterUpDown.Increment = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
-            0});
+            65536});
             this.YWaterUpDown.Location = new System.Drawing.Point(553, 126);
             this.YWaterUpDown.Maximum = new decimal(new int[] {
-            5000,
+            2,
             0,
             0,
             0});
             this.YWaterUpDown.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -556,7 +557,7 @@ namespace tryhard
             this.YWaterUpDown.Size = new System.Drawing.Size(50, 20);
             this.YWaterUpDown.TabIndex = 18;
             this.YWaterUpDown.Value = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -566,25 +567,26 @@ namespace tryhard
             this.YWaterLabel.AutoSize = true;
             this.YWaterLabel.Location = new System.Drawing.Point(340, 128);
             this.YWaterLabel.Name = "YWaterLabel";
-            this.YWaterLabel.Size = new System.Drawing.Size(126, 13);
+            this.YWaterLabel.Size = new System.Drawing.Size(120, 13);
             this.YWaterLabel.TabIndex = 17;
-            this.YWaterLabel.Text = "Удельный вес воды, кг";
+            this.YWaterLabel.Text = "Удельный вес воды, т";
             // 
             // YMatUpDown
             // 
+            this.YMatUpDown.DecimalPlaces = 2;
             this.YMatUpDown.Increment = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
-            0});
+            65536});
             this.YMatUpDown.Location = new System.Drawing.Point(234, 126);
             this.YMatUpDown.Maximum = new decimal(new int[] {
-            5000,
+            5,
             0,
             0,
             0});
             this.YMatUpDown.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -592,19 +594,19 @@ namespace tryhard
             this.YMatUpDown.Size = new System.Drawing.Size(50, 20);
             this.YMatUpDown.TabIndex = 16;
             this.YMatUpDown.Value = new decimal(new int[] {
-            2500,
+            25,
             0,
             0,
-            0});
+            65536});
             // 
             // YMatLabel
             // 
             this.YMatLabel.AutoSize = true;
             this.YMatLabel.Location = new System.Drawing.Point(23, 128);
             this.YMatLabel.Name = "YMatLabel";
-            this.YMatLabel.Size = new System.Drawing.Size(155, 13);
+            this.YMatLabel.Size = new System.Drawing.Size(149, 13);
             this.YMatLabel.TabIndex = 15;
-            this.YMatLabel.Text = "Удельный вес материала, кг";
+            this.YMatLabel.Text = "Удельный вес материала, т";
             // 
             // DWallCellUpDown
             // 
