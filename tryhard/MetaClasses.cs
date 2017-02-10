@@ -7,60 +7,6 @@ using System.Drawing;
 
 namespace tryhard
 {
-    public class DownStructure
-    {
-        public int pUpStructure { get; set; }
-        public int dGlobalWater { get; set; }
-        public int hWave001 { get; set; }
-        public int hWave50 { get; set; }
-        public int hExCl { get; set; }
-        public int hTrCl { get; set; }
-        public int hStructure { get; set; }
-        public float yStructureMat { get; set; }
-        public float yWater { get; set; }
-
-        public float wBaseCell { get; set; }
-        public float hBaseCell { get; set; }
-        public float dBaseCell { get; set; }
-        public float vBaseCell { get; set; }
-        public float pBaseCell { get; set; }
-        public float kpBaseCell { get; set; }
-
-        public float wInsideBaseCell { get; set; }
-
-        public float dCoverBaseCell { get; set; }
-        public float aCoverBaseCell { get; set; }
-        public float vMatCoverBaseCell { get; set; }
-        public float pMatCoverBaseCell { get; set; }
-
-        public float dBottomBaseCell { get; set; }
-        public float aBottomBaseCell { get; set; }
-        public float vMatBottomBaseCell { get; set; }
-        public float pMatBottomBaseCell { get; set; }
-
-        public float aCSWallBaseCell { get; set; }
-        public float vMatWallBaseCell { get; set; }
-        public float pMatWallBaseCell { get; set; }
-
-        public float vTrClSectionBaseCell { get; set; }
-
-        public float dSupportCell { get; set; }
-        public float hSupportCell { get; set; }
-        public float wSupportCell { get; set; }
-        public float aSupportCell { get; set; }
-        public float vSupportCell { get; set; }
-        public float pSupportCell { get; set; }
-        public float kpSupportCell { get; set; }
-
-        public float wInsideSupportCell { get; set; }
-        public float aCSWallSupportCell { get; set; }
-        public float vMatSupportCell { get; set; }
-
-        public float vTrClSectionSupportCell { get; set; }
-
-        public DownStructure() { }
-    }
-
     public class MetaObjectInfo
     {
         public string Name { get; set; }

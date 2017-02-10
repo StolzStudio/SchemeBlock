@@ -12,10 +12,27 @@ using System.IO;
 
 namespace tryhard
 {
-    public enum PageType { SchemeType, ObjectType }
+    public enum MainFormPageType { Main, ObjectType }
 
     public partial class MainForm : Form
     {
+        public event EventHandler ChangedPage;
+
+        protected virtual void OnChangedPage(EventArgs e)
+        {
+            EventHandler handler = ChangedPage;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+            Console.WriteLine("Страница поменялась");
+        }
+
+        public void ChangedPageEvent(object sender, EventArgs e)
+        {
+            //Console.WriteLine("Страница поменялась");
+        }
+
         /* Fields */
 
         public Point DrawingPanelOffset;
@@ -44,14 +61,13 @@ namespace tryhard
 
             isMouseDown = false;
             isNextStep = false;
-            GoNextButton.Enabled = false;
-            UpStructurePanel.Visible = false;
-            MainPage.BringToFront();
+            //UpStructurePanel.Visible = false;
+           // MainPage.BringToFront();
         }   
 
         /* Equipment ComboBoxes */
 
-        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations(PageType APageType)
+        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations()
         {
             /* Fill Dict */
 
@@ -63,15 +79,15 @@ namespace tryhard
 
             /* Fill Links at Blocks */
 
-            if (APageType == PageType.SchemeType)
+            /*if (APageType == PageType.SchemeType)
             {
                 foreach (Link Link in DrawManager.Links)
                 {
                     CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(new LinkInfo(Link.SecondBlockIndex, Link.LinkParameter));
                     CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(new LinkInfo(Link.FirstBlockIndex, Link.LinkParameter));
                 }
-            }
-            return CalcManager.CalculateBlocksCombinations(CalcBlocks, APageType);
+            }*/
+            return CalcManager.CalculateBlocksCombinations(CalcBlocks);
         }  
 
         private bool IsLinkNull(Link TestLink)
@@ -358,30 +374,6 @@ namespace tryhard
             ShowPropertiesPanel();
         }
 
-        private void GoBackButton_Click(object sender, EventArgs e)
-        {
-            MainPage.BringToFront();
-            GoBackButton.Enabled = false;
-            isNextStep = false;
-            GoNextButton.Text = "next";
-        }
-
-        private void GoNextButton_Click(object sender, EventArgs e)
-        {
-            if (!isNextStep)
-            {
-                WorkPanel.BringToFront();
-                GoBackButton.Enabled = true;
-                GoNextButton.Text = "save";
-                //код заполнения гридов
-                isNextStep = true;
-            }
-            else
-            {
-                //сохранение
-            }
-        }
-
         private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (ObjectsTreeView.SelectedNode.Parent == null)
@@ -397,6 +389,21 @@ namespace tryhard
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.BringToFront();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.SendToBack();
+        }
+
+        private void BackToSchemeButton_Click(object sender, EventArgs e)
+        {
+            UpStructurePanel.SendToBack();
         }
     }
 }
