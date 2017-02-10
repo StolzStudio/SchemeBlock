@@ -37,31 +37,37 @@
             this.TypeStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel = new System.Windows.Forms.Panel();
-            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
-            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.PropertiesPanel = new System.Windows.Forms.Panel();
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
             this.AvailableObjectsLabel = new System.Windows.Forms.Label();
+            this.PropertiesGridView = new System.Windows.Forms.DataGridView();
+            this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LinkInfoPanel = new System.Windows.Forms.Panel();
             this.GoNextButton = new System.Windows.Forms.Button();
             this.GoBackButton = new System.Windows.Forms.Button();
             this.WorkPanel = new System.Windows.Forms.Panel();
-            this.SaveDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CountDataGridView = new System.Windows.Forms.DataGridView();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.LinkInfoPanel = new System.Windows.Forms.Panel();
+            this.PropteryDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CombinationDataGridView = new System.Windows.Forms.DataGridView();
             this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.WorkPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SaveDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -134,41 +140,6 @@
             this.panel.Size = new System.Drawing.Size(255, 653);
             this.panel.TabIndex = 1;
             // 
-            // PropertiesGridView
-            // 
-            this.PropertiesGridView.AllowUserToAddRows = false;
-            this.PropertiesGridView.AllowUserToResizeColumns = false;
-            this.PropertiesGridView.AllowUserToResizeRows = false;
-            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NameCol,
-            this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(6, 325);
-            this.PropertiesGridView.Name = "PropertiesGridView";
-            this.PropertiesGridView.ReadOnly = true;
-            this.PropertiesGridView.RowHeadersVisible = false;
-            this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 284);
-            this.PropertiesGridView.TabIndex = 26;
-            // 
-            // NameCol
-            // 
-            this.NameCol.HeaderText = "Название";
-            this.NameCol.Name = "NameCol";
-            this.NameCol.ReadOnly = true;
-            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameCol.Width = 120;
-            // 
-            // ValueCol
-            // 
-            this.ValueCol.HeaderText = "Значение";
-            this.ValueCol.Name = "ValueCol";
-            this.ValueCol.ReadOnly = true;
-            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ValueCol.Width = 120;
-            // 
             // ObjectsTreeView
             // 
             this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -220,6 +191,51 @@
             this.AvailableObjectsLabel.TabIndex = 18;
             this.AvailableObjectsLabel.Text = "Доступные объекты";
             // 
+            // PropertiesGridView
+            // 
+            this.PropertiesGridView.AllowUserToAddRows = false;
+            this.PropertiesGridView.AllowUserToResizeColumns = false;
+            this.PropertiesGridView.AllowUserToResizeRows = false;
+            this.PropertiesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.PropertiesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameCol,
+            this.ValueCol});
+            this.PropertiesGridView.Location = new System.Drawing.Point(6, 325);
+            this.PropertiesGridView.Name = "PropertiesGridView";
+            this.PropertiesGridView.ReadOnly = true;
+            this.PropertiesGridView.RowHeadersVisible = false;
+            this.PropertiesGridView.RowTemplate.Height = 20;
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 284);
+            this.PropertiesGridView.TabIndex = 26;
+            // 
+            // NameCol
+            // 
+            this.NameCol.HeaderText = "Название";
+            this.NameCol.Name = "NameCol";
+            this.NameCol.ReadOnly = true;
+            this.NameCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameCol.Width = 120;
+            // 
+            // ValueCol
+            // 
+            this.ValueCol.HeaderText = "Значение";
+            this.ValueCol.Name = "ValueCol";
+            this.ValueCol.ReadOnly = true;
+            this.ValueCol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ValueCol.Width = 120;
+            // 
+            // LinkInfoPanel
+            // 
+            this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
+            this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 325);
+            this.LinkInfoPanel.Name = "LinkInfoPanel";
+            this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
+            this.LinkInfoPanel.TabIndex = 32;
+            // 
             // GoNextButton
             // 
             this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,45 +269,32 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Controls.Add(this.SaveDataGridView);
+            this.WorkPanel.Controls.Add(this.CombinationDataGridView);
+            this.WorkPanel.Controls.Add(this.PropteryDataGridView);
+            this.WorkPanel.Controls.Add(this.CountDataGridView);
             this.WorkPanel.Location = new System.Drawing.Point(6, 29);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1252, 653);
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
             // 
-            // SaveDataGridView
+            // CountDataGridView
             // 
-            this.SaveDataGridView.AllowUserToAddRows = false;
-            this.SaveDataGridView.AllowUserToResizeColumns = false;
-            this.SaveDataGridView.AllowUserToResizeRows = false;
-            this.SaveDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.SaveDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SaveDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CountDataGridView.AllowUserToAddRows = false;
+            this.CountDataGridView.AllowUserToResizeColumns = false;
+            this.CountDataGridView.AllowUserToResizeRows = false;
+            this.CountDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CountDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.CountDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CountDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.SaveDataGridView.Location = new System.Drawing.Point(52, 41);
-            this.SaveDataGridView.Name = "SaveDataGridView";
-            this.SaveDataGridView.RowHeadersVisible = false;
-            this.SaveDataGridView.RowTemplate.Height = 20;
-            this.SaveDataGridView.Size = new System.Drawing.Size(243, 284);
-            this.SaveDataGridView.TabIndex = 27;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Значение";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 120;
+            this.CountDataGridView.Location = new System.Drawing.Point(28, 325);
+            this.CountDataGridView.Name = "CountDataGridView";
+            this.CountDataGridView.RowHeadersVisible = false;
+            this.CountDataGridView.RowTemplate.Height = 20;
+            this.CountDataGridView.Size = new System.Drawing.Size(390, 303);
+            this.CountDataGridView.TabIndex = 27;
             // 
             // AddNewObjectButton
             // 
@@ -318,15 +321,68 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
-            // LinkInfoPanel
+            // PropteryDataGridView
             // 
-            this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
-            this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 325);
-            this.LinkInfoPanel.Name = "LinkInfoPanel";
-            this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
-            this.LinkInfoPanel.TabIndex = 32;
+            this.PropteryDataGridView.AllowUserToAddRows = false;
+            this.PropteryDataGridView.AllowUserToResizeColumns = false;
+            this.PropteryDataGridView.AllowUserToResizeRows = false;
+            this.PropteryDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropteryDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.PropteryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PropteryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.PropteryDataGridView.Location = new System.Drawing.Point(28, 22);
+            this.PropteryDataGridView.Name = "PropteryDataGridView";
+            this.PropteryDataGridView.RowHeadersVisible = false;
+            this.PropteryDataGridView.RowTemplate.Height = 20;
+            this.PropteryDataGridView.Size = new System.Drawing.Size(390, 278);
+            this.PropteryDataGridView.TabIndex = 28;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Width = 186;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Количество";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 186;
+            // 
+            // CombinationDataGridView
+            // 
+            this.CombinationDataGridView.AllowUserToAddRows = false;
+            this.CombinationDataGridView.AllowUserToResizeColumns = false;
+            this.CombinationDataGridView.AllowUserToResizeRows = false;
+            this.CombinationDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CombinationDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.CombinationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CombinationDataGridView.Location = new System.Drawing.Point(451, 22);
+            this.CombinationDataGridView.Name = "CombinationDataGridView";
+            this.CombinationDataGridView.RowHeadersVisible = false;
+            this.CombinationDataGridView.RowTemplate.Height = 20;
+            this.CombinationDataGridView.Size = new System.Drawing.Size(530, 606);
+            this.CombinationDataGridView.TabIndex = 29;
             // 
             // DrawPage
             // 
@@ -353,10 +409,10 @@
             this.Controls.Add(this.GoNextButton);
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.AddNewObjectButton);
-            this.Controls.Add(this.DrawPage);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ToolStrip);
             this.Controls.Add(this.WorkPanel);
+            this.Controls.Add(this.DrawPage);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "EditorForm";
@@ -366,13 +422,15 @@
             this.ToolStrip.ResumeLayout(false);
             this.ToolStrip.PerformLayout();
             this.panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.AvailableObjectsPanel.ResumeLayout(false);
             this.AvailableObjectsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.WorkPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SaveDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,9 +461,13 @@
         private System.Windows.Forms.Panel WorkPanel;
         private System.Windows.Forms.Button AddNewObjectButton;
         private System.Windows.Forms.Button EditObjectButton;
-        public System.Windows.Forms.DataGridView SaveDataGridView;
+        public System.Windows.Forms.DataGridView CountDataGridView;
+        private System.Windows.Forms.Panel LinkInfoPanel;
+        public System.Windows.Forms.DataGridView CombinationDataGridView;
+        public System.Windows.Forms.DataGridView PropteryDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Panel LinkInfoPanel;
     }
 }

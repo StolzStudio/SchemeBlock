@@ -432,26 +432,26 @@ namespace tryhard
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
-                SaveDataGridView.Visible = false;
+                CountDataGridView.Visible = false;
                 isNextStep = true;
 
                 if (isEditObject)
                 {
-                    SaveDataGridView.Visible = true;
-                    SaveDataGridView.Rows.Clear();
+                    CountDataGridView.Visible = true;
+                    CountDataGridView.Rows.Clear();
                     foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[EditObject.Category].Where(obj => obj.Name == EditObject.Type))
                         foreach (string APropertyName in AObjectInfo.Properties)
                         {
                             IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[EditObject.Type].Where(obj => obj.Id == EditObject.Id);
                             foreach (BaseObject obj in base_object)
-                                SaveDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                                CountDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
                         }
                 }
-                CountManager m = new CountManager(ref DrawManager.Blocks);
+                CountManager m = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
             }
             else
             {
-                foreach (DataGridViewRow row in SaveDataGridView.Rows)
+                foreach (DataGridViewRow row in CountDataGridView.Rows)
                     foreach (BaseObject obj in MetaDataManager.Instance.Objects[EditObject.Type].Where(ob => ob.Id == EditObject.Id))
                     {
                         if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int32))
