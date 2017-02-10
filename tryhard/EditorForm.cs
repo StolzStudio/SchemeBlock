@@ -437,19 +437,6 @@ namespace tryhard
                 isNextStep = true;
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
-
-                if (isEditObject)
-                {
-                    CountDataGridView.Visible = true;
-                    CountDataGridView.Rows.Clear();
-                    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[EditObject.Category].Where(obj => obj.Name == EditObject.Type))
-                        foreach (string APropertyName in AObjectInfo.Properties)
-                        {
-                            IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[EditObject.Type].Where(obj => obj.Id == EditObject.Id);
-                            foreach (BaseObject obj in base_object)
-                                CountDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
-                        }
-                }        
             }
             else
             {
