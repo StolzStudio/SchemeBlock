@@ -33,6 +33,7 @@ namespace tryhard
         public ObjectNameParam EditObject = new ObjectNameParam(); 
         public Manager DrawManager;
         private int SelectBlockIndex;
+        private CountManager CalcManager;
         private bool isMouseDown { get; set; }
         public Point ClickOffset { get; set; }
         private bool isNextStep;
@@ -435,6 +436,8 @@ namespace tryhard
                 CountDataGridView.Visible = false;
                 isNextStep = true;
 
+                CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
+
                 if (isEditObject)
                 {
                     CountDataGridView.Visible = true;
@@ -446,12 +449,12 @@ namespace tryhard
                             foreach (BaseObject obj in base_object)
                                 CountDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
                         }
-                }
-                CountManager m = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
+                }        
             }
             else
             {
-                foreach (DataGridViewRow row in CountDataGridView.Rows)
+                foreach (DataGridViewRow row in PropteryDataGridView.Rows)
+                {
                     foreach (BaseObject obj in MetaDataManager.Instance.Objects[EditObject.Type].Where(ob => ob.Id == EditObject.Id))
                     {
                         if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int32))
@@ -461,6 +464,7 @@ namespace tryhard
                         else
                             obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
                     }
+                }
                 MetaDataManager.Instance.FillObjectStructure(EditObject.Type, EditObject.Id,
                                                              DrawManager.Links, DrawManager.Blocks);
                 GoBackButton.PerformClick();
