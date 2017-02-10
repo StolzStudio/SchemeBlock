@@ -440,7 +440,7 @@
 
         private System.Windows.Forms.ToolStrip ToolStrip;
         private System.Windows.Forms.ToolStripLabel CategoryStripLabel;
-        private System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
+        public System.Windows.Forms.ToolStripComboBox CategoryStripComboBox;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.TreeView ObjectsTreeView;

@@ -53,7 +53,7 @@ namespace tryhard
             SetIndexArray();
             SetCombinations();
             FillCombinationDataGrid();
-            MessageBox.Show("");
+            FillPropertyDataGrid(Combination, Form.isEditObject, Form.CategoryStripComboBox.SelectedItem.ToString());
         }
         
         public void SetIndexArray()
@@ -62,7 +62,6 @@ namespace tryhard
             {
                 BlocksIndex.Add(new CountBlockIndeces(MetaDataManager.Instance.GetIdCortageByType(Blocks[key].ClassText),   
                                 Blocks[key].ClassText));
-                //MessageBox.Show(BlocksIndex[0].Count.ToString());
             }
         }
 
@@ -91,14 +90,57 @@ namespace tryhard
             }
         }
 
-        public void MakeCalculate(List<int> aCombination)
+        public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
         {
-            foreach (var key in Blocks.Keys)
-            {
-                if (Blocks[key].ClassText == "pump")
-                {
+            BaseObject SaveObject = MetaDataManager.Instance.GetBaseObjectOfId(ComboBoxType, 0);
 
-                }
+            Form.PropteryDataGridView.Rows.Clear();
+            if (!aState)
+            {
+                MakeCalculateEquipment(Combination, SaveObject);
+                foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
+                    foreach (string APropertyName in AObjectInfo.Properties)
+                    {
+                        switch (APropertyName)
+                        {
+                            case "Id":
+                                Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
+                                break;
+                            case "Name":
+                                Form.PropteryDataGridView.Rows.Add(APropertyName, "");
+                                break;
+                            default:
+                                Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
+                                break;
+                        }
+
+                        // Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
+                    }
+            }
+            else
+            {
+                foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
+                    foreach (string APropertyName in AObjectInfo.Properties)
+                    {
+                        if (APropertyName == "Id")
+                        {
+                            Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
+                        }
+                        else
+                        {
+                            Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
+                        }
+                    }
+            }
+        }
+
+        public void MakeCalculateEquipment(List<BaseObject> aCombination, BaseObject aSaveObject)
+        {
+            foreach (var el in aCombination)
+            {
+                (aSaveObject as MaterialObject).Weight += (el as MaterialObject).Weight;
+                (aSaveObject as MaterialObject).Volume += (el as MaterialObject).Volume;
+                (aSaveObject as MaterialObject).Cost   += (el as MaterialObject).Cost;
             }
         }
     }
