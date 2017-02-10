@@ -118,9 +118,9 @@ namespace tryhard
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
-            this.MainPage = new tryhard.DrawPage();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -382,7 +382,7 @@ namespace tryhard
             // MonolegRadioButton
             // 
             this.MonolegRadioButton.AutoSize = true;
-            this.MonolegRadioButton.Location = new System.Drawing.Point(14, 65);
+            this.MonolegRadioButton.Location = new System.Drawing.Point(14, 42);
             this.MonolegRadioButton.Name = "MonolegRadioButton";
             this.MonolegRadioButton.Size = new System.Drawing.Size(69, 17);
             this.MonolegRadioButton.TabIndex = 4;
@@ -394,7 +394,7 @@ namespace tryhard
             // MultilegRadioButton
             // 
             this.MultilegRadioButton.AutoSize = true;
-            this.MultilegRadioButton.Location = new System.Drawing.Point(14, 42);
+            this.MultilegRadioButton.Location = new System.Drawing.Point(14, 65);
             this.MultilegRadioButton.Name = "MultilegRadioButton";
             this.MultilegRadioButton.Size = new System.Drawing.Size(79, 17);
             this.MultilegRadioButton.TabIndex = 3;
@@ -854,22 +854,6 @@ namespace tryhard
             this.StructuresList.TabIndex = 1;
             this.StructuresList.Text = "Список комплексов:";
             // 
-            // MainPage
-            // 
-            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPage.BackColor = System.Drawing.Color.White;
-            this.MainPage.Location = new System.Drawing.Point(4, 29);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1090, 699);
-            this.MainPage.TabIndex = 22;
-            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
-            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
-            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
-            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
-            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -887,6 +871,22 @@ namespace tryhard
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MainPage
+            // 
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPage.BackColor = System.Drawing.Color.White;
+            this.MainPage.Location = new System.Drawing.Point(4, 29);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1090, 699);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // MainForm
             // 
