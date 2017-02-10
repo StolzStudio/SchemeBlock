@@ -111,11 +111,11 @@ namespace tryhard
             this.LocalWaterDepthLabel = new System.Windows.Forms.Label();
             this.GlobalWaterDepthLabel = new System.Windows.Forms.Label();
             this.StructuresGridView = new System.Windows.Forms.DataGridView();
-            this.StructuresList = new System.Windows.Forms.Label();
-            this.MainPage = new tryhard.DrawPage();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StructuresList = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -770,32 +770,6 @@ namespace tryhard
             this.StructuresGridView.RowTemplate.Height = 20;
             this.StructuresGridView.Size = new System.Drawing.Size(634, 331);
             this.StructuresGridView.TabIndex = 27;
-            this.StructuresGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // StructuresList
-            // 
-            this.StructuresList.AutoSize = true;
-            this.StructuresList.Location = new System.Drawing.Point(31, 28);
-            this.StructuresList.Name = "StructuresList";
-            this.StructuresList.Size = new System.Drawing.Size(112, 13);
-            this.StructuresList.TabIndex = 1;
-            this.StructuresList.Text = "Список комплексов:";
-            // 
-            // MainPage
-            // 
-            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPage.BackColor = System.Drawing.Color.White;
-            this.MainPage.Location = new System.Drawing.Point(4, 29);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1090, 699);
-            this.MainPage.TabIndex = 22;
-            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
-            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
-            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
-            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
-            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // TypeColumn
             // 
@@ -822,6 +796,31 @@ namespace tryhard
             this.WeightColumn.ReadOnly = true;
             this.WeightColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.WeightColumn.Width = 130;
+            // 
+            // StructuresList
+            // 
+            this.StructuresList.AutoSize = true;
+            this.StructuresList.Location = new System.Drawing.Point(31, 28);
+            this.StructuresList.Name = "StructuresList";
+            this.StructuresList.Size = new System.Drawing.Size(112, 13);
+            this.StructuresList.TabIndex = 1;
+            this.StructuresList.Text = "Список комплексов:";
+            // 
+            // MainPage
+            // 
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPage.BackColor = System.Drawing.Color.White;
+            this.MainPage.Location = new System.Drawing.Point(4, 29);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1090, 699);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // MainForm
             // 

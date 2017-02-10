@@ -359,6 +359,7 @@ namespace tryhard
                     node.ExpandAll();
                 }              
             }
+            ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
         }
 
         private void FillPropertiesGridView(string ACategory, string AType, int AId)
@@ -386,24 +387,13 @@ namespace tryhard
             MetaDataManager.Instance.SerializeMetaObjects();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            UpStructurePanel.BringToFront();
-        }
-
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            UpStructurePanel.SendToBack();
-        }
-
-        private void BackToSchemeButton_Click(object sender, EventArgs e)
-        {
-            UpStructurePanel.SendToBack();
+            if (DrawManager.Blocks.Count != 0)
+            {
+                FillStructuresGridView();
+                UpStructurePanel.BringToFront();
+            }
         }
     }
 }
