@@ -82,13 +82,16 @@ namespace tryhard
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkInfoPanel = new System.Windows.Forms.Panel();
             this.UpStructurePanel = new System.Windows.Forms.Panel();
+            this.StructureTypePanel = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.KessonRadioButton = new System.Windows.Forms.RadioButton();
+            this.MonolegRadioButton = new System.Windows.Forms.RadioButton();
+            this.MultilegRadioButton = new System.Windows.Forms.RadioButton();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.BackToSchemeButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.CalculatedStructures = new System.Windows.Forms.Panel();
-            this.StructureTypesDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParametersLabel = new System.Windows.Forms.Label();
             this.StructureParametersPanel = new System.Windows.Forms.Panel();
             this.UpStructureSizeUpDown = new System.Windows.Forms.NumericUpDown();
@@ -116,14 +119,17 @@ namespace tryhard
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
             this.MainPage = new tryhard.DrawPage();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.UpStructurePanel.SuspendLayout();
-            this.CalculatedStructures.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StructureTypesDataGrid)).BeginInit();
+            this.StructureTypePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.StructureParametersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UpStructureSizeUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.YWaterUpDown)).BeginInit();
@@ -302,9 +308,11 @@ namespace tryhard
             // UpStructurePanel
             // 
             this.UpStructurePanel.BackColor = System.Drawing.Color.White;
+            this.UpStructurePanel.Controls.Add(this.StructureTypePanel);
+            this.UpStructurePanel.Controls.Add(this.NameLabel);
+            this.UpStructurePanel.Controls.Add(this.NameTextBox);
             this.UpStructurePanel.Controls.Add(this.BackToSchemeButton);
             this.UpStructurePanel.Controls.Add(this.SaveButton);
-            this.UpStructurePanel.Controls.Add(this.CalculatedStructures);
             this.UpStructurePanel.Controls.Add(this.ParametersLabel);
             this.UpStructurePanel.Controls.Add(this.StructureParametersPanel);
             this.UpStructurePanel.Controls.Add(this.StructuresGridView);
@@ -315,12 +323,111 @@ namespace tryhard
             this.UpStructurePanel.Size = new System.Drawing.Size(1348, 704);
             this.UpStructurePanel.TabIndex = 0;
             // 
+            // StructureTypePanel
+            // 
+            this.StructureTypePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StructureTypePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StructureTypePanel.Controls.Add(this.dataGridView1);
+            this.StructureTypePanel.Controls.Add(this.panel1);
+            this.StructureTypePanel.Location = new System.Drawing.Point(731, 51);
+            this.StructureTypePanel.Name = "StructureTypePanel";
+            this.StructureTypePanel.Size = new System.Drawing.Size(580, 307);
+            this.StructureTypePanel.TabIndex = 35;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridView1.Location = new System.Drawing.Point(174, 23);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 20;
+            this.dataGridView1.Size = new System.Drawing.Size(381, 259);
+            this.dataGridView1.TabIndex = 28;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel1.Controls.Add(this.KessonRadioButton);
+            this.panel1.Controls.Add(this.MonolegRadioButton);
+            this.panel1.Controls.Add(this.MultilegRadioButton);
+            this.panel1.Location = new System.Drawing.Point(33, 106);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(110, 100);
+            this.panel1.TabIndex = 5;
+            // 
+            // KessonRadioButton
+            // 
+            this.KessonRadioButton.AutoSize = true;
+            this.KessonRadioButton.Location = new System.Drawing.Point(14, 19);
+            this.KessonRadioButton.Name = "KessonRadioButton";
+            this.KessonRadioButton.Size = new System.Drawing.Size(62, 17);
+            this.KessonRadioButton.TabIndex = 2;
+            this.KessonRadioButton.TabStop = true;
+            this.KessonRadioButton.Tag = "0";
+            this.KessonRadioButton.Text = "Кессон";
+            this.KessonRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // MonolegRadioButton
+            // 
+            this.MonolegRadioButton.AutoSize = true;
+            this.MonolegRadioButton.Location = new System.Drawing.Point(14, 65);
+            this.MonolegRadioButton.Name = "MonolegRadioButton";
+            this.MonolegRadioButton.Size = new System.Drawing.Size(69, 17);
+            this.MonolegRadioButton.TabIndex = 4;
+            this.MonolegRadioButton.TabStop = true;
+            this.MonolegRadioButton.Tag = "2";
+            this.MonolegRadioButton.Text = "Монолэг";
+            this.MonolegRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // MultilegRadioButton
+            // 
+            this.MultilegRadioButton.AutoSize = true;
+            this.MultilegRadioButton.Location = new System.Drawing.Point(14, 42);
+            this.MultilegRadioButton.Name = "MultilegRadioButton";
+            this.MultilegRadioButton.Size = new System.Drawing.Size(79, 17);
+            this.MultilegRadioButton.TabIndex = 3;
+            this.MultilegRadioButton.TabStop = true;
+            this.MultilegRadioButton.Tag = "1";
+            this.MultilegRadioButton.Text = "Мультилэг";
+            this.MultilegRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(823, 649);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(104, 13);
+            this.NameLabel.TabIndex = 34;
+            this.NameLabel.Text = "Название проекта:";
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameTextBox.Location = new System.Drawing.Point(933, 642);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(227, 27);
+            this.NameTextBox.TabIndex = 33;
+            // 
             // BackToSchemeButton
             // 
             this.BackToSchemeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BackToSchemeButton.BackColor = System.Drawing.Color.White;
             this.BackToSchemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 666);
+            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 642);
             this.BackToSchemeButton.Name = "BackToSchemeButton";
             this.BackToSchemeButton.Size = new System.Drawing.Size(122, 27);
             this.BackToSchemeButton.TabIndex = 32;
@@ -333,7 +440,7 @@ namespace tryhard
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveButton.Location = new System.Drawing.Point(1188, 666);
+            this.SaveButton.Location = new System.Drawing.Point(1188, 642);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(122, 27);
             this.SaveButton.TabIndex = 31;
@@ -341,70 +448,11 @@ namespace tryhard
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // CalculatedStructures
-            // 
-            this.CalculatedStructures.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CalculatedStructures.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CalculatedStructures.Controls.Add(this.StructureTypesDataGrid);
-            this.CalculatedStructures.Location = new System.Drawing.Point(716, 51);
-            this.CalculatedStructures.Name = "CalculatedStructures";
-            this.CalculatedStructures.Size = new System.Drawing.Size(594, 604);
-            this.CalculatedStructures.TabIndex = 30;
-            // 
-            // StructureTypesDataGrid
-            // 
-            this.StructureTypesDataGrid.AllowUserToAddRows = false;
-            this.StructureTypesDataGrid.AllowUserToResizeColumns = false;
-            this.StructureTypesDataGrid.AllowUserToResizeRows = false;
-            this.StructureTypesDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.StructureTypesDataGrid.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.StructureTypesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StructureTypesDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.StructureTypesDataGrid.Location = new System.Drawing.Point(-1, -1);
-            this.StructureTypesDataGrid.Name = "StructureTypesDataGrid";
-            this.StructureTypesDataGrid.ReadOnly = true;
-            this.StructureTypesDataGrid.RowHeadersVisible = false;
-            this.StructureTypesDataGrid.RowTemplate.Height = 20;
-            this.StructureTypesDataGrid.Size = new System.Drawing.Size(594, 604);
-            this.StructureTypesDataGrid.TabIndex = 28;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.FillWeight = 131.5019F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Монолег";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.FillWeight = 147.9397F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Мультилег";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Кессон";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
             // ParametersLabel
             // 
             this.ParametersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ParametersLabel.AutoSize = true;
-            this.ParametersLabel.Location = new System.Drawing.Point(31, 400);
+            this.ParametersLabel.Location = new System.Drawing.Point(31, 376);
             this.ParametersLabel.Name = "ParametersLabel";
             this.ParametersLabel.Size = new System.Drawing.Size(69, 13);
             this.ParametersLabel.TabIndex = 29;
@@ -433,7 +481,7 @@ namespace tryhard
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthUpDown);
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthLabel);
             this.StructureParametersPanel.Controls.Add(this.GlobalWaterDepthLabel);
-            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 424);
+            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 400);
             this.StructureParametersPanel.Name = "StructureParametersPanel";
             this.StructureParametersPanel.Size = new System.Drawing.Size(634, 231);
             this.StructureParametersPanel.TabIndex = 28;
@@ -768,7 +816,7 @@ namespace tryhard
             this.StructuresGridView.ReadOnly = true;
             this.StructuresGridView.RowHeadersVisible = false;
             this.StructuresGridView.RowTemplate.Height = 20;
-            this.StructuresGridView.Size = new System.Drawing.Size(634, 331);
+            this.StructuresGridView.Size = new System.Drawing.Size(634, 307);
             this.StructuresGridView.TabIndex = 27;
             // 
             // TypeColumn
@@ -822,6 +870,24 @@ namespace tryhard
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.FillWeight = 165.9628F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Параметр";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.FillWeight = 113.4788F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -829,16 +895,16 @@ namespace tryhard
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1348, 728);
             this.Controls.Add(this.UpStructurePanel);
-            this.Controls.Add(this.panel);
             this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.MainPage);
+            this.Controls.Add(this.panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
+            this.MaximumSize = new System.Drawing.Size(1364, 767);
             this.MinimumSize = new System.Drawing.Size(1364, 766);
             this.Name = "MainForm";
             this.Text = "Gaby";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.MenuStrip.ResumeLayout(false);
@@ -851,8 +917,10 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.UpStructurePanel.ResumeLayout(false);
             this.UpStructurePanel.PerformLayout();
-            this.CalculatedStructures.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.StructureTypesDataGrid)).EndInit();
+            this.StructureTypePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.StructureParametersPanel.ResumeLayout(false);
             this.StructureParametersPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UpStructureSizeUpDown)).EndInit();
@@ -910,18 +978,23 @@ namespace tryhard
         private Label YWaterLabel;
         private NumericUpDown YWaterUpDown;
         private Button button1;
-        private Panel CalculatedStructures;
         private Button BackToSchemeButton;
         private Button SaveButton;
         private NumericUpDown UpStructureSizeUpDown;
         private Label UpStructureSizeLabel;
-        public DataGridView StructureTypesDataGrid;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn TypeColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn WeightColumn;
+        private TextBox NameTextBox;
+        private Label NameLabel;
+        private Panel StructureTypePanel;
+        private RadioButton MonolegRadioButton;
+        private RadioButton MultilegRadioButton;
+        private RadioButton KessonRadioButton;
+        private Panel panel1;
+        public DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }
 
