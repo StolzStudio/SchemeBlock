@@ -61,8 +61,8 @@ namespace tryhard
 
             isMouseDown = false;
             isNextStep = false;
-            //UpStructurePanel.Visible = false;
-           // MainPage.BringToFront();
+            UpStructurePanel.SendToBack();
+            MainPage.BringToFront();
         }   
 
         /* Equipment ComboBoxes */

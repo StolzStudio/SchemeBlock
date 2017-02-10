@@ -26,6 +26,7 @@ namespace tryhard
 
     public class DownStructure
     {
+        public bool isCalculated { get; set; }
         public int countBC { get; set; } = 1;
         public int countSC { get; set; } = 1;
         public float pUpStructure { get; set; }
@@ -47,6 +48,7 @@ namespace tryhard
         public DownStructure(int _countBC, int _countSC, float _pUpStructure, float _dGlobalWater, 
                              float _hWave001, float _hWave50, float _hStructure, float _yMat, float _yWater)
         {
+            isCalculated = true;
             countBC = _countBC;
             countSC = _countSC;
             pUpStructure = _pUpStructure;

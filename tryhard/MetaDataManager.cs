@@ -92,7 +92,6 @@ namespace tryhard
         {
             foreach (var Property in AObject.GetType().GetProperties())
             {
-                //=========================
                 Console.WriteLine(Property.Name + " " + Property.GetValue(AObject));
             }
         }
@@ -177,8 +176,7 @@ namespace tryhard
                 sw.Close();
             }
         }
-
-        //=====================
+        
         public BaseObject GetBaseObjectOfId(string AType, int AId)
         {
             object resultObject = new object();

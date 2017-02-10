@@ -37,7 +37,13 @@ namespace tryhard
                 BaseObject baseObject= MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
                 int weight = Convert.ToInt32(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
                 StructuresGridView.Rows.Add(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].ModelText, weight);
+                StructuresGridView.Rows[StructuresGridView.Rows.Count - 1].Tag = Key;
             }
+        }
+
+        public void SetStructureParanetersPanel()
+        {
+
         }
     }
 }
