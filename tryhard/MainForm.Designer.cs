@@ -317,7 +317,7 @@ namespace tryhard
             // 
             // BackToSchemeButton
             // 
-            this.BackToSchemeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackToSchemeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BackToSchemeButton.BackColor = System.Drawing.Color.White;
             this.BackToSchemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BackToSchemeButton.Location = new System.Drawing.Point(34, 666);

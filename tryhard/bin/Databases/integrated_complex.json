@@ -6,7 +6,7 @@
     "GasOutput": 1000,
     "PeopleDemand": 30,
     "ElectricityDemand": 2500,
-    "Weight": 15000000,
+    "Weight": 15000,
     "Volume": 120000,
     "Cost": 1500000000,
     "Structure": {
@@ -54,7 +54,7 @@
     "GasOutput": 5000,
     "PeopleDemand": 90,
     "ElectricityDemand": 5500,
-    "Weight": 55000000,
+    "Weight": 55000,
     "Volume": 400000,
     "Cost": 3500000000,
     "Structure": {

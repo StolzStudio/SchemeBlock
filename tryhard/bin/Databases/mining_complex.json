@@ -3,7 +3,7 @@
     "FluidOutput": 90000,
     "PeopleDemand": 54,
     "ElectricityDemand": 2400,
-    "Weight": 15000000,
+    "Weight": 15000,
     "Volume": 200000,
     "Cost": 30,
     "Structure": {
@@ -54,7 +54,7 @@
     "FluidOutput": 15000,
     "PeopleDemand": 34,
     "ElectricityDemand": 5000,
-    "Weight": 25000000,
+    "Weight": 25000,
     "Volume": 400000,
     "Cost": 7000000000,
     "Structure": {

@@ -20,15 +20,18 @@ namespace tryhard
         private void SaveButton_Click(object sender, EventArgs e)
         {
             UpStructurePanel.SendToBack();
+            ObjectsTreeView.Focus();
         }
 
         private void BackToSchemeButton_Click(object sender, EventArgs e)
         {
             UpStructurePanel.SendToBack();
+            ObjectsTreeView.Focus();
         }
 
         public void FillStructuresGridView()
         {
+            StructuresGridView.Rows.Clear();
             foreach (int Key in DrawManager.Blocks.Keys)
             {
                 BaseObject baseObject= MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
