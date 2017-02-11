@@ -280,6 +280,7 @@
 			[
 				"Id",
 				"Name",
+				"EstimatedFieldId",
 				"FluidOutput",
 				"PeopleDemand",
 				"ElectricityDemand",
@@ -295,6 +296,7 @@
 			[
 				"Id",
 				"Name",
+				"EstimatedFieldId",
 				"FluidInput",
 				"OilOutput",
 				"GasOutput",
@@ -315,6 +317,7 @@
 			[
 				"Id",
 				"Name",
+				"EstimatedFieldId",
 				"FluidInput",
 				"FluidOutput",
 				"OilOutput",
