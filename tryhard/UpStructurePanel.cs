@@ -15,7 +15,7 @@ namespace tryhard
 {
     public partial class MainForm : Form
     {
-        Dictionary<int, DownStructure> DownStructures = new Dictionary<int, DownStructure>();
+        Dictionary<int, List<DownStructure>> DownStructures = new Dictionary<int, List<DownStructure>>();
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -32,12 +32,24 @@ namespace tryhard
         public void FillStructuresGridView()
         {
             StructuresGridView.Rows.Clear();
+            DownStructures.Clear();
             foreach (int Key in DrawManager.Blocks.Keys)
             {
                 BaseObject baseObject= MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
                 int weight = Convert.ToInt32(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
                 StructuresGridView.Rows.Add(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].ModelText, weight);
                 StructuresGridView.Rows[StructuresGridView.Rows.Count - 1].Tag = Key;
+                DownStructures.Add(Key, new List<DownStructure>() { new DownStructure(StructureType.Kesson),
+                                                                    new DownStructure(StructureType.Monoleg),
+                                                                    new DownStructure(StructureType.Multileg) });
+            }
+        }
+
+        public void CalculateStructure(int Key)
+        {
+            foreach (DownStructure downStructure in DownStructures[Key])
+            {
+
             }
         }
 

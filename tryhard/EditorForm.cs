@@ -433,7 +433,7 @@ namespace tryhard
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
-                CountDataGridView.Visible = false;
+                //CountDataGridView.Visible = false;
                 isNextStep = true;
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);

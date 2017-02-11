@@ -120,6 +120,8 @@ namespace tryhard
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
@@ -400,7 +402,7 @@ namespace tryhard
             // MonolegRadioButton
             // 
             this.MonolegRadioButton.AutoSize = true;
-            this.MonolegRadioButton.Location = new System.Drawing.Point(14, 65);
+            this.MonolegRadioButton.Location = new System.Drawing.Point(14, 42);
             this.MonolegRadioButton.Name = "MonolegRadioButton";
             this.MonolegRadioButton.Size = new System.Drawing.Size(69, 17);
             this.MonolegRadioButton.TabIndex = 4;
@@ -412,7 +414,7 @@ namespace tryhard
             // MultilegRadioButton
             // 
             this.MultilegRadioButton.AutoSize = true;
-            this.MultilegRadioButton.Location = new System.Drawing.Point(14, 42);
+            this.MultilegRadioButton.Location = new System.Drawing.Point(14, 65);
             this.MultilegRadioButton.Name = "MultilegRadioButton";
             this.MultilegRadioButton.Size = new System.Drawing.Size(79, 17);
             this.MultilegRadioButton.TabIndex = 3;
@@ -554,19 +556,20 @@ namespace tryhard
             // 
             // YWaterUpDown
             // 
+            this.YWaterUpDown.DecimalPlaces = 2;
             this.YWaterUpDown.Increment = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
-            0});
+            65536});
             this.YWaterUpDown.Location = new System.Drawing.Point(553, 126);
             this.YWaterUpDown.Maximum = new decimal(new int[] {
-            5000,
+            2,
             0,
             0,
             0});
             this.YWaterUpDown.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -574,7 +577,7 @@ namespace tryhard
             this.YWaterUpDown.Size = new System.Drawing.Size(50, 20);
             this.YWaterUpDown.TabIndex = 18;
             this.YWaterUpDown.Value = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -584,25 +587,26 @@ namespace tryhard
             this.YWaterLabel.AutoSize = true;
             this.YWaterLabel.Location = new System.Drawing.Point(340, 128);
             this.YWaterLabel.Name = "YWaterLabel";
-            this.YWaterLabel.Size = new System.Drawing.Size(126, 13);
+            this.YWaterLabel.Size = new System.Drawing.Size(120, 13);
             this.YWaterLabel.TabIndex = 17;
-            this.YWaterLabel.Text = "Удельный вес воды, кг";
+            this.YWaterLabel.Text = "Удельный вес воды, т";
             // 
             // YMatUpDown
             // 
+            this.YMatUpDown.DecimalPlaces = 2;
             this.YMatUpDown.Increment = new decimal(new int[] {
-            100,
+            1,
             0,
             0,
-            0});
+            65536});
             this.YMatUpDown.Location = new System.Drawing.Point(234, 126);
             this.YMatUpDown.Maximum = new decimal(new int[] {
-            5000,
+            5,
             0,
             0,
             0});
             this.YMatUpDown.Minimum = new decimal(new int[] {
-            1000,
+            1,
             0,
             0,
             0});
@@ -610,19 +614,19 @@ namespace tryhard
             this.YMatUpDown.Size = new System.Drawing.Size(50, 20);
             this.YMatUpDown.TabIndex = 16;
             this.YMatUpDown.Value = new decimal(new int[] {
-            2500,
+            25,
             0,
             0,
-            0});
+            65536});
             // 
             // YMatLabel
             // 
             this.YMatLabel.AutoSize = true;
             this.YMatLabel.Location = new System.Drawing.Point(23, 128);
             this.YMatLabel.Name = "YMatLabel";
-            this.YMatLabel.Size = new System.Drawing.Size(155, 13);
+            this.YMatLabel.Size = new System.Drawing.Size(149, 13);
             this.YMatLabel.TabIndex = 15;
-            this.YMatLabel.Text = "Удельный вес материала, кг";
+            this.YMatLabel.Text = "Удельный вес материала, т";
             // 
             // DWallCellUpDown
             // 
@@ -871,6 +875,24 @@ namespace tryhard
             this.StructuresList.Size = new System.Drawing.Size(112, 13);
             this.StructuresList.TabIndex = 1;
             this.StructuresList.Text = "Список комплексов:";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.FillWeight = 165.9628F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Параметр";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.FillWeight = 113.4788F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MainPage
             // 

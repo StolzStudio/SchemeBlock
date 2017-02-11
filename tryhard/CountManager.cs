@@ -113,8 +113,6 @@ namespace tryhard
                                 Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
                                 break;
                         }
-
-                        // Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
                     }
             }
             else
@@ -142,6 +140,11 @@ namespace tryhard
                 (aSaveObject as MaterialObject).Volume += (el as MaterialObject).Volume;
                 (aSaveObject as MaterialObject).Cost   += (el as MaterialObject).Cost;
             }
+        }
+
+        public void MakeCalculateComplex(List<BaseObject> aCombination, BaseObject aSaveObject)
+        {
+
         }
     }
 }

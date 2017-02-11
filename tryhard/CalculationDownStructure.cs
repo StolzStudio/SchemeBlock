@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace tryhard
 {
+    public enum StructureType { Kesson = 0, Monoleg = 1, Multileg = 2 };
+
     class CalculationDownStructure
     {
         private static CalculationDownStructure instance;
@@ -26,24 +28,36 @@ namespace tryhard
 
     public class DownStructure
     {
+        public StructureType Type { get; set; }
         public bool isCalculated { get; set; }
-        public int countBC { get; set; } = 1;
+        public int countBC { get; set; } = 25;
         public int countSC { get; set; } = 1;
+        public float wUpStructure { get; set; } = 100;
         public float pUpStructure { get; set; }
-        public float dLocalWater { get; set; }
-        public float dGlobalWater { get; set; }
-        public float hWave001 { get; set; }
-        public float hWave50 { get; set; }
+        public float dLocalWater { get; set; } = 30;
+        public float dGlobalWater { get; set; } = 20;
+        public float dWallCell { get; set; } = (float)0.75;
+        public float wCell { get; set; } = 20;
+        public float hWave001 { get; set; } = 12;
+        public float hWave50 { get; set; } = 6;
         public float hExCl { get; set; }
         public float hTrCl { get; set; }
         public float hStructure { get; set; }
-        public float yMat { get; set; }
-        public float yWater { get; set; }
+        public float yMat { get; set; } = (float)2.5;
+        public float yWater { get; set; } = 1;
 
         public BaseCell baseCell = new BaseCell();
         public Cell supportCell = new Cell();
 
-        public DownStructure() { }
+        public DownStructure(StructureType type)
+        {
+            switch (type)
+            {
+                case StructureType.Kesson: countSC = 25; break;
+                case StructureType.Monoleg: countSC = 1; break;
+                case StructureType.Multileg: countSC = 4; break;
+            }
+        }
 
         public DownStructure(int _countBC, int _countSC, float _pUpStructure, float _dGlobalWater, 
                              float _hWave001, float _hWave50, float _hStructure, float _yMat, float _yWater)
