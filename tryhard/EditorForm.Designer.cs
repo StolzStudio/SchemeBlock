@@ -49,34 +49,38 @@
             this.GoNextButton = new System.Windows.Forms.Button();
             this.GoBackButton = new System.Windows.Forms.Button();
             this.WorkPanel = new System.Windows.Forms.Panel();
+            this.WorkFieldPanel = new System.Windows.Forms.Panel();
+            this.WorkFieldLabel = new System.Windows.Forms.Label();
+            this.WorkPropetriesPanel = new System.Windows.Forms.Panel();
+            this.WorkPropertiesLabel = new System.Windows.Forms.Label();
+            this.WorkCombinationPanel = new System.Windows.Forms.Panel();
+            this.WorkCombinationLabel = new System.Windows.Forms.Label();
             this.CombinationDataGridView = new System.Windows.Forms.DataGridView();
             this.PropteryDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CountDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FieldDataGridView = new System.Windows.Forms.DataGridView();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.WorkCombinationPanel = new System.Windows.Forms.Panel();
-            this.WorkCombinationLabel = new System.Windows.Forms.Label();
-            this.WorkPropertiesLabel = new System.Windows.Forms.Label();
-            this.WorkPropetriesPanel = new System.Windows.Forms.Panel();
-            this.WorkCountLabel = new System.Windows.Forms.Label();
-            this.WorkCountPanel = new System.Windows.Forms.Panel();
             this.DrawPage = new tryhard.DrawPage();
+            this.CheckColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VolumeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NameFieldColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.WorkPanel.SuspendLayout();
+            this.WorkFieldPanel.SuspendLayout();
+            this.WorkPropetriesPanel.SuspendLayout();
+            this.WorkCombinationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).BeginInit();
-            this.WorkCombinationPanel.SuspendLayout();
-            this.WorkPropetriesPanel.SuspendLayout();
-            this.WorkCountPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -278,17 +282,74 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Controls.Add(this.WorkCountPanel);
+            this.WorkPanel.Controls.Add(this.WorkFieldPanel);
             this.WorkPanel.Controls.Add(this.WorkPropetriesPanel);
             this.WorkPanel.Controls.Add(this.WorkCombinationPanel);
             this.WorkPanel.Controls.Add(this.CombinationDataGridView);
             this.WorkPanel.Controls.Add(this.PropteryDataGridView);
-            this.WorkPanel.Controls.Add(this.CountDataGridView);
+            this.WorkPanel.Controls.Add(this.FieldDataGridView);
             this.WorkPanel.Location = new System.Drawing.Point(6, 29);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1252, 653);
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
+            // 
+            // WorkFieldPanel
+            // 
+            this.WorkFieldPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkFieldPanel.Controls.Add(this.WorkFieldLabel);
+            this.WorkFieldPanel.Location = new System.Drawing.Point(33, 22);
+            this.WorkFieldPanel.Name = "WorkFieldPanel";
+            this.WorkFieldPanel.Size = new System.Drawing.Size(390, 27);
+            this.WorkFieldPanel.TabIndex = 32;
+            // 
+            // WorkFieldLabel
+            // 
+            this.WorkFieldLabel.AutoSize = true;
+            this.WorkFieldLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkFieldLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkFieldLabel.Name = "WorkFieldLabel";
+            this.WorkFieldLabel.Size = new System.Drawing.Size(99, 16);
+            this.WorkFieldLabel.TabIndex = 0;
+            this.WorkFieldLabel.Text = "Месторождение";
+            // 
+            // WorkPropetriesPanel
+            // 
+            this.WorkPropetriesPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkPropetriesPanel.Controls.Add(this.WorkPropertiesLabel);
+            this.WorkPropetriesPanel.Location = new System.Drawing.Point(33, 344);
+            this.WorkPropetriesPanel.Name = "WorkPropetriesPanel";
+            this.WorkPropetriesPanel.Size = new System.Drawing.Size(390, 27);
+            this.WorkPropetriesPanel.TabIndex = 31;
+            // 
+            // WorkPropertiesLabel
+            // 
+            this.WorkPropertiesLabel.AutoSize = true;
+            this.WorkPropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkPropertiesLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkPropertiesLabel.Name = "WorkPropertiesLabel";
+            this.WorkPropertiesLabel.Size = new System.Drawing.Size(58, 16);
+            this.WorkPropertiesLabel.TabIndex = 0;
+            this.WorkPropertiesLabel.Text = "Свойства";
+            // 
+            // WorkCombinationPanel
+            // 
+            this.WorkCombinationPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkCombinationPanel.Controls.Add(this.WorkCombinationLabel);
+            this.WorkCombinationPanel.Location = new System.Drawing.Point(451, 22);
+            this.WorkCombinationPanel.Name = "WorkCombinationPanel";
+            this.WorkCombinationPanel.Size = new System.Drawing.Size(530, 27);
+            this.WorkCombinationPanel.TabIndex = 30;
+            // 
+            // WorkCombinationLabel
+            // 
+            this.WorkCombinationLabel.AutoSize = true;
+            this.WorkCombinationLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkCombinationLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkCombinationLabel.Name = "WorkCombinationLabel";
+            this.WorkCombinationLabel.Size = new System.Drawing.Size(81, 16);
+            this.WorkCombinationLabel.TabIndex = 0;
+            this.WorkCombinationLabel.Text = " Комбинации";
             // 
             // CombinationDataGridView
             // 
@@ -298,11 +359,16 @@
             this.CombinationDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CombinationDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.CombinationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CombinationDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckColumn,
+            this.CostColumn,
+            this.VolumeColumn,
+            this.WeightColumn});
             this.CombinationDataGridView.Location = new System.Drawing.Point(451, 47);
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
             this.CombinationDataGridView.RowTemplate.Height = 20;
-            this.CombinationDataGridView.Size = new System.Drawing.Size(530, 581);
+            this.CombinationDataGridView.Size = new System.Drawing.Size(530, 584);
             this.CombinationDataGridView.TabIndex = 29;
             // 
             // PropteryDataGridView
@@ -316,7 +382,7 @@
             this.PropteryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.PropteryDataGridView.Location = new System.Drawing.Point(28, 47);
+            this.PropteryDataGridView.Location = new System.Drawing.Point(33, 369);
             this.PropteryDataGridView.Name = "PropteryDataGridView";
             this.PropteryDataGridView.RowHeadersVisible = false;
             this.PropteryDataGridView.RowTemplate.Height = 20;
@@ -338,38 +404,23 @@
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn4.Width = 186;
             // 
-            // CountDataGridView
+            // FieldDataGridView
             // 
-            this.CountDataGridView.AllowUserToAddRows = false;
-            this.CountDataGridView.AllowUserToResizeColumns = false;
-            this.CountDataGridView.AllowUserToResizeRows = false;
-            this.CountDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CountDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.CountDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CountDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.CountDataGridView.Location = new System.Drawing.Point(28, 331);
-            this.CountDataGridView.Name = "CountDataGridView";
-            this.CountDataGridView.RowHeadersVisible = false;
-            this.CountDataGridView.RowTemplate.Height = 20;
-            this.CountDataGridView.Size = new System.Drawing.Size(390, 297);
-            this.CountDataGridView.TabIndex = 27;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Количество";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 186;
+            this.FieldDataGridView.AllowUserToAddRows = false;
+            this.FieldDataGridView.AllowUserToResizeColumns = false;
+            this.FieldDataGridView.AllowUserToResizeRows = false;
+            this.FieldDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FieldDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.FieldDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FieldDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.NameFieldColumn});
+            this.FieldDataGridView.Location = new System.Drawing.Point(33, 47);
+            this.FieldDataGridView.Name = "FieldDataGridView";
+            this.FieldDataGridView.RowHeadersVisible = false;
+            this.FieldDataGridView.RowTemplate.Height = 20;
+            this.FieldDataGridView.Size = new System.Drawing.Size(390, 297);
+            this.FieldDataGridView.TabIndex = 27;
             // 
             // AddNewObjectButton
             // 
@@ -396,63 +447,6 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
-            // WorkCombinationPanel
-            // 
-            this.WorkCombinationPanel.BackColor = System.Drawing.Color.Orange;
-            this.WorkCombinationPanel.Controls.Add(this.WorkCombinationLabel);
-            this.WorkCombinationPanel.Location = new System.Drawing.Point(451, 22);
-            this.WorkCombinationPanel.Name = "WorkCombinationPanel";
-            this.WorkCombinationPanel.Size = new System.Drawing.Size(530, 27);
-            this.WorkCombinationPanel.TabIndex = 30;
-            // 
-            // WorkCombinationLabel
-            // 
-            this.WorkCombinationLabel.AutoSize = true;
-            this.WorkCombinationLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkCombinationLabel.Location = new System.Drawing.Point(3, 6);
-            this.WorkCombinationLabel.Name = "WorkCombinationLabel";
-            this.WorkCombinationLabel.Size = new System.Drawing.Size(81, 16);
-            this.WorkCombinationLabel.TabIndex = 0;
-            this.WorkCombinationLabel.Text = " Комбинации";
-            // 
-            // WorkPropertiesLabel
-            // 
-            this.WorkPropertiesLabel.AutoSize = true;
-            this.WorkPropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkPropertiesLabel.Location = new System.Drawing.Point(3, 6);
-            this.WorkPropertiesLabel.Name = "WorkPropertiesLabel";
-            this.WorkPropertiesLabel.Size = new System.Drawing.Size(58, 16);
-            this.WorkPropertiesLabel.TabIndex = 0;
-            this.WorkPropertiesLabel.Text = "Свойства";
-            // 
-            // WorkPropetriesPanel
-            // 
-            this.WorkPropetriesPanel.BackColor = System.Drawing.Color.Orange;
-            this.WorkPropetriesPanel.Controls.Add(this.WorkPropertiesLabel);
-            this.WorkPropetriesPanel.Location = new System.Drawing.Point(28, 22);
-            this.WorkPropetriesPanel.Name = "WorkPropetriesPanel";
-            this.WorkPropetriesPanel.Size = new System.Drawing.Size(390, 27);
-            this.WorkPropetriesPanel.TabIndex = 31;
-            // 
-            // WorkCountLabel
-            // 
-            this.WorkCountLabel.AutoSize = true;
-            this.WorkCountLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkCountLabel.Location = new System.Drawing.Point(3, 6);
-            this.WorkCountLabel.Name = "WorkCountLabel";
-            this.WorkCountLabel.Size = new System.Drawing.Size(132, 16);
-            this.WorkCountLabel.TabIndex = 0;
-            this.WorkCountLabel.Text = "Количество элементов";
-            // 
-            // WorkCountPanel
-            // 
-            this.WorkCountPanel.BackColor = System.Drawing.Color.Orange;
-            this.WorkCountPanel.Controls.Add(this.WorkCountLabel);
-            this.WorkCountPanel.Location = new System.Drawing.Point(28, 306);
-            this.WorkCountPanel.Name = "WorkCountPanel";
-            this.WorkCountPanel.Size = new System.Drawing.Size(390, 27);
-            this.WorkCountPanel.TabIndex = 32;
-            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -467,6 +461,48 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
+            // 
+            // CheckColumn
+            // 
+            this.CheckColumn.HeaderText = "";
+            this.CheckColumn.Name = "CheckColumn";
+            this.CheckColumn.Width = 77;
+            // 
+            // CostColumn
+            // 
+            this.CostColumn.HeaderText = "Цена";
+            this.CostColumn.Name = "CostColumn";
+            this.CostColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CostColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CostColumn.Width = 150;
+            // 
+            // VolumeColumn
+            // 
+            this.VolumeColumn.HeaderText = "Объем";
+            this.VolumeColumn.Name = "VolumeColumn";
+            this.VolumeColumn.Width = 150;
+            // 
+            // WeightColumn
+            // 
+            this.WeightColumn.HeaderText = "Вес";
+            this.WeightColumn.Name = "WeightColumn";
+            this.WeightColumn.Width = 150;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 40;
+            // 
+            // NameFieldColumn
+            // 
+            this.NameFieldColumn.HeaderText = "Название";
+            this.NameFieldColumn.Name = "NameFieldColumn";
+            this.NameFieldColumn.ReadOnly = true;
+            this.NameFieldColumn.Width = 347;
             // 
             // EditorForm
             // 
@@ -497,15 +533,15 @@
             this.AvailableObjectsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.WorkPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).EndInit();
-            this.WorkCombinationPanel.ResumeLayout(false);
-            this.WorkCombinationPanel.PerformLayout();
+            this.WorkFieldPanel.ResumeLayout(false);
+            this.WorkFieldPanel.PerformLayout();
             this.WorkPropetriesPanel.ResumeLayout(false);
             this.WorkPropetriesPanel.PerformLayout();
-            this.WorkCountPanel.ResumeLayout(false);
-            this.WorkCountPanel.PerformLayout();
+            this.WorkCombinationPanel.ResumeLayout(false);
+            this.WorkCombinationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,19 +572,23 @@
         private System.Windows.Forms.Panel WorkPanel;
         private System.Windows.Forms.Button AddNewObjectButton;
         private System.Windows.Forms.Button EditObjectButton;
-        public System.Windows.Forms.DataGridView CountDataGridView;
+        public System.Windows.Forms.DataGridView FieldDataGridView;
         private System.Windows.Forms.Panel LinkInfoPanel;
         public System.Windows.Forms.DataGridView CombinationDataGridView;
         public System.Windows.Forms.DataGridView PropteryDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Panel WorkCountPanel;
-        private System.Windows.Forms.Label WorkCountLabel;
+        private System.Windows.Forms.Panel WorkFieldPanel;
+        private System.Windows.Forms.Label WorkFieldLabel;
         private System.Windows.Forms.Panel WorkPropetriesPanel;
         private System.Windows.Forms.Label WorkPropertiesLabel;
         private System.Windows.Forms.Panel WorkCombinationPanel;
         private System.Windows.Forms.Label WorkCombinationLabel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VolumeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WeightColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameFieldColumn;
     }
 }

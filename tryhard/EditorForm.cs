@@ -423,6 +423,21 @@ namespace tryhard
             DrawPage.Invalidate();
         }
 
+        private void FillFieldDataGrid()
+        {
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType("field_parameters");
+            List<BaseObject> FieldObjects = new List<BaseObject>();
+            foreach (var i in Ids)
+            {
+                FieldObjects.Add(MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", i));
+            }
+
+            foreach (var el in FieldObjects)
+            {
+                FieldDataGridView.Rows.Add(false, el.Name);
+            }
+        }
+
         private void FillCombinationDataGrid()
         {
             List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
@@ -447,6 +462,7 @@ namespace tryhard
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
 
+                FillFieldDataGrid();
                 FillCombinationDataGrid();
                 
                 
