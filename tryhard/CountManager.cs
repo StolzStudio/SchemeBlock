@@ -19,11 +19,25 @@ namespace tryhard
         }
     }
 
+    class CountElement
+    {
+        public string ID    { get; set; }
+        public string Class { get; set; }
+
+        public CountElement(string aID, string aClass)
+        {
+            this.ID    = aID;
+            this.Class = aClass;
+        }
+    }
+
     class CountManager
     {
         private bool isEquipment;
         private string ComboBoxType;
         private EditorForm Form;
+        public BaseObject SelectedField { get; set; }
+        public List<BaseObject> FieldObjects { get; set; }
         private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
@@ -39,6 +53,7 @@ namespace tryhard
             Blocks = aBlocks;
             Links  = aLinks;
             Form = aForm;
+            CreateGrapth();
         }
 
         public CountManager(ref Dictionary<int, Block> aBlocks, string aComboBoxType, EditorForm aForm)
@@ -74,13 +89,20 @@ namespace tryhard
             }
         }
 
+        public void SetFieldObjects()
+        {
+            FieldObjects = new List<BaseObject>();
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType("field_parameters");
+
+            foreach (var i in Ids)
+            {
+                FieldObjects.Add(MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", i));
+            }
+        }
+
         public List<DataGridViewColumn> GiveCombinationColumns()
         {
-            DataGridViewCheckBoxColumn FirstColumn = new DataGridViewCheckBoxColumn();
-            FirstColumn.HeaderText = "Номер";
-            FirstColumn.Width = 70;
             List<DataGridViewColumn> Result = new List<DataGridViewColumn>();
-            Result.Add(FirstColumn);
             foreach (var key in Blocks.Keys)
             {
                 DataGridViewTextBoxColumn el = new DataGridViewTextBoxColumn();
@@ -88,6 +110,10 @@ namespace tryhard
                 el.Width = 70;
                 Form.CombinationDataGridView.Columns.Add(el);
             }
+            DataGridViewCheckBoxColumn FirstColumn = new DataGridViewCheckBoxColumn();
+            FirstColumn.HeaderText = "Номер";
+            FirstColumn.Width = 70;
+            Result.Add(FirstColumn);
             return Result;
         }
 
@@ -142,10 +168,77 @@ namespace tryhard
                 (aSaveObject as MaterialObject).Cost   += (el as MaterialObject).Cost;
             }
         }
-
+        //
+        //calc functions
+        //
         public void MakeCalculateComplex(List<BaseObject> aCombination, BaseObject aSaveObject)
         {
 
+        }
+
+        private void CreateGrapth()
+        {
+            int CurElem = -1;
+            int k = -1;
+
+            if (TryFoundDkInLinks())
+            {
+                k = GiveIndexOfLinkThatKeepStartBlock("dk");
+                CurElem = Links[k].FirstBlockIndex;
+            }
+            while (BlockHasOutputLink(CurElem))
+            {
+                k = GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(CurElem);
+                CurElem = Links[k].SecondBlockIndex;
+            }
+        }
+
+        private int GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
+        {
+            for (int i = 0; i < Links.Count; i++)
+            {
+                if (Links[i].FirstBlockIndex == aIndex)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int GiveIndexOfLinkThatKeepStartBlock(string aClass)
+        {
+            for (int i = 0; i < Links.Count; i++)
+            {
+                if(Blocks[Links[i].FirstBlockIndex].ClassText == aClass)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private bool BlockHasOutputLink(int aIndex)
+        {
+            foreach (var el in Links)
+            {
+                if (el.FirstBlockIndex == aIndex)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool TryFoundDkInLinks()
+        {
+            foreach (var el in Links)
+            {
+                if ((Blocks[el.FirstBlockIndex].ClassText == "dk")||(Blocks[el.SecondBlockIndex].ClassText == "dk"))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

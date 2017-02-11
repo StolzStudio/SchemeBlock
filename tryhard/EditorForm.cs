@@ -425,14 +425,9 @@ namespace tryhard
 
         private void FillFieldDataGrid()
         {
-            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType("field_parameters");
-            List<BaseObject> FieldObjects = new List<BaseObject>();
-            foreach (var i in Ids)
-            {
-                FieldObjects.Add(MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", i));
-            }
+            CalcManager.SetFieldObjects();
 
-            foreach (var el in FieldObjects)
+            foreach (var el in CalcManager.FieldObjects)
             {
                 FieldDataGridView.Rows.Add(false, el.Name);
             }
@@ -460,7 +455,7 @@ namespace tryhard
                 //CountDataGridView.Visible = false;
                 isNextStep = true;
 
-                CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
+                CalcManager = new CountManager(ref DrawManager.Blocks, ref DrawManager.Links, TypeStripComboBox.SelectedItem.ToString(), this);
 
                 FillFieldDataGrid();
                 FillCombinationDataGrid();
@@ -555,6 +550,11 @@ namespace tryhard
 
             TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(EditObject.Type);
             ToolStrip.Enabled = false;
+        }
+
+        private void FieldDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //CalcManager.SelectedField = FieldDataGridView.SelectedRows[1].ToString();
         }
     }
 }

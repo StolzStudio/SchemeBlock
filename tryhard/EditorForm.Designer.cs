@@ -62,13 +62,13 @@
             this.FieldDataGridView = new System.Windows.Forms.DataGridView();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.DrawPage = new tryhard.DrawPage();
             this.CheckColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VolumeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NameFieldColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -421,6 +421,7 @@
             this.FieldDataGridView.RowTemplate.Height = 20;
             this.FieldDataGridView.Size = new System.Drawing.Size(390, 297);
             this.FieldDataGridView.TabIndex = 27;
+            this.FieldDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FieldDataGridView_CellClick);
             // 
             // AddNewObjectButton
             // 
@@ -446,21 +447,6 @@
             this.EditObjectButton.Text = "Редактировать";
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
-            // 
-            // DrawPage
-            // 
-            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(6, 29);
-            this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
-            this.DrawPage.TabIndex = 0;
-            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
-            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
-            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
-            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
             // CheckColumn
             // 
@@ -503,6 +489,21 @@
             this.NameFieldColumn.Name = "NameFieldColumn";
             this.NameFieldColumn.ReadOnly = true;
             this.NameFieldColumn.Width = 347;
+            // 
+            // DrawPage
+            // 
+            this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DrawPage.BackColor = System.Drawing.Color.White;
+            this.DrawPage.Location = new System.Drawing.Point(6, 29);
+            this.DrawPage.Name = "DrawPage";
+            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
+            this.DrawPage.TabIndex = 0;
+            this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
+            this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
+            this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
+            this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
             // EditorForm
             // 
