@@ -58,12 +58,12 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.WorkCombinationPanel = new System.Windows.Forms.Panel();
+            this.WorkCombinationLabel = new System.Windows.Forms.Label();
+            this.WorkPropertiesLabel = new System.Windows.Forms.Label();
+            this.WorkPropetriesPanel = new System.Windows.Forms.Panel();
+            this.WorkCountLabel = new System.Windows.Forms.Label();
+            this.WorkCountPanel = new System.Windows.Forms.Panel();
             this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
@@ -74,9 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.WorkCombinationPanel.SuspendLayout();
+            this.WorkPropetriesPanel.SuspendLayout();
+            this.WorkCountPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -278,9 +278,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
-            this.WorkPanel.Controls.Add(this.panel3);
-            this.WorkPanel.Controls.Add(this.panel2);
-            this.WorkPanel.Controls.Add(this.panel1);
+            this.WorkPanel.Controls.Add(this.WorkCountPanel);
+            this.WorkPanel.Controls.Add(this.WorkPropetriesPanel);
+            this.WorkPanel.Controls.Add(this.WorkCombinationPanel);
             this.WorkPanel.Controls.Add(this.CombinationDataGridView);
             this.WorkPanel.Controls.Add(this.PropteryDataGridView);
             this.WorkPanel.Controls.Add(this.CountDataGridView);
@@ -396,62 +396,62 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
-            // panel1
+            // WorkCombinationPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Orange;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(451, 22);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(530, 27);
-            this.panel1.TabIndex = 30;
+            this.WorkCombinationPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkCombinationPanel.Controls.Add(this.WorkCombinationLabel);
+            this.WorkCombinationPanel.Location = new System.Drawing.Point(451, 22);
+            this.WorkCombinationPanel.Name = "WorkCombinationPanel";
+            this.WorkCombinationPanel.Size = new System.Drawing.Size(530, 27);
+            this.WorkCombinationPanel.TabIndex = 30;
             // 
-            // label1
+            // WorkCombinationLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = " Комбинации";
+            this.WorkCombinationLabel.AutoSize = true;
+            this.WorkCombinationLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkCombinationLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkCombinationLabel.Name = "WorkCombinationLabel";
+            this.WorkCombinationLabel.Size = new System.Drawing.Size(81, 16);
+            this.WorkCombinationLabel.TabIndex = 0;
+            this.WorkCombinationLabel.Text = " Комбинации";
             // 
-            // label2
+            // WorkPropertiesLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Свойства";
+            this.WorkPropertiesLabel.AutoSize = true;
+            this.WorkPropertiesLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkPropertiesLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkPropertiesLabel.Name = "WorkPropertiesLabel";
+            this.WorkPropertiesLabel.Size = new System.Drawing.Size(58, 16);
+            this.WorkPropertiesLabel.TabIndex = 0;
+            this.WorkPropertiesLabel.Text = "Свойства";
             // 
-            // panel2
+            // WorkPropetriesPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Orange;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(28, 22);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(390, 27);
-            this.panel2.TabIndex = 31;
+            this.WorkPropetriesPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkPropetriesPanel.Controls.Add(this.WorkPropertiesLabel);
+            this.WorkPropetriesPanel.Location = new System.Drawing.Point(28, 22);
+            this.WorkPropetriesPanel.Name = "WorkPropetriesPanel";
+            this.WorkPropetriesPanel.Size = new System.Drawing.Size(390, 27);
+            this.WorkPropetriesPanel.TabIndex = 31;
             // 
-            // label3
+            // WorkCountLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Количество элементов";
+            this.WorkCountLabel.AutoSize = true;
+            this.WorkCountLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkCountLabel.Location = new System.Drawing.Point(3, 6);
+            this.WorkCountLabel.Name = "WorkCountLabel";
+            this.WorkCountLabel.Size = new System.Drawing.Size(132, 16);
+            this.WorkCountLabel.TabIndex = 0;
+            this.WorkCountLabel.Text = "Количество элементов";
             // 
-            // panel3
+            // WorkCountPanel
             // 
-            this.panel3.BackColor = System.Drawing.Color.Orange;
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(28, 306);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(390, 27);
-            this.panel3.TabIndex = 32;
+            this.WorkCountPanel.BackColor = System.Drawing.Color.Orange;
+            this.WorkCountPanel.Controls.Add(this.WorkCountLabel);
+            this.WorkCountPanel.Location = new System.Drawing.Point(28, 306);
+            this.WorkCountPanel.Name = "WorkCountPanel";
+            this.WorkCountPanel.Size = new System.Drawing.Size(390, 27);
+            this.WorkCountPanel.TabIndex = 32;
             // 
             // DrawPage
             // 
@@ -500,12 +500,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountDataGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.WorkCombinationPanel.ResumeLayout(false);
+            this.WorkCombinationPanel.PerformLayout();
+            this.WorkPropetriesPanel.ResumeLayout(false);
+            this.WorkPropetriesPanel.PerformLayout();
+            this.WorkCountPanel.ResumeLayout(false);
+            this.WorkCountPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,11 +544,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel WorkCountPanel;
+        private System.Windows.Forms.Label WorkCountLabel;
+        private System.Windows.Forms.Panel WorkPropetriesPanel;
+        private System.Windows.Forms.Label WorkPropertiesLabel;
+        private System.Windows.Forms.Panel WorkCombinationPanel;
+        private System.Windows.Forms.Label WorkCombinationLabel;
     }
 }
