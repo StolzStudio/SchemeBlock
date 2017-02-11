@@ -423,6 +423,15 @@ namespace tryhard
             DrawPage.Invalidate();
         }
 
+        private void FillCombinationDataGrid()
+        {
+            List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
+            foreach (var c in Columns)
+            {
+                CombinationDataGridView.Columns.Add(c);
+            }
+        }
+
         private void GoNextButton_Click(object sender, EventArgs e)
         {
             if (!isNextStep)
@@ -437,6 +446,10 @@ namespace tryhard
                 isNextStep = true;
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, TypeStripComboBox.SelectedItem.ToString(), this);
+
+                FillCombinationDataGrid();
+                
+                
             }
             else
             {

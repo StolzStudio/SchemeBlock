@@ -52,7 +52,6 @@ namespace tryhard
             BlocksIndexCombination = new List<List<int>>();
             SetIndexArray();
             SetCombinations();
-            FillCombinationDataGrid();
             FillPropertyDataGrid(Combination, Form.isEditObject, Form.CategoryStripComboBox.SelectedItem.ToString());
         }
         
@@ -75,12 +74,13 @@ namespace tryhard
             }
         }
 
-        public void FillCombinationDataGrid()
+        public List<DataGridViewColumn> GiveCombinationColumns()
         {
             DataGridViewCheckBoxColumn FirstColumn = new DataGridViewCheckBoxColumn();
             FirstColumn.HeaderText = "Номер";
             FirstColumn.Width = 70;
-            Form.CombinationDataGridView.Columns.Add(FirstColumn);
+            List<DataGridViewColumn> Result = new List<DataGridViewColumn>();
+            Result.Add(FirstColumn);
             foreach (var key in Blocks.Keys)
             {
                 DataGridViewTextBoxColumn el = new DataGridViewTextBoxColumn();
@@ -88,6 +88,7 @@ namespace tryhard
                 el.Width = 70;
                 Form.CombinationDataGridView.Columns.Add(el);
             }
+            return Result;
         }
 
         public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
