@@ -120,9 +120,8 @@ namespace tryhard
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainPage = new tryhard.DrawPage();
+            this.StructureTypeLabel = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -310,6 +309,7 @@ namespace tryhard
             // UpStructurePanel
             // 
             this.UpStructurePanel.BackColor = System.Drawing.Color.White;
+            this.UpStructurePanel.Controls.Add(this.StructureTypeLabel);
             this.UpStructurePanel.Controls.Add(this.StructureTypePanel);
             this.UpStructurePanel.Controls.Add(this.NameLabel);
             this.UpStructurePanel.Controls.Add(this.NameTextBox);
@@ -343,8 +343,9 @@ namespace tryhard
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -378,11 +379,10 @@ namespace tryhard
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.KessonRadioButton);
             this.panel1.Controls.Add(this.MonolegRadioButton);
             this.panel1.Controls.Add(this.MultilegRadioButton);
-            this.panel1.Location = new System.Drawing.Point(33, 106);
+            this.panel1.Location = new System.Drawing.Point(35, 23);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(110, 100);
             this.panel1.TabIndex = 5;
@@ -876,24 +876,6 @@ namespace tryhard
             this.StructuresList.TabIndex = 1;
             this.StructuresList.Text = "Список комплексов:";
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.FillWeight = 165.9628F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Параметр";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.FillWeight = 113.4788F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Значение";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // MainPage
             // 
             this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -910,6 +892,15 @@ namespace tryhard
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
+            // StructureTypeLabel
+            // 
+            this.StructureTypeLabel.AutoSize = true;
+            this.StructureTypeLabel.Location = new System.Drawing.Point(728, 28);
+            this.StructureTypeLabel.Name = "StructureTypeLabel";
+            this.StructureTypeLabel.Size = new System.Drawing.Size(84, 13);
+            this.StructureTypeLabel.TabIndex = 36;
+            this.StructureTypeLabel.Text = "Типы строения";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -923,7 +914,6 @@ namespace tryhard
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
-            this.MaximumSize = new System.Drawing.Size(1364, 767);
             this.MinimumSize = new System.Drawing.Size(1364, 766);
             this.Name = "MainForm";
             this.Text = "Gaby";
@@ -1017,6 +1007,7 @@ namespace tryhard
         public DataGridView dataGridView1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private Label StructureTypeLabel;
     }
 }
 

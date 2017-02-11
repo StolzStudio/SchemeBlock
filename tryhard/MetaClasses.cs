@@ -163,19 +163,24 @@ namespace tryhard
         public long ReagentInput { get; set; }
     }
 
-    public class MiningComplex: ComplicatedObject
+    public class Complex: ComplicatedObject
+    {
+        public int EstimatedFieldId { get; set; }
+    }
+
+    public class MiningComplex: Complex
     {
         public long FluidOutput { get; set; }
     }
 
-    public class ProcessingComplex : ComplicatedObject
+    public class ProcessingComplex : Complex
     {
         public long FluidInput { get; set; }
         public long OilOutput { get; set; }
         public long GasOutput { get; set; }
     }
 
-    public class IntegratedComplex : ComplicatedObject
+    public class IntegratedComplex : Complex
     {
         public long FluidInput { get; set; }
         public long FluidOutput { get; set; }

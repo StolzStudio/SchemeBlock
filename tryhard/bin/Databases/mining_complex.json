@@ -1,6 +1,7 @@
 [
   {
     "FluidOutput": 90000,
+    "EstimatedFieldId": 1,
     "PeopleDemand": 54,
     "ElectricityDemand": 2400,
     "Weight": 15000,
@@ -52,6 +53,7 @@
   },
   {
     "FluidOutput": 15000,
+    "EstimatedFieldId": 1,
     "PeopleDemand": 34,
     "ElectricityDemand": 5000,
     "Weight": 25000,
