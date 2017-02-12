@@ -39,25 +39,25 @@ namespace tryhard
         //
         public Block(int aIndex, string aClass, string aModel, int aId, Point aLocation, Point aPageOffset)
         {
+            Id         = aId;
             Index      = aIndex;
             ClassText  = aClass;
             ModelText  = aModel;
             Location   = aLocation;
             PageOffset = aPageOffset;
-            Id = aId;
 
             SetFocus();
-
             SetTextLocation();
         }
 
-        public Block(StructuralObject AStructuralObject)
+        public Block(StructuralObject AStructuralObject, Point aPageOffset)
         {
-            Index = AStructuralObject.Index;
-            Id = AStructuralObject.Id;
-            ClassText = AStructuralObject.Type;
-            ModelText = MetaDataManager.Instance.GetBaseObjectOfId(ClassText, Id).Name;
-            Location = AStructuralObject.Coordinates;
+            Id         = AStructuralObject.Id;
+            Index      = AStructuralObject.Index;
+            ClassText  = AStructuralObject.Type;
+            ModelText  = MetaDataManager.Instance.GetBaseObjectOfId(ClassText, Id).Name;
+            Location   = AStructuralObject.Coordinates;
+            PageOffset = aPageOffset;
         }
         //
         //Work with location

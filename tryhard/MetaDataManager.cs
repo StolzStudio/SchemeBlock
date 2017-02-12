@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace tryhard
 {
@@ -166,7 +167,7 @@ namespace tryhard
         }
 
         public void FillDrawingObjectStructure(string AType, int AId, 
-                                               ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks)
+                                               ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks, Point aPageOffset)
         {
             ObjectsStructure ObjectStructure = new ObjectsStructure();
             foreach (BaseObject Object in MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId))
@@ -174,7 +175,7 @@ namespace tryhard
             foreach (LinkStructuralObject link in ObjectStructure.Links)
                 ALinks.Add(new Link(link));
             foreach (StructuralObject structuralObject in ObjectStructure.Objects)
-                ABlocks.Add(structuralObject.Index, new Block(structuralObject));
+                ABlocks.Add(structuralObject.Index, new Block(structuralObject, aPageOffset));
         }
 
         public void SerializeMetaObjects()

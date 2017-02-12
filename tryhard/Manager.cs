@@ -50,16 +50,10 @@ namespace tryhard
         public void LoadStructureOfObject(string AType, int AId)
         {
             DeleteAllElements();
-            MetaDataManager.Instance.FillDrawingObjectStructure(AType, AId, ref Links, ref Blocks);
+            MetaDataManager.Instance.FillDrawingObjectStructure(AType, AId, ref Links, ref Blocks, Page.Location);
             if (Blocks.Count != 0)
                 this.block_counter = Blocks.Max(block => block.Value.Index) + 1;
             Page.Invalidate();
-        }
-
-        public void ChangeSelectBlock()
-        {
-            //Blocks[SelectedBlockIndex].BlockModelLabel.Text = (string)Form.ObjectModelCB.SelectedItem;
-            //Blocks[SelectedBlockIndex].BlockId = ItemsIdList[Form.ObjectModelCB.SelectedIndex];
         }
 
         public void AddLink(Link ANewLink)
