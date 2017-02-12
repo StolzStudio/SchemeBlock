@@ -294,7 +294,7 @@ namespace tryhard
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
             this.PropertiesGridView.RowTemplate.Height = 20;
-            this.PropertiesGridView.Size = new System.Drawing.Size(243, 285);
+            this.PropertiesGridView.Size = new System.Drawing.Size(243, 286);
             this.PropertiesGridView.TabIndex = 30;
             // 
             // NameCol
