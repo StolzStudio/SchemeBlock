@@ -423,13 +423,13 @@ namespace tryhard
             DrawPage.Invalidate();
         }
 
-        private void FillFieldDataGrid()
+        private void FillFieldComboBox()
         {
             CalcManager.SetFieldObjects();
 
             foreach (var el in CalcManager.FieldObjects)
             {
-                FieldDataGridView.Rows.Add(false, el.Name);
+                FieldComboBox.Items.Add(el.Name);
             }
         }
 
@@ -457,7 +457,7 @@ namespace tryhard
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, ref DrawManager.Links, TypeStripComboBox.SelectedItem.ToString(), this);
 
-                FillFieldDataGrid();
+                FillFieldComboBox();
                 FillCombinationDataGrid();
                 
                 

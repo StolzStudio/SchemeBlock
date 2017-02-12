@@ -19,22 +19,11 @@ namespace tryhard
         }
     }
 
-    class CountElement
-    {
-        public string ID    { get; set; }
-        public string Class { get; set; }
-
-        public CountElement(string aID, string aClass)
-        {
-            this.ID    = aID;
-            this.Class = aClass;
-        }
-    }
-
     class CountManager
     {
         private bool isEquipment;
         private string ComboBoxType;
+        List<int> Queue;
         private EditorForm Form;
         public BaseObject SelectedField { get; set; }
         public List<BaseObject> FieldObjects { get; set; }
@@ -53,7 +42,7 @@ namespace tryhard
             Blocks = aBlocks;
             Links  = aLinks;
             Form = aForm;
-            CreateGrapth();
+            CreateQueue();
         }
 
         public CountManager(ref Dictionary<int, Block> aBlocks, string aComboBoxType, EditorForm aForm)
@@ -98,23 +87,6 @@ namespace tryhard
             {
                 FieldObjects.Add(MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", i));
             }
-        }
-
-        public List<DataGridViewColumn> GiveCombinationColumns()
-        {
-            List<DataGridViewColumn> Result = new List<DataGridViewColumn>();
-            foreach (var key in Blocks.Keys)
-            {
-                DataGridViewTextBoxColumn el = new DataGridViewTextBoxColumn();
-                el.HeaderText = Blocks[key].ClassText;
-                el.Width = 70;
-                Form.CombinationDataGridView.Columns.Add(el);
-            }
-            DataGridViewCheckBoxColumn FirstColumn = new DataGridViewCheckBoxColumn();
-            FirstColumn.HeaderText = "Номер";
-            FirstColumn.Width = 70;
-            Result.Add(FirstColumn);
-            return Result;
         }
 
         public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
@@ -176,57 +148,60 @@ namespace tryhard
 
         }
 
-        private void CreateGrapth()
+        private void CreateQueue()
         {
-            int CurElem = -1;
-            int k = -1;
+            Queue = new List<int>();
+            List<int> Indeces = new List<int>();
+            int k = 0;
 
             if (TryFoundDkInLinks())
             {
-                k = GiveIndexOfLinkThatKeepStartBlock("dk");
-                CurElem = Links[k].FirstBlockIndex;
+                Indeces = GiveIndexOfLinksThatKeepStartBlock("dk");
+                foreach (var ind in Indeces)
+                {
+                    Queue.Add(ind);
+                }
             }
-            while (BlockHasOutputLink(CurElem))
+
+            while (k < Links.Count)
             {
-                k = GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(CurElem);
-                CurElem = Links[k].SecondBlockIndex;
+                Indeces = GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(Links[Queue[k]].SecondBlockIndex);
+                if (Indeces.Count != 0)
+                {
+                    foreach (var ind in Indeces)
+                    {
+                        Queue.Add(ind);
+                    }
+                }
+                k++;
             }
         }
 
-        private int GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
+        private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
         {
+            List<int> Result = new List<int>();
+
             for (int i = 0; i < Links.Count; i++)
             {
                 if (Links[i].FirstBlockIndex == aIndex)
                 {
-                    return i;
+                    Result.Add(i);
                 }
             }
-            return -1;
+            return Result;
         }
 
-        private int GiveIndexOfLinkThatKeepStartBlock(string aClass)
+        private List<int> GiveIndexOfLinksThatKeepStartBlock(string aClass)
         {
+            List<int> Result = new List<int>();
             for (int i = 0; i < Links.Count; i++)
             {
                 if(Blocks[Links[i].FirstBlockIndex].ClassText == aClass)
                 {
-                    return i;
+                    Result.Add(i);
                 }
             }
-            return -1;
-        }
-
-        private bool BlockHasOutputLink(int aIndex)
-        {
-            foreach (var el in Links)
-            {
-                if (el.FirstBlockIndex == aIndex)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return Result;
         }
 
         private bool TryFoundDkInLinks()

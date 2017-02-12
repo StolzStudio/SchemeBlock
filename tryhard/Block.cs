@@ -39,13 +39,13 @@ namespace tryhard
         //
         public Block(int aIndex, string aClass, string aModel, int aId, Point aLocation, Point aPageOffset)
         {
-            Id         = aId;
             Index      = aIndex;
             ClassText  = aClass;
             ModelText  = aModel;
             Location   = aLocation;
             PageOffset = aPageOffset;
-
+            Count      = 0;
+            Id         = aId;
             SetFocus();
             SetTextLocation();
         }
