@@ -56,19 +56,17 @@
             this.WorkCombinationPanel = new System.Windows.Forms.Panel();
             this.WorkCombinationLabel = new System.Windows.Forms.Label();
             this.CombinationDataGridView = new System.Windows.Forms.DataGridView();
-            this.PropteryDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FieldDataGridView = new System.Windows.Forms.DataGridView();
-            this.AddNewObjectButton = new System.Windows.Forms.Button();
-            this.EditObjectButton = new System.Windows.Forms.Button();
             this.CheckColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VolumeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.NameFieldColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropteryDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddNewObjectButton = new System.Windows.Forms.Button();
+            this.EditObjectButton = new System.Windows.Forms.Button();
             this.DrawPage = new tryhard.DrawPage();
+            this.FieldComboBox = new System.Windows.Forms.ComboBox();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -80,7 +78,6 @@
             this.WorkCombinationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ToolStrip
@@ -282,12 +279,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WorkPanel.BackColor = System.Drawing.Color.White;
+            this.WorkPanel.Controls.Add(this.FieldComboBox);
             this.WorkPanel.Controls.Add(this.WorkFieldPanel);
             this.WorkPanel.Controls.Add(this.WorkPropetriesPanel);
             this.WorkPanel.Controls.Add(this.WorkCombinationPanel);
             this.WorkPanel.Controls.Add(this.CombinationDataGridView);
             this.WorkPanel.Controls.Add(this.PropteryDataGridView);
-            this.WorkPanel.Controls.Add(this.FieldDataGridView);
             this.WorkPanel.Location = new System.Drawing.Point(6, 29);
             this.WorkPanel.Name = "WorkPanel";
             this.WorkPanel.Size = new System.Drawing.Size(1252, 653);
@@ -371,6 +368,32 @@
             this.CombinationDataGridView.Size = new System.Drawing.Size(530, 584);
             this.CombinationDataGridView.TabIndex = 29;
             // 
+            // CheckColumn
+            // 
+            this.CheckColumn.HeaderText = "";
+            this.CheckColumn.Name = "CheckColumn";
+            this.CheckColumn.Width = 77;
+            // 
+            // CostColumn
+            // 
+            this.CostColumn.HeaderText = "Цена";
+            this.CostColumn.Name = "CostColumn";
+            this.CostColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CostColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CostColumn.Width = 150;
+            // 
+            // VolumeColumn
+            // 
+            this.VolumeColumn.HeaderText = "Объем";
+            this.VolumeColumn.Name = "VolumeColumn";
+            this.VolumeColumn.Width = 150;
+            // 
+            // WeightColumn
+            // 
+            this.WeightColumn.HeaderText = "Вес";
+            this.WeightColumn.Name = "WeightColumn";
+            this.WeightColumn.Width = 150;
+            // 
             // PropteryDataGridView
             // 
             this.PropteryDataGridView.AllowUserToAddRows = false;
@@ -404,25 +427,6 @@
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn4.Width = 186;
             // 
-            // FieldDataGridView
-            // 
-            this.FieldDataGridView.AllowUserToAddRows = false;
-            this.FieldDataGridView.AllowUserToResizeColumns = false;
-            this.FieldDataGridView.AllowUserToResizeRows = false;
-            this.FieldDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FieldDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.FieldDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FieldDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
-            this.NameFieldColumn});
-            this.FieldDataGridView.Location = new System.Drawing.Point(33, 47);
-            this.FieldDataGridView.Name = "FieldDataGridView";
-            this.FieldDataGridView.RowHeadersVisible = false;
-            this.FieldDataGridView.RowTemplate.Height = 20;
-            this.FieldDataGridView.Size = new System.Drawing.Size(390, 297);
-            this.FieldDataGridView.TabIndex = 27;
-            this.FieldDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FieldDataGridView_CellClick);
-            // 
             // AddNewObjectButton
             // 
             this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -448,48 +452,6 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
-            // CheckColumn
-            // 
-            this.CheckColumn.HeaderText = "";
-            this.CheckColumn.Name = "CheckColumn";
-            this.CheckColumn.Width = 77;
-            // 
-            // CostColumn
-            // 
-            this.CostColumn.HeaderText = "Цена";
-            this.CostColumn.Name = "CostColumn";
-            this.CostColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CostColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CostColumn.Width = 150;
-            // 
-            // VolumeColumn
-            // 
-            this.VolumeColumn.HeaderText = "Объем";
-            this.VolumeColumn.Name = "VolumeColumn";
-            this.VolumeColumn.Width = 150;
-            // 
-            // WeightColumn
-            // 
-            this.WeightColumn.HeaderText = "Вес";
-            this.WeightColumn.Name = "WeightColumn";
-            this.WeightColumn.Width = 150;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 40;
-            // 
-            // NameFieldColumn
-            // 
-            this.NameFieldColumn.HeaderText = "Название";
-            this.NameFieldColumn.Name = "NameFieldColumn";
-            this.NameFieldColumn.ReadOnly = true;
-            this.NameFieldColumn.Width = 347;
-            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -504,6 +466,14 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
+            // 
+            // FieldComboBox
+            // 
+            this.FieldComboBox.FormattingEnabled = true;
+            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
+            this.FieldComboBox.Name = "FieldComboBox";
+            this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
+            this.FieldComboBox.TabIndex = 33;
             // 
             // EditorForm
             // 
@@ -542,7 +512,6 @@
             this.WorkCombinationPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CombinationDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PropteryDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,7 +542,6 @@
         private System.Windows.Forms.Panel WorkPanel;
         private System.Windows.Forms.Button AddNewObjectButton;
         private System.Windows.Forms.Button EditObjectButton;
-        public System.Windows.Forms.DataGridView FieldDataGridView;
         private System.Windows.Forms.Panel LinkInfoPanel;
         public System.Windows.Forms.DataGridView CombinationDataGridView;
         public System.Windows.Forms.DataGridView PropteryDataGridView;
@@ -589,7 +557,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CostColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn VolumeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn WeightColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameFieldColumn;
+        private System.Windows.Forms.ComboBox FieldComboBox;
     }
 }
