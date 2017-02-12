@@ -14,7 +14,6 @@ using Newtonsoft.Json;
 namespace tryhard
 {
     public enum MainFormPageType { Main, ObjectType }
-
     public partial class MainForm : Form
     {
         /* Fields */
@@ -61,25 +60,6 @@ namespace tryhard
             {
                 DrawManager.DeleteElements();
                 MainPage.Invalidate();
-            }
-        }
-
-        private void SelectTreeNode()
-        {
-            int i = DrawManager.SelectedBlockIndex;
-            foreach (TreeNode node in ObjectsTreeView.Nodes)
-            {
-                if (DrawManager.Blocks[i].ClassText == node.Text)
-                {
-                    foreach (TreeNode node_child in node.Nodes)
-                    {
-                        if (DrawManager.Blocks[i].ModelText == node_child.Text)
-                        {
-                            ObjectsTreeView.SelectedNode = node_child;
-                            break;
-                        }
-                    }
-                }
             }
         }
 
@@ -315,6 +295,25 @@ namespace tryhard
                 }              
             }
             ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
+        }
+
+        private void SelectTreeNode()
+        {
+            int i = DrawManager.SelectedBlockIndex;
+            foreach (TreeNode node in ObjectsTreeView.Nodes)
+            {
+                if (DrawManager.Blocks[i].ClassText == node.Text)
+                {
+                    foreach (TreeNode node_child in node.Nodes)
+                    {
+                        if (DrawManager.Blocks[i].ModelText == node_child.Text)
+                        {
+                            ObjectsTreeView.SelectedNode = node_child;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void FillPropertiesGridView(string ACategory, string AType, int AId)
