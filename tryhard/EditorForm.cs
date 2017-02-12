@@ -435,11 +435,11 @@ namespace tryhard
 
         private void FillCombinationDataGrid()
         {
-            List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
-            foreach (var c in Columns)
-            {
-                CombinationDataGridView.Columns.Add(c);
-            }
+            //List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
+            //foreach (var c in Columns)
+            //{
+            //    CombinationDataGridView.Columns.Add(c);
+            //}
         }
 
         private void GoNextButton_Click(object sender, EventArgs e)
@@ -555,6 +555,11 @@ namespace tryhard
         private void FieldDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //CalcManager.SelectedField = FieldDataGridView.SelectedRows[1].ToString();
+        }
+
+        private void FieldComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
         }
     }
 }

@@ -89,6 +89,20 @@ namespace tryhard
             }
         }
 
+        private int GetObjectId(string aClass, string aModel)
+        {
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(aClass);
+
+            foreach (var i in Ids)
+            {
+                if (MetaDataManager.Instance.GetBaseObjectOfId(aClass, i).Name == aModel)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
         {
             BaseObject SaveObject = MetaDataManager.Instance.GetBaseObjectOfId(ComboBoxType, 0);
@@ -143,11 +157,6 @@ namespace tryhard
         //
         //calc functions
         //
-        public void MakeCalculateComplex(List<BaseObject> aCombination, BaseObject aSaveObject)
-        {
-
-        }
-
         private void CreateQueue()
         {
             Queue = new List<int>();
@@ -175,6 +184,13 @@ namespace tryhard
                 }
                 k++;
             }
+        }
+
+        public void MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
+        {
+            BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
+            BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
+
         }
 
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)

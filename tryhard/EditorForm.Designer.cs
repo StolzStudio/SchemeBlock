@@ -65,8 +65,8 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.DrawPage = new tryhard.DrawPage();
             this.FieldComboBox = new System.Windows.Forms.ComboBox();
+            this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -452,6 +452,15 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
+            // FieldComboBox
+            // 
+            this.FieldComboBox.FormattingEnabled = true;
+            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
+            this.FieldComboBox.Name = "FieldComboBox";
+            this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
+            this.FieldComboBox.TabIndex = 33;
+            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(this.FieldComboBox_SelectedIndexChanged);
+            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -466,14 +475,6 @@
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
-            // 
-            // FieldComboBox
-            // 
-            this.FieldComboBox.FormattingEnabled = true;
-            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
-            this.FieldComboBox.Name = "FieldComboBox";
-            this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
-            this.FieldComboBox.TabIndex = 33;
             // 
             // EditorForm
             // 
