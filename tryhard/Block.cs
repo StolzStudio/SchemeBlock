@@ -14,8 +14,8 @@ namespace tryhard
         //
         //Consts
         //
-        public const int BlockWidth  = 80;
-        public const int BlockHeight = 80;
+        public const int BlockWidth  = 88;
+        public const int BlockHeight = 88;
         //
         //Properties
         //
@@ -138,19 +138,29 @@ namespace tryhard
             g.DrawRectangle(FigurePen, Figure);
             g.FillRectangle(FigureBrush, Figure);
 
-            DrawText(g, new Font("Microsoft YaHei", 6), new SolidBrush(Color.Black), ClassText);
-            Location.Y += 15;
-            DrawText(g, new Font("Microsoft YaHei", 7), new SolidBrush(Color.DimGray), ModelText);
-            Location.Y -= 15;
-
+            DrawText(g);
         }
 
-       private void DrawText(Graphics g, Font aFont, SolidBrush aBrush, string aText)
+       private void DrawText(Graphics g)
        {
-            SetTextOffset(g, aText, aFont);
             SetTextLocation();
-            g.DrawString(aText, aFont, aBrush, TextLocation);
-       }
+
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center;
+
+            Font font = new Font("Microsoft YaHei", 6);
+            SolidBrush brush = new SolidBrush(Color.Black);
+            string text = MetaDataManager.Instance.Dictionary[ClassText];
+            RectangleF rectClass = new Rectangle(TextLocation.X, TextLocation.Y - 5, BlockWidth, 20);
+            g.DrawString(text, font, brush, rectClass, stringFormat);
+
+            font = new Font("Microsoft YaHei", 7);
+            brush = new SolidBrush(Color.DimGray);
+            text = ModelText;
+            RectangleF rectModel = new Rectangle(TextLocation.X, TextLocation.Y + 20, BlockWidth - 1, 20);
+            g.DrawString(text, font, brush, rectModel, stringFormat);
+        }
 
     }
 }
