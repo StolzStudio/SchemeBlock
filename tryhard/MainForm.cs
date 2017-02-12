@@ -85,7 +85,8 @@ namespace tryhard
                     ptr.X -= Block.BlockWidth / 2;
                     ptr.Y -= Block.BlockHeight / 2;
                     ClickOffset = new Point(Block.BlockWidth / 2, Block.BlockHeight / 2);
-                    DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, ObjectsTreeView.SelectedNode.Text,
+                    string parentNodeText = ObjectsTreeView.SelectedNode.Parent.Text;
+                    DrawManager.AddBlock(ptr, MetaDataManager.Instance.Dictionary[parentNodeText], ObjectsTreeView.SelectedNode.Text,
                                         (int)ObjectsTreeView.SelectedNode.Tag);
                     this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 }
@@ -283,7 +284,7 @@ namespace tryhard
             {
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                 {
-                    TreeNode node = new TreeNode(TypeName);
+                    TreeNode node = new TreeNode(MetaDataManager.Instance.Dictionary[TypeName]);
                     foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
                     {
                         TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
@@ -302,7 +303,7 @@ namespace tryhard
             int i = DrawManager.SelectedBlockIndex;
             foreach (TreeNode node in ObjectsTreeView.Nodes)
             {
-                if (DrawManager.Blocks[i].ClassText == node.Text)
+                if (DrawManager.Blocks[i].ClassText == MetaDataManager.Instance.Dictionary[node.Text])
                 {
                     foreach (TreeNode node_child in node.Nodes)
                     {
