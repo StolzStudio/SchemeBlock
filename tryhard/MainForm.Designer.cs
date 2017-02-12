@@ -65,9 +65,6 @@ namespace tryhard
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AvailableObjectsPanel = new System.Windows.Forms.Panel();
@@ -76,12 +73,16 @@ namespace tryhard
             this.PropertiesLabel = new System.Windows.Forms.Label();
             this.ObjectsTreeView = new System.Windows.Forms.TreeView();
             this.panel = new System.Windows.Forms.Panel();
+            this.FieldComboBox = new System.Windows.Forms.ComboBox();
+            this.FieldPanel = new System.Windows.Forms.Panel();
+            this.FieldLabel = new System.Windows.Forms.Label();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.PropertiesGridView = new System.Windows.Forms.DataGridView();
             this.NameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkInfoPanel = new System.Windows.Forms.Panel();
             this.UpStructurePanel = new System.Windows.Forms.Panel();
+            this.StructureTypeLabel = new System.Windows.Forms.Label();
             this.StructureTypePanel = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,11 +122,11 @@ namespace tryhard
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
             this.MainPage = new tryhard.DrawPage();
-            this.StructureTypeLabel = new System.Windows.Forms.Label();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
             this.panel.SuspendLayout();
+            this.FieldPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.UpStructurePanel.SuspendLayout();
             this.StructureTypePanel.SuspendLayout();
@@ -144,31 +145,10 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.StructuresGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // FileMenuItem
-            // 
-            this.FileMenuItem.Name = "FileMenuItem";
-            this.FileMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.FileMenuItem.Text = "Файл";
-            // 
-            // EditingMenuItem
-            // 
-            this.EditingMenuItem.Name = "EditingMenuItem";
-            this.EditingMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.EditingMenuItem.Text = "Правка";
-            // 
-            // InfoMenuItem
-            // 
-            this.InfoMenuItem.Name = "InfoMenuItem";
-            this.InfoMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.InfoMenuItem.Text = "Справка";
-            // 
             // MenuStrip
             // 
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileMenuItem,
-            this.EditingMenuItem,
-            this.EditorMenuItem,
-            this.InfoMenuItem});
+            this.EditorMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
             this.MenuStrip.Size = new System.Drawing.Size(1348, 24);
@@ -187,7 +167,7 @@ namespace tryhard
             this.AvailableObjectsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AvailableObjectsPanel.BackColor = System.Drawing.Color.Orange;
             this.AvailableObjectsPanel.Controls.Add(this.AvailableObjectsLabel);
-            this.AvailableObjectsPanel.Location = new System.Drawing.Point(5, 0);
+            this.AvailableObjectsPanel.Location = new System.Drawing.Point(5, 54);
             this.AvailableObjectsPanel.Name = "AvailableObjectsPanel";
             this.AvailableObjectsPanel.Size = new System.Drawing.Size(243, 22);
             this.AvailableObjectsPanel.TabIndex = 19;
@@ -207,7 +187,7 @@ namespace tryhard
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(5, 349);
+            this.PropertiesPanel.Location = new System.Drawing.Point(5, 351);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -227,9 +207,9 @@ namespace tryhard
             // 
             this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ObjectsTreeView.Location = new System.Drawing.Point(5, 22);
+            this.ObjectsTreeView.Location = new System.Drawing.Point(5, 76);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
-            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 324);
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 272);
             this.ObjectsTreeView.TabIndex = 23;
             this.ObjectsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ObjectsTreeView_AfterSelect);
             // 
@@ -237,23 +217,57 @@ namespace tryhard
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel.Controls.Add(this.FieldComboBox);
+            this.panel.Controls.Add(this.FieldPanel);
             this.panel.Controls.Add(this.CalculateButton);
             this.panel.Controls.Add(this.ObjectsTreeView);
             this.panel.Controls.Add(this.PropertiesPanel);
             this.panel.Controls.Add(this.AvailableObjectsPanel);
             this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.LinkInfoPanel);
-            this.panel.Location = new System.Drawing.Point(1094, 28);
+            this.panel.Location = new System.Drawing.Point(1095, 25);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(254, 700);
+            this.panel.Size = new System.Drawing.Size(254, 704);
             this.panel.TabIndex = 0;
+            // 
+            // FieldComboBox
+            // 
+            this.FieldComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FieldComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.FieldComboBox.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F);
+            this.FieldComboBox.FormattingEnabled = true;
+            this.FieldComboBox.Location = new System.Drawing.Point(5, 26);
+            this.FieldComboBox.Name = "FieldComboBox";
+            this.FieldComboBox.Size = new System.Drawing.Size(243, 24);
+            this.FieldComboBox.TabIndex = 32;
+            // 
+            // FieldPanel
+            // 
+            this.FieldPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FieldPanel.BackColor = System.Drawing.Color.Orange;
+            this.FieldPanel.Controls.Add(this.FieldLabel);
+            this.FieldPanel.Location = new System.Drawing.Point(6, 3);
+            this.FieldPanel.Name = "FieldPanel";
+            this.FieldPanel.Size = new System.Drawing.Size(243, 22);
+            this.FieldPanel.TabIndex = 20;
+            // 
+            // FieldLabel
+            // 
+            this.FieldLabel.AutoSize = true;
+            this.FieldLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FieldLabel.Location = new System.Drawing.Point(3, 4);
+            this.FieldLabel.Name = "FieldLabel";
+            this.FieldLabel.Size = new System.Drawing.Size(196, 16);
+            this.FieldLabel.TabIndex = 18;
+            this.FieldLabel.Text = "Разрабатываемое месторождение";
             // 
             // CalculateButton
             // 
             this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CalculateButton.BackColor = System.Drawing.Color.White;
             this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CalculateButton.Location = new System.Drawing.Point(5, 660);
+            this.CalculateButton.Location = new System.Drawing.Point(5, 661);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(243, 37);
             this.CalculateButton.TabIndex = 29;
@@ -272,7 +286,7 @@ namespace tryhard
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(5, 371);
+            this.PropertiesGridView.Location = new System.Drawing.Point(5, 373);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
@@ -301,7 +315,7 @@ namespace tryhard
             this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
             this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LinkInfoPanel.Location = new System.Drawing.Point(5, 371);
+            this.LinkInfoPanel.Location = new System.Drawing.Point(5, 373);
             this.LinkInfoPanel.Name = "LinkInfoPanel";
             this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
             this.LinkInfoPanel.TabIndex = 31;
@@ -320,10 +334,19 @@ namespace tryhard
             this.UpStructurePanel.Controls.Add(this.StructuresGridView);
             this.UpStructurePanel.Controls.Add(this.StructuresList);
             this.UpStructurePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UpStructurePanel.Location = new System.Drawing.Point(0, 24);
+            this.UpStructurePanel.Location = new System.Drawing.Point(0, 0);
             this.UpStructurePanel.Name = "UpStructurePanel";
-            this.UpStructurePanel.Size = new System.Drawing.Size(1348, 704);
+            this.UpStructurePanel.Size = new System.Drawing.Size(1348, 728);
             this.UpStructurePanel.TabIndex = 0;
+            // 
+            // StructureTypeLabel
+            // 
+            this.StructureTypeLabel.AutoSize = true;
+            this.StructureTypeLabel.Location = new System.Drawing.Point(728, 28);
+            this.StructureTypeLabel.Name = "StructureTypeLabel";
+            this.StructureTypeLabel.Size = new System.Drawing.Size(84, 13);
+            this.StructureTypeLabel.TabIndex = 36;
+            this.StructureTypeLabel.Text = "Типы строения";
             // 
             // StructureTypePanel
             // 
@@ -335,7 +358,7 @@ namespace tryhard
             this.StructureTypePanel.Controls.Add(this.panel1);
             this.StructureTypePanel.Location = new System.Drawing.Point(731, 51);
             this.StructureTypePanel.Name = "StructureTypePanel";
-            this.StructureTypePanel.Size = new System.Drawing.Size(580, 307);
+            this.StructureTypePanel.Size = new System.Drawing.Size(580, 331);
             this.StructureTypePanel.TabIndex = 35;
             // 
             // dataGridView1
@@ -356,7 +379,7 @@ namespace tryhard
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(381, 259);
+            this.dataGridView1.Size = new System.Drawing.Size(381, 283);
             this.dataGridView1.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn2
@@ -427,7 +450,7 @@ namespace tryhard
             // 
             this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(823, 649);
+            this.NameLabel.Location = new System.Drawing.Point(823, 673);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(104, 13);
             this.NameLabel.TabIndex = 34;
@@ -437,7 +460,7 @@ namespace tryhard
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameTextBox.Location = new System.Drawing.Point(933, 642);
+            this.NameTextBox.Location = new System.Drawing.Point(933, 666);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(227, 27);
             this.NameTextBox.TabIndex = 33;
@@ -447,7 +470,7 @@ namespace tryhard
             this.BackToSchemeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BackToSchemeButton.BackColor = System.Drawing.Color.White;
             this.BackToSchemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 642);
+            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 666);
             this.BackToSchemeButton.Name = "BackToSchemeButton";
             this.BackToSchemeButton.Size = new System.Drawing.Size(122, 27);
             this.BackToSchemeButton.TabIndex = 32;
@@ -460,7 +483,7 @@ namespace tryhard
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveButton.Location = new System.Drawing.Point(1188, 642);
+            this.SaveButton.Location = new System.Drawing.Point(1188, 666);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(122, 27);
             this.SaveButton.TabIndex = 31;
@@ -472,7 +495,7 @@ namespace tryhard
             // 
             this.ParametersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ParametersLabel.AutoSize = true;
-            this.ParametersLabel.Location = new System.Drawing.Point(31, 376);
+            this.ParametersLabel.Location = new System.Drawing.Point(31, 400);
             this.ParametersLabel.Name = "ParametersLabel";
             this.ParametersLabel.Size = new System.Drawing.Size(69, 13);
             this.ParametersLabel.TabIndex = 29;
@@ -501,7 +524,7 @@ namespace tryhard
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthUpDown);
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthLabel);
             this.StructureParametersPanel.Controls.Add(this.GlobalWaterDepthLabel);
-            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 400);
+            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 424);
             this.StructureParametersPanel.Name = "StructureParametersPanel";
             this.StructureParametersPanel.Size = new System.Drawing.Size(634, 231);
             this.StructureParametersPanel.TabIndex = 28;
@@ -838,7 +861,7 @@ namespace tryhard
             this.StructuresGridView.ReadOnly = true;
             this.StructuresGridView.RowHeadersVisible = false;
             this.StructuresGridView.RowTemplate.Height = 20;
-            this.StructuresGridView.Size = new System.Drawing.Size(634, 307);
+            this.StructuresGridView.Size = new System.Drawing.Size(634, 331);
             this.StructuresGridView.TabIndex = 27;
             // 
             // TypeColumn
@@ -882,9 +905,10 @@ namespace tryhard
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPage.BackColor = System.Drawing.Color.White;
-            this.MainPage.Location = new System.Drawing.Point(4, 29);
+            this.MainPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainPage.Location = new System.Drawing.Point(-1, 25);
             this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1090, 699);
+            this.MainPage.Size = new System.Drawing.Size(1097, 704);
             this.MainPage.TabIndex = 22;
             this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
             this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
@@ -892,25 +916,16 @@ namespace tryhard
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
-            // StructureTypeLabel
-            // 
-            this.StructureTypeLabel.AutoSize = true;
-            this.StructureTypeLabel.Location = new System.Drawing.Point(728, 28);
-            this.StructureTypeLabel.Name = "StructureTypeLabel";
-            this.StructureTypeLabel.Size = new System.Drawing.Size(84, 13);
-            this.StructureTypeLabel.TabIndex = 36;
-            this.StructureTypeLabel.Text = "Типы строения";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1348, 728);
-            this.Controls.Add(this.UpStructurePanel);
             this.Controls.Add(this.MenuStrip);
             this.Controls.Add(this.MainPage);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.UpStructurePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
@@ -926,6 +941,8 @@ namespace tryhard
             this.PropertiesPanel.ResumeLayout(false);
             this.PropertiesPanel.PerformLayout();
             this.panel.ResumeLayout(false);
+            this.FieldPanel.ResumeLayout(false);
+            this.FieldPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.UpStructurePanel.ResumeLayout(false);
             this.UpStructurePanel.PerformLayout();
@@ -951,9 +968,6 @@ namespace tryhard
         }
 
         #endregion
-        private ToolStripMenuItem FileMenuItem;
-        private ToolStripMenuItem EditingMenuItem;
-        private ToolStripMenuItem InfoMenuItem;
         private MenuStrip MenuStrip;
         public DrawPage MainPage;
         private ToolStripMenuItem EditorMenuItem;
@@ -1008,6 +1022,9 @@ namespace tryhard
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private Label StructureTypeLabel;
+        private ComboBox FieldComboBox;
+        private Panel FieldPanel;
+        private Label FieldLabel;
     }
 }
 

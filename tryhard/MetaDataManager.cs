@@ -34,14 +34,19 @@ namespace tryhard
             }
         }
 
-        private string ObjFilesDir = "../Databases/";
+        private string ObjFilesDir;
         private string ObjFileFormat = ".json";
+        public Dictionary<string, string> Dictionary;
         public Dictionary<string, List<BaseObject>> Objects;
         public Dictionary<string, List<MetaObjectInfo>> ObjectsInfo;
-        public void Initialize(string APath)
+
+        public void Initialize(string ADir)
         {
+            ObjFilesDir = ADir;
+            Dictionary = new Dictionary<string, string>();
+            InitializeDictionary(ADir + "dictionary.json");
             Objects = new Dictionary<string, List<BaseObject>>();
-            ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(APath));
+            ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(ADir + "objectsinfo.json"));
             foreach (string Category in ObjectsInfo.Keys)
             {
                 foreach (MetaObjectInfo ObjectType in ObjectsInfo[Category])
@@ -49,6 +54,12 @@ namespace tryhard
                     Objects.Add(ObjectType.Name, DeserializeMetaObjects(ObjectType.Name));
                 }
             }
+        }
+
+        private void InitializeDictionary(string APath)
+        {
+            string json = MetaDataManager.Instance.GetJson(APath);
+            Dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
         }
 
         public IEnumerable<string> ObjectCategories
@@ -218,7 +229,7 @@ namespace tryhard
 
 
 
-        private string GetJson(string APath)
+        public string GetJson(string APath)
         {
             StreamReader sr = new StreamReader(APath);
             string json = sr.ReadToEnd();
