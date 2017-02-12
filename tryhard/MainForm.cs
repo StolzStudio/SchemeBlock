@@ -325,7 +325,7 @@ namespace tryhard
                 {
                     IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
                     foreach (BaseObject obj in base_object)
-                        PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                        PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName], obj.GetType().GetProperty(APropertyName).GetValue(obj));
                 }
             ShowPropertiesPanel();
         }
@@ -342,7 +342,8 @@ namespace tryhard
         {
             if (ObjectsTreeView.SelectedNode.Parent == null)
                 ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
-            FillPropertiesGridView("Complex", ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+            FillPropertiesGridView("Complex", MetaDataManager.Instance.Dictionary[ObjectsTreeView.SelectedNode.Parent.Text], 
+                                   (int)ObjectsTreeView.SelectedNode.Tag);
         }
 
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
