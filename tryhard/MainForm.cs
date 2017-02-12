@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace tryhard
 {
@@ -16,23 +17,6 @@ namespace tryhard
 
     public partial class MainForm : Form
     {
-        public event EventHandler ChangedPage;
-
-        protected virtual void OnChangedPage(EventArgs e)
-        {
-            EventHandler handler = ChangedPage;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
-            Console.WriteLine("Страница поменялась");
-        }
-
-        public void ChangedPageEvent(object sender, EventArgs e)
-        {
-            //Console.WriteLine("Страница поменялась");
-        }
-
         /* Fields */
 
         public Point DrawingPanelOffset;
@@ -48,10 +32,11 @@ namespace tryhard
 
         public MainForm()
         {
-            MetaDataManager.Instance.Initialize("../Databases/objectsinfo.json");
+            MetaDataManager.Instance.Initialize("../Databases/");
             FormsManager.Instance.Initialize(this);
             InitializeComponent();
             FillObjectTreeView();
+            FillFieldComboBox();
 
             DrawManager = new Manager(this.MainPage);
             CalcManager = new CalculationManager();
@@ -63,37 +48,7 @@ namespace tryhard
             isNextStep = false;
             UpStructurePanel.SendToBack();
             MainPage.BringToFront();
-        }   
-
-        /* Equipment ComboBoxes */
-
-        public List<Dictionary<int, CalcBlock>> GetBlocksCombinations()
-        {
-            /* Fill Dict */
-
-            Dictionary<int, CalcBlock> CalcBlocks = new Dictionary<int, CalcBlock>();
-            foreach (int Key in DrawManager.Blocks.Keys)
-                CalcBlocks.Add(Key, new CalcBlock(Key, DrawManager.Blocks[Key].ClassText,
-                                                       DrawManager.Blocks[Key].ModelText,
-                                                       DrawManager.Blocks[Key].Count));
-
-            /* Fill Links at Blocks */
-
-            /*if (APageType == PageType.SchemeType)
-            {
-                foreach (Link Link in DrawManager.Links)
-                {
-                    CalcBlocks[Link.FirstBlockIndex].OutputLinks.Add(new LinkInfo(Link.SecondBlockIndex, Link.LinkParameter));
-                    CalcBlocks[Link.SecondBlockIndex].InputLinks.Add(new LinkInfo(Link.FirstBlockIndex, Link.LinkParameter));
-                }
-            }*/
-            return CalcManager.CalculateBlocksCombinations(CalcBlocks);
-        }  
-
-        private bool IsLinkNull(Link TestLink)
-        {
-            return TestLink == null;
-        }
+        }     
 
         private void MainPage_Paint(object sender, PaintEventArgs e)
         {
@@ -373,6 +328,14 @@ namespace tryhard
                         PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
                 }
             ShowPropertiesPanel();
+        }
+
+        private void FillFieldComboBox()
+        {
+            FieldComboBox.Items.Clear();
+            foreach(IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+                FieldComboBox.Items.Add(field.Name);
+            FieldComboBox.SelectedIndex = 0;
         }
 
         private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
