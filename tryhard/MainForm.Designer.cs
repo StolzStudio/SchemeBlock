@@ -166,6 +166,7 @@ namespace tryhard
             // 
             this.AvailableObjectsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AvailableObjectsPanel.BackColor = System.Drawing.Color.Orange;
+            this.AvailableObjectsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AvailableObjectsPanel.Controls.Add(this.AvailableObjectsLabel);
             this.AvailableObjectsPanel.Location = new System.Drawing.Point(5, 54);
             this.AvailableObjectsPanel.Name = "AvailableObjectsPanel";
@@ -186,6 +187,7 @@ namespace tryhard
             // 
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
+            this.PropertiesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
             this.PropertiesPanel.Location = new System.Drawing.Point(5, 351);
             this.PropertiesPanel.Name = "PropertiesPanel";
@@ -207,7 +209,7 @@ namespace tryhard
             // 
             this.ObjectsTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ObjectsTreeView.Location = new System.Drawing.Point(5, 76);
+            this.ObjectsTreeView.Location = new System.Drawing.Point(5, 75);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
             this.ObjectsTreeView.Size = new System.Drawing.Size(243, 272);
             this.ObjectsTreeView.TabIndex = 23;
@@ -237,7 +239,7 @@ namespace tryhard
             this.FieldComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.FieldComboBox.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F);
             this.FieldComboBox.FormattingEnabled = true;
-            this.FieldComboBox.Location = new System.Drawing.Point(5, 26);
+            this.FieldComboBox.Location = new System.Drawing.Point(6, 25);
             this.FieldComboBox.Name = "FieldComboBox";
             this.FieldComboBox.Size = new System.Drawing.Size(243, 24);
             this.FieldComboBox.TabIndex = 32;
@@ -246,6 +248,7 @@ namespace tryhard
             // 
             this.FieldPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FieldPanel.BackColor = System.Drawing.Color.Orange;
+            this.FieldPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FieldPanel.Controls.Add(this.FieldLabel);
             this.FieldPanel.Location = new System.Drawing.Point(6, 3);
             this.FieldPanel.Name = "FieldPanel";
@@ -286,7 +289,7 @@ namespace tryhard
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(5, 373);
+            this.PropertiesGridView.Location = new System.Drawing.Point(5, 372);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
