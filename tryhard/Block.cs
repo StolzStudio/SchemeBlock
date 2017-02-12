@@ -44,7 +44,8 @@ namespace tryhard
             ModelText  = aModel;
             Location   = aLocation;
             PageOffset = aPageOffset;
-            Id = aId;
+            Count      = 0;
+            Id         = aId;
 
             SetFocus();
 
