@@ -35,9 +35,10 @@ namespace tryhard
             DownStructures.Clear();
             foreach (int Key in DrawManager.Blocks.Keys)
             {
-                BaseObject baseObject= MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
+                BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
                 int weight = Convert.ToInt32(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
-                StructuresGridView.Rows.Add(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].ModelText, weight);
+                StructuresGridView.Rows.Add(MetaDataManager.Instance.Dictionary[DrawManager.Blocks[Key].ClassText], 
+                                            DrawManager.Blocks[Key].ModelText, weight);
                 StructuresGridView.Rows[StructuresGridView.Rows.Count - 1].Tag = Key;
                 DownStructures.Add(Key, new List<DownStructure>() { new DownStructure(StructureType.Kesson),
                                                                     new DownStructure(StructureType.Monoleg),

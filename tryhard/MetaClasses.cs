@@ -16,6 +16,7 @@ namespace tryhard
 
     public class ProjectInfo
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public ObjectsStructure Structure { get; set; }
     }

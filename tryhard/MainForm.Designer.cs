@@ -337,9 +337,9 @@ namespace tryhard
             this.UpStructurePanel.Controls.Add(this.StructuresGridView);
             this.UpStructurePanel.Controls.Add(this.StructuresList);
             this.UpStructurePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UpStructurePanel.Location = new System.Drawing.Point(0, 0);
+            this.UpStructurePanel.Location = new System.Drawing.Point(0, 24);
             this.UpStructurePanel.Name = "UpStructurePanel";
-            this.UpStructurePanel.Size = new System.Drawing.Size(1348, 728);
+            this.UpStructurePanel.Size = new System.Drawing.Size(1348, 704);
             this.UpStructurePanel.TabIndex = 0;
             // 
             // StructureTypeLabel
@@ -361,7 +361,7 @@ namespace tryhard
             this.StructureTypePanel.Controls.Add(this.panel1);
             this.StructureTypePanel.Location = new System.Drawing.Point(731, 51);
             this.StructureTypePanel.Name = "StructureTypePanel";
-            this.StructureTypePanel.Size = new System.Drawing.Size(580, 331);
+            this.StructureTypePanel.Size = new System.Drawing.Size(580, 307);
             this.StructureTypePanel.TabIndex = 35;
             // 
             // dataGridView1
@@ -382,7 +382,7 @@ namespace tryhard
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 20;
-            this.dataGridView1.Size = new System.Drawing.Size(381, 283);
+            this.dataGridView1.Size = new System.Drawing.Size(381, 259);
             this.dataGridView1.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn2
@@ -453,7 +453,7 @@ namespace tryhard
             // 
             this.NameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(823, 673);
+            this.NameLabel.Location = new System.Drawing.Point(823, 649);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(104, 13);
             this.NameLabel.TabIndex = 34;
@@ -463,7 +463,7 @@ namespace tryhard
             // 
             this.NameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NameTextBox.Location = new System.Drawing.Point(933, 666);
+            this.NameTextBox.Location = new System.Drawing.Point(933, 642);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.Size = new System.Drawing.Size(227, 27);
             this.NameTextBox.TabIndex = 33;
@@ -473,7 +473,7 @@ namespace tryhard
             this.BackToSchemeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BackToSchemeButton.BackColor = System.Drawing.Color.White;
             this.BackToSchemeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 666);
+            this.BackToSchemeButton.Location = new System.Drawing.Point(34, 642);
             this.BackToSchemeButton.Name = "BackToSchemeButton";
             this.BackToSchemeButton.Size = new System.Drawing.Size(122, 27);
             this.BackToSchemeButton.TabIndex = 32;
@@ -486,7 +486,7 @@ namespace tryhard
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.BackColor = System.Drawing.Color.White;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SaveButton.Location = new System.Drawing.Point(1188, 666);
+            this.SaveButton.Location = new System.Drawing.Point(1188, 642);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(122, 27);
             this.SaveButton.TabIndex = 31;
@@ -498,7 +498,7 @@ namespace tryhard
             // 
             this.ParametersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ParametersLabel.AutoSize = true;
-            this.ParametersLabel.Location = new System.Drawing.Point(31, 400);
+            this.ParametersLabel.Location = new System.Drawing.Point(31, 376);
             this.ParametersLabel.Name = "ParametersLabel";
             this.ParametersLabel.Size = new System.Drawing.Size(69, 13);
             this.ParametersLabel.TabIndex = 29;
@@ -527,7 +527,7 @@ namespace tryhard
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthUpDown);
             this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthLabel);
             this.StructureParametersPanel.Controls.Add(this.GlobalWaterDepthLabel);
-            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 424);
+            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 400);
             this.StructureParametersPanel.Name = "StructureParametersPanel";
             this.StructureParametersPanel.Size = new System.Drawing.Size(634, 231);
             this.StructureParametersPanel.TabIndex = 28;
@@ -864,7 +864,7 @@ namespace tryhard
             this.StructuresGridView.ReadOnly = true;
             this.StructuresGridView.RowHeadersVisible = false;
             this.StructuresGridView.RowTemplate.Height = 20;
-            this.StructuresGridView.Size = new System.Drawing.Size(634, 331);
+            this.StructuresGridView.Size = new System.Drawing.Size(634, 307);
             this.StructuresGridView.TabIndex = 27;
             // 
             // TypeColumn
@@ -925,10 +925,10 @@ namespace tryhard
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1348, 728);
-            this.Controls.Add(this.MenuStrip);
-            this.Controls.Add(this.MainPage);
-            this.Controls.Add(this.panel);
             this.Controls.Add(this.UpStructurePanel);
+            this.Controls.Add(this.MenuStrip);
+            this.Controls.Add(this.panel);
+            this.Controls.Add(this.MainPage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;

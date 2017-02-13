@@ -124,10 +124,7 @@ namespace tryhard
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
                     ShowPropertiesPanel();
                 }
-                if (DrawManager.SelectedBlockIndex != -1)
-                {
-                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-                }
+                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                 if (this.SelectBlockIndex != -1)
                 {
                     ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
@@ -142,6 +139,7 @@ namespace tryhard
         {
             if ((this.isMouseDown) && (SelectBlockIndex != -1))
             {
+                Console.WriteLine(ClickOffset.X + " " + ClickOffset.Y);
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(MainPage.Width, MainPage.Height));
             }           

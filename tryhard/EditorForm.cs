@@ -201,17 +201,14 @@ namespace tryhard
                 DrawManager.ClearBlocksFocus();
 
                 Point ptr = PointToClient(Cursor.Position);
-                ptr.X = ptr.X - DrawPage.Location.X - ToolStrip.Location.X;
-                ptr.Y = ptr.Y - DrawPage.Location.Y - ToolStrip.Location.Y;
-
-                ClickOffset = ptr;
-                Console.WriteLine("Click offset at mousedown: " + ptr.X + " " + ptr.Y);
+                ptr.X = ptr.X - DrawPage.Location.X;
+                ptr.Y = ptr.Y - DrawPage.Location.Y;
 
                 if (Control.ModifierKeys == Keys.Control)
                 {
                     DrawManager.TrySetFocusInBlocks(ptr);
 
-                    if ((DrawManager.SelectedBlockIndex == -1) && (ObjectsTreeView.SelectedNode != null))
+                    if ((DrawManager.SelectedBlockIndex == -1))
                     {
                         ptr.X -= Block.BlockWidth / 2;
                         ptr.Y -= Block.BlockHeight / 2;
@@ -261,10 +258,7 @@ namespace tryhard
                         ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
                         ShowPropertiesPanel();
                     }
-                    if (DrawManager.SelectedBlockIndex != -1)
-                    {
-                        this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
-                    }
+                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                     if (this.SelectBlockIndex != -1)
                     {
                         ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
@@ -379,7 +373,6 @@ namespace tryhard
         {
             if ((this.isMouseDown) && (SelectBlockIndex != -1))
             {
-                Console.WriteLine("Click offset at mousemove: " + ClickOffset.X + " " + ClickOffset.Y);
                 Point Pnt = this.PointToClient(Cursor.Position);
                 DrawManager.Blocks[SelectBlockIndex].Move(Pnt, ClickOffset, new Point(DrawPage.Width, DrawPage.Height));
             }

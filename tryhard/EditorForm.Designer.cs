@@ -49,6 +49,7 @@
             this.GoNextButton = new System.Windows.Forms.Button();
             this.GoBackButton = new System.Windows.Forms.Button();
             this.WorkPanel = new System.Windows.Forms.Panel();
+            this.FieldComboBox = new System.Windows.Forms.ComboBox();
             this.WorkFieldPanel = new System.Windows.Forms.Panel();
             this.WorkFieldLabel = new System.Windows.Forms.Label();
             this.WorkPropetriesPanel = new System.Windows.Forms.Panel();
@@ -65,7 +66,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
-            this.FieldComboBox = new System.Windows.Forms.ComboBox();
             this.DrawPage = new tryhard.DrawPage();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
@@ -145,9 +145,9 @@
             this.panel.Controls.Add(this.AvailableObjectsPanel);
             this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.LinkInfoPanel);
-            this.panel.Location = new System.Drawing.Point(1009, 29);
+            this.panel.Location = new System.Drawing.Point(1009, 25);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(255, 653);
+            this.panel.Size = new System.Drawing.Size(255, 657);
             this.panel.TabIndex = 1;
             // 
             // ObjectsTreeView
@@ -157,7 +157,7 @@
             this.ObjectsTreeView.BackColor = System.Drawing.SystemColors.Window;
             this.ObjectsTreeView.Location = new System.Drawing.Point(6, 22);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
-            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 278);
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 282);
             this.ObjectsTreeView.TabIndex = 23;
             this.ObjectsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ObjectsTreeView_AfterSelect);
             // 
@@ -166,7 +166,7 @@
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(6, 303);
+            this.PropertiesPanel.Location = new System.Drawing.Point(6, 307);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -212,7 +212,7 @@
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(6, 325);
+            this.PropertiesGridView.Location = new System.Drawing.Point(6, 329);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
@@ -241,7 +241,7 @@
             this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
             this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 325);
+            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 329);
             this.LinkInfoPanel.Name = "LinkInfoPanel";
             this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
             this.LinkInfoPanel.TabIndex = 32;
@@ -285,11 +285,20 @@
             this.WorkPanel.Controls.Add(this.WorkCombinationPanel);
             this.WorkPanel.Controls.Add(this.CombinationDataGridView);
             this.WorkPanel.Controls.Add(this.PropteryDataGridView);
-            this.WorkPanel.Location = new System.Drawing.Point(6, 29);
+            this.WorkPanel.Location = new System.Drawing.Point(0, 25);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1252, 653);
+            this.WorkPanel.Size = new System.Drawing.Size(1258, 657);
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
+            // 
+            // FieldComboBox
+            // 
+            this.FieldComboBox.FormattingEnabled = true;
+            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
+            this.FieldComboBox.Name = "FieldComboBox";
+            this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
+            this.FieldComboBox.TabIndex = 33;
+            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(this.FieldComboBox_SelectedIndexChanged);
             // 
             // WorkFieldPanel
             // 
@@ -314,7 +323,7 @@
             // 
             this.WorkPropetriesPanel.BackColor = System.Drawing.Color.Orange;
             this.WorkPropetriesPanel.Controls.Add(this.WorkPropertiesLabel);
-            this.WorkPropetriesPanel.Location = new System.Drawing.Point(33, 344);
+            this.WorkPropetriesPanel.Location = new System.Drawing.Point(39, 301);
             this.WorkPropetriesPanel.Name = "WorkPropetriesPanel";
             this.WorkPropetriesPanel.Size = new System.Drawing.Size(390, 27);
             this.WorkPropetriesPanel.TabIndex = 31;
@@ -361,7 +370,7 @@
             this.CostColumn,
             this.VolumeColumn,
             this.WeightColumn});
-            this.CombinationDataGridView.Location = new System.Drawing.Point(451, 47);
+            this.CombinationDataGridView.Location = new System.Drawing.Point(457, 51);
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
             this.CombinationDataGridView.RowTemplate.Height = 20;
@@ -405,7 +414,7 @@
             this.PropteryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.PropteryDataGridView.Location = new System.Drawing.Point(33, 369);
+            this.PropteryDataGridView.Location = new System.Drawing.Point(39, 373);
             this.PropteryDataGridView.Name = "PropteryDataGridView";
             this.PropteryDataGridView.RowHeadersVisible = false;
             this.PropteryDataGridView.RowTemplate.Height = 20;
@@ -452,24 +461,16 @@
             this.EditObjectButton.UseVisualStyleBackColor = false;
             this.EditObjectButton.Click += new System.EventHandler(this.EditObjectButton_Click);
             // 
-            // FieldComboBox
-            // 
-            this.FieldComboBox.FormattingEnabled = true;
-            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
-            this.FieldComboBox.Name = "FieldComboBox";
-            this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
-            this.FieldComboBox.TabIndex = 33;
-            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(this.FieldComboBox_SelectedIndexChanged);
-            // 
             // DrawPage
             // 
             this.DrawPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DrawPage.BackColor = System.Drawing.Color.White;
-            this.DrawPage.Location = new System.Drawing.Point(6, 29);
+            this.DrawPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DrawPage.Location = new System.Drawing.Point(0, 25);
             this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1004, 649);
+            this.DrawPage.Size = new System.Drawing.Size(1010, 657);
             this.DrawPage.TabIndex = 0;
             this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
