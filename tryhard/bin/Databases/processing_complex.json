@@ -55,27 +55,21 @@
       "Objects": [
         {
           "Id": 0,
-          "Index": 1,
-          "Type": "nnpv",
-          "Coordinates": "409, 266"
+          "Index": 15,
+          "Type": "fu",
+          "Coordinates": "673, 34"
         },
         {
-          "Id": 2,
-          "Index": 2,
+          "Id": 3,
+          "Index": 16,
           "Type": "nnpv",
-          "Coordinates": "588, 110"
-        },
-        {
-          "Id": 4,
-          "Index": 3,
-          "Type": "nnpv",
-          "Coordinates": "195, 125"
+          "Coordinates": "611, 264"
         },
         {
           "Id": 0,
-          "Index": 4,
-          "Type": "rr",
-          "Coordinates": "516, 451"
+          "Index": 17,
+          "Type": "nnpv",
+          "Coordinates": "332, 126"
         }
       ],
       "Links": []

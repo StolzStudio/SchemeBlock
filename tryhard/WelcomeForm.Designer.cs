@@ -60,7 +60,7 @@
             "project1",
             "project2",
             "project3"});
-            this.ProjectsListBox.Location = new System.Drawing.Point(3, 1);
+            this.ProjectsListBox.Location = new System.Drawing.Point(0, 3);
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
             this.ProjectsListBox.TabIndex = 1;
@@ -185,11 +185,10 @@
             // 
             // CreatingPanel
             // 
-            this.CreatingPanel.Controls.Add(this.ProjectsListBox);
             this.CreatingPanel.Controls.Add(this.OpenAnotherProjectLabel);
-            this.CreatingPanel.Location = new System.Drawing.Point(0, 0);
+            this.CreatingPanel.Location = new System.Drawing.Point(324, 0);
             this.CreatingPanel.Name = "CreatingPanel";
-            this.CreatingPanel.Size = new System.Drawing.Size(935, 517);
+            this.CreatingPanel.Size = new System.Drawing.Size(611, 517);
             this.CreatingPanel.TabIndex = 10;
             this.CreatingPanel.Visible = false;
             // 
@@ -199,6 +198,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(935, 517);
+            this.Controls.Add(this.ProjectsListBox);
             this.Controls.Add(this.CreateNewProjectPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
