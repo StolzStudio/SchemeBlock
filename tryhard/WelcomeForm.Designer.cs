@@ -60,7 +60,7 @@
             "project1",
             "project2",
             "project3"});
-            this.ProjectsListBox.Location = new System.Drawing.Point(0, 3);
+            this.ProjectsListBox.Location = new System.Drawing.Point(0, 1);
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
             this.ProjectsListBox.TabIndex = 1;
