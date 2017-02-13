@@ -201,6 +201,11 @@ namespace tryhard
             Int64 FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject) * CountOfFirstObject;
             Int64 SecondObjectValue = (Int64)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
 
+            if (FirstObjectValue > aLink.LinkParameterValue)
+            {
+                FirstObjectValue = aLink.LinkParameterValue;
+            }
+
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
             return (int)Result;
