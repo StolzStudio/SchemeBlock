@@ -27,6 +27,7 @@ namespace tryhard
         private EditorForm Form;
         public BaseObject SelectedField { get; set; }
         public List<BaseObject> FieldObjects { get; set; }
+        Dictionary<string, int> BlocksCount;
         private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
@@ -191,8 +192,19 @@ namespace tryhard
             BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
             BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
 
+            int a = GiveCountOfObject(FieldObject, FirstObject, Links[Queue[0]], 1);
+            //aCombination[Links[Queue[0]].FirstBlockIndex].Count = 
         }
 
+        private int GiveCountOfObject(BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, int CountOfFirstObject)
+        {
+            Int64 FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject) * CountOfFirstObject;
+            Int64 SecondObjectValue = (Int64)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
+
+            double Result = (double)FirstObjectValue / (double)SecondObjectValue;
+            if (Result > (int)Result) { Result++; }
+            return (int)Result;
+        }
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
         {
             List<int> Result = new List<int>();
