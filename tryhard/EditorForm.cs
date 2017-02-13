@@ -293,8 +293,11 @@ namespace tryhard
                                                                DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
             LinkInfoPanel.Controls.Clear();
             LinkInfoPanel.Tag = -1;
+            BaseObject firstObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
+                                                                     DrawManager.Blocks[ALink.FirstBlockIndex].Id);
             BaseObject secondObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.SecondBlockIndex].ClassText,
                                                                      DrawManager.Blocks[ALink.SecondBlockIndex].Id);
+
             for (int i = 0; i < LinkableParameters.Count; i++)
             {
                 RadioButton radioBtn = new System.Windows.Forms.RadioButton();
@@ -318,7 +321,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject)),
+                Convert.ToInt32(firstObject.GetType().GetProperty(LinkableParameters[i] + "Output").GetValue(firstObject)),
                 0,
                 0,
                 0});
