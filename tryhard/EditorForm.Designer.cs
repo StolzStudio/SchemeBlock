@@ -111,7 +111,7 @@
             // 
             this.CategoryStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryStripComboBox.Name = "CategoryStripComboBox";
-            this.CategoryStripComboBox.Size = new System.Drawing.Size(121, 25);
+            this.CategoryStripComboBox.Size = new System.Drawing.Size(160, 25);
             this.CategoryStripComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryStripComboBox_SelectedIndexChanged);
             // 
             // ToolStripSeparator1
@@ -129,7 +129,7 @@
             // 
             this.TypeStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TypeStripComboBox.Name = "TypeStripComboBox";
-            this.TypeStripComboBox.Size = new System.Drawing.Size(121, 25);
+            this.TypeStripComboBox.Size = new System.Drawing.Size(160, 25);
             // 
             // ToolStripSeparator2
             // 
@@ -287,7 +287,7 @@
             this.WorkPanel.Controls.Add(this.PropteryDataGridView);
             this.WorkPanel.Location = new System.Drawing.Point(0, 25);
             this.WorkPanel.Name = "WorkPanel";
-            this.WorkPanel.Size = new System.Drawing.Size(1258, 657);
+            this.WorkPanel.Size = new System.Drawing.Size(1264, 657);
             this.WorkPanel.TabIndex = 2;
             this.WorkPanel.Visible = false;
             // 
@@ -370,7 +370,7 @@
             this.CostColumn,
             this.VolumeColumn,
             this.WeightColumn});
-            this.CombinationDataGridView.Location = new System.Drawing.Point(457, 51);
+            this.CombinationDataGridView.Location = new System.Drawing.Point(463, 51);
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
             this.CombinationDataGridView.RowTemplate.Height = 20;
@@ -414,7 +414,7 @@
             this.PropteryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.PropteryDataGridView.Location = new System.Drawing.Point(39, 373);
+            this.PropteryDataGridView.Location = new System.Drawing.Point(45, 373);
             this.PropteryDataGridView.Name = "PropteryDataGridView";
             this.PropteryDataGridView.RowHeadersVisible = false;
             this.PropteryDataGridView.RowTemplate.Height = 20;

@@ -43,6 +43,7 @@ namespace tryhard
                 DownStructures.Add(Key, new List<DownStructure>() { new DownStructure(StructureType.Kesson),
                                                                     new DownStructure(StructureType.Monoleg),
                                                                     new DownStructure(StructureType.Multileg) });
+                CalculateStructure(Key);
             }
         }
 
@@ -50,13 +51,30 @@ namespace tryhard
         {
             foreach (DownStructure downStructure in DownStructures[Key])
             {
-
+                
             }
         }
 
         public void SetStructureParanetersPanel()
         {
 
+        }
+
+        private void NumericUpDown_ValueChanged(Object sender, EventArgs e)
+        {
+            string propertyName = "";
+            switch ((sender as NumericUpDown).Name)
+            {
+                case "LocalWaterDepthUpDown": break;
+                case "GlobalWaterDepthUpDown": break;
+                case "WidthCellUpDown": break;
+                case "YMatUpDown": break;
+                case "UpStructureSizeUpDown": break;
+                case "HWave001UpDown": break;
+                case "HWave50UpDown": break;
+                case "DWallCellUpDown": break;
+                case "YWaterUpDown": break;
+            }
         }
     }
 }
