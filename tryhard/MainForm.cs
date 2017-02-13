@@ -124,7 +124,10 @@ namespace tryhard
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
                     ShowPropertiesPanel();
                 }
-                this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                if (DrawManager.SelectedBlockIndex != -1)
+                {
+                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                }
                 if (this.SelectBlockIndex != -1)
                 {
                     ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,

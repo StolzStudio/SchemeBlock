@@ -172,7 +172,7 @@ namespace tryhard
             int i = DrawManager.SelectedBlockIndex;
             foreach (TreeNode node in ObjectsTreeView.Nodes)
             {
-                if (MetaDataManager.Instance.Dictionary[DrawManager.Blocks[i].ClassText] == node.Text)
+                if (DrawManager.Blocks[i].ClassText == MetaDataManager.Instance.Dictionary[node.Text])
                 {
                     foreach (TreeNode node_child in node.Nodes)
                     {
@@ -216,7 +216,8 @@ namespace tryhard
                         ptr.X -= Block.BlockWidth / 2;
                         ptr.Y -= Block.BlockHeight / 2;
                         ClickOffset = new Point(Block.BlockWidth / 2, Block.BlockHeight / 2);
-                        DrawManager.AddBlock(ptr, ObjectsTreeView.SelectedNode.Parent.Text, 
+                        string parentNodeText = ObjectsTreeView.SelectedNode.Parent.Text;
+                        DrawManager.AddBlock(ptr, MetaDataManager.Instance.Dictionary[parentNodeText],
                                              ObjectsTreeView.SelectedNode.Text, (int)ObjectsTreeView.SelectedNode.Tag);
                         this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
                     }
@@ -260,7 +261,10 @@ namespace tryhard
                         ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
                         ShowPropertiesPanel();
                     }
-                    this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    if (DrawManager.SelectedBlockIndex != -1)
+                    {
+                        this.SelectBlockIndex = DrawManager.SelectedBlockIndex;
+                    }
                     if (this.SelectBlockIndex != -1)
                     {
                         ClickOffset = new Point(ptr.X - DrawManager.Blocks[SelectBlockIndex].Location.X,
@@ -517,6 +521,7 @@ namespace tryhard
                         PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName], 
                                                     obj.GetType().GetProperty(APropertyName).GetValue(obj));
                 }
+            ShowPropertiesPanel();
         }
 
         private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -526,7 +531,7 @@ namespace tryhard
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
             string parentText = ObjectsTreeView.SelectedNode.Parent.Text;
             FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(MetaDataManager.Instance.Dictionary[parentText]),
-                                           MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
+                                   MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
             if (!isEditMode)
                 DrawManager.LoadStructureOfObject(MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
         }
