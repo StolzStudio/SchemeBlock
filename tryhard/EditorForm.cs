@@ -72,7 +72,7 @@ namespace tryhard
         private void SelectTreeViewNode(string AObjectType, int AId)
         {
             foreach (TreeNode ObjectTypeNode in ObjectsTreeView.Nodes)
-                if (ObjectTypeNode.Text == AObjectType)
+                if (MetaDataManager.Instance.Dictionary[ObjectTypeNode.Text] == AObjectType)
                     foreach (TreeNode Node in ObjectTypeNode.Nodes)
                     {
                         string nodeName = MetaDataManager.Instance.GetBaseObjectOfId(AObjectType, AId).Name;
@@ -103,8 +103,8 @@ namespace tryhard
                 string needed_category = "";
                 switch ((string)(CategoryStripComboBox.SelectedItem))
                 {
-                    case "Equipment": needed_category = "Detail"; break;
-                    case "Complex": needed_category = "Equipment"; break;
+                    case "Оборудование": needed_category = "Detail"; break;
+                    case "Комплекс": needed_category = "Equipment"; break;
                 }
                 Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == needed_category);
             }
@@ -114,7 +114,7 @@ namespace tryhard
             {
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                 {
-                    TreeNode node = new TreeNode(TypeName);
+                    TreeNode node = new TreeNode(MetaDataManager.Instance.Dictionary[TypeName]);
                     foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
                     {
                         TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
@@ -171,7 +171,7 @@ namespace tryhard
             int i = DrawManager.SelectedBlockIndex;
             foreach (TreeNode node in ObjectsTreeView.Nodes)
             {
-                if (DrawManager.Blocks[i].ClassText == node.Text)
+                if (MetaDataManager.Instance.Dictionary[DrawManager.Blocks[i].ClassText] == node.Text)
                 {
                     foreach (TreeNode node_child in node.Nodes)
                     {
@@ -222,7 +222,7 @@ namespace tryhard
                     else if ((this.SelectBlockIndex != -1) && (this.SelectBlockIndex != DrawManager.SelectedBlockIndex))
                     {
                         string category = "";
-                        if ((string)(CategoryStripComboBox.SelectedItem) == "Complex")
+                        if ((string)(CategoryStripComboBox.SelectedItem) == "Комплекс")
                             category = "Equipment";
                         else
                             category = "Detail";
@@ -513,7 +513,8 @@ namespace tryhard
                 {
                     IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
                     foreach (BaseObject obj in base_object)
-                        PropertiesGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                        PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName], 
+                                                    obj.GetType().GetProperty(APropertyName).GetValue(obj));
                 }
         }
 
@@ -522,10 +523,11 @@ namespace tryhard
             if (ObjectsTreeView.SelectedNode.Nodes.Count != 0)
                 if (ObjectsTreeView.SelectedNode.Parent == null)
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
-            FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text),
-                                           ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+            string parentText = ObjectsTreeView.SelectedNode.Parent.Text;
+            FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(MetaDataManager.Instance.Dictionary[parentText]),
+                                           MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
             if (!isEditMode)
-                DrawManager.LoadStructureOfObject(ObjectsTreeView.SelectedNode.Parent.Text, (int)ObjectsTreeView.SelectedNode.Tag);
+                DrawManager.LoadStructureOfObject(MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
         }
 
         private void ShowPropertiesGridView()
