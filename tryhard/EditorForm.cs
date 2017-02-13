@@ -321,7 +321,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                Convert.ToInt32(firstObject.GetType().GetProperty(LinkableParameters[i] + "Output").GetValue(firstObject)),
+                1000000,
                 0,
                 0,
                 0});
