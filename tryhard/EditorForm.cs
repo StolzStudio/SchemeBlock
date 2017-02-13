@@ -132,9 +132,10 @@ namespace tryhard
         {
             CategoryStripComboBox.Items.Clear();
             foreach (string CategoryName in MetaDataManager.Instance.ObjectCategories.Where(t => t != "Detail"))
-                CategoryStripComboBox.Items.Add(CategoryName);
+                CategoryStripComboBox.Items.Add(MetaDataManager.Instance.Dictionary[CategoryName]);
             if (ACategoryPriopity != null)
-                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(ACategoryPriopity);
+                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(
+                                                            MetaDataManager.Instance.Dictionary[ACategoryPriopity]);
             else
                 CategoryStripComboBox.SelectedIndex = 0;
         }
@@ -143,16 +144,16 @@ namespace tryhard
         {
             TypeStripComboBox.Items.Clear();
             foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(ACategory))
-                TypeStripComboBox.Items.Add(TypeName);
+                TypeStripComboBox.Items.Add(MetaDataManager.Instance.Dictionary[TypeName]);
             if (ATypePriopity != null)
-                TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(ATypePriopity);
+                TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(MetaDataManager.Instance.Dictionary[ATypePriopity]);
             else
                 TypeStripComboBox.SelectedIndex = 0;
         }
 
         private void CategoryStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillTypeStripComboBox((string)(CategoryStripComboBox.SelectedItem));
+            FillTypeStripComboBox(MetaDataManager.Instance.Dictionary[(string)(CategoryStripComboBox.SelectedItem)]);
             if (isEditMode)
             {
                 FillObjectTreeView();
