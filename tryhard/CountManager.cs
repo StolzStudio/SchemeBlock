@@ -204,12 +204,25 @@ namespace tryhard
 
         private int GiveCountOfObject(BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, int CountOfFirstObject)
         {
-            Int64 FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject) * CountOfFirstObject;
+            Int64 FirstObjectValue;
+            if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+            {
+                FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject) * CountOfFirstObject;
+            }
+            else
+            {
+                FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex];
+            }
+            
             Int64 SecondObjectValue = (Int64)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
-
+            
             if (FirstObjectValue > aLink.LinkParameterValue)
             {
                 FirstObjectValue = aLink.LinkParameterValue;
+                if (BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+                {
+                    BlockStashValue[aLink.FirstBlockIndex] -= aLink.LinkParameterValue;
+                }
             }
 
             BlockStashValue.Add(Blocks[aLink.SecondBlockIndex].Index, FirstObjectValue);
