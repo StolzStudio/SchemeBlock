@@ -82,9 +82,21 @@ namespace tryhard
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkInfoPanel = new System.Windows.Forms.Panel();
             this.UpStructurePanel = new System.Windows.Forms.Panel();
+            this.StructureLabel = new System.Windows.Forms.Label();
+            this.StructurePanel = new System.Windows.Forms.Panel();
+            this.wCellLabel = new System.Windows.Forms.Label();
+            this.yMatLabel = new System.Windows.Forms.Label();
+            this.yMatUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dWallCellUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dWallCellLabel = new System.Windows.Forms.Label();
+            this.wCellUpDown = new System.Windows.Forms.NumericUpDown();
+            this.wUpStructureLabel = new System.Windows.Forms.Label();
+            this.wUpStructureUpDown = new System.Windows.Forms.NumericUpDown();
             this.StructureTypeLabel = new System.Windows.Forms.Label();
             this.StructureTypePanel = new System.Windows.Forms.Panel();
             this.StructureTypeGridView = new System.Windows.Forms.DataGridView();
+            this.ParameterColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructureTypesPanel = new System.Windows.Forms.Panel();
             this.KessonRadioButton = new System.Windows.Forms.RadioButton();
             this.MonolegRadioButton = new System.Windows.Forms.RadioButton();
@@ -93,35 +105,33 @@ namespace tryhard
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.BackToSchemeButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.ParametersLabel = new System.Windows.Forms.Label();
-            this.StructureParametersPanel = new System.Windows.Forms.Panel();
-            this.UpStructureSizeUpDown = new System.Windows.Forms.NumericUpDown();
-            this.UpStructureSizeLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.YWaterUpDown = new System.Windows.Forms.NumericUpDown();
-            this.YWaterLabel = new System.Windows.Forms.Label();
-            this.YMatUpDown = new System.Windows.Forms.NumericUpDown();
-            this.YMatLabel = new System.Windows.Forms.Label();
-            this.DWallCellUpDown = new System.Windows.Forms.NumericUpDown();
-            this.DWallCellLabel = new System.Windows.Forms.Label();
-            this.WidthCellUpDown = new System.Windows.Forms.NumericUpDown();
-            this.WidthCellLabel = new System.Windows.Forms.Label();
-            this.HWave50UpDown = new System.Windows.Forms.NumericUpDown();
-            this.HWave001UpDown = new System.Windows.Forms.NumericUpDown();
-            this.HWave50Label = new System.Windows.Forms.Label();
-            this.HWave001Label = new System.Windows.Forms.Label();
-            this.GlobalWaterDepthUpDown = new System.Windows.Forms.NumericUpDown();
-            this.LocalWaterDepthUpDown = new System.Windows.Forms.NumericUpDown();
-            this.LocalWaterDepthLabel = new System.Windows.Forms.Label();
-            this.GlobalWaterDepthLabel = new System.Windows.Forms.Label();
+            this.FieldParametersLabel = new System.Windows.Forms.Label();
+            this.FieldParametersPanel = new System.Windows.Forms.Panel();
+            this.speedIceUpDown = new System.Windows.Forms.NumericUpDown();
+            this.speedIceLabel = new System.Windows.Forms.Label();
+            this.durabilityIceUpDown = new System.Windows.Forms.NumericUpDown();
+            this.durabilityIceLabel = new System.Windows.Forms.Label();
+            this.dIceUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dIceLabel = new System.Windows.Forms.Label();
+            this.diameterIceUpDown = new System.Windows.Forms.NumericUpDown();
+            this.diameterIceLabel = new System.Windows.Forms.Label();
+            this.dLocalWaterLabel = new System.Windows.Forms.Label();
+            this.dGlobalWaterLabel = new System.Windows.Forms.Label();
+            this.dLocalWaterUpDown = new System.Windows.Forms.NumericUpDown();
+            this.yWaterUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dGlobalWaterUpDown = new System.Windows.Forms.NumericUpDown();
+            this.yWaterLabel = new System.Windows.Forms.Label();
+            this.hWave001Label = new System.Windows.Forms.Label();
+            this.hWave50Label = new System.Windows.Forms.Label();
+            this.hWave001UpDown = new System.Windows.Forms.NumericUpDown();
+            this.hWave50UpDown = new System.Windows.Forms.NumericUpDown();
             this.StructuresGridView = new System.Windows.Forms.DataGridView();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
             this.MainPage = new tryhard.DrawPage();
-            this.ParameterColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -129,19 +139,24 @@ namespace tryhard
             this.FieldPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.UpStructurePanel.SuspendLayout();
+            this.StructurePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMatUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dWallCellUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wCellUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wUpStructureUpDown)).BeginInit();
             this.StructureTypePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StructureTypeGridView)).BeginInit();
             this.StructureTypesPanel.SuspendLayout();
-            this.StructureParametersPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpStructureSizeUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YWaterUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YMatUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DWallCellUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WidthCellUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HWave50UpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HWave001UpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GlobalWaterDepthUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LocalWaterDepthUpDown)).BeginInit();
+            this.FieldParametersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.speedIceUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.durabilityIceUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dIceUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diameterIceUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dLocalWaterUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yWaterUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGlobalWaterUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hWave001UpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hWave50UpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StructuresGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -326,14 +341,16 @@ namespace tryhard
             // UpStructurePanel
             // 
             this.UpStructurePanel.BackColor = System.Drawing.Color.White;
+            this.UpStructurePanel.Controls.Add(this.StructureLabel);
+            this.UpStructurePanel.Controls.Add(this.StructurePanel);
             this.UpStructurePanel.Controls.Add(this.StructureTypeLabel);
             this.UpStructurePanel.Controls.Add(this.StructureTypePanel);
             this.UpStructurePanel.Controls.Add(this.NameLabel);
             this.UpStructurePanel.Controls.Add(this.NameTextBox);
             this.UpStructurePanel.Controls.Add(this.BackToSchemeButton);
             this.UpStructurePanel.Controls.Add(this.SaveButton);
-            this.UpStructurePanel.Controls.Add(this.ParametersLabel);
-            this.UpStructurePanel.Controls.Add(this.StructureParametersPanel);
+            this.UpStructurePanel.Controls.Add(this.FieldParametersLabel);
+            this.UpStructurePanel.Controls.Add(this.FieldParametersPanel);
             this.UpStructurePanel.Controls.Add(this.StructuresGridView);
             this.UpStructurePanel.Controls.Add(this.StructuresList);
             this.UpStructurePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -342,10 +359,182 @@ namespace tryhard
             this.UpStructurePanel.Size = new System.Drawing.Size(1348, 704);
             this.UpStructurePanel.TabIndex = 0;
             // 
+            // StructureLabel
+            // 
+            this.StructureLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StructureLabel.AutoSize = true;
+            this.StructureLabel.Location = new System.Drawing.Point(354, 336);
+            this.StructureLabel.Name = "StructureLabel";
+            this.StructureLabel.Size = new System.Drawing.Size(119, 13);
+            this.StructureLabel.TabIndex = 38;
+            this.StructureLabel.Text = "Параметры строения:";
+            // 
+            // StructurePanel
+            // 
+            this.StructurePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.StructurePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StructurePanel.Controls.Add(this.wCellLabel);
+            this.StructurePanel.Controls.Add(this.yMatLabel);
+            this.StructurePanel.Controls.Add(this.yMatUpDown);
+            this.StructurePanel.Controls.Add(this.dWallCellUpDown);
+            this.StructurePanel.Controls.Add(this.dWallCellLabel);
+            this.StructurePanel.Controls.Add(this.wCellUpDown);
+            this.StructurePanel.Controls.Add(this.wUpStructureLabel);
+            this.StructurePanel.Controls.Add(this.wUpStructureUpDown);
+            this.StructurePanel.Location = new System.Drawing.Point(357, 353);
+            this.StructurePanel.Name = "StructurePanel";
+            this.StructurePanel.Size = new System.Drawing.Size(311, 278);
+            this.StructurePanel.TabIndex = 37;
+            // 
+            // wCellLabel
+            // 
+            this.wCellLabel.AutoSize = true;
+            this.wCellLabel.Location = new System.Drawing.Point(25, 24);
+            this.wCellLabel.Name = "wCellLabel";
+            this.wCellLabel.Size = new System.Drawing.Size(188, 13);
+            this.wCellLabel.TabIndex = 11;
+            this.wCellLabel.Text = "Размер ребра основания ячейки, м";
+            // 
+            // yMatLabel
+            // 
+            this.yMatLabel.AutoSize = true;
+            this.yMatLabel.Location = new System.Drawing.Point(25, 48);
+            this.yMatLabel.Name = "yMatLabel";
+            this.yMatLabel.Size = new System.Drawing.Size(149, 13);
+            this.yMatLabel.TabIndex = 15;
+            this.yMatLabel.Text = "Удельный вес материала, т";
+            // 
+            // yMatUpDown
+            // 
+            this.yMatUpDown.DecimalPlaces = 2;
+            this.yMatUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.yMatUpDown.Location = new System.Drawing.Point(236, 46);
+            this.yMatUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.yMatUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.yMatUpDown.Name = "yMatUpDown";
+            this.yMatUpDown.Size = new System.Drawing.Size(50, 20);
+            this.yMatUpDown.TabIndex = 16;
+            this.yMatUpDown.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            65536});
+            this.yMatUpDown.ValueChanged += new System.EventHandler(this.StructureUpDown_ValueChanged);
+            // 
+            // dWallCellUpDown
+            // 
+            this.dWallCellUpDown.DecimalPlaces = 2;
+            this.dWallCellUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.dWallCellUpDown.Location = new System.Drawing.Point(236, 94);
+            this.dWallCellUpDown.Maximum = new decimal(new int[] {
+            95,
+            0,
+            0,
+            131072});
+            this.dWallCellUpDown.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            65536});
+            this.dWallCellUpDown.Name = "dWallCellUpDown";
+            this.dWallCellUpDown.Size = new System.Drawing.Size(50, 20);
+            this.dWallCellUpDown.TabIndex = 14;
+            this.dWallCellUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            131072});
+            this.dWallCellUpDown.ValueChanged += new System.EventHandler(this.StructureUpDown_ValueChanged);
+            // 
+            // dWallCellLabel
+            // 
+            this.dWallCellLabel.AutoSize = true;
+            this.dWallCellLabel.Location = new System.Drawing.Point(25, 96);
+            this.dWallCellLabel.Name = "dWallCellLabel";
+            this.dWallCellLabel.Size = new System.Drawing.Size(143, 13);
+            this.dWallCellLabel.TabIndex = 13;
+            this.dWallCellLabel.Text = "Толщина стенки ячейки, м";
+            // 
+            // wCellUpDown
+            // 
+            this.wCellUpDown.Location = new System.Drawing.Point(236, 22);
+            this.wCellUpDown.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.wCellUpDown.Minimum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.wCellUpDown.Name = "wCellUpDown";
+            this.wCellUpDown.Size = new System.Drawing.Size(50, 20);
+            this.wCellUpDown.TabIndex = 12;
+            this.wCellUpDown.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.wCellUpDown.ValueChanged += new System.EventHandler(this.StructureUpDown_ValueChanged);
+            // 
+            // wUpStructureLabel
+            // 
+            this.wUpStructureLabel.AutoSize = true;
+            this.wUpStructureLabel.Location = new System.Drawing.Point(25, 72);
+            this.wUpStructureLabel.Name = "wUpStructureLabel";
+            this.wUpStructureLabel.Size = new System.Drawing.Size(199, 13);
+            this.wUpStructureLabel.TabIndex = 31;
+            this.wUpStructureLabel.Text = "Размер площадки верхнего строения";
+            // 
+            // wUpStructureUpDown
+            // 
+            this.wUpStructureUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.wUpStructureUpDown.Location = new System.Drawing.Point(236, 70);
+            this.wUpStructureUpDown.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.wUpStructureUpDown.Minimum = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.wUpStructureUpDown.Name = "wUpStructureUpDown";
+            this.wUpStructureUpDown.Size = new System.Drawing.Size(50, 20);
+            this.wUpStructureUpDown.TabIndex = 32;
+            this.wUpStructureUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.wUpStructureUpDown.ValueChanged += new System.EventHandler(this.StructureUpDown_ValueChanged);
+            // 
             // StructureTypeLabel
             // 
             this.StructureTypeLabel.AutoSize = true;
-            this.StructureTypeLabel.Location = new System.Drawing.Point(728, 28);
+            this.StructureTypeLabel.Location = new System.Drawing.Point(719, 27);
             this.StructureTypeLabel.Name = "StructureTypeLabel";
             this.StructureTypeLabel.Size = new System.Drawing.Size(84, 13);
             this.StructureTypeLabel.TabIndex = 36;
@@ -359,9 +548,9 @@ namespace tryhard
             this.StructureTypePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StructureTypePanel.Controls.Add(this.StructureTypeGridView);
             this.StructureTypePanel.Controls.Add(this.StructureTypesPanel);
-            this.StructureTypePanel.Location = new System.Drawing.Point(731, 51);
+            this.StructureTypePanel.Location = new System.Drawing.Point(722, 51);
             this.StructureTypePanel.Name = "StructureTypePanel";
-            this.StructureTypePanel.Size = new System.Drawing.Size(580, 307);
+            this.StructureTypePanel.Size = new System.Drawing.Size(589, 267);
             this.StructureTypePanel.TabIndex = 35;
             // 
             // StructureTypeGridView
@@ -377,20 +566,40 @@ namespace tryhard
             this.StructureTypeGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ParameterColumn,
             this.ValueColumn});
-            this.StructureTypeGridView.Location = new System.Drawing.Point(174, 23);
+            this.StructureTypeGridView.Location = new System.Drawing.Point(162, 23);
+            this.StructureTypeGridView.MultiSelect = false;
             this.StructureTypeGridView.Name = "StructureTypeGridView";
             this.StructureTypeGridView.ReadOnly = true;
             this.StructureTypeGridView.RowHeadersVisible = false;
             this.StructureTypeGridView.RowTemplate.Height = 20;
-            this.StructureTypeGridView.Size = new System.Drawing.Size(381, 259);
+            this.StructureTypeGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.StructureTypeGridView.Size = new System.Drawing.Size(397, 219);
             this.StructureTypeGridView.TabIndex = 28;
+            // 
+            // ParameterColumn
+            // 
+            this.ParameterColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ParameterColumn.FillWeight = 165.9628F;
+            this.ParameterColumn.HeaderText = "Параметр";
+            this.ParameterColumn.Name = "ParameterColumn";
+            this.ParameterColumn.ReadOnly = true;
+            this.ParameterColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ValueColumn
+            // 
+            this.ValueColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ValueColumn.FillWeight = 113.4788F;
+            this.ValueColumn.HeaderText = "Значение";
+            this.ValueColumn.Name = "ValueColumn";
+            this.ValueColumn.ReadOnly = true;
+            this.ValueColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // StructureTypesPanel
             // 
             this.StructureTypesPanel.Controls.Add(this.KessonRadioButton);
             this.StructureTypesPanel.Controls.Add(this.MonolegRadioButton);
             this.StructureTypesPanel.Controls.Add(this.MultilegRadioButton);
-            this.StructureTypesPanel.Location = new System.Drawing.Point(35, 23);
+            this.StructureTypesPanel.Location = new System.Drawing.Point(26, 23);
             this.StructureTypesPanel.Name = "StructureTypesPanel";
             this.StructureTypesPanel.Size = new System.Drawing.Size(110, 100);
             this.StructureTypesPanel.TabIndex = 5;
@@ -406,6 +615,7 @@ namespace tryhard
             this.KessonRadioButton.Tag = "0";
             this.KessonRadioButton.Text = "Кессон";
             this.KessonRadioButton.UseVisualStyleBackColor = true;
+            this.KessonRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // MonolegRadioButton
             // 
@@ -415,9 +625,10 @@ namespace tryhard
             this.MonolegRadioButton.Size = new System.Drawing.Size(69, 17);
             this.MonolegRadioButton.TabIndex = 4;
             this.MonolegRadioButton.TabStop = true;
-            this.MonolegRadioButton.Tag = "2";
+            this.MonolegRadioButton.Tag = "1";
             this.MonolegRadioButton.Text = "Монолэг";
             this.MonolegRadioButton.UseVisualStyleBackColor = true;
+            this.MonolegRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // MultilegRadioButton
             // 
@@ -427,9 +638,10 @@ namespace tryhard
             this.MultilegRadioButton.Size = new System.Drawing.Size(79, 17);
             this.MultilegRadioButton.TabIndex = 3;
             this.MultilegRadioButton.TabStop = true;
-            this.MultilegRadioButton.Tag = "1";
+            this.MultilegRadioButton.Tag = "2";
             this.MultilegRadioButton.Text = "Мультилэг";
             this.MultilegRadioButton.UseVisualStyleBackColor = true;
+            this.MultilegRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // NameLabel
             // 
@@ -476,366 +688,359 @@ namespace tryhard
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // ParametersLabel
+            // FieldParametersLabel
             // 
-            this.ParametersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ParametersLabel.AutoSize = true;
-            this.ParametersLabel.Location = new System.Drawing.Point(31, 376);
-            this.ParametersLabel.Name = "ParametersLabel";
-            this.ParametersLabel.Size = new System.Drawing.Size(69, 13);
-            this.ParametersLabel.TabIndex = 29;
-            this.ParametersLabel.Text = "Параметры:";
+            this.FieldParametersLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.FieldParametersLabel.AutoSize = true;
+            this.FieldParametersLabel.Location = new System.Drawing.Point(31, 336);
+            this.FieldParametersLabel.Name = "FieldParametersLabel";
+            this.FieldParametersLabel.Size = new System.Drawing.Size(153, 13);
+            this.FieldParametersLabel.TabIndex = 29;
+            this.FieldParametersLabel.Text = "Параметры месторождения:";
             // 
-            // StructureParametersPanel
+            // FieldParametersPanel
             // 
-            this.StructureParametersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.StructureParametersPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StructureParametersPanel.Controls.Add(this.UpStructureSizeUpDown);
-            this.StructureParametersPanel.Controls.Add(this.UpStructureSizeLabel);
-            this.StructureParametersPanel.Controls.Add(this.button1);
-            this.StructureParametersPanel.Controls.Add(this.YWaterUpDown);
-            this.StructureParametersPanel.Controls.Add(this.YWaterLabel);
-            this.StructureParametersPanel.Controls.Add(this.YMatUpDown);
-            this.StructureParametersPanel.Controls.Add(this.YMatLabel);
-            this.StructureParametersPanel.Controls.Add(this.DWallCellUpDown);
-            this.StructureParametersPanel.Controls.Add(this.DWallCellLabel);
-            this.StructureParametersPanel.Controls.Add(this.WidthCellUpDown);
-            this.StructureParametersPanel.Controls.Add(this.WidthCellLabel);
-            this.StructureParametersPanel.Controls.Add(this.HWave50UpDown);
-            this.StructureParametersPanel.Controls.Add(this.HWave001UpDown);
-            this.StructureParametersPanel.Controls.Add(this.HWave50Label);
-            this.StructureParametersPanel.Controls.Add(this.HWave001Label);
-            this.StructureParametersPanel.Controls.Add(this.GlobalWaterDepthUpDown);
-            this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthUpDown);
-            this.StructureParametersPanel.Controls.Add(this.LocalWaterDepthLabel);
-            this.StructureParametersPanel.Controls.Add(this.GlobalWaterDepthLabel);
-            this.StructureParametersPanel.Location = new System.Drawing.Point(34, 400);
-            this.StructureParametersPanel.Name = "StructureParametersPanel";
-            this.StructureParametersPanel.Size = new System.Drawing.Size(634, 231);
-            this.StructureParametersPanel.TabIndex = 28;
+            this.FieldParametersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.FieldParametersPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FieldParametersPanel.Controls.Add(this.speedIceUpDown);
+            this.FieldParametersPanel.Controls.Add(this.speedIceLabel);
+            this.FieldParametersPanel.Controls.Add(this.durabilityIceUpDown);
+            this.FieldParametersPanel.Controls.Add(this.durabilityIceLabel);
+            this.FieldParametersPanel.Controls.Add(this.dIceUpDown);
+            this.FieldParametersPanel.Controls.Add(this.dIceLabel);
+            this.FieldParametersPanel.Controls.Add(this.diameterIceUpDown);
+            this.FieldParametersPanel.Controls.Add(this.diameterIceLabel);
+            this.FieldParametersPanel.Controls.Add(this.dLocalWaterLabel);
+            this.FieldParametersPanel.Controls.Add(this.dGlobalWaterLabel);
+            this.FieldParametersPanel.Controls.Add(this.dLocalWaterUpDown);
+            this.FieldParametersPanel.Controls.Add(this.yWaterUpDown);
+            this.FieldParametersPanel.Controls.Add(this.dGlobalWaterUpDown);
+            this.FieldParametersPanel.Controls.Add(this.yWaterLabel);
+            this.FieldParametersPanel.Controls.Add(this.hWave001Label);
+            this.FieldParametersPanel.Controls.Add(this.hWave50Label);
+            this.FieldParametersPanel.Controls.Add(this.hWave001UpDown);
+            this.FieldParametersPanel.Controls.Add(this.hWave50UpDown);
+            this.FieldParametersPanel.Location = new System.Drawing.Point(34, 353);
+            this.FieldParametersPanel.Name = "FieldParametersPanel";
+            this.FieldParametersPanel.Size = new System.Drawing.Size(317, 278);
+            this.FieldParametersPanel.TabIndex = 28;
             // 
-            // UpStructureSizeUpDown
+            // speedIceUpDown
             // 
-            this.UpStructureSizeUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.UpStructureSizeUpDown.Location = new System.Drawing.Point(234, 158);
-            this.UpStructureSizeUpDown.Maximum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.UpStructureSizeUpDown.Minimum = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            this.UpStructureSizeUpDown.Name = "UpStructureSizeUpDown";
-            this.UpStructureSizeUpDown.Size = new System.Drawing.Size(50, 20);
-            this.UpStructureSizeUpDown.TabIndex = 32;
-            this.UpStructureSizeUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.UpStructureSizeUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // UpStructureSizeLabel
-            // 
-            this.UpStructureSizeLabel.AutoSize = true;
-            this.UpStructureSizeLabel.Location = new System.Drawing.Point(23, 160);
-            this.UpStructureSizeLabel.Name = "UpStructureSizeLabel";
-            this.UpStructureSizeLabel.Size = new System.Drawing.Size(199, 13);
-            this.UpStructureSizeLabel.TabIndex = 31;
-            this.UpStructureSizeLabel.Text = "Размер площадки верхнего строения";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(257, 193);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 27);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "Рассчитать";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // YWaterUpDown
-            // 
-            this.YWaterUpDown.DecimalPlaces = 2;
-            this.YWaterUpDown.Increment = new decimal(new int[] {
+            this.speedIceUpDown.DecimalPlaces = 2;
+            this.speedIceUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.YWaterUpDown.Location = new System.Drawing.Point(553, 126);
-            this.YWaterUpDown.Maximum = new decimal(new int[] {
+            this.speedIceUpDown.Location = new System.Drawing.Point(241, 214);
+            this.speedIceUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.speedIceUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.speedIceUpDown.Name = "speedIceUpDown";
+            this.speedIceUpDown.Size = new System.Drawing.Size(50, 20);
+            this.speedIceUpDown.TabIndex = 40;
+            this.speedIceUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.speedIceUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
+            // 
+            // speedIceLabel
+            // 
+            this.speedIceLabel.AutoSize = true;
+            this.speedIceLabel.Location = new System.Drawing.Point(24, 216);
+            this.speedIceLabel.Name = "speedIceLabel";
+            this.speedIceLabel.Size = new System.Drawing.Size(107, 13);
+            this.speedIceLabel.TabIndex = 39;
+            this.speedIceLabel.Text = "Скорость льда, м/с";
+            // 
+            // durabilityIceUpDown
+            // 
+            this.durabilityIceUpDown.DecimalPlaces = 2;
+            this.durabilityIceUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.durabilityIceUpDown.Location = new System.Drawing.Point(241, 190);
+            this.durabilityIceUpDown.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.durabilityIceUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.durabilityIceUpDown.Name = "durabilityIceUpDown";
+            this.durabilityIceUpDown.Size = new System.Drawing.Size(50, 20);
+            this.durabilityIceUpDown.TabIndex = 38;
+            this.durabilityIceUpDown.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.YWaterUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.YWaterUpDown.Name = "YWaterUpDown";
-            this.YWaterUpDown.Size = new System.Drawing.Size(50, 20);
-            this.YWaterUpDown.TabIndex = 18;
-            this.YWaterUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.YWaterUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
+            this.durabilityIceUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
             // 
-            // YWaterLabel
+            // durabilityIceLabel
             // 
-            this.YWaterLabel.AutoSize = true;
-            this.YWaterLabel.Location = new System.Drawing.Point(340, 128);
-            this.YWaterLabel.Name = "YWaterLabel";
-            this.YWaterLabel.Size = new System.Drawing.Size(120, 13);
-            this.YWaterLabel.TabIndex = 17;
-            this.YWaterLabel.Text = "Удельный вес воды, т";
+            this.durabilityIceLabel.AutoSize = true;
+            this.durabilityIceLabel.Location = new System.Drawing.Point(24, 192);
+            this.durabilityIceLabel.Name = "durabilityIceLabel";
+            this.durabilityIceLabel.Size = new System.Drawing.Size(116, 13);
+            this.durabilityIceLabel.TabIndex = 37;
+            this.durabilityIceLabel.Text = "Прочность льда, мПа";
             // 
-            // YMatUpDown
+            // dIceUpDown
             // 
-            this.YMatUpDown.DecimalPlaces = 2;
-            this.YMatUpDown.Increment = new decimal(new int[] {
+            this.dIceUpDown.DecimalPlaces = 2;
+            this.dIceUpDown.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.YMatUpDown.Location = new System.Drawing.Point(234, 126);
-            this.YMatUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.YMatUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.YMatUpDown.Name = "YMatUpDown";
-            this.YMatUpDown.Size = new System.Drawing.Size(50, 20);
-            this.YMatUpDown.TabIndex = 16;
-            this.YMatUpDown.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            65536});
-            this.YMatUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // YMatLabel
-            // 
-            this.YMatLabel.AutoSize = true;
-            this.YMatLabel.Location = new System.Drawing.Point(23, 128);
-            this.YMatLabel.Name = "YMatLabel";
-            this.YMatLabel.Size = new System.Drawing.Size(149, 13);
-            this.YMatLabel.TabIndex = 15;
-            this.YMatLabel.Text = "Удельный вес материала, т";
-            // 
-            // DWallCellUpDown
-            // 
-            this.DWallCellUpDown.DecimalPlaces = 2;
-            this.DWallCellUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.DWallCellUpDown.Location = new System.Drawing.Point(553, 92);
-            this.DWallCellUpDown.Maximum = new decimal(new int[] {
-            95,
-            0,
-            0,
-            131072});
-            this.DWallCellUpDown.Minimum = new decimal(new int[] {
+            this.dIceUpDown.Location = new System.Drawing.Point(241, 166);
+            this.dIceUpDown.Maximum = new decimal(new int[] {
             3,
             0,
             0,
+            0});
+            this.dIceUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
             65536});
-            this.DWallCellUpDown.Name = "DWallCellUpDown";
-            this.DWallCellUpDown.Size = new System.Drawing.Size(50, 20);
-            this.DWallCellUpDown.TabIndex = 14;
-            this.DWallCellUpDown.Value = new decimal(new int[] {
-            75,
-            0,
-            0,
-            131072});
-            this.DWallCellUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // DWallCellLabel
-            // 
-            this.DWallCellLabel.AutoSize = true;
-            this.DWallCellLabel.Location = new System.Drawing.Point(340, 94);
-            this.DWallCellLabel.Name = "DWallCellLabel";
-            this.DWallCellLabel.Size = new System.Drawing.Size(143, 13);
-            this.DWallCellLabel.TabIndex = 13;
-            this.DWallCellLabel.Text = "Толщина стенки ячейки, м";
-            // 
-            // WidthCellUpDown
-            // 
-            this.WidthCellUpDown.Location = new System.Drawing.Point(234, 92);
-            this.WidthCellUpDown.Maximum = new decimal(new int[] {
-            250,
+            this.dIceUpDown.Name = "dIceUpDown";
+            this.dIceUpDown.Size = new System.Drawing.Size(50, 20);
+            this.dIceUpDown.TabIndex = 36;
+            this.dIceUpDown.Value = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.WidthCellUpDown.Minimum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.WidthCellUpDown.Name = "WidthCellUpDown";
-            this.WidthCellUpDown.Size = new System.Drawing.Size(50, 20);
-            this.WidthCellUpDown.TabIndex = 12;
-            this.WidthCellUpDown.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.WidthCellUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
+            this.dIceUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
             // 
-            // WidthCellLabel
+            // dIceLabel
             // 
-            this.WidthCellLabel.AutoSize = true;
-            this.WidthCellLabel.Location = new System.Drawing.Point(23, 94);
-            this.WidthCellLabel.Name = "WidthCellLabel";
-            this.WidthCellLabel.Size = new System.Drawing.Size(188, 13);
-            this.WidthCellLabel.TabIndex = 11;
-            this.WidthCellLabel.Text = "Размер ребра основания ячейки, м";
+            this.dIceLabel.AutoSize = true;
+            this.dIceLabel.Location = new System.Drawing.Point(24, 168);
+            this.dIceLabel.Name = "dIceLabel";
+            this.dIceLabel.Size = new System.Drawing.Size(94, 13);
+            this.dIceLabel.TabIndex = 35;
+            this.dIceLabel.Text = "Толщина льда, м";
             // 
-            // HWave50UpDown
+            // diameterIceUpDown
             // 
-            this.HWave50UpDown.Location = new System.Drawing.Point(553, 58);
-            this.HWave50UpDown.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.HWave50UpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.HWave50UpDown.Name = "HWave50UpDown";
-            this.HWave50UpDown.Size = new System.Drawing.Size(50, 20);
-            this.HWave50UpDown.TabIndex = 10;
-            this.HWave50UpDown.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.HWave50UpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // HWave001UpDown
-            // 
-            this.HWave001UpDown.Location = new System.Drawing.Point(553, 24);
-            this.HWave001UpDown.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.HWave001UpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.HWave001UpDown.Name = "HWave001UpDown";
-            this.HWave001UpDown.Size = new System.Drawing.Size(50, 20);
-            this.HWave001UpDown.TabIndex = 9;
-            this.HWave001UpDown.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.HWave001UpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // HWave50Label
-            // 
-            this.HWave50Label.AutoSize = true;
-            this.HWave50Label.Location = new System.Drawing.Point(340, 60);
-            this.HWave50Label.Name = "HWave50Label";
-            this.HWave50Label.Size = new System.Drawing.Size(202, 13);
-            this.HWave50Label.TabIndex = 8;
-            this.HWave50Label.Text = "Высота волны 50% обеспеченности, м";
-            // 
-            // HWave001Label
-            // 
-            this.HWave001Label.AutoSize = true;
-            this.HWave001Label.Location = new System.Drawing.Point(340, 26);
-            this.HWave001Label.Name = "HWave001Label";
-            this.HWave001Label.Size = new System.Drawing.Size(211, 13);
-            this.HWave001Label.TabIndex = 7;
-            this.HWave001Label.Text = "Высота волны 0.01% обеспеченности, м";
-            // 
-            // GlobalWaterDepthUpDown
-            // 
-            this.GlobalWaterDepthUpDown.Location = new System.Drawing.Point(234, 58);
-            this.GlobalWaterDepthUpDown.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.GlobalWaterDepthUpDown.Minimum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.GlobalWaterDepthUpDown.Name = "GlobalWaterDepthUpDown";
-            this.GlobalWaterDepthUpDown.Size = new System.Drawing.Size(50, 20);
-            this.GlobalWaterDepthUpDown.TabIndex = 6;
-            this.GlobalWaterDepthUpDown.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.GlobalWaterDepthUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
-            // 
-            // LocalWaterDepthUpDown
-            // 
-            this.LocalWaterDepthUpDown.Location = new System.Drawing.Point(234, 24);
-            this.LocalWaterDepthUpDown.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.LocalWaterDepthUpDown.Minimum = new decimal(new int[] {
+            this.diameterIceUpDown.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.LocalWaterDepthUpDown.Name = "LocalWaterDepthUpDown";
-            this.LocalWaterDepthUpDown.Size = new System.Drawing.Size(50, 20);
-            this.LocalWaterDepthUpDown.TabIndex = 5;
-            this.LocalWaterDepthUpDown.Value = new decimal(new int[] {
+            this.diameterIceUpDown.Location = new System.Drawing.Point(241, 142);
+            this.diameterIceUpDown.Maximum = new decimal(new int[] {
+            7000,
+            0,
+            0,
+            0});
+            this.diameterIceUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.diameterIceUpDown.Name = "diameterIceUpDown";
+            this.diameterIceUpDown.Size = new System.Drawing.Size(50, 20);
+            this.diameterIceUpDown.TabIndex = 34;
+            this.diameterIceUpDown.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.diameterIceUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
+            // 
+            // diameterIceLabel
+            // 
+            this.diameterIceLabel.AutoSize = true;
+            this.diameterIceLabel.Location = new System.Drawing.Point(24, 144);
+            this.diameterIceLabel.Name = "diameterIceLabel";
+            this.diameterIceLabel.Size = new System.Drawing.Size(186, 13);
+            this.diameterIceLabel.TabIndex = 33;
+            this.diameterIceLabel.Text = "Диаметр ледяного образования, м";
+            // 
+            // dLocalWaterLabel
+            // 
+            this.dLocalWaterLabel.AutoSize = true;
+            this.dLocalWaterLabel.Location = new System.Drawing.Point(24, 24);
+            this.dLocalWaterLabel.Name = "dLocalWaterLabel";
+            this.dLocalWaterLabel.Size = new System.Drawing.Size(207, 13);
+            this.dLocalWaterLabel.TabIndex = 3;
+            this.dLocalWaterLabel.Text = "Глубина залива в месте возведения, м";
+            // 
+            // dGlobalWaterLabel
+            // 
+            this.dGlobalWaterLabel.AutoSize = true;
+            this.dGlobalWaterLabel.Location = new System.Drawing.Point(24, 48);
+            this.dGlobalWaterLabel.Name = "dGlobalWaterLabel";
+            this.dGlobalWaterLabel.Size = new System.Drawing.Size(159, 13);
+            this.dGlobalWaterLabel.TabIndex = 1;
+            this.dGlobalWaterLabel.Text = "Эксплуатационная глубина, м";
+            // 
+            // dLocalWaterUpDown
+            // 
+            this.dLocalWaterUpDown.Location = new System.Drawing.Point(241, 22);
+            this.dLocalWaterUpDown.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.dLocalWaterUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.dLocalWaterUpDown.Name = "dLocalWaterUpDown";
+            this.dLocalWaterUpDown.Size = new System.Drawing.Size(50, 20);
+            this.dLocalWaterUpDown.TabIndex = 5;
+            this.dLocalWaterUpDown.Value = new decimal(new int[] {
             30,
             0,
             0,
             0});
-            this.LocalWaterDepthUpDown.ValueChanged += new System.EventHandler(NumericUpDown_ValueChanged);
+            this.dLocalWaterUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
             // 
-            // LocalWaterDepthLabel
+            // yWaterUpDown
             // 
-            this.LocalWaterDepthLabel.AutoSize = true;
-            this.LocalWaterDepthLabel.Location = new System.Drawing.Point(23, 26);
-            this.LocalWaterDepthLabel.Name = "LocalWaterDepthLabel";
-            this.LocalWaterDepthLabel.Size = new System.Drawing.Size(207, 13);
-            this.LocalWaterDepthLabel.TabIndex = 3;
-            this.LocalWaterDepthLabel.Text = "Глубина залива в месте возведения, м";
+            this.yWaterUpDown.DecimalPlaces = 2;
+            this.yWaterUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.yWaterUpDown.Location = new System.Drawing.Point(241, 118);
+            this.yWaterUpDown.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.yWaterUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.yWaterUpDown.Name = "yWaterUpDown";
+            this.yWaterUpDown.Size = new System.Drawing.Size(50, 20);
+            this.yWaterUpDown.TabIndex = 18;
+            this.yWaterUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.yWaterUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
             // 
-            // GlobalWaterDepthLabel
+            // dGlobalWaterUpDown
             // 
-            this.GlobalWaterDepthLabel.AutoSize = true;
-            this.GlobalWaterDepthLabel.Location = new System.Drawing.Point(23, 60);
-            this.GlobalWaterDepthLabel.Name = "GlobalWaterDepthLabel";
-            this.GlobalWaterDepthLabel.Size = new System.Drawing.Size(159, 13);
-            this.GlobalWaterDepthLabel.TabIndex = 1;
-            this.GlobalWaterDepthLabel.Text = "Эксплуатационная глубина, м";
+            this.dGlobalWaterUpDown.Location = new System.Drawing.Point(241, 46);
+            this.dGlobalWaterUpDown.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.dGlobalWaterUpDown.Minimum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.dGlobalWaterUpDown.Name = "dGlobalWaterUpDown";
+            this.dGlobalWaterUpDown.Size = new System.Drawing.Size(50, 20);
+            this.dGlobalWaterUpDown.TabIndex = 6;
+            this.dGlobalWaterUpDown.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.dGlobalWaterUpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
+            // 
+            // yWaterLabel
+            // 
+            this.yWaterLabel.AutoSize = true;
+            this.yWaterLabel.Location = new System.Drawing.Point(24, 120);
+            this.yWaterLabel.Name = "yWaterLabel";
+            this.yWaterLabel.Size = new System.Drawing.Size(120, 13);
+            this.yWaterLabel.TabIndex = 17;
+            this.yWaterLabel.Text = "Удельный вес воды, т";
+            // 
+            // hWave001Label
+            // 
+            this.hWave001Label.AutoSize = true;
+            this.hWave001Label.Location = new System.Drawing.Point(24, 72);
+            this.hWave001Label.Name = "hWave001Label";
+            this.hWave001Label.Size = new System.Drawing.Size(211, 13);
+            this.hWave001Label.TabIndex = 7;
+            this.hWave001Label.Text = "Высота волны 0.01% обеспеченности, м";
+            // 
+            // hWave50Label
+            // 
+            this.hWave50Label.AutoSize = true;
+            this.hWave50Label.Location = new System.Drawing.Point(24, 96);
+            this.hWave50Label.Name = "hWave50Label";
+            this.hWave50Label.Size = new System.Drawing.Size(202, 13);
+            this.hWave50Label.TabIndex = 8;
+            this.hWave50Label.Text = "Высота волны 50% обеспеченности, м";
+            // 
+            // hWave001UpDown
+            // 
+            this.hWave001UpDown.Location = new System.Drawing.Point(241, 70);
+            this.hWave001UpDown.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.hWave001UpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.hWave001UpDown.Name = "hWave001UpDown";
+            this.hWave001UpDown.Size = new System.Drawing.Size(50, 20);
+            this.hWave001UpDown.TabIndex = 9;
+            this.hWave001UpDown.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.hWave001UpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
+            // 
+            // hWave50UpDown
+            // 
+            this.hWave50UpDown.Location = new System.Drawing.Point(241, 94);
+            this.hWave50UpDown.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.hWave50UpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.hWave50UpDown.Name = "hWave50UpDown";
+            this.hWave50UpDown.Size = new System.Drawing.Size(50, 20);
+            this.hWave50UpDown.TabIndex = 10;
+            this.hWave50UpDown.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.hWave50UpDown.ValueChanged += new System.EventHandler(this.FieldUpDown_ValueChanged);
             // 
             // StructuresGridView
             // 
@@ -849,14 +1054,18 @@ namespace tryhard
             this.StructuresGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TypeColumn,
             this.dataGridViewTextBoxColumn1,
-            this.WeightColumn});
+            this.WeightColumn,
+            this.CostColumn});
             this.StructuresGridView.Location = new System.Drawing.Point(34, 51);
+            this.StructuresGridView.MultiSelect = false;
             this.StructuresGridView.Name = "StructuresGridView";
             this.StructuresGridView.ReadOnly = true;
             this.StructuresGridView.RowHeadersVisible = false;
             this.StructuresGridView.RowTemplate.Height = 20;
-            this.StructuresGridView.Size = new System.Drawing.Size(634, 307);
+            this.StructuresGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.StructuresGridView.Size = new System.Drawing.Size(634, 267);
             this.StructuresGridView.TabIndex = 27;
+            this.StructuresGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StructuresGridView_CellClick);
             // 
             // TypeColumn
             // 
@@ -884,10 +1093,17 @@ namespace tryhard
             this.WeightColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.WeightColumn.Width = 130;
             // 
+            // CostColumn
+            // 
+            this.CostColumn.HeaderText = "Стоимость, тыс.р";
+            this.CostColumn.Name = "CostColumn";
+            this.CostColumn.ReadOnly = true;
+            this.CostColumn.Width = 120;
+            // 
             // StructuresList
             // 
             this.StructuresList.AutoSize = true;
-            this.StructuresList.Location = new System.Drawing.Point(31, 28);
+            this.StructuresList.Location = new System.Drawing.Point(31, 35);
             this.StructuresList.Name = "StructuresList";
             this.StructuresList.Size = new System.Drawing.Size(112, 13);
             this.StructuresList.TabIndex = 1;
@@ -909,24 +1125,6 @@ namespace tryhard
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
-            // ParameterColumn
-            // 
-            this.ParameterColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ParameterColumn.FillWeight = 165.9628F;
-            this.ParameterColumn.HeaderText = "Параметр";
-            this.ParameterColumn.Name = "ParameterColumn";
-            this.ParameterColumn.ReadOnly = true;
-            this.ParameterColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ValueColumn
-            // 
-            this.ValueColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ValueColumn.FillWeight = 113.4788F;
-            this.ValueColumn.HeaderText = "Значение";
-            this.ValueColumn.Name = "ValueColumn";
-            this.ValueColumn.ReadOnly = true;
-            this.ValueColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MainForm
             // 
@@ -958,21 +1156,27 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).EndInit();
             this.UpStructurePanel.ResumeLayout(false);
             this.UpStructurePanel.PerformLayout();
+            this.StructurePanel.ResumeLayout(false);
+            this.StructurePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMatUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dWallCellUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wCellUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wUpStructureUpDown)).EndInit();
             this.StructureTypePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.StructureTypeGridView)).EndInit();
             this.StructureTypesPanel.ResumeLayout(false);
             this.StructureTypesPanel.PerformLayout();
-            this.StructureParametersPanel.ResumeLayout(false);
-            this.StructureParametersPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpStructureSizeUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YWaterUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YMatUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DWallCellUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WidthCellUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HWave50UpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HWave001UpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GlobalWaterDepthUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LocalWaterDepthUpDown)).EndInit();
+            this.FieldParametersPanel.ResumeLayout(false);
+            this.FieldParametersPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.speedIceUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.durabilityIceUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dIceUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diameterIceUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dLocalWaterUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yWaterUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGlobalWaterUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hWave001UpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hWave50UpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StructuresGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -997,32 +1201,28 @@ namespace tryhard
         private Panel UpStructurePanel;
         private Label StructuresList;
         public DataGridView StructuresGridView;
-        private Panel StructureParametersPanel;
-        private Label ParametersLabel;
-        private Label LocalWaterDepthLabel;
-        private Label GlobalWaterDepthLabel;
-        private NumericUpDown GlobalWaterDepthUpDown;
-        private NumericUpDown LocalWaterDepthUpDown;
-        private Label HWave001Label;
-        private Label HWave50Label;
-        private NumericUpDown HWave50UpDown;
-        private NumericUpDown HWave001UpDown;
-        private NumericUpDown WidthCellUpDown;
-        private Label WidthCellLabel;
-        private Label DWallCellLabel;
-        private NumericUpDown DWallCellUpDown;
-        private NumericUpDown YMatUpDown;
-        private Label YMatLabel;
-        private Label YWaterLabel;
-        private NumericUpDown YWaterUpDown;
-        private Button button1;
+        private Panel FieldParametersPanel;
+        private Label FieldParametersLabel;
+        private Label dLocalWaterLabel;
+        private Label dGlobalWaterLabel;
+        private NumericUpDown dGlobalWaterUpDown;
+        private NumericUpDown dLocalWaterUpDown;
+        private Label hWave001Label;
+        private Label hWave50Label;
+        private NumericUpDown hWave50UpDown;
+        private NumericUpDown hWave001UpDown;
+        private NumericUpDown wCellUpDown;
+        private Label wCellLabel;
+        private Label dWallCellLabel;
+        private NumericUpDown dWallCellUpDown;
+        private NumericUpDown yMatUpDown;
+        private Label yMatLabel;
+        private Label yWaterLabel;
+        private NumericUpDown yWaterUpDown;
         private Button BackToSchemeButton;
         private Button SaveButton;
-        private NumericUpDown UpStructureSizeUpDown;
-        private Label UpStructureSizeLabel;
-        private DataGridViewTextBoxColumn TypeColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn WeightColumn;
+        private NumericUpDown wUpStructureUpDown;
+        private Label wUpStructureLabel;
         private TextBox NameTextBox;
         private Label NameLabel;
         private Panel StructureTypePanel;
@@ -1037,6 +1237,20 @@ namespace tryhard
         private Label FieldLabel;
         private DataGridViewTextBoxColumn ParameterColumn;
         private DataGridViewTextBoxColumn ValueColumn;
+        private DataGridViewTextBoxColumn TypeColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn WeightColumn;
+        private DataGridViewTextBoxColumn CostColumn;
+        private NumericUpDown diameterIceUpDown;
+        private Label diameterIceLabel;
+        private NumericUpDown dIceUpDown;
+        private Label dIceLabel;
+        private NumericUpDown durabilityIceUpDown;
+        private Label durabilityIceLabel;
+        private NumericUpDown speedIceUpDown;
+        private Label speedIceLabel;
+        private Panel StructurePanel;
+        private Label StructureLabel;
     }
 }
 

@@ -1,7 +1,7 @@
 [
   {
     "FluidOutput": 90000,
-    "EstimatedFieldId": 1,
+    "EstimatedFieldId": 0,
     "PeopleDemand": 54,
     "ElectricityDemand": 2400,
     "Weight": 15000,

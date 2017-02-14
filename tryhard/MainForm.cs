@@ -355,10 +355,13 @@ namespace tryhard
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             if (DrawManager.Blocks.Count != 0)
-            {
-                FillStructuresGridView();
-                UpStructurePanel.BringToFront();
-            }
+                ActivateUpStructurePanel();
+        }
+
+        private void ActivateUpStructurePanel()
+        {
+            FillStructuresGridView();
+            UpStructurePanel.BringToFront();
         }
     }
 }

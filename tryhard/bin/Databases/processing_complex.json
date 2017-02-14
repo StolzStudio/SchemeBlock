@@ -45,7 +45,7 @@
     "FluidInput": 20000,
     "OilOutput": 13000,
     "GasOutput": 5000,
-    "EstimatedFieldId": 0,
+    "EstimatedFieldId": 1,
     "PeopleDemand": 80,
     "ElectricityDemand": 3900,
     "Weight": 28000,
