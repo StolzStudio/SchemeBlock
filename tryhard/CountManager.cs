@@ -27,6 +27,7 @@ namespace tryhard
         private EditorForm Form;
         public BaseObject SelectedField { get; set; }
         public List<BaseObject> FieldObjects { get; set; }
+        Dictionary<int, Int64> BlockStashValue;
         private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
@@ -186,13 +187,102 @@ namespace tryhard
             }
         }
 
-        public void MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
+        public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
         {
-            BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-            BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
+            BlockStashValue = new Dictionary<int, Int64>();
 
+            BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
+            BaseObject DkObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex] .Id);
+            aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(FieldObject, DkObject);
+
+            foreach (var q in Queue)
+            {
+                BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
+                BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
+                aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(FirstObject, SecondObject, Links[q]);
+            }
+
+            Complex Complex = new Complex();
+
+            foreach (var key in Blocks.Keys)
+            {
+                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(Blocks[key].ClassText, Blocks[key].Id);
+        
+                Complex.Cost   += Convert.ToInt64(BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject)) * Blocks[key].Count;
+                Complex.Volume += Convert.ToInt64(BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject)) * Blocks[key].Count;
+                Complex.Weight += Convert.ToInt64(BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject)) * Blocks[key].Count;
+                Complex.PeopleDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject)) * Blocks[key].Count;
+                Complex.ElectricityDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject)) * Blocks[key].Count;
+            }
+            return Complex;
         }
 
+        private int GiveCountOfDkObject(BaseObject aFieldObject, BaseObject aDkObject)
+        {
+            int FieldHoles = (int)aFieldObject.GetType().GetProperty("HolesAmount").GetValue(aFieldObject);
+            int DkHoles = (int)aDkObject.GetType().GetProperty("HolesAmount").GetValue(aDkObject);
+
+            double Result = (double)FieldHoles / (double)DkHoles;
+            if ((Result > (int)Result)) { Result++; }
+
+            Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
+            Int64 DkObjectValue = (Int64)aDkObject.GetType().GetProperty("FluidInput").GetValue(aDkObject);
+
+            if (FieldHoles <= DkHoles)
+            {
+                if (FieldObjectValue < DkObjectValue)
+                {
+                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+                }
+                else
+                {
+                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
+                }
+            }
+            else
+            {
+                DkObjectValue *= (int)Result;
+                if (FieldObjectValue < DkObjectValue)
+                {
+                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+                }
+                else
+                {
+                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
+                }
+            }
+            return (int)Result; 
+        }
+
+        private int GiveCountOfObject(BaseObject aFirstObject, BaseObject aSecondObject, Link aLink)
+        {
+            Int64 FirstObjectValue;
+            if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+            {
+                FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject);
+            }
+            else
+            {
+                FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex];
+            }
+            
+            Int64 SecondObjectValue = (Int64)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
+            
+            if (FirstObjectValue > aLink.LinkParameterValue)
+            {
+                FirstObjectValue = aLink.LinkParameterValue;
+                if (BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+                {
+                    BlockStashValue[aLink.FirstBlockIndex] -= aLink.LinkParameterValue;
+                }
+            }
+
+            BlockStashValue.Add(Blocks[aLink.SecondBlockIndex].Index, FirstObjectValue);
+
+            double Result = (double)FirstObjectValue / (double)SecondObjectValue;
+            if (Result > (int)Result) { Result++; }
+            return (int)Result;
+        }
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
         {
             List<int> Result = new List<int>();
