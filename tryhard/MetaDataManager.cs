@@ -228,7 +228,10 @@ namespace tryhard
             return result;
         }
 
+        public List<string> GetListOfProjectNames()
+        {
 
+        }
 
         public string GetJson(string APath)
         {

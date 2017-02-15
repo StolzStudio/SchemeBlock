@@ -17,15 +17,15 @@ namespace tryhard
     {
         private static Field instance;
 
-        public float yWater { get; set; } = 1;
-        public float dLocalWater { get; set; } = 30;
-        public float dGlobalWater { get; set; } = 20;
-        public float hWave50 { get; set; } = 6;
-        public float hWave001 { get; set; } = 12;
-        public float dIce { get; set; } = 3;
-        public float durabilityIce { get; set; } = 2;
-        public float diameterIce { get; set; } = 3000;
-        public float speedIce { get; set; } = (float)0.5;
+        public double yWater { get; set; } = 1;
+        public double dLocalWater { get; set; } = 30;
+        public double dGlobalWater { get; set; } = 20;
+        public double hWave50 { get; set; } = 6;
+        public double hWave001 { get; set; } = 12;
+        public double dIce { get; set; } = 3;
+        public double durabilityIce { get; set; } = 2;
+        public double diameterIce { get; set; } = 3000;
+        public double speedIce { get; set; } = 0.5;
 
         public Field() { }
 
@@ -66,17 +66,16 @@ namespace tryhard
         public bool isCalculated { get; set; }
         public int countBC { get; set; } = 25;
         public int countSC { get; set; } = 1;
-        public float wUpStructure { get; set; } = 100;
-        public float pUpStructure { get; set; }
-        public float dWallCell { get; set; } = (float)0.75;
-        public float wCell { get; set; } = 20;
-        public float hExCl { get; set; }
-        public float hTrCl { get; set; }
-        public float hStructure { get; set; }
-        public float yMat { get; set; } = (float)2.5;
-
-        public BaseCell baseCell = new BaseCell();
-        public Cell supportCell = new Cell();
+        public double wUpStructure { get; set; } = 100;
+        public double pUpStructure { get; set; }
+        public double dWallCell { get; set; } = 0.75;
+        public double wCell { get; set; } = 20;
+        public double hExCl { get; set; }
+        public double hTrCl { get; set; }
+        public double hStructure { get; set; }
+        public double yMat { get; set; } = 2.5;
+        public BaseCell baseCell { get; set; } = new BaseCell();
+        public Cell supportCell { get; set; } = new Cell();
 
         public DownStructure(StructureType type)
         {
@@ -100,32 +99,72 @@ namespace tryhard
 
         public void CalculateHeightStricture()
         {
-            hExCl = (float)0.5 * Field.Instance.hWave001 + (float)0.5;
+            hExCl = 0.5 * Field.Instance.hWave001 + 0.5;
             hStructure = Field.Instance.dGlobalWater + hExCl;
             hTrCl = 1;
+        }
+
+        public double CalculateInertiaMoment()
+        {
+            double inertialMoment = 0;
+            switch(Type)
+            {
+                case StructureType.Kesson:
+                    inertialMoment = Math.Sqrt(countSC) * Math.Pow(supportCell.wOutside, 4) * 
+                                     CalculateSummIM(Convert.ToInt32(Math.Sqrt(countSC) - 1) / 2); break;
+                case StructureType.Monoleg:
+                    inertialMoment = Math.Pow(supportCell.wOutside, 4) / 12.0; break;
+                case StructureType.Multileg: break;
+                    inertialMoment = Math.Pow(wUpStructure - baseCell.wOutside, 2) * Math.Pow(supportCell.wOutside, 2) + 
+                        Math.Pow(supportCell.wOutside, 4) / 3.0;
+            }
+            return inertialMoment;
+        }
+
+        public double CalculateArea()
+        {
+            return (Convert.ToDouble(countBC) * baseCell.v + 
+                    Convert.ToDouble(countSC) * supportCell.v - 
+                    Convert.ToDouble(countSC) * Math.Pow(supportCell.wOutside, 2) * hTrCl);
+        }
+
+        private double CalculateSummIM(int upLimit)
+        {
+            double summ = 0;
+            for (int i = 0; i <= upLimit; i++)
+            {
+                summ += Convert.ToDouble((12 * Math.Pow(i, 2) + 1)/6);
+            }
+            return summ - Convert.ToDouble(1 / 6);
+        }
+
+        public bool FloatingStabilityCalculate()
+        {
+
+            return true;
         }
     }
 
     public class Cell
     {
-        public float a { get; set; }
-        public float h { get; set; }
-        public float v { get; set; }
-        public float p { get; set; }
-        public float kp { get; set; }
-        public float vMat { get; set; }
-        public float dWall { get; set; }
-        public float vTrCl { get; set; }
-        public float wInside { get; set; }
-        public float wOutside { get; set; }
-        public float aCSWall { get; set; }
-        public float vMatWall { get; set; }
-        public float pMatWall { get; set; }
+        public double a { get; set; }
+        public double h { get; set; }
+        public double v { get; set; }
+        public double p { get; set; }
+        public double kp { get; set; }
+        public double vMat { get; set; }
+        public double dWall { get; set; }
+        public double vTrCl { get; set; }
+        public double wInside { get; set; }
+        public double wOutside { get; set; }
+        public double aCSWall { get; set; }
+        public double vMatWall { get; set; }
+        public double pMatWall { get; set; }
 
-        public virtual void CalculateParameters(float _hStructure, float _hTrCl, float _wOutside, float _dWall, float _yMat)
+        public virtual void CalculateParameters(double _hStructure, double _hTrCl, double _wOutside, double _dWall, double _yMat)
         {
             dWall = _dWall;
-            h = _hStructure - Field.Instance.dGlobalWater * (float)0.4;
+            h = _hStructure - Field.Instance.dGlobalWater * 0.4;
             dWall = _dWall;
             wOutside = _wOutside;
             wInside = wOutside - 2 * dWall;
@@ -137,32 +176,32 @@ namespace tryhard
             vTrCl = a * _hTrCl;
             pMatWall = vMatWall * _yMat;
             p = pMatWall;
-            kp = Field.Instance.dGlobalWater * (float)0.4 + h * (float)0.5;
+            kp = Field.Instance.dGlobalWater * 0.4 + h * 0.5;
         }
     }
 
     public class BaseCell : Cell
     {
-        public float dCover { get; set; }
-        public float aCover { get; set; }
-        public float vMatCover { get; set; }
-        public float pMatCover { get; set; }
+        public double dCover { get; set; }
+        public double aCover { get; set; }
+        public double vMatCover { get; set; }
+        public double pMatCover { get; set; }
 
-        public float dBottom { get; set; }
-        public float aBottom { get; set; }
-        public float vMatBottom { get; set; }
-        public float pMatBottom { get; set; }
+        public double dBottom { get; set; }
+        public double aBottom { get; set; }
+        public double vMatBottom { get; set; }
+        public double pMatBottom { get; set; }
 
         public BaseCell() { }
 
-        public override void CalculateParameters(float _hStructure, float _hTrCl, float _wOutside, float _dWall, float _yMat)
+        public override void CalculateParameters(double _hStructure, double _hTrCl, double _wOutside, double _dWall, double _yMat)
         {
             dWall = _dWall;
             wOutside = _wOutside;
             wInside = wOutside - 2 * dWall;
             dCover = (dWall / 3) * 4;
             dBottom = 2 * dCover;
-            h = Field.Instance.dGlobalWater * (float)0.4;
+            h = Field.Instance.dGlobalWater * 0.4;
             a = wOutside * wOutside;
             v = a * h;
             aCover = wInside * wInside;
@@ -177,7 +216,7 @@ namespace tryhard
             pMatCover = vMatCover * _yMat;
             pMatBottom = vMatBottom * _yMat;
             p = pMatWall + pMatCover + pMatBottom;
-            kp = (pMatWall * h * (float)0.5 + pMatCover * (h - dCover * (float)0.5) + pMatBottom * dBottom * (float)0.5) / p;
+            kp = (pMatWall * h * 0.5 + pMatCover * (h - dCover * 0.5) + pMatBottom * dBottom * 0.5) / p;
         }
     }
 }

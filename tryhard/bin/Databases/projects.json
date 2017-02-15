@@ -1,7 +1,7 @@
 [
 	{
 		"Name": "Project1",
-		"Structure":
+		"UpStructure":
 		{
 			"Objects":
 			{
@@ -11,6 +11,10 @@
 			{
 				
 			}
+		},
+		"DownStructure":
+		{
+			
 		}
 	}
 ]

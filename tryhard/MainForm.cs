@@ -31,8 +31,6 @@ namespace tryhard
 
         public MainForm()
         {
-            MetaDataManager.Instance.Initialize("../Databases/");
-            FormsManager.Instance.Initialize(this);
             InitializeComponent();
             FillObjectTreeView();
             FillFieldComboBox();

@@ -48,7 +48,7 @@ namespace tryhard
                                                                     new DownStructure(StructureType.Monoleg),
                                                                     new DownStructure(StructureType.Multileg) });
                 SelectedStructureTypes.Add(Key, 0);
-                CalculateStructure(Key);
+                this.CalculateStructure(Key);
             }
             StructuresGridView.CurrentCell = StructuresGridView[0, 0];
             selectedCell = DrawManager.Blocks.Keys.First();
@@ -75,6 +75,7 @@ namespace tryhard
             string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
             System.Reflection.PropertyInfo propertyInfo = Field.Instance.GetType().GetProperty(propertyName);
             propertyInfo.SetValue(Field.Instance, Convert.ToSingle((sender as NumericUpDown).Value));
+            CalculateAllStructures();
         }
 
         private void StructureUpDown_ValueChanged(Object sender, EventArgs e)
@@ -82,14 +83,10 @@ namespace tryhard
             string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
             System.Reflection.PropertyInfo propertyInfo = DownStructures[selectedCell][GetTagSelectedRadioBtn()].GetType().GetProperty(propertyName);
             propertyInfo.SetValue(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]], Convert.ToSingle((sender as NumericUpDown).Value));
+            this.CalculateStructure(selectedCell);
         }
 
         private void CalculateAllStructures()
-        {
-
-        }
-
-        private void CalculateStructure()
         {
 
         }

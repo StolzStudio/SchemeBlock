@@ -23,6 +23,9 @@ namespace tryhard
 
             InitializeComponent();
 
+            MetaDataManager.Instance.Initialize("../Databases/");
+            //FormsManager.Instance.Initialize(this);
+
             LoadPogectsListItems();
         }
 
