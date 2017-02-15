@@ -420,7 +420,7 @@ namespace tryhard
             WorkPanel.Visible = false;
                
             FillObjectTreeView();
-            GoNextButton.Text = "next";
+            GoNextButton.Text = "Далее";
             DrawPage.Invalidate();
         }
 
@@ -444,10 +444,14 @@ namespace tryhard
                 (sender as Button).BringToFront();
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
-                GoNextButton.Text = "save";
+                GoNextButton.Text = "Сохранить";
                 isNextStep = true;
 
-                CalcManager = new CountManager(ref DrawManager.Blocks, ref DrawManager.Links, TypeStripComboBox.SelectedItem.ToString(), this);
+                CalcManager = new CountManager(ref DrawManager.Blocks, 
+                                               ref DrawManager.Links, 
+                                               CategoryStripComboBox.SelectedItem.ToString(), 
+                                               TypeStripComboBox.SelectedItem.ToString()
+                                               );
             
                 FillFieldComboBox();
 
