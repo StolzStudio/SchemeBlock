@@ -310,7 +310,7 @@
             // CalculateButton
             // 
             this.CalculateButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CalculateButton.Location = new System.Drawing.Point(33, 71);
+            this.CalculateButton.Location = new System.Drawing.Point(4, 53);
             this.CalculateButton.Name = "CalculateButton";
             this.CalculateButton.Size = new System.Drawing.Size(390, 28);
             this.CalculateButton.TabIndex = 36;
@@ -322,7 +322,7 @@
             // 
             this.FieldPropertyPanel.BackColor = System.Drawing.Color.Orange;
             this.FieldPropertyPanel.Controls.Add(this.FieldPropertyLabel);
-            this.FieldPropertyPanel.Location = new System.Drawing.Point(33, 102);
+            this.FieldPropertyPanel.Location = new System.Drawing.Point(4, 84);
             this.FieldPropertyPanel.Name = "FieldPropertyPanel";
             this.FieldPropertyPanel.Size = new System.Drawing.Size(390, 27);
             this.FieldPropertyPanel.TabIndex = 35;
@@ -349,7 +349,7 @@
             this.FieldPropertyDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.FieldPropertyDataGridView.Location = new System.Drawing.Point(33, 127);
+            this.FieldPropertyDataGridView.Location = new System.Drawing.Point(4, 109);
             this.FieldPropertyDataGridView.Name = "FieldPropertyDataGridView";
             this.FieldPropertyDataGridView.RowHeadersVisible = false;
             this.FieldPropertyDataGridView.RowTemplate.Height = 20;
@@ -374,7 +374,7 @@
             // FieldComboBox
             // 
             this.FieldComboBox.FormattingEnabled = true;
-            this.FieldComboBox.Location = new System.Drawing.Point(33, 47);
+            this.FieldComboBox.Location = new System.Drawing.Point(4, 29);
             this.FieldComboBox.Name = "FieldComboBox";
             this.FieldComboBox.Size = new System.Drawing.Size(390, 21);
             this.FieldComboBox.TabIndex = 33;
@@ -384,7 +384,7 @@
             // 
             this.WorkFieldPanel.BackColor = System.Drawing.Color.Orange;
             this.WorkFieldPanel.Controls.Add(this.WorkFieldLabel);
-            this.WorkFieldPanel.Location = new System.Drawing.Point(33, 22);
+            this.WorkFieldPanel.Location = new System.Drawing.Point(4, 4);
             this.WorkFieldPanel.Name = "WorkFieldPanel";
             this.WorkFieldPanel.Size = new System.Drawing.Size(390, 27);
             this.WorkFieldPanel.TabIndex = 32;
@@ -403,7 +403,7 @@
             // 
             this.WorkPropetriesPanel.BackColor = System.Drawing.Color.Orange;
             this.WorkPropetriesPanel.Controls.Add(this.WorkPropertiesLabel);
-            this.WorkPropetriesPanel.Location = new System.Drawing.Point(33, 347);
+            this.WorkPropetriesPanel.Location = new System.Drawing.Point(4, 329);
             this.WorkPropetriesPanel.Name = "WorkPropetriesPanel";
             this.WorkPropetriesPanel.Size = new System.Drawing.Size(390, 27);
             this.WorkPropetriesPanel.TabIndex = 31;
@@ -422,9 +422,9 @@
             // 
             this.WorkCombinationPanel.BackColor = System.Drawing.Color.Orange;
             this.WorkCombinationPanel.Controls.Add(this.WorkCombinationLabel);
-            this.WorkCombinationPanel.Location = new System.Drawing.Point(451, 22);
+            this.WorkCombinationPanel.Location = new System.Drawing.Point(429, 4);
             this.WorkCombinationPanel.Name = "WorkCombinationPanel";
-            this.WorkCombinationPanel.Size = new System.Drawing.Size(778, 27);
+            this.WorkCombinationPanel.Size = new System.Drawing.Size(810, 27);
             this.WorkCombinationPanel.TabIndex = 30;
             // 
             // WorkCombinationLabel
@@ -453,11 +453,11 @@
             this.WeightColumn,
             this.PeopleDemandColumn,
             this.ElectricityDemandColumn});
-            this.CombinationDataGridView.Location = new System.Drawing.Point(451, 47);
+            this.CombinationDataGridView.Location = new System.Drawing.Point(429, 29);
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
             this.CombinationDataGridView.RowTemplate.Height = 20;
-            this.CombinationDataGridView.Size = new System.Drawing.Size(778, 562);
+            this.CombinationDataGridView.Size = new System.Drawing.Size(810, 521);
             this.CombinationDataGridView.TabIndex = 29;
             // 
             // CheckColumn
@@ -513,11 +513,11 @@
             this.PropteryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.PropteryDataGridView.Location = new System.Drawing.Point(33, 372);
+            this.PropteryDataGridView.Location = new System.Drawing.Point(4, 354);
             this.PropteryDataGridView.Name = "PropteryDataGridView";
             this.PropteryDataGridView.RowHeadersVisible = false;
             this.PropteryDataGridView.RowTemplate.Height = 20;
-            this.PropteryDataGridView.Size = new System.Drawing.Size(390, 262);
+            this.PropteryDataGridView.Size = new System.Drawing.Size(390, 235);
             this.PropteryDataGridView.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn3
