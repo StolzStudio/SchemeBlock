@@ -430,19 +430,11 @@ namespace tryhard
         {
             CalcManager.SetFieldObjects();
 
-            foreach (var el in CalcManager.FieldObjects)
-            {
-                FieldComboBox.Items.Add(el.Name);
-            }
-        }
-
-        private void FillCombinationDataGrid()
-        {
-            //List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
-            //foreach (var c in Columns)
-            //{
-            //    CombinationDataGridView.Columns.Add(c);
-            //}
+            FieldComboBox.Items.Clear();
+            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+                FieldComboBox.Items.Add(field.Name);
+            FieldComboBox.SelectedIndex = 0;
+            FillFieldPropertyDataGrid(FieldComboBox.SelectedItem.ToString());
         }
 
         private void GoNextButton_Click(object sender, EventArgs e)
@@ -455,15 +447,12 @@ namespace tryhard
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "save";
-                //CountDataGridView.Visible = false;
                 isNextStep = true;
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, ref DrawManager.Links, TypeStripComboBox.SelectedItem.ToString(), this);
-
+            
                 FillFieldComboBox();
-                FillCombinationDataGrid();
-                
-                
+
             }
             else
             {
@@ -562,8 +551,39 @@ namespace tryhard
 
         private void FieldComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FillFieldPropertyDataGrid(FieldComboBox.Text);
+        }
+
+        private void FillFieldPropertyDataGrid(string aFieldName)
+        {
+            FieldPropertyDataGridView.Rows.Clear();
+            foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo["InfoClasses"].Where(obj => obj.Name == "field_parameters"))
+                foreach (string APropertyName in AObjectInfo.Properties)
+                {
+                    IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects["field_parameters"].Where(obj => obj.Id == GetIdOfObject("field_parameters", aFieldName));
+                    foreach (BaseObject obj in base_object)
+                        FieldPropertyDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                }
+        }
+
+        private int GetIdOfObject(string aClass, string aModel)
+        {
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(aClass);
+
+            foreach (var i in Ids)
+            {
+                if (MetaDataManager.Instance.GetBaseObjectOfId(aClass, i).Name == aModel)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
             Complex el = CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
-            CombinationDataGridView.Rows.Add(false, el.Cost, el.Volume, el.Weight);
+            CombinationDataGridView.Rows.Add(false, el.Name, el.Cost, el.Volume, el.Weight, el.PeopleDemand, el.ElectricityDemand);
         }
     }
 }
