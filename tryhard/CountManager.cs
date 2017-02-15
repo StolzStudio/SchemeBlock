@@ -22,7 +22,7 @@ namespace tryhard
     class CountManager
     {
         private bool isEquipment;
-        private string ComboBoxType;
+        private string ObjectType;
         List<int> Queue;
         private EditorForm Form;
         public BaseObject SelectedField { get; set; }
@@ -35,29 +35,14 @@ namespace tryhard
         public Dictionary<int, Block> Blocks;
         public List<Link> Links;
 
-        public CountManager(ref Dictionary<int, Block> aBlocks, ref List<Link> aLinks, string aComboBoxType, EditorForm aForm)
+        public CountManager(ref Dictionary<int, Block> aBlocks, ref List<Link> aLinks, string aCategoryType, string aObjectType)
         {
-            isEquipment = false;
-
-            ComboBoxType = aComboBoxType;
+            if (aCategoryType == "Equipment") { isEquipment = true;  }
+                                         else { isEquipment = false; }
+            ObjectType = aObjectType;
             Blocks = aBlocks;
             Links  = aLinks;
-            Form = aForm;
             CreateQueue();
-        }
-
-        public CountManager(ref Dictionary<int, Block> aBlocks, string aComboBoxType, EditorForm aForm)
-        {
-            isEquipment = true;
-
-            ComboBoxType = aComboBoxType;
-            Blocks = aBlocks;
-            Form = aForm;
-            BlocksIndex = new List<CountBlockIndeces>();
-            BlocksIndexCombination = new List<List<int>>();
-            SetIndexArray();
-            SetCombinations();
-            FillPropertyDataGrid(Combination, Form.isEditObject, Form.CategoryStripComboBox.SelectedItem.ToString());
         }
         
         public void SetIndexArray()
@@ -106,44 +91,44 @@ namespace tryhard
 
         public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
         {
-            BaseObject SaveObject = MetaDataManager.Instance.GetBaseObjectOfId(ComboBoxType, 0);
+            //BaseObject SaveObject = MetaDataManager.Instance.GetBaseObjectOfId(ComboBoxType, 0);
 
-            Form.PropteryDataGridView.Rows.Clear();
-            if (!aState)
-            {
-                MakeCalculateEquipment(Combination, SaveObject);
-                foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
-                    foreach (string APropertyName in AObjectInfo.Properties)
-                    {
-                        switch (APropertyName)
-                        {
-                            case "Id":
-                                Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
-                                break;
-                            case "Name":
-                                Form.PropteryDataGridView.Rows.Add(APropertyName, "");
-                                break;
-                            default:
-                                Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
-                                break;
-                        }
-                    }
-            }
-            else
-            {
-                foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
-                    foreach (string APropertyName in AObjectInfo.Properties)
-                    {
-                        if (APropertyName == "Id")
-                        {
-                            Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
-                        }
-                        else
-                        {
-                            Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
-                        }
-                    }
-            }
+            //Form.PropteryDataGridView.Rows.Clear();
+            //if (!aState)
+            //{
+            //    MakeCalculateEquipment(Combination, SaveObject);
+            //    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
+            //        foreach (string APropertyName in AObjectInfo.Properties)
+            //        {
+            //            switch (APropertyName)
+            //            {
+            //                case "Id":
+            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
+            //                    break;
+            //                case "Name":
+            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, "");
+            //                    break;
+            //                default:
+            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
+            //                    break;
+            //            }
+            //        }
+            //}
+            //else
+            //{
+            //    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
+            //        foreach (string APropertyName in AObjectInfo.Properties)
+            //        {
+            //            if (APropertyName == "Id")
+            //            {
+            //                Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
+            //            }
+            //            else
+            //            {
+            //                Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
+            //            }
+            //        }
+            //}
         }
 
         public void MakeCalculateEquipment(List<BaseObject> aCombination, BaseObject aSaveObject)
@@ -156,6 +141,39 @@ namespace tryhard
             }
         }
         //
+        //check parameters
+        //
+        private bool TryFoundMainObjectInLinks(string aType)
+        {
+            foreach (var key in Blocks.Keys)
+            {
+                if ((Blocks[key].ClassText == aType) || (Blocks[key].ClassText == aType))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public string CheckCombination()
+        {
+            if (ObjectType == "mining_complex")
+            {
+                if (!TryFoundMainObjectInLinks("dk"))
+                {
+                    return "Вы забыли установить ДК";
+                }
+            }
+            else
+            {
+                if (!TryFoundMainObjectInLinks("upn"))
+                {
+                    return "Вы забыли установить УПН";
+                }
+            }
+            return "ok";
+        }
+        //
         //calc functions
         //
         private void CreateQueue()
@@ -164,14 +182,19 @@ namespace tryhard
             List<int> Indeces = new List<int>();
             int k = 0;
 
-            if (TryFoundDkInLinks())
+            if (TryFoundMainObjectInLinks("dk"))
             {
                 Indeces = GiveIndexOfLinksThatKeepStartBlock("dk");
-                foreach (var ind in Indeces)
-                {
-                    Queue.Add(ind);
-                }
             }
+            else if (TryFoundMainObjectInLinks("upn"))
+            {
+                Indeces = GiveIndexOfLinksThatKeepStartBlock("upn");
+            }
+            foreach (var ind in Indeces)
+            {
+                Queue.Add(ind);
+            }
+            
 
             while (k < Links.Count)
             {
@@ -192,8 +215,19 @@ namespace tryhard
             BlockStashValue = new Dictionary<int, Int64>();
 
             BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
-            BaseObject DkObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex] .Id);
-            aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(FieldObject, DkObject);
+
+            BaseObject MainObject;
+            if (ObjectType == "mining_complex")
+            {
+                MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
+                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(FieldObject, MainObject);
+            }
+            else
+            {
+                MainObject = MetaDataManager.Instance.GetBaseObjectOfId("upn", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
+                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(FieldObject, MainObject);
+            }
+            
 
             foreach (var q in Queue)
             {
@@ -207,7 +241,7 @@ namespace tryhard
             foreach (var key in Blocks.Keys)
             {
                 BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(Blocks[key].ClassText, Blocks[key].Id);
-        
+                
                 Complex.Cost   += Convert.ToInt64(BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject)) * Blocks[key].Count;
                 Complex.Volume += Convert.ToInt64(BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject)) * Blocks[key].Count;
                 Complex.Weight += Convert.ToInt64(BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject)) * Blocks[key].Count;
@@ -215,6 +249,17 @@ namespace tryhard
                 Complex.ElectricityDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject)) * Blocks[key].Count;
             }
             return Complex;
+        }
+
+        private int GiveCountOfUpnObject(BaseObject aFieldObject, BaseObject aUpnObject)
+        {
+            Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
+            Int64 UpnObjectValue = (Int64)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
+            BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+
+            double Result = (double)FieldObjectValue / (double)UpnObjectValue;
+            if ((Result > (int)Result)) { Result++; }
+            return (int)Result;
         }
 
         private int GiveCountOfDkObject(BaseObject aFieldObject, BaseObject aDkObject)
@@ -308,18 +353,6 @@ namespace tryhard
                 }
             }
             return Result;
-        }
-
-        private bool TryFoundDkInLinks()
-        {
-            foreach (var el in Links)
-            {
-                if ((Blocks[el.FirstBlockIndex].ClassText == "dk")||(Blocks[el.SecondBlockIndex].ClassText == "dk"))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

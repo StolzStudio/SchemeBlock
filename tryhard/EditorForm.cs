@@ -449,9 +449,14 @@ namespace tryhard
 
                 CalcManager = new CountManager(ref DrawManager.Blocks, 
                                                ref DrawManager.Links, 
-                                               CategoryStripComboBox.SelectedItem.ToString(), 
-                                               TypeStripComboBox.SelectedItem.ToString()
+                                               MetaDataManager.Instance.Dictionary[CategoryStripComboBox.SelectedItem.ToString()],
+                                               MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]
                                                );
+                if (CalcManager.CheckCombination() != "ok")
+                {
+                    MessageBox.Show(CalcManager.CheckCombination());
+                    GoBackButton.PerformClick();
+                }
             
                 FillFieldComboBox();
 
