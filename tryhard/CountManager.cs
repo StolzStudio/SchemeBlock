@@ -187,14 +187,13 @@ namespace tryhard
             }
         }
 
-        public void MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
+        public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
         {
             BlockStashValue = new Dictionary<int, Int64>();
 
             BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
             BaseObject DkObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex] .Id);
             aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(FieldObject, DkObject);
-            Complex test = new Complex();
 
             foreach (var q in Queue)
             {
@@ -202,6 +201,18 @@ namespace tryhard
                 BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
                 aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(FirstObject, SecondObject, Links[q]);
             }
+
+            Complex Complex = new Complex();
+
+            foreach (var key in Blocks.Keys)
+            {
+                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(Blocks[key].ClassText, Blocks[key].Id);
+        
+                Complex.Cost   += (Int64)BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject) * Blocks[key].Count;
+                Complex.Volume += (Int64)BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject) * Blocks[key].Count;
+                Complex.Weight += (Int64)BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject) * Blocks[key].Count;
+            }
+            return Complex;
         }
 
         private int GiveCountOfDkObject(BaseObject aFieldObject, BaseObject aDkObject)

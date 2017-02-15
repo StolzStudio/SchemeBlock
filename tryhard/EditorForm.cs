@@ -562,7 +562,8 @@ namespace tryhard
 
         private void FieldComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
+            Complex el = CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
+            CombinationDataGridView.Rows.Add(false, el.Cost, el.Volume, el.Weight);
         }
     }
 }
