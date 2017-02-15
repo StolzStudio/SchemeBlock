@@ -96,6 +96,45 @@ namespace tryhard
             hStructure = _hStructure;
             yMat = _yMat;
         }
+        //
+        //Вычисление остойчивости при транспортировке
+        //
+        public bool CalculateFloatingStability()
+        {
+            bool flag = false;
+            int i = 0;
+            while (flag)
+            {
+                if (CalculateGNphi() > 0)
+                    flag = true;
+                else
+                {
+                    if (!AddBaseCell())
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        public double CalculateGNphi()
+        {
+            return (CalculateFloatingStabilityInertiaMoment() / CalculateVolume()) * (1 + Math.Pow(Math.Tan(CalculatePhi()), 2)) + 
+                    CalculateKB() - CalculateKG();
+        }
+
+        public double CalculateKB()
+        {
+            double mvbaseCell = countBC * baseCell.v;
+            double nvsupportCell = countSC * (supportCell.v - Math.Pow(supportCell.wOutside, 2) * hTrCl);
+            return (mvbaseCell * (baseCell.h / 2.0) + nvsupportCell * (baseCell.h + (supportCell.h / 2.0))) / (mvbaseCell + nvsupportCell);
+        }
+
+        public double CalculateKG()
+        {
+            double mp_baseCell = countBC * baseCell.p;
+            double mp_supportCell = countSC * supportCell.p;
+            return (mp_baseCell * baseCell.kp + mp_supportCell * supportCell.kp) / (mp_baseCell + mp_supportCell);
+        }
 
         public void CalculateHeightStricture()
         {
@@ -104,7 +143,7 @@ namespace tryhard
             hTrCl = 1;
         }
 
-        public double CalculateInertiaMoment()
+        public double CalculateFloatingStabilityInertiaMoment()
         {
             double inertialMoment = 0;
             switch(Type)
@@ -121,11 +160,22 @@ namespace tryhard
             return inertialMoment;
         }
 
-        public double CalculateArea()
+        public double CalculateVolume()
         {
             return (Convert.ToDouble(countBC) * baseCell.v + 
                     Convert.ToDouble(countSC) * supportCell.v - 
                     Convert.ToDouble(countSC) * Math.Pow(supportCell.wOutside, 2) * hTrCl);
+        }
+
+        public double CalculatePhi()
+        {
+            double phi = 0;
+            if (Type == StructureType.Kesson || Type == StructureType.Multileg)
+                phi = 2.0 * hTrCl / wUpStructure;
+            else
+                phi = hTrCl / supportCell.wOutside;
+            phi = phi * (180 / Math.PI) * 0.925;
+            return phi; 
         }
 
         private double CalculateSummIM(int upLimit)
@@ -138,10 +188,16 @@ namespace tryhard
             return summ - Convert.ToDouble(1 / 6);
         }
 
-        public bool FloatingStabilityCalculate()
-        {
 
-            return true;
+        public bool AddBaseCell()
+        {
+            countBC = Convert.ToInt32(Math.Pow(Math.Sqrt(countBC) + 2, 2));
+            return countBC >= 11 ? false : true;
+        }
+
+        public double CalculateLongitudinalForce()
+        {
+            return 1.0;
         }
     }
 
