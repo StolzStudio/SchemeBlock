@@ -118,7 +118,7 @@ namespace tryhard
             Point[] Ptr = new Point[3];
             Brush b = new SolidBrush(p.Color);
 
-            int Width = 40;
+            int Width = 44;
 
             if (Points[1].X == Points[2].X)
             {
