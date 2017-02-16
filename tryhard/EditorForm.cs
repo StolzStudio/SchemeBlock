@@ -412,13 +412,16 @@ namespace tryhard
                     EditObjectButton.Enabled = true;
                     isEditObject = false;
                     GoNextButton.Enabled = false;
+                    
                     (sender as Button).Enabled = false;
                     DrawManager.DeleteAllElements();
                 }
             }
             isNextStep = false;
             WorkPanel.Visible = false;
-               
+            ToolStrip.Enabled = false;
+            EditObjectButton.Enabled = true;
+
             FillObjectTreeView();
             GoNextButton.Text = "Далее";
             DrawPage.Invalidate();
@@ -426,7 +429,6 @@ namespace tryhard
 
         private void FillFieldComboBox()
         {
-            CalcManager.SetFieldObjects();
 
             FieldComboBox.Items.Clear();
             foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
@@ -446,7 +448,8 @@ namespace tryhard
                 GoBackButton.Enabled = true;
                 GoNextButton.Text = "Сохранить";
                 isNextStep = true;
-
+                ToolStrip.Enabled = false;
+                EditObjectButton.Enabled = false;
                 CalcManager = new CountManager(ref DrawManager.Blocks, 
                                                ref DrawManager.Links, 
                                                MetaDataManager.Instance.Dictionary[CategoryStripComboBox.SelectedItem.ToString()],
