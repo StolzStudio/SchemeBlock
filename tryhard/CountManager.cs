@@ -22,9 +22,10 @@ namespace tryhard
     class CountManager
     {
         private bool isEquipment;
+        private string CategoryType;
         private string ObjectType;
         List<int> Queue;
-        Dictionary<int, Int64> BlockStashValue;
+        Dictionary<int, Dictionary<string, Int64>> BlockStashValue;
         private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
@@ -36,6 +37,7 @@ namespace tryhard
         {
             if (aCategoryType == "Equipment") { isEquipment = true;  }
                                          else { isEquipment = false; }
+            CategoryType = aCategoryType;
             ObjectType = aObjectType;
             Blocks = aBlocks;
             Links  = aLinks;
@@ -188,7 +190,7 @@ namespace tryhard
 
         public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
         {
-            BlockStashValue = new Dictionary<int, Int64>();
+            BlockStashValue = new Dictionary<int, Dictionary<string, Int64>>();
 
             BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
 
@@ -227,11 +229,16 @@ namespace tryhard
             return Complex;
         }
 
+        private void FillBlockStash(BaseObject aBlockObject)
+        {
+            List<string> BlockParameters = MetaDataManager.Instance.GetParametersByParamenterType(CategoryType, "DK", "Output");
+        }
+
         private int GiveCountOfUpnObject(BaseObject aFieldObject, BaseObject aUpnObject)
         {
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 UpnObjectValue = (Int64)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
-            BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+            //BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
 
             double Result = (double)FieldObjectValue / (double)UpnObjectValue;
             if ((Result > (int)Result)) { Result++; }
@@ -248,16 +255,16 @@ namespace tryhard
 
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 DkObjectValue = (Int64)aDkObject.GetType().GetProperty("FluidInput").GetValue(aDkObject);
-
+            FillBlockStash(aDkObject);
             if (FieldHoles <= DkHoles)
             {
                 if (FieldObjectValue < DkObjectValue)
                 {
-                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+                   // BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
                 }
                 else
                 {
-                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
+                  //  BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
                 }
             }
             else
@@ -265,11 +272,11 @@ namespace tryhard
                 DkObjectValue *= (int)Result;
                 if (FieldObjectValue < DkObjectValue)
                 {
-                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
+                 //   BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, FieldObjectValue);
                 }
                 else
                 {
-                    BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
+                 //   BlockStashValue.Add(Blocks[Links[0].FirstBlockIndex].Index, DkObjectValue);
                 }
             }
             return (int)Result; 
@@ -277,16 +284,16 @@ namespace tryhard
 
         private int GiveCountOfObject(BaseObject aFirstObject, BaseObject aSecondObject, Link aLink)
         {
-            Int64 FirstObjectValue;
+            Int64 FirstObjectValue = 0 ;
             if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
             {
                 FirstObjectValue = (Int64)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject);
             }
             else
             {
-                FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex];
+                //FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex];
             }
-            
+
             Int64 SecondObjectValue = (Int64)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
             
             if (FirstObjectValue > aLink.LinkParameterValue)
@@ -294,11 +301,11 @@ namespace tryhard
                 FirstObjectValue = aLink.LinkParameterValue;
                 if (BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
                 {
-                    BlockStashValue[aLink.FirstBlockIndex] -= aLink.LinkParameterValue;
+                   // BlockStashValue[aLink.FirstBlockIndex] -= aLink.LinkParameterValue;
                 }
             }
 
-            BlockStashValue.Add(Blocks[aLink.SecondBlockIndex].Index, FirstObjectValue);
+            //BlockStashValue.Add(Blocks[aLink.SecondBlockIndex].Index, FirstObjectValue);
 
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
