@@ -24,9 +24,6 @@ namespace tryhard
         private bool isEquipment;
         private string ObjectType;
         List<int> Queue;
-        private EditorForm Form;
-        public BaseObject SelectedField { get; set; }
-        public List<BaseObject> FieldObjects { get; set; }
         Dictionary<int, Int64> BlockStashValue;
         private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
@@ -51,27 +48,6 @@ namespace tryhard
             {
                 BlocksIndex.Add(new CountBlockIndeces(MetaDataManager.Instance.GetIdCortageByType(Blocks[key].ClassText),   
                                 Blocks[key].ClassText));
-            }
-        }
-
-        public void SetCombinations()
-        {
-            Combination = new List<BaseObject>();
-
-            foreach (var el in BlocksIndex)
-            {
-                Combination.Add(MetaDataManager.Instance.GetBaseObjectOfId(el.ClassText, el.Indeces[0]));
-            }
-        }
-
-        public void SetFieldObjects()
-        {
-            FieldObjects = new List<BaseObject>();
-            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType("field_parameters");
-
-            foreach (var i in Ids)
-            {
-                FieldObjects.Add(MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", i));
             }
         }
 
