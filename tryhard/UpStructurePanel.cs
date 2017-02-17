@@ -36,6 +36,7 @@ namespace tryhard
             StructuresGridView.Rows.Clear();
             DownStructures.Clear();
             SelectedStructureTypes.Clear();
+            SetDefaultValueParametersPanel();
             foreach (int Key in DrawManager.Blocks.Keys)
             {
                 BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
@@ -47,21 +48,31 @@ namespace tryhard
                 DownStructures.Add(Key, new List<DownStructure>() { new DownStructure(StructureType.Kesson),
                                                                     new DownStructure(StructureType.Monoleg),
                                                                     new DownStructure(StructureType.Multileg) });
+                foreach (DownStructure structure in DownStructures[Key])
+                    structure.CalculateDownStructure(weight);
                 SelectedStructureTypes.Add(Key, 0);
-                this.CalculateStructure(Key);
             }
             StructuresGridView.CurrentCell = StructuresGridView[0, 0];
             selectedCell = DrawManager.Blocks.Keys.First();
-            FillFieldParametersPanel();
+            StructureTypeGridView.Rows.Add("Стоимость", DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].Cost);
             SetRadioBtnChecked();
         }
 
-        public void CalculateStructure(int Key)
+        private void CalculateAllStructures()
         {
-            foreach (DownStructure downStructure in DownStructures[Key])
+            foreach(int Key in DrawManager.Blocks.Keys)
             {
-                
+                BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
+                int weight = Convert.ToInt32(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
+                Int64 cost = Convert.ToInt64(baseObject.GetType().GetProperty("Cost").GetValue(baseObject));
+                foreach (DownStructure structure in DownStructures[Key])
+                    structure.CalculateDownStructure(weight);
             }
+        }
+
+        public void CalculateStructure(int Key, Int64 weight)
+        {
+            DownStructures[Key][SelectedStructureTypes[Key]].CalculateDownStructure(weight);
         }
 
         private string ParseControlName(string aName, string Arg)
@@ -73,9 +84,10 @@ namespace tryhard
         private void FieldUpDown_ValueChanged(Object sender, EventArgs e)
         {
             string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
-            System.Reflection.PropertyInfo propertyInfo = Field.Instance.GetType().GetProperty(propertyName);
-            propertyInfo.SetValue(Field.Instance, Convert.ToSingle((sender as NumericUpDown).Value));
-            CalculateAllStructures();
+            var typeField = typeof(Field);
+            System.Reflection.PropertyInfo propertyInfo = typeField.GetProperty(propertyName);
+            propertyInfo.SetValue(null, Convert.ToSingle((sender as NumericUpDown).Value));
+            //CalculateAllStructures();
         }
 
         private void StructureUpDown_ValueChanged(Object sender, EventArgs e)
@@ -83,12 +95,7 @@ namespace tryhard
             string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
             System.Reflection.PropertyInfo propertyInfo = DownStructures[selectedCell][GetTagSelectedRadioBtn()].GetType().GetProperty(propertyName);
             propertyInfo.SetValue(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]], Convert.ToSingle((sender as NumericUpDown).Value));
-            this.CalculateStructure(selectedCell);
-        }
-
-        private void CalculateAllStructures()
-        {
-
+            //CalculateStructure(selectedCell);
         }
 
         private int GetTagSelectedRadioBtn()
@@ -123,15 +130,16 @@ namespace tryhard
 
         private void FillFieldParametersPanel()
         {
-            dLocalWaterUpDown.Value = Convert.ToDecimal(Field.Instance.dLocalWater);
-            dGlobalWaterUpDown.Value = Convert.ToDecimal(Field.Instance.dGlobalWater);
-            hWave001UpDown.Value = Convert.ToDecimal(Field.Instance.hWave001);
-            hWave50UpDown.Value = Convert.ToDecimal(Field.Instance.hWave50);
-            yWaterUpDown.Value = Convert.ToDecimal(Field.Instance.yWater);
-            diameterIceUpDown.Value = Convert.ToDecimal(Field.Instance.diameterIce);
-            dIceUpDown.Value = Convert.ToDecimal(Field.Instance.dIce);
-            durabilityIceUpDown.Value = Convert.ToDecimal(Field.Instance.durabilityIce);
-            speedIceUpDown.Value = Convert.ToDecimal(Field.Instance.speedIce);
+            dLocalWaterUpDown.Value = Convert.ToDecimal(Field.dLocalWater);
+            dGlobalWaterUpDown.Value = Convert.ToDecimal(Field.dGlobalWater);
+            hWave001UpDown.Value = Convert.ToDecimal(Field.hWave001);
+            hWave50UpDown.Value = Convert.ToDecimal(Field.hWave50);
+            yWaterUpDown.Value = Convert.ToDecimal(Field.yWater);
+            diameterIceUpDown.Value = Convert.ToDecimal(Field.diameterIce);
+            dIceUpDown.Value = Convert.ToDecimal(Field.dIce);
+            durabilityIceUpDown.Value = Convert.ToDecimal(Field.durabilityIce);
+            speedIceUpDown.Value = Convert.ToDecimal(Field.speedIce);
+            groundDurabilityUpDown.Value = Convert.ToDecimal(Field.groundDurability);
         }
             
         private void FillStructureParametersPanel()
@@ -140,6 +148,27 @@ namespace tryhard
             yMatUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].yMat);
             wUpStructureUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].wUpStructure);
             dWallCellUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].dWallCell);
+            yMatBallastUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].yMatBallast);
+        }
+
+        private void SetDefaultValueParametersPanel()
+        {
+            dLocalWaterUpDown.Value = Convert.ToDecimal(20);
+            dGlobalWaterUpDown.Value = Convert.ToDecimal(50);
+            hWave001UpDown.Value = Convert.ToDecimal(12);
+            hWave50UpDown.Value = Convert.ToDecimal(6);
+            yWaterUpDown.Value = Convert.ToDecimal(1.00);
+            diameterIceUpDown.Value = Convert.ToDecimal(3000);
+            dIceUpDown.Value = Convert.ToDecimal(3);
+            durabilityIceUpDown.Value = Convert.ToDecimal(2);
+            speedIceUpDown.Value = Convert.ToDecimal(0.5);
+            groundDurabilityUpDown.Value = Convert.ToDecimal(2500);
+
+            wCellUpDown.Value = Convert.ToDecimal(20);
+            yMatUpDown.Value = Convert.ToDecimal(2.5);
+            wUpStructureUpDown.Value = Convert.ToDecimal(100);
+            dWallCellUpDown.Value = Convert.ToDecimal(0.75);
+            yMatBallastUpDown.Value = Convert.ToDecimal(1.6);
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -151,7 +180,7 @@ namespace tryhard
         private void FillStructureTypeGridView()
         {
             StructureTypeGridView.Rows.Clear();
-
+            StructureTypeGridView.Rows.Add("Стоимость", DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].Cost);
         }
     }
 }

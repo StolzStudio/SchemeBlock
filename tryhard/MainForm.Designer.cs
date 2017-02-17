@@ -84,7 +84,9 @@ namespace tryhard
             this.UpStructurePanel = new System.Windows.Forms.Panel();
             this.StructureLabel = new System.Windows.Forms.Label();
             this.StructurePanel = new System.Windows.Forms.Panel();
+            this.yMatBallastUpDown = new System.Windows.Forms.NumericUpDown();
             this.wCellLabel = new System.Windows.Forms.Label();
+            this.yMatBallastLabel = new System.Windows.Forms.Label();
             this.yMatLabel = new System.Windows.Forms.Label();
             this.yMatUpDown = new System.Windows.Forms.NumericUpDown();
             this.dWallCellUpDown = new System.Windows.Forms.NumericUpDown();
@@ -107,6 +109,8 @@ namespace tryhard
             this.SaveButton = new System.Windows.Forms.Button();
             this.FieldParametersLabel = new System.Windows.Forms.Label();
             this.FieldParametersPanel = new System.Windows.Forms.Panel();
+            this.groundDurabilityUpDown = new System.Windows.Forms.NumericUpDown();
+            this.groundDurabilityLabel = new System.Windows.Forms.Label();
             this.speedIceUpDown = new System.Windows.Forms.NumericUpDown();
             this.speedIceLabel = new System.Windows.Forms.Label();
             this.durabilityIceUpDown = new System.Windows.Forms.NumericUpDown();
@@ -140,6 +144,7 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.PropertiesGridView)).BeginInit();
             this.UpStructurePanel.SuspendLayout();
             this.StructurePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMatBallastUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yMatUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dWallCellUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wCellUpDown)).BeginInit();
@@ -148,6 +153,7 @@ namespace tryhard
             ((System.ComponentModel.ISupportInitialize)(this.StructureTypeGridView)).BeginInit();
             this.StructureTypesPanel.SuspendLayout();
             this.FieldParametersPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groundDurabilityUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedIceUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.durabilityIceUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dIceUpDown)).BeginInit();
@@ -373,7 +379,9 @@ namespace tryhard
             // 
             this.StructurePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.StructurePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StructurePanel.Controls.Add(this.yMatBallastUpDown);
             this.StructurePanel.Controls.Add(this.wCellLabel);
+            this.StructurePanel.Controls.Add(this.yMatBallastLabel);
             this.StructurePanel.Controls.Add(this.yMatLabel);
             this.StructurePanel.Controls.Add(this.yMatUpDown);
             this.StructurePanel.Controls.Add(this.dWallCellUpDown);
@@ -386,6 +394,34 @@ namespace tryhard
             this.StructurePanel.Size = new System.Drawing.Size(311, 278);
             this.StructurePanel.TabIndex = 37;
             // 
+            // yMatBallastUpDown
+            // 
+            this.yMatBallastUpDown.DecimalPlaces = 2;
+            this.yMatBallastUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.yMatBallastUpDown.Location = new System.Drawing.Point(236, 118);
+            this.yMatBallastUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.yMatBallastUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.yMatBallastUpDown.Name = "yMatBallastUpDown";
+            this.yMatBallastUpDown.Size = new System.Drawing.Size(50, 20);
+            this.yMatBallastUpDown.TabIndex = 42;
+            this.yMatBallastUpDown.Value = new decimal(new int[] {
+            16,
+            0,
+            0,
+            65536});
+            // 
             // wCellLabel
             // 
             this.wCellLabel.AutoSize = true;
@@ -395,14 +431,23 @@ namespace tryhard
             this.wCellLabel.TabIndex = 11;
             this.wCellLabel.Text = "Размер ребра основания ячейки, м";
             // 
+            // yMatBallastLabel
+            // 
+            this.yMatBallastLabel.AutoSize = true;
+            this.yMatBallastLabel.Location = new System.Drawing.Point(25, 120);
+            this.yMatBallastLabel.Name = "yMatBallastLabel";
+            this.yMatBallastLabel.Size = new System.Drawing.Size(157, 13);
+            this.yMatBallastLabel.TabIndex = 41;
+            this.yMatBallastLabel.Text = "Удельный вес балласта т/м3";
+            // 
             // yMatLabel
             // 
             this.yMatLabel.AutoSize = true;
             this.yMatLabel.Location = new System.Drawing.Point(25, 48);
             this.yMatLabel.Name = "yMatLabel";
-            this.yMatLabel.Size = new System.Drawing.Size(149, 13);
+            this.yMatLabel.Size = new System.Drawing.Size(168, 13);
             this.yMatLabel.TabIndex = 15;
-            this.yMatLabel.Text = "Удельный вес материала, т";
+            this.yMatLabel.Text = "Удельный вес материала, т/м3";
             // 
             // yMatUpDown
             // 
@@ -702,6 +747,8 @@ namespace tryhard
             // 
             this.FieldParametersPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FieldParametersPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FieldParametersPanel.Controls.Add(this.groundDurabilityUpDown);
+            this.FieldParametersPanel.Controls.Add(this.groundDurabilityLabel);
             this.FieldParametersPanel.Controls.Add(this.speedIceUpDown);
             this.FieldParametersPanel.Controls.Add(this.speedIceLabel);
             this.FieldParametersPanel.Controls.Add(this.durabilityIceUpDown);
@@ -724,6 +771,42 @@ namespace tryhard
             this.FieldParametersPanel.Name = "FieldParametersPanel";
             this.FieldParametersPanel.Size = new System.Drawing.Size(317, 278);
             this.FieldParametersPanel.TabIndex = 28;
+            // 
+            // groundDurabilityUpDown
+            // 
+            this.groundDurabilityUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.groundDurabilityUpDown.Location = new System.Drawing.Point(241, 238);
+            this.groundDurabilityUpDown.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.groundDurabilityUpDown.Minimum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.groundDurabilityUpDown.Name = "groundDurabilityUpDown";
+            this.groundDurabilityUpDown.Size = new System.Drawing.Size(50, 20);
+            this.groundDurabilityUpDown.TabIndex = 42;
+            this.groundDurabilityUpDown.Value = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            // 
+            // groundDurabilityLabel
+            // 
+            this.groundDurabilityLabel.AutoSize = true;
+            this.groundDurabilityLabel.Location = new System.Drawing.Point(24, 240);
+            this.groundDurabilityLabel.Name = "groundDurabilityLabel";
+            this.groundDurabilityLabel.Size = new System.Drawing.Size(127, 13);
+            this.groundDurabilityLabel.TabIndex = 41;
+            this.groundDurabilityLabel.Text = "Прочность грунта, т/м2";
             // 
             // speedIceUpDown
             // 
@@ -911,7 +994,7 @@ namespace tryhard
             this.dLocalWaterUpDown.Size = new System.Drawing.Size(50, 20);
             this.dLocalWaterUpDown.TabIndex = 5;
             this.dLocalWaterUpDown.Value = new decimal(new int[] {
-            30,
+            50,
             0,
             0,
             0});
@@ -974,9 +1057,9 @@ namespace tryhard
             this.yWaterLabel.AutoSize = true;
             this.yWaterLabel.Location = new System.Drawing.Point(24, 120);
             this.yWaterLabel.Name = "yWaterLabel";
-            this.yWaterLabel.Size = new System.Drawing.Size(120, 13);
+            this.yWaterLabel.Size = new System.Drawing.Size(139, 13);
             this.yWaterLabel.TabIndex = 17;
-            this.yWaterLabel.Text = "Удельный вес воды, т";
+            this.yWaterLabel.Text = "Удельный вес воды, т/м3";
             // 
             // hWave001Label
             // 
@@ -1158,6 +1241,7 @@ namespace tryhard
             this.UpStructurePanel.PerformLayout();
             this.StructurePanel.ResumeLayout(false);
             this.StructurePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yMatBallastUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yMatUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dWallCellUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wCellUpDown)).EndInit();
@@ -1168,6 +1252,7 @@ namespace tryhard
             this.StructureTypesPanel.PerformLayout();
             this.FieldParametersPanel.ResumeLayout(false);
             this.FieldParametersPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groundDurabilityUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speedIceUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.durabilityIceUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dIceUpDown)).EndInit();
@@ -1251,6 +1336,10 @@ namespace tryhard
         private Label speedIceLabel;
         private Panel StructurePanel;
         private Label StructureLabel;
+        private NumericUpDown yMatBallastUpDown;
+        private Label yMatBallastLabel;
+        private NumericUpDown groundDurabilityUpDown;
+        private Label groundDurabilityLabel;
     }
 }
 
