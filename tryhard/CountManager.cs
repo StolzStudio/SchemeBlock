@@ -42,8 +42,88 @@ namespace tryhard
             Blocks = aBlocks;
             Links  = aLinks;
             CreateQueue();
+            List<Dictionary<int, Block>> a = CalculateBlocksCombinations(Blocks);
         }
-        
+        //
+        //make combinations
+        //
+        public List<Dictionary<int, Block>> CalculateBlocksCombinations(Dictionary<int, Block> BaseBlocks)
+        {
+            List<Dictionary<int, Block>> Combinations = GetAllCombinations(BaseBlocks);
+             return Combinations;
+        }
+
+        private List<Dictionary<int, Block>> GetAllCombinations(Dictionary<int, Block> ABaseBlocks)
+        {
+            Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
+            List<int> BlockKeys = new List<int>();
+            int FirstKey = -1;
+            int CombinationsCount = 1;
+            foreach (var Key in ABaseBlocks.Keys)
+            {
+                BlockKeys.Add(Key);
+                if (!AllFieldsId.ContainsKey(ABaseBlocks[Key].ClassText))
+                {
+                    List<int> IdList = MetaDataManager.Instance.GetIdCortageByType(ABaseBlocks[Key].ClassText);
+                    List<string> ConvertIdList = new List<string>();
+                    foreach (var c in IdList)
+                    {
+                        ConvertIdList.Add(Convert.ToString(c));
+                    }
+                    AllFieldsId.Add(ABaseBlocks[Key].ClassText, ConvertIdList);
+                } 
+                CombinationsCount *= AllFieldsId[ABaseBlocks[Key].ClassText].Count;
+            }
+
+            List<Dictionary<int, Block>> Combinations = new List<Dictionary<int, Block>>();
+            int BlockKeysIdx = 0;
+            foreach (string FieldId in AllFieldsId[ABaseBlocks[BlockKeys[BlockKeysIdx]].ClassText])
+            {
+                List<string> FieldIdSequence = new List<string>() { FieldId };
+                FillCombination(FieldIdSequence, BlockKeysIdx + 1, ref BlockKeys, ref ABaseBlocks, ref AllFieldsId, ref Combinations);
+            }
+            return Combinations;
+        }
+
+        private void FillCombination(List<string> AFieldIdSequense,
+                                     int ABlockKeysIdx,
+                                     ref List<int> ABlockKeys,
+                                     ref Dictionary<int, Block> ABaseBlocks,
+                                     ref Dictionary<string, List<string>> AAllFieldsId,
+                                     ref List<Dictionary<int, Block>> ACombinations)
+        {
+            if (ABlockKeysIdx < ABlockKeys.Count)
+            {
+                foreach (string FieldId in AAllFieldsId[ABaseBlocks[ABlockKeys[ABlockKeysIdx]].ClassText])
+                {
+                    List<string> FieldIdSequence = new List<string>(AFieldIdSequense);
+                    FieldIdSequence.Add(FieldId);
+                    FillCombination(FieldIdSequence, ABlockKeysIdx + 1, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations);
+                }
+            }
+            else
+            {
+                ACombinations.Add(TranslateSeqInBlocksCombination(AFieldIdSequense, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations));
+            }
+        }
+
+        private Dictionary<int, Block> TranslateSeqInBlocksCombination(List<string> AFieldIdSequense,
+                                                                           ref List<int> ABlockKeys,
+                                                                           ref Dictionary<int, Block> ABaseBlocks,
+                                                                           ref Dictionary<string, List<string>> AAllFieldsId,
+                                                                           ref List<Dictionary<int, Block>> ACombinations)
+        {
+            Dictionary<int, Block> Combination = new Dictionary<int, Block>();
+            for (int i = 0; i < ABlockKeys.Count; i++)
+            {
+                Combination.Add(ABlockKeys[i], new Block(ABaseBlocks[ABlockKeys[i]]));
+                Combination[ABlockKeys[i]].Index = Convert.ToInt32(AFieldIdSequense[i]);
+            }
+            return Combination;
+        }
+        //
+        //
+        //
         public void SetIndexArray()
         {
             foreach (var key in Blocks.Keys)
