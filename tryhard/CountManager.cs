@@ -204,31 +204,30 @@ namespace tryhard
             if (ObjectType == "mining_complex")
             {
                 MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(FieldObject, MainObject);
+                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject);
             }
             else
             {
                 MainObject = MetaDataManager.Instance.GetBaseObjectOfId("upn", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(FieldObject, MainObject);
+                aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(aCombination, FieldObject, MainObject);
             }
 
-            //FillBlockStash(MainObject, aCombination[Links[Queue[0]].FirstBlockIndex]);
             foreach (var q in Queue)
             {
                 BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
                 BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
-                aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(FirstObject, SecondObject, Links[q]);
+                aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q]);
             }
 
-            foreach (var key in Blocks.Keys)
+            foreach (var key in aCombination.Keys)
             {
-                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(Blocks[key].ClassText, Blocks[key].Id);
+                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[key].ClassText, aCombination[key].Id);
                 
-                Result.Cost   += Convert.ToInt64(BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject)) * Blocks[key].Count;
-                Result.Volume += Convert.ToInt64(BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject)) * Blocks[key].Count;
-                Result.Weight += Convert.ToInt64(BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject)) * Blocks[key].Count;
-                Result.PeopleDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject)) * Blocks[key].Count;
-                Result.ElectricityDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject)) * Blocks[key].Count;
+                Result.Cost   += Convert.ToInt64(BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject)) * aCombination[key].Count;
+                Result.Volume += Convert.ToInt64(BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject)) * aCombination[key].Count;
+                Result.Weight += Convert.ToInt64(BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject)) * aCombination[key].Count;
+                Result.PeopleDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject)) * aCombination[key].Count;
+                Result.ElectricityDemand += Convert.ToInt32(BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject)) * aCombination[key].Count;
             }
             return Result;
         }
@@ -245,19 +244,19 @@ namespace tryhard
 
         }
 
-        private int GiveCountOfUpnObject(BaseObject aFieldObject, BaseObject aUpnObject)
+        private int GiveCountOfUpnObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aUpnObject)
         {
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 UpnObjectValue = (Int64)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
 
-            FillBlockStash(aUpnObject, Blocks[Links[Queue[0]].FirstBlockIndex]);
+            FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex]);
 
             double Result = (double)FieldObjectValue / (double)UpnObjectValue;
             if ((Result > (int)Result)) { Result++; }
             return (int)Result;
         }
 
-        private int GiveCountOfDkObject(BaseObject aFieldObject, BaseObject aDkObject)
+        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject)
         {
             int FieldHoles = (int)aFieldObject.GetType().GetProperty("HolesAmount").GetValue(aFieldObject);
             int DkHoles = (int)aDkObject.GetType().GetProperty("HolesAmount").GetValue(aDkObject);
@@ -268,17 +267,17 @@ namespace tryhard
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 DkObjectValue = (Int64)aDkObject.GetType().GetProperty("FluidInput").GetValue(aDkObject);
 
-            FillBlockStash(aDkObject, Blocks[Links[Queue[0]].FirstBlockIndex]);
+            FillBlockStash(aDkObject, aCombination[Links[Queue[0]].FirstBlockIndex]);
 
             if (FieldHoles <= DkHoles)
             {
                 if (FieldObjectValue < DkObjectValue)
                 {
-                   BlockStashValue[Blocks[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
+                   BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
                 }
                 else
                 {
-                    BlockStashValue[Blocks[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
+                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
                 }
             }
             else
@@ -286,17 +285,17 @@ namespace tryhard
                 DkObjectValue *= (int)Result;
                 if (FieldObjectValue < DkObjectValue)
                 {
-                    BlockStashValue[Blocks[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
+                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
                 }
                 else
                 {
-                    BlockStashValue[Blocks[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
+                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
                 }
             }
             return (int)Result; 
         }
 
-        private int GiveCountOfObject(BaseObject aFirstObject, BaseObject aSecondObject, Link aLink)
+        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink)
         {
             Int64 FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter];
             if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
@@ -319,7 +318,7 @@ namespace tryhard
                 }
             }
 
-            FillBlockStash(aSecondObject, Blocks[aLink.SecondBlockIndex]);
+            FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex]);
 
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
