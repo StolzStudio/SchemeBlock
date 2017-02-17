@@ -292,8 +292,11 @@ namespace tryhard
                                                                DrawManager.Blocks[ALink.SecondBlockIndex].ClassText);
             LinkInfoPanel.Controls.Clear();
             LinkInfoPanel.Tag = -1;
+            BaseObject firstObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.FirstBlockIndex].ClassText,
+                                                                     DrawManager.Blocks[ALink.FirstBlockIndex].Id);
             BaseObject secondObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[ALink.SecondBlockIndex].ClassText,
                                                                      DrawManager.Blocks[ALink.SecondBlockIndex].Id);
+
             for (int i = 0; i < LinkableParameters.Count; i++)
             {
                 RadioButton radioBtn = new System.Windows.Forms.RadioButton();
@@ -317,7 +320,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject)),
+                1000000,
                 0,
                 0,
                 0});
@@ -409,35 +412,29 @@ namespace tryhard
                     EditObjectButton.Enabled = true;
                     isEditObject = false;
                     GoNextButton.Enabled = false;
+                    
                     (sender as Button).Enabled = false;
                     DrawManager.DeleteAllElements();
                 }
             }
             isNextStep = false;
             WorkPanel.Visible = false;
-               
+            ToolStrip.Enabled = false;
+            EditObjectButton.Enabled = true;
+
             FillObjectTreeView();
-            GoNextButton.Text = "next";
+            GoNextButton.Text = "Далее";
             DrawPage.Invalidate();
         }
 
         private void FillFieldComboBox()
         {
-            CalcManager.SetFieldObjects();
 
-            foreach (var el in CalcManager.FieldObjects)
-            {
-                FieldComboBox.Items.Add(el.Name);
-            }
-        }
-
-        private void FillCombinationDataGrid()
-        {
-            //List<DataGridViewColumn> Columns = CalcManager.GiveCombinationColumns();
-            //foreach (var c in Columns)
-            //{
-            //    CombinationDataGridView.Columns.Add(c);
-            //}
+            FieldComboBox.Items.Clear();
+            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+                FieldComboBox.Items.Add(field.Name);
+            FieldComboBox.SelectedIndex = 0;
+            FillFieldPropertyDataGrid(FieldComboBox.SelectedItem.ToString());
         }
 
         private void GoNextButton_Click(object sender, EventArgs e)
@@ -449,16 +446,23 @@ namespace tryhard
                 (sender as Button).BringToFront();
                 GoBackButton.BringToFront();
                 GoBackButton.Enabled = true;
-                GoNextButton.Text = "save";
-                //CountDataGridView.Visible = false;
+                GoNextButton.Text = "Сохранить";
                 isNextStep = true;
-
-                CalcManager = new CountManager(ref DrawManager.Blocks, ref DrawManager.Links, TypeStripComboBox.SelectedItem.ToString(), this);
-
+                ToolStrip.Enabled = false;
+                EditObjectButton.Enabled = false;
+                CalcManager = new CountManager(ref DrawManager.Blocks, 
+                                               ref DrawManager.Links, 
+                                               MetaDataManager.Instance.Dictionary[CategoryStripComboBox.SelectedItem.ToString()],
+                                               MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]
+                                               );
+                if (CalcManager.CheckCombination() != "ok")
+                {
+                    MessageBox.Show(CalcManager.CheckCombination());
+                    GoBackButton.PerformClick();
+                }
+            
                 FillFieldComboBox();
-                FillCombinationDataGrid();
-                
-                
+
             }
             else
             {
@@ -560,7 +564,39 @@ namespace tryhard
 
         private void FieldComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
+            FillFieldPropertyDataGrid(FieldComboBox.Text);
+        }
+
+        private void FillFieldPropertyDataGrid(string aFieldName)
+        {
+            FieldPropertyDataGridView.Rows.Clear();
+            foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo["InfoClasses"].Where(obj => obj.Name == "field_parameters"))
+                foreach (string APropertyName in AObjectInfo.Properties)
+                {
+                    IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects["field_parameters"].Where(obj => obj.Id == GetIdOfObject("field_parameters", aFieldName));
+                    foreach (BaseObject obj in base_object)
+                        FieldPropertyDataGridView.Rows.Add(APropertyName, obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                }
+        }
+
+        private int GetIdOfObject(string aClass, string aModel)
+        {
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(aClass);
+
+            foreach (var i in Ids)
+            {
+                if (MetaDataManager.Instance.GetBaseObjectOfId(aClass, i).Name == aModel)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            Complex el = CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
+            CombinationDataGridView.Rows.Add(false, el.Name, el.Cost, el.Volume, el.Weight, el.PeopleDemand, el.ElectricityDemand);
         }
     }
 }
