@@ -505,6 +505,11 @@ namespace tryhard
             GoNextButton.Enabled = true;
             GoBackButton.Enabled = true;
             (sender as Button).Enabled = false;
+
+            DrawManager.Blocks.Clear();
+            DrawManager.Links.Clear();
+
+            DrawPage.Invalidate();
         }
 
         private void FillPropertiesGridView(string ACategory, string AType, int AId)
