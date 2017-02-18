@@ -108,16 +108,16 @@ namespace tryhard
         }
 
         private Dictionary<int, Block> TranslateSeqInBlocksCombination(List<string> AFieldIdSequense,
-                                                                           ref List<int> ABlockKeys,
-                                                                           ref Dictionary<int, Block> ABaseBlocks,
-                                                                           ref Dictionary<string, List<string>> AAllFieldsId,
-                                                                           ref List<Dictionary<int, Block>> ACombinations)
+                                                                       ref List<int> ABlockKeys,
+                                                                       ref Dictionary<int, Block> ABaseBlocks,
+                                                                       ref Dictionary<string, List<string>> AAllFieldsId,
+                                                                       ref List<Dictionary<int, Block>> ACombinations)
         {
             Dictionary<int, Block> Combination = new Dictionary<int, Block>();
             for (int i = 0; i < ABlockKeys.Count; i++)
             {
                 Combination.Add(ABlockKeys[i], new Block(ABaseBlocks[ABlockKeys[i]]));
-                Combination[ABlockKeys[i]].Index = Convert.ToInt32(AFieldIdSequense[i]);
+                Combination[ABlockKeys[i]].Id = Convert.ToInt32(AFieldIdSequense[i]);
             }
             return Combination;
         }
@@ -353,11 +353,11 @@ namespace tryhard
             {
                 if (FieldObjectValue < DkObjectValue)
                 {
-                   BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
+                   BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = FieldObjectValue;
                 }
                 else
                 {
-                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
+                    BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = DkObjectValue;
                 }
             }
             else
@@ -365,11 +365,11 @@ namespace tryhard
                 DkObjectValue *= (int)Result;
                 if (FieldObjectValue < DkObjectValue)
                 {
-                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = FieldObjectValue;
+                    BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = FieldObjectValue;
                 }
                 else
                 {
-                    BlockStashValue[aCombination[Links[Queue[0]].FirstBlockIndex].Index]["Fluid"] = DkObjectValue;
+                    BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = DkObjectValue;
                 }
             }
             return (int)Result; 
