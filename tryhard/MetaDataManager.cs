@@ -230,7 +230,7 @@ namespace tryhard
 
         public List<string> GetListOfProjectNames()
         {
-
+            return new List<string>();
         }
 
         public string GetJson(string APath)
