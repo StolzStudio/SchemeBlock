@@ -50,6 +50,19 @@ namespace tryhard
             SetTextLocation();
         }
 
+        public Block(Block AOther)
+        {
+            Index     = AOther.Index;
+            Count     = AOther.Count;
+            ClassText = AOther.ClassText;
+            ModelText = AOther.ModelText;
+            Id        = AOther.Id;
+            Index     = AOther.Index;
+            Count     = AOther.Count;
+            Location  = AOther.Location;
+            isFocus   = AOther.isFocus;
+        }
+
         public Block(StructuralObject AStructuralObject, Point aPageOffset)
         {
             Id         = AStructuralObject.Id;
