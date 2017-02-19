@@ -358,7 +358,7 @@ namespace tryhard
 
         private void ActivateUpStructurePanel()
         {
-            FillStructuresGridView();
+            InitializeUpStructurePanel();
             UpStructurePanel.BringToFront();
         }
     }
