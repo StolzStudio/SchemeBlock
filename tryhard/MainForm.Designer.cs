@@ -775,18 +775,18 @@ namespace tryhard
             // groundDurabilityUpDown
             // 
             this.groundDurabilityUpDown.Increment = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
             this.groundDurabilityUpDown.Location = new System.Drawing.Point(241, 238);
             this.groundDurabilityUpDown.Maximum = new decimal(new int[] {
-            90000,
+            1000,
             0,
             0,
             0});
             this.groundDurabilityUpDown.Minimum = new decimal(new int[] {
-            2500,
+            200,
             0,
             0,
             0});
@@ -794,7 +794,7 @@ namespace tryhard
             this.groundDurabilityUpDown.Size = new System.Drawing.Size(50, 20);
             this.groundDurabilityUpDown.TabIndex = 42;
             this.groundDurabilityUpDown.Value = new decimal(new int[] {
-            2500,
+            250,
             0,
             0,
             0});
@@ -994,7 +994,7 @@ namespace tryhard
             this.dLocalWaterUpDown.Size = new System.Drawing.Size(50, 20);
             this.dLocalWaterUpDown.TabIndex = 5;
             this.dLocalWaterUpDown.Value = new decimal(new int[] {
-            50,
+            60,
             0,
             0,
             0});
@@ -1222,7 +1222,7 @@ namespace tryhard
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
-            this.MinimumSize = new System.Drawing.Size(1364, 766);
+            this.MinimumSize = new System.Drawing.Size(1364, 736);
             this.Name = "MainForm";
             this.Text = "Gaby";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);

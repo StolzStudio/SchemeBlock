@@ -17,70 +17,123 @@ namespace tryhard
     {
         public static double yWater { get; set; } = 1;
         public static double dLocalWater { get; set; } = 30;
-        public static double dGlobalWater { get; set; } = 60;
+        public static double dGlobalWater { get; set; } = 50;
         public static double hWave50 { get; set; } = 6;
         public static double hWave001 { get; set; } = 12;
         public static double dIce { get; set; } = 3;
         public static double durabilityIce { get; set; } = 2;
         public static double diameterIce { get; set; } = 3000;
         public static double speedIce { get; set; } = 0.5;
-        public static double groundDurability { get; set; } = 2500;
+        public static double durabilityGround { get; set; } = 250;
+
+        public static void DefaultInitialize()
+        {
+            yWater = 1;
+            dLocalWater = 30;
+            dGlobalWater = 50;
+            hWave50 = 6;
+            hWave001 = 12;
+            dIce = 3;
+            durabilityIce = 2;
+            diameterIce = 3000;
+            speedIce = 0.5;
+            durabilityGround = 2500;
+        }
     }
 
     public class DownStructure
     {
-        private double minTrCl { get; set; } = Field.hWave50 + 0.5;
-        public StructureType Type { get; set; }
         public bool isCalculated { get; set; }
-        public int countBC { get; set; } = 25;
-        public int countSC { get; set; } = 1;
-        public double wUpStructure { get; set; } = 100;
+        public StructureType Type { get; set; }
+        public int countBC { get; set; }
+        public int countSC { get; set; }
+        public double wUpStructure { get; set; }
         public double pUpStructure { get; set; }
-        public double dWallCell { get; set; } = 0.75;
+        public double dWallCell { get; set; }
         public double hStructure { get; set; }
-        public double wCell { get; set; } = 20;
+        public double wCell { get; set; }
         public double hExCl { get; set; }
         public double hTrCl { get; set; }
-        public double yMat { get; set; } = 2.5;
-        public double yMatBallast { get; set; } = 1.6;
-        public double Cost { get; set; }
-        public BaseCell baseCell { get; set; } = new BaseCell();
-        public Cell supportCell { get; set; } = new Cell();
+        public double yMat { get; set; }
+        public double yMatBallast { get; set; }
+        public Cell supportCell { get; set; }
+        public BaseCell baseCell { get; set; }
+        public double cost { get; set; }
+        private double minTrCl { get; set; }
+
+        public double weight = 0;
 
         public DownStructure(StructureType type)
         {
             switch (type)
             {
                 case StructureType.Kesson: countSC = 25; countBC = 25; break;
-                case StructureType.Monoleg: countSC = 1; countBC = 25; break;
+                case StructureType.Monoleg: countSC = 1; countBC = 9; break;
                 case StructureType.Multileg: countSC = 4; countBC = 25; break;
             }
+            DefaultInitialize();
+        }
+
+        public DownStructure(StructureType type, Int64 weight) : this(type)
+        {
+            CalculateDownStructure(weight);
+        }
+
+        public void DefaultInitialize()
+        {
+            minTrCl = Field.hWave50 + 0.5;
+            wUpStructure = 100;
+            dWallCell = 0.75;
+            wCell = 20;
+            yMat = 2.5;
+            yMatBallast = 1.6;
         }
 
         public bool CalculateDownStructure(double _pUpStructure)
         {
+            supportCell = new Cell();
+            baseCell = new BaseCell();
             isCalculated = true;
             pUpStructure = _pUpStructure;
             CalculateHeightStricture();
-            supportCell.CalculateParameters(hExCl, hTrCl, wCell, dWallCell, yMat);
-            double liftingPowerDiff = 0;
             bool isStability = false;
             while (!isStability)
             {
-                baseCell.CalculateParameters(hExCl, hTrCl, wCell, dWallCell, yMat);
-                if (CalculateEhouthBallast())                
-                {
-                    if (CheckGroundDurability() && CheckFlatShift())
-                    {
-                        isStability = true;
-                    }
-                    else if (!AddBaseCell())
-                        return false;
-                }
-                else if (!AddBaseCell())
+                if (CalculateStartTrCl())
+                    if (CalculateEhouthBallast())
+                        if (CheckGroundDurability() && CheckFlatShift())
+                            isStability = true;
+                if (!isStability && !AddBaseCell())
                     return false;
             }
-            Cost = (countSC * supportCell.p + countBC * baseCell.p) * 120000.0;
+            weight = countSC * supportCell.p + countBC * baseCell.p;
+            cost = weight * 120000.0;
+            return true;
+        }
+
+        public bool CalculateStartTrCl()
+        {
+            supportCell.CalculateParameters(hExCl, hStructure - Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+            baseCell.CalculateParameters(hExCl, Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+
+            double vMatStr = countBC * baseCell.vMat + countSC * supportCell.vMat;
+            double vStr = countBC * baseCell.v + countSC * supportCell.v;
+            double v0 = vMatStr * yMat / Field.yWater;
+            double w = (vStr - v0) / v0;
+            double l = w * vStr;
+            if (v0 <= countBC * baseCell.v)
+            {
+                double cl = baseCell.h - v0 / (countBC * baseCell.a);
+                baseCell.vTrCl = cl * baseCell.a;
+                supportCell.vTrCl = supportCell.a * supportCell.h;
+            }
+            else
+            {
+                baseCell.vTrCl = 0;
+                double cl = supportCell.h - (v0 - countBC * baseCell.a) / (countSC * supportCell.a);
+                supportCell.vTrCl = cl * supportCell.a;
+                return hTrCl >= hExCl + 2;
+            }
             return true;
         }
 
@@ -88,7 +141,7 @@ namespace tryhard
         {
             hExCl = 0.5 * Field.hWave001 + 0.5;
             hStructure = Field.dGlobalWater + hExCl;
-            hTrCl = hStructure - Field.dGlobalWater * 0.4;
+            hTrCl = hStructure;
         }
 
         public bool CalculateEhouthBallast()
@@ -153,8 +206,8 @@ namespace tryhard
             double armPower = CalculateArmPower();
             double iceLoad = CalculateIceLoad();
             double momentFlexResistance = CalculateMomentFlexResistance();
-            double sigma = -longitudinalForce / aBaseCells - (armPower * iceLoad) / momentFlexResistance;
-            return Field.groundDurability / sigma > 1;
+            double sigma = longitudinalForce / aBaseCells - (armPower * iceLoad) / momentFlexResistance;
+            return Field.durabilityGround / Math.Abs(sigma) > 1;
         }
         //
         //Рассчет ледовой нагрузки
@@ -171,7 +224,6 @@ namespace tryhard
             Fcp = 0.00126 * Field.speedIce * Field.dIce * Math.Sqrt(Fbp * supportCell.a);
             return Math.Min(Fcp, Fbp);
         }
-
         //
         //Момент сопротивления изгибу
         //
@@ -336,6 +388,8 @@ namespace tryhard
         public bool AddBaseCell()
         {
             countBC = Convert.ToInt32(Math.Pow(Math.Sqrt(countBC) + 2, 2));
+            baseCell.dBallast = 0;
+            baseCell.pBallast = 0;
             return countBC >= 144 ? false : true;
         }
     }
@@ -413,7 +467,7 @@ namespace tryhard
             vMatCover = aCover * dCover;
             vMatBottom = aBottom * dBottom;
             vMat = vMatWall + vMatCover + vMatBottom;
-            vTrCl = 0;
+            vTrCl = a * _hTrCl;
             pMatWall = vMatWall * _yMat;
             pMatCover = vMatCover * _yMat;
             pMatBottom = vMatBottom * _yMat;
