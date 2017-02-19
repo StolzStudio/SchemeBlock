@@ -86,12 +86,12 @@ namespace tryhard
 
         public void UpdateViewControls()
         {
-            if (isEditMode)
-            {
-                FillCategoryStripComboBox((string)CategoryStripComboBox.SelectedItem);
-            }
-            else
-                FillObjectTreeView();
+            //if (isEditMode)
+            //{
+            //    FillCategoryStripComboBox((string)CategoryStripComboBox.SelectedItem);
+            //}
+            //else
+            //    FillObjectTreeView();
         }
 
         public void FillObjectTreeView()
@@ -152,10 +152,10 @@ namespace tryhard
         }
 
         private void CategoryStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FillTypeStripComboBox(MetaDataManager.Instance.Dictionary[(string)(CategoryStripComboBox.SelectedItem)]);
+        {  
             if (isEditMode)
             {
+                FillTypeStripComboBox(MetaDataManager.Instance.Dictionary[(string)(CategoryStripComboBox.SelectedItem)]);
                 FillObjectTreeView();
                 DrawManager.DeleteAllElements();
                 DrawPage.Invalidate();
@@ -505,6 +505,7 @@ namespace tryhard
             GoNextButton.Enabled = true;
             GoBackButton.Enabled = true;
             (sender as Button).Enabled = false;
+            CategoryStripComboBox.SelectedIndex = 1;
 
             DrawManager.Blocks.Clear();
             DrawManager.Links.Clear();
@@ -530,7 +531,17 @@ namespace tryhard
         {
             if (ObjectsTreeView.SelectedNode.Nodes.Count != 0)
                 if (ObjectsTreeView.SelectedNode.Parent == null)
+                {
                     ObjectsTreeView.SelectedNode = ObjectsTreeView.SelectedNode.Nodes[0];
+                    return;
+                }
+            if (!isEditMode)
+            {
+                string CategoryName = MetaDataManager.Instance.GetCateroryNameByType(MetaDataManager.Instance.Dictionary[ObjectsTreeView.SelectedNode.Parent.Text]);
+                CategoryStripComboBox.SelectedIndex = CategoryStripComboBox.Items.IndexOf(MetaDataManager.Instance.Dictionary[CategoryName]);
+                FillTypeStripComboBox(CategoryName);
+                TypeStripComboBox.SelectedIndex = TypeStripComboBox.Items.IndexOf(ObjectsTreeView.SelectedNode.Parent.Text);
+            }
             string parentText = ObjectsTreeView.SelectedNode.Parent.Text;
             FillPropertiesGridView(MetaDataManager.Instance.GetCateroryNameByType(MetaDataManager.Instance.Dictionary[parentText]),
                                    MetaDataManager.Instance.Dictionary[parentText], (int)ObjectsTreeView.SelectedNode.Tag);
