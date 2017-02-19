@@ -505,6 +505,11 @@ namespace tryhard
             GoNextButton.Enabled = true;
             GoBackButton.Enabled = true;
             (sender as Button).Enabled = false;
+
+            DrawManager.Blocks.Clear();
+            DrawManager.Links.Clear();
+
+            DrawPage.Invalidate();
         }
 
         private void FillPropertiesGridView(string ACategory, string AType, int AId)
@@ -595,8 +600,12 @@ namespace tryhard
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            Complex el = CalcManager.MakeCalculate(DrawManager.Blocks, FieldComboBox.Text);
-            CombinationDataGridView.Rows.Add(false, el.Name, el.Cost, el.Volume, el.Weight, el.PeopleDemand, el.ElectricityDemand);
+            List<Dictionary<int, Block>> Combinations = CalcManager.CalculateBlocksCombinations(DrawManager.Blocks);
+            foreach (var Combination in Combinations)
+            {
+                Complex el = CalcManager.MakeCalculate(Combination, FieldComboBox.Text);
+                CombinationDataGridView.Rows.Add(false, el.Name, el.Cost, el.Volume, el.Weight, el.PeopleDemand, el.ElectricityDemand);
+            }
         }
     }
 }

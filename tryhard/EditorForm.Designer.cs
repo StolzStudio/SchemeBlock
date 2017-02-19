@@ -457,6 +457,7 @@
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
             this.CombinationDataGridView.RowTemplate.Height = 20;
+            this.CombinationDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CombinationDataGridView.Size = new System.Drawing.Size(810, 521);
             this.CombinationDataGridView.TabIndex = 29;
             // 
@@ -581,7 +582,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1248, 619);
+            this.ClientSize = new System.Drawing.Size(1248, 618);
             this.Controls.Add(this.EditObjectButton);
             this.Controls.Add(this.GoNextButton);
             this.Controls.Add(this.GoBackButton);
