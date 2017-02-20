@@ -1207,6 +1207,7 @@ namespace tryhard
             this.CostColumn.HeaderText = "Стоимость";
             this.CostColumn.Name = "CostColumn";
             this.CostColumn.ReadOnly = true;
+            this.CostColumn.DefaultCellStyle.Format = "C3";
             this.CostColumn.Width = 120;
             // 
             // MainForm
