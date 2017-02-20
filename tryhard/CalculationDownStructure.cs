@@ -95,6 +95,7 @@ namespace tryhard
             SetCellCount(Type);
             supportCell = new Cell();
             baseCell = new BaseCell();
+            weight = cost = 0;
             pUpStructure = _pUpStructure;
             if (!isStability()) return false;
             weight = countSC * supportCell.p + countBC * baseCell.p;

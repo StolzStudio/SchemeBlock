@@ -32,7 +32,6 @@ namespace tryhard
         public MainForm()
         {
             InitializeComponent();
-            //FillObjectTreeView();
             FillFieldComboBox();
 
             DrawManager = new Manager(this.MainPage);

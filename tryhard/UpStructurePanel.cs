@@ -44,6 +44,7 @@ namespace tryhard
             StructuresGridView.CurrentCell = StructuresGridView[0, 0];
             selectedCell = DrawManager.Blocks.Keys.First();
             SetCheckedRadioButton();
+            FillStructureTypeGridView();
         }
 
         private void CalculateAllStructures()
@@ -145,13 +146,13 @@ namespace tryhard
             dWallCellUpDown.Value = Convert.ToDecimal(0.75);
             yMatBallastUpDown.Value = Convert.ToDecimal(1.6);
 
-            StructureTypeGridView.Rows.Add("Диаметр поддерживающей ячейки", 0);
-            StructureTypeGridView.Rows.Add("Высота поддерживающей ячейки", 0);
-            StructureTypeGridView.Rows.Add("Количество поддерживающих ячеек", 0);
-            StructureTypeGridView.Rows.Add("Диаметр ячейки основания", 0);
-            StructureTypeGridView.Rows.Add("Высота ячейки основания", 0);
-            StructureTypeGridView.Rows.Add("Количество ячеек основания", 0);
-            StructureTypeGridView.Rows.Add("Вес нижнего строения", 0);
+            StructureTypeGridView.Rows.Add("Диаметр поддерживающей ячейки, м", 0);
+            StructureTypeGridView.Rows.Add("Высота поддерживающей ячейки, м", 0);
+            StructureTypeGridView.Rows.Add("Количество поддерживающих ячеек, шт", 0);
+            StructureTypeGridView.Rows.Add("Диаметр ячейки основания, м", 0);
+            StructureTypeGridView.Rows.Add("Высота ячейки основания, м", 0);
+            StructureTypeGridView.Rows.Add("Количество ячеек основания, шт", 0);
+            StructureTypeGridView.Rows.Add("Вес нижнего строения, т", 0);
             StructureTypeGridView.Rows.Add("Стоимость нижнего строения", 0);
             StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "C3";
         }
