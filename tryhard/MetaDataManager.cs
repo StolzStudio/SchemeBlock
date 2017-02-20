@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace tryhard
 {
-    public static class UserState
+    public static class ProgramState
     {
         public static int currentProjectId { get; set; } = -1;
         public static bool isSelectedProject { get; set; } = false;

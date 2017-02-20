@@ -15,7 +15,7 @@ namespace tryhard
         public WelcomeForm()
         {
             InitializeComponent();
-            UserState.DefaultState();
+            ProgramState.DefaultState();
             MetaDataManager.Instance.Initialize("../Databases/");
             //FormsManager.Instance.Initialize(this);
             LoadPogectsListItems();
@@ -23,8 +23,8 @@ namespace tryhard
 
         private void WelcomeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (UserState.currentProjectId == -1 && !UserState.isSelectedProject)
-                UserState.isExit = true;
+            if (ProgramState.currentProjectId == -1 && !ProgramState.isSelectedProject)
+                ProgramState.isExit = true;
         }
 
         private void LoadPogectsListItems()
@@ -53,7 +53,7 @@ namespace tryhard
 
         private void CreateNewProjectPanel_Click(object sender, EventArgs e)
         {
-            UserState.isSelectedProject = true;
+            ProgramState.isSelectedProject = true;
             this.Close();
         }
 

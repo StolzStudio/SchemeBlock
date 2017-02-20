@@ -19,7 +19,7 @@ namespace tryhard
             while (true)
             {
                 Application.Run(new WelcomeForm());
-                if (UserState.isExit) break;
+                if (ProgramState.isExit) break;
                 Application.Run(new MainForm());
             }
         }
