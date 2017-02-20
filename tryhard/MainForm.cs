@@ -324,7 +324,11 @@ namespace tryhard
                 {
                     IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
                     foreach (BaseObject obj in base_object)
+                    {
                         PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName], obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                        if (APropertyName == "Cost")
+                            PropertiesGridView.Rows[PropertiesGridView.Rows.Count - 1].Cells[1].Style.Format = "C3"; 
+                    }
                 }
             ShowPropertiesPanel();
         }
