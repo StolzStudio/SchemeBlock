@@ -8,11 +8,6 @@ namespace tryhard
 {
     public enum StructureType { Kesson = 0, Monoleg = 1, Multileg = 2 };
 
-    class StructureCortage
-    {
-        public StructureCortage () { }
-    }
-
     static class Field
     {
         public static double yWater { get; set; } = 1;
@@ -65,12 +60,7 @@ namespace tryhard
 
         public DownStructure(StructureType type)
         {
-            switch (type)
-            {
-                case StructureType.Kesson: countSC = 25; countBC = 25; break;
-                case StructureType.Monoleg: countSC = 1; countBC = 9; break;
-                case StructureType.Multileg: countSC = 4; countBC = 25; break;
-            }
+            SetCellCount(type);
             DefaultInitialize();
         }
 
@@ -79,9 +69,20 @@ namespace tryhard
             CalculateDownStructure(weight);
         }
 
+        private void SetCellCount(StructureType type)
+        {
+            Type = type;
+            switch (type)
+            {
+                case StructureType.Kesson: countSC = 25; countBC = 25; break;
+                case StructureType.Monoleg: countSC = 1; countBC = 9; break;
+                case StructureType.Multileg: countSC = 4; countBC = 25; break;
+            }
+        }
+
         public void DefaultInitialize()
         {
-            minTrCl = Field.hWave50 + 0.5;
+            minTrCl = 0.5 * Field.hWave001 + 2.5;
             wUpStructure = 100;
             dWallCell = 0.75;
             wCell = 20;
@@ -91,48 +92,27 @@ namespace tryhard
 
         public bool CalculateDownStructure(double _pUpStructure)
         {
+            SetCellCount(Type);
             supportCell = new Cell();
             baseCell = new BaseCell();
-            isCalculated = true;
             pUpStructure = _pUpStructure;
-            CalculateHeightStricture();
-            bool isStability = false;
-            while (!isStability)
-            {
-                if (CalculateStartTrCl())
-                    if (CalculateEhouthBallast())
-                        if (CheckGroundDurability() && CheckFlatShift())
-                            isStability = true;
-                if (!isStability && !AddBaseCell())
-                    return false;
-            }
+            if (!isStability()) return false;
             weight = countSC * supportCell.p + countBC * baseCell.p;
             cost = weight * 120000.0;
             return true;
         }
 
-        public bool CalculateStartTrCl()
+        public bool isStability()
         {
-            supportCell.CalculateParameters(hExCl, hStructure - Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
-            baseCell.CalculateParameters(hExCl, Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
-
-            double vMatStr = countBC * baseCell.vMat + countSC * supportCell.vMat;
-            double vStr = countBC * baseCell.v + countSC * supportCell.v;
-            double v0 = vMatStr * yMat / Field.yWater;
-            double w = (vStr - v0) / v0;
-            double l = w * vStr;
-            if (v0 <= countBC * baseCell.v)
+            bool isStability = false;
+            while (!isStability)
             {
-                double cl = baseCell.h - v0 / (countBC * baseCell.a);
-                baseCell.vTrCl = cl * baseCell.a;
-                supportCell.vTrCl = supportCell.a * supportCell.h;
-            }
-            else
-            {
-                baseCell.vTrCl = 0;
-                double cl = supportCell.h - (v0 - countBC * baseCell.a) / (countSC * supportCell.a);
-                supportCell.vTrCl = cl * supportCell.a;
-                return hTrCl >= hExCl + 2;
+                if (CalculateBaseParameters())
+                    if (CalculateEhouthBallast())
+                        if (CheckGroundDurability() && CheckFlatShift())
+                            isStability = true;
+                if (!isStability && !AddBaseCell())
+                    return false;
             }
             return true;
         }
@@ -144,6 +124,34 @@ namespace tryhard
             hTrCl = hStructure;
         }
 
+        public bool CalculateBaseParameters()
+        {
+            CalculateHeightStricture();
+            supportCell.CalculateParameters(hExCl, hStructure - Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+            baseCell.CalculateParameters(hExCl, Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+            double vMatStr = countBC * baseCell.vMat + countSC * supportCell.vMat;
+            double vStr = countBC * baseCell.v + countSC * supportCell.v;
+            double v0 = vMatStr * yMat / Field.yWater;
+            double w = (vStr - v0) / v0;
+            double l = w * vStr;
+            if (v0 <= countBC * baseCell.v)
+            {
+                double cl = baseCell.h - v0 / (countBC * baseCell.a);
+                baseCell.vTrCl = cl * baseCell.a;
+                supportCell.vTrCl = supportCell.a * supportCell.h;
+                hTrCl = cl + supportCell.h;
+            }
+            else
+            {
+                double cl = supportCell.h - (v0 - countBC * baseCell.a) / (countSC * supportCell.a);
+                baseCell.vTrCl = 0;
+                supportCell.vTrCl = cl * supportCell.a;
+                hTrCl = cl;
+                return cl >= hExCl + 2;
+            }
+            return true;
+        }
+
         public bool CalculateEhouthBallast()
         {
             while (GetLiftingPower() <= 0)
@@ -151,7 +159,7 @@ namespace tryhard
                 if (ChangeTrCl())
                 {
                     supportCell.CalculateParameters(hExCl, hTrCl, wCell, dWallCell, yMat);
-                    if (!CalculateBallast()) return false;
+                    if (!baseCell.FillBallast(countBC, GetLiftingPower(), yMatBallast)) return false;
                 }
                 else return false;
             }
@@ -165,7 +173,7 @@ namespace tryhard
                     if (ChangeTrCl())
                     {
                         supportCell.CalculateParameters(hExCl, hTrCl, wCell, dWallCell, yMat);
-                        if (!CalculateBallast()) return false;
+                        if (!baseCell.FillBallast(countBC, GetLiftingPower(), yMatBallast)) return false;
                         else isStability = true;
                     }
                     else return false;
@@ -178,15 +186,6 @@ namespace tryhard
         {
             if (hTrCl-- < minTrCl)
                 return false;
-            return true;
-        }
-
-        public bool CalculateBallast()
-        {
-            double liftingPower = GetLiftingPower();
-            baseCell.pBallast = liftingPower / Convert.ToDouble(countBC);
-            baseCell.dBallast = baseCell.pBallast / (baseCell.aBottom * yMatBallast);
-            if (baseCell.dBallast > baseCell.h - baseCell.dCover - baseCell.dBottom) return false;
             return true;
         }
         //
@@ -342,19 +341,9 @@ namespace tryhard
 
         public double CalculateFloatingStabilityInertiaMoment()
         {
-            double inertialMoment = 0;
-            switch(Type)
-            {
-                case StructureType.Kesson:
-                    inertialMoment = Math.Sqrt(countSC) * Math.Pow(supportCell.wOutside, 4) * 
-                                     CalculateSummIM(Convert.ToInt32(Math.Sqrt(countSC) - 1) / 2); break;
-                case StructureType.Monoleg:
-                    inertialMoment = Math.Pow(supportCell.wOutside, 4) / 12.0; break;
-                case StructureType.Multileg: break;
-                    inertialMoment = Math.Pow(wUpStructure - baseCell.wOutside, 2) * Math.Pow(supportCell.wOutside, 2) + 
-                        Math.Pow(supportCell.wOutside, 4) / 3.0;
-            }
-            return inertialMoment;
+            double numerator = baseCell.hTrCl > 0 ? Math.Pow(countBC * baseCell.wOutside, 4) : 
+                                                    Math.Pow(countSC * supportCell.wOutside, 4);
+            return numerator / 12d;
         }
 
         public double CalculateVolume()
@@ -387,10 +376,11 @@ namespace tryhard
 
         public bool AddBaseCell()
         {
+            if (countBC >= 121) return false;
             countBC = Convert.ToInt32(Math.Pow(Math.Sqrt(countBC) + 2, 2));
-            baseCell.dBallast = 0;
-            baseCell.pBallast = 0;
-            return countBC >= 144 ? false : true;
+            baseCell.FreeBallast();
+            hTrCl = 0;
+            return true;
         }
     }
 
@@ -403,6 +393,7 @@ namespace tryhard
         public double kp { get; set; }
         public double vMat { get; set; }
         public double dWall { get; set; }
+        public double hTrCl { get; set; }
         public double vTrCl { get; set; }
         public double wInside { get; set; }
         public double wOutside { get; set; }
@@ -421,9 +412,20 @@ namespace tryhard
             vMatWall = aCSWall * h;
             v = a * h;
             vMat = vMatWall;
-            vTrCl = a * _hTrCl;
             pMatWall = vMatWall * _yMat;
             p = pMatWall;
+            CalculateKP();
+            CalculateTrCl(_hTrCl);
+        }
+
+        public virtual void CalculateTrCl(double _hTrCl)
+        {
+            hTrCl = _hTrCl;
+            vTrCl = a * hTrCl;
+        }
+
+        public virtual void CalculateKP()
+        {
             kp = Field.dGlobalWater * 0.4 + h * 0.5;
         }
 
@@ -455,8 +457,15 @@ namespace tryhard
             dWall = _dWall;
             wOutside = _wOutside;
             wInside = wOutside - 2 * dWall;
-            dCover = 1;
-            dBottom = 1.5;
+            if (Field.dGlobalWater < 25)
+            {
+                dCover = 0.5;
+                dBottom = 1.0;
+            } else
+            {
+                dCover = 1;
+                dBottom = 1.5;
+            }
             h = Field.dGlobalWater * 0.4;
             a = wOutside * wOutside;
             v = a * h;
@@ -467,12 +476,31 @@ namespace tryhard
             vMatCover = aCover * dCover;
             vMatBottom = aBottom * dBottom;
             vMat = vMatWall + vMatCover + vMatBottom;
-            vTrCl = a * _hTrCl;
             pMatWall = vMatWall * _yMat;
             pMatCover = vMatCover * _yMat;
             pMatBottom = vMatBottom * _yMat;
             p = pMatWall + pMatCover + pMatBottom + pBallast;
-            kp = (pMatWall * h * 0.5 + pMatCover * (h - dCover * 0.5) + pMatBottom * dBottom * 0.5 + pBallast * ( dBottom + dBallast * 0.5)) / p;
+            CalculateKP();
+            CalculateTrCl(_hTrCl);
+        }
+
+        public void FreeBallast()
+        {
+            pBallast = 0;
+            dBallast = 0;
+        }
+
+        public bool FillBallast(int countBC, double liftingPower, double yMatBallast)
+        {
+            pBallast = liftingPower / Convert.ToDouble(countBC);
+            dBallast = pBallast / (aBottom * yMatBallast);
+            if (dBallast > h - dCover - dBottom) return false;
+            return true;
+        }
+
+        public override void CalculateKP()
+        {
+            kp = (pMatWall * h * 0.5 + pMatCover * (h - dCover * 0.5) + pMatBottom * dBottom * 0.5 + pBallast * (dBottom + dBallast * 0.5)) / p;
         }
 
         public override double GetLiftingPowerValue(double yWater)

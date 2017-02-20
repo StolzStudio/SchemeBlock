@@ -51,10 +51,10 @@ namespace tryhard
             foreach(int Key in DrawManager.Blocks.Keys)
             {
                 BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
-                int weight = Convert.ToInt32(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
-                Int64 cost = Convert.ToInt64(baseObject.GetType().GetProperty("Cost").GetValue(baseObject));
+                var weight = baseObject.GetType().GetProperty("Weight").GetValue(baseObject);
+                var cost = baseObject.GetType().GetProperty("Cost").GetValue(baseObject);
                 foreach (DownStructure structure in DownStructures[Key])
-                    structure.CalculateDownStructure(weight);
+                    structure.CalculateDownStructure(Convert.ToDouble(weight));
             }
         }
 
@@ -71,29 +71,25 @@ namespace tryhard
 
         private void FieldUpDown_ValueChanged(Object sender, EventArgs e)
         {
-            if (selectedCell != -1)
-            {
-                string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
-                var typeField = typeof(Field);
-                System.Reflection.PropertyInfo propertyInfo = typeField.GetProperty(propertyName);
-                propertyInfo.SetValue(null, Convert.ToSingle((sender as NumericUpDown).Value));
-                CalculateAllStructures();
-                FillStructureTypeGridView();
-            }
+            if(selectedCell == -1) return;
+            string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
+            var typeField = typeof(Field);
+            System.Reflection.PropertyInfo propertyInfo = typeField.GetProperty(propertyName);
+            propertyInfo.SetValue(null, Convert.ToSingle((sender as NumericUpDown).Value));
+            CalculateAllStructures();
+            FillStructureTypeGridView();
         }
 
         private void StructureUpDown_ValueChanged(Object sender, EventArgs e)
         {
-            if (selectedCell != -1)
-            {
-                string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
-                System.Reflection.PropertyInfo propertyInfo = DownStructures[selectedCell][GetTagSelectedRadioBtn()].GetType().GetProperty(propertyName);
-                propertyInfo.SetValue(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]], Convert.ToSingle((sender as NumericUpDown).Value));
-                BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[selectedCell].ClassText, DrawManager.Blocks[selectedCell].Id);
-                double weight = Convert.ToDouble(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
-                CalculateStructure(selectedCell, Convert.ToInt64(baseObject.GetType().GetProperty("Weight").GetValue(baseObject)));
-                FillStructureTypeGridView();
-            }
+            if (selectedCell == -1) return;
+            string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
+            System.Reflection.PropertyInfo propertyInfo = DownStructures[selectedCell][GetTagSelectedRadioBtn()].GetType().GetProperty(propertyName);
+            propertyInfo.SetValue(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]], Convert.ToSingle((sender as NumericUpDown).Value));
+            BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[selectedCell].ClassText, DrawManager.Blocks[selectedCell].Id);
+            double weight = Convert.ToDouble(baseObject.GetType().GetProperty("Weight").GetValue(baseObject));
+            CalculateStructure(selectedCell, Convert.ToInt64(baseObject.GetType().GetProperty("Weight").GetValue(baseObject)));
+            FillStructureTypeGridView();
         }
 
         private void StructuresGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -128,22 +124,19 @@ namespace tryhard
             speedIceUpDown.Value = Convert.ToDecimal(Field.speedIce);
             groundDurabilityUpDown.Value = Convert.ToDecimal(Field.durabilityGround);
         }
-            
+
         private void FillStructureParametersPanel()
         {
-            wCellUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].wCell);
-            yMatUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].yMat);
-            wUpStructureUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].wUpStructure);
-            dWallCellUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].dWallCell);
-            yMatBallastUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][0].yMatBallast);
+            wCellUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].wCell);
+            yMatUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].yMat);
+            wUpStructureUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].wUpStructure);
+            dWallCellUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].dWallCell);
+            yMatBallastUpDown.Value = Convert.ToDecimal(DownStructures[selectedCell][SelectedStructureTypes[selectedCell]].yMatBallast);
         }
 
         private void SetDefaultState()
         {
-            StructuresGridView.Rows.Clear();
-            DownStructures.Clear();
-            SelectedStructureTypes.Clear();
-
+            ClearViewObject();
             FillFieldParametersPanel();
 
             wCellUpDown.Value = Convert.ToDecimal(20);
@@ -175,10 +168,18 @@ namespace tryhard
             StructureTypeGridView.Rows[7].Cells[1].Value = structure.cost;
         }
 
+        private void ClearViewObject()
+        {
+            StructuresGridView.Rows.Clear();
+            DownStructures.Clear();
+            SelectedStructureTypes.Clear();
+        }
+
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             SelectedStructureTypes[selectedCell] = Convert.ToInt32((sender as RadioButton).Tag);
             FillStructureTypeGridView();
+            FillStructureParametersPanel();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
