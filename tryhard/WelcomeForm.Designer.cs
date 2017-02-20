@@ -208,6 +208,8 @@
             this.Controls.Add(this.RosneftPicture);
             this.Controls.Add(this.CreatingPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(951, 556);
+            this.MinimumSize = new System.Drawing.Size(951, 556);
             this.Name = "WelcomeForm";
             this.Text = "Gaby - стартовая страница";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WelcomeForm_FormClosed);
