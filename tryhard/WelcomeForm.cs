@@ -74,5 +74,16 @@ namespace tryhard
             e.Graphics.DrawString(ProjectsListBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
             e.DrawFocusRectangle();
         }
+
+        private void ProjectsListBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            Point pnt = new Point(e.X, e.Y);
+            ProjectsListBox.SelectedIndex = (sender as ListBox).IndexFromPoint(pnt);
+        }
+
+        private void ProjectsListBox_MouseLeave(object sender, System.EventArgs e)
+        {
+            ProjectsListBox.ClearSelected();
+        }
     }
 }

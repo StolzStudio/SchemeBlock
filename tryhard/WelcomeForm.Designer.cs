@@ -63,6 +63,9 @@
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);
             this.ProjectsListBox.TabIndex = 1;
             this.ProjectsListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ProjectsListBox_DrawItem);
+            this.ProjectsListBox.MouseLeave += new System.EventHandler(this.ProjectsListBox_MouseLeave);
+            this.ProjectsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ProjectsListBox_MouseMove);
+            
             // 
             // imageList1
             // 
@@ -200,7 +203,6 @@
             this.CreateNewProjectPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
