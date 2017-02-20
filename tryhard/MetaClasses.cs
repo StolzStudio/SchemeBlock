@@ -14,11 +14,15 @@ namespace tryhard
         public List<string> Properties { get; set; }
     }
 
-    public class ProjectInfo
+    public class Project
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int selectedCell { get; set; } = -1;
+        public int EstimatedFieldId { get; set; }
         public ObjectsStructure Structure { get; set; }
+        Dictionary<int, int> SelectedStructureTypes { get; set; }
+        Dictionary<int, List<DownStructure>> DownStructures { get; set; }
     }
 
     public class ObjectsStructure

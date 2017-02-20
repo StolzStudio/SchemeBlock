@@ -12,21 +12,20 @@ namespace tryhard
     {
         public string     Name { get; set; }
         public CreateType Type { get; set; }
-
         public bool isUserGoFuther { get; set; }
-        //public string     Path { get; set; }
+        public bool isNewProject { get; set; }
 
         public ProjectConfig()
         {
-            SetConfigParameters("", CreateType.PCNone, false);
+            SetConfigParameters("", CreateType.PCNone, false, false);
         }
 
-        public void SetConfigParameters(string aName, CreateType aType, bool aUserChoice)
+        public void SetConfigParameters(string aName, CreateType aType, bool aUserChoice, bool aProjectStatus)
         {
             Name = aName;
             Type = aType;
-
             isUserGoFuther = aUserChoice;
+            isNewProject = aProjectStatus;
         }
     }
 }

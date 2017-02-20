@@ -26,6 +26,7 @@ namespace tryhard
         public Point ClickOffset { get; set; }
         private bool isNextStep;
         private int MarginInLinkPanel = 12;
+        private Project currentProject;
 
         /* Methods */
 
