@@ -12,14 +12,11 @@ namespace tryhard
 {
     public partial class WelcomeForm : Form
     {
-        public bool isUserGoFuther { get; set; }
-
         private ProjectConfig Config;
 
         public WelcomeForm(ref ProjectConfig aConfig)
         {
             Config         = aConfig;
-            isUserGoFuther = false;
 
             InitializeComponent();
 
@@ -46,8 +43,15 @@ namespace tryhard
 
         private void UserGoFuther()
         {
-            isUserGoFuther = true;
             Config.isUserGoFuther = true;
+            Config.isNewProject = true;
+            this.Close();
+        }
+
+        private void UserSelectProject()
+        {
+            Config.isUserGoFuther = true;
+            Config.isNewProject = true;
             this.Close();
         }
         //
@@ -103,7 +107,6 @@ namespace tryhard
             e.DrawBackground();   
             e.Graphics.DrawString(ProjectsListBox.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
             e.DrawFocusRectangle();
-
         }
     }
 }
