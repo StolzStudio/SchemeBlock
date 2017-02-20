@@ -18,10 +18,10 @@ namespace tryhard
             Application.SetCompatibleTextRenderingDefault(false);
 
             ProjectConfig Config = new ProjectConfig();
-            Application.Run(new WelcomeForm(Config));
+            Application.Run(new WelcomeForm(ref Config));
             if (Config.isUserGoFuther)
             {
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(ref Config));
             }
         }
     }

@@ -16,7 +16,7 @@ namespace tryhard
 
         private ProjectConfig Config;
 
-        public WelcomeForm(ProjectConfig aConfig)
+        public WelcomeForm(ref ProjectConfig aConfig)
         {
             Config         = aConfig;
             isUserGoFuther = false;
