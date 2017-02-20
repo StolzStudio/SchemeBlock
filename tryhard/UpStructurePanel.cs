@@ -153,6 +153,7 @@ namespace tryhard
             StructureTypeGridView.Rows.Add("Количество ячеек основания", 0);
             StructureTypeGridView.Rows.Add("Вес нижнего строения", 0);
             StructureTypeGridView.Rows.Add("Стоимость нижнего строения", 0);
+            StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "C3";
         }
 
         private void FillStructureTypeGridView()
@@ -173,6 +174,12 @@ namespace tryhard
             StructuresGridView.Rows.Clear();
             DownStructures.Clear();
             SelectedStructureTypes.Clear();
+            StructureTypeGridView.Rows.Clear();
+        }
+
+        private void SaveProject()
+        {
+
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -184,6 +191,7 @@ namespace tryhard
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            if (NameTextBox.Text == "") return;
             UpStructurePanel.SendToBack();
             ObjectsTreeView.Focus();
         }

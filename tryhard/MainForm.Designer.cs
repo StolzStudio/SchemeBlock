@@ -264,6 +264,7 @@ namespace tryhard
             this.FieldComboBox.Name = "FieldComboBox";
             this.FieldComboBox.Size = new System.Drawing.Size(243, 24);
             this.FieldComboBox.TabIndex = 32;
+            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(FieldComboBox_SelectedIndexChanged);
             // 
             // FieldPanel
             // 
@@ -1207,6 +1208,7 @@ namespace tryhard
             this.CostColumn.HeaderText = "Стоимость";
             this.CostColumn.Name = "CostColumn";
             this.CostColumn.ReadOnly = true;
+            this.CostColumn.DefaultCellStyle.Format = "C3";
             this.CostColumn.Width = 120;
             // 
             // MainForm
