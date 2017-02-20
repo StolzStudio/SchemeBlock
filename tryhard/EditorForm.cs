@@ -86,12 +86,12 @@ namespace tryhard
 
         public void UpdateViewControls()
         {
-            //if (isEditMode)
-            //{
-            //    FillCategoryStripComboBox((string)CategoryStripComboBox.SelectedItem);
-            //}
-            //else
-            //    FillObjectTreeView();
+            if (isEditMode)
+            {
+                FillCategoryStripComboBox((string)CategoryStripComboBox.SelectedItem);
+            }
+            else
+                FillObjectTreeView();
         }
 
         public void FillObjectTreeView()
@@ -557,7 +557,7 @@ namespace tryhard
         private void EditObjectButton_Click(object sender, EventArgs e)
         {
             isEditObject = true;
-            EditObject.Category = MetaDataManager.Instance.GetCateroryNameByType(ObjectsTreeView.SelectedNode.Parent.Text);
+            EditObject.Category = MetaDataManager.Instance.GetCateroryNameByType(MetaDataManager.Instance.Dictionary[ObjectsTreeView.SelectedNode.Parent.Text]);
             EditObject.Type = ObjectsTreeView.SelectedNode.Parent.Text;
             EditObject.Model = ObjectsTreeView.SelectedNode.Text;
             EditObject.Id = (int)ObjectsTreeView.SelectedNode.Tag;
