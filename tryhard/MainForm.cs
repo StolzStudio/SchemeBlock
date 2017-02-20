@@ -56,8 +56,11 @@ namespace tryhard
         {
             if (e.KeyChar == 8)
             {
-                DrawManager.DeleteElements();
-                MainPage.Invalidate();
+                if (Control.ModifierKeys == Keys.Shift)
+                {
+                    DrawManager.DeleteElements();
+                    MainPage.Invalidate();
+                }
             }
         }
 
