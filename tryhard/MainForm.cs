@@ -32,7 +32,7 @@ namespace tryhard
         public MainForm()
         {
             InitializeComponent();
-            FillObjectTreeView();
+            //FillObjectTreeView();
             FillFieldComboBox();
 
             DrawManager = new Manager(this.MainPage);
@@ -223,14 +223,13 @@ namespace tryhard
                 numericalUpDown.TabIndex = 2;
                 numericalUpDown.Tag = i;
                 numericalUpDown.Value = new decimal(new int[] {
-                1,
+                ALink.LinkParameterValue,
                 0,
                 0,
                 0});
                 numericalUpDown.ValueChanged += new System.EventHandler(numericalUpDown_ValueChanged);
                 LinkInfoPanel.Controls.Add(numericalUpDown);
             }
-            (LinkInfoPanel.Controls[1] as NumericUpDown).Value = Convert.ToDecimal(ALink.LinkParameterValue);
         }
 
         private void numericalUpDown_ValueChanged(Object sender, EventArgs e)
@@ -297,6 +296,20 @@ namespace tryhard
             ObjectsTreeView.SelectedNode = ObjectsTreeView.Nodes[0].Nodes[0];
         }
 
+        private void FillFieldComboBox()
+        {
+            FieldComboBox.Items.Clear();
+            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+                FieldComboBox.Items.Add(field.Name);
+            FieldComboBox.SelectedIndex = 0;
+        }
+
+        private void FieldComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+            FillObjectTreeView();
+        }
+
         private void SelectTreeNode()
         {
             int i = DrawManager.SelectedBlockIndex;
@@ -331,14 +344,6 @@ namespace tryhard
                     }
                 }
             ShowPropertiesPanel();
-        }
-
-        private void FillFieldComboBox()
-        {
-            FieldComboBox.Items.Clear();
-            foreach(IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
-                FieldComboBox.Items.Add(field.Name);
-            FieldComboBox.SelectedIndex = 0;
         }
 
         private void ObjectsTreeView_AfterSelect(object sender, TreeViewEventArgs e)
