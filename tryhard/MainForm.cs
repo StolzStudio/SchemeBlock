@@ -310,7 +310,6 @@ namespace tryhard
 
         private void FieldComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
             FillObjectTreeView();
         }
 
@@ -361,6 +360,7 @@ namespace tryhard
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             MetaDataManager.Instance.SerializeMetaObjects();
+            MetaDataManager.Instance.SerializeProjects();
         }
 
         private void CalculateButton_Click(object sender, EventArgs e)

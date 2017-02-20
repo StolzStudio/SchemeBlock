@@ -482,8 +482,9 @@ namespace tryhard
                             obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
                     }
                 }
-                MetaDataManager.Instance.FillObjectStructure(EditObject.Type, EditObject.Id,
-                                                             DrawManager.Links, DrawManager.Blocks);
+                ObjectsStructure structure = new ObjectsStructure();
+                MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, DrawManager.Blocks, ref structure);
+                MetaDataManager.Instance.PushObjectStructure(EditObject.Type, EditObject.Id, structure);
                 GoBackButton.PerformClick();
                 GoBackButton.PerformClick();
             }

@@ -54,10 +54,6 @@
             this.ProjectsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectsListBox.FormattingEnabled = true;
             this.ProjectsListBox.ItemHeight = 43;
-            this.ProjectsListBox.Items.AddRange(new object[] {
-            "project1",
-            "project2",
-            "project3"});
             this.ProjectsListBox.Location = new System.Drawing.Point(0, 1);
             this.ProjectsListBox.Name = "ProjectsListBox";
             this.ProjectsListBox.Size = new System.Drawing.Size(323, 516);

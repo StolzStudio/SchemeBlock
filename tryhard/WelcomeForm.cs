@@ -12,13 +12,14 @@ namespace tryhard
 {
     public partial class WelcomeForm : Form
     {
+        private List<IdNameInfo> ProjectsInfo;
+
         public WelcomeForm()
         {
             InitializeComponent();
             ProgramState.DefaultState();
             MetaDataManager.Instance.Initialize("../Databases/");
-            //FormsManager.Instance.Initialize(this);
-            LoadPogectsListItems();
+            LoadProjectsListItems();
         }
 
         private void WelcomeForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -27,14 +28,11 @@ namespace tryhard
                 ProgramState.isExit = true;
         }
 
-        private void LoadPogectsListItems()
+        private void LoadProjectsListItems()
         {
-            List<string> ProjectsList = new List<string>();
-            //обращение к мете, чтобы она дала список проектов
-            foreach(string Element in ProjectsList)
-            {
-                ProjectsListBox.Items.Add(Element);
-            }
+            ProjectsInfo = MetaDataManager.Instance.GetProjectIdName();
+            foreach(IdNameInfo project in ProjectsInfo)
+                ProjectsListBox.Items.Add(project.Name);
         }
         //
         //work with CreateNewProjectPanel

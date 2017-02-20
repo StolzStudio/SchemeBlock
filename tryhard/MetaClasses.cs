@@ -21,8 +21,8 @@ namespace tryhard
         public int selectedCell { get; set; } = -1;
         public int EstimatedFieldId { get; set; }
         public ObjectsStructure Structure { get; set; }
-        Dictionary<int, int> SelectedStructureTypes { get; set; }
-        Dictionary<int, List<DownStructure>> DownStructures { get; set; }
+        public Dictionary<int, int> SelectedStructureTypes { get; set; }
+        public Dictionary<int, List<DownStructure>> DownStructures { get; set; }
     }
 
     public class ObjectsStructure

@@ -58,6 +58,8 @@ namespace tryhard
 
         public double weight = 0;
 
+        public DownStructure() { }
+
         public DownStructure(StructureType type)
         {
             SetCellCount(type);
@@ -401,6 +403,8 @@ namespace tryhard
         public double aCSWall { get; set; }
         public double vMatWall { get; set; }
         public double pMatWall { get; set; }
+
+        public Cell() { }
 
         public virtual void CalculateParameters(double _hExCl, double _hTrCl, double _wOutside, double _dWall, double _yMat)
         {

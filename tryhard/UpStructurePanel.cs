@@ -178,11 +178,6 @@ namespace tryhard
             StructureTypeGridView.Rows.Clear();
         }
 
-        private void SaveProject()
-        {
-
-        }
-
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             SelectedStructureTypes[selectedCell] = Convert.ToInt32((sender as RadioButton).Tag);
@@ -193,9 +188,26 @@ namespace tryhard
         private void SaveButton_Click(object sender, EventArgs e)
         {
             if (NameTextBox.Text == "") return;
+            SaveProject();
             UpStructurePanel.SendToBack();
             ObjectsTreeView.Focus();
         }
+
+        private void SaveProject()
+        {
+            Project project = new Project();
+            project.Id = MetaDataManager.Instance.GetFreeProjectId();
+            project.Name = NameTextBox.Text;
+            project.EstimatedFieldId = (MetaDataManager.Instance.GetObjectsInfoByType("field_parameters")).ToList()[FieldComboBox.SelectedIndex].Id;
+            project.selectedCell = selectedCell;
+            ObjectsStructure structure = new ObjectsStructure(); ;
+            MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, DrawManager.Blocks, ref structure);
+            project.Structure = structure;
+            project.SelectedStructureTypes = SelectedStructureTypes;
+            project.DownStructures = DownStructures;
+            MetaDataManager.Instance.PushProject(project);
+        }
+
 
         private void BackToSchemeButton_Click(object sender, EventArgs e)
         {

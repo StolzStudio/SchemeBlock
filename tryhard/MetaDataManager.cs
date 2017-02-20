@@ -51,6 +51,7 @@ namespace tryhard
 
         private string ObjFilesDir;
         private string ObjFileFormat = ".json";
+        public Dictionary<int, Project> Projects;
         public Dictionary<string, string> Dictionary;
         public Dictionary<string, List<BaseObject>> Objects;
         public Dictionary<string, List<MetaObjectInfo>> ObjectsInfo;
@@ -60,6 +61,7 @@ namespace tryhard
             ObjFilesDir = ADir;
             Dictionary = new Dictionary<string, string>();
             InitializeDictionary(ADir + "dictionary.json");
+            DeserializeProjects(ADir + "projects.json");
             Objects = new Dictionary<string, List<BaseObject>>();
             ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(ADir + "objectsinfo.json"));
             foreach (string Category in ObjectsInfo.Keys)
@@ -75,6 +77,42 @@ namespace tryhard
         {
             string json = MetaDataManager.Instance.GetJson(APath);
             Dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+        }
+
+        public void DeserializeProjects(string APath)
+        {
+            string json = MetaDataManager.Instance.GetJson(APath);
+            Projects = JsonConvert.DeserializeObject<Dictionary<int, Project>>(json);
+        }
+
+        public void PushProject(Project project)
+        {
+            if (Projects.Keys.Contains(project.Id))
+                Projects[project.Id] = project;
+            else
+                Projects.Add(project.Id, project);
+        }
+
+        public void SerializeProjects()
+        {
+            string json = JsonConvert.SerializeObject(Projects, Formatting.Indented);
+            StreamWriter sw = new StreamWriter(ObjFilesDir + "projects" + ObjFileFormat);
+            sw.Write(json);
+            sw.Close();
+        }
+
+        public int GetFreeProjectId()
+        {
+            int max = 0;
+            foreach (int key in Projects.Keys)
+                if (key > max) max = key;
+            return max + 1;
+        }
+
+
+        public List<IdNameInfo> GetProjectIdName()
+        {
+            return Projects.Keys.Select(key => new IdNameInfo(Projects[key].Id, Projects[key].Name)).ToList();
         }
 
         public IEnumerable<string> ObjectCategories
@@ -138,9 +176,8 @@ namespace tryhard
             return Objects[AType].Select(obj => obj.Id).ToList();
         }
 
-        public void FillObjectStructure(string AType, int AId, List<Link> ALinks, Dictionary<int, Block> ABlocks)
+        public void FillObjectStructure(List<Link> ALinks, Dictionary<int, Block> ABlocks, ref ObjectsStructure AObjectStructure)
         {
-            ObjectsStructure structure = new ObjectsStructure();
             List<StructuralObject> objects = new List<StructuralObject>();
             List<LinkStructuralObject> links = new List<LinkStructuralObject>();
             foreach (int Key in ABlocks.Keys)
@@ -152,7 +189,7 @@ namespace tryhard
                 obj.Coordinates = ABlocks[Key].Location;
                 objects.Add(obj);
             }
-            structure.Objects = objects;
+            AObjectStructure.Objects = objects;
             foreach (Link link in ALinks)
             {
                 LinkStructuralObject _link = new LinkStructuralObject();
@@ -161,9 +198,13 @@ namespace tryhard
                 _link.LinkParameter = link.LinkParameter;
                 links.Add(_link);
             }
-            structure.Links = links;
+            AObjectStructure.Links = links;
+        }
+
+        public void PushObjectStructure(string AType, int AId, ObjectsStructure AObjectStructure)
+        {
             foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
-                Object.GetType().GetProperty("Structure").SetValue(Object, structure);
+                Object.GetType().GetProperty("Structure").SetValue(Object, AObjectStructure);
         }
 
         public List<string> GetLinkableParameters(string AFirstType, string ASecondType)

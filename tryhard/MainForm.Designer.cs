@@ -64,6 +64,7 @@ namespace tryhard
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.EditorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,12 +131,14 @@ namespace tryhard
             this.hWave001UpDown = new System.Windows.Forms.NumericUpDown();
             this.hWave50UpDown = new System.Windows.Forms.NumericUpDown();
             this.StructuresGridView = new System.Windows.Forms.DataGridView();
-            this.StructuresList = new System.Windows.Forms.Label();
-            this.MainPage = new tryhard.DrawPage();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StructuresList = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
+            this.CommonCostLabel = new System.Windows.Forms.Label();
+            this.CommonCostTextBox = new System.Windows.Forms.TextBox();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -264,7 +267,7 @@ namespace tryhard
             this.FieldComboBox.Name = "FieldComboBox";
             this.FieldComboBox.Size = new System.Drawing.Size(243, 24);
             this.FieldComboBox.TabIndex = 32;
-            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(FieldComboBox_SelectedIndexChanged);
+            this.FieldComboBox.SelectedIndexChanged += new System.EventHandler(this.FieldComboBox_SelectedIndexChanged);
             // 
             // FieldPanel
             // 
@@ -348,6 +351,8 @@ namespace tryhard
             // UpStructurePanel
             // 
             this.UpStructurePanel.BackColor = System.Drawing.Color.White;
+            this.UpStructurePanel.Controls.Add(this.CommonCostTextBox);
+            this.UpStructurePanel.Controls.Add(this.CommonCostLabel);
             this.UpStructurePanel.Controls.Add(this.StructureLabel);
             this.UpStructurePanel.Controls.Add(this.StructurePanel);
             this.UpStructurePanel.Controls.Add(this.StructureTypeLabel);
@@ -1151,32 +1156,6 @@ namespace tryhard
             this.StructuresGridView.TabIndex = 27;
             this.StructuresGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StructuresGridView_CellClick);
             // 
-            // StructuresList
-            // 
-            this.StructuresList.AutoSize = true;
-            this.StructuresList.Location = new System.Drawing.Point(31, 35);
-            this.StructuresList.Name = "StructuresList";
-            this.StructuresList.Size = new System.Drawing.Size(112, 13);
-            this.StructuresList.TabIndex = 1;
-            this.StructuresList.Text = "Список комплексов:";
-            // 
-            // MainPage
-            // 
-            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPage.BackColor = System.Drawing.Color.White;
-            this.MainPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainPage.Location = new System.Drawing.Point(-1, 25);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1097, 704);
-            this.MainPage.TabIndex = 22;
-            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
-            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
-            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
-            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
-            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
             // TypeColumn
             // 
             this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1205,11 +1184,57 @@ namespace tryhard
             // 
             // CostColumn
             // 
+            dataGridViewCellStyle1.Format = "C3";
+            this.CostColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.CostColumn.HeaderText = "Стоимость";
             this.CostColumn.Name = "CostColumn";
             this.CostColumn.ReadOnly = true;
-            this.CostColumn.DefaultCellStyle.Format = "C3";
             this.CostColumn.Width = 120;
+            // 
+            // StructuresList
+            // 
+            this.StructuresList.AutoSize = true;
+            this.StructuresList.Location = new System.Drawing.Point(31, 35);
+            this.StructuresList.Name = "StructuresList";
+            this.StructuresList.Size = new System.Drawing.Size(112, 13);
+            this.StructuresList.TabIndex = 1;
+            this.StructuresList.Text = "Список комплексов:";
+            // 
+            // MainPage
+            // 
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPage.BackColor = System.Drawing.Color.White;
+            this.MainPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainPage.Location = new System.Drawing.Point(-1, 25);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1097, 704);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
+            // 
+            // CommonCostLabel
+            // 
+            this.CommonCostLabel.AutoSize = true;
+            this.CommonCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.CommonCostLabel.Location = new System.Drawing.Point(745, 467);
+            this.CommonCostLabel.Name = "CommonCostLabel";
+            this.CommonCostLabel.Size = new System.Drawing.Size(235, 20);
+            this.CommonCostLabel.TabIndex = 39;
+            this.CommonCostLabel.Text = "Общая стоимость проекта";
+            // 
+            // CommonCostTextBox
+            // 
+            this.CommonCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.CommonCostTextBox.Location = new System.Drawing.Point(1008, 467);
+            this.CommonCostTextBox.Name = "CommonCostTextBox";
+            this.CommonCostTextBox.ReadOnly = true;
+            this.CommonCostTextBox.Size = new System.Drawing.Size(303, 26);
+            this.CommonCostTextBox.TabIndex = 40;
             // 
             // MainForm
             // 
@@ -1342,6 +1367,8 @@ namespace tryhard
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn WeightColumn;
         private DataGridViewTextBoxColumn CostColumn;
+        private TextBox CommonCostTextBox;
+        private Label CommonCostLabel;
     }
 }
 
