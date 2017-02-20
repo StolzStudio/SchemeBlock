@@ -88,9 +88,15 @@ namespace tryhard
             return result;
         }
 
-        public IEnumerable<IdNameInfo> GetObjectsIdNameInfoByType(string AObjectsType)
+        public IEnumerable<IdNameInfo> GetObjectsInfoByType(string AObjectsType)
         {
             return Objects[AObjectsType].Select(k => new IdNameInfo(k.Id, k.Name));
+        }
+
+        public IEnumerable<IdNameInfo> GetObjectsInfoByTypeAndEstimatedFieldId(string AObjectsType, int _estimatedFieldId)
+        {
+            IEnumerable<Complex> objects = (Objects[AObjectsType].Select(k => k as Complex)).Where(k => k.EstimatedFieldId == _estimatedFieldId);
+            return objects.Select(k => new IdNameInfo(k.Id, k.Name));
         }
 
         public bool isPossibleLink(string ACategory, string AFirstObjectType, string ASecondObjectType)

@@ -115,7 +115,7 @@ namespace tryhard
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                 {
                     TreeNode node = new TreeNode(MetaDataManager.Instance.Dictionary[TypeName]);
-                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
+                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsInfoByType(TypeName))
                     {
                         TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
                         node_child.Tag = ObjectIdNameInfo.Id;
@@ -431,7 +431,7 @@ namespace tryhard
         {
 
             FieldComboBox.Items.Clear();
-            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsInfoByType("field_parameters"))
                 FieldComboBox.Items.Add(field.Name);
             FieldComboBox.SelectedIndex = 0;
             FillFieldPropertyDataGrid(FieldComboBox.SelectedItem.ToString());

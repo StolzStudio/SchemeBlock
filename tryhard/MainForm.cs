@@ -277,13 +277,14 @@ namespace tryhard
         {
             ObjectsTreeView.Nodes.Clear();
             IEnumerable<string> Categories;
+            int estimatedFieldId = (MetaDataManager.Instance.GetObjectsInfoByType("field_parameters")).ToList()[FieldComboBox.SelectedIndex].Id;
             Categories = MetaDataManager.Instance.ObjectCategories.Where(t => t == "Complex");
             foreach (string CategoryName in Categories)
             {
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                 {
                     TreeNode node = new TreeNode(MetaDataManager.Instance.Dictionary[TypeName]);
-                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsIdNameInfoByType(TypeName))
+                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsInfoByTypeAndEstimatedFieldId(TypeName, estimatedFieldId))
                     {
                         TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
                         node_child.Tag = ObjectIdNameInfo.Id;
@@ -299,7 +300,7 @@ namespace tryhard
         private void FillFieldComboBox()
         {
             FieldComboBox.Items.Clear();
-            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsIdNameInfoByType("field_parameters"))
+            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsInfoByType("field_parameters"))
                 FieldComboBox.Items.Add(field.Name);
             FieldComboBox.SelectedIndex = 0;
         }
