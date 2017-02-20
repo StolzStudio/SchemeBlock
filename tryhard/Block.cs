@@ -71,6 +71,7 @@ namespace tryhard
             ModelText  = MetaDataManager.Instance.GetBaseObjectOfId(ClassText, Id).Name;
             Location   = AStructuralObject.Coordinates;
             PageOffset = aPageOffset;
+            Count      = 1;
         }
         //
         //Work with location
