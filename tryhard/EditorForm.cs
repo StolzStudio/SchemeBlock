@@ -396,9 +396,13 @@ namespace tryhard
         {
             if (e.KeyChar == 8)
             {
-                DrawManager.DeleteElements();
-                DrawPage.Invalidate();
+                if (Control.ModifierKeys == Keys.Shift)
+                {
+                    DrawManager.DeleteElements();
+                    DrawPage.Invalidate();
+                }
             }
+            
         }
 
         private void GoBackButton_Click(object sender, EventArgs e)
@@ -466,7 +470,7 @@ namespace tryhard
             }
             else
             {
-                foreach (DataGridViewRow row in PropteryDataGridView.Rows)
+                foreach (DataGridViewRow row in SelectedItemDataGridView.Rows)
                 {
                     foreach (BaseObject obj in MetaDataManager.Instance.Objects[EditObject.Type].Where(ob => ob.Id == EditObject.Id))
                     {
