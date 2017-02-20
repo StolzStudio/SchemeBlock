@@ -36,7 +36,6 @@
             this.WelcomeProgramLabel = new System.Windows.Forms.Label();
             this.DecoratingPanel1 = new System.Windows.Forms.Panel();
             this.ProgramVersionLabel = new System.Windows.Forms.Label();
-            this.OpenAnotherProjectLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CreateNewProjectPanel = new System.Windows.Forms.Panel();
@@ -45,7 +44,6 @@
             this.CreatingPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).BeginInit();
             this.CreateNewProjectPanel.SuspendLayout();
-            this.CreatingPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProjectsListBox
@@ -114,21 +112,6 @@
             this.ProgramVersionLabel.TabIndex = 7;
             this.ProgramVersionLabel.Text = "version 0.1 (0.A127)";
             // 
-            // OpenAnotherProjectLabel
-            // 
-            this.OpenAnotherProjectLabel.AutoSize = true;
-            this.OpenAnotherProjectLabel.BackColor = System.Drawing.Color.Beige;
-            this.OpenAnotherProjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OpenAnotherProjectLabel.ForeColor = System.Drawing.Color.Black;
-            this.OpenAnotherProjectLabel.Location = new System.Drawing.Point(140, 481);
-            this.OpenAnotherProjectLabel.Name = "OpenAnotherProjectLabel";
-            this.OpenAnotherProjectLabel.Size = new System.Drawing.Size(175, 17);
-            this.OpenAnotherProjectLabel.TabIndex = 8;
-            this.OpenAnotherProjectLabel.Text = "Открыть другой проект...";
-            this.OpenAnotherProjectLabel.Click += new System.EventHandler(this.OpenAnotherProjectLabel_Click);
-            this.OpenAnotherProjectLabel.MouseEnter += new System.EventHandler(this.OpenAnotherProjectLabel_MouseEnter);
-            this.OpenAnotherProjectLabel.MouseLeave += new System.EventHandler(this.OpenAnotherProjectLabel_MouseLeave);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Orange;
@@ -185,7 +168,6 @@
             // 
             // CreatingPanel
             // 
-            this.CreatingPanel.Controls.Add(this.OpenAnotherProjectLabel);
             this.CreatingPanel.Location = new System.Drawing.Point(324, 0);
             this.CreatingPanel.Name = "CreatingPanel";
             this.CreatingPanel.Size = new System.Drawing.Size(611, 517);
@@ -216,8 +198,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.RosneftPicture)).EndInit();
             this.CreateNewProjectPanel.ResumeLayout(false);
             this.CreateNewProjectPanel.PerformLayout();
-            this.CreatingPanel.ResumeLayout(false);
-            this.CreatingPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,7 +210,6 @@
         private System.Windows.Forms.Label WelcomeProgramLabel;
         private System.Windows.Forms.Panel DecoratingPanel1;
         private System.Windows.Forms.Label ProgramVersionLabel;
-        private System.Windows.Forms.Label OpenAnotherProjectLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel CreateNewProjectPanel;

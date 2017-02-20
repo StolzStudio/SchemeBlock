@@ -87,7 +87,6 @@
     <Compile Include="MetaClasses.cs" />
     <Compile Include="MetaDataManager.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpStructurePanel.cs">
       <SubType>Form</SubType>

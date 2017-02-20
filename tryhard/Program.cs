@@ -16,12 +16,11 @@ namespace tryhard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            ProjectConfig Config = new ProjectConfig();
-            Application.Run(new WelcomeForm(ref Config));
-            if (Config.isUserGoFuther)
+            while (true)
             {
-                Application.Run(new MainForm(ref Config));
+                Application.Run(new WelcomeForm());
+                if (UserState.isExit) break;
+                Application.Run(new MainForm());
             }
         }
     }

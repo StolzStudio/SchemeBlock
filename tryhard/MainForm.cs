@@ -30,7 +30,7 @@ namespace tryhard
 
         /* Methods */
 
-        public MainForm(ref ProjectConfig aConfig)
+        public MainForm()
         {
             InitializeComponent();
             FillFieldComboBox();
