@@ -270,7 +270,20 @@ namespace tryhard
 
         public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
         {
-            Complex Result = new Complex();
+            Complex Result;
+            if (ObjectType == "mining_complex")
+            {
+                Result = new MiningComplex();
+            }
+            else if (ObjectType == "integrated_complex")
+            {
+                Result = new IntegratedComplex();
+            }
+            else
+            {
+                Result = new ProcessingComplex();
+            }
+
             if (Links.Count != 0)
             {
                 BlockStashValue = new Dictionary<int, Dictionary<string, Int64>>();
@@ -278,7 +291,7 @@ namespace tryhard
                 BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
 
                 BaseObject MainObject;
-                if (ObjectType == "mining_complex")
+                if ((ObjectType == "mining_complex")||(ObjectType == "integrated_complex"))
                 {
                     MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
                     aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject);
@@ -296,7 +309,7 @@ namespace tryhard
                     aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q]);
                 }
             }
-
+            
             foreach (var key in aCombination.Keys)
             {
                 BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[key].ClassText, aCombination[key].Id);
