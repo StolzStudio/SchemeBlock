@@ -22,6 +22,7 @@ namespace tryhard
 
         private void InitializeUpStructurePanel()
         {
+            selectedCell = -1;
             SetDefaultState();
             FillStructuresGridView();
         }
@@ -194,17 +195,19 @@ namespace tryhard
 
         private void SaveProject()
         {
-            currentProject.Id = MetaDataManager.Instance.GetFreeProjectId();
+            if (ProgramState.currentProjectId == -1)
+                currentProject.Id = MetaDataManager.Instance.GetFreeProjectId();
             currentProject.Name = NameTextBox.Text;
             currentProject.SelectedCell = selectedCell;
             ObjectsStructure structure = new ObjectsStructure();
             MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, DrawManager.Blocks, ref structure);
-            currentProject.Structure = structure;
+            currentProject.Structure = new ObjectsStructure(structure);
             currentProject.FieldParameters = new FieldSlice();
             currentProject.FieldParameters.Fill();
             currentProject.SelectedStructureTypes = SelectedStructureTypes;
             currentProject.DownStructures = DownStructures;
             MetaDataManager.Instance.PushProject(currentProject);
+            ProgramState.currentProjectId = currentProject.Id;
         }
 
 
