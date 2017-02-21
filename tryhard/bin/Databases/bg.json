@@ -1,0 +1,122 @@
+[
+    {
+        "HolesAmount": 4,
+        "DiameterInput": 200,
+        "DiameterOutput": 100,
+        "Weight": 7.6,
+        "Volume": 111.888,
+        "Cost": 912000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 0,
+        "Name": "bg-4-100Y"
+    },
+{
+        "HolesAmount": 5,
+        "DiameterInput": 250,
+        "DiameterOutput": 100,
+        "Weight": 7.6,
+        "Volume": 111.888,
+        "Cost": 912000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 1,
+        "Name": "bg-5-100Y"
+    },
+{
+        "HolesAmount": 6,
+        "DiameterInput": 250,
+        "DiameterOutput": 100,
+        "Weight": 8,
+        "Volume": 133.2,
+        "Cost": 960000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 2,
+        "Name": "bg-6-100Y"
+    },
+{
+        "HolesAmount": 8,
+        "DiameterInput": 300,
+        "DiameterOutput": 100,
+        "Weight": 9.8,
+        "Volume": 165.168,
+        "Cost": 1176000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 3,
+        "Name": "bg-8-100Y"
+    },
+{
+        "HolesAmount": 4,
+        "DiameterInput": 150,
+        "DiameterOutput": 65,
+        "Weight": 7.6,
+        "Volume": 111.888,
+        "Cost": 912000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 4,
+        "Name": "bg-4-65Y"
+    },
+{
+        "HolesAmount": 5,
+        "DiameterInput": 150,
+        "DiameterOutput": 65,
+        "Weight": 7.6,
+        "Volume": 111.888,
+        "Cost": 912000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 5,
+        "Name": "bg-5-65Y"
+    },
+{
+        "HolesAmount": 6,
+        "DiameterInput": 200,
+        "DiameterOutput": 65,
+        "Weight": 8,
+        "Volume": 133.2,
+        "Cost": 912000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 6,
+        "Name": "bg-6-65Y"
+    },
+{
+        "HolesAmount": 8,
+        "DiameterInput": 250,
+        "DiameterOutput": 65,
+        "Weight": 9.8,
+        "Volume": 165.168,
+        "Cost": 1176000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 7,
+        "Name": "bg-8-65Y"
+    }
+]

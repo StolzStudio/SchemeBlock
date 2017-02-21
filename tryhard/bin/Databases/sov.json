@@ -1,0 +1,18 @@
+[
+    {
+        "OilOutput": 100,
+        "WaterOutput": 100,
+        "PeopleDemand": 0,
+        "ElectricityDemand": 0,
+        "Weight": 30,
+        "Volume": 15,
+        "Cost": 75000,
+        "Structure": 
+        {
+          "Objects": [],
+          "Links": []
+        },
+        "Id": 0,
+        "Name": "sov-2000"
+    }
+]
