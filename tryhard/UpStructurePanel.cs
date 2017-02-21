@@ -153,6 +153,9 @@ namespace tryhard
             StructureTypeGridView.Rows.Add("Высота ячейки основания, м", 0);
             StructureTypeGridView.Rows.Add("Количество ячеек основания, шт", 0);
             StructureTypeGridView.Rows.Add("Вес нижнего строения, т", 0);
+            StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "N";
+            StructureTypeGridView.Rows.Add("Объем резервуара, м3", 0);
+            StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "N";
             StructureTypeGridView.Rows.Add("Стоимость нижнего строения", 0);
             StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "C3";
         }
@@ -167,7 +170,8 @@ namespace tryhard
             StructureTypeGridView.Rows[4].Cells[1].Value = structure.baseCell.h;
             StructureTypeGridView.Rows[5].Cells[1].Value = structure.countBC;
             StructureTypeGridView.Rows[6].Cells[1].Value = structure.weight;
-            StructureTypeGridView.Rows[7].Cells[1].Value = structure.cost;
+            StructureTypeGridView.Rows[7].Cells[1].Value = structure.freeVolume;
+            StructureTypeGridView.Rows[8].Cells[1].Value = structure.cost;
         }
 
         private void ClearViewObject()

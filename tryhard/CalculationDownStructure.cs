@@ -111,10 +111,10 @@ namespace tryhard
         public double yMatBallast { get; set; }
         public Cell supportCell { get; set; }
         public BaseCell baseCell { get; set; }
+        public double minTrCl { get; set; }
+        public double freeVolume { get; set; }
+        public double weight { get; set; }
         public double cost { get; set; }
-        private double minTrCl { get; set; }
-
-        public double weight = 0;
 
         public DownStructure() { }
         public DownStructure(DownStructure originalStructure)
@@ -181,6 +181,7 @@ namespace tryhard
             if (!isStability()) return false;
             weight = countSC * supportCell.p + countBC * baseCell.p;
             cost = weight * 120000.0;
+            freeVolume = countBC * baseCell.a * (baseCell.h - baseCell.dCover - baseCell.dBottom - baseCell.dBallast);
             return true;
         }
 
