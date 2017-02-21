@@ -30,7 +30,9 @@ namespace tryhard
     {
         public bool isEditMode { get; set; } = false;
         public bool isEditObject { get; set; } = false;
-        public ObjectNameParam EditObject = new ObjectNameParam(); 
+        public ObjectNameParam EditObject = new ObjectNameParam();
+        List<Dictionary<int, Block>> Combinations;
+        List<Complex> Complexes;
         public Manager DrawManager;
         private int SelectBlockIndex;
         private CountManager CalcManager;
@@ -620,11 +622,33 @@ namespace tryhard
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            List<Dictionary<int, Block>> Combinations = CalcManager.CalculateBlocksCombinations(DrawManager.Blocks);
+            Combinations = CalcManager.CalculateBlocksCombinations(DrawManager.Blocks);
+            Complexes = new List<Complex>();
             foreach (var Combination in Combinations)
             {
                 Complex el = CalcManager.MakeCalculate(Combination, FieldComboBox.Text);
+                Complexes.Add(el);
                 CombinationDataGridView.Rows.Add(false, el.Name, el.Cost, el.Volume, el.Weight, el.PeopleDemand, el.ElectricityDemand);
+            }
+            if (CombinationDataGridView.Rows.Count != 0)
+            {
+                CombinationDataGridView.CurrentCell = CombinationDataGridView.Rows[CombinationDataGridView.CurrentRow.Index].Cells[0];
+            }
+        }
+
+        private void CombinationDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (CombinationDataGridView.Rows.Count != 0)
+                FillSelectedItemDataGrid(Combinations[CombinationDataGridView.CurrentRow.Index]);
+        }
+
+        private void FillSelectedItemDataGrid(Dictionary<int, Block> Combination)
+        {
+            SelectedItemDataGridView.Rows.Clear();
+
+            foreach (var key in Combination.Keys)
+            {
+                SelectedItemDataGridView.Rows.Add(MetaDataManager.Instance.GetBaseObjectOfId(Combination[key].ClassText, Combination[key].Id).Name, Combination[key].Count);
             }
         }
     }
