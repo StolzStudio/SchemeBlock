@@ -239,6 +239,14 @@ namespace tryhard
                 ABlocks.Add(structuralObject.Index, new Block(structuralObject, aPageOffset));
         }
 
+        public void FillDrawingObjectProjectStructure(int AId, ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks, Point aPageOffset)
+        {
+            foreach (LinkStructuralObject link in Projects[AId].Structure.Links)
+                ALinks.Add(new Link(link));
+            foreach (StructuralObject structuralObject in Projects[AId].Structure.Objects)
+                ABlocks.Add(structuralObject.Index, new Block(structuralObject, aPageOffset));
+        }
+
         public void SerializeMetaObjects()
         {
             foreach (string ObjectName in Objects.Keys)

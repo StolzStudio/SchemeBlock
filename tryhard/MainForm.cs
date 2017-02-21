@@ -45,7 +45,14 @@ namespace tryhard
             isNextStep = false;
             UpStructurePanel.SendToBack();
             MainPage.BringToFront();
-        }     
+            if (ProgramState.isSelectedProject && ProgramState.currentProjectId != -1)
+                SetProject();
+        }   
+        
+        private void SetProject()
+        {
+            DrawManager.LoadProjectStructureOfObject(ProgramState.currentProjectId);
+        }
 
         private void MainPage_Paint(object sender, PaintEventArgs e)
         {

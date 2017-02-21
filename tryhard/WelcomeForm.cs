@@ -79,6 +79,7 @@ namespace tryhard
             if (indexItem == -1) return;
             ProjectsListBox.SelectedIndex = indexItem;
             ProgramState.currentProjectId = ProjectsInfo[indexItem].Id;
+            ProgramState.isSelectedProject = true;
             this.Close();
         }
 

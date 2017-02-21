@@ -56,6 +56,15 @@ namespace tryhard
             Page.Invalidate();
         }
 
+        public void LoadProjectStructureOfObject(int AId)
+        {
+            DeleteAllElements();
+            MetaDataManager.Instance.FillDrawingObjectProjectStructure(AId, ref Links, ref Blocks, Page.Location);
+            if (Blocks.Count != 0)
+                this.block_counter = Blocks.Max(block => block.Value.Index) + 1;
+            Page.Invalidate();
+        }
+
         public void AddLink(Link ANewLink)
         {
             Links.Add(ANewLink);
