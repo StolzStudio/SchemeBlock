@@ -43,15 +43,27 @@ namespace tryhard
 
             isMouseDown = false;
             isNextStep = false;
+
+            SetProject();
+
             UpStructurePanel.SendToBack();
             MainPage.BringToFront();
-            if (ProgramState.isSelectedProject && ProgramState.currentProjectId != -1)
-                SetProject();
         }   
         
         private void SetProject()
         {
-            DrawManager.LoadProjectStructureOfObject(ProgramState.currentProjectId);
+            if (ProgramState.isSelectedProject && ProgramState.currentProjectId != -1)
+            {
+                currentProject = new Project(MetaDataManager.Instance.Projects[ProgramState.currentProjectId]);
+                DrawManager.LoadProjectStructureOfObject(ProgramState.currentProjectId);
+            }
+            else
+                CreateProject();
+        }
+
+        private void CreateProject()
+        {
+            currentProject = new Project();
         }
 
         private void MainPage_Paint(object sender, PaintEventArgs e)

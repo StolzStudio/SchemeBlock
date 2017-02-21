@@ -18,17 +18,47 @@ namespace tryhard
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int selectedCell { get; set; } = -1;
+        public int SelectedCell { get; set; } = -1;
         public int EstimatedFieldId { get; set; }
-        public ObjectsStructure Structure { get; set; }
-        public Dictionary<int, int> SelectedStructureTypes { get; set; }
-        public Dictionary<int, List<DownStructure>> DownStructures { get; set; }
+        public FieldSlice FieldParameters { get; set; }
+        public ObjectsStructure Structure { get; set; } = new ObjectsStructure();
+        public Dictionary<int, int> SelectedStructureTypes { get; set; } = new Dictionary<int, int>();
+        public Dictionary<int, List<DownStructure>> DownStructures { get; set; } = new Dictionary<int, List<DownStructure>>();
+
+        public Project() { }
+        public Project(Project originalProject)
+        {
+            Id = originalProject.Id;
+            Name = originalProject.Name;
+            SelectedCell = originalProject.SelectedCell;
+            EstimatedFieldId = originalProject.EstimatedFieldId;
+            Structure = new ObjectsStructure(originalProject.Structure);
+            SelectedStructureTypes = new Dictionary<int, int>();
+            FieldParameters = new FieldSlice();
+            FieldParameters.Fill();
+            foreach (int key in originalProject.SelectedStructureTypes.Keys)
+                SelectedStructureTypes.Add(key, originalProject.SelectedStructureTypes[key]);
+            foreach (int key in originalProject.DownStructures.Keys)
+            {
+                List<DownStructure> downStructures = new List<DownStructure>();
+                foreach (DownStructure downStructure in originalProject.DownStructures[key])
+                    downStructures.Add(new DownStructure(downStructure));
+                DownStructures.Add(key, downStructures);
+            }
+        }
     }
 
     public class ObjectsStructure
     {
-        public List<StructuralObject> Objects { get; set; }
-        public List<LinkStructuralObject> Links { get; set; }
+        public List<StructuralObject> Objects { get; set; } = new List<StructuralObject>();
+        public List<LinkStructuralObject> Links { get; set; } = new List<LinkStructuralObject>();
+
+        public ObjectsStructure() { }
+        public ObjectsStructure(ObjectsStructure originalStructure)
+        {
+            Objects = originalStructure.Objects.Select(s => new StructuralObject(s)).ToList();
+            Links = originalStructure.Links.Select(l => new LinkStructuralObject(l)).ToList();
+        }
     }
 
     public class LinkStructuralObject
@@ -36,6 +66,14 @@ namespace tryhard
         public int FirstBlockIndex { get; set; }
         public int SecondBlockIndex { get; set; }
         public string LinkParameter { get; set; }
+
+        public LinkStructuralObject() { }
+        public LinkStructuralObject(LinkStructuralObject originalLink)
+        {
+            FirstBlockIndex = originalLink.FirstBlockIndex;
+            SecondBlockIndex = originalLink.SecondBlockIndex;
+            LinkParameter = originalLink.LinkParameter;
+        }
     }
 
     public class StructuralObject
@@ -43,7 +81,16 @@ namespace tryhard
         public int Id { get; set; }
         public int Index { get; set; }
         public string Type { get; set; }
-        public Point Coordinates { get; set; }
+        public Point Coordinates { get; set; } = new Point();
+
+        public StructuralObject() { }
+        public StructuralObject(StructuralObject originObject)
+        {
+            Id = originObject.Id;
+            Index = originObject.Index;
+            Type = originObject.Type;
+            Coordinates = new Point(originObject.Coordinates.X, originObject.Coordinates.Y);
+        }
     }
 
     public abstract class BaseObject

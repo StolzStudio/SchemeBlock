@@ -8,20 +8,78 @@ namespace tryhard
 {
     public enum StructureType { Kesson = 0, Monoleg = 1, Multileg = 2 };
 
-    static class Field
+    public class FieldSlice
     {
-        public static double yWater { get; set; } = 1;
-        public static double dLocalWater { get; set; } = 30;
-        public static double dGlobalWater { get; set; } = 50;
-        public static double hWave50 { get; set; } = 6;
-        public static double hWave001 { get; set; } = 12;
-        public static double dIce { get; set; } = 3;
-        public static double durabilityIce { get; set; } = 2;
-        public static double diameterIce { get; set; } = 3000;
-        public static double speedIce { get; set; } = 0.5;
-        public static double durabilityGround { get; set; } = 250;
+        public double yWater { get; set; } = 1;
+        public double dLocalWater { get; set; } = 30;
+        public double dGlobalWater { get; set; } = 50;
+        public double hWave50 { get; set; } = 6;
+        public double hWave001 { get; set; } = 12;
+        public double dIce { get; set; } = 3;
+        public double durabilityIce { get; set; } = 2;
+        public double diameterIce { get; set; } = 3000;
+        public double speedIce { get; set; } = 0.5;
+        public double durabilityGround { get; set; } = 250;
 
-        public static void DefaultInitialize()
+        public FieldSlice() { }
+
+        public void Fill()
+        {
+            yWater = Field.Instance.yWater;
+            dLocalWater = Field.Instance.dLocalWater;
+            dGlobalWater = Field.Instance.dGlobalWater;
+            hWave50 = Field.Instance.hWave50;
+            hWave001 = Field.Instance.hWave001;
+            dIce = Field.Instance.dIce;
+            durabilityIce = Field.Instance.durabilityIce;
+            diameterIce = Field.Instance.diameterIce;
+            speedIce = Field.Instance.speedIce;
+            durabilityGround= Field.Instance.durabilityGround;
+        }
+    }
+
+    public class Field
+    {
+        public double yWater { get; set; } = 1;
+        public double dLocalWater { get; set; } = 30;
+        public double dGlobalWater { get; set; } = 50;
+        public double hWave50 { get; set; } = 6;
+        public double hWave001 { get; set; } = 12;
+        public double dIce { get; set; } = 3;
+        public double durabilityIce { get; set; } = 2;
+        public double diameterIce { get; set; } = 3000;
+        public double speedIce { get; set; } = 0.5;
+        public double durabilityGround { get; set; } = 250;
+
+        private static Field instance;
+        private Field () { }
+        public static Field Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Field();
+                }
+                return instance;
+            }
+        }
+
+        public void Initialize(Field originalField)
+        {
+            yWater = originalField.yWater;
+            dLocalWater = originalField.dLocalWater;
+            dGlobalWater = originalField.dGlobalWater;
+            hWave50 = originalField.hWave50;
+            hWave001 = originalField.hWave001;
+            dIce = originalField.dIce;
+            durabilityIce = originalField.durabilityIce;
+            diameterIce = originalField.diameterIce;
+            speedIce = originalField.speedIce;
+            durabilityGround = originalField.durabilityGround;
+    }
+
+        public void Initialize()
         {
             yWater = 1;
             dLocalWater = 30;
@@ -39,7 +97,7 @@ namespace tryhard
     public class DownStructure
     {
         public bool isCalculated { get; set; }
-        public StructureType Type { get; set; }
+        public StructureType type { get; set; }
         public int countBC { get; set; }
         public int countSC { get; set; }
         public double wUpStructure { get; set; }
@@ -59,6 +117,27 @@ namespace tryhard
         public double weight = 0;
 
         public DownStructure() { }
+        public DownStructure(DownStructure originalStructure)
+        {
+            isCalculated = originalStructure.isCalculated;
+            type = originalStructure.type;
+            countBC = originalStructure.countBC;
+            countSC = originalStructure.countSC;
+            wUpStructure = originalStructure.wUpStructure;
+            pUpStructure = originalStructure.pUpStructure;
+            dWallCell = originalStructure.dWallCell;
+            hStructure = originalStructure.hStructure;
+            wCell = originalStructure.wCell;
+            hExCl = originalStructure.hExCl;
+            hTrCl = originalStructure.hTrCl;
+            yMat = originalStructure.yMat;
+            yMatBallast = originalStructure.yMatBallast;
+            supportCell = new Cell(originalStructure.supportCell);
+            baseCell = new BaseCell(originalStructure.baseCell);
+            cost = originalStructure.cost;
+            minTrCl = originalStructure.minTrCl;
+        }
+
 
         public DownStructure(StructureType type)
         {
@@ -73,8 +152,8 @@ namespace tryhard
 
         private void SetCellCount(StructureType type)
         {
-            Type = type;
-            switch (type)
+            this.type = type;
+            switch (this.type)
             {
                 case StructureType.Kesson: countSC = 25; countBC = 25; break;
                 case StructureType.Monoleg: countSC = 1; countBC = 9; break;
@@ -84,7 +163,7 @@ namespace tryhard
 
         public void DefaultInitialize()
         {
-            minTrCl = 0.5 * Field.hWave001 + 2.5;
+            minTrCl = 0.5 * Field.Instance.hWave001 + 2.5;
             wUpStructure = 100;
             dWallCell = 0.75;
             wCell = 20;
@@ -94,7 +173,7 @@ namespace tryhard
 
         public bool CalculateDownStructure(double _pUpStructure)
         {
-            SetCellCount(Type);
+            SetCellCount(type);
             supportCell = new Cell();
             baseCell = new BaseCell();
             weight = cost = 0;
@@ -122,19 +201,19 @@ namespace tryhard
 
         public void CalculateHeightStricture()
         {
-            hExCl = 0.5 * Field.hWave001 + 0.5;
-            hStructure = Field.dGlobalWater + hExCl;
+            hExCl = 0.5 * Field.Instance.hWave001 + 0.5;
+            hStructure = Field.Instance.dGlobalWater + hExCl;
             hTrCl = hStructure;
         }
 
         public bool CalculateBaseParameters()
         {
             CalculateHeightStricture();
-            supportCell.CalculateParameters(hExCl, hStructure - Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
-            baseCell.CalculateParameters(hExCl, Field.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+            supportCell.CalculateParameters(hExCl, hStructure - Field.Instance.dGlobalWater * 0.4, wCell, dWallCell, yMat);
+            baseCell.CalculateParameters(hExCl, Field.Instance.dGlobalWater * 0.4, wCell, dWallCell, yMat);
             double vMatStr = countBC * baseCell.vMat + countSC * supportCell.vMat;
             double vStr = countBC * baseCell.v + countSC * supportCell.v;
-            double v0 = vMatStr * yMat / Field.yWater;
+            double v0 = vMatStr * yMat / Field.Instance.yWater;
             double w = (vStr - v0) / v0;
             double l = w * vStr;
             if (v0 <= countBC * baseCell.v)
@@ -196,34 +275,34 @@ namespace tryhard
         //
         public bool CheckFlatShift()
         {
-            return (CalculateLongitudinalForce(Field.yWater) * Math.Tan(180 / Math.PI * 20)) / CalculateIceLoad() > 1;
+            return (CalculateLongitudinalForce(Field.Instance.yWater) * Math.Tan(180 / Math.PI * 20)) / CalculateIceLoad() > 1;
         }
         //
         //Проверка прочности по грунту
         //
         public bool CheckGroundDurability()
         {
-            double longitudinalForce = CalculateLongitudinalForce(Field.yWater);
+            double longitudinalForce = CalculateLongitudinalForce(Field.Instance.yWater);
             double aBaseCells = countBC * baseCell.a;
             double armPower = CalculateArmPower();
             double iceLoad = CalculateIceLoad();
             double momentFlexResistance = CalculateMomentFlexResistance();
             double sigma = longitudinalForce / aBaseCells - (armPower * iceLoad) / momentFlexResistance;
-            return Field.durabilityGround / Math.Abs(sigma) > 1;
+            return Field.Instance.durabilityGround / Math.Abs(sigma) > 1;
         }
         //
         //Рассчет ледовой нагрузки
         //
         public double CalculateIceLoad()
         {
-            double dh = supportCell.wOutside / Field.dIce;
+            double dh = supportCell.wOutside / Field.Instance.dIce;
             double kb = 0;
             double kv = 0;
             double Fcp = 0;
             double Fbp = 0;
-            CalculateKbKv(out kb, out kv, dh, Field.speedIce, Field.diameterIce);
-            Fbp = 0.83 * kb * kv * Field.durabilityIce * Field.diameterIce * Field.dIce;
-            Fcp = 0.00126 * Field.speedIce * Field.dIce * Math.Sqrt(Fbp * supportCell.a);
+            CalculateKbKv(out kb, out kv, dh, Field.Instance.speedIce, Field.Instance.diameterIce);
+            Fbp = 0.83 * kb * kv * Field.Instance.durabilityIce * Field.Instance.diameterIce * Field.Instance.dIce;
+            Fcp = 0.00126 * Field.Instance.speedIce * Field.Instance.dIce * Math.Sqrt(Fbp * supportCell.a);
             return Math.Min(Fcp, Fbp);
         }
         //
@@ -304,7 +383,7 @@ namespace tryhard
 
         public double CalculateArmPower()
         {
-            return Field.dGlobalWater - (17.0 / 30.0) * Field.dIce;
+            return Field.Instance.dGlobalWater - (17.0 / 30.0) * Field.Instance.dIce;
         }
 
         //
@@ -312,8 +391,8 @@ namespace tryhard
         //
         public double GetLiftingPower()
         {
-            return countSC * supportCell.GetLiftingPowerValue(Field.yWater) + 
-                   countBC * baseCell.GetLiftingPowerValue(Field.yWater);
+            return countSC * supportCell.GetLiftingPowerValue(Field.Instance.yWater) + 
+                   countBC * baseCell.GetLiftingPowerValue(Field.Instance.yWater);
         }
         //
         //Вычисление остойчивости при транспортировке
@@ -359,7 +438,7 @@ namespace tryhard
         public double CalculatePhi()
         {
             double phi = 0;
-            if (Type == StructureType.Kesson || Type == StructureType.Multileg)
+            if (type == StructureType.Kesson || type == StructureType.Multileg)
                 phi = 2.0 * hTrCl / wUpStructure;
             else
                 phi = hTrCl / supportCell.wOutside;
@@ -405,11 +484,28 @@ namespace tryhard
         public double pMatWall { get; set; }
 
         public Cell() { }
+        public Cell(Cell originCell)
+        {
+            a = originCell.a;
+            h = originCell.h;
+            v = originCell.v;
+            p = originCell.p;
+            kp = originCell.kp;
+            vMat = originCell.vMat;
+            dWall = originCell.dWall;
+            hTrCl = originCell.hTrCl;
+            vTrCl = originCell.vTrCl;
+            wInside = originCell.wInside;
+            wOutside = originCell.wOutside;
+            aCSWall = originCell.aCSWall;
+            vMatWall = originCell.vMatWall;
+            pMatWall = originCell.pMatWall;
+        }
 
         public virtual void CalculateParameters(double _hExCl, double _hTrCl, double _wOutside, double _dWall, double _yMat)
         {
             dWall = _dWall;
-            h = _hExCl + Field.dGlobalWater * 0.6;
+            h = _hExCl + Field.Instance.dGlobalWater * 0.6;
             wOutside = _wOutside;
             wInside = wOutside - 2 * dWall;
             a = wOutside * wOutside;
@@ -431,7 +527,7 @@ namespace tryhard
 
         public virtual void CalculateKP()
         {
-            kp = Field.dGlobalWater * 0.4 + h * 0.5;
+            kp = Field.Instance.dGlobalWater * 0.4 + h * 0.5;
         }
 
         public virtual double GetLiftingPowerValue(double yWater)
@@ -456,13 +552,26 @@ namespace tryhard
 
 
         public BaseCell() { }
+        public BaseCell(BaseCell originalCell) : base()
+        {
+            dCover = originalCell.dCover;
+            aCover = originalCell.aCover;
+            vMatCover = originalCell.vMatCover;
+            pMatCover = originalCell.pMatCover;
+            dBottom = originalCell.dBottom;
+            aBottom = originalCell.aBottom;
+            vMatBottom = originalCell.vMatBottom;
+            pMatBottom = originalCell.pMatBottom;
+            dBallast = originalCell.dBallast;
+            pBallast = originalCell.pBallast;
+        }
 
         public override void CalculateParameters(double _hExCl, double _hTrCl, double _wOutside, double _dWall, double _yMat)
         {
             dWall = _dWall;
             wOutside = _wOutside;
             wInside = wOutside - 2 * dWall;
-            if (Field.dGlobalWater < 25)
+            if (Field.Instance.dGlobalWater < 25)
             {
                 dCover = 0.5;
                 dBottom = 1.0;
@@ -471,7 +580,7 @@ namespace tryhard
                 dCover = 1;
                 dBottom = 1.5;
             }
-            h = Field.dGlobalWater * 0.4;
+            h = Field.Instance.dGlobalWater * 0.4;
             a = wOutside * wOutside;
             v = a * h;
             aCover = wInside * wInside;

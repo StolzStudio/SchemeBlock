@@ -74,9 +74,8 @@ namespace tryhard
         {
             if(selectedCell == -1) return;
             string propertyName = ParseControlName((sender as NumericUpDown).Name, "UpDown");
-            var typeField = typeof(Field);
-            System.Reflection.PropertyInfo propertyInfo = typeField.GetProperty(propertyName);
-            propertyInfo.SetValue(null, Convert.ToSingle((sender as NumericUpDown).Value));
+            System.Reflection.PropertyInfo propertyInfo = Field.Instance.GetType().GetProperty(propertyName);
+            propertyInfo.SetValue(Field.Instance, Convert.ToSingle((sender as NumericUpDown).Value));
             CalculateAllStructures();
             FillStructureTypeGridView();
         }
@@ -114,16 +113,16 @@ namespace tryhard
 
         private void FillFieldParametersPanel()
         {
-            dLocalWaterUpDown.Value = Convert.ToDecimal(Field.dLocalWater);
-            dGlobalWaterUpDown.Value = Convert.ToDecimal(Field.dGlobalWater);
-            hWave001UpDown.Value = Convert.ToDecimal(Field.hWave001);
-            hWave50UpDown.Value = Convert.ToDecimal(Field.hWave50);
-            yWaterUpDown.Value = Convert.ToDecimal(Field.yWater);
-            diameterIceUpDown.Value = Convert.ToDecimal(Field.diameterIce);
-            dIceUpDown.Value = Convert.ToDecimal(Field.dIce);
-            durabilityIceUpDown.Value = Convert.ToDecimal(Field.durabilityIce);
-            speedIceUpDown.Value = Convert.ToDecimal(Field.speedIce);
-            groundDurabilityUpDown.Value = Convert.ToDecimal(Field.durabilityGround);
+            dLocalWaterUpDown.Value = Convert.ToDecimal(Field.Instance.dLocalWater);
+            dGlobalWaterUpDown.Value = Convert.ToDecimal(Field.Instance.dGlobalWater);
+            hWave001UpDown.Value = Convert.ToDecimal(Field.Instance.hWave001);
+            hWave50UpDown.Value = Convert.ToDecimal(Field.Instance.hWave50);
+            yWaterUpDown.Value = Convert.ToDecimal(Field.Instance.yWater);
+            diameterIceUpDown.Value = Convert.ToDecimal(Field.Instance.diameterIce);
+            dIceUpDown.Value = Convert.ToDecimal(Field.Instance.dIce);
+            durabilityIceUpDown.Value = Convert.ToDecimal(Field.Instance.durabilityIce);
+            speedIceUpDown.Value = Convert.ToDecimal(Field.Instance.speedIce);
+            groundDurabilityUpDown.Value = Convert.ToDecimal(Field.Instance.durabilityGround);
         }
 
         private void FillStructureParametersPanel()
@@ -195,17 +194,17 @@ namespace tryhard
 
         private void SaveProject()
         {
-            Project project = new Project();
-            project.Id = MetaDataManager.Instance.GetFreeProjectId();
-            project.Name = NameTextBox.Text;
-            project.EstimatedFieldId = (MetaDataManager.Instance.GetObjectsInfoByType("field_parameters")).ToList()[FieldComboBox.SelectedIndex].Id;
-            project.selectedCell = selectedCell;
-            ObjectsStructure structure = new ObjectsStructure(); ;
+            currentProject.Id = MetaDataManager.Instance.GetFreeProjectId();
+            currentProject.Name = NameTextBox.Text;
+            currentProject.SelectedCell = selectedCell;
+            ObjectsStructure structure = new ObjectsStructure();
             MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, DrawManager.Blocks, ref structure);
-            project.Structure = structure;
-            project.SelectedStructureTypes = SelectedStructureTypes;
-            project.DownStructures = DownStructures;
-            MetaDataManager.Instance.PushProject(project);
+            currentProject.Structure = structure;
+            currentProject.FieldParameters = new FieldSlice();
+            currentProject.FieldParameters.Fill();
+            currentProject.SelectedStructureTypes = SelectedStructureTypes;
+            currentProject.DownStructures = DownStructures;
+            MetaDataManager.Instance.PushProject(currentProject);
         }
 
 
