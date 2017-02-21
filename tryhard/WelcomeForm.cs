@@ -73,6 +73,15 @@ namespace tryhard
             e.DrawFocusRectangle();
         }
 
+        private void ProjectsListBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            int indexItem = (sender as ListBox).IndexFromPoint(new Point(e.X, e.Y));
+            if (indexItem == -1) return;
+            ProjectsListBox.SelectedIndex = indexItem;
+            ProgramState.currentProjectId = ProjectsInfo[indexItem].Id;
+            this.Close();
+        }
+
         private void ProjectsListBox_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             Point pnt = new Point(e.X, e.Y);

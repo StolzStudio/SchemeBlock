@@ -61,7 +61,8 @@
             this.ProjectsListBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.ProjectsListBox_DrawItem);
             this.ProjectsListBox.MouseLeave += new System.EventHandler(this.ProjectsListBox_MouseLeave);
             this.ProjectsListBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ProjectsListBox_MouseMove);
-            
+            this.ProjectsListBox.MouseDown+= new System.Windows.Forms.MouseEventHandler(this.ProjectsListBox_MouseDown);
+
             // 
             // imageList1
             // 
