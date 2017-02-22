@@ -259,13 +259,13 @@ namespace tryhard
             return Result;
         }
 
-        private void FillBlockStash(BaseObject aBlockObject, Block aBlock)
+        private void FillBlockStash(BaseObject aBlockObject, Block aBlock, int aCount)
         {
             List<string> BlockParameters = MetaDataManager.Instance.GetParametersByParamenterType("Equipment", aBlock.ClassText, "Output");
             Dictionary<string, Int64> Parameters = new Dictionary<string, Int64>();
             foreach (var b in BlockParameters)
             {
-                Parameters.Add(b, (Int64)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aBlock.Count);
+                Parameters.Add(b, (Int64)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
             }
             BlockStashValue.Add(aBlock.Index, Parameters);
 
@@ -276,12 +276,14 @@ namespace tryhard
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 UpnObjectValue = (Int64)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
 
-            FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex]);
-
             double Result = (double)FieldObjectValue / (double)UpnObjectValue;
             if ((Result > (int)Result)) { Result++; }
 
+            FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex], (int)Result);
+
             (aResult as ProcessingComplex).FluidInput = FieldObjectValue;
+            (aResult as ProcessingComplex).OilOutput = (Int64)aUpnObject.GetType().GetProperty("OilOutput").GetValue(aUpnObject);
+            (aResult as ProcessingComplex).GasOutput = (Int64)aUpnObject.GetType().GetProperty("GasOutput").GetValue(aUpnObject);
             return (int)Result;
         }
 
@@ -296,7 +298,7 @@ namespace tryhard
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 DkObjectValue = (Int64)aDkObject.GetType().GetProperty("FluidInput").GetValue(aDkObject);
 
-            FillBlockStash(aDkObject, aCombination[Links[Queue[0]].FirstBlockIndex]);
+            FillBlockStash(aDkObject, aCombination[Links[Queue[0]].FirstBlockIndex], 1);
 
             if (FieldHoles <= DkHoles)
             {
@@ -328,6 +330,7 @@ namespace tryhard
             else
             {
                 (aResult as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+                (aResult as IntegratedComplex).FluidInput = (aResult as IntegratedComplex).FluidOutput;
             }
             return (int)Result; 
         }
@@ -354,8 +357,6 @@ namespace tryhard
                    BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter] -= aLink.LinkParameterValue;
                 }
             }
-
-            FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex]);
             
             if (aResult.GetType().ToString() == "tryhard.ProcessingComplex")
             {
@@ -381,6 +382,8 @@ namespace tryhard
             }
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
+
+            FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex], (int)Result);
             return (int)Result;
         }
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
