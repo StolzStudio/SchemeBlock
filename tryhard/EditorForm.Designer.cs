@@ -70,19 +70,17 @@
             this.WorkCombinationPanel = new System.Windows.Forms.Panel();
             this.WorkCombinationLabel = new System.Windows.Forms.Label();
             this.CombinationDataGridView = new System.Windows.Forms.DataGridView();
-            this.CheckColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VolumeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PeopleDemandColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ElectricityDemandColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectedItemDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddNewObjectButton = new System.Windows.Forms.Button();
             this.EditObjectButton = new System.Windows.Forms.Button();
             this.DrawPage = new tryhard.DrawPage();
+            this.CheckColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VolumeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolStrip.SuspendLayout();
             this.panel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -502,9 +500,7 @@
             this.NameColumn,
             this.CostColumn,
             this.VolumeColumn,
-            this.WeightColumn,
-            this.PeopleDemandColumn,
-            this.ElectricityDemandColumn});
+            this.WeightColumn});
             this.CombinationDataGridView.Location = new System.Drawing.Point(429, 30);
             this.CombinationDataGridView.Name = "CombinationDataGridView";
             this.CombinationDataGridView.RowHeadersVisible = false;
@@ -513,56 +509,6 @@
             this.CombinationDataGridView.Size = new System.Drawing.Size(810, 521);
             this.CombinationDataGridView.TabIndex = 29;
             this.CombinationDataGridView.SelectionChanged += new System.EventHandler(this.CombinationDataGridView_SelectionChanged);
-            // 
-            // CheckColumn
-            // 
-            this.CheckColumn.HeaderText = "";
-            this.CheckColumn.Name = "CheckColumn";
-            this.CheckColumn.Width = 25;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.HeaderText = " Название";
-            this.NameColumn.Name = "NameColumn";
-            // 
-            // CostColumn
-            // 
-            dataGridViewCellStyle1.Format = "C3";
-            dataGridViewCellStyle1.NullValue = null;
-            this.CostColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CostColumn.HeaderText = "Цена";
-            this.CostColumn.Name = "CostColumn";
-            this.CostColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CostColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CostColumn.Width = 150;
-            // 
-            // VolumeColumn
-            // 
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.VolumeColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.VolumeColumn.HeaderText = "Объем";
-            this.VolumeColumn.Name = "VolumeColumn";
-            this.VolumeColumn.Width = 150;
-            // 
-            // WeightColumn
-            // 
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.WeightColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.WeightColumn.HeaderText = "Вес";
-            this.WeightColumn.Name = "WeightColumn";
-            this.WeightColumn.Width = 150;
-            // 
-            // PeopleDemandColumn
-            // 
-            this.PeopleDemandColumn.HeaderText = "Обслуживающий персонал";
-            this.PeopleDemandColumn.Name = "PeopleDemandColumn";
-            // 
-            // ElectricityDemandColumn
-            // 
-            this.ElectricityDemandColumn.HeaderText = "Потребляемое электричество";
-            this.ElectricityDemandColumn.Name = "ElectricityDemandColumn";
             // 
             // SelectedItemDataGridView
             // 
@@ -637,12 +583,53 @@
             this.DrawPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseMove);
             this.DrawPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseUp);
             // 
+            // CheckColumn
+            // 
+            this.CheckColumn.HeaderText = "";
+            this.CheckColumn.Name = "CheckColumn";
+            this.CheckColumn.Width = 25;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.HeaderText = " Название";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.Width = 180;
+            // 
+            // CostColumn
+            // 
+            dataGridViewCellStyle1.Format = "C3";
+            dataGridViewCellStyle1.NullValue = null;
+            this.CostColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.CostColumn.HeaderText = "Цена";
+            this.CostColumn.Name = "CostColumn";
+            this.CostColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CostColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CostColumn.Width = 200;
+            // 
+            // VolumeColumn
+            // 
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.VolumeColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.VolumeColumn.HeaderText = "Объем";
+            this.VolumeColumn.Name = "VolumeColumn";
+            this.VolumeColumn.Width = 200;
+            // 
+            // WeightColumn
+            // 
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.WeightColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.WeightColumn.HeaderText = "Вес";
+            this.WeightColumn.Name = "WeightColumn";
+            this.WeightColumn.Width = 200;
+            // 
             // EditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1248, 619);
+            this.ClientSize = new System.Drawing.Size(1248, 618);
             this.Controls.Add(this.EditObjectButton);
             this.Controls.Add(this.GoNextButton);
             this.Controls.Add(this.GoBackButton);
@@ -723,13 +710,6 @@
         private System.Windows.Forms.Label FieldPropertyLabel;
         public System.Windows.Forms.DataGridView FieldPropertyDataGridView;
         private System.Windows.Forms.Button CalculateButton;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CostColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VolumeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn WeightColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PeopleDemandColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ElectricityDemandColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -738,5 +718,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Label ObjectPropertiesLabel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CostColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VolumeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WeightColumn;
     }
 }

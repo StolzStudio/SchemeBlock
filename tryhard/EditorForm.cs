@@ -641,17 +641,32 @@ namespace tryhard
         private void CombinationDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (CombinationDataGridView.Rows.Count != 0)
+            {
                 FillSelectedItemDataGrid(Combinations[CombinationDataGridView.CurrentRow.Index]);
+                FillSelectedComplexDataGrid(Complexes[CombinationDataGridView.CurrentRow.Index]);
+            }   
         }
 
-        private void FillSelectedItemDataGrid(Dictionary<int, Block> Combination)
+        private void FillSelectedItemDataGrid(Dictionary<int, Block> aCombination)
         {
             SelectedItemDataGridView.Rows.Clear();
 
-            foreach (var key in Combination.Keys)
+            foreach (var key in aCombination.Keys)
             {
-                SelectedItemDataGridView.Rows.Add(MetaDataManager.Instance.GetBaseObjectOfId(Combination[key].ClassText, Combination[key].Id).Name, Combination[key].Count);
+                SelectedItemDataGridView.Rows.Add(MetaDataManager.Instance.GetBaseObjectOfId(aCombination[key].ClassText, aCombination[key].Id).Name, aCombination[key].Count);
             }
+        }
+
+        private void FillSelectedComplexDataGrid(Complex aComplex)
+        {
+            SelectedComplexDataGridView.Rows.Clear();
+            foreach (var obj in aComplex.GetType().GetProperties())
+            {
+                if ((obj.Name != "Structure")&&(obj.Name != "Id")&&(obj.Name != "Name")&&(obj.Name != "EstimatedFieldId")&&
+                    (obj.Name != "Cost")&&(obj.Name != "Volume")&&(obj.Name != "Weight"))
+                    SelectedComplexDataGridView.Rows.Add(MetaDataManager.Instance.Dictionary[obj.Name],
+                                                    aComplex.GetType().GetProperty(obj.Name).GetValue(aComplex));
+            } 
         }
     }
 }
