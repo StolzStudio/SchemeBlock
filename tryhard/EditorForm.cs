@@ -622,6 +622,8 @@ namespace tryhard
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
+            CombinationDataGridView.Rows.Clear();
+
             Combinations = CalcManager.CalculateBlocksCombinations(DrawManager.Blocks);
             Complexes = new List<Complex>();
             foreach (var Combination in Combinations)

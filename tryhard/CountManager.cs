@@ -7,18 +7,6 @@ using System.Windows.Forms;
 
 namespace tryhard
 {
-    class CountBlockIndeces
-    {
-        public List<int> Indeces;
-        public string ClassText;
-
-        public CountBlockIndeces(List<int> aIndeces, string aClassText)
-        {
-            Indeces = aIndeces;
-            ClassText = aClassText;
-        }
-    }
-
     class CountManager
     {
         private bool isEquipment;
@@ -26,7 +14,6 @@ namespace tryhard
         private string ObjectType;
         List<int> Queue;
         Dictionary<int, Dictionary<string, Int64>> BlockStashValue;
-        private List<CountBlockIndeces> BlocksIndex;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
 
@@ -124,15 +111,6 @@ namespace tryhard
         //
         //
         //
-        public void SetIndexArray()
-        {
-            foreach (var key in Blocks.Keys)
-            {
-                BlocksIndex.Add(new CountBlockIndeces(MetaDataManager.Instance.GetIdCortageByType(Blocks[key].ClassText),   
-                                Blocks[key].ClassText));
-            }
-        }
-
         private int GetObjectId(string aClass, string aModel)
         {
             List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(aClass);
@@ -145,48 +123,6 @@ namespace tryhard
                 }
             }
             return -1;
-        }
-
-        public void FillPropertyDataGrid(List<BaseObject> aCombination, bool aState, string aType)
-        {
-            //BaseObject SaveObject = MetaDataManager.Instance.GetBaseObjectOfId(ComboBoxType, 0);
-
-            //Form.PropteryDataGridView.Rows.Clear();
-            //if (!aState)
-            //{
-            //    MakeCalculateEquipment(Combination, SaveObject);
-            //    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
-            //        foreach (string APropertyName in AObjectInfo.Properties)
-            //        {
-            //            switch (APropertyName)
-            //            {
-            //                case "Id":
-            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
-            //                    break;
-            //                case "Name":
-            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, "");
-            //                    break;
-            //                default:
-            //                    Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
-            //                    break;
-            //            }
-            //        }
-            //}
-            //else
-            //{
-            //    foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[aType].Where(obj => obj.Name == ComboBoxType))
-            //        foreach (string APropertyName in AObjectInfo.Properties)
-            //        {
-            //            if (APropertyName == "Id")
-            //            {
-            //                Form.PropteryDataGridView.Rows.Add(APropertyName, MetaDataManager.Instance.GetIdCortageByType(ComboBoxType).Count);
-            //            }
-            //            else
-            //            {
-            //                Form.PropteryDataGridView.Rows.Add(APropertyName, SaveObject.GetType().GetProperty(APropertyName).GetValue(SaveObject));
-            //            }
-            //        }
-            //}
         }
 
         public void MakeCalculateEquipment(List<BaseObject> aCombination, BaseObject aSaveObject)
