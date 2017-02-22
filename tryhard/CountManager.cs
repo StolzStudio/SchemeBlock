@@ -230,19 +230,19 @@ namespace tryhard
                 if ((ObjectType == "mining_complex")||(ObjectType == "integrated_complex"))
                 {
                     MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject);
+                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject, Result);
                 }
                 else
                 {
                     MainObject = MetaDataManager.Instance.GetBaseObjectOfId("upn", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(aCombination, FieldObject, MainObject);
+                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(aCombination, FieldObject, MainObject, Result);
                 }
 
                 foreach (var q in Queue)
                 {
                     BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
                     BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
-                    aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q]);
+                    aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result);
                 }
             }
             
@@ -271,7 +271,7 @@ namespace tryhard
 
         }
 
-        private int GiveCountOfUpnObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aUpnObject)
+        private int GiveCountOfUpnObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aUpnObject, Complex aResult)
         {
             Int64 FieldObjectValue = (Int64)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
             Int64 UpnObjectValue = (Int64)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
@@ -280,10 +280,12 @@ namespace tryhard
 
             double Result = (double)FieldObjectValue / (double)UpnObjectValue;
             if ((Result > (int)Result)) { Result++; }
+
+            (aResult as ProcessingComplex).FluidInput = FieldObjectValue;
             return (int)Result;
         }
 
-        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject)
+        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject, Complex aResult)
         {
             int FieldHoles = (int)aFieldObject.GetType().GetProperty("HolesAmount").GetValue(aFieldObject);
             int DkHoles = (int)aDkObject.GetType().GetProperty("HolesAmount").GetValue(aDkObject);
@@ -319,10 +321,18 @@ namespace tryhard
                     BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = DkObjectValue;
                 }
             }
+            if (aResult.GetType().ToString() == "tryhard.MiningComplex")
+            {
+                (aResult as MiningComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+            }
+            else
+            {
+                (aResult as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+            }
             return (int)Result; 
         }
 
-        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink)
+        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, Complex aResult)
         {
             Int64 FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter];
             if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
@@ -346,7 +356,29 @@ namespace tryhard
             }
 
             FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex]);
-
+            
+            if (aResult.GetType().ToString() == "tryhard.ProcessingComplex")
+            {
+                if (aLink.LinkParameter == "Oil")
+                {
+                    (aResult as ProcessingComplex).OilOutput += FirstObjectValue;
+                }
+                if (aLink.LinkParameter == "Gas")
+                {
+                    (aResult as ProcessingComplex).GasOutput += FirstObjectValue;
+                }
+            }
+            else if (aResult.GetType().ToString() == "tryhard.IntegratedComplex")
+            {
+                if (aLink.LinkParameter == "Oil")
+                {
+                    (aResult as IntegratedComplex).OilOutput += FirstObjectValue;
+                }
+                if (aLink.LinkParameter == "Gas")
+                {
+                    (aResult as IntegratedComplex).GasOutput += FirstObjectValue;
+                }
+            }
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
             return (int)Result;
