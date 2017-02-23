@@ -472,24 +472,55 @@ namespace tryhard
             }
             else
             {
-                foreach (DataGridViewRow row in SelectedItemDataGridView.Rows)
+                List<int> Indeces = GetListOfSelectedItems();
+
+                if (Indeces.Count == 0)
                 {
-                    foreach (BaseObject obj in MetaDataManager.Instance.Objects[EditObject.Type].Where(ob => ob.Id == EditObject.Id))
+                    MessageBox.Show("Вы не выбрали ни одного комплекса для сохранения");
+                    return;
+                }
+
+                foreach(var ind in Indeces)
+                {
+                    if (!CheckSelectedItemToName(ind))
                     {
-                        if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int32))
-                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, Convert.ToInt32(row.Cells[1].Value));
-                        else if (obj.GetType().GetProperty((string)row.Cells[0].Value).PropertyType == typeof(System.Int64))
-                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, Convert.ToInt64(row.Cells[1].Value));
-                        else
-                            obj.GetType().GetProperty((string)row.Cells[0].Value).SetValue(obj, row.Cells[1].Value);
+                        MessageBox.Show("Укажите названия для всех выбранных комплексов.");
+                        return;
                     }
                 }
-                ObjectsStructure structure = new ObjectsStructure();
-                MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, DrawManager.Blocks, ref structure);
-                MetaDataManager.Instance.PushObjectStructure(EditObject.Type, EditObject.Id, structure);
+
+                foreach (var ind in Indeces)
+                {
+                    ObjectsStructure structure = new ObjectsStructure();
+                    MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, Combinations[ind], ref structure);
+                    MetaDataManager.Instance.PushObjectStructure(EditObject.Type, EditObject.Id, structure);
+                }
                 GoBackButton.PerformClick();
                 GoBackButton.PerformClick();
             }
+        }
+
+        private List<int> GetListOfSelectedItems()
+        {
+            List<int> Result = new List<int>();
+
+            foreach(DataGridViewRow row in CombinationDataGridView.Rows)
+            {
+                if (row.Cells[0].Value.Equals(true))
+                {
+                    Result.Add(row.Index);
+                }
+            }
+            return Result;
+        }
+
+        private bool CheckSelectedItemToName(int aIndex)
+        {
+            if ((CombinationDataGridView.Rows[aIndex].Cells[1] == null)||(CombinationDataGridView.Rows[aIndex].Cells[1].Value == ""))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void SetMode(bool AEditMode)
@@ -671,8 +702,13 @@ namespace tryhard
 
         private void CombinationDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if ((isEditMode)&&(Complexes != null))
-                Complexes[e.RowIndex].Name = CombinationDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            if ((isEditMode) && (Complexes != null))
+            {
+                if (CombinationDataGridView.Rows[e.RowIndex].Cells[1].Value != null)
+                {
+                    Complexes[e.RowIndex].Name = CombinationDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                }
+            }
         }
     }
 }
