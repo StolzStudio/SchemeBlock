@@ -516,7 +516,7 @@ namespace tryhard
 
         private bool CheckSelectedItemToName(int aIndex)
         {
-            if ((CombinationDataGridView.Rows[aIndex].Cells[1] == null)||(CombinationDataGridView.Rows[aIndex].Cells[1].Value == ""))
+            if ((CombinationDataGridView.Rows[aIndex].Cells[1].Value == null)||(CombinationDataGridView.Rows[aIndex].Cells[1].Value == ""))
             {
                 return false;
             }
