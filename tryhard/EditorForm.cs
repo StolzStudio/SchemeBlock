@@ -668,5 +668,11 @@ namespace tryhard
                                                     aComplex.GetType().GetProperty(obj.Name).GetValue(aComplex));
             } 
         }
+
+        private void CombinationDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((isEditMode)&&(Complexes != null))
+                Complexes[e.RowIndex].Name = CombinationDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
     }
 }
