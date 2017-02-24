@@ -88,6 +88,12 @@
     <Compile Include="MetaDataManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetParamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetParamForm.Designer.cs">
+      <DependentUpon>SetParamForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpStructurePanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SetParamForm.resx">
+      <DependentUpon>SetParamForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WelcomeForm.resx">
       <DependentUpon>WelcomeForm.cs</DependentUpon>
     </EmbeddedResource>

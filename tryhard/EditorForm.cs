@@ -456,11 +456,22 @@ namespace tryhard
                 isNextStep = true;
                 ToolStrip.Enabled = false;
                 EditObjectButton.Enabled = false;
+
+                if (DrawManager.Links.Count == 0)
+                {
+                    SetParamForm ObjectParamForm = new SetParamForm(CategoryStripComboBox.SelectedItem.ToString(),
+                                                                    TypeStripComboBox.SelectedItem.ToString());
+                    ObjectParamForm.Show();
+                    GoBackButton.PerformClick();
+                    return;
+                }
+
                 CalcManager = new CountManager(ref DrawManager.Blocks, 
                                                ref DrawManager.Links, 
                                                MetaDataManager.Instance.Dictionary[CategoryStripComboBox.SelectedItem.ToString()],
                                                MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]
                                                );
+
                 if (CalcManager.CheckCombination() != "ok")
                 {
                     MessageBox.Show(CalcManager.CheckCombination());

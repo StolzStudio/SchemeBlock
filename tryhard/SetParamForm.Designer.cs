@@ -30,37 +30,105 @@
         {
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TypeLabel = new System.Windows.Forms.Label();
+            this.NamePanel = new System.Windows.Forms.Panel();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.ObjectParamDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NamePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectParamDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // CategoryLabel
             // 
             this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(12, 18);
+            this.CategoryLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CategoryLabel.Location = new System.Drawing.Point(14, 9);
             this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(35, 13);
+            this.CategoryLabel.Size = new System.Drawing.Size(0, 16);
             this.CategoryLabel.TabIndex = 0;
-            this.CategoryLabel.Text = "label1";
             // 
             // TypeLabel
             // 
             this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Location = new System.Drawing.Point(137, 18);
+            this.TypeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TypeLabel.Location = new System.Drawing.Point(151, 9);
             this.TypeLabel.Name = "TypeLabel";
-            this.TypeLabel.Size = new System.Drawing.Size(35, 13);
+            this.TypeLabel.Size = new System.Drawing.Size(0, 16);
             this.TypeLabel.TabIndex = 1;
-            this.TypeLabel.Text = "label1";
+            // 
+            // NamePanel
+            // 
+            this.NamePanel.BackColor = System.Drawing.Color.Orange;
+            this.NamePanel.Controls.Add(this.CategoryLabel);
+            this.NamePanel.Controls.Add(this.TypeLabel);
+            this.NamePanel.Location = new System.Drawing.Point(-2, 0);
+            this.NamePanel.Name = "NamePanel";
+            this.NamePanel.Size = new System.Drawing.Size(287, 35);
+            this.NamePanel.TabIndex = 2;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.SaveButton.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SaveButton.Location = new System.Drawing.Point(10, 383);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(264, 30);
+            this.SaveButton.TabIndex = 4;
+            this.SaveButton.Text = "Сохранить";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // ObjectParamDataGridView
+            // 
+            this.ObjectParamDataGridView.AllowUserToAddRows = false;
+            this.ObjectParamDataGridView.AllowUserToResizeColumns = false;
+            this.ObjectParamDataGridView.AllowUserToResizeRows = false;
+            this.ObjectParamDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.ObjectParamDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.ObjectParamDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ObjectParamDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ObjectParamDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.ObjectParamDataGridView.Location = new System.Drawing.Point(10, 41);
+            this.ObjectParamDataGridView.Name = "ObjectParamDataGridView";
+            this.ObjectParamDataGridView.RowHeadersVisible = false;
+            this.ObjectParamDataGridView.RowTemplate.Height = 20;
+            this.ObjectParamDataGridView.Size = new System.Drawing.Size(264, 336);
+            this.ObjectParamDataGridView.TabIndex = 38;
+            this.ObjectParamDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ObjectParamDataGridView_CellValueChanged);
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn5.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Значение";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn6.Width = 140;
             // 
             // SetParamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 416);
-            this.Controls.Add(this.TypeLabel);
-            this.Controls.Add(this.CategoryLabel);
+            this.Controls.Add(this.ObjectParamDataGridView);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.NamePanel);
             this.Name = "SetParamForm";
             this.Text = "SetParamForm";
+            this.NamePanel.ResumeLayout(false);
+            this.NamePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ObjectParamDataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -68,5 +136,10 @@
 
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.Label TypeLabel;
+        private System.Windows.Forms.Panel NamePanel;
+        private System.Windows.Forms.Button SaveButton;
+        public System.Windows.Forms.DataGridView ObjectParamDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }
