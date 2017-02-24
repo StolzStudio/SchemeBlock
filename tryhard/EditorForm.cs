@@ -459,8 +459,19 @@ namespace tryhard
 
                 if (DrawManager.Links.Count == 0)
                 {
-                    SetParamForm ObjectParamForm = new SetParamForm(CategoryStripComboBox.SelectedItem.ToString(),
-                                                                    TypeStripComboBox.SelectedItem.ToString());
+                    SetParamForm ObjectParamForm;
+                    if (!isEditObject)
+                    {
+                        ObjectParamForm = new SetParamForm(CategoryStripComboBox.SelectedItem.ToString(),
+                                                           TypeStripComboBox.SelectedItem.ToString());
+                    }
+                    else
+                    {
+                        ObjectParamForm = new SetParamForm(CategoryStripComboBox.SelectedItem.ToString(),
+                                                           TypeStripComboBox.SelectedItem.ToString(),
+                                                           EditObject.Id);
+                    }
+
                     ObjectParamForm.Show();
                     GoBackButton.PerformClick();
                     GoBackButton.PerformClick();

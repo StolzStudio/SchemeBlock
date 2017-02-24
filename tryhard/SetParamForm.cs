@@ -47,7 +47,14 @@ namespace tryhard
         {
             Type SaveObjectType = Type.GetType("tryhard." + GiveTypeName());
 
-            SaveObject = (BaseObject)Activator.CreateInstance(SaveObjectType);
+            if (ObjectId != -1)
+            {
+                SaveObject = MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[ObjectType]][ObjectId];
+            }
+            else
+            {
+                SaveObject = (BaseObject)Activator.CreateInstance(SaveObjectType);
+            }
 
             foreach (var property in SaveObjectType.GetProperties())
             {
