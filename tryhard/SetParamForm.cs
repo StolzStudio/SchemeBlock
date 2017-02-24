@@ -86,10 +86,35 @@ namespace tryhard
             if (SaveObject != null)
             {
                 if (ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value != null)
-                {                  
-                    SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString());
+                {
+                    if (ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString() != "Имя")
+                    {
+                        SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, Convert.ToInt64(ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value));
+                    }
+                    else
+                    {
+                        SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value);
+                    }
                 }
             }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(MetaDataManager.Instance.Dictionary[ObjectType]);
+            ObjectsStructure structure = new ObjectsStructure();
+            //MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, Combinations[ind], ref structure);
+            if (ObjectId != -1)
+            {
+                MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[ObjectType]][ObjectId] = SaveObject;
+            }
+            else
+            {
+                SaveObject.Id = Ids.Max() + 1;
+                MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[ObjectType]].Add(SaveObject);
+            }
+            MetaDataManager.Instance.PushObjectStructure(MetaDataManager.Instance.Dictionary[ObjectType], SaveObject.Id, structure);
+            this.Close();
         }
     }
 }

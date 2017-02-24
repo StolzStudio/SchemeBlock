@@ -9,7 +9,7 @@ namespace tryhard
 {
     class CountManager
     {
-        private bool isEquipment;
+        public bool isEquipment;
         private string CategoryType;
         private string ObjectType;
         List<int> Queue;
@@ -123,16 +123,6 @@ namespace tryhard
                 }
             }
             return -1;
-        }
-
-        public void MakeCalculateEquipment(List<BaseObject> aCombination, BaseObject aSaveObject)
-        {
-            foreach (var el in aCombination)
-            {
-                (aSaveObject as MaterialObject).Weight += (el as MaterialObject).Weight;
-                (aSaveObject as MaterialObject).Volume += (el as MaterialObject).Volume;
-                (aSaveObject as MaterialObject).Cost   += (el as MaterialObject).Cost;
-            }
         }
         //
         //check parameters

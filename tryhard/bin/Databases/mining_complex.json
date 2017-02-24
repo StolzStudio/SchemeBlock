@@ -165,5 +165,20 @@
     },
     "Id": 2,
     "Name": "MC-17"
+  },
+  {
+    "FluidOutput": 0,
+    "EstimatedFieldId": 0,
+    "PeopleDemand": 0,
+    "ElectricityDemand": 0,
+    "Weight": 0,
+    "Volume": 0,
+    "Cost": 0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 3,
+    "Name": "MC_TEST"
   }
 ]

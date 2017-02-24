@@ -77,6 +77,7 @@
             this.SaveButton.TabIndex = 4;
             this.SaveButton.Text = "Сохранить";
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // ObjectParamDataGridView
             // 
