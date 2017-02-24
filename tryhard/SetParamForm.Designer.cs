@@ -43,7 +43,7 @@
             // 
             this.CategoryLabel.AutoSize = true;
             this.CategoryLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CategoryLabel.Location = new System.Drawing.Point(14, 9);
+            this.CategoryLabel.Location = new System.Drawing.Point(20, 9);
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(0, 16);
             this.CategoryLabel.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.TypeLabel.AutoSize = true;
             this.TypeLabel.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TypeLabel.Location = new System.Drawing.Point(151, 9);
+            this.TypeLabel.Location = new System.Drawing.Point(130, 9);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(0, 16);
             this.TypeLabel.TabIndex = 1;
