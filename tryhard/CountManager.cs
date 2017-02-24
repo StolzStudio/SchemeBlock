@@ -220,6 +220,8 @@ namespace tryhard
                 Result = new ProcessingComplex();
             }
 
+            Result.Id = -1;
+
             if (Links.Count != 0)
             {
                 BlockStashValue = new Dictionary<int, Dictionary<string, Int64>>();

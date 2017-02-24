@@ -495,8 +495,15 @@ namespace tryhard
                     ObjectsStructure structure = new ObjectsStructure();
                     MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, Combinations[ind], ref structure);
 
-                    Complexes[ind].Id = Ids.Max() + 1;
-                    MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]].Add(Complexes[ind]); 
+                    if (Complexes[ind].Id == EditObject.Id)
+                    {
+                        MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]][EditObject.Id] = Complexes[ind];
+                    }
+                    else
+                    {
+                        Complexes[ind].Id = Ids.Max() + 1;
+                        MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]].Add(Complexes[ind]);
+                    }
                     MetaDataManager.Instance.PushObjectStructure(MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()], Complexes[ind].Id, structure);
                 }
                 GoBackButton.PerformClick();
@@ -681,6 +688,8 @@ namespace tryhard
                         CombinationDataGridView.Rows[i].Cells[0].Value = true;
                         CombinationDataGridView.Rows[i].Cells[1].Value = EditObject.Model;
                         CombinationDataGridView.CurrentCell = CombinationDataGridView.Rows[i].Cells[0];
+
+                        Complexes[i].Id = EditObject.Id;
                     }
                 }
             }

@@ -126,9 +126,9 @@
     "EstimatedFieldId": 0,
     "PeopleDemand": 2,
     "ElectricityDemand": 0,
-    "Weight": 47,
-    "Volume": 40,
-    "Cost": 66200000,
+    "Weight": 35,
+    "Volume": 20,
+    "Cost": 50000000,
     "Structure": {
       "Objects": [
         {
@@ -142,6 +142,12 @@
           "Index": 2,
           "Type": "upn",
           "Coordinates": "839, 70"
+        },
+        {
+          "Id": 0,
+          "Index": 3,
+          "Type": "rtn",
+          "Coordinates": "848, 279"
         }
       ],
       "Links": [
@@ -149,6 +155,11 @@
           "FirstBlockIndex": 1,
           "SecondBlockIndex": 2,
           "LinkParameter": "Fluid"
+        },
+        {
+          "FirstBlockIndex": 2,
+          "SecondBlockIndex": 3,
+          "LinkParameter": "Oil"
         }
       ]
     },
