@@ -489,11 +489,19 @@ namespace tryhard
                     }
                 }
 
+                Dictionary<string, BaseObject> Objects = new Dictionary<string, BaseObject>();
+
+                Objects.Add(Complexes[0].GetType().ToString(), Complexes[0]);
+
+                List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]);
                 foreach (var ind in Indeces)
                 {
                     ObjectsStructure structure = new ObjectsStructure();
                     MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, Combinations[ind], ref structure);
-                    MetaDataManager.Instance.PushObjectStructure(EditObject.Type, EditObject.Id, structure);
+
+                    Complexes[ind].Id = Ids.Max() + 1;
+                    MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]].Add(Complexes[ind]); 
+                    MetaDataManager.Instance.PushObjectStructure(MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()], Complexes[ind].Id, structure);
                 }
                 GoBackButton.PerformClick();
                 GoBackButton.PerformClick();

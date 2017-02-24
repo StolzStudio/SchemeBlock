@@ -120,5 +120,39 @@
     },
     "Id": 1,
     "Name": "MC-15000"
+  },
+  {
+    "FluidOutput": 2400,
+    "EstimatedFieldId": 0,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 0,
+    "Weight": 47,
+    "Volume": 40,
+    "Cost": 66200000,
+    "Structure": {
+      "Objects": [
+        {
+          "Id": 0,
+          "Index": 1,
+          "Type": "dk",
+          "Coordinates": "676, 166"
+        },
+        {
+          "Id": 0,
+          "Index": 2,
+          "Type": "upn",
+          "Coordinates": "839, 70"
+        }
+      ],
+      "Links": [
+        {
+          "FirstBlockIndex": 1,
+          "SecondBlockIndex": 2,
+          "LinkParameter": "Fluid"
+        }
+      ]
+    },
+    "Id": 2,
+    "Name": "MC-17"
   }
 ]
