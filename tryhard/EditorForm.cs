@@ -489,10 +489,6 @@ namespace tryhard
                     }
                 }
 
-                Dictionary<string, BaseObject> Objects = new Dictionary<string, BaseObject>();
-
-                Objects.Add(Complexes[0].GetType().ToString(), Complexes[0]);
-
                 List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(MetaDataManager.Instance.Dictionary[TypeStripComboBox.SelectedItem.ToString()]);
                 foreach (var ind in Indeces)
                 {
@@ -675,6 +671,31 @@ namespace tryhard
             {
                 CombinationDataGridView.CurrentCell = CombinationDataGridView.Rows[CombinationDataGridView.CurrentRow.Index].Cells[0];
             }
+
+            if (isEditObject)
+            {
+                for (int i = 0; i < Combinations.Count; i++)
+                {
+                    if (IsCombinationsEqual(DrawManager.Blocks, Combinations[i]))
+                    {
+                        CombinationDataGridView.Rows[i].Cells[0].Value = true;
+                        CombinationDataGridView.Rows[i].Cells[1].Value = EditObject.Model;
+                        CombinationDataGridView.CurrentCell = CombinationDataGridView.Rows[i].Cells[0];
+                    }
+                }
+            }
+        }
+
+        private bool IsCombinationsEqual(Dictionary<int, Block> aFirstCombination, Dictionary<int, Block> aSecondCombination)
+        {
+            foreach(var key in aFirstCombination.Keys)
+            {
+                if (aFirstCombination[key].Id != aSecondCombination[key].Id)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private void CombinationDataGridView_SelectionChanged(object sender, EventArgs e)
