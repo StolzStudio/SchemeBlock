@@ -463,6 +463,7 @@ namespace tryhard
                                                                     TypeStripComboBox.SelectedItem.ToString());
                     ObjectParamForm.Show();
                     GoBackButton.PerformClick();
+                    GoBackButton.PerformClick();
                     return;
                 }
 

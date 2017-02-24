@@ -12,5 +12,19 @@
     },
     "Id": 0,
     "Name": "fu_0"
+  },
+  {
+    "GasInput": 400,
+    "PeopleDemand": 2,
+    "ElectricityDemand": 300000,
+    "Weight": 2,
+    "Volume": 20,
+    "Cost": 100000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "fu_1"
   }
 ]

@@ -89,7 +89,7 @@ namespace tryhard
                 {
                     if (ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString() != "Имя")
                     {
-                        SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, Convert.ToInt64(ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value));
+                        SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, Convert.ToInt32(ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value));
                     }
                     else
                     {
@@ -101,9 +101,16 @@ namespace tryhard
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in ObjectParamDataGridView.Rows)
+            {
+                if ((row.Cells[1].Value == null)||(row.Cells[1].Value == ""))
+                {
+                    MessageBox.Show("Перед сохранением нужно заполнить все поля");
+                    return;
+                }
+            }
             List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(MetaDataManager.Instance.Dictionary[ObjectType]);
             ObjectsStructure structure = new ObjectsStructure();
-            //MetaDataManager.Instance.FillObjectStructure(DrawManager.Links, Combinations[ind], ref structure);
             if (ObjectId != -1)
             {
                 MetaDataManager.Instance.Objects[MetaDataManager.Instance.Dictionary[ObjectType]][ObjectId] = SaveObject;
