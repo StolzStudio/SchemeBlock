@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetParamForm));
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TypeLabel = new System.Windows.Forms.Label();
             this.NamePanel = new System.Windows.Forms.Panel();
@@ -117,15 +118,18 @@
             // 
             // SetParamForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 416);
             this.Controls.Add(this.ObjectParamDataGridView);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.NamePanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SetParamForm";
-            this.Text = "SetParamForm";
+            this.Text = "Редактирование объекта";
             this.NamePanel.ResumeLayout(false);
             this.NamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectParamDataGridView)).EndInit();
