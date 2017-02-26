@@ -652,7 +652,7 @@
             this.MaximumSize = new System.Drawing.Size(1264, 657);
             this.MinimumSize = new System.Drawing.Size(1264, 657);
             this.Name = "EditorForm";
-            this.Text = "EditorForm";
+            this.Text = "Редактор";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditForm_Closing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditorForm_KeyPress);
             this.ToolStrip.ResumeLayout(false);
