@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetParamForm));
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.TypeLabel = new System.Windows.Forms.Label();
             this.NamePanel = new System.Windows.Forms.Panel();
@@ -124,8 +125,9 @@
             this.Controls.Add(this.ObjectParamDataGridView);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.NamePanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SetParamForm";
-            this.Text = "SetParamForm";
+            this.Text = "Редактирование объекта";
             this.NamePanel.ResumeLayout(false);
             this.NamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ObjectParamDataGridView)).EndInit();
