@@ -46,6 +46,7 @@ namespace tryhard
             selectedCell = DrawManager.Blocks.Keys.First();
             SetCheckedRadioButton();
             FillStructureTypeGridView();
+            SetCommonCost();
         }
 
         private void CalculateAllStructures()
@@ -58,11 +59,25 @@ namespace tryhard
                 foreach (DownStructure structure in DownStructures[Key])
                     structure.CalculateDownStructure(Convert.ToDouble(weight));
             }
+            SetCommonCost();
         }
 
         public void CalculateStructure(int Key, Int64 weight)
         {
             DownStructures[Key][SelectedStructureTypes[Key]].CalculateDownStructure(weight);
+            SetCommonCost();
+        }
+
+        private void SetCommonCost()
+        {
+            double commonCost = 0;
+            foreach (int Key in DrawManager.Blocks.Keys)
+            {
+                BaseObject baseObject = MetaDataManager.Instance.GetBaseObjectOfId(DrawManager.Blocks[Key].ClassText, DrawManager.Blocks[Key].Id);
+                commonCost += Convert.ToDouble(baseObject.GetType().GetProperty("Cost").GetValue(baseObject));
+                commonCost += DownStructures[Key][SelectedStructureTypes[Key]].cost;
+            }
+            CommonCostTextBox.Text = commonCost.ToString("C3");
         }
 
         private string ParseControlName(string aName, string Arg)
@@ -187,6 +202,7 @@ namespace tryhard
             SelectedStructureTypes[selectedCell] = Convert.ToInt32((sender as RadioButton).Tag);
             FillStructureTypeGridView();
             FillStructureParametersPanel();
+            SetCommonCost();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)

@@ -83,6 +83,8 @@ namespace tryhard
             this.ValueCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LinkInfoPanel = new System.Windows.Forms.Panel();
             this.UpStructurePanel = new System.Windows.Forms.Panel();
+            this.CommonCostTextBox = new System.Windows.Forms.TextBox();
+            this.CommonCostLabel = new System.Windows.Forms.Label();
             this.StructureLabel = new System.Windows.Forms.Label();
             this.StructurePanel = new System.Windows.Forms.Panel();
             this.yMatBallastUpDown = new System.Windows.Forms.NumericUpDown();
@@ -137,8 +139,6 @@ namespace tryhard
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StructuresList = new System.Windows.Forms.Label();
             this.MainPage = new tryhard.DrawPage();
-            this.CommonCostLabel = new System.Windows.Forms.Label();
-            this.CommonCostTextBox = new System.Windows.Forms.TextBox();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -370,6 +370,25 @@ namespace tryhard
             this.UpStructurePanel.Name = "UpStructurePanel";
             this.UpStructurePanel.Size = new System.Drawing.Size(1348, 704);
             this.UpStructurePanel.TabIndex = 0;
+            // 
+            // CommonCostTextBox
+            // 
+            this.CommonCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.CommonCostTextBox.Location = new System.Drawing.Point(1008, 467);
+            this.CommonCostTextBox.Name = "CommonCostTextBox";
+            this.CommonCostTextBox.ReadOnly = true;
+            this.CommonCostTextBox.Size = new System.Drawing.Size(303, 26);
+            this.CommonCostTextBox.TabIndex = 40;
+            // 
+            // CommonCostLabel
+            // 
+            this.CommonCostLabel.AutoSize = true;
+            this.CommonCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.CommonCostLabel.Location = new System.Drawing.Point(745, 467);
+            this.CommonCostLabel.Name = "CommonCostLabel";
+            this.CommonCostLabel.Size = new System.Drawing.Size(235, 20);
+            this.CommonCostLabel.TabIndex = 39;
+            this.CommonCostLabel.Text = "Общая стоимость проекта";
             // 
             // StructureLabel
             // 
@@ -1216,25 +1235,6 @@ namespace tryhard
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
-            // CommonCostLabel
-            // 
-            this.CommonCostLabel.AutoSize = true;
-            this.CommonCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.CommonCostLabel.Location = new System.Drawing.Point(745, 467);
-            this.CommonCostLabel.Name = "CommonCostLabel";
-            this.CommonCostLabel.Size = new System.Drawing.Size(235, 20);
-            this.CommonCostLabel.TabIndex = 39;
-            this.CommonCostLabel.Text = "Общая стоимость проекта";
-            // 
-            // CommonCostTextBox
-            // 
-            this.CommonCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.CommonCostTextBox.Location = new System.Drawing.Point(1008, 467);
-            this.CommonCostTextBox.Name = "CommonCostTextBox";
-            this.CommonCostTextBox.ReadOnly = true;
-            this.CommonCostTextBox.Size = new System.Drawing.Size(303, 26);
-            this.CommonCostTextBox.TabIndex = 40;
             // 
             // MainForm
             // 
