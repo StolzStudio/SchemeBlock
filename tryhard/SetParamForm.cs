@@ -45,7 +45,7 @@ namespace tryhard
 
         private void FillObjectParamDataGridView()
         {
-            Type SaveObjectType = Type.GetType("tryhard." + GiveTypeName());
+            Type SaveObjectType = Type.GetType("tryhard." + MetaDataManager.Instance.GiveTypeName(MetaDataManager.Instance.Dictionary[ObjectType]));
 
             if (ObjectId != -1)
             {
@@ -63,29 +63,6 @@ namespace tryhard
                     ObjectParamDataGridView.Rows.Add(MetaDataManager.Instance.Dictionary[property.Name], SaveObject.GetType().GetProperty(property.Name).GetValue(SaveObject));
                 }
             }
-        }
-
-        private string GiveTypeName()
-        {
-            switch (MetaDataManager.Instance.Dictionary[ObjectType])
-            {
-                case "integrated_complex": return "IntegratedComplex"; break;
-                case "processing_complex": return "ProcessingComplex"; break;
-                case "field_parameters": return "FieldParameters"; break;
-                case "mining_complex": return "MiningComplex"; break;
-                case "oil_quality": return "OilQuality"; break;
-                case "ukppv": return "Ukppv"; break;
-                case "ukpg": return "Ukpg"; break;
-                case "nnpv": return "Nnpv"; break;
-                case "rpv": return "Rpv"; break;
-                case "rtn": return "Rtn"; break;
-                case "upn": return "Upn"; break;
-                case "dks": return "Dks"; break;
-                case "dk": return "Dk"; break;
-                case "rr": return "Rr"; break;
-                case "fu": return "Fu"; break;
-            }
-            return null;
         }
 
         private void ObjectParamDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
