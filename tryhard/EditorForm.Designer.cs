@@ -110,7 +110,7 @@
             this.ToolStripSeparator2});
             this.ToolStrip.Location = new System.Drawing.Point(0, 0);
             this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.Size = new System.Drawing.Size(1264, 25);
+            this.ToolStrip.Size = new System.Drawing.Size(1248, 25);
             this.ToolStrip.TabIndex = 0;
             this.ToolStrip.Text = "toolStrip1";
             // 
@@ -163,9 +163,9 @@
             this.panel.Controls.Add(this.AvailableObjectsPanel);
             this.panel.Controls.Add(this.PropertiesGridView);
             this.panel.Controls.Add(this.LinkInfoPanel);
-            this.panel.Location = new System.Drawing.Point(1009, 25);
+            this.panel.Location = new System.Drawing.Point(993, 25);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(255, 632);
+            this.panel.Size = new System.Drawing.Size(255, 594);
             this.panel.TabIndex = 1;
             // 
             // ObjectsTreeView
@@ -175,7 +175,7 @@
             this.ObjectsTreeView.BackColor = System.Drawing.SystemColors.Window;
             this.ObjectsTreeView.Location = new System.Drawing.Point(6, 22);
             this.ObjectsTreeView.Name = "ObjectsTreeView";
-            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 257);
+            this.ObjectsTreeView.Size = new System.Drawing.Size(243, 219);
             this.ObjectsTreeView.TabIndex = 23;
             this.ObjectsTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ObjectsTreeView_AfterSelect);
             // 
@@ -184,7 +184,7 @@
             this.PropertiesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesPanel.BackColor = System.Drawing.Color.Orange;
             this.PropertiesPanel.Controls.Add(this.PropertiesLabel);
-            this.PropertiesPanel.Location = new System.Drawing.Point(6, 282);
+            this.PropertiesPanel.Location = new System.Drawing.Point(6, 244);
             this.PropertiesPanel.Name = "PropertiesPanel";
             this.PropertiesPanel.Size = new System.Drawing.Size(243, 22);
             this.PropertiesPanel.TabIndex = 21;
@@ -230,7 +230,7 @@
             this.PropertiesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameCol,
             this.ValueCol});
-            this.PropertiesGridView.Location = new System.Drawing.Point(6, 304);
+            this.PropertiesGridView.Location = new System.Drawing.Point(6, 266);
             this.PropertiesGridView.Name = "PropertiesGridView";
             this.PropertiesGridView.ReadOnly = true;
             this.PropertiesGridView.RowHeadersVisible = false;
@@ -259,7 +259,7 @@
             this.LinkInfoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LinkInfoPanel.BackColor = System.Drawing.Color.White;
             this.LinkInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 304);
+            this.LinkInfoPanel.Location = new System.Drawing.Point(6, 266);
             this.LinkInfoPanel.Name = "LinkInfoPanel";
             this.LinkInfoPanel.Size = new System.Drawing.Size(243, 285);
             this.LinkInfoPanel.TabIndex = 32;
@@ -269,7 +269,7 @@
             this.GoNextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.GoNextButton.BackColor = System.Drawing.Color.White;
             this.GoNextButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoNextButton.Location = new System.Drawing.Point(1136, 616);
+            this.GoNextButton.Location = new System.Drawing.Point(1120, 578);
             this.GoNextButton.Name = "GoNextButton";
             this.GoNextButton.Size = new System.Drawing.Size(122, 37);
             this.GoNextButton.TabIndex = 28;
@@ -283,7 +283,7 @@
             this.GoBackButton.BackColor = System.Drawing.Color.White;
             this.GoBackButton.Enabled = false;
             this.GoBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.GoBackButton.Location = new System.Drawing.Point(1014, 616);
+            this.GoBackButton.Location = new System.Drawing.Point(999, 578);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(122, 37);
             this.GoBackButton.TabIndex = 27;
@@ -596,7 +596,7 @@
             this.AddNewObjectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AddNewObjectButton.BackColor = System.Drawing.Color.White;
             this.AddNewObjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AddNewObjectButton.Location = new System.Drawing.Point(1116, 0);
+            this.AddNewObjectButton.Location = new System.Drawing.Point(1100, 0);
             this.AddNewObjectButton.Name = "AddNewObjectButton";
             this.AddNewObjectButton.Size = new System.Drawing.Size(142, 23);
             this.AddNewObjectButton.TabIndex = 2;
@@ -625,7 +625,7 @@
             this.DrawPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DrawPage.Location = new System.Drawing.Point(0, 25);
             this.DrawPage.Name = "DrawPage";
-            this.DrawPage.Size = new System.Drawing.Size(1010, 632);
+            this.DrawPage.Size = new System.Drawing.Size(993, 592);
             this.DrawPage.TabIndex = 0;
             this.DrawPage.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawPage_Paint);
             this.DrawPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DrawPage_MouseDown);
@@ -646,14 +646,13 @@
             this.Controls.Add(this.ToolStrip);
             this.Controls.Add(this.WorkPanel);
             this.Controls.Add(this.DrawPage);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1264, 657);
             this.MinimumSize = new System.Drawing.Size(1264, 657);
             this.Name = "EditorForm";
-            this.Text = "Окно редактирования";
+            this.Text = "Редактор";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditForm_Closing);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditorForm_KeyPress);
             this.ToolStrip.ResumeLayout(false);
