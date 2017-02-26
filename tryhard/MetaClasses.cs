@@ -143,10 +143,29 @@ namespace tryhard
         public long Length { get; set; }
     }
 
+    public class Bg : MaterialObject
+    {
+        public int HolesAmount { get; set; }
+        public float DiameterInput { get; set; }
+        public float DiameterOutput { get; set; }
+    }
+
     public class ComplicatedObject : MaterialObject
     {
-        public int PeopleDemand { get; set; }
+        public float PeopleDemand { get; set; }
         public long ElectricityDemand { get; set; }
+    }
+
+    public class Ngs : ComplicatedObject
+    {
+        public long OilOutput { get; set; }
+        public long GasOutput { get; set; }
+    }
+
+    public class Sov : ComplicatedObject
+    {
+        public long OilOutput { get; set; }
+        public long WaterOutput { get; set; }
     }
 
     public class Nnpv : ComplicatedObject

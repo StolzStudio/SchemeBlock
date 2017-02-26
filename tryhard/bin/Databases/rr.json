@@ -1,7 +1,7 @@
 [
   {
     "MaxReagentInput": 1000,
-    "PeopleDemand": 2,
+    "PeopleDemand": 2.0,
     "ElectricityDemand": 30,
     "Weight": 5,
     "Volume": 10,

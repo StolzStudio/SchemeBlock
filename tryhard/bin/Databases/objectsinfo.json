@@ -32,6 +32,53 @@
 	"Detail":
 	[	
 		{
+			"Name": "sov",
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"OilOutput",
+				"WaterOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
+			"Name": "ngs",
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"OilOutput",
+				"GasOutput",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
+			"Name": "bg",
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"HolesAmount",
+				"DiameterInput",
+				"DiameterOutput",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
 			"Name": "bolt",
 			"PossibleLink": [],
 			"Properties":

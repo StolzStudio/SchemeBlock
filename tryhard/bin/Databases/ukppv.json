@@ -2,7 +2,7 @@
   {
     "WaterInput": 480,
     "WaterOutput": 480,
-    "PeopleDemand": 1,
+    "PeopleDemand": 1.0,
     "ElectricityDemand": 0,
     "Weight": 55,
     "Volume": 100,
@@ -17,7 +17,7 @@
   {
     "WaterInput": 250,
     "WaterOutput": 250,
-    "PeopleDemand": 1,
+    "PeopleDemand": 1.0,
     "ElectricityDemand": 0,
     "Weight": 30,
     "Volume": 55,

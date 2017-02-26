@@ -2,7 +2,7 @@
   {
     "FluidOutput": 90000,
     "EstimatedFieldId": 0,
-    "PeopleDemand": 54,
+    "PeopleDemand": 54.0,
     "ElectricityDemand": 2400,
     "Weight": 15000,
     "Volume": 200000,
@@ -54,7 +54,7 @@
   {
     "FluidOutput": 15000,
     "EstimatedFieldId": 1,
-    "PeopleDemand": 34,
+    "PeopleDemand": 34.0,
     "ElectricityDemand": 5000,
     "Weight": 25000,
     "Volume": 400000,
@@ -124,7 +124,7 @@
   {
     "FluidOutput": 2400,
     "EstimatedFieldId": 0,
-    "PeopleDemand": 2,
+    "PeopleDemand": 2.0,
     "ElectricityDemand": 0,
     "Weight": 35,
     "Volume": 20,
@@ -169,7 +169,7 @@
   {
     "FluidOutput": 0,
     "EstimatedFieldId": 0,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 0,
     "Weight": 0,
     "Volume": 0,

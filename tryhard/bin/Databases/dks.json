@@ -3,7 +3,7 @@
     "PressureGradient": 1,
     "GasInput": 1400,
     "GasOutput": 1400,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 0,
     "Weight": 150,
     "Volume": 20,

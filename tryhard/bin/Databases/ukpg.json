@@ -2,7 +2,7 @@
   {
     "WetGasInput": 500,
     "GasOutput": 450,
-    "PeopleDemand": 2,
+    "PeopleDemand": 2.0,
     "ElectricityDemand": 750,
     "Weight": 50,
     "Volume": 120,
@@ -17,7 +17,7 @@
   {
     "WetGasInput": 700,
     "GasOutput": 650,
-    "PeopleDemand": 3,
+    "PeopleDemand": 3.0,
     "ElectricityDemand": 150,
     "Weight": 70,
     "Volume": 300,

@@ -2,7 +2,7 @@
   {
     "WaterInput": 3000,
     "WaterOutput": 3000,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 500,
     "Weight": 3,
     "Volume": 2,
@@ -17,7 +17,7 @@
   {
     "WaterInput": 3000,
     "WaterOutput": 3000,
-    "PeopleDemand": 1,
+    "PeopleDemand": 1.0,
     "ElectricityDemand": 1500,
     "Weight": 5,
     "Volume": 5,
@@ -32,7 +32,7 @@
   {
     "WaterInput": 3000,
     "WaterOutput": 3000,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 800,
     "Weight": 4,
     "Volume": 3,
@@ -47,7 +47,7 @@
   {
     "WaterInput": 3000,
     "WaterOutput": 3000,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 1200,
     "Weight": 6,
     "Volume": 4,
@@ -62,7 +62,7 @@
   {
     "WaterInput": 3000,
     "WaterOutput": 3000,
-    "PeopleDemand": 1,
+    "PeopleDemand": 1.0,
     "ElectricityDemand": 1300,
     "Weight": 5,
     "Volume": 4,

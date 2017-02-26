@@ -1,7 +1,7 @@
 [
   {
     "GasInput": 100,
-    "PeopleDemand": 0,
+    "PeopleDemand": 0.0,
     "ElectricityDemand": 0,
     "Weight": 30,
     "Volume": 15,
@@ -15,7 +15,7 @@
   },
   {
     "GasInput": 400,
-    "PeopleDemand": 2,
+    "PeopleDemand": 2.0,
     "ElectricityDemand": 30,
     "Weight": 2,
     "Volume": 20,
