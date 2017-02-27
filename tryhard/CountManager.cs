@@ -12,6 +12,7 @@ namespace tryhard
         public bool isEquipment;
         private string CategoryType;
         private string ObjectType;
+        private OilQuality FluidParam;
         List<int> Queue;
         Dictionary<int, Dictionary<string, Int64>> BlockStashValue;
         private List<BaseObject> Combination;
@@ -28,8 +29,15 @@ namespace tryhard
             ObjectType = aObjectType;
             Blocks = aBlocks;
             Links  = aLinks;
+
             CreateQueue();
             List<Dictionary<int, Block>> a = CalculateBlocksCombinations(Blocks);
+        }
+
+        public void SetFluidParam(string aFieldName)
+        {
+            int OilQualityId = (MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName)) as FieldParameters).OilQualityId;
+            FluidParam = (MetaDataManager.Instance.GetBaseObjectOfId("oil_quality", OilQualityId) as OilQuality);
         }
         //
         //make combinations
@@ -212,6 +220,7 @@ namespace tryhard
             }
 
             Convert.ChangeType(Result, ResultType);
+
             Result.Id = -1;
             Result.EstimatedFieldId = GetObjectId("field_parameters", aFieldName);
 
