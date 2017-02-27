@@ -155,6 +155,11 @@ namespace tryhard
         public float PeopleCapacity { get; set; }
     }
 
+    public class Ek : ComplicatedObject
+    {
+        public float Power { get; set; }
+    }
+
     public class Ngs : ComplicatedObject
     {
         public float OilOutput { get; set; }
