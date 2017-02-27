@@ -10,6 +10,7 @@ namespace tryhard
     class CountManager
     {
         public bool isEquipment;
+        private bool isComeToStashAgain;
         private string CategoryType;
         private string ObjectType;
         private OilQuality FluidParam;
@@ -29,6 +30,8 @@ namespace tryhard
             ObjectType = aObjectType;
             Blocks = aBlocks;
             Links  = aLinks;
+
+            isComeToStashAgain = false;
 
             CreateQueue();
             List<Dictionary<int, Block>> a = CalculateBlocksCombinations(Blocks);
@@ -246,7 +249,19 @@ namespace tryhard
                 {
                     BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
                     BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
-                    aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result, ResultType);
+
+
+                    int count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result, ResultType);
+                    if (!isComeToStashAgain)
+                    {
+                        aCombination[Links[q].SecondBlockIndex].Count = count;
+                    }
+                    else
+                    {
+                        int CheckCount = aCombination[Links[q].SecondBlockIndex].Count + count;
+                        float ObjectValue = (float)SecondObject.GetType().GetProperty(Links[q].LinkParameter + "Input").GetValue(SecondObject);
+                        float StashValue = BlockStashValue[Links[q].SecondBlockIndex][Links[q].LinkParameter];
+                    }
                 }
 
                 if (Result.GetType().GetProperty("FluidOutput") != null)
@@ -309,21 +324,22 @@ namespace tryhard
         {
             List<string> BlockParameters = MetaDataManager.Instance.GetParametersByParamenterType("Equipment", aBlock.ClassText, "Output");
             Dictionary<string, float> Parameters = new Dictionary<string, float>();
+
             foreach (var b in BlockParameters)
             {
-                if ((aBlockObject.GetType().GetProperty("FluidInput") != null)&&(b != "Fluid"))
-                {
-                    Parameters.Add(b, (float)aBlockObject.GetType().GetProperty("FluidInput").GetValue(aBlockObject) *
-                                      (float)FluidParam.GetType().GetProperty(b + "Proportion").GetValue(FluidParam) * 
-                                      aCount);
-                }
-                else
                 {
                     Parameters.Add(b, (float)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
                 }
             }
-            BlockStashValue.Add(aBlock.Index, Parameters);
 
+            if (!BlockStashValue.Keys.Contains(aBlock.Index))
+            {
+                BlockStashValue.Add(aBlock.Index, Parameters);
+            }
+            else
+            {
+                isComeToStashAgain = true;  
+            }   
         }
 
         private int GiveCountOfUpnObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aUpnObject, Complex aResult)
@@ -336,9 +352,14 @@ namespace tryhard
 
             FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex], (int)Result);
 
+            if (FieldObjectValue <= UpnObjectValue * Result)
+            {
+                BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Oil"] = FieldObjectValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam);
+                BlockStashValue[Links[Queue[0]].FirstBlockIndex]["WetGas"] = FieldObjectValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam);
+                BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Water"] = FieldObjectValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam);
+            }
+
             (aResult as ProcessingComplex).FluidInput = FieldObjectValue;
-            //(aResult as ProcessingComplex).OilOutput = (Int64)aUpnObject.GetType().GetProperty("OilOutput").GetValue(aUpnObject);
-            //(aResult as ProcessingComplex).GasOutput = (Int64)aUpnObject.GetType().GetProperty("GasOutput").GetValue(aUpnObject);
             return (int)Result;
         }
 
@@ -423,7 +444,7 @@ namespace tryhard
             }
             if (aLink.LinkParameter == "Oil")
             {
-                if (aResult.Name == "ProcessingComplex")
+                if (aResultType.Name == "ProcessingComplex")
                 {
                     (aResult as ProcessingComplex).OilOutput += FirstObjectValue;
                 }
@@ -448,8 +469,31 @@ namespace tryhard
             if (Result > (int)Result) { Result++; }
 
             FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex], (int)Result);
+
+            float ResultValue;
+            if (SecondObjectValue * (int)Result <= FirstObjectValue)
+            {
+                ResultValue = SecondObjectValue;
+            }
+            else
+            {
+                ResultValue = FirstObjectValue;
+            }
+
+            if(aSecondObject.GetType().Name == "Upn")
+            {
+                BlockStashValue[aLink.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                BlockStashValue[aLink.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                BlockStashValue[aLink.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+            }
+            else
+            {
+                BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = ResultValue;
+            }
+
             return (int)Result;
         }
+
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
         {
             List<int> Result = new List<int>();
