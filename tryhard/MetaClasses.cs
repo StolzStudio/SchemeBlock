@@ -248,6 +248,7 @@ namespace tryhard
     {
         public float FluidInput { get; set; }
         public float OilOutput { get; set; }
+        public float GasInput { get; set; }
         public float GasOutput { get; set; }
     }
 

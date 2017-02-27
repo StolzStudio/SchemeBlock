@@ -98,13 +98,13 @@ namespace tryhard
             return null;
         }
 
-        public void UpdateFocusedLink(string ALinkParaneter, int ALinkParaneterValue)
+        public void UpdateFocusedLink(string ALinkParameter, int ALinkParameterValue)
         {
             for (int i = 0; i < Links.Count; i++)
                 if (Links[i].isFocus)
                 {
-                    Links[i].LinkParameter = ALinkParaneter;
-                    Links[i].LinkParameterValue = ALinkParaneterValue;
+                    Links[i].LinkParameter = ALinkParameter;
+                    Links[i].LinkParameterValue = ALinkParameterValue;
                 }
         }
 

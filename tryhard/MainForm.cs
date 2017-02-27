@@ -231,7 +231,7 @@ namespace tryhard
                 NumericUpDown numericalUpDown = new System.Windows.Forms.NumericUpDown();
                 numericalUpDown.Location = new System.Drawing.Point(164, MarginInLinkPanel + i * (17 + MarginInLinkPanel));
                 numericalUpDown.Maximum = new decimal(new int[] {
-                Convert.ToInt32(secondObject.GetType().GetProperty(ALink.LinkParameter + "Input").GetValue(secondObject)),
+                Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject)),
                 0,
                 0,
                 0});
@@ -244,8 +244,10 @@ namespace tryhard
                 numericalUpDown.Size = new System.Drawing.Size(67, 20);
                 numericalUpDown.TabIndex = 2;
                 numericalUpDown.Tag = i;
+                Int32 parameter = Convert.ToInt32(secondObject.GetType().GetProperty(LinkableParameters[i] + "Input").GetValue(secondObject));
+                if (ALink.LinkParameter == LinkableParameters[i]) parameter = ALink.LinkParameterValue;
                 numericalUpDown.Value = new decimal(new int[] {
-                ALink.LinkParameterValue,
+                parameter,
                 0,
                 0,
                 0});

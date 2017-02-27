@@ -347,6 +347,7 @@
 				"EstimatedFieldId",
 				"FluidInput",
 				"OilOutput",
+				"GasInput",
 				"GasOutput",
 				"PeopleDemand",
 				"ElectricityDemand",
