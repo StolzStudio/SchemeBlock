@@ -197,6 +197,7 @@ namespace tryhard
         public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
         {
             Complex Result;
+            Type ResultType = Type.GetType("tryhard." + MetaDataManager.Instance.GiveTypeName(ObjectType));
             if (ObjectType == "mining_complex")
             {
                 Result = new MiningComplex();
@@ -210,19 +211,21 @@ namespace tryhard
                 Result = new ProcessingComplex();
             }
 
+            Convert.ChangeType(Result, ResultType);
             Result.Id = -1;
+            Result.EstimatedFieldId = GetObjectId("field_parameters", aFieldName);
 
             if (Links.Count != 0)
             {
                 BlockStashValue = new Dictionary<int, Dictionary<string, Int64>>();
 
-                BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName));
+                BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", Result.EstimatedFieldId);
 
                 BaseObject MainObject;
                 if ((ObjectType == "mining_complex")||(ObjectType == "integrated_complex"))
                 {
                     MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject, Result);
+                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject, Result, ResultType);
                 }
                 else
                 {
@@ -234,7 +237,49 @@ namespace tryhard
                 {
                     BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
                     BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
-                    aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result);
+                    aCombination[Links[q].SecondBlockIndex].Count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result, ResultType);
+                }
+
+                if (Result.GetType().GetProperty("FluidOutput") != null)
+                {
+                    if (ResultType.Name == "MiningComplex")
+                    {
+                        if ((Result as MiningComplex).FluidOutput == 0)
+                        {
+                            (Result as MiningComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+                        }
+                    }
+                    else
+                    {
+                        if ((Result as IntegratedComplex).FluidOutput == 0)
+                        {
+                            (Result as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+                        }
+                    }
+                }
+                if (Result.GetType().GetProperty("FluidInput") != null)
+                {
+                    if (ResultType.Name == "IntegratedComplex")
+                    {
+                        if ((Result as IntegratedComplex).FluidInput == 0)
+                        {
+                            if (Result.GetType().GetProperty("FluidOutput") != null)
+                            {
+                                (Result as IntegratedComplex).FluidInput = (Result as IntegratedComplex).FluidOutput;
+                            }
+                            else
+                            {
+                                (Result as IntegratedComplex).FluidInput = (Int64)FieldObject.GetType().GetProperty("FluidOutput").GetValue(FieldObject);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if ((Result as ProcessingComplex).FluidInput == 0)
+                        {
+                            (Result as ProcessingComplex).FluidInput = (Int64)FieldObject.GetType().GetProperty("FluidOutput").GetValue(FieldObject);
+                        }
+                    }
                 }
             }
             
@@ -274,12 +319,12 @@ namespace tryhard
             FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex], (int)Result);
 
             (aResult as ProcessingComplex).FluidInput = FieldObjectValue;
-            (aResult as ProcessingComplex).OilOutput = (Int64)aUpnObject.GetType().GetProperty("OilOutput").GetValue(aUpnObject);
-            (aResult as ProcessingComplex).GasOutput = (Int64)aUpnObject.GetType().GetProperty("GasOutput").GetValue(aUpnObject);
+            //(aResult as ProcessingComplex).OilOutput = (Int64)aUpnObject.GetType().GetProperty("OilOutput").GetValue(aUpnObject);
+            //(aResult as ProcessingComplex).GasOutput = (Int64)aUpnObject.GetType().GetProperty("GasOutput").GetValue(aUpnObject);
             return (int)Result;
         }
 
-        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject, Complex aResult)
+        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject, Complex aResult, Type aResultType)
         {
             int FieldHoles = (int)aFieldObject.GetType().GetProperty("HolesAmount").GetValue(aFieldObject);
             int DkHoles = (int)aDkObject.GetType().GetProperty("HolesAmount").GetValue(aDkObject);
@@ -315,19 +360,20 @@ namespace tryhard
                     BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"] = DkObjectValue;
                 }
             }
-            if (aResult.GetType().ToString() == "tryhard.MiningComplex")
+
+            if (aResultType.Name == "MiningComplex")
             {
                 (aResult as MiningComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
             }
             else
             {
                 (aResult as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
-                (aResult as IntegratedComplex).FluidInput = (aResult as IntegratedComplex).FluidOutput;
             }
+
             return (int)Result; 
         }
 
-        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, Complex aResult)
+        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, Complex aResult, Type aResultType)
         {
             Int64 FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter];
             if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
@@ -350,28 +396,36 @@ namespace tryhard
                 }
             }
             
-            if (aResult.GetType().ToString() == "tryhard.ProcessingComplex")
+            if (aLink.LinkParameter == "Fluid")
             {
-                if (aLink.LinkParameter == "Oil")
+                if (aResultType.Name == "IntegratedComplex")
+                {
+                    (aResult as IntegratedComplex).FluidInput += FirstObjectValue;
+                }
+            }
+            if (aLink.LinkParameter == "Oil")
+            {
+                if (aResult.Name == "ProcessingComplex")
                 {
                     (aResult as ProcessingComplex).OilOutput += FirstObjectValue;
                 }
-                if (aLink.LinkParameter == "Gas")
-                {
-                    (aResult as ProcessingComplex).GasOutput += FirstObjectValue;
-                }
-            }
-            else if (aResult.GetType().ToString() == "tryhard.IntegratedComplex")
-            {
-                if (aLink.LinkParameter == "Oil")
+                else
                 {
                     (aResult as IntegratedComplex).OilOutput += FirstObjectValue;
                 }
-                if (aLink.LinkParameter == "Gas")
+            }
+            if (aLink.LinkParameter == "Gas")
+            {
+                if (aResult.Name == "ProcessingComplex")
+                {
+                    (aResult as ProcessingComplex).GasOutput += FirstObjectValue;
+                }
+                else
                 {
                     (aResult as IntegratedComplex).GasOutput += FirstObjectValue;
                 }
             }
+
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
 
