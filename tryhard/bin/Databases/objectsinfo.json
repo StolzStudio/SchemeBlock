@@ -111,6 +111,21 @@
 	"Equipment":
 	[
 		{
+			"Name": "jk",
+			"PossibleLink": [],
+			"Properties":
+			[
+				"Id",
+				"Name",
+				"PeopleCapacity",
+				"PeopleDemand",
+				"ElectricityDemand",
+				"Weight",
+				"Volume",
+				"Cost"
+			]
+		},
+		{
 			"Name": "bu",
 			"PossibleLink": [],
 			"Properties":

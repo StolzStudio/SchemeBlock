@@ -294,6 +294,7 @@ namespace tryhard
                 case "bu": result.AddRange(JsonConvert.DeserializeObject<List<Bu>>(json)); break;
                 case "rr": result.AddRange(JsonConvert.DeserializeObject<List<Rr>>(json)); break;
                 case "fu": result.AddRange(JsonConvert.DeserializeObject<List<Fu>>(json)); break;
+                case "jk": result.AddRange(JsonConvert.DeserializeObject<List<Jk>>(json)); break;
             }
             return result;
         }

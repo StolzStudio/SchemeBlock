@@ -114,7 +114,6 @@ namespace tryhard
             {
                 Blocks[key].ClearFocus();
             }
-
             isHaveSelectedBlock = false;
             SelectedBlockIndex = -1;
             Page.Invalidate();
