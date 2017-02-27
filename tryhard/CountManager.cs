@@ -14,7 +14,7 @@ namespace tryhard
         private string ObjectType;
         private OilQuality FluidParam;
         List<int> Queue;
-        Dictionary<int, Dictionary<string, Int64>> BlockStashValue;
+        Dictionary<int, Dictionary<string, float>> BlockStashValue;
         private List<BaseObject> Combination;
         private new List<List<int>> BlocksIndexCombination;
 
@@ -226,7 +226,7 @@ namespace tryhard
 
             if (Links.Count != 0)
             {
-                BlockStashValue = new Dictionary<int, Dictionary<string, Int64>>();
+                BlockStashValue = new Dictionary<int, Dictionary<string, float>>();
 
                 BaseObject FieldObject = MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", Result.EstimatedFieldId);
 
@@ -311,7 +311,16 @@ namespace tryhard
             Dictionary<string, Int64> Parameters = new Dictionary<string, Int64>();
             foreach (var b in BlockParameters)
             {
-                Parameters.Add(b, (Int64)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
+                if ((aBlockObject.GetType().GetProperty("FluidInput") != null)&&(b != "Fluid"))
+                {
+                    Parameters.Add(b, (Int64)aBlockObject.GetType().GetProperty("FluidInput").GetValue(aBlockObject) *
+                                      (double)FluidParam.GetType().GetProperty(b + "Proportion").GetValue(FluidParam) * 
+                                      aCount);
+                }
+                else
+                {
+                    Parameters.Add(b, (Int64)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
+                }
             }
             BlockStashValue.Add(aBlock.Index, Parameters);
 
