@@ -308,7 +308,7 @@ namespace tryhard
                 radioBtn.Size = new System.Drawing.Size(85, 17);
                 radioBtn.TabIndex = i;
                 radioBtn.TabStop = true;
-                radioBtn.Text = LinkableParameters[i];
+                radioBtn.Text = MetaDataManager.Instance.Dictionary[LinkableParameters[i]];
                 radioBtn.Tag = i;
                 radioBtn.UseVisualStyleBackColor = true;
                 if (ALink.LinkParameter == LinkableParameters[i])
@@ -358,7 +358,7 @@ namespace tryhard
 
         private void UpdateLinkParameter(int AParameterIndex)
         {
-            DrawManager.UpdateFocusedLink((LinkInfoPanel.Controls[AParameterIndex * 2] as RadioButton).Text,
+            DrawManager.UpdateFocusedLink(MetaDataManager.Instance.Dictionary[(LinkInfoPanel.Controls[AParameterIndex * 2] as RadioButton).Text],
                                            Decimal.ToInt32((LinkInfoPanel.Controls[AParameterIndex * 2 + 1] as NumericUpDown).Value));
         }
 
