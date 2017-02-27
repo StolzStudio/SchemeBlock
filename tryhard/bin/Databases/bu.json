@@ -1,0 +1,62 @@
+[
+  {
+    "DrillingDepth": 4200.0,
+    "Height": 40.8,
+    "PeopleDemand": 20.0,
+    "ElectricityDemand": 600.0,
+    "Weight": 1028.0,
+    "Volume": 1000.0,
+    "Cost": 200000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "bu-2900/175-EPK"
+  },
+  {
+    "DrillingDepth": 3900.0,
+    "Height": 41.6,
+    "PeopleDemand": 23.0,
+    "ElectricityDemand": 500.0,
+    "Weight": 725.0,
+    "Volume": 980.0,
+    "Cost": 170000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "bu-3900/225-EPK-BM"
+  },
+  {
+    "DrillingDepth": 2450.0,
+    "Height": 40.7,
+    "PeopleDemand": 25.0,
+    "ElectricityDemand": 400.0,
+    "Weight": 862.0,
+    "Volume": 800.0,
+    "Cost": 85000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "bu-1600/100-EU"
+  },
+  {
+    "DrillingDepth": 3500.0,
+    "Height": 41.6,
+    "PeopleDemand": 26.0,
+    "ElectricityDemand": 550.0,
+    "Weight": 1206.0,
+    "Volume": 1130.0,
+    "Cost": 140000000,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 3,
+    "Name": "bu-2900/200-EPK-BM"
+  }
+]
