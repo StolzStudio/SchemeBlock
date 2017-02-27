@@ -261,6 +261,13 @@ namespace tryhard
                         int CheckCount = aCombination[Links[q].SecondBlockIndex].Count + count;
                         float ObjectValue = (float)SecondObject.GetType().GetProperty(Links[q].LinkParameter + "Input").GetValue(SecondObject);
                         float StashValue = BlockStashValue[Links[q].SecondBlockIndex][Links[q].LinkParameter];
+
+                        if ((ObjectValue * CheckCount - StashValue) > ObjectValue)
+                        {
+                            CheckCount--;
+                        }
+                        aCombination[Links[q].SecondBlockIndex].Count = CheckCount;
+                        isComeToStashAgain = false;
                     }
                 }
 
@@ -468,6 +475,7 @@ namespace tryhard
             double Result = (double)FirstObjectValue / (double)SecondObjectValue;
             if (Result > (int)Result) { Result++; }
 
+
             FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex], (int)Result);
 
             float ResultValue;
@@ -480,15 +488,31 @@ namespace tryhard
                 ResultValue = FirstObjectValue;
             }
 
-            if(aSecondObject.GetType().Name == "Upn")
+            if (aSecondObject.GetType().Name == "Upn")
             {
-                BlockStashValue[aLink.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
-                BlockStashValue[aLink.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
-                BlockStashValue[aLink.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+                if (!isComeToStashAgain)
+                {
+                    BlockStashValue[aLink.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[aLink.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[aLink.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+                }
+                else
+                {
+                    BlockStashValue[aLink.SecondBlockIndex]["Oil"] += ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[aLink.SecondBlockIndex]["WetGas"] += ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[aLink.SecondBlockIndex]["Water"] += ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+                }
             }
             else
             {
-                BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = ResultValue;
+                if (!isComeToStashAgain)
+                {
+                    BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = ResultValue;
+                }
+                else
+                {
+                    BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] += ResultValue;
+                }
             }
 
             return (int)Result;
