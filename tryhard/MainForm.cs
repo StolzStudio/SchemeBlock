@@ -331,6 +331,7 @@ namespace tryhard
 
         private void FieldComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (DrawManager != null) DrawManager.DeleteAllElements();
             FillObjectTreeView();
         }
 

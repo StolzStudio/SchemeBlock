@@ -143,6 +143,7 @@ namespace tryhard
             Links.Clear();
             Blocks.Clear();
             SelectedBlockIndex = -1;
+            Page.Invalidate();
         }
 
         public void DeleteElements()
