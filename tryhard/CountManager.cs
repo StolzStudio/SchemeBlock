@@ -324,7 +324,51 @@ namespace tryhard
                 Result.PeopleDemand += (float)BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject) * aCombination[key].Count;
                 Result.ElectricityDemand += (float)BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject) * aCombination[key].Count;
             }
+
+            CalcObjectInComplex(aCombination, Result, Result.PeopleDemand, "Jk", "PeopleCapacity");
+            CalcObjectInComplex(aCombination, Result, Result.ElectricityDemand, "Ek", "Power");
+
             return Result;
+        }
+
+        private void CalcObjectInComplex(Dictionary<int, Block> aCombination, Complex aResult, float aResultResource, string aClass, string aPropertyResource)
+        {
+            List<int> Indeces = new List<int>();
+            foreach (var key in aCombination.Keys)
+            {
+                if (aCombination[key].ClassText == aClass)
+                {
+                    Indeces.Add(key);
+                }
+            }
+
+            if (Indeces.Count != 0)
+            {
+                float Resource = aResultResource; 
+                while (Resource > 0)
+                {
+                    foreach (var Index in Indeces)
+                    {
+                        BaseObject Object = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Index].ClassText, aCombination[Index].Id);
+
+                        aResult.Cost += (float)Object.GetType().GetProperty("Cost").GetValue(Object);
+                        aResult.Volume += (float)Object.GetType().GetProperty("Volume").GetValue(Object);
+                        aResult.Weight += (float)Object.GetType().GetProperty("Weight").GetValue(Object);
+                        if (Object.GetType().Name == "Jk")
+                        {
+                            aResult.ElectricityDemand += (float)Object.GetType().GetProperty("ElectricityDemand").GetValue(Object);
+                        }
+
+                        Resource -= (float)Object.GetType().GetProperty(aPropertyResource).GetValue(Object);
+                        if (Resource <= 0) { break; }
+                    }
+                }
+            }
+        }
+
+        private void CalcEkInComplex(Dictionary<int, Block> aCombination, Complex aResult)
+        {
+
         }
 
         private void FillBlockStash(BaseObject aBlockObject, Block aBlock, int aCount)
