@@ -51,5 +51,20 @@
     },
     "Id": 1,
     "Name": "MC-20000"
+  },
+  {
+    "GasInput": 350000,
+    "EstimatedFieldId": 1,
+    "PeopleDemand": 217,
+    "ElectricityDemand": 0,
+    "Weight": 3141596000.0,
+    "Volume": 120000000.0,
+    "Cost": 66E+12,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "LNG"
   }
 ]
