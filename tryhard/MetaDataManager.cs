@@ -268,8 +268,6 @@ namespace tryhard
 
         private List<BaseObject> DeserializeMetaObjects(string AObjectName)
         {
-            Dictionary<string, System.Type> t = new Dictionary<string, System.Type>() { { "bolt", typeof(Bolt) } };
-
             List<BaseObject> result = new List<BaseObject>();
             string ObjectPath = ObjFilesDir + AObjectName+ ObjFileFormat;
             string json = GetJson(ObjectPath);
@@ -281,7 +279,6 @@ namespace tryhard
                 case "mining_complex": result.AddRange(JsonConvert.DeserializeObject<List<MiningComplex>>(json)); break;
                 case "oil_quality": result.AddRange(JsonConvert.DeserializeObject<List<OilQuality>>(json)); break;
                 case "ukppv": result.AddRange(JsonConvert.DeserializeObject<List<Ukppv>>(json)); break;
-                case "bolt": result.AddRange(JsonConvert.DeserializeObject<List<Bolt>>(json)); break;
                 case "pump": result.AddRange(JsonConvert.DeserializeObject<List<Pump>>(json)); break;
                 case "pipe": result.AddRange(JsonConvert.DeserializeObject<List<Pipe>>(json)); break;
                 case "ukpg": result.AddRange(JsonConvert.DeserializeObject<List<Ukpg>>(json)); break;
