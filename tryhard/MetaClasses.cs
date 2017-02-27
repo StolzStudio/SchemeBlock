@@ -124,12 +124,6 @@ namespace tryhard
         public float WaterProportion { get; set; }
     }
 
-    public class Bolt : MaterialObject
-    {
-        public int Diameter { get; set; }
-        public string Material { get; set; }
-    }
-
     public class Pump : MaterialObject
     {
         public long Input { get; set; }
