@@ -327,13 +327,6 @@ namespace tryhard
 
             foreach (var b in BlockParameters)
             {
-                //if ((aBlockObject.GetType().GetProperty("FluidInput") != null)&&(b != "Fluid"))
-                //{
-                //    Parameters.Add(b, (float)aBlockObject.GetType().GetProperty("FluidInput").GetValue(aBlockObject) *
-                //                      (float)FluidParam.GetType().GetProperty(b + "Proportion").GetValue(FluidParam) * 
-                //                      aCount);
-                //}
-                //else
                 {
                     Parameters.Add(b, (float)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
                 }
@@ -477,18 +470,30 @@ namespace tryhard
 
             FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex], (int)Result);
 
-            if (SecondObjectValue <= FirstObjectValue)
+            float ResultValue;
+            if (SecondObjectValue * (int)Result <= FirstObjectValue)
             {
-                BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = SecondObjectValue;
+                ResultValue = SecondObjectValue;
             }
             else
             {
-                BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = FirstObjectValue;
+                ResultValue = FirstObjectValue;
             }
 
-            
+            if(aSecondObject.GetType().Name == "Upn")
+            {
+                BlockStashValue[aLink.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                BlockStashValue[aLink.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                BlockStashValue[aLink.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+            }
+            else
+            {
+                BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = ResultValue;
+            }
+
             return (int)Result;
         }
+
         private List<int> GiveIndexOfLinkThatHasArgumentLikeFirstBlockIndex(int aIndex)
         {
             List<int> Result = new List<int>();
