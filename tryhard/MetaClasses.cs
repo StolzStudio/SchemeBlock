@@ -162,6 +162,12 @@ namespace tryhard
         public float WaterOutput { get; set; }
     }
 
+    public class Bu : ComplicatedObject
+    {
+        public float DrillingDepth { get; set; }
+        public float Height { get; set; }
+    }
+
     public class Nnpv : ComplicatedObject
     {
         public float WaterInput { get; set; }
