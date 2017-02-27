@@ -1,13 +1,13 @@
 [
   {
-    "WaterInput": 500,
-    "WaterOutput": 500,
-    "WaterVolume": 5000,
+    "WaterInput": 500.0,
+    "WaterOutput": 500.0,
+    "WaterVolume": 5000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 200,
-    "Weight": 600,
-    "Volume": 600,
-    "Cost": 15000000,
+    "ElectricityDemand": 200.0,
+    "Weight": 600.0,
+    "Volume": 600.0,
+    "Cost": 1.5E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -16,14 +16,14 @@
     "Name": "rpv_0"
   },
   {
-    "WaterInput": 1000,
-    "WaterOutput": 1000,
-    "WaterVolume": 10000,
+    "WaterInput": 1000.0,
+    "WaterOutput": 1000.0,
+    "WaterVolume": 10000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 500,
-    "Weight": 1200,
-    "Volume": 1200,
-    "Cost": 30000000,
+    "ElectricityDemand": 500.0,
+    "Weight": 1200.0,
+    "Volume": 1200.0,
+    "Cost": 3E+07,
     "Structure": {
       "Objects": [],
       "Links": []

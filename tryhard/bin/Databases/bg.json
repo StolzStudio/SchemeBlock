@@ -3,9 +3,9 @@
     "HolesAmount": 4,
     "DiameterInput": 200.0,
     "DiameterOutput": 100.0,
-    "Weight": 8,
-    "Volume": 112,
-    "Cost": 912000,
+    "Weight": 8.0,
+    "Volume": 112.0,
+    "Cost": 912000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -17,9 +17,9 @@
     "HolesAmount": 5,
     "DiameterInput": 250.0,
     "DiameterOutput": 100.0,
-    "Weight": 8,
-    "Volume": 112,
-    "Cost": 912000,
+    "Weight": 8.0,
+    "Volume": 112.0,
+    "Cost": 912000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -31,9 +31,9 @@
     "HolesAmount": 6,
     "DiameterInput": 250.0,
     "DiameterOutput": 100.0,
-    "Weight": 8,
-    "Volume": 133,
-    "Cost": 960000,
+    "Weight": 8.0,
+    "Volume": 133.0,
+    "Cost": 960000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -45,9 +45,9 @@
     "HolesAmount": 8,
     "DiameterInput": 300.0,
     "DiameterOutput": 100.0,
-    "Weight": 10,
-    "Volume": 165,
-    "Cost": 1176000,
+    "Weight": 10.0,
+    "Volume": 165.0,
+    "Cost": 1176000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -59,9 +59,9 @@
     "HolesAmount": 4,
     "DiameterInput": 150.0,
     "DiameterOutput": 65.0,
-    "Weight": 8,
-    "Volume": 112,
-    "Cost": 912000,
+    "Weight": 8.0,
+    "Volume": 112.0,
+    "Cost": 912000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -73,9 +73,9 @@
     "HolesAmount": 5,
     "DiameterInput": 150.0,
     "DiameterOutput": 65.0,
-    "Weight": 8,
-    "Volume": 112,
-    "Cost": 912000,
+    "Weight": 8.0,
+    "Volume": 112.0,
+    "Cost": 912000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -87,9 +87,9 @@
     "HolesAmount": 6,
     "DiameterInput": 200.0,
     "DiameterOutput": 65.0,
-    "Weight": 8,
-    "Volume": 133,
-    "Cost": 912000,
+    "Weight": 8.0,
+    "Volume": 133.0,
+    "Cost": 912000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -101,9 +101,9 @@
     "HolesAmount": 8,
     "DiameterInput": 250.0,
     "DiameterOutput": 65.0,
-    "Weight": 10,
-    "Volume": 165,
-    "Cost": 1176000,
+    "Weight": 10.0,
+    "Volume": 165.0,
+    "Cost": 1176000.0,
     "Structure": {
       "Objects": [],
       "Links": []

@@ -1,13 +1,13 @@
 [
   {
     "PressureGradient": 1,
-    "GasInput": 1400,
-    "GasOutput": 1400,
+    "GasInput": 1400.0,
+    "GasOutput": 1400.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 150,
-    "Volume": 20,
-    "Cost": 10000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 150.0,
+    "Volume": 20.0,
+    "Cost": 1E+07,
     "Structure": {
       "Objects": [],
       "Links": []

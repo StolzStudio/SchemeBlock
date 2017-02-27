@@ -1,13 +1,13 @@
 [
   {
-    "OilInput": 25000,
-    "OilOutput": 25000,
-    "OilVolume": 25000,
+    "OilInput": 25000.0,
+    "OilOutput": 25000.0,
+    "OilVolume": 25000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 3200,
-    "Volume": 3000,
-    "Cost": 50000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 3200.0,
+    "Volume": 3000.0,
+    "Cost": 5E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -16,14 +16,14 @@
     "Name": "RTN-25"
   },
   {
-    "OilInput": 50000,
-    "OilOutput": 50000,
-    "OilVolume": 50000,
+    "OilInput": 50000.0,
+    "OilOutput": 50000.0,
+    "OilVolume": 50000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 6400,
-    "Volume": 6000,
-    "Cost": 70000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 6400.0,
+    "Volume": 6000.0,
+    "Cost": 7E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -32,14 +32,14 @@
     "Name": "RTN-50"
   },
   {
-    "OilInput": 100000,
-    "OilOutput": 100000,
-    "OilVolume": 100000,
+    "OilInput": 100000.0,
+    "OilOutput": 100000.0,
+    "OilVolume": 100000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 9200,
-    "Volume": 7000,
-    "Cost": 150000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 9200.0,
+    "Volume": 7000.0,
+    "Cost": 1.5E+08,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -48,14 +48,14 @@
     "Name": "RTN-100"
   },
   {
-    "OilInput": 10000,
-    "OilOutput": 10000,
-    "OilVolume": 10000,
+    "OilInput": 10000.0,
+    "OilOutput": 10000.0,
+    "OilVolume": 10000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 1000,
-    "Volume": 500,
-    "Cost": 20000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 1000.0,
+    "Volume": 500.0,
+    "Cost": 2E+07,
     "Structure": {
       "Objects": [],
       "Links": []

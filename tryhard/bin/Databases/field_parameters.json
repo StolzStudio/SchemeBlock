@@ -1,19 +1,19 @@
 [
   {
-    "FluidOutput": 30000,
+    "FluidOutput": 30000.0,
     "HolesAmount": 10,
     "OilQualityId": 0,
-    "WaterInput": 38000,
+    "WaterInput": 38000.0,
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 0,
     "Name": "field_0"
   },
   {
-    "FluidOutput": 10000,
+    "FluidOutput": 10000.0,
     "HolesAmount": 13,
     "OilQualityId": 0,
-    "WaterInput": 500,
+    "WaterInput": 500.0,
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 1,

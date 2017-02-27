@@ -1,12 +1,12 @@
 [
   {
-    "WaterInput": 480,
-    "WaterOutput": 480,
+    "WaterInput": 480.0,
+    "WaterOutput": 480.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 0,
-    "Weight": 55,
-    "Volume": 100,
-    "Cost": 70000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 55.0,
+    "Volume": 100.0,
+    "Cost": 7E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -15,13 +15,13 @@
     "Name": "UKPPV_0"
   },
   {
-    "WaterInput": 250,
-    "WaterOutput": 250,
+    "WaterInput": 250.0,
+    "WaterOutput": 250.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 0,
-    "Weight": 30,
-    "Volume": 55,
-    "Cost": 40000000,
+    "ElectricityDemand": 0.0,
+    "Weight": 30.0,
+    "Volume": 55.0,
+    "Cost": 4E+07,
     "Structure": {
       "Objects": [],
       "Links": []

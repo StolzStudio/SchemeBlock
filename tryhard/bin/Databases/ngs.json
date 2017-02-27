@@ -1,12 +1,12 @@
 [
   {
-    "OilOutput": 100,
-    "GasOutput": 20700,
+    "OilOutput": 100.0,
+    "GasOutput": 20700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 20,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 570280,
+    "ElectricityDemand": 20.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 570280.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -15,13 +15,13 @@
     "Name": "ngs-06-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 20700,
+    "OilOutput": 100.0,
+    "GasOutput": 20700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 20,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 593600,
+    "ElectricityDemand": 20.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 593600.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -30,13 +30,13 @@
     "Name": "ngs-06-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 20700,
+    "OilOutput": 100.0,
+    "GasOutput": 20700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 22,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 559680,
+    "ElectricityDemand": 22.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 559680.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -45,13 +45,13 @@
     "Name": "ngs-06-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 20700,
+    "OilOutput": 100.0,
+    "GasOutput": 20700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 27,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 583000,
+    "ElectricityDemand": 27.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 583000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -60,13 +60,13 @@
     "Name": "ngs-06-1200-2G"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 23300,
+    "OilOutput": 100.0,
+    "GasOutput": 23300.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 21,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 570280,
+    "ElectricityDemand": 21.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 570280.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -75,13 +75,13 @@
     "Name": "ngs-1-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 23300,
+    "OilOutput": 100.0,
+    "GasOutput": 23300.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 26,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 593600,
+    "ElectricityDemand": 26.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 593600.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -90,13 +90,13 @@
     "Name": "ngs-1-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 23300,
+    "OilOutput": 100.0,
+    "GasOutput": 23300.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 23,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 559680,
+    "ElectricityDemand": 23.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 559680.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -105,13 +105,13 @@
     "Name": "ngs-1-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 23300,
+    "OilOutput": 100.0,
+    "GasOutput": 23300.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 28,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 583000,
+    "ElectricityDemand": 28.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 583000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -120,13 +120,13 @@
     "Name": "ngs-1-1200-2G"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 31400,
+    "OilOutput": 100.0,
+    "GasOutput": 31400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 22,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 655080,
+    "ElectricityDemand": 22.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 655080.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -135,13 +135,13 @@
     "Name": "ngs-16-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 31400,
+    "OilOutput": 100.0,
+    "GasOutput": 31400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 27,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 678400,
+    "ElectricityDemand": 27.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 678400.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -150,13 +150,13 @@
     "Name": "ngs-16-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 31400,
+    "OilOutput": 100.0,
+    "GasOutput": 31400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 24,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 642360,
+    "ElectricityDemand": 24.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 642360.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -165,13 +165,13 @@
     "Name": "ngs-16-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 31400,
+    "OilOutput": 100.0,
+    "GasOutput": 31400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 29,
-    "Weight": 3,
-    "Volume": 12,
-    "Cost": 665680,
+    "ElectricityDemand": 29.0,
+    "Weight": 3.0,
+    "Volume": 12.0,
+    "Cost": 665680.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -180,13 +180,13 @@
     "Name": "ngs-16-1200-2G"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 39000,
+    "OilOutput": 100.0,
+    "GasOutput": 39000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 23,
-    "Weight": 4,
-    "Volume": 12,
-    "Cost": 782280,
+    "ElectricityDemand": 23.0,
+    "Weight": 4.0,
+    "Volume": 12.0,
+    "Cost": 782280.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -195,13 +195,13 @@
     "Name": "ngs-25-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 39000,
+    "OilOutput": 100.0,
+    "GasOutput": 39000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 28,
-    "Weight": 4,
-    "Volume": 12,
-    "Cost": 805600,
+    "ElectricityDemand": 28.0,
+    "Weight": 4.0,
+    "Volume": 12.0,
+    "Cost": 805600.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -210,13 +210,13 @@
     "Name": "ngs-25-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 39000,
+    "OilOutput": 100.0,
+    "GasOutput": 39000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 25,
-    "Weight": 4,
-    "Volume": 12,
-    "Cost": 761080,
+    "ElectricityDemand": 25.0,
+    "Weight": 4.0,
+    "Volume": 12.0,
+    "Cost": 761080.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -225,13 +225,13 @@
     "Name": "ngs-25-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 39000,
+    "OilOutput": 100.0,
+    "GasOutput": 39000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 4,
-    "Volume": 12,
-    "Cost": 784400,
+    "ElectricityDemand": 30.0,
+    "Weight": 4.0,
+    "Volume": 12.0,
+    "Cost": 784400.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -240,13 +240,13 @@
     "Name": "ngs-25-1200-2G"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 55000,
+    "OilOutput": 100.0,
+    "GasOutput": 55000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 5,
-    "Volume": 12,
-    "Cost": 1079080,
+    "ElectricityDemand": 30.0,
+    "Weight": 5.0,
+    "Volume": 12.0,
+    "Cost": 1079080.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -255,13 +255,13 @@
     "Name": "ngs-4-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 55000,
+    "OilOutput": 100.0,
+    "GasOutput": 55000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 29,
-    "Weight": 5,
-    "Volume": 12,
-    "Cost": 1102400,
+    "ElectricityDemand": 29.0,
+    "Weight": 5.0,
+    "Volume": 12.0,
+    "Cost": 1102400.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -270,13 +270,13 @@
     "Name": "ngs-4-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 55000,
+    "OilOutput": 100.0,
+    "GasOutput": 55000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 26,
-    "Weight": 5,
-    "Volume": 12,
-    "Cost": 1055760,
+    "ElectricityDemand": 26.0,
+    "Weight": 5.0,
+    "Volume": 12.0,
+    "Cost": 1055760.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -285,13 +285,13 @@
     "Name": "ngs-4-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 55000,
+    "OilOutput": 100.0,
+    "GasOutput": 55000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 31,
-    "Weight": 5,
-    "Volume": 12,
-    "Cost": 1079080,
+    "ElectricityDemand": 31.0,
+    "Weight": 5.0,
+    "Volume": 12.0,
+    "Cost": 1079080.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -300,13 +300,13 @@
     "Name": "ngs-4-1200-2G"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 74900,
+    "OilOutput": 100.0,
+    "GasOutput": 74900.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 25,
-    "Weight": 7,
-    "Volume": 12,
-    "Cost": 1472340,
+    "ElectricityDemand": 25.0,
+    "Weight": 7.0,
+    "Volume": 12.0,
+    "Cost": 1472340.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -315,13 +315,13 @@
     "Name": "ngs-63-1200-1"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 74900,
+    "OilOutput": 100.0,
+    "GasOutput": 74900.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 7,
-    "Volume": 12,
-    "Cost": 1495872,
+    "ElectricityDemand": 30.0,
+    "Weight": 7.0,
+    "Volume": 12.0,
+    "Cost": 1495872.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -330,13 +330,13 @@
     "Name": "ngs-63-1200-1P"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 74900,
+    "OilOutput": 100.0,
+    "GasOutput": 74900.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 27,
-    "Weight": 7,
-    "Volume": 12,
-    "Cost": 1425700,
+    "ElectricityDemand": 27.0,
+    "Weight": 7.0,
+    "Volume": 12.0,
+    "Cost": 1425700.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -345,13 +345,13 @@
     "Name": "ngs-63-1200-2"
   },
   {
-    "OilOutput": 100,
-    "GasOutput": 74900,
+    "OilOutput": 100.0,
+    "GasOutput": 74900.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 24,
-    "Weight": 7,
-    "Volume": 12,
-    "Cost": 1449232,
+    "ElectricityDemand": 24.0,
+    "Weight": 7.0,
+    "Volume": 12.0,
+    "Cost": 1449232.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -360,13 +360,13 @@
     "Name": "ngs-63-1200-2G"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 41400,
+    "OilOutput": 225.0,
+    "GasOutput": 41400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 4,
-    "Volume": 20,
-    "Cost": 914568,
+    "ElectricityDemand": 30.0,
+    "Weight": 4.0,
+    "Volume": 20.0,
+    "Cost": 914568.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -375,13 +375,13 @@
     "Name": "ngs-06-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 41400,
+    "OilOutput": 225.0,
+    "GasOutput": 41400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 27,
-    "Weight": 5,
-    "Volume": 20,
-    "Cost": 970536,
+    "ElectricityDemand": 27.0,
+    "Weight": 5.0,
+    "Volume": 20.0,
+    "Cost": 970536.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -390,13 +390,13 @@
     "Name": "ngs-06-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 41400,
+    "OilOutput": 225.0,
+    "GasOutput": 41400.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 32,
-    "Weight": 4,
-    "Volume": 20,
-    "Cost": 885736,
+    "ElectricityDemand": 32.0,
+    "Weight": 4.0,
+    "Volume": 20.0,
+    "Cost": 885736.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -405,13 +405,13 @@
     "Name": "ngs-06-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 31,
-    "Weight": 4,
-    "Volume": 20,
-    "Cost": 956120,
+    "ElectricityDemand": 31.0,
+    "Weight": 4.0,
+    "Volume": 20.0,
+    "Cost": 956120.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -420,13 +420,13 @@
     "Name": "ngs-1-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 28,
-    "Weight": 5,
-    "Volume": 20,
-    "Cost": 1011028,
+    "ElectricityDemand": 28.0,
+    "Weight": 5.0,
+    "Volume": 20.0,
+    "Cost": 1011028.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -435,13 +435,13 @@
     "Name": "ngs-1-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 34,
-    "Weight": 4,
-    "Volume": 20,
-    "Cost": 932800,
+    "ElectricityDemand": 34.0,
+    "Weight": 4.0,
+    "Volume": 20.0,
+    "Cost": 932800.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -450,13 +450,13 @@
     "Name": "ngs-1-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 26,
-    "Weight": 5,
-    "Volume": 20,
-    "Cost": 968628,
+    "ElectricityDemand": 26.0,
+    "Weight": 5.0,
+    "Volume": 20.0,
+    "Cost": 968628.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -465,13 +465,13 @@
     "Name": "ngs-1-1600-2G"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 32,
-    "Weight": 6,
-    "Volume": 20,
-    "Cost": 1203100,
+    "ElectricityDemand": 32.0,
+    "Weight": 6.0,
+    "Volume": 20.0,
+    "Cost": 1203100.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -480,13 +480,13 @@
     "Name": "ngs-1-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 29,
-    "Weight": 6,
-    "Volume": 20,
-    "Cost": 1258008,
+    "ElectricityDemand": 29.0,
+    "Weight": 6.0,
+    "Volume": 20.0,
+    "Cost": 1258008.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -495,13 +495,13 @@
     "Name": "ngs-1-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 35,
-    "Weight": 6,
-    "Volume": 20,
-    "Cost": 1173632,
+    "ElectricityDemand": 35.0,
+    "Weight": 6.0,
+    "Volume": 20.0,
+    "Cost": 1173632.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -510,13 +510,13 @@
     "Name": "ngs-1-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 46700,
+    "OilOutput": 225.0,
+    "GasOutput": 46700.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 28,
-    "Weight": 6,
-    "Volume": 20,
-    "Cost": 1228540,
+    "ElectricityDemand": 28.0,
+    "Weight": 6.0,
+    "Volume": 20.0,
+    "Cost": 1228540.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -525,13 +525,13 @@
     "Name": "ngs-1-1600-2G"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 78000,
+    "OilOutput": 225.0,
+    "GasOutput": 78000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 34,
-    "Weight": 7,
-    "Volume": 20,
-    "Cost": 1513680,
+    "ElectricityDemand": 34.0,
+    "Weight": 7.0,
+    "Volume": 20.0,
+    "Cost": 1513680.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -540,13 +540,13 @@
     "Name": "ngs-25-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 78000,
+    "OilOutput": 225.0,
+    "GasOutput": 78000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 7,
-    "Volume": 20,
-    "Cost": 1568588,
+    "ElectricityDemand": 30.0,
+    "Weight": 7.0,
+    "Volume": 20.0,
+    "Cost": 1568588.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -555,13 +555,13 @@
     "Name": "ngs-25-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 78000,
+    "OilOutput": 225.0,
+    "GasOutput": 78000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 36,
-    "Weight": 7,
-    "Volume": 20,
-    "Cost": 1477640,
+    "ElectricityDemand": 36.0,
+    "Weight": 7.0,
+    "Volume": 20.0,
+    "Cost": 1477640.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -570,13 +570,13 @@
     "Name": "ngs-25-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 78000,
+    "OilOutput": 225.0,
+    "GasOutput": 78000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 29,
-    "Weight": 7,
-    "Volume": 20,
-    "Cost": 1532548,
+    "ElectricityDemand": 29.0,
+    "Weight": 7.0,
+    "Volume": 20.0,
+    "Cost": 1532548.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -585,13 +585,13 @@
     "Name": "ngs-25-1600-2G"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 110000,
+    "OilOutput": 225.0,
+    "GasOutput": 110000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 35,
-    "Weight": 10,
-    "Volume": 20,
-    "Cost": 2069756,
+    "ElectricityDemand": 35.0,
+    "Weight": 10.0,
+    "Volume": 20.0,
+    "Cost": 2069756.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -600,13 +600,13 @@
     "Name": "ngs-40-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 110000,
+    "OilOutput": 225.0,
+    "GasOutput": 110000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 31,
-    "Weight": 10,
-    "Volume": 20,
-    "Cost": 2124664,
+    "ElectricityDemand": 31.0,
+    "Weight": 10.0,
+    "Volume": 20.0,
+    "Cost": 2124664.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -615,13 +615,13 @@
     "Name": "ngs-40-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 110000,
+    "OilOutput": 225.0,
+    "GasOutput": 110000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 37,
-    "Weight": 10,
-    "Volume": 20,
-    "Cost": 2028840,
+    "ElectricityDemand": 37.0,
+    "Weight": 10.0,
+    "Volume": 20.0,
+    "Cost": 2028840.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -630,13 +630,13 @@
     "Name": "ngs-40-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 110000,
+    "OilOutput": 225.0,
+    "GasOutput": 110000.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 30,
-    "Weight": 10,
-    "Volume": 20,
-    "Cost": 2083748,
+    "ElectricityDemand": 30.0,
+    "Weight": 10.0,
+    "Volume": 20.0,
+    "Cost": 2083748.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -645,13 +645,13 @@
     "Name": "ngs-40-1600-2G"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 149500,
+    "OilOutput": 225.0,
+    "GasOutput": 149500.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 36,
-    "Weight": 14,
-    "Volume": 20,
-    "Cost": 2862000,
+    "ElectricityDemand": 36.0,
+    "Weight": 14.0,
+    "Volume": 20.0,
+    "Cost": 2862000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -660,13 +660,13 @@
     "Name": "ngs-63-1600-1"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 149500,
+    "OilOutput": 225.0,
+    "GasOutput": 149500.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 32,
-    "Weight": 14,
-    "Volume": 20,
-    "Cost": 2940440,
+    "ElectricityDemand": 32.0,
+    "Weight": 14.0,
+    "Volume": 20.0,
+    "Cost": 2940440.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -675,13 +675,13 @@
     "Name": "ngs-63-1600-1P"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 149500,
+    "OilOutput": 225.0,
+    "GasOutput": 149500.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 29,
-    "Weight": 13,
-    "Volume": 20,
-    "Cost": 2798400,
+    "ElectricityDemand": 29.0,
+    "Weight": 13.0,
+    "Volume": 20.0,
+    "Cost": 2798400.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -690,13 +690,13 @@
     "Name": "ngs-63-1600-2"
   },
   {
-    "OilOutput": 225,
-    "GasOutput": 149500,
+    "OilOutput": 225.0,
+    "GasOutput": 149500.0,
     "PeopleDemand": 0.3,
-    "ElectricityDemand": 36,
-    "Weight": 14,
-    "Volume": 20,
-    "Cost": 2876840,
+    "ElectricityDemand": 36.0,
+    "Weight": 14.0,
+    "Volume": 20.0,
+    "Cost": 2876840.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -705,13 +705,13 @@
     "Name": "ngs-63-1600-2G"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 62200,
+    "OilOutput": 430.0,
+    "GasOutput": 62200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 32,
-    "Weight": 14,
-    "Volume": 30,
-    "Cost": 1362948,
+    "ElectricityDemand": 32.0,
+    "Weight": 14.0,
+    "Volume": 30.0,
+    "Cost": 1362948.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -720,13 +720,13 @@
     "Name": "ngs-06-2000-1"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 62200,
+    "OilOutput": 430.0,
+    "GasOutput": 62200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 39,
-    "Weight": 7,
-    "Volume": 30,
-    "Cost": 1545692,
+    "ElectricityDemand": 39.0,
+    "Weight": 7.0,
+    "Volume": 30.0,
+    "Cost": 1545692.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -735,13 +735,13 @@
     "Name": "ngs-06-2000-1P"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 62200,
+    "OilOutput": 430.0,
+    "GasOutput": 62200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 30,
-    "Weight": 6,
-    "Volume": 30,
-    "Cost": 1311220,
+    "ElectricityDemand": 30.0,
+    "Weight": 6.0,
+    "Volume": 30.0,
+    "Cost": 1311220.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -750,13 +750,13 @@
     "Name": "ngs-06-2000-2"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 62200,
+    "OilOutput": 430.0,
+    "GasOutput": 62200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 37,
-    "Weight": 7,
-    "Volume": 30,
-    "Cost": 1493964,
+    "ElectricityDemand": 37.0,
+    "Weight": 7.0,
+    "Volume": 30.0,
+    "Cost": 1493964.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -765,13 +765,13 @@
     "Name": "ngs-06-2000-2G"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 70000,
+    "OilOutput": 430.0,
+    "GasOutput": 70000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 33,
-    "Weight": 8,
-    "Volume": 30,
-    "Cost": 1630704,
+    "ElectricityDemand": 33.0,
+    "Weight": 8.0,
+    "Volume": 30.0,
+    "Cost": 1630704.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -780,13 +780,13 @@
     "Name": "ngs-1-2000-1"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 70000,
+    "OilOutput": 430.0,
+    "GasOutput": 70000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 40,
-    "Weight": 9,
-    "Volume": 30,
-    "Cost": 1813448,
+    "ElectricityDemand": 40.0,
+    "Weight": 9.0,
+    "Volume": 30.0,
+    "Cost": 1813448.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -795,13 +795,13 @@
     "Name": "ngs-1-2000-1P"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 70000,
+    "OilOutput": 430.0,
+    "GasOutput": 70000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 32,
-    "Weight": 8,
-    "Volume": 30,
-    "Cost": 1585124,
+    "ElectricityDemand": 32.0,
+    "Weight": 8.0,
+    "Volume": 30.0,
+    "Cost": 1585124.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -810,13 +810,13 @@
     "Name": "ngs-1-2000-2"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 70000,
+    "OilOutput": 430.0,
+    "GasOutput": 70000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 39,
-    "Weight": 8,
-    "Volume": 30,
-    "Cost": 1767868,
+    "ElectricityDemand": 39.0,
+    "Weight": 8.0,
+    "Volume": 30.0,
+    "Cost": 1767868.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -825,13 +825,13 @@
     "Name": "ngs-1-2000-2G"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 94400,
+    "OilOutput": 430.0,
+    "GasOutput": 94400.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 35,
-    "Weight": 9,
-    "Volume": 30,
-    "Cost": 1841644,
+    "ElectricityDemand": 35.0,
+    "Weight": 9.0,
+    "Volume": 30.0,
+    "Cost": 1841644.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -840,13 +840,13 @@
     "Name": "ngs-16-2000-1"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 94400,
+    "OilOutput": 430.0,
+    "GasOutput": 94400.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 42,
-    "Weight": 10,
-    "Volume": 30,
-    "Cost": 2024388,
+    "ElectricityDemand": 42.0,
+    "Weight": 10.0,
+    "Volume": 30.0,
+    "Cost": 2024388.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -855,13 +855,13 @@
     "Name": "ngs-16-2000-1P"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 94400,
+    "OilOutput": 430.0,
+    "GasOutput": 94400.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 33,
-    "Weight": 8,
-    "Volume": 30,
-    "Cost": 1796064,
+    "ElectricityDemand": 33.0,
+    "Weight": 8.0,
+    "Volume": 30.0,
+    "Cost": 1796064.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -870,13 +870,13 @@
     "Name": "ngs-16-2000-2"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 94400,
+    "OilOutput": 430.0,
+    "GasOutput": 94400.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 40,
-    "Weight": 9,
-    "Volume": 30,
-    "Cost": 1978808,
+    "ElectricityDemand": 40.0,
+    "Weight": 9.0,
+    "Volume": 30.0,
+    "Cost": 1978808.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -885,13 +885,13 @@
     "Name": "ngs-16-2000-2G"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 117200,
+    "OilOutput": 430.0,
+    "GasOutput": 117200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 36,
-    "Weight": 12,
-    "Volume": 31,
-    "Cost": 2507748,
+    "ElectricityDemand": 36.0,
+    "Weight": 12.0,
+    "Volume": 31.0,
+    "Cost": 2507748.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -900,13 +900,13 @@
     "Name": "ngs-25-2000-1"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 117200,
+    "OilOutput": 430.0,
+    "GasOutput": 117200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 43,
-    "Weight": 13,
-    "Volume": 31,
-    "Cost": 2702152,
+    "ElectricityDemand": 43.0,
+    "Weight": 13.0,
+    "Volume": 31.0,
+    "Cost": 2702152.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -915,13 +915,13 @@
     "Name": "ngs-25-2000-1P"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 117200,
+    "OilOutput": 430.0,
+    "GasOutput": 117200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 35,
-    "Weight": 12,
-    "Volume": 31,
-    "Cost": 2440756,
+    "ElectricityDemand": 35.0,
+    "Weight": 12.0,
+    "Volume": 31.0,
+    "Cost": 2440756.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -930,13 +930,13 @@
     "Name": "ngs-25-2000-2"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 117200,
+    "OilOutput": 430.0,
+    "GasOutput": 117200.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 42,
-    "Weight": 12,
-    "Volume": 31,
-    "Cost": 2631556,
+    "ElectricityDemand": 42.0,
+    "Weight": 12.0,
+    "Volume": 31.0,
+    "Cost": 2631556.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -945,13 +945,13 @@
     "Name": "ngs-25-2000-2G"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 165000,
+    "OilOutput": 430.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 37,
-    "Weight": 17,
-    "Volume": 31,
-    "Cost": 3549304,
+    "ElectricityDemand": 37.0,
+    "Weight": 17.0,
+    "Volume": 31.0,
+    "Cost": 3549304.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -960,13 +960,13 @@
     "Name": "ngs-4-2000-1"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 165000,
+    "OilOutput": 430.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 45,
-    "Weight": 18,
-    "Volume": 31,
-    "Cost": 3732684,
+    "ElectricityDemand": 45.0,
+    "Weight": 18.0,
+    "Volume": 31.0,
+    "Cost": 3732684.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -975,13 +975,13 @@
     "Name": "ngs-4-2000-1P"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 165000,
+    "OilOutput": 430.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 36,
-    "Weight": 16,
-    "Volume": 31,
-    "Cost": 3436520,
+    "ElectricityDemand": 36.0,
+    "Weight": 16.0,
+    "Volume": 31.0,
+    "Cost": 3436520.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -990,13 +990,13 @@
     "Name": "ngs-4-2000-2"
   },
   {
-    "OilOutput": 430,
-    "GasOutput": 165000,
+    "OilOutput": 430.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 43,
-    "Weight": 17,
-    "Volume": 31,
-    "Cost": 3620112,
+    "ElectricityDemand": 43.0,
+    "Weight": 17.0,
+    "Volume": 31.0,
+    "Cost": 3620112.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1005,13 +1005,13 @@
     "Name": "ngs-4-2000-2G"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 82900,
+    "OilOutput": 800.0,
+    "GasOutput": 82900.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 39,
-    "Weight": 15,
-    "Volume": 46,
-    "Cost": 3159224,
+    "ElectricityDemand": 39.0,
+    "Weight": 15.0,
+    "Volume": 46.0,
+    "Cost": 3159224.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1020,13 +1020,13 @@
     "Name": "ngs-06-2400-1"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 82900,
+    "OilOutput": 800.0,
+    "GasOutput": 82900.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 35,
-    "Weight": 11,
-    "Volume": 46,
-    "Cost": 2259920,
+    "ElectricityDemand": 35.0,
+    "Weight": 11.0,
+    "Volume": 46.0,
+    "Cost": 2259920.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1035,13 +1035,13 @@
     "Name": "ngs-06-2400-1P"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 82900,
+    "OilOutput": 800.0,
+    "GasOutput": 82900.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 43,
-    "Weight": 9,
-    "Volume": 46,
-    "Cost": 1948280,
+    "ElectricityDemand": 43.0,
+    "Weight": 9.0,
+    "Volume": 46.0,
+    "Cost": 1948280.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1050,13 +1050,13 @@
     "Name": "ngs-06-2400-2"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 82900,
+    "OilOutput": 800.0,
+    "GasOutput": 82900.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 38,
-    "Weight": 10,
-    "Volume": 46,
-    "Cost": 2185720,
+    "ElectricityDemand": 38.0,
+    "Weight": 10.0,
+    "Volume": 46.0,
+    "Cost": 2185720.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1065,13 +1065,13 @@
     "Name": "ngs-06-2400-2G"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 93500,
+    "OilOutput": 800.0,
+    "GasOutput": 93500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 47,
-    "Weight": 11,
-    "Volume": 46,
-    "Cost": 2382880,
+    "ElectricityDemand": 47.0,
+    "Weight": 11.0,
+    "Volume": 46.0,
+    "Cost": 2382880.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1080,13 +1080,13 @@
     "Name": "ngs-1-2400-1"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 93500,
+    "OilOutput": 800.0,
+    "GasOutput": 93500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 36,
-    "Weight": 12,
-    "Volume": 46,
-    "Cost": 2659116,
+    "ElectricityDemand": 36.0,
+    "Weight": 12.0,
+    "Volume": 46.0,
+    "Cost": 2659116.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1095,13 +1095,13 @@
     "Name": "ngs-1-2400-1P"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 93500,
+    "OilOutput": 800.0,
+    "GasOutput": 93500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 45,
-    "Weight": 11,
-    "Volume": 46,
-    "Cost": 2306560,
+    "ElectricityDemand": 45.0,
+    "Weight": 11.0,
+    "Volume": 46.0,
+    "Cost": 2306560.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1110,13 +1110,13 @@
     "Name": "ngs-1-2400-2"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 93500,
+    "OilOutput": 800.0,
+    "GasOutput": 93500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 40,
-    "Weight": 12,
-    "Volume": 46,
-    "Cost": 2582796,
+    "ElectricityDemand": 40.0,
+    "Weight": 12.0,
+    "Volume": 46.0,
+    "Cost": 2582796.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1125,13 +1125,13 @@
     "Name": "ngs-1-2400-2G"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 125500,
+    "OilOutput": 800.0,
+    "GasOutput": 125500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 48,
-    "Weight": 14,
-    "Volume": 47,
-    "Cost": 2998740,
+    "ElectricityDemand": 48.0,
+    "Weight": 14.0,
+    "Volume": 47.0,
+    "Cost": 2998740.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1140,13 +1140,13 @@
     "Name": "ngs-16-2400-1"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 125500,
+    "OilOutput": 800.0,
+    "GasOutput": 125500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 38,
-    "Weight": 15,
-    "Volume": 47,
-    "Cost": 3274976,
+    "ElectricityDemand": 38.0,
+    "Weight": 15.0,
+    "Volume": 47.0,
+    "Cost": 3274976.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1155,13 +1155,13 @@
     "Name": "ngs-16-2400-1P"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 125500,
+    "OilOutput": 800.0,
+    "GasOutput": 125500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 47,
-    "Weight": 14,
-    "Volume": 47,
-    "Cost": 2920512,
+    "ElectricityDemand": 47.0,
+    "Weight": 14.0,
+    "Volume": 47.0,
+    "Cost": 2920512.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1170,13 +1170,13 @@
     "Name": "ngs-16-2400-2"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 125500,
+    "OilOutput": 800.0,
+    "GasOutput": 125500.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 42,
-    "Weight": 15,
-    "Volume": 47,
-    "Cost": 3194416,
+    "ElectricityDemand": 42.0,
+    "Weight": 15.0,
+    "Volume": 47.0,
+    "Cost": 3194416.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1185,13 +1185,13 @@
     "Name": "ngs-16-2400-2G"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 156300,
+    "OilOutput": 800.0,
+    "GasOutput": 156300.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 50,
-    "Weight": 20,
-    "Volume": 47,
-    "Cost": 4189120,
+    "ElectricityDemand": 50.0,
+    "Weight": 20.0,
+    "Volume": 47.0,
+    "Cost": 4189120.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1200,13 +1200,13 @@
     "Name": "ngs-25-2400-1"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 156300,
+    "OilOutput": 800.0,
+    "GasOutput": 156300.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 40,
-    "Weight": 21,
-    "Volume": 47,
-    "Cost": 4465356,
+    "ElectricityDemand": 40.0,
+    "Weight": 21.0,
+    "Volume": 47.0,
+    "Cost": 4465356.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1215,13 +1215,13 @@
     "Name": "ngs-25-2400-1P"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 156300,
+    "OilOutput": 800.0,
+    "GasOutput": 156300.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 48,
-    "Weight": 19,
-    "Volume": 47,
-    "Cost": 4078880,
+    "ElectricityDemand": 48.0,
+    "Weight": 19.0,
+    "Volume": 47.0,
+    "Cost": 4078880.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1230,13 +1230,13 @@
     "Name": "ngs-25-2400-2"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 156300,
+    "OilOutput": 800.0,
+    "GasOutput": 156300.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 43,
-    "Weight": 20,
-    "Volume": 47,
-    "Cost": 4355116,
+    "ElectricityDemand": 43.0,
+    "Weight": 20.0,
+    "Volume": 47.0,
+    "Cost": 4355116.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1245,13 +1245,13 @@
     "Name": "ngs-25-2400-2G"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 220000,
+    "OilOutput": 800.0,
+    "GasOutput": 220000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 52,
-    "Weight": 29,
-    "Volume": 47,
-    "Cost": 6188280,
+    "ElectricityDemand": 52.0,
+    "Weight": 29.0,
+    "Volume": 47.0,
+    "Cost": 6188280.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1260,13 +1260,13 @@
     "Name": "ngs-4-2400-1"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 220000,
+    "OilOutput": 800.0,
+    "GasOutput": 220000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 42,
-    "Weight": 30,
-    "Volume": 47,
-    "Cost": 6464516,
+    "ElectricityDemand": 42.0,
+    "Weight": 30.0,
+    "Volume": 47.0,
+    "Cost": 6464516.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1275,13 +1275,13 @@
     "Name": "ngs-4-2400-1P"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 220000,
+    "OilOutput": 800.0,
+    "GasOutput": 220000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 50,
-    "Weight": 28,
-    "Volume": 47,
-    "Cost": 6003840,
+    "ElectricityDemand": 50.0,
+    "Weight": 28.0,
+    "Volume": 47.0,
+    "Cost": 6003840.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1290,13 +1290,13 @@
     "Name": "ngs-4-2400-2"
   },
   {
-    "OilOutput": 800,
-    "GasOutput": 220000,
+    "OilOutput": 800.0,
+    "GasOutput": 220000.0,
     "PeopleDemand": 0.7,
-    "ElectricityDemand": 45,
-    "Weight": 30,
-    "Volume": 47,
-    "Cost": 6280076,
+    "ElectricityDemand": 45.0,
+    "Weight": 30.0,
+    "Volume": 47.0,
+    "Cost": 6280076.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1305,13 +1305,13 @@
     "Name": "ngs-4-2400-2G"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 124000,
+    "OilOutput": 1500.0,
+    "GasOutput": 124000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 54,
-    "Weight": 17,
-    "Volume": 68,
-    "Cost": 3571140,
+    "ElectricityDemand": 54.0,
+    "Weight": 17.0,
+    "Volume": 68.0,
+    "Cost": 3571140.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1320,13 +1320,13 @@
     "Name": "ngs-06-3000-1"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 124000,
+    "OilOutput": 1500.0,
+    "GasOutput": 124000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 43,
-    "Weight": 20,
-    "Volume": 68,
-    "Cost": 4204384,
+    "ElectricityDemand": 43.0,
+    "Weight": 20.0,
+    "Volume": 68.0,
+    "Cost": 4204384.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1335,13 +1335,13 @@
     "Name": "ngs-06-3000-1P"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 124000,
+    "OilOutput": 1500.0,
+    "GasOutput": 124000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 52,
-    "Weight": 16,
-    "Volume": 68,
-    "Cost": 3453480,
+    "ElectricityDemand": 52.0,
+    "Weight": 16.0,
+    "Volume": 68.0,
+    "Cost": 3453480.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1350,13 +1350,13 @@
     "Name": "ngs-06-3000-2"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 124000,
+    "OilOutput": 1500.0,
+    "GasOutput": 124000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 47,
-    "Weight": 19,
-    "Volume": 68,
-    "Cost": 4086724,
+    "ElectricityDemand": 47.0,
+    "Weight": 19.0,
+    "Volume": 68.0,
+    "Cost": 4086724.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1365,13 +1365,13 @@
     "Name": "ngs-06-3000-2G"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 140000,
+    "OilOutput": 1500.0,
+    "GasOutput": 140000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 42,
-    "Weight": 19,
-    "Volume": 68,
-    "Cost": 4093720,
+    "ElectricityDemand": 42.0,
+    "Weight": 19.0,
+    "Volume": 68.0,
+    "Cost": 4093720.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1380,13 +1380,13 @@
     "Name": "ngs-1-3000-1"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 140000,
+    "OilOutput": 1500.0,
+    "GasOutput": 140000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 52,
-    "Weight": 22,
-    "Volume": 68,
-    "Cost": 4726964,
+    "ElectricityDemand": 52.0,
+    "Weight": 22.0,
+    "Volume": 68.0,
+    "Cost": 4726964.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1395,13 +1395,13 @@
     "Name": "ngs-1-3000-1P"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 140000,
+    "OilOutput": 1500.0,
+    "GasOutput": 140000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 46,
-    "Weight": 19,
-    "Volume": 68,
-    "Cost": 3943200,
+    "ElectricityDemand": 46.0,
+    "Weight": 19.0,
+    "Volume": 68.0,
+    "Cost": 3943200.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1410,13 +1410,13 @@
     "Name": "ngs-1-3000-2"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 140000,
+    "OilOutput": 1500.0,
+    "GasOutput": 140000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 56,
-    "Weight": 22,
-    "Volume": 68,
-    "Cost": 4576444,
+    "ElectricityDemand": 56.0,
+    "Weight": 22.0,
+    "Volume": 68.0,
+    "Cost": 4576444.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1425,13 +1425,13 @@
     "Name": "ngs-1-3000-2G"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 188000,
+    "OilOutput": 1500.0,
+    "GasOutput": 188000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 44,
-    "Weight": 26,
-    "Volume": 69,
-    "Cost": 5406000,
+    "ElectricityDemand": 44.0,
+    "Weight": 26.0,
+    "Volume": 69.0,
+    "Cost": 5406000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1440,13 +1440,13 @@
     "Name": "ngs-16-3000-1"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 188000,
+    "OilOutput": 1500.0,
+    "GasOutput": 188000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 54,
-    "Weight": 28,
-    "Volume": 69,
-    "Cost": 6039244,
+    "ElectricityDemand": 54.0,
+    "Weight": 28.0,
+    "Volume": 69.0,
+    "Cost": 6039244.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1455,13 +1455,13 @@
     "Name": "ngs-16-3000-1P"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 188000,
+    "OilOutput": 1500.0,
+    "GasOutput": 188000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 48,
-    "Weight": 25,
-    "Volume": 69,
-    "Cost": 5255480,
+    "ElectricityDemand": 48.0,
+    "Weight": 25.0,
+    "Volume": 69.0,
+    "Cost": 5255480.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1470,13 +1470,13 @@
     "Name": "ngs-16-3000-2"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 188000,
+    "OilOutput": 1500.0,
+    "GasOutput": 188000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 58,
-    "Weight": 28,
-    "Volume": 69,
-    "Cost": 5888724,
+    "ElectricityDemand": 58.0,
+    "Weight": 28.0,
+    "Volume": 69.0,
+    "Cost": 5888724.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1485,13 +1485,13 @@
     "Name": "ngs-16-3000-2G"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 234000,
+    "OilOutput": 1500.0,
+    "GasOutput": 234000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 46,
-    "Weight": 36,
-    "Volume": 69,
-    "Cost": 7655320,
+    "ElectricityDemand": 46.0,
+    "Weight": 36.0,
+    "Volume": 69.0,
+    "Cost": 7655320.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1500,13 +1500,13 @@
     "Name": "ngs-25-3000-1"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 234000,
+    "OilOutput": 1500.0,
+    "GasOutput": 234000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 56,
-    "Weight": 39,
-    "Volume": 69,
-    "Cost": 8288564,
+    "ElectricityDemand": 56.0,
+    "Weight": 39.0,
+    "Volume": 69.0,
+    "Cost": 8288564.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1515,13 +1515,13 @@
     "Name": "ngs-25-3000-1P"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 234000,
+    "OilOutput": 1500.0,
+    "GasOutput": 234000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 50,
-    "Weight": 36,
-    "Volume": 69,
-    "Cost": 7562040,
+    "ElectricityDemand": 50.0,
+    "Weight": 36.0,
+    "Volume": 69.0,
+    "Cost": 7562040.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1530,13 +1530,13 @@
     "Name": "ngs-25-3000-2"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 234000,
+    "OilOutput": 1500.0,
+    "GasOutput": 234000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 60,
-    "Weight": 39,
-    "Volume": 69,
-    "Cost": 8195284,
+    "ElectricityDemand": 60.0,
+    "Weight": 39.0,
+    "Volume": 69.0,
+    "Cost": 8195284.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1545,13 +1545,13 @@
     "Name": "ngs-25-3000-2G"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 330000,
+    "OilOutput": 1500.0,
+    "GasOutput": 330000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 48,
-    "Weight": 54,
-    "Volume": 70,
-    "Cost": 11428920,
+    "ElectricityDemand": 48.0,
+    "Weight": 54.0,
+    "Volume": 70.0,
+    "Cost": 1.142892E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1560,13 +1560,13 @@
     "Name": "ngs-4-3000-1"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 330000,
+    "OilOutput": 1500.0,
+    "GasOutput": 330000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 58,
-    "Weight": 57,
-    "Volume": 70,
-    "Cost": 12062164,
+    "ElectricityDemand": 58.0,
+    "Weight": 57.0,
+    "Volume": 70.0,
+    "Cost": 12062164.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1575,13 +1575,13 @@
     "Name": "ngs-4-3000-1P"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 330000,
+    "OilOutput": 1500.0,
+    "GasOutput": 330000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 52,
-    "Weight": 53,
-    "Volume": 70,
-    "Cost": 11180880,
+    "ElectricityDemand": 52.0,
+    "Weight": 53.0,
+    "Volume": 70.0,
+    "Cost": 1.118088E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1590,13 +1590,13 @@
     "Name": "ngs-4-3000-2"
   },
   {
-    "OilOutput": 1500,
-    "GasOutput": 330000,
+    "OilOutput": 1500.0,
+    "GasOutput": 330000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 62,
-    "Weight": 56,
-    "Volume": 70,
-    "Cost": 11814124,
+    "ElectricityDemand": 62.0,
+    "Weight": 56.0,
+    "Volume": 70.0,
+    "Cost": 11814124.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1605,13 +1605,13 @@
     "Name": "ngs-4-3000-2G"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 165000,
+    "OilOutput": 2250.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 50,
-    "Weight": 25,
-    "Volume": 91,
-    "Cost": 5213292,
+    "ElectricityDemand": 50.0,
+    "Weight": 25.0,
+    "Volume": 91.0,
+    "Cost": 5213292.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1620,13 +1620,13 @@
     "Name": "ngs-06-3400-1"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 165000,
+    "OilOutput": 2250.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 60,
-    "Weight": 28,
-    "Volume": 91,
-    "Cost": 6031188,
+    "ElectricityDemand": 60.0,
+    "Weight": 28.0,
+    "Volume": 91.0,
+    "Cost": 6031188.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1635,13 +1635,13 @@
     "Name": "ngs-06-3400-1P"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 165000,
+    "OilOutput": 2250.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 54,
-    "Weight": 24,
-    "Volume": 91,
-    "Cost": 5096692,
+    "ElectricityDemand": 54.0,
+    "Weight": 24.0,
+    "Volume": 91.0,
+    "Cost": 5096692.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1650,13 +1650,13 @@
     "Name": "ngs-06-3400-2"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 165000,
+    "OilOutput": 2250.0,
+    "GasOutput": 165000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 64,
-    "Weight": 28,
-    "Volume": 91,
-    "Cost": 5914588,
+    "ElectricityDemand": 64.0,
+    "Weight": 28.0,
+    "Volume": 91.0,
+    "Cost": 5914588.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1665,13 +1665,13 @@
     "Name": "ngs-06-3400-2G"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 187000,
+    "OilOutput": 2250.0,
+    "GasOutput": 187000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 52,
-    "Weight": 32,
-    "Volume": 91,
-    "Cost": 6688600,
+    "ElectricityDemand": 52.0,
+    "Weight": 32.0,
+    "Volume": 91.0,
+    "Cost": 6688600.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1680,13 +1680,13 @@
     "Name": "ngs-1-3400-1"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 187000,
+    "OilOutput": 2250.0,
+    "GasOutput": 187000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 62,
-    "Weight": 35,
-    "Volume": 91,
-    "Cost": 7506496,
+    "ElectricityDemand": 62.0,
+    "Weight": 35.0,
+    "Volume": 91.0,
+    "Cost": 7506496.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1695,13 +1695,13 @@
     "Name": "ngs-1-3400-1P"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 187000,
+    "OilOutput": 2250.0,
+    "GasOutput": 187000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 56,
-    "Weight": 31,
-    "Volume": 91,
-    "Cost": 6478720,
+    "ElectricityDemand": 56.0,
+    "Weight": 31.0,
+    "Volume": 91.0,
+    "Cost": 6478720.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1710,13 +1710,13 @@
     "Name": "ngs-1-3400-2"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 187000,
+    "OilOutput": 2250.0,
+    "GasOutput": 187000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 50,
-    "Weight": 34,
-    "Volume": 91,
-    "Cost": 7296616,
+    "ElectricityDemand": 50.0,
+    "Weight": 34.0,
+    "Volume": 91.0,
+    "Cost": 7296616.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1725,13 +1725,13 @@
     "Name": "ngs-1-3400-2G"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 251000,
+    "OilOutput": 2250.0,
+    "GasOutput": 251000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 62,
-    "Weight": 41,
-    "Volume": 91,
-    "Cost": 8711080,
+    "ElectricityDemand": 62.0,
+    "Weight": 41.0,
+    "Volume": 91.0,
+    "Cost": 8711080.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1740,13 +1740,13 @@
     "Name": "ngs-16-3400-1"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 251000,
+    "OilOutput": 2250.0,
+    "GasOutput": 251000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 55,
-    "Weight": 45,
-    "Volume": 91,
-    "Cost": 9528976,
+    "ElectricityDemand": 55.0,
+    "Weight": 45.0,
+    "Volume": 91.0,
+    "Cost": 9528976.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1755,13 +1755,13 @@
     "Name": "ngs-16-3400-1P"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 251000,
+    "OilOutput": 2250.0,
+    "GasOutput": 251000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 67,
-    "Weight": 40,
-    "Volume": 91,
-    "Cost": 8501200,
+    "ElectricityDemand": 67.0,
+    "Weight": 40.0,
+    "Volume": 91.0,
+    "Cost": 8501200.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1770,13 +1770,13 @@
     "Name": "ngs-16-3400-2"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 251000,
+    "OilOutput": 2250.0,
+    "GasOutput": 251000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 52,
-    "Weight": 44,
-    "Volume": 91,
-    "Cost": 9319096,
+    "ElectricityDemand": 52.0,
+    "Weight": 44.0,
+    "Volume": 91.0,
+    "Cost": 9319096.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1785,13 +1785,13 @@
     "Name": "ngs-16-3400-2G"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 312000,
+    "OilOutput": 2250.0,
+    "GasOutput": 312000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 65,
-    "Weight": 57,
-    "Volume": 91,
-    "Cost": 12041600,
+    "ElectricityDemand": 65.0,
+    "Weight": 57.0,
+    "Volume": 91.0,
+    "Cost": 1.20416E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1800,13 +1800,13 @@
     "Name": "ngs-25-3400-1"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 312000,
+    "OilOutput": 2250.0,
+    "GasOutput": 312000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 57,
-    "Weight": 61,
-    "Volume": 91,
-    "Cost": 12859496,
+    "ElectricityDemand": 57.0,
+    "Weight": 61.0,
+    "Volume": 91.0,
+    "Cost": 12859496.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1815,13 +1815,13 @@
     "Name": "ngs-25-3400-1P"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 312000,
+    "OilOutput": 2250.0,
+    "GasOutput": 312000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 70,
-    "Weight": 55,
-    "Volume": 91,
-    "Cost": 11715120,
+    "ElectricityDemand": 70.0,
+    "Weight": 55.0,
+    "Volume": 91.0,
+    "Cost": 1.171512E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1830,13 +1830,13 @@
     "Name": "ngs-25-3400-2"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 312000,
+    "OilOutput": 2250.0,
+    "GasOutput": 312000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 55,
-    "Weight": 59,
-    "Volume": 91,
-    "Cost": 12533016,
+    "ElectricityDemand": 55.0,
+    "Weight": 59.0,
+    "Volume": 91.0,
+    "Cost": 12533016.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1845,13 +1845,13 @@
     "Name": "ngs-25-3400-2G"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 440000,
+    "OilOutput": 2250.0,
+    "GasOutput": 440000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 67,
-    "Weight": 98,
-    "Volume": 92,
-    "Cost": 20797200,
+    "ElectricityDemand": 67.0,
+    "Weight": 98.0,
+    "Volume": 92.0,
+    "Cost": 2.07972E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1860,13 +1860,13 @@
     "Name": "ngs-4-3400-1"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 440000,
+    "OilOutput": 2250.0,
+    "GasOutput": 440000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 60,
-    "Weight": 102,
-    "Volume": 92,
-    "Cost": 21615096,
+    "ElectricityDemand": 60.0,
+    "Weight": 102.0,
+    "Volume": 92.0,
+    "Cost": 21615096.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1875,13 +1875,13 @@
     "Name": "ngs-4-3400-1P"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 440000,
+    "OilOutput": 2250.0,
+    "GasOutput": 440000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 72,
-    "Weight": 96,
-    "Volume": 92,
-    "Cost": 20299000,
+    "ElectricityDemand": 72.0,
+    "Weight": 96.0,
+    "Volume": 92.0,
+    "Cost": 2.0299E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -1890,13 +1890,13 @@
     "Name": "ngs-4-3400-2"
   },
   {
-    "OilOutput": 2250,
-    "GasOutput": 440000,
+    "OilOutput": 2250.0,
+    "GasOutput": 440000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 57,
-    "Weight": 100,
-    "Volume": 92,
-    "Cost": 21116896,
+    "ElectricityDemand": 57.0,
+    "Weight": 100.0,
+    "Volume": 92.0,
+    "Cost": 21116896.0,
     "Structure": {
       "Objects": [],
       "Links": []

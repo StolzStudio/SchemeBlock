@@ -1,14 +1,14 @@
 [
   {
-    "FluidInput": 9000,
-    "OilOutput": 5000,
-    "GasOutput": 1000,
+    "FluidInput": 9000.0,
+    "OilOutput": 5000.0,
+    "GasOutput": 1000.0,
     "EstimatedFieldId": 0,
     "PeopleDemand": 40.0,
-    "ElectricityDemand": 2900,
-    "Weight": 18000,
-    "Volume": 180000,
-    "Cost": 2000000000,
+    "ElectricityDemand": 2900.0,
+    "Weight": 18000.0,
+    "Volume": 180000.0,
+    "Cost": 2E+09,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -17,15 +17,15 @@
     "Name": "PC-9000"
   },
   {
-    "FluidInput": 20000,
-    "OilOutput": 13000,
-    "GasOutput": 5000,
+    "FluidInput": 20000.0,
+    "OilOutput": 13000.0,
+    "GasOutput": 5000.0,
     "EstimatedFieldId": 1,
     "PeopleDemand": 80.0,
-    "ElectricityDemand": 3900,
-    "Weight": 28000,
-    "Volume": 400000,
-    "Cost": 4500000000,
+    "ElectricityDemand": 3900.0,
+    "Weight": 28000.0,
+    "Volume": 400000.0,
+    "Cost": 4.5E+09,
     "Structure": {
       "Objects": [
         {

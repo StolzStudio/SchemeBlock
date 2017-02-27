@@ -1,15 +1,15 @@
 [
   {
-    "FluidInput": 9000,
-    "FluidOutput": 0,
-    "OilOutput": 5000,
-    "GasOutput": 1000,
+    "FluidInput": 9000.0,
+    "FluidOutput": 0.0,
+    "OilOutput": 5000.0,
+    "GasOutput": 1000.0,
     "EstimatedFieldId": 0,
     "PeopleDemand": 30.0,
-    "ElectricityDemand": 2500,
-    "Weight": 15000,
-    "Volume": 120000,
-    "Cost": 1500000000,
+    "ElectricityDemand": 2500.0,
+    "Weight": 15000.0,
+    "Volume": 120000.0,
+    "Cost": 1.5E+09,
     "Structure": {
       "Objects": [
         {
@@ -49,16 +49,16 @@
     "Name": "IC-9000"
   },
   {
-    "FluidInput": 29000,
-    "FluidOutput": 5000,
-    "OilOutput": 18000,
-    "GasOutput": 5000,
+    "FluidInput": 29000.0,
+    "FluidOutput": 5000.0,
+    "OilOutput": 18000.0,
+    "GasOutput": 5000.0,
     "EstimatedFieldId": 1,
     "PeopleDemand": 90.0,
-    "ElectricityDemand": 5500,
-    "Weight": 55000,
-    "Volume": 400000,
-    "Cost": 3500000000,
+    "ElectricityDemand": 5500.0,
+    "Weight": 55000.0,
+    "Volume": 400000.0,
+    "Cost": 3.5E+09,
     "Structure": {
       "Objects": [
         {

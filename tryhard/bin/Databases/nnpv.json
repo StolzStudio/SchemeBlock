@@ -1,12 +1,12 @@
 [
   {
-    "WaterInput": 3000,
-    "WaterOutput": 3000,
+    "WaterInput": 3000.0,
+    "WaterOutput": 3000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 500,
-    "Weight": 3,
-    "Volume": 2,
-    "Cost": 4300000,
+    "ElectricityDemand": 500.0,
+    "Weight": 3.0,
+    "Volume": 2.0,
+    "Cost": 4300000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -15,13 +15,13 @@
     "Name": "CNS63-1100"
   },
   {
-    "WaterInput": 3000,
-    "WaterOutput": 3000,
+    "WaterInput": 3000.0,
+    "WaterOutput": 3000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 1500,
-    "Weight": 5,
-    "Volume": 5,
-    "Cost": 3180000,
+    "ElectricityDemand": 1500.0,
+    "Weight": 5.0,
+    "Volume": 5.0,
+    "Cost": 3180000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -30,13 +30,13 @@
     "Name": "CNS180-1900M"
   },
   {
-    "WaterInput": 3000,
-    "WaterOutput": 3000,
+    "WaterInput": 3000.0,
+    "WaterOutput": 3000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 800,
-    "Weight": 4,
-    "Volume": 3,
-    "Cost": 12000000,
+    "ElectricityDemand": 800.0,
+    "Weight": 4.0,
+    "Volume": 3.0,
+    "Cost": 1.2E+07,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -45,13 +45,13 @@
     "Name": "CNS180-1050"
   },
   {
-    "WaterInput": 3000,
-    "WaterOutput": 3000,
+    "WaterInput": 3000.0,
+    "WaterOutput": 3000.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 1200,
-    "Weight": 6,
-    "Volume": 4,
-    "Cost": 9000000,
+    "ElectricityDemand": 1200.0,
+    "Weight": 6.0,
+    "Volume": 4.0,
+    "Cost": 9000000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -60,13 +60,13 @@
     "Name": "CNS240-1422"
   },
   {
-    "WaterInput": 3000,
-    "WaterOutput": 3000,
+    "WaterInput": 3000.0,
+    "WaterOutput": 3000.0,
     "PeopleDemand": 1.0,
-    "ElectricityDemand": 1300,
-    "Weight": 5,
-    "Volume": 4,
-    "Cost": 9500000,
+    "ElectricityDemand": 1300.0,
+    "Weight": 5.0,
+    "Volume": 4.0,
+    "Cost": 9500000.0,
     "Structure": {
       "Objects": [],
       "Links": []

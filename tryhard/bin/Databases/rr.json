@@ -1,11 +1,11 @@
 [
   {
-    "MaxReagentInput": 1000,
+    "MaxReagentInput": 1000.0,
     "PeopleDemand": 2.0,
-    "ElectricityDemand": 30,
-    "Weight": 5,
-    "Volume": 10,
-    "Cost": 150000,
+    "ElectricityDemand": 30.0,
+    "Weight": 5.0,
+    "Volume": 10.0,
+    "Cost": 150000.0,
     "Structure": {
       "Objects": [],
       "Links": []

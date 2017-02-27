@@ -1,12 +1,12 @@
 [
   {
-    "OilOutput": 100,
-    "WaterOutput": 100,
+    "OilOutput": 100.0,
+    "WaterOutput": 100.0,
     "PeopleDemand": 0.0,
-    "ElectricityDemand": 0,
-    "Weight": 30,
-    "Volume": 15,
-    "Cost": 75000,
+    "ElectricityDemand": 0.0,
+    "Weight": 30.0,
+    "Volume": 15.0,
+    "Cost": 75000.0,
     "Structure": {
       "Objects": [],
       "Links": []

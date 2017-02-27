@@ -1,10 +1,10 @@
 [
   {
-    "Input": 40,
-    "Output": 40,
-    "Weight": 190,
-    "Volume": 50,
-    "Cost": 30000,
+    "Input": 40.0,
+    "Output": 40.0,
+    "Weight": 190.0,
+    "Volume": 50.0,
+    "Cost": 30000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -13,11 +13,11 @@
     "Name": "pump_0"
   },
   {
-    "Input": 20,
-    "Output": 20,
-    "Weight": 100,
-    "Volume": 30,
-    "Cost": 20000,
+    "Input": 20.0,
+    "Output": 20.0,
+    "Weight": 100.0,
+    "Volume": 30.0,
+    "Cost": 20000.0,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -26,11 +26,11 @@
     "Name": "pump_1"
   },
   {
-    "Input": 10,
-    "Output": 10,
-    "Weight": 70,
-    "Volume": 15,
-    "Cost": 10000,
+    "Input": 10.0,
+    "Output": 10.0,
+    "Weight": 70.0,
+    "Volume": 15.0,
+    "Cost": 10000.0,
     "Structure": {
       "Objects": [],
       "Links": []
