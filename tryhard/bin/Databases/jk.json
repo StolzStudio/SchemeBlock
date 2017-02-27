@@ -1,0 +1,156 @@
+[
+  {
+    "PeopleCapacity": 50.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 54.0,
+    "Weight": 40.0,
+    "Volume": 20.0,
+    "Cost": 163656928.0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "JK-50"
+  },
+  {
+    "PeopleCapacity": 75.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 81.0,
+    "Weight": 60.0,
+    "Volume": 30.0,
+    "Cost": 245485392.0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "JK-75"
+  },
+  {
+    "PeopleCapacity": 100.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 108.0,
+    "Weight": 80.0,
+    "Volume": 40.0,
+    "Cost": 327313856.0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "JK-100"
+  },
+  {
+    "PeopleCapacity": 125.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 135.0,
+    "Weight": 100.0,
+    "Volume": 50.0,
+    "Cost": 4.091423E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 3,
+    "Name": "JK-125"
+  },
+  {
+    "PeopleCapacity": 150.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 162.0,
+    "Weight": 120.0,
+    "Volume": 60.0,
+    "Cost": 490970784.0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 4,
+    "Name": "JK-150"
+  },
+  {
+    "PeopleCapacity": 175.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 189.0,
+    "Weight": 140.0,
+    "Volume": 70.0,
+    "Cost": 5.727992E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 5,
+    "Name": "JK-175"
+  },
+  {
+    "PeopleCapacity": 200.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 216.0,
+    "Weight": 160.0,
+    "Volume": 80.0,
+    "Cost": 6.546277E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 6,
+    "Name": "JK-200"
+  },
+  {
+    "PeopleCapacity": 225.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 243.0,
+    "Weight": 180.0,
+    "Volume": 90.0,
+    "Cost": 7.364561E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 7,
+    "Name": "JK-225"
+  },
+  {
+    "PeopleCapacity": 250.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 270.0,
+    "Weight": 200.0,
+    "Volume": 90.0,
+    "Cost": 8.182846E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 8,
+    "Name": "JK-250"
+  },
+  {
+    "PeopleCapacity": 275.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 297.0,
+    "Weight": 220.0,
+    "Volume": 100.0,
+    "Cost": 9.001131E+08,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 8,
+    "Name": "JK-275"
+  },
+  {
+    "PeopleCapacity": 300.0,
+    "PeopleDemand": 0.0,
+    "ElectricityDemand": 324.0,
+    "Weight": 240.0,
+    "Volume": 110.0,
+    "Cost": 981941568.0,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 9,
+    "Name": "JK-300"
+  }
+]

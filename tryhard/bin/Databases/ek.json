@@ -1,0 +1,44 @@
+[
+  {
+    "Power": 24900.0,
+    "PeopleDemand": 10.0,
+    "ElectricityDemand": 0.0,
+    "Weight": 500.0,
+    "Volume": 100.0,
+    "Cost": 1.3419E+09,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 0,
+    "Name": "EK-50"
+  },
+  {
+    "Power": 51800.0,
+    "PeopleDemand": 11.0,
+    "ElectricityDemand": 0.0,
+    "Weight": 1000.0,
+    "Volume": 200.0,
+    "Cost": 2.6838E+09,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 1,
+    "Name": "EK-150"
+  },
+  {
+    "Power": 67250.0,
+    "PeopleDemand": 15.0,
+    "ElectricityDemand": 0.0,
+    "Weight": 1500.0,
+    "Volume": 300.0,
+    "Cost": 3.35475E+09,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "EK-200"
+  }
+]
