@@ -11,26 +11,7 @@
     "Volume": 20.0,
     "Cost": 5E+07,
     "Structure": {
-      "Objects": [
-        {
-          "Id": 0,
-          "Index": 1,
-          "Type": "bolt",
-          "Coordinates": "336, 113"
-        },
-        {
-          "Id": 0,
-          "Index": 2,
-          "Type": "bolt",
-          "Coordinates": "414, 345"
-        },
-        {
-          "Id": 0,
-          "Index": 3,
-          "Type": "bolt",
-          "Coordinates": "616, 208"
-        }
-      ],
+      "Objects": [],
       "Links": []
     },
     "Id": 0,
