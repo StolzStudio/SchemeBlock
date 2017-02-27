@@ -11,7 +11,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "bg-4-100Y"
+    "Name": "БГ-4-100У"
   },
   {
     "HolesAmount": 5,
@@ -25,7 +25,7 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "bg-5-100Y"
+    "Name": "БГ-5-100У"
   },
   {
     "HolesAmount": 6,
@@ -39,7 +39,7 @@
       "Links": []
     },
     "Id": 2,
-    "Name": "bg-6-100Y"
+    "Name": "БГ-6-100У"
   },
   {
     "HolesAmount": 8,
@@ -53,7 +53,7 @@
       "Links": []
     },
     "Id": 3,
-    "Name": "bg-8-100Y"
+    "Name": "БГ-8-100У"
   },
   {
     "HolesAmount": 4,
@@ -67,7 +67,7 @@
       "Links": []
     },
     "Id": 4,
-    "Name": "bg-4-65Y"
+    "Name": "БГ-4-65У"
   },
   {
     "HolesAmount": 5,
@@ -81,7 +81,7 @@
       "Links": []
     },
     "Id": 5,
-    "Name": "bg-5-65Y"
+    "Name": "БГ-5-65У"
   },
   {
     "HolesAmount": 6,
@@ -95,7 +95,7 @@
       "Links": []
     },
     "Id": 6,
-    "Name": "bg-6-65Y"
+    "Name": "БГ-6-65У"
   },
   {
     "HolesAmount": 8,
@@ -109,6 +109,6 @@
       "Links": []
     },
     "Id": 7,
-    "Name": "bg-8-65Y"
+    "Name": "БГ-8-65У"
   }
 ]

@@ -49,7 +49,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "MC-9000"
+    "Name": "ДК-9000"
   },
   {
     "FluidOutput": 15000.0,
@@ -119,7 +119,7 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "MC-15000"
+    "Name": "ДК-15000"
   },
   {
     "FluidOutput": 2400.0,
@@ -164,21 +164,6 @@
       ]
     },
     "Id": 2,
-    "Name": "MC-17"
-  },
-  {
-    "FluidOutput": 0.0,
-    "EstimatedFieldId": 0,
-    "PeopleDemand": 0.0,
-    "ElectricityDemand": 0.0,
-    "Weight": 0.0,
-    "Volume": 0.0,
-    "Cost": 0.0,
-    "Structure": {
-      "Objects": [],
-      "Links": []
-    },
-    "Id": 3,
-    "Name": "MC_TEST"
+    "Name": "ДК-17"
   }
 ]

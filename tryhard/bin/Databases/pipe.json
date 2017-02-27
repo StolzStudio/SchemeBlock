@@ -11,7 +11,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "pipe_0"
+    "Name": "Труба_1"
   },
   {
     "Diameter": 40,
@@ -25,7 +25,7 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "pipe_1"
+    "Name": "Труба_2"
   },
   {
     "Diameter": 30,
@@ -39,6 +39,6 @@
       "Links": []
     },
     "Id": 2,
-    "Name": "pipe_2"
+    "Name": "Труба_3"
   }
 ]

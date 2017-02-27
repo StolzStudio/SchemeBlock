@@ -11,7 +11,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "JK-50"
+    "Name": "ЖК-50"
   },
   {
     "PeopleCapacity": 75.0,
@@ -25,7 +25,7 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "JK-75"
+    "Name": "ЖК-75"
   },
   {
     "PeopleCapacity": 100.0,
@@ -39,7 +39,7 @@
       "Links": []
     },
     "Id": 2,
-    "Name": "JK-100"
+    "Name": "ЖК-100"
   },
   {
     "PeopleCapacity": 125.0,
@@ -53,7 +53,7 @@
       "Links": []
     },
     "Id": 3,
-    "Name": "JK-125"
+    "Name": "ЖК-125"
   },
   {
     "PeopleCapacity": 150.0,
@@ -67,7 +67,7 @@
       "Links": []
     },
     "Id": 4,
-    "Name": "JK-150"
+    "Name": "ЖК-150"
   },
   {
     "PeopleCapacity": 175.0,
@@ -81,7 +81,7 @@
       "Links": []
     },
     "Id": 5,
-    "Name": "JK-175"
+    "Name": "ЖК-175"
   },
   {
     "PeopleCapacity": 200.0,
@@ -95,7 +95,7 @@
       "Links": []
     },
     "Id": 6,
-    "Name": "JK-200"
+    "Name": "ЖК-200"
   },
   {
     "PeopleCapacity": 225.0,
@@ -109,7 +109,7 @@
       "Links": []
     },
     "Id": 7,
-    "Name": "JK-225"
+    "Name": "ЖК-225"
   },
   {
     "PeopleCapacity": 250.0,
@@ -123,7 +123,7 @@
       "Links": []
     },
     "Id": 8,
-    "Name": "JK-250"
+    "Name": "ЖК-250"
   },
   {
     "PeopleCapacity": 275.0,
@@ -137,7 +137,7 @@
       "Links": []
     },
     "Id": 8,
-    "Name": "JK-275"
+    "Name": "ЖК-275"
   },
   {
     "PeopleCapacity": 300.0,
@@ -151,6 +151,6 @@
       "Links": []
     },
     "Id": 9,
-    "Name": "JK-300"
+    "Name": "ЖК-300"
   }
 ]

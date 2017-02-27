@@ -13,7 +13,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "rpv_0"
+    "Name": "РПВ_1"
   },
   {
     "WaterInput": 1000.0,
@@ -29,6 +29,6 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "rpv_1"
+    "Name": "РПВ_2"
   }
 ]

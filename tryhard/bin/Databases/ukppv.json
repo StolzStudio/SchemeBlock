@@ -12,7 +12,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "UKPPV_0"
+    "Name": "УКППВ_0"
   },
   {
     "WaterInput": 250.0,
@@ -27,6 +27,6 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "UKPPV_1"
+    "Name": "УКППВ_1"
   }
 ]

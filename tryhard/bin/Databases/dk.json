@@ -15,7 +15,7 @@
       "Links": []
     },
     "Id": 0,
-    "Name": "DK-24 d100"
+    "Name": "ДК-24 д100"
   },
   {
     "HolesAmount": 10,
@@ -33,7 +33,7 @@
       "Links": []
     },
     "Id": 1,
-    "Name": "DK-10 d150"
+    "Name": "ДК-10 д150"
   },
   {
     "HolesAmount": 5,
@@ -51,6 +51,6 @@
       "Links": []
     },
     "Id": 2,
-    "Name": "DK-5 d200"
+    "Name": "ДК-5 д200"
   }
 ]

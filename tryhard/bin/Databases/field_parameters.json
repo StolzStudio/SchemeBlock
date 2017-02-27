@@ -7,7 +7,7 @@
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 0,
-    "Name": "field_0"
+    "Name": "Месторождение_1"
   },
   {
     "FluidOutput": 10000.0,
@@ -17,6 +17,6 @@
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 1,
-    "Name": "field_1"
+    "Name": "Месторождение_2"
   }
 ]
