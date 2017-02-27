@@ -79,20 +79,6 @@
 			]
 		},
 		{
-			"Name": "bolt",
-			"PossibleLink": [],
-			"Properties":
-			[
-				"Id",
-				"Name",
-				"Diameter",
-				"Material",
-				"Weight",
-				"Volume",
-				"Cost"
-			]
-		},
-		{
 			"Name": "pipe",
 			"PossibleLink": [],
 			"Properties":
