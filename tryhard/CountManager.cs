@@ -504,9 +504,16 @@ namespace tryhard
                     (aResult as IntegratedComplex).OilOutput += FirstObjectValue;
                 }
             }
+            if (aLink.LinkParameter == "WetGas")
+            {
+                if (aResultType.Name == "ProcessingComplex")
+                {
+                    (aResult as ProcessingComplex).WetGasInput += FirstObjectValue;
+                }
+            }
             if (aLink.LinkParameter == "Gas")
             {
-                if (aResult.Name == "ProcessingComplex")
+                if (aResultType.Name == "ProcessingComplex")
                 {
                     (aResult as ProcessingComplex).GasOutput += FirstObjectValue;
                 }

@@ -2,7 +2,7 @@
   {
     "FluidInput": 9000.0,
     "OilOutput": 5000.0,
-    "GasInput": 0.0,
+    "WetGasInput": 0.0,
     "GasOutput": 1000.0,
     "EstimatedFieldId": 0,
     "PeopleDemand": 40.0,
@@ -20,7 +20,7 @@
   {
     "FluidInput": 20000.0,
     "OilOutput": 13000.0,
-    "GasInput": 0.0,
+    "WetGasInput": 0.0,
     "GasOutput": 5000.0,
     "EstimatedFieldId": 1,
     "PeopleDemand": 80.0,
@@ -57,7 +57,7 @@
   {
     "FluidInput": 0.0,
     "OilOutput": 0.0,
-    "GasInput": 0.0,
+    "WetGasInput": 0.0,
     "GasOutput": 0.0,
     "EstimatedFieldId": 1,
     "PeopleDemand": 217.0,
