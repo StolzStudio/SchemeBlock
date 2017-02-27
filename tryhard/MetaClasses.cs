@@ -120,7 +120,7 @@ namespace tryhard
     public class OilQuality : BaseObject
     {
         public float OilProportion { get; set; }
-        public float GasProportion { get; set; }
+        public float WetGasProportion { get; set; }
         public float WaterProportion { get; set; }
     }
 
