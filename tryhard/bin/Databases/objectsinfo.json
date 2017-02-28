@@ -192,58 +192,6 @@
 			]
 		},
 		{
-			"Name": "rpv",
-			"PossibleLink":
-			[
-				"nnpv"
-			],
-			"Properties":
-			[
-				"Id",
-				"Name",
-				"WaterInput",
-				"WaterOutput",
-				"WaterVolume",
-				"PeopleDemand",
-				"ElectricityDemand",
-				"Weight",
-				"Volume",
-				"Cost"
-			]
-		},
-		{
-			"Name": "rr",
-			"PossibleLink": [],
-			"Properties":
-			[
-				"Id",
-				"Name",
-				"MaxReagentInput",
-				"PeopleDemand",
-				"ElectricityDemand",
-				"Weight",
-				"Volume",
-				"Cost"
-			]
-		},
-		{
-			"Name": "rtn",
-			"PossibleLink": [],
-			"Properties":
-			[
-				"Id",
-				"Name",
-				"OilInput",
-				"OilOutput",
-				"OilVolume",
-				"PeopleDemand",
-				"ElectricityDemand",
-				"Weight",
-				"Volume",
-				"Cost"
-			]
-		},
-		{
 			"Name": "dk",
 			"PossibleLink":
 			[

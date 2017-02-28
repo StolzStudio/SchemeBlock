@@ -1,22 +1,32 @@
 [
   {
-    "FluidOutput": 30000.0,
-    "HolesAmount": 10,
+    "FluidOutput": 986106.0,
+    "HolesAmount": 20,
     "OilQualityId": 0,
-    "WaterInput": 38000.0,
+    "WaterInput": 48000.0,
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 0,
     "Name": "Месторождение_1"
   },
   {
-    "FluidOutput": 10000.0,
-    "HolesAmount": 13,
+    "FluidOutput": 3.256283E+07,
+    "HolesAmount": 18,
     "OilQualityId": 0,
-    "WaterInput": 500.0,
+    "WaterInput": 51000.0,
     "ReserveDaysRvp": 3,
     "ReserveDaysRtn": 20,
     "Id": 1,
     "Name": "Месторождение_2"
+  },
+  {
+    "FluidOutput": 18441796.0,
+    "HolesAmount": 36,
+    "OilQualityId": 0,
+    "WaterInput": 500.0,
+    "ReserveDaysRvp": 3,
+    "ReserveDaysRtn": 20,
+    "Id": 2,
+    "Name": "Месторождение_3"
   }
 ]

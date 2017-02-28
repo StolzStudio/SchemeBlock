@@ -1,12 +1,12 @@
 [
   {
-    "WaterInput": 480.0,
-    "WaterOutput": 480.0,
+    "WaterInput": 10000.0,
+    "WaterOutput": 9500.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 55.0,
-    "Volume": 100.0,
-    "Cost": 7E+07,
+    "Volume": 150.0,
+    "Cost": 1E+10,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -15,13 +15,13 @@
     "Name": "УКППВ_0"
   },
   {
-    "WaterInput": 250.0,
-    "WaterOutput": 250.0,
+    "WaterInput": 15000.0,
+    "WaterOutput": 14000.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 30.0,
-    "Volume": 55.0,
-    "Cost": 4E+07,
+    "Volume": 200.0,
+    "Cost": 1.5E+10,
     "Structure": {
       "Objects": [],
       "Links": []

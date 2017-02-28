@@ -285,14 +285,11 @@ namespace tryhard
                 case "nnpv": result.AddRange(JsonConvert.DeserializeObject<List<Nnpv>>(json)); break;
                 case "sov": result.AddRange(JsonConvert.DeserializeObject<List<Sov>>(json)); break;
                 case "ngs": result.AddRange(JsonConvert.DeserializeObject<List<Ngs>>(json)); break;
-                case "rpv": result.AddRange(JsonConvert.DeserializeObject<List<Rpv>>(json)); break;
-                case "rtn": result.AddRange(JsonConvert.DeserializeObject<List<Rtn>>(json)); break;
                 case "upn": result.AddRange(JsonConvert.DeserializeObject<List<Upn>>(json)); break;
                 case "dks": result.AddRange(JsonConvert.DeserializeObject<List<Dks>>(json)); break;
                 case "dk": result.AddRange(JsonConvert.DeserializeObject<List<Dk>>(json)); break;
                 case "bg": result.AddRange(JsonConvert.DeserializeObject<List<Bg>>(json)); break;
                 case "bu": result.AddRange(JsonConvert.DeserializeObject<List<Bu>>(json)); break;
-                case "rr": result.AddRange(JsonConvert.DeserializeObject<List<Rr>>(json)); break;
                 case "fu": result.AddRange(JsonConvert.DeserializeObject<List<Fu>>(json)); break;
                 case "jk": result.AddRange(JsonConvert.DeserializeObject<List<Jk>>(json)); break;
                 case "ek": result.AddRange(JsonConvert.DeserializeObject<List<Ek>>(json)); break;

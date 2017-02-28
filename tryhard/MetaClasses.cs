@@ -189,13 +189,6 @@ namespace tryhard
         public float GasInput { get; set; }
     }
 
-    public class Rpv : ComplicatedObject
-    {
-        public float WaterInput { get; set; }
-        public float WaterOutput { get; set; }
-        public float WaterVolume { get; set; }
-    }
-
     public class Upn : ComplicatedObject
     {
         public float FluidInput { get; set; }
@@ -216,23 +209,11 @@ namespace tryhard
         public float GasOutput { get; set; }
     }
 
-    public class Rtn : ComplicatedObject
-    {
-        public float OilInput { get; set; }
-        public float OilOutput { get; set; }
-        public float OilVolume { get; set; }
-    }
-
     public class Dks : ComplicatedObject
     {
         public int PressureGradient { get; set; }
         public float GasInput { get; set; }
         public float GasOutput { get; set; }
-    }
-
-    public class Rr : ComplicatedObject
-    {
-        public float MaxReagentInput { get; set; }
     }
 
     public class Dk : ComplicatedObject

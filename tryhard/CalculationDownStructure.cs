@@ -180,8 +180,8 @@ namespace tryhard
             pUpStructure = _pUpStructure;
             if (!isStability()) return false;
             weight = countSC * supportCell.p + countBC * baseCell.p;
-            cost = weight * 120000.0;
             freeVolume = countBC * baseCell.a * (baseCell.h - baseCell.dCover - baseCell.dBottom - baseCell.dBallast);
+            cost = weight * 400000.0 + freeVolume * 0.85 * 100000;
             return true;
         }
 

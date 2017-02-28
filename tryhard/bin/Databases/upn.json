@@ -1,70 +1,53 @@
 [
   {
-    "FluidInput": 250.0,
-    "OilOutput": 250.0,
-    "WetGasOutput": 10.0,
-    "WaterOutput": 62.0,
+    "FluidInput": 300000.0,
+    "OilOutput": 258000.0,
+    "WetGasOutput": 12000.0,
+    "WaterOutput": 30000.0,
     "PeopleDemand": 0.0,
     "ElectricityDemand": 0.0,
     "Weight": 12.0,
     "Volume": 20.0,
-    "Cost": 1.62E+07,
+    "Cost": 4.5E+09,
     "Structure": {
       "Objects": [],
       "Links": []
     },
     "Id": 0,
-    "Name": "УПН_250"
+    "Name": "УПН_750"
   },
   {
-    "FluidInput": 500.0,
-    "OilOutput": 290.0,
-    "WetGasOutput": 85.0,
-    "WaterOutput": 125.0,
+    "FluidInput": 355000.0,
+    "OilOutput": 275000.0,
+    "WetGasOutput": 30000.0,
+    "WaterOutput": 50000.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 20.0,
     "Volume": 30.0,
-    "Cost": 2.52E+07,
+    "Cost": 5.2E+09,
     "Structure": {
       "Objects": [],
       "Links": []
     },
     "Id": 1,
-    "Name": "УПН_500"
+    "Name": "УПН_1250"
   },
   {
-    "FluidInput": 1000.0,
-    "OilOutput": 580.0,
-    "WetGasOutput": 170.0,
-    "WaterOutput": 250.0,
+    "FluidInput": 410000.0,
+    "OilOutput": 360000.0,
+    "WetGasOutput": 30000.0,
+    "WaterOutput": 20000.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 40.0,
     "Volume": 50.0,
-    "Cost": 4.41E+07,
+    "Cost": 6.3E+09,
     "Structure": {
       "Objects": [],
       "Links": []
     },
     "Id": 2,
-    "Name": "УПН_1000"
-  },
-  {
-    "FluidInput": 3000.0,
-    "OilOutput": 1740.0,
-    "WetGasOutput": 510.0,
-    "WaterOutput": 750.0,
-    "PeopleDemand": 1.0,
-    "ElectricityDemand": 0.0,
-    "Weight": 50.0,
-    "Volume": 70.0,
-    "Cost": 6.3E+07,
-    "Structure": {
-      "Objects": [],
-      "Links": []
-    },
-    "Id": 3,
-    "Name": "УПН_3000"
+    "Name": "УПН_1700"
   }
 ]

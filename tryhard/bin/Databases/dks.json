@@ -7,7 +7,7 @@
     "ElectricityDemand": 0.0,
     "Weight": 150.0,
     "Volume": 20.0,
-    "Cost": 1E+07,
+    "Cost": 1000000.0,
     "Structure": {
       "Objects": [],
       "Links": []

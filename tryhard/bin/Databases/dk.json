@@ -1,15 +1,15 @@
 [
   {
     "HolesAmount": 24,
-    "FluidInput": 2400.0,
-    "FluidOutput": 2400.0,
+    "FluidInput": 240000.0,
+    "FluidOutput": 240000.0,
     "WaterInput": 0.0,
     "ReagentInput": 0.0,
     "PeopleDemand": 2.0,
     "ElectricityDemand": 0.0,
-    "Weight": 35.0,
-    "Volume": 20.0,
-    "Cost": 5E+07,
+    "Weight": 2400.0,
+    "Volume": 500.0,
+    "Cost": 3E+09,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -19,15 +19,15 @@
   },
   {
     "HolesAmount": 10,
-    "FluidInput": 3000.0,
-    "FluidOutput": 3000.0,
+    "FluidInput": 300000.0,
+    "FluidOutput": 300000.0,
     "WaterInput": 0.0,
     "ReagentInput": 0.0,
     "PeopleDemand": 2.0,
     "ElectricityDemand": 0.0,
-    "Weight": 25.0,
-    "Volume": 22.0,
-    "Cost": 7E+07,
+    "Weight": 1000.0,
+    "Volume": 250.0,
+    "Cost": 1E+09,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -37,15 +37,15 @@
   },
   {
     "HolesAmount": 5,
-    "FluidInput": 3750.0,
-    "FluidOutput": 3750.0,
+    "FluidInput": 375000.0,
+    "FluidOutput": 375000.0,
     "WaterInput": 0.0,
     "ReagentInput": 0.0,
     "PeopleDemand": 2.0,
     "ElectricityDemand": 0.0,
-    "Weight": 25.0,
-    "Volume": 25.0,
-    "Cost": 8E+07,
+    "Weight": 800.0,
+    "Volume": 150.0,
+    "Cost": 3E+08,
     "Structure": {
       "Objects": [],
       "Links": []

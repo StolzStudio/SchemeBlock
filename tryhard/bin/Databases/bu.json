@@ -6,7 +6,7 @@
     "ElectricityDemand": 600.0,
     "Weight": 1028.0,
     "Volume": 1000.0,
-    "Cost": 2E+08,
+    "Cost": 1.2E+10,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -21,7 +21,7 @@
     "ElectricityDemand": 500.0,
     "Weight": 725.0,
     "Volume": 980.0,
-    "Cost": 1.7E+08,
+    "Cost": 7E+09,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -36,7 +36,7 @@
     "ElectricityDemand": 400.0,
     "Weight": 862.0,
     "Volume": 800.0,
-    "Cost": 8.5E+07,
+    "Cost": 8E+09,
     "Structure": {
       "Objects": [],
       "Links": []
@@ -51,7 +51,7 @@
     "ElectricityDemand": 550.0,
     "Weight": 1206.0,
     "Volume": 1130.0,
-    "Cost": 1.4E+08,
+    "Cost": 1.4E+10,
     "Structure": {
       "Objects": [],
       "Links": []
