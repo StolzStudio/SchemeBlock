@@ -318,9 +318,9 @@ namespace tryhard
             {
                 BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[key].ClassText, aCombination[key].Id);
                 
-                Result.Cost   += (float)BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject) * aCombination[key].Count;
-                Result.Volume += (float)BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject) * aCombination[key].Count;
-                Result.Weight += (float)BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject) * aCombination[key].Count;
+                Result.Cost   += (float)BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject) * aCombination[key].Count * 2;
+                Result.Volume += (float)BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject) * aCombination[key].Count * 15;
+                Result.Weight += (float)BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject) * aCombination[key].Count * 10;
                 Result.PeopleDemand += (float)BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject) * aCombination[key].Count;
                 Result.ElectricityDemand += (float)BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject) * aCombination[key].Count;
             }

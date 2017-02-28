@@ -309,12 +309,9 @@ namespace tryhard
                 case "ukppv": return "Ukppv"; break;
                 case "ukpg": return "Ukpg"; break;
                 case "nnpv": return "Nnpv"; break;
-                case "rpv": return "Rpv"; break;
-                case "rtn": return "Rtn"; break;
                 case "upn": return "Upn"; break;
                 case "dks": return "Dks"; break;
                 case "dk": return "Dk"; break;
-                case "rr": return "Rr"; break;
                 case "fu": return "Fu"; break;
             }
             return null;
