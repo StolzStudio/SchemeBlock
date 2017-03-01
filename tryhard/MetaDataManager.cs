@@ -308,10 +308,16 @@ namespace tryhard
                 case "oil_quality": return "OilQuality"; break;
                 case "ukppv": return "Ukppv"; break;
                 case "ukpg": return "Ukpg"; break;
+                case "pump": return "Pump"; break;
+                case "pipe": return "Pipe"; break;
                 case "nnpv": return "Nnpv"; break;
+                case "sov": return "Sov"; break;
+                case "ngs": return "Ngs"; break;
                 case "upn": return "Upn"; break;
                 case "dks": return "Dks"; break;
                 case "dk": return "Dk"; break;
+                case "jk": return "Jk"; break;
+                case "ek": return "Ek"; break;
                 case "fu": return "Fu"; break;
             }
             return null;
