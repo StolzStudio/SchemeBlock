@@ -26,14 +26,14 @@ namespace tryhard
         public Point ClickOffset { get; set; }
         private bool isNextStep;
         private int MarginInLinkPanel = 12;
-        private Project currentProject;
+        private bool isLoadedProject = false;
+        private Project currentProject = null;
 
         /* Methods */
 
         public MainForm()
         {
             InitializeComponent();
-            FillFieldComboBox();
 
             DrawManager = new Manager(this.MainPage);
             CalcManager = new CalculationManager();
@@ -45,6 +45,7 @@ namespace tryhard
             isNextStep = false;
 
             SetProject();
+            FillFieldComboBox();
 
             UpStructurePanel.SendToBack();
             MainPage.BringToFront();
@@ -56,9 +57,13 @@ namespace tryhard
             {
                 currentProject = new Project(MetaDataManager.Instance.Projects[ProgramState.currentProjectId]);
                 DrawManager.LoadProjectStructureOfObject(ProgramState.currentProjectId);
+                isLoadedProject = true;
             }
             else
+            {
+                isLoadedProject = false;
                 CreateProject();
+            }
         }
 
         private void CreateProject()
@@ -324,15 +329,34 @@ namespace tryhard
         private void FillFieldComboBox()
         {
             FieldComboBox.Items.Clear();
-            foreach (IdNameInfo field in MetaDataManager.Instance.GetObjectsInfoByType("field_parameters"))
+            List<IdNameInfo> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
+            foreach (IdNameInfo field in fields)
                 FieldComboBox.Items.Add(field.Name);
-            FieldComboBox.SelectedIndex = 0;
+            for (int i = 0; i < fields.Count(); i++)
+                if (fields[i].Id == currentProject.EstimatedFieldId)
+                {
+                    FieldComboBox.SelectedIndex = i;
+                    break;
+                }
         }
 
         private void FieldComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (DrawManager != null) DrawManager.DeleteAllElements();
+            if (DrawManager != null && !isLoadedProject) DrawManager.DeleteAllElements();
             FillObjectTreeView();
+            isLoadedProject = false;
+            currentProject.EstimatedFieldId = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList()[FieldComboBox.SelectedIndex].Id;
+        }
+
+        private void SetIndex_FieldComboBox()
+        {
+            List<IdNameInfo> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
+            for (int i = 0; i < fields.Count(); i++)
+                if (fields[i].Id == currentProject.EstimatedFieldId)
+                {
+                    FieldComboBox.SelectedIndex = i;
+                    break;
+                }
         }
 
         private void SelectTreeNode()

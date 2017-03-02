@@ -77,7 +77,21 @@ namespace tryhard
             diameterIce = originalField.diameterIce;
             speedIce = originalField.speedIce;
             durabilityGround = originalField.durabilityGround;
-    }
+        }
+
+        public void Initialize(FieldSlice originalField)
+        {
+            yWater = originalField.yWater;
+            dLocalWater = originalField.dLocalWater;
+            dGlobalWater = originalField.dGlobalWater;
+            hWave50 = originalField.hWave50;
+            hWave001 = originalField.hWave001;
+            dIce = originalField.dIce;
+            durabilityIce = originalField.durabilityIce;
+            diameterIce = originalField.diameterIce;
+            speedIce = originalField.speedIce;
+            durabilityGround = originalField.durabilityGround;
+        }
 
         public void Initialize()
         {

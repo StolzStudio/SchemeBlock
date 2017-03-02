@@ -2,7 +2,7 @@
   "1": {
     "Id": 1,
     "Name": "Печорское море",
-    "SelectedCell": 3,
+    "SelectedCell": 1,
     "EstimatedFieldId": 0,
     "FieldParameters": {
       "yWater": 1.0,
@@ -40,8 +40,8 @@
       ]
     },
     "SelectedStructureTypes": {
-      "1": 1,
-      "3": 1
+      "1": 0,
+      "3": 0
     },
     "DownStructures": {
       "1": [
@@ -102,7 +102,7 @@
             "pMatWall": 981.75000000000011
           },
           "minTrCl": 8.5,
-          "freeVolume": 463320.0,
+          "freeVolume": 0.0,
           "weight": 0.0,
           "cost": 0.0
         },
@@ -287,7 +287,7 @@
             "pMatWall": 981.75000000000011
           },
           "minTrCl": 8.5,
-          "freeVolume": 143000.0,
+          "freeVolume": 0.0,
           "weight": 0.0,
           "cost": 0.0
         },
@@ -420,7 +420,7 @@
     "Id": 2,
     "Name": "Баренцево море",
     "SelectedCell": 3,
-    "EstimatedFieldId": 0,
+    "EstimatedFieldId": 1,
     "FieldParameters": {
       "yWater": 1.0,
       "dLocalWater": 30.0,
@@ -1231,7 +1231,7 @@
     "Id": 3,
     "Name": "Море Лаптевых",
     "SelectedCell": 1,
-    "EstimatedFieldId": 0,
+    "EstimatedFieldId": 2,
     "FieldParameters": {
       "yWater": 1.0,
       "dLocalWater": 30.0,

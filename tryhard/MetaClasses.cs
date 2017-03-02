@@ -34,8 +34,7 @@ namespace tryhard
             EstimatedFieldId = originalProject.EstimatedFieldId;
             Structure = new ObjectsStructure(originalProject.Structure);
             SelectedStructureTypes = new Dictionary<int, int>();
-            FieldParameters = new FieldSlice();
-            FieldParameters.Fill();
+            Field.Instance.Initialize(originalProject.FieldParameters);
             foreach (int key in originalProject.SelectedStructureTypes.Keys)
                 SelectedStructureTypes.Add(key, originalProject.SelectedStructureTypes[key]);
             foreach (int key in originalProject.DownStructures.Keys)

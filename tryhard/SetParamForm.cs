@@ -87,7 +87,7 @@ namespace tryhard
         {
             foreach (DataGridViewRow row in ObjectParamDataGridView.Rows)
             {
-                if ((row.Cells[1].Value == null)||(row.Cells[1].Value == ""))
+                if ((row.Cells[1].Value == null) || (row.Cells[1].Value == ""))
                 {
                     MessageBox.Show("Перед сохранением нужно заполнить все поля");
                     return;
