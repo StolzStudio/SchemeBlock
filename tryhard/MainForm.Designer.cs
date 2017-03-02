@@ -133,12 +133,12 @@ namespace tryhard
             this.hWave001UpDown = new System.Windows.Forms.NumericUpDown();
             this.hWave50UpDown = new System.Windows.Forms.NumericUpDown();
             this.StructuresGridView = new System.Windows.Forms.DataGridView();
+            this.StructuresList = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StructuresList = new System.Windows.Forms.Label();
-            this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -1175,41 +1175,6 @@ namespace tryhard
             this.StructuresGridView.TabIndex = 27;
             this.StructuresGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StructuresGridView_CellClick);
             // 
-            // TypeColumn
-            // 
-            this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TypeColumn.FillWeight = 131.5019F;
-            this.TypeColumn.HeaderText = "Тип";
-            this.TypeColumn.Name = "TypeColumn";
-            this.TypeColumn.ReadOnly = true;
-            this.TypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 147.9397F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // WeightColumn
-            // 
-            this.WeightColumn.HeaderText = "Масса, кг";
-            this.WeightColumn.Name = "WeightColumn";
-            this.WeightColumn.ReadOnly = true;
-            this.WeightColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.WeightColumn.Width = 130;
-            // 
-            // CostColumn
-            // 
-            dataGridViewCellStyle1.Format = "C3";
-            this.CostColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.CostColumn.HeaderText = "Стоимость";
-            this.CostColumn.Name = "CostColumn";
-            this.CostColumn.ReadOnly = true;
-            this.CostColumn.Width = 120;
-            // 
             // StructuresList
             // 
             this.StructuresList.AutoSize = true;
@@ -1235,6 +1200,41 @@ namespace tryhard
             this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
             this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
             this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
+            // 
+            // TypeColumn
+            // 
+            this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TypeColumn.FillWeight = 131.5019F;
+            this.TypeColumn.HeaderText = "Тип";
+            this.TypeColumn.Name = "TypeColumn";
+            this.TypeColumn.ReadOnly = true;
+            this.TypeColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 147.9397F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Название";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // WeightColumn
+            // 
+            this.WeightColumn.HeaderText = "Масса, т";
+            this.WeightColumn.Name = "WeightColumn";
+            this.WeightColumn.ReadOnly = true;
+            this.WeightColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WeightColumn.Width = 130;
+            // 
+            // CostColumn
+            // 
+            dataGridViewCellStyle1.Format = "C3";
+            this.CostColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.CostColumn.HeaderText = "Стоимость";
+            this.CostColumn.Name = "CostColumn";
+            this.CostColumn.ReadOnly = true;
+            this.CostColumn.Width = 120;
             // 
             // MainForm
             // 
@@ -1363,12 +1363,12 @@ namespace tryhard
         private Label yMatBallastLabel;
         private NumericUpDown groundDurabilityUpDown;
         private Label groundDurabilityLabel;
+        private TextBox CommonCostTextBox;
+        private Label CommonCostLabel;
         private DataGridViewTextBoxColumn TypeColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn WeightColumn;
         private DataGridViewTextBoxColumn CostColumn;
-        private TextBox CommonCostTextBox;
-        private Label CommonCostLabel;
     }
 }
 
