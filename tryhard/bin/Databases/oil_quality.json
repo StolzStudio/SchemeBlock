@@ -1,7 +1,7 @@
 [
   {
-    "OilProportion": 0.53,
-    "WetGasProportion": 0.17,
+    "OilProportion": 0.5,
+    "WetGasProportion": 0.2,
     "WaterProportion": 0.3,
     "Id": 0,
     "Name": "Флюид_1"

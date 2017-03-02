@@ -127,6 +127,7 @@ namespace tryhard
         public BaseCell baseCell { get; set; }
         public double minTrCl { get; set; }
         public double freeVolume { get; set; }
+        public double weightJob { get; set; }
         public double weight { get; set; }
         public double cost { get; set; }
 
@@ -148,6 +149,8 @@ namespace tryhard
             yMatBallast = originalStructure.yMatBallast;
             supportCell = new Cell(originalStructure.supportCell);
             baseCell = new BaseCell(originalStructure.baseCell);
+            weight = originalStructure.weight;
+            weightJob = originalStructure.weightJob;
             cost = originalStructure.cost;
             minTrCl = originalStructure.minTrCl;
         }
@@ -190,11 +193,12 @@ namespace tryhard
             SetCellCount(type);
             supportCell = new Cell();
             baseCell = new BaseCell();
-            weight = cost = 0;
+            weight = cost = weightJob = 0;
             pUpStructure = _pUpStructure;
             if (!isStability()) return false;
             weight = countSC * supportCell.p + countBC * baseCell.p;
             freeVolume = countBC * baseCell.a * (baseCell.h - baseCell.dCover - baseCell.dBottom - baseCell.dBallast);
+            weightJob = weight + freeVolume * 0.9;
             cost = weight * 400000.0 + freeVolume * 0.85 * 100000;
             return true;
         }

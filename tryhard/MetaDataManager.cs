@@ -65,12 +65,8 @@ namespace tryhard
             Objects = new Dictionary<string, List<BaseObject>>();
             ObjectsInfo = JsonConvert.DeserializeObject<Dictionary<string, List<MetaObjectInfo>>>(GetJson(ADir + "objectsinfo.json"));
             foreach (string Category in ObjectsInfo.Keys)
-            {
                 foreach (MetaObjectInfo ObjectType in ObjectsInfo[Category])
-                {
                     Objects.Add(ObjectType.Name, DeserializeMetaObjects(ObjectType.Name));
-                }
-            }
         }
 
         private void InitializeDictionary(string APath)
@@ -110,7 +106,7 @@ namespace tryhard
         }
 
 
-        public List<IdNameInfo> GetProjectIdName()
+        public List<IdNameInfo> GetProjectsIdName()
         {
             return Projects.Keys.Select(key => new IdNameInfo(Projects[key].Id, Projects[key].Name)).ToList();
         }
@@ -143,6 +139,11 @@ namespace tryhard
         public IEnumerable<IdNameInfo> GetObjectsInfoByType(string AObjectsType)
         {
             return Objects[AObjectsType].Select(k => new IdNameInfo(k.Id, k.Name));
+        }
+
+        public BaseObject GetObject(string type, int id)
+        {
+            return Objects[type].Where(obj => obj.Id == id).ToList()[0];
         }
 
         public IEnumerable<IdNameInfo> GetObjectsInfoByTypeAndEstimatedFieldId(string AObjectsType, int _estimatedFieldId)

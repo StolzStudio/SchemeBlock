@@ -1,9 +1,9 @@
 [
   {
     "FluidInput": 300000.0,
-    "OilOutput": 258000.0,
-    "WetGasOutput": 12000.0,
-    "WaterOutput": 30000.0,
+    "OilOutput": 150000.0,
+    "WetGasOutput": 60000.0,
+    "WaterOutput": 90000.0,
     "PeopleDemand": 0.0,
     "ElectricityDemand": 0.0,
     "Weight": 12.0,
@@ -17,10 +17,10 @@
     "Name": "УПН_750"
   },
   {
-    "FluidInput": 355000.0,
-    "OilOutput": 275000.0,
-    "WetGasOutput": 30000.0,
-    "WaterOutput": 50000.0,
+    "FluidInput": 350000.0,
+    "OilOutput": 175000.0,
+    "WetGasOutput": 70000.0,
+    "WaterOutput": 105000.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 20.0,
@@ -35,9 +35,9 @@
   },
   {
     "FluidInput": 410000.0,
-    "OilOutput": 360000.0,
-    "WetGasOutput": 30000.0,
-    "WaterOutput": 20000.0,
+    "OilOutput": 205000.0,
+    "WetGasOutput": 82000.0,
+    "WaterOutput": 123000.0,
     "PeopleDemand": 1.0,
     "ElectricityDemand": 0.0,
     "Weight": 40.0,

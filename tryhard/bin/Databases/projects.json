@@ -2,7 +2,7 @@
   "1": {
     "Id": 1,
     "Name": "Печорское море",
-    "SelectedCell": 1,
+    "SelectedCell": 3,
     "EstimatedFieldId": 0,
     "FieldParameters": {
       "yWater": 1.0,
@@ -40,8 +40,8 @@
       ]
     },
     "SelectedStructureTypes": {
-      "1": 0,
-      "3": 0
+      "1": 1,
+      "3": 2
     },
     "DownStructures": {
       "1": [
@@ -103,6 +103,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 0.0,
+          "weightJob": 0.0,
           "weight": 0.0,
           "cost": 0.0
         },
@@ -164,6 +165,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 19080.000000000004,
+          "weightJob": 39969.75,
           "weight": 22797.75,
           "cost": 10740900000.0
         },
@@ -225,6 +227,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 53000.000000000007,
+          "weightJob": 113973.9375,
           "weight": 66273.9375,
           "cost": 31014575000.0
         }
@@ -288,6 +291,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 0.0,
+          "weightJob": 0.0,
           "weight": 0.0,
           "cost": 0.0
         },
@@ -349,6 +353,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 19080.000000000004,
+          "weightJob": 39969.75,
           "weight": 22797.75,
           "cost": 10740900000.0
         },
@@ -410,6 +415,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 53000.000000000007,
+          "weightJob": 113973.9375,
           "weight": 66273.9375,
           "cost": 31014575000.0
         }
@@ -419,7 +425,7 @@
   "2": {
     "Id": 2,
     "Name": "Баренцево море",
-    "SelectedCell": 3,
+    "SelectedCell": 4,
     "EstimatedFieldId": 1,
     "FieldParameters": {
       "yWater": 1.0,
@@ -481,8 +487,8 @@
     "SelectedStructureTypes": {
       "3": 1,
       "4": 0,
-      "6": 0,
-      "7": 0
+      "6": 1,
+      "7": 1
     },
     "DownStructures": {
       "3": [
@@ -544,6 +550,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 295000.0,
+          "weightJob": 631187.5,
           "weight": 365687.5,
           "cost": 171350000000.0
         },
@@ -605,6 +612,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 106200.0,
+          "weightJob": 164280.0,
           "weight": 68700.0,
           "cost": 36507000000.0
         },
@@ -666,6 +674,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 295000.0,
+          "weightJob": 465950.3125,
           "weight": 200450.3125,
           "cost": 105255125000.0
         }
@@ -729,6 +738,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 295000.0,
+          "weightJob": 631187.5,
           "weight": 365687.5,
           "cost": 171350000000.0
         },
@@ -790,6 +800,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 106200.0,
+          "weightJob": 164280.0,
           "weight": 68700.0,
           "cost": 36507000000.0
         },
@@ -851,6 +862,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 295000.0,
+          "weightJob": 465950.3125,
           "weight": 200450.3125,
           "cost": 105255125000.0
         }
@@ -914,6 +926,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 578200.0,
+          "weightJob": 1048285.0,
           "weight": 527905.0,
           "cost": 260309000000.0
         },
@@ -975,6 +988,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 106200.0,
+          "weightJob": 164280.0,
           "weight": 68700.0,
           "cost": 36507000000.0
         },
@@ -1036,6 +1050,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 295000.0,
+          "weightJob": 465950.3125,
           "weight": 200450.3125,
           "cost": 105255125000.0
         }
@@ -1044,15 +1059,15 @@
         {
           "isCalculated": false,
           "type": 0,
-          "countBC": 121,
+          "countBC": 49,
           "countSC": 25,
           "wUpStructure": 100.0,
-          "pUpStructure": 3141595904.0,
+          "pUpStructure": 3141596.0,
           "dWallCell": 0.75,
           "hStructure": 86.5,
           "wCell": 20.0,
           "hExCl": 6.5,
-          "hTrCl": 65.538068181818176,
+          "hTrCl": 59.566071428571433,
           "yMat": 2.5,
           "yMatBallast": 1.6,
           "supportCell": {
@@ -1090,7 +1105,7 @@
             "vMat": 2703.625,
             "dWall": 0.75,
             "hTrCl": 32.0,
-            "vTrCl": 4415.227272727273,
+            "vTrCl": 2026.428571428572,
             "wInside": 18.5,
             "wOutside": 20.0,
             "aCSWall": 57.75,
@@ -1098,22 +1113,23 @@
             "pMatWall": 4620.0
           },
           "minTrCl": 8.5,
-          "freeVolume": 0.0,
-          "weight": 0.0,
-          "cost": 0.0
+          "freeVolume": 578200.0,
+          "weightJob": 1048285.0,
+          "weight": 527905.0,
+          "cost": 260309000000.0
         },
         {
           "isCalculated": false,
           "type": 1,
-          "countBC": 121,
+          "countBC": 49,
           "countSC": 1,
           "wUpStructure": 100.0,
-          "pUpStructure": 3141595904.0,
+          "pUpStructure": 3141596.0,
           "dWallCell": 0.75,
           "hStructure": 86.5,
           "wCell": 20.0,
           "hExCl": 6.5,
-          "hTrCl": 69.439772727272725,
+          "hTrCl": 69.200892857142861,
           "yMat": 2.5,
           "yMatBallast": 1.6,
           "supportCell": {
@@ -1151,7 +1167,7 @@
             "vMat": 2703.625,
             "dWall": 0.75,
             "hTrCl": 32.0,
-            "vTrCl": 5975.9090909090919,
+            "vTrCl": 5880.3571428571431,
             "wInside": 18.5,
             "wOutside": 20.0,
             "aCSWall": 57.75,
@@ -1159,22 +1175,23 @@
             "pMatWall": 4620.0
           },
           "minTrCl": 8.5,
-          "freeVolume": 0.0,
-          "weight": 0.0,
-          "cost": 0.0
+          "freeVolume": 578200.0,
+          "weightJob": 859442.5,
+          "weight": 339062.5,
+          "cost": 184772000000.0
         },
         {
           "isCalculated": false,
           "type": 2,
-          "countBC": 121,
+          "countBC": 49,
           "countSC": 4,
           "wUpStructure": 100.0,
-          "pUpStructure": 3141595904.0,
+          "pUpStructure": 3141596.0,
           "dWallCell": 0.75,
           "hStructure": 86.5,
           "wCell": 20.0,
           "hExCl": 6.5,
-          "hTrCl": 68.9520596590909,
+          "hTrCl": 67.996540178571422,
           "yMat": 2.5,
           "yMatBallast": 1.6,
           "supportCell": {
@@ -1212,7 +1229,7 @@
             "vMat": 2703.625,
             "dWall": 0.75,
             "hTrCl": 32.0,
-            "vTrCl": 5780.823863636364,
+            "vTrCl": 5398.6160714285716,
             "wInside": 18.5,
             "wOutside": 20.0,
             "aCSWall": 57.75,
@@ -1220,9 +1237,10 @@
             "pMatWall": 4620.0
           },
           "minTrCl": 8.5,
-          "freeVolume": 0.0,
-          "weight": 0.0,
-          "cost": 0.0
+          "freeVolume": 578200.0,
+          "weightJob": 883047.8125,
+          "weight": 362667.8125,
+          "cost": 194214125000.0
         }
       ]
     }
@@ -1256,7 +1274,7 @@
       "Links": []
     },
     "SelectedStructureTypes": {
-      "1": 0
+      "1": 1
     },
     "DownStructures": {
       "1": [
@@ -1318,6 +1336,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 175000.0,
+          "weightJob": 414906.25,
           "weight": 257406.25,
           "cost": 117837500000.0
         },
@@ -1379,6 +1398,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 63000.0,
+          "weightJob": 107208.75,
           "weight": 50508.75,
           "cost": 25558500000.0
         },
@@ -1440,6 +1460,7 @@
           },
           "minTrCl": 8.5,
           "freeVolume": 175000.0,
+          "weightJob": 304242.8125,
           "weight": 146742.8125,
           "cost": 73572125000.0
         }

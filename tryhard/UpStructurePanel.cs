@@ -25,6 +25,14 @@ namespace tryhard
             selectedCell = -1;
             SetDefaultState();
             FillStructuresGridView();
+            NameTextBox.Enabled = true;
+            if (ProgramState.currentProjectId != -1)
+            {
+                foreach (IdNameInfo project in MetaDataManager.Instance.GetProjectsIdName())
+                    if (project.Id == ProgramState.currentProjectId)
+                        NameTextBox.Text = project.Name;
+                NameTextBox.Enabled = false;
+            }
         }
 
         public void FillStructuresGridView()
@@ -40,8 +48,11 @@ namespace tryhard
                 DownStructures.Add(Key, new List<DownStructure>() { new DownStructure(StructureType.Kesson, weight),
                                                                     new DownStructure(StructureType.Monoleg, weight),
                                                                     new DownStructure(StructureType.Multileg, weight) });
-                SelectedStructureTypes.Add(Key, 0);
+                if (ProgramState.currentProjectId == -1)
+                    SelectedStructureTypes.Add(Key, 0);
             }
+            if (ProgramState.currentProjectId != -1)
+                SelectedStructureTypes = MetaDataManager.Instance.Projects[ProgramState.currentProjectId].SelectedStructureTypes;
             StructuresGridView.CurrentCell = StructuresGridView[0, 0];
             selectedCell = DrawManager.Blocks.Keys.First();
             SetCheckedRadioButton();
@@ -171,6 +182,8 @@ namespace tryhard
             StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "N";
             StructureTypeGridView.Rows.Add("Объем резервуара, м3", 0);
             StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "N";
+            StructureTypeGridView.Rows.Add("Вес в рабочем режиме, т", 0);
+            StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "N";
             StructureTypeGridView.Rows.Add("Стоимость нижнего строения", 0);
             StructureTypeGridView.Rows[StructureTypeGridView.Rows.Count - 1].Cells[1].Style.Format = "C3";
         }
@@ -186,7 +199,8 @@ namespace tryhard
             StructureTypeGridView.Rows[5].Cells[1].Value = structure.countBC;
             StructureTypeGridView.Rows[6].Cells[1].Value = structure.weight;
             StructureTypeGridView.Rows[7].Cells[1].Value = structure.freeVolume;
-            StructureTypeGridView.Rows[8].Cells[1].Value = structure.cost;
+            StructureTypeGridView.Rows[8].Cells[1].Value = structure.weightJob;
+            StructureTypeGridView.Rows[9].Cells[1].Value = structure.cost;
         }
 
         private void ClearViewObject()
@@ -224,7 +238,12 @@ namespace tryhard
             currentProject.Structure = new ObjectsStructure(structure);
             currentProject.FieldParameters = new FieldSlice();
             currentProject.FieldParameters.Fill();
-            currentProject.SelectedStructureTypes = SelectedStructureTypes;
+            Dictionary<int, int> selectedStructureTypes = new Dictionary<int, int>();
+            foreach (int key in SelectedStructureTypes.Keys)
+            {
+                selectedStructureTypes.Add(key, SelectedStructureTypes[key]);
+            }
+            currentProject.SelectedStructureTypes = selectedStructureTypes;
             currentProject.DownStructures = DownStructures;
             MetaDataManager.Instance.PushProject(currentProject);
             ProgramState.currentProjectId = currentProject.Id;

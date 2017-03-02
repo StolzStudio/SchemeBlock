@@ -588,14 +588,25 @@ namespace tryhard
         private void FillPropertiesGridView(string ACategory, string AType, int AId)
         {
             PropertiesGridView.Rows.Clear();
+            BaseObject base_object = MetaDataManager.Instance.GetObject(AType, AId);
             foreach (MetaObjectInfo AObjectInfo in MetaDataManager.Instance.ObjectsInfo[ACategory].Where(obj => obj.Name == AType))
                 foreach (string APropertyName in AObjectInfo.Properties)
                 {
-                    IEnumerable<BaseObject> base_object = MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId);
-                    foreach (BaseObject obj in base_object)
+                    var propertyValue = base_object.GetType().GetProperty(APropertyName).GetValue(base_object);
+                    if (APropertyName == "FluidInput")
                     {
-                        PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName],
-                                                    obj.GetType().GetProperty(APropertyName).GetValue(obj));
+                        int oilId = 0;
+                        BaseObject oilQuality = MetaDataManager.Instance.GetObject("oil_quality", Convert.ToInt32(oilId));
+                        double oilPart = Convert.ToDouble(oilQuality.GetType().GetProperty("OilProportion").GetValue(oilQuality));
+                        double wetGasPart = Convert.ToDouble(oilQuality.GetType().GetProperty("WetGasProportion").GetValue(oilQuality));
+                        double waterPart = Convert.ToDouble(oilQuality.GetType().GetProperty("WaterProportion").GetValue(oilQuality));
+                        PropertiesGridView.Rows.Add("Вход нефти, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * oilPart));
+                        PropertiesGridView.Rows.Add("Вход мокрого газа, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * wetGasPart));
+                        PropertiesGridView.Rows.Add("Вход воды, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * waterPart));
+                    }
+                    else
+                    {
+                        PropertiesGridView.Rows.Add(MetaDataManager.Instance.Dictionary[APropertyName], propertyValue);
                         if (APropertyName == "Cost")
                             PropertiesGridView.Rows[PropertiesGridView.Rows.Count - 1].Cells[1].Style.Format = "C3";
                     }

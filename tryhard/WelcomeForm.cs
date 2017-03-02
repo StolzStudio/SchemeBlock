@@ -30,7 +30,7 @@ namespace tryhard
 
         private void LoadProjectsListItems()
         {
-            ProjectsInfo = MetaDataManager.Instance.GetProjectIdName();
+            ProjectsInfo = MetaDataManager.Instance.GetProjectsIdName();
             foreach(IdNameInfo project in ProjectsInfo)
                 ProjectsListBox.Items.Add(project.Name);
         }

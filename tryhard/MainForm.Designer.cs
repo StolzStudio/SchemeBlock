@@ -133,12 +133,12 @@ namespace tryhard
             this.hWave001UpDown = new System.Windows.Forms.NumericUpDown();
             this.hWave50UpDown = new System.Windows.Forms.NumericUpDown();
             this.StructuresGridView = new System.Windows.Forms.DataGridView();
-            this.StructuresList = new System.Windows.Forms.Label();
-            this.MainPage = new tryhard.DrawPage();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CostColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StructuresList = new System.Windows.Forms.Label();
+            this.MainPage = new tryhard.DrawPage();
             this.MenuStrip.SuspendLayout();
             this.AvailableObjectsPanel.SuspendLayout();
             this.PropertiesPanel.SuspendLayout();
@@ -643,7 +643,7 @@ namespace tryhard
             this.StructureTypeGridView.RowHeadersVisible = false;
             this.StructureTypeGridView.RowTemplate.Height = 20;
             this.StructureTypeGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StructureTypeGridView.Size = new System.Drawing.Size(397, 219);
+            this.StructureTypeGridView.Size = new System.Drawing.Size(397, 223);
             this.StructureTypeGridView.TabIndex = 28;
             // 
             // ParameterColumn
@@ -1175,32 +1175,6 @@ namespace tryhard
             this.StructuresGridView.TabIndex = 27;
             this.StructuresGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StructuresGridView_CellClick);
             // 
-            // StructuresList
-            // 
-            this.StructuresList.AutoSize = true;
-            this.StructuresList.Location = new System.Drawing.Point(31, 35);
-            this.StructuresList.Name = "StructuresList";
-            this.StructuresList.Size = new System.Drawing.Size(112, 13);
-            this.StructuresList.TabIndex = 1;
-            this.StructuresList.Text = "Список комплексов:";
-            // 
-            // MainPage
-            // 
-            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MainPage.BackColor = System.Drawing.Color.White;
-            this.MainPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MainPage.Location = new System.Drawing.Point(-1, 25);
-            this.MainPage.Name = "MainPage";
-            this.MainPage.Size = new System.Drawing.Size(1097, 704);
-            this.MainPage.TabIndex = 22;
-            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
-            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
-            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
-            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
-            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
-            // 
             // TypeColumn
             // 
             this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1235,6 +1209,32 @@ namespace tryhard
             this.CostColumn.Name = "CostColumn";
             this.CostColumn.ReadOnly = true;
             this.CostColumn.Width = 120;
+            // 
+            // StructuresList
+            // 
+            this.StructuresList.AutoSize = true;
+            this.StructuresList.Location = new System.Drawing.Point(31, 35);
+            this.StructuresList.Name = "StructuresList";
+            this.StructuresList.Size = new System.Drawing.Size(112, 13);
+            this.StructuresList.TabIndex = 1;
+            this.StructuresList.Text = "Список комплексов:";
+            // 
+            // MainPage
+            // 
+            this.MainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPage.BackColor = System.Drawing.Color.White;
+            this.MainPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainPage.Location = new System.Drawing.Point(-1, 25);
+            this.MainPage.Name = "MainPage";
+            this.MainPage.Size = new System.Drawing.Size(1097, 704);
+            this.MainPage.TabIndex = 22;
+            this.MainPage.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPage_Paint);
+            this.MainPage.DoubleClick += new System.EventHandler(this.MainPage_DoubleClick);
+            this.MainPage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseDown);
+            this.MainPage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseMove);
+            this.MainPage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainPage_MouseUp);
             // 
             // MainForm
             // 
