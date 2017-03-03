@@ -182,8 +182,8 @@
     "Name": "ИК-29000"
   },
   {
-    "FluidInput": 410000.0,
-    "FluidOutput": 480000.0,
+    "FluidInput": 205000.0,
+    "FluidOutput": 290000.0,
     "OilOutput": 0.0,
     "GasOutput": 0.0,
     "EstimatedFieldId": 2,

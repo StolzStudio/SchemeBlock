@@ -600,9 +600,10 @@ namespace tryhard
                         double oilPart = Convert.ToDouble(oilQuality.GetType().GetProperty("OilProportion").GetValue(oilQuality));
                         double wetGasPart = Convert.ToDouble(oilQuality.GetType().GetProperty("WetGasProportion").GetValue(oilQuality));
                         double waterPart = Convert.ToDouble(oilQuality.GetType().GetProperty("WaterProportion").GetValue(oilQuality));
-                        PropertiesGridView.Rows.Add("Вход нефти, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * oilPart));
-                        PropertiesGridView.Rows.Add("Вход мокрого газа, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * wetGasPart));
-                        PropertiesGridView.Rows.Add("Вход воды, м3", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * waterPart));
+                        PropertiesGridView.Rows.Add("Вход нефти, bopd", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * oilPart / 0.159));
+                        PropertiesGridView.Rows.Add("Вход газа, mmscfd", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * wetGasPart * (1 - 0.0021) / 28252.14));
+                        PropertiesGridView.Rows.Add("Вход конденсата, blpd", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * wetGasPart * 0.0021 / 0.159));
+                        PropertiesGridView.Rows.Add("Вход воды, dwpd", string.Format("{0:0.0}", Convert.ToDouble(propertyValue) * waterPart / 0.159));
                     }
                     else
                     {

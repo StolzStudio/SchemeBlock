@@ -79,7 +79,7 @@ namespace tryhard
                     {
                         SaveObject.GetType().GetProperty(MetaDataManager.Instance.Dictionary[ObjectParamDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()]).SetValue(SaveObject, ObjectParamDataGridView.Rows[e.RowIndex].Cells[1].Value);
                     }
-                }
+                } 
             }
         }
 

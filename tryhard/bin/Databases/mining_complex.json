@@ -6,9 +6,28 @@
     "ElectricityDemand": 2400.0,
     "Weight": 15000.0,
     "Volume": 200000.0,
-    "Cost": 2.96E+09,
+    "Cost": 3.14156E+10,
     "Structure": {
-      "Objects": [],
+      "Objects": [
+        {
+          "Id": 1,
+          "Index": 1,
+          "Type": "dk",
+          "Coordinates": "242, 220"
+        },
+        {
+          "Id": 3,
+          "Index": 3,
+          "Type": "jk",
+          "Coordinates": "653, 44"
+        },
+        {
+          "Id": 1,
+          "Index": 4,
+          "Type": "ek",
+          "Coordinates": "656, 443"
+        }
+      ],
       "Links": []
     },
     "Id": 0,

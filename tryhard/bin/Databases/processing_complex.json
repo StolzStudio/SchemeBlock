@@ -38,6 +38,24 @@
   {
     "FluidInput": 0.0,
     "OilOutput": 0.0,
+    "WetGasInput": 98000.0,
+    "GasOutput": 0.0,
+    "EstimatedFieldId": 2,
+    "PeopleDemand": 217.0,
+    "ElectricityDemand": 0.0,
+    "Weight": 3141596.0,
+    "Volume": 1.2E+08,
+    "Cost": 6.6E+11,
+    "Structure": {
+      "Objects": [],
+      "Links": []
+    },
+    "Id": 2,
+    "Name": "LNG"
+  },
+  {
+    "FluidInput": 0.0,
+    "OilOutput": 0.0,
     "WetGasInput": 0.0,
     "GasOutput": 0.0,
     "EstimatedFieldId": 1,
@@ -50,7 +68,7 @@
       "Objects": [],
       "Links": []
     },
-    "Id": 2,
+    "Id": 3,
     "Name": "LNG"
   }
 ]
