@@ -40,7 +40,6 @@ namespace tryhard
         public Point ClickOffset { get; set; }
         private bool isNextStep;
         private List<string> ProgressStep = new List<string>() { "Start", "First", "Second", "Third" };
-        private int ProgressVal = 0;
         private int MarginInLinkPanel = 12;
 
         public EditorForm()
@@ -550,7 +549,7 @@ namespace tryhard
 
         private bool CheckSelectedItemToName(int aIndex)
         {
-            if ((CombinationDataGridView.Rows[aIndex].Cells[1].Value == null)||(CombinationDataGridView.Rows[aIndex].Cells[1].Value == ""))
+            if ((CombinationDataGridView.Rows[aIndex].Cells[1].Value == null) || (CombinationDataGridView.Rows[aIndex].Cells[1].Value == ""))
             {
                 return false;
             }

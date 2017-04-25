@@ -20,7 +20,7 @@ namespace tryhard
         private DrawPage Page;
         private int block_counter;
 
-        public Manager(DrawPage aPage)
+        public Manager(DrawPage page)
         {
             SelectedBlockIndex = -1;
 
@@ -30,13 +30,13 @@ namespace tryhard
             isHaveSelectedBlock = false;
             isOilFieldAdd = false;
 
-            Page = aPage;
+            Page = page;
             block_counter = 1;
         }
 
-        public void AddBlock(Point Pos, string ABlockType, string ABlockModel, int ABlockId)
+        public void AddBlock(Point pos, string blockType, string blockModel, int blockId)
         {
-            Blocks.Add(block_counter, new Block(block_counter, ABlockType, ABlockModel, ABlockId, Pos, Page.Location));
+            Blocks.Add(block_counter, new Block(block_counter, blockType, blockModel, blockId, pos, Page.Location));
 
             foreach (int Key in Blocks.Keys)
             {
@@ -47,35 +47,35 @@ namespace tryhard
             block_counter++;
         }
 
-        public void LoadStructureOfObject(string AType, int AId)
+        public void LoadStructureOfObject(string type, int id)
         {
             DeleteAllElements();
-            MetaDataManager.Instance.FillDrawingObjectStructure(AType, AId, ref Links, ref Blocks, Page.Location);
+            MetaDataManager.Instance.FillDrawingObjectStructure(type, id, ref Links, ref Blocks, Page.Location);
             if (Blocks.Count != 0)
                 this.block_counter = Blocks.Max(block => block.Value.Index) + 1;
             Page.Invalidate();
         }
 
-        public void LoadProjectStructureOfObject(int AId)
+        public void LoadProjectStructureOfObject(int id)
         {
             DeleteAllElements();
-            MetaDataManager.Instance.FillDrawingObjectProjectStructure(AId, ref Links, ref Blocks, Page.Location);
+            MetaDataManager.Instance.FillDrawingObjectProjectStructure(id, ref Links, ref Blocks, Page.Location);
             if (Blocks.Count != 0)
                 this.block_counter = Blocks.Max(block => block.Value.Index) + 1;
             Page.Invalidate();
         }
 
-        public void AddLink(Link ANewLink)
+        public void AddLink(Link link)
         {
-            Links.Add(ANewLink);
+            Links.Add(link);
             Page.Invalidate();
         }
 
-        public bool CheckLink(int AFirstBlockIndex, int ASecondBlockIndex)
+        public bool CheckLink(int firstBlockIndex, int secondBlockIndex)
         {
             foreach (Link Link in Links)
             {
-                return (Link.FirstBlockIndex == AFirstBlockIndex) && (Link.SecondBlockIndex == ASecondBlockIndex);
+                return (Link.FirstBlockIndex == firstBlockIndex) && (Link.SecondBlockIndex == secondBlockIndex);
             }
             return false;
         }
@@ -98,13 +98,13 @@ namespace tryhard
             return null;
         }
 
-        public void UpdateFocusedLink(string ALinkParameter, int ALinkParameterValue)
+        public void UpdateFocusedLink(string linkParameter, int linkParameterValue)
         {
             for (int i = 0; i < Links.Count; i++)
                 if (Links[i].isFocus)
                 {
-                    Links[i].LinkParameter = ALinkParameter;
-                    Links[i].LinkParameterValue = ALinkParameterValue;
+                    Links[i].LinkParameter = linkParameter;
+                    Links[i].LinkParameterValue = linkParameterValue;
                 }
         }
 
@@ -176,12 +176,12 @@ namespace tryhard
             }
         }
 
-        public bool TrySetFocusInBlocks(Point Coord)
+        public bool TrySetFocusInBlocks(Point coord)
         {
             SelectedBlockIndex = -1;
             foreach (int Key in Blocks.Keys)
             {
-                if (Blocks[Key].CheckFocus(Coord))
+                if (Blocks[Key].CheckFocus(coord))
                 {
                     isHaveSelectedBlock = true;
                     ClearLinksFocus();
@@ -192,11 +192,11 @@ namespace tryhard
             return false;
         }
 
-        public bool TrySetFocusInLinks(Point Coord)
+        public bool TrySetFocusInLinks(Point coord)
         {
             foreach (Link link in Links)
             {
-                link.TrySetFocus(Coord);
+                link.TrySetFocus(coord);
                 if (link.isFocus)
                 {
                     Page.Invalidate();

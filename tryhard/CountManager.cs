@@ -10,125 +10,121 @@ namespace tryhard
     class CountManager
     {
         public bool isEquipment;
-        private bool isComeToStashAgain;
-        private string CategoryType;
         private string ObjectType;
+        private string CategoryType;
         private OilQuality FluidParam;
-        List<int> Queue;
-        Dictionary<int, Dictionary<string, float>> BlockStashValue;
-        private List<BaseObject> Combination;
-        private new List<List<int>> BlocksIndexCombination;
+        private bool isComeToStashAgain;
 
-        public Dictionary<int, Block> Blocks;
+        public List<int> Queue;
+        public Dictionary<int, Dictionary<string, float>> BlockStashValue;
+
         public List<Link> Links;
+        public Dictionary<int, Block> Blocks;
 
-        public CountManager(ref Dictionary<int, Block> aBlocks, ref List<Link> aLinks, string aCategoryType, string aObjectType)
+        public CountManager(ref Dictionary<int, Block> blocks, ref List<Link> links, string categoryType, string objectType)
         {
-            if (aCategoryType == "Equipment") { isEquipment = true;  }
+            if (categoryType == "Equipment") { isEquipment = true;  }
                                          else { isEquipment = false; }
-            CategoryType = aCategoryType;
-            ObjectType = aObjectType;
-            Blocks = aBlocks;
-            Links  = aLinks;
+            Links  =       links;
+            Blocks =       blocks;
+            ObjectType =   objectType;
+            CategoryType = categoryType;
 
             isComeToStashAgain = false;
-
             CreateQueue();
-            List<Dictionary<int, Block>> a = CalculateBlocksCombinations(Blocks);
         }
 
-        public void SetFluidParam(string aFieldName)
+        public void SetFluidParam(string fieldName)
         {
-            int OilQualityId = (MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", aFieldName)) as FieldParameters).OilQualityId;
+            int OilQualityId = (MetaDataManager.Instance.GetBaseObjectOfId("field_parameters", GetObjectId("field_parameters", fieldName)) as FieldParameters).OilQualityId;
             FluidParam = (MetaDataManager.Instance.GetBaseObjectOfId("oil_quality", OilQualityId) as OilQuality);
         }
         //
         //make combinations
         //
-        public List<Dictionary<int, Block>> CalculateBlocksCombinations(Dictionary<int, Block> BaseBlocks)
+        public List<Dictionary<int, Block>> CalculateBlocksCombinations(Dictionary<int, Block> baseBlocks)
         {
-            List<Dictionary<int, Block>> Combinations = GetAllCombinations(BaseBlocks);
+            List<Dictionary<int, Block>> Combinations = GetAllCombinations(baseBlocks);
              return Combinations;
         }
 
-        private List<Dictionary<int, Block>> GetAllCombinations(Dictionary<int, Block> ABaseBlocks)
+        private List<Dictionary<int, Block>> GetAllCombinations(Dictionary<int, Block> baseBlocks)
         {
             Dictionary<string, List<string>> AllFieldsId = new Dictionary<string, List<string>>();
             List<int> BlockKeys = new List<int>();
-            int FirstKey = -1;
             int CombinationsCount = 1;
-            foreach (var Key in ABaseBlocks.Keys)
+            foreach (var Key in baseBlocks.Keys)
             {
                 BlockKeys.Add(Key);
-                if (!AllFieldsId.ContainsKey(ABaseBlocks[Key].ClassText))
+                if (!AllFieldsId.ContainsKey(baseBlocks[Key].ClassText))
                 {
-                    List<int> IdList = MetaDataManager.Instance.GetIdCortageByType(ABaseBlocks[Key].ClassText);
+                    List<int> IdList = MetaDataManager.Instance.GetIdCortageByType(baseBlocks[Key].ClassText);
                     List<string> ConvertIdList = new List<string>();
                     foreach (var c in IdList)
                     {
                         ConvertIdList.Add(Convert.ToString(c));
                     }
-                    AllFieldsId.Add(ABaseBlocks[Key].ClassText, ConvertIdList);
+                    AllFieldsId.Add(baseBlocks[Key].ClassText, ConvertIdList);
                 } 
-                CombinationsCount *= AllFieldsId[ABaseBlocks[Key].ClassText].Count;
+                CombinationsCount *= AllFieldsId[baseBlocks[Key].ClassText].Count;
             }
 
             List<Dictionary<int, Block>> Combinations = new List<Dictionary<int, Block>>();
             int BlockKeysIdx = 0;
-            foreach (string FieldId in AllFieldsId[ABaseBlocks[BlockKeys[BlockKeysIdx]].ClassText])
+            foreach (string FieldId in AllFieldsId[baseBlocks[BlockKeys[BlockKeysIdx]].ClassText])
             {
                 List<string> FieldIdSequence = new List<string>() { FieldId };
-                FillCombination(FieldIdSequence, BlockKeysIdx + 1, ref BlockKeys, ref ABaseBlocks, ref AllFieldsId, ref Combinations);
+                FillCombination(FieldIdSequence, BlockKeysIdx + 1, ref BlockKeys, ref baseBlocks, ref AllFieldsId, ref Combinations);
             }
             return Combinations;
         }
 
-        private void FillCombination(List<string> AFieldIdSequense,
-                                     int ABlockKeysIdx,
-                                     ref List<int> ABlockKeys,
-                                     ref Dictionary<int, Block> ABaseBlocks,
-                                     ref Dictionary<string, List<string>> AAllFieldsId,
-                                     ref List<Dictionary<int, Block>> ACombinations)
+        private void FillCombination(List<string> fieldIdSequense,
+                                     int blockKeysIdx,
+                                     ref List<int> blockKeys,
+                                     ref Dictionary<int, Block> baseBlocks,
+                                     ref Dictionary<string, List<string>> allFieldsId,
+                                     ref List<Dictionary<int, Block>> combinations)
         {
-            if (ABlockKeysIdx < ABlockKeys.Count)
+            if (blockKeysIdx < blockKeys.Count)
             {
-                foreach (string FieldId in AAllFieldsId[ABaseBlocks[ABlockKeys[ABlockKeysIdx]].ClassText])
+                foreach (string FieldId in allFieldsId[baseBlocks[blockKeys[blockKeysIdx]].ClassText])
                 {
-                    List<string> FieldIdSequence = new List<string>(AFieldIdSequense);
+                    List<string> FieldIdSequence = new List<string>(fieldIdSequense);
                     FieldIdSequence.Add(FieldId);
-                    FillCombination(FieldIdSequence, ABlockKeysIdx + 1, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations);
+                    FillCombination(FieldIdSequence, blockKeysIdx + 1, ref blockKeys, ref baseBlocks, ref allFieldsId, ref combinations);
                 }
             }
             else
             {
-                ACombinations.Add(TranslateSeqInBlocksCombination(AFieldIdSequense, ref ABlockKeys, ref ABaseBlocks, ref AAllFieldsId, ref ACombinations));
+                combinations.Add(TranslateSeqInBlocksCombination(fieldIdSequense, ref blockKeys, ref baseBlocks, ref allFieldsId, ref combinations));
             }
         }
 
-        private Dictionary<int, Block> TranslateSeqInBlocksCombination(List<string> AFieldIdSequense,
-                                                                       ref List<int> ABlockKeys,
-                                                                       ref Dictionary<int, Block> ABaseBlocks,
-                                                                       ref Dictionary<string, List<string>> AAllFieldsId,
-                                                                       ref List<Dictionary<int, Block>> ACombinations)
+        private Dictionary<int, Block> TranslateSeqInBlocksCombination(List<string> fieldIdSequense,
+                                                                       ref List<int> blockKeys,
+                                                                       ref Dictionary<int, Block> baseBlocks,
+                                                                       ref Dictionary<string, List<string>> allFieldsId,
+                                                                       ref List<Dictionary<int, Block>> combinations)
         {
             Dictionary<int, Block> Combination = new Dictionary<int, Block>();
-            for (int i = 0; i < ABlockKeys.Count; i++)
+            for (int i = 0; i < blockKeys.Count; i++)
             {
-                Combination.Add(ABlockKeys[i], new Block(ABaseBlocks[ABlockKeys[i]]));
-                Combination[ABlockKeys[i]].Id = Convert.ToInt32(AFieldIdSequense[i]);
+                Combination.Add(blockKeys[i], new Block(baseBlocks[blockKeys[i]]));
+                Combination[blockKeys[i]].Id = Convert.ToInt32(fieldIdSequense[i]);
             }
             return Combination;
         }
         //
         //
         //
-        private int GetObjectId(string aClass, string aModel)
+        private int GetObjectId(string _class, string _model)
         {
-            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(aClass);
+            List<int> Ids = MetaDataManager.Instance.GetIdCortageByType(_class);
 
             foreach (var i in Ids)
             {
-                if (MetaDataManager.Instance.GetBaseObjectOfId(aClass, i).Name == aModel)
+                if (MetaDataManager.Instance.GetBaseObjectOfId(_class, i).Name == _model)
                 {
                     return i;
                 }
@@ -138,11 +134,11 @@ namespace tryhard
         //
         //check parameters
         //
-        private bool TryFoundMainObjectInLinks(string aType)
+        private bool TryFoundMainObjectInLinks(string type)
         {
             foreach (var key in Blocks.Keys)
             {
-                if ((Blocks[key].ClassText == aType) || (Blocks[key].ClassText == aType))
+                if ((Blocks[key].ClassText == type) || (Blocks[key].ClassText == type))
                 {
                     return true;
                 }
@@ -205,7 +201,7 @@ namespace tryhard
             }
         }
 
-        public Complex MakeCalculate(Dictionary<int, Block> aCombination, string aFieldName)
+        public Complex MakeCalculate(Dictionary<int, Block> combination, string fieldName)
         {
             Complex Result;
             Type ResultType = Type.GetType("tryhard." + MetaDataManager.Instance.GiveTypeName(ObjectType));
@@ -225,7 +221,7 @@ namespace tryhard
             Convert.ChangeType(Result, ResultType);
 
             Result.Id = -1;
-            Result.EstimatedFieldId = GetObjectId("field_parameters", aFieldName);
+            Result.EstimatedFieldId = GetObjectId("field_parameters", fieldName);
 
             if (Links.Count != 0)
             {
@@ -236,29 +232,29 @@ namespace tryhard
                 BaseObject MainObject;
                 if ((ObjectType == "mining_complex")||(ObjectType == "integrated_complex"))
                 {
-                    MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(aCombination, FieldObject, MainObject, Result, ResultType);
+                    MainObject = MetaDataManager.Instance.GetBaseObjectOfId("dk", combination[Links[Queue[0]].FirstBlockIndex].Id);
+                    combination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfDkObject(combination, FieldObject, MainObject, Result, ResultType);
                 }
                 else
                 {
-                    MainObject = MetaDataManager.Instance.GetBaseObjectOfId("upn", aCombination[Links[Queue[0]].FirstBlockIndex].Id);
-                    aCombination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(aCombination, FieldObject, MainObject, Result);
+                    MainObject = MetaDataManager.Instance.GetBaseObjectOfId("upn", combination[Links[Queue[0]].FirstBlockIndex].Id);
+                    combination[Links[Queue[0]].FirstBlockIndex].Count = GiveCountOfUpnObject(combination, FieldObject, MainObject, Result);
                 }
 
                 foreach (var q in Queue)
                 {
-                    BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].FirstBlockIndex].ClassText, aCombination[Links[q].FirstBlockIndex].Id);
-                    BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Links[q].SecondBlockIndex].ClassText, aCombination[Links[q].SecondBlockIndex].Id);
+                    BaseObject FirstObject = MetaDataManager.Instance.GetBaseObjectOfId(combination[Links[q].FirstBlockIndex].ClassText, combination[Links[q].FirstBlockIndex].Id);
+                    BaseObject SecondObject = MetaDataManager.Instance.GetBaseObjectOfId(combination[Links[q].SecondBlockIndex].ClassText, combination[Links[q].SecondBlockIndex].Id);
 
 
-                    int count = GiveCountOfObject(aCombination, FirstObject, SecondObject, Links[q], Result, ResultType);
+                    int count = GiveCountOfObject(combination, FirstObject, SecondObject, Links[q], Result, ResultType);
                     if (!isComeToStashAgain)
                     {
-                        aCombination[Links[q].SecondBlockIndex].Count = count;
+                        combination[Links[q].SecondBlockIndex].Count = count;
                     }
                     else
                     {
-                        int CheckCount = aCombination[Links[q].SecondBlockIndex].Count + count;
+                        int CheckCount = combination[Links[q].SecondBlockIndex].Count + count;
                         float ObjectValue = (float)SecondObject.GetType().GetProperty(Links[q].LinkParameter + "Input").GetValue(SecondObject);
                         float StashValue = BlockStashValue[Links[q].SecondBlockIndex][Links[q].LinkParameter];
 
@@ -266,7 +262,7 @@ namespace tryhard
                         {
                             CheckCount--;
                         }
-                        aCombination[Links[q].SecondBlockIndex].Count = CheckCount;
+                        combination[Links[q].SecondBlockIndex].Count = CheckCount;
                         isComeToStashAgain = false;
                     }
                 }
@@ -314,29 +310,29 @@ namespace tryhard
                 }
             }
             
-            foreach (var key in aCombination.Keys)
+            foreach (var key in combination.Keys)
             {
-                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[key].ClassText, aCombination[key].Id);
+                BaseObject BlockObject = MetaDataManager.Instance.GetBaseObjectOfId(combination[key].ClassText, combination[key].Id);
                 
-                Result.Cost   += (float)BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject) * aCombination[key].Count * 2;
-                Result.Volume += (float)BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject) * aCombination[key].Count * 15;
-                Result.Weight += (float)BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject) * aCombination[key].Count * 10;
-                Result.PeopleDemand += (float)BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject) * aCombination[key].Count;
-                Result.ElectricityDemand += (float)BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject) * aCombination[key].Count;
+                Result.Cost   += (float)BlockObject.GetType().GetProperty("Cost").GetValue(BlockObject) * combination[key].Count * 2;
+                Result.Volume += (float)BlockObject.GetType().GetProperty("Volume").GetValue(BlockObject) * combination[key].Count * 15;
+                Result.Weight += (float)BlockObject.GetType().GetProperty("Weight").GetValue(BlockObject) * combination[key].Count * 10;
+                Result.PeopleDemand += (float)BlockObject.GetType().GetProperty("PeopleDemand").GetValue(BlockObject) * combination[key].Count;
+                Result.ElectricityDemand += (float)BlockObject.GetType().GetProperty("ElectricityDemand").GetValue(BlockObject) * combination[key].Count;
             }
 
-            CalcObjectInComplex(aCombination, Result, Result.PeopleDemand, "Jk", "PeopleCapacity");
-            CalcObjectInComplex(aCombination, Result, Result.ElectricityDemand, "Ek", "Power");
+            CalcObjectInComplex(combination, Result, Result.PeopleDemand, "Jk", "PeopleCapacity");
+            CalcObjectInComplex(combination, Result, Result.ElectricityDemand, "Ek", "Power");
 
             return Result;
         }
 
-        private void CalcObjectInComplex(Dictionary<int, Block> aCombination, Complex aResult, float aResultResource, string aClass, string aPropertyResource)
+        private void CalcObjectInComplex(Dictionary<int, Block> combination, Complex result, float resultResource, string _class, string propertyResource)
         {
             List<int> Indeces = new List<int>();
-            foreach (var key in aCombination.Keys)
+            foreach (var key in combination.Keys)
             {
-                if (aCombination[key].ClassText == aClass)
+                if (combination[key].ClassText == _class)
                 {
                     Indeces.Add(key);
                 }
@@ -344,48 +340,43 @@ namespace tryhard
 
             if (Indeces.Count != 0)
             {
-                float Resource = aResultResource; 
+                float Resource = resultResource; 
                 while (Resource > 0)
                 {
                     foreach (var Index in Indeces)
                     {
-                        BaseObject Object = MetaDataManager.Instance.GetBaseObjectOfId(aCombination[Index].ClassText, aCombination[Index].Id);
+                        BaseObject Object = MetaDataManager.Instance.GetBaseObjectOfId(combination[Index].ClassText, combination[Index].Id);
 
-                        aResult.Cost += (float)Object.GetType().GetProperty("Cost").GetValue(Object);
-                        aResult.Volume += (float)Object.GetType().GetProperty("Volume").GetValue(Object);
-                        aResult.Weight += (float)Object.GetType().GetProperty("Weight").GetValue(Object);
+                        result.Cost += (float)Object.GetType().GetProperty("Cost").GetValue(Object);
+                        result.Volume += (float)Object.GetType().GetProperty("Volume").GetValue(Object);
+                        result.Weight += (float)Object.GetType().GetProperty("Weight").GetValue(Object);
                         if (Object.GetType().Name == "Jk")
                         {
-                            aResult.ElectricityDemand += (float)Object.GetType().GetProperty("ElectricityDemand").GetValue(Object);
+                            result.ElectricityDemand += (float)Object.GetType().GetProperty("ElectricityDemand").GetValue(Object);
                         }
 
-                        Resource -= (float)Object.GetType().GetProperty(aPropertyResource).GetValue(Object);
+                        Resource -= (float)Object.GetType().GetProperty(propertyResource).GetValue(Object);
                         if (Resource <= 0) { break; }
                     }
                 }
             }
         }
 
-        private void CalcEkInComplex(Dictionary<int, Block> aCombination, Complex aResult)
+        private void FillBlockStash(BaseObject blockObject, Block block, int count)
         {
-
-        }
-
-        private void FillBlockStash(BaseObject aBlockObject, Block aBlock, int aCount)
-        {
-            List<string> BlockParameters = MetaDataManager.Instance.GetParametersByParamenterType("Equipment", aBlock.ClassText, "Output");
+            List<string> BlockParameters = MetaDataManager.Instance.GetParametersByParamenterType("Equipment", block.ClassText, "Output");
             Dictionary<string, float> Parameters = new Dictionary<string, float>();
 
             foreach (var b in BlockParameters)
             {
                 {
-                    Parameters.Add(b, (float)aBlockObject.GetType().GetProperty(b + "Output").GetValue(aBlockObject) * aCount);
+                    Parameters.Add(b, (float)blockObject.GetType().GetProperty(b + "Output").GetValue(blockObject) * count);
                 }
             }
 
-            if (!BlockStashValue.Keys.Contains(aBlock.Index))
+            if (!BlockStashValue.Keys.Contains(block.Index))
             {
-                BlockStashValue.Add(aBlock.Index, Parameters);
+                BlockStashValue.Add(block.Index, Parameters);
             }
             else
             {
@@ -393,15 +384,15 @@ namespace tryhard
             }   
         }
 
-        private int GiveCountOfUpnObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aUpnObject, Complex aResult)
+        private int GiveCountOfUpnObject(Dictionary<int, Block> combination, BaseObject fieldObject, BaseObject upnObject, Complex result)
         {
-            float FieldObjectValue = (float)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
-            float UpnObjectValue = (float)aUpnObject.GetType().GetProperty("FluidInput").GetValue(aUpnObject);
+            float FieldObjectValue = (float)fieldObject.GetType().GetProperty("FluidOutput").GetValue(fieldObject);
+            float UpnObjectValue = (float)upnObject.GetType().GetProperty("FluidInput").GetValue(upnObject);
 
             double Result = (double)FieldObjectValue / (double)UpnObjectValue;
             if ((Result > (int)Result)) { Result++; }
 
-            FillBlockStash(aUpnObject, aCombination[Links[Queue[0]].FirstBlockIndex], (int)Result);
+            FillBlockStash(upnObject, combination[Links[Queue[0]].FirstBlockIndex], (int)Result);
 
             if (FieldObjectValue <= UpnObjectValue * Result)
             {
@@ -410,22 +401,22 @@ namespace tryhard
                 BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Water"] = FieldObjectValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam);
             }
 
-            (aResult as ProcessingComplex).FluidInput = FieldObjectValue;
+            (result as ProcessingComplex).FluidInput = FieldObjectValue;
             return (int)Result;
         }
 
-        private int GiveCountOfDkObject(Dictionary<int, Block> aCombination, BaseObject aFieldObject, BaseObject aDkObject, Complex aResult, Type aResultType)
+        private int GiveCountOfDkObject(Dictionary<int, Block> combination, BaseObject fieldObject, BaseObject dkObject, Complex result, Type resultType)
         {
-            int FieldHoles = (int)aFieldObject.GetType().GetProperty("HolesAmount").GetValue(aFieldObject);
-            int DkHoles = (int)aDkObject.GetType().GetProperty("HolesAmount").GetValue(aDkObject);
+            int FieldHoles = (int)fieldObject.GetType().GetProperty("HolesAmount").GetValue(fieldObject);
+            int DkHoles = (int)dkObject.GetType().GetProperty("HolesAmount").GetValue(dkObject);
 
             double Result = (double)FieldHoles / (double)DkHoles;
             if ((Result > (int)Result)) { Result++; }
 
-            float FieldObjectValue = (float)aFieldObject.GetType().GetProperty("FluidOutput").GetValue(aFieldObject);
-            float DkObjectValue = (float)aDkObject.GetType().GetProperty("FluidInput").GetValue(aDkObject);
+            float FieldObjectValue = (float)fieldObject.GetType().GetProperty("FluidOutput").GetValue(fieldObject);
+            float DkObjectValue = (float)dkObject.GetType().GetProperty("FluidInput").GetValue(dkObject);
 
-            FillBlockStash(aDkObject, aCombination[Links[Queue[0]].FirstBlockIndex], 1);
+            FillBlockStash(dkObject, combination[Links[Queue[0]].FirstBlockIndex], 1);
 
             if (FieldHoles <= DkHoles)
             {
@@ -451,75 +442,75 @@ namespace tryhard
                 }
             }
 
-            if (aResultType.Name == "MiningComplex")
+            if (resultType.Name == "MiningComplex")
             {
-                (aResult as MiningComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+                (result as MiningComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
             }
             else
             {
-                (aResult as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
+                (result as IntegratedComplex).FluidOutput = BlockStashValue[Links[Queue[0]].FirstBlockIndex]["Fluid"];
             }
 
             return (int)Result; 
         }
 
-        private int GiveCountOfObject(Dictionary<int, Block> aCombination, BaseObject aFirstObject, BaseObject aSecondObject, Link aLink, Complex aResult, Type aResultType)
+        private int GiveCountOfObject(Dictionary<int, Block> combination, BaseObject firstObject, BaseObject secondObject, Link link, Complex result, Type resultType)
         {
-            float FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter];
-            if (!BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+            float FirstObjectValue = BlockStashValue[link.FirstBlockIndex][link.LinkParameter];
+            if (!BlockStashValue.ContainsKey(link.FirstBlockIndex))
             {
-                FirstObjectValue = (float)aFirstObject.GetType().GetProperty(aLink.LinkParameter + "Output").GetValue(aFirstObject);
+                FirstObjectValue = (float)firstObject.GetType().GetProperty(link.LinkParameter + "Output").GetValue(firstObject);
             }
             else
             {
-                FirstObjectValue = BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter];
+                FirstObjectValue = BlockStashValue[link.FirstBlockIndex][link.LinkParameter];
             }
 
-            float SecondObjectValue = (float)aSecondObject.GetType().GetProperty(aLink.LinkParameter + "Input").GetValue(aSecondObject);
+            float SecondObjectValue = (float)secondObject.GetType().GetProperty(link.LinkParameter + "Input").GetValue(secondObject);
             
-            if (FirstObjectValue > aLink.LinkParameterValue)
+            if (FirstObjectValue > link.LinkParameterValue)
             {
-                FirstObjectValue = aLink.LinkParameterValue;
-                if (BlockStashValue.ContainsKey(aLink.FirstBlockIndex))
+                FirstObjectValue = link.LinkParameterValue;
+                if (BlockStashValue.ContainsKey(link.FirstBlockIndex))
                 {
-                   BlockStashValue[aLink.FirstBlockIndex][aLink.LinkParameter] -= aLink.LinkParameterValue;
+                   BlockStashValue[link.FirstBlockIndex][link.LinkParameter] -= link.LinkParameterValue;
                 }
             }
             
-            if (aLink.LinkParameter == "Fluid")
+            if (link.LinkParameter == "Fluid")
             {
-                if (aResultType.Name == "IntegratedComplex")
+                if (resultType.Name == "IntegratedComplex")
                 {
-                    (aResult as IntegratedComplex).FluidInput += FirstObjectValue;
+                    (result as IntegratedComplex).FluidInput += FirstObjectValue;
                 }
             }
-            if (aLink.LinkParameter == "Oil")
+            if (link.LinkParameter == "Oil")
             {
-                if (aResultType.Name == "ProcessingComplex")
+                if (resultType.Name == "ProcessingComplex")
                 {
-                    (aResult as ProcessingComplex).OilOutput += FirstObjectValue;
+                    (result as ProcessingComplex).OilOutput += FirstObjectValue;
                 }
                 else
                 {
-                    (aResult as IntegratedComplex).OilOutput += FirstObjectValue;
+                    (result as IntegratedComplex).OilOutput += FirstObjectValue;
                 }
             }
-            if (aLink.LinkParameter == "WetGas")
+            if (link.LinkParameter == "WetGas")
             {
-                if (aResultType.Name == "ProcessingComplex")
+                if (resultType.Name == "ProcessingComplex")
                 {
-                    (aResult as ProcessingComplex).WetGasInput += FirstObjectValue;
+                    (result as ProcessingComplex).WetGasInput += FirstObjectValue;
                 }
             }
-            if (aLink.LinkParameter == "Gas")
+            if (link.LinkParameter == "Gas")
             {
-                if (aResultType.Name == "ProcessingComplex")
+                if (resultType.Name == "ProcessingComplex")
                 {
-                    (aResult as ProcessingComplex).GasOutput += FirstObjectValue;
+                    (result as ProcessingComplex).GasOutput += FirstObjectValue;
                 }
                 else
                 {
-                    (aResult as IntegratedComplex).GasOutput += FirstObjectValue;
+                    (result as IntegratedComplex).GasOutput += FirstObjectValue;
                 }
             }
 
@@ -527,7 +518,7 @@ namespace tryhard
             if (Result > (int)Result) { Result++; }
 
 
-            FillBlockStash(aSecondObject, aCombination[aLink.SecondBlockIndex], (int)Result);
+            FillBlockStash(secondObject, combination[link.SecondBlockIndex], (int)Result);
 
             float ResultValue;
             if (SecondObjectValue * (int)Result <= FirstObjectValue)
@@ -539,30 +530,30 @@ namespace tryhard
                 ResultValue = FirstObjectValue;
             }
 
-            if (aSecondObject.GetType().Name == "Upn")
+            if (secondObject.GetType().Name == "Upn")
             {
                 if (!isComeToStashAgain)
                 {
-                    BlockStashValue[aLink.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
-                    BlockStashValue[aLink.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
-                    BlockStashValue[aLink.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["Oil"] = ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["WetGas"] = ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["Water"] = ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
                 }
                 else
                 {
-                    BlockStashValue[aLink.SecondBlockIndex]["Oil"] += ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
-                    BlockStashValue[aLink.SecondBlockIndex]["WetGas"] += ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
-                    BlockStashValue[aLink.SecondBlockIndex]["Water"] += ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["Oil"] += ResultValue * (float)FluidParam.GetType().GetProperty("OilProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["WetGas"] += ResultValue * (float)FluidParam.GetType().GetProperty("WetGasProportion").GetValue(FluidParam) * (int)Result;
+                    BlockStashValue[link.SecondBlockIndex]["Water"] += ResultValue * (float)FluidParam.GetType().GetProperty("WaterProportion").GetValue(FluidParam) * (int)Result;
                 }
             }
             else
             {
                 if (!isComeToStashAgain)
                 {
-                    BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] = ResultValue;
+                    BlockStashValue[link.SecondBlockIndex][link.LinkParameter] = ResultValue;
                 }
                 else
                 {
-                    BlockStashValue[aLink.SecondBlockIndex][aLink.LinkParameter] += ResultValue;
+                    BlockStashValue[link.SecondBlockIndex][link.LinkParameter] += ResultValue;
                 }
             }
 

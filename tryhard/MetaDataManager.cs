@@ -57,15 +57,15 @@ namespace tryhard
                     Objects.Add(ObjectType.Name, DeserializeMetaObjects(ObjectType.Name));
         }
 
-        private void InitializeDictionary(string APath)
+        private void InitializeDictionary(string path)
         {
-            string json = MetaDataManager.Instance.GetJson(APath);
+            string json = MetaDataManager.Instance.GetJson(path);
             Dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
         }
 
-        public void DeserializeProjects(string APath)
+        public void DeserializeProjects(string path)
         {
-            string json = MetaDataManager.Instance.GetJson(APath);
+            string json = MetaDataManager.Instance.GetJson(path);
             Projects = JsonConvert.DeserializeObject<Dictionary<int, Project>>(json);
         }
 
@@ -104,11 +104,11 @@ namespace tryhard
             get { return ObjectsInfo.Keys.Where(k => k != "InfoClasses"); }
         }
 
-        public string GetCateroryNameByType(string AType)
+        public string GetCateroryNameByType(string type)
         {
             foreach (string ACategory in ObjectsInfo.Keys)
             {
-                foreach (MetaObjectInfo AObjectInfo in ObjectsInfo[ACategory].Where(obj => obj.Name == AType))
+                foreach (MetaObjectInfo AObjectInfo in ObjectsInfo[ACategory].Where(obj => obj.Name == type))
                 {
                     return ACategory;
                 }
@@ -116,17 +116,17 @@ namespace tryhard
             return "Equipment";
         }
 
-        public List<string> GetObjectTypesOfObjectCategory(string AObjectCategory)
+        public List<string> GetObjectTypesOfObjectCategory(string objectCategory)
         {
             List<string> result = new List<string>();
-            foreach (MetaObjectInfo obj in ObjectsInfo[AObjectCategory])
+            foreach (MetaObjectInfo obj in ObjectsInfo[objectCategory])
                 result.Add(obj.Name);
             return result;
         }
 
-        public IEnumerable<BaseObject> GetObjectsInfoByType(string AObjectsType)
+        public IEnumerable<BaseObject> GetObjectsInfoByType(string objectsType)
         {
-            return Objects[AObjectsType].Select(k => new BaseObject(k.Id, k.Name));
+            return Objects[objectsType].Select(k => new BaseObject(k.Id, k.Name));
         }
 
         public BaseObject GetObject(string type, int id)
@@ -134,106 +134,106 @@ namespace tryhard
             return Objects[type].Where(obj => obj.Id == id).ToList()[0];
         }
 
-        public IEnumerable<BaseObject> GetObjectsInfoByTypeAndEstimatedFieldId(string AObjectsType, int _estimatedFieldId)
+        public IEnumerable<BaseObject> GetObjectsInfoByTypeAndEstimatedFieldId(string objectsType, int estimatedFieldId)
         {
-            IEnumerable<Complex> objects = (Objects[AObjectsType].Select(k => k as Complex)).Where(k => k.EstimatedFieldId == _estimatedFieldId);
+            IEnumerable<Complex> objects = (Objects[objectsType].Select(k => k as Complex)).Where(k => k.EstimatedFieldId == estimatedFieldId);
             return objects.Select(k => new BaseObject(k.Id, k.Name));
         }
 
-        public bool isPossibleLink(string ACategory, string AFirstObjectType, string ASecondObjectType)
+        public bool isPossibleLink(string category, string firstObjectType, string secondObjectType)
         {
-            foreach (MetaObjectInfo FirstObjectInfo in this.ObjectsInfo[ACategory].Where(obj=>obj.Name == AFirstObjectType))
-                return FirstObjectInfo.PossibleLink.Contains(ASecondObjectType);
+            foreach (MetaObjectInfo FirstObjectInfo in this.ObjectsInfo[category].Where(obj=>obj.Name == firstObjectType))
+                return FirstObjectInfo.PossibleLink.Contains(secondObjectType);
             return false;
         }
 
-        private void PrintAllProperties(object AObject)
+        private void PrintAllProperties(object _object)
         {
-            foreach (var Property in AObject.GetType().GetProperties())
+            foreach (var Property in _object.GetType().GetProperties())
             {
-                Console.WriteLine(Property.Name + " " + Property.GetValue(AObject));
+                Console.WriteLine(Property.Name + " " + Property.GetValue(_object));
             }
         }
 
-        public IEnumerable<string> GetObjectTypesByCategory(string ACategory)
+        public IEnumerable<string> GetObjectTypesByCategory(string category)
         {
-            return ObjectsInfo[ACategory].Select(k => k.Name);
+            return ObjectsInfo[category].Select(k => k.Name);
         }
 
-        public List<int> GetIdCortageByType(string AType)
+        public List<int> GetIdCortageByType(string type)
         {
-            return Objects[AType].Select(obj => obj.Id).ToList();
+            return Objects[type].Select(obj => obj.Id).ToList();
         }
 
-        public void FillObjectStructure(List<Link> ALinks, Dictionary<int, Block> ABlocks, ref ObjectsStructure AObjectStructure)
+        public void FillObjectStructure(List<Link> links, Dictionary<int, Block> blocks, ref ObjectsStructure objectStructure)
         {
             List<StructuralObject> objects = new List<StructuralObject>();
-            List<LinkStructuralObject> links = new List<LinkStructuralObject>();
-            foreach (int Key in ABlocks.Keys)
+            List<LinkStructuralObject> _links = new List<LinkStructuralObject>();
+            foreach (int Key in blocks.Keys)
             {
                 StructuralObject obj = new StructuralObject();
-                obj.Id = ABlocks[Key].Id;
-                obj.Index = ABlocks[Key].Index;
-                obj.Type = ABlocks[Key].ClassText;
-                obj.Coordinates = ABlocks[Key].Location;
+                obj.Id = blocks[Key].Id;
+                obj.Index = blocks[Key].Index;
+                obj.Type = blocks[Key].ClassText;
+                obj.Coordinates = blocks[Key].Location;
                 objects.Add(obj);
             }
-            AObjectStructure.Objects = objects;
-            foreach (Link link in ALinks)
+            objectStructure.Objects = objects;
+            foreach (Link link in links)
             {
                 LinkStructuralObject _link = new LinkStructuralObject();
                 _link.FirstBlockIndex = link.FirstBlockIndex;
                 _link.SecondBlockIndex = link.SecondBlockIndex;
                 _link.LinkParameter = link.LinkParameter;
-                links.Add(_link);
+                _links.Add(_link);
             }
-            AObjectStructure.Links = links;
+            objectStructure.Links = _links;
         }
 
-        public void PushObjectStructure(string AType, int AId, ObjectsStructure AObjectStructure)
+        public void PushObjectStructure(string type, int id, ObjectsStructure objectStructure)
         {
-            foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
-                Object.GetType().GetProperty("Structure").SetValue(Object, AObjectStructure);
+            foreach (BaseObject Object in Objects[type].Where(obj => obj.Id == id))
+                Object.GetType().GetProperty("Structure").SetValue(Object, objectStructure);
         }
 
-        public List<string> GetLinkableParameters(string AFirstType, string ASecondType)
+        public List<string> GetLinkableParameters(string firstType, string secondType)
         {
-            List<string> parametersFirstType = GetParametersByParamenterType(GetCateroryNameByType(AFirstType), AFirstType, "Output");
-            List<string> parametersSecondType = GetParametersByParamenterType(GetCateroryNameByType(ASecondType), ASecondType, "Input");
+            List<string> parametersFirstType = GetParametersByParamenterType(GetCateroryNameByType(firstType), firstType, "Output");
+            List<string> parametersSecondType = GetParametersByParamenterType(GetCateroryNameByType(secondType), secondType, "Input");
             return parametersSecondType;
         }
 
-        public List<string> GetParametersByParamenterType(string AObjectCategory, string AObjectType, string AParamenterType)
+        public List<string> GetParametersByParamenterType(string objectCategory, string objectType, string paramenterType)
         {
             List<string> parameters = new List<string>();
-            foreach (MetaObjectInfo ObjectInfo in ObjectsInfo[AObjectCategory].Where(obj => obj.Name == AObjectType))
+            foreach (MetaObjectInfo ObjectInfo in ObjectsInfo[objectCategory].Where(obj => obj.Name == objectType))
                 foreach (string Property in ObjectInfo.Properties)
                 {
                     int matchPos = 0;
-                    if ((matchPos = Property.IndexOf(AParamenterType)) != -1)
-                        parameters.Add(Property.Substring(0, Property.Length - AParamenterType.Length));
+                    if ((matchPos = Property.IndexOf(paramenterType)) != -1)
+                        parameters.Add(Property.Substring(0, Property.Length - paramenterType.Length));
                 }
             return parameters;
         }
 
-        public void FillDrawingObjectStructure(string AType, int AId, 
-                                               ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks, Point aPageOffset)
+        public void FillDrawingObjectStructure(string type, int id, ref List<Link> links, 
+                                               ref Dictionary<int, Block> blocks, Point pageOffset)
         {
             ObjectsStructure ObjectStructure = new ObjectsStructure();
-            foreach (BaseObject Object in MetaDataManager.Instance.Objects[AType].Where(obj => obj.Id == AId))
+            foreach (BaseObject Object in MetaDataManager.Instance.Objects[type].Where(obj => obj.Id == id))
                 ObjectStructure = (ObjectsStructure)Object.GetType().GetProperty("Structure").GetValue(Object);
             foreach (LinkStructuralObject link in ObjectStructure.Links)
-                ALinks.Add(new Link(link));
+                links.Add(new Link(link));
             foreach (StructuralObject structuralObject in ObjectStructure.Objects)
-                ABlocks.Add(structuralObject.Index, new Block(structuralObject, aPageOffset));
+                blocks.Add(structuralObject.Index, new Block(structuralObject, pageOffset));
         }
 
-        public void FillDrawingObjectProjectStructure(int AId, ref List<Link> ALinks, ref Dictionary<int, Block> ABlocks, Point aPageOffset)
+        public void FillDrawingObjectProjectStructure(int id, ref List<Link> links, ref Dictionary<int, Block> blocks, Point pageOffset)
         {
-            foreach (LinkStructuralObject link in Projects[AId].Structure.Links)
-                ALinks.Add(new Link(link));
-            foreach (StructuralObject structuralObject in Projects[AId].Structure.Objects)
-                ABlocks.Add(structuralObject.Index, new Block(structuralObject, aPageOffset));
+            foreach (LinkStructuralObject link in Projects[id].Structure.Links)
+                links.Add(new Link(link));
+            foreach (StructuralObject structuralObject in Projects[id].Structure.Objects)
+                blocks.Add(structuralObject.Index, new Block(structuralObject, pageOffset));
         }
 
         public void SerializeMetaObjects()
@@ -247,20 +247,20 @@ namespace tryhard
             }
         }
         
-        public BaseObject GetBaseObjectOfId(string AType, int AId)
+        public BaseObject GetBaseObjectOfId(string type, int id)
         {
             object resultObject = new object();
-            foreach (BaseObject Object in Objects[AType].Where(obj => obj.Id == AId))
+            foreach (BaseObject Object in Objects[type].Where(obj => obj.Id == id))
                 resultObject = Object;
             return (BaseObject)resultObject;
         }
 
-        private List<BaseObject> DeserializeMetaObjects(string AObjectName)
+        private List<BaseObject> DeserializeMetaObjects(string objectName)
         {
             List<BaseObject> result = new List<BaseObject>();
-            string ObjectPath = ObjFilesDir + AObjectName+ ObjFileFormat;
+            string ObjectPath = ObjFilesDir + objectName + ObjFileFormat;
             string json = GetJson(ObjectPath);
-            switch (AObjectName)
+            switch (objectName)
             {
                 case "integrated_complex": result.AddRange(JsonConvert.DeserializeObject<List<IntegratedComplex>>(json)); break;
                 case "processing_complex": result.AddRange(JsonConvert.DeserializeObject<List<ProcessingComplex>>(json)); break;
@@ -286,9 +286,9 @@ namespace tryhard
             return result;
         }
 
-        public string GiveTypeName(string aObjectType)
+        public string GiveTypeName(string objectType)
         {
-            switch (aObjectType)
+            switch (objectType)
             {
                 case "integrated_complex": return "IntegratedComplex"; break;
                 case "processing_complex": return "ProcessingComplex"; break;
@@ -317,9 +317,9 @@ namespace tryhard
             return new List<string>();
         }
 
-        public string GetJson(string APath)
+        public string GetJson(string path)
         {
-            StreamReader sr = new StreamReader(APath);
+            StreamReader sr = new StreamReader(path);
             string json = sr.ReadToEnd();
             sr.Close();
             return json;

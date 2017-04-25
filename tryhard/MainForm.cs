@@ -24,7 +24,6 @@ namespace tryhard
         private int SelectBlockIndex;
         private bool isMouseDown { get; set; }
         public Point ClickOffset { get; set; }
-        private bool isNextStep;
         private int MarginInLinkPanel = 12;
         private bool isLoadedProject = false;
         private Project currentProject = null;
@@ -42,7 +41,6 @@ namespace tryhard
             DrawingPanelOffset.Y = MainPage.Location.Y;
 
             isMouseDown = false;
-            isNextStep = false;
 
             SetProject();
             FillFieldComboBox();

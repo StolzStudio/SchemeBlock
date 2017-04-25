@@ -27,8 +27,8 @@ namespace tryhard
         //
         //Fields
         //
-        public Point Location;
-        public bool isFocus = false;
+        public Point  Location;
+        public bool   isFocus = false;
         private Point TextLocation;
 
         private int   TextOffsetX = 0;
@@ -37,40 +37,41 @@ namespace tryhard
         //
         //Constructor
         //
-        public Block(int aIndex, string aClass, string aModel, int aId, Point aLocation, Point aPageOffset)
+        public Block(int _index, string _class, string _model, int _id, Point _location, Point _pageOffset)
         {
-            Index      = aIndex;
-            ClassText  = aClass;
-            ModelText  = aModel;
-            Location   = aLocation;
-            PageOffset = aPageOffset;
+            Index      = _index;
+            ClassText  = _class;
+            ModelText  = _model;
+            Location   = _location;
+            PageOffset = _pageOffset;
             Count      = 1;
-            Id         = aId;
+            Id         = _id;
+
             SetFocus();
             SetTextLocation();
         }
 
-        public Block(Block AOther)
+        public Block(Block block)
         {
-            Index     = AOther.Index;
-            Count     = AOther.Count;
-            ClassText = AOther.ClassText;
-            ModelText = AOther.ModelText;
-            Id        = AOther.Id;
-            Index     = AOther.Index;
-            Count     = AOther.Count;
-            Location  = AOther.Location;
-            isFocus   = AOther.isFocus;
+            Index     = block.Index;
+            Count     = block.Count;
+            ClassText = block.ClassText;
+            ModelText = block.ModelText;
+            Id        = block.Id;
+            Index     = block.Index;
+            Count     = block.Count;
+            Location  = block.Location;
+            isFocus   = block.isFocus;
         }
 
-        public Block(StructuralObject AStructuralObject, Point aPageOffset)
+        public Block(StructuralObject structuralObject, Point pageOffset)
         {
-            Id         = AStructuralObject.Id;
-            Index      = AStructuralObject.Index;
-            ClassText  = AStructuralObject.Type;
+            Id         = structuralObject.Id;
+            Index      = structuralObject.Index;
+            ClassText  = structuralObject.Type;
             ModelText  = MetaDataManager.Instance.GetBaseObjectOfId(ClassText, Id).Name;
-            Location   = AStructuralObject.Coordinates;
-            PageOffset = aPageOffset;
+            Location   = structuralObject.Coordinates;
+            PageOffset = pageOffset;
             Count      = 1;
         }
         //
@@ -82,34 +83,34 @@ namespace tryhard
             TextLocation.Y = Location.Y + TextOffsetY;
         }
 
-        private void SetTextOffset(Graphics g, string aText, Font aFont)
+        private void SetTextOffset(Graphics g, string text, Font font)
         {
-            var size = g.MeasureString(aText, aFont);
+            var size = g.MeasureString(text, font);
             TextOffsetX = (BlockWidth - (int)size.Width) / 2;
         }
 
-        public void Move(Point aLocation, Point aClickOffset, Point aPageSize)
+        public void Move(Point location, Point clickOffset, Point pageSize)
         {
-            Point Pnt = this.PointNormalize(aLocation);
+            Point Pnt = this.PointNormalize(location);
            
-            Pnt.X -= aClickOffset.X;
-            Pnt.Y -= aClickOffset.Y;
+            Pnt.X -= clickOffset.X;
+            Pnt.Y -= clickOffset.Y;
 
             int offset = 2;
-            if ((0 + offset <= Pnt.X) && ((Pnt.X + BlockWidth) <= (aPageSize.X - offset)))
+            if ((0 + offset <= Pnt.X) && ((Pnt.X + BlockWidth) <= (pageSize.X - offset)))
             {
                 Location.X = Pnt.X;   
             }
-            if ((0 + offset <= Pnt.Y) && ((Pnt.Y + BlockHeight) <= (aPageSize.Y - offset)))
+            if ((0 + offset <= Pnt.Y) && ((Pnt.Y + BlockHeight) <= (pageSize.Y - offset)))
             {
                 Location.Y = Pnt.Y;
             }
             SetTextLocation();
         }
 
-        public Point PointNormalize(Point Pnt)
+        public Point PointNormalize(Point point)
         {
-            return new Point(Pnt.X - PageOffset.X, Pnt.Y - PageOffset.Y);
+            return new Point(point.X - PageOffset.X, point.Y - PageOffset.Y);
         }
         //
         //Work with focus
@@ -124,10 +125,10 @@ namespace tryhard
             this.isFocus = false;
         }
 
-        public bool CheckFocus(Point aMouseLocation)
+        public bool CheckFocus(Point mouseLocation)
         {
-            if (((this.Location.X <= aMouseLocation.X)&&(aMouseLocation.X <= this.Location.X + BlockWidth))&&
-                ((this.Location.Y <= aMouseLocation.Y)&&(aMouseLocation.Y <= this.Location.Y + BlockHeight)))
+            if (((this.Location.X <= mouseLocation.X) && (mouseLocation.X <= this.Location.X + BlockWidth)) &&
+                ((this.Location.Y <= mouseLocation.Y) && (mouseLocation.Y <= this.Location.Y + BlockHeight)))
             {
                 SetFocus();
             }

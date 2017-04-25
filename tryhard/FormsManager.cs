@@ -25,19 +25,19 @@ namespace tryhard
             }
         }
 
-        public void Initialize(MainForm AForm)
+        public void Initialize(MainForm form)
         {
-            Form = AForm;
+            Form = form;
         }
 
-        public void AddEditForm(EditorForm AEditForm)
+        public void AddEditForm(EditorForm editForm)
         {
-            EditForms.Add(AEditForm);
+            EditForms.Add(editForm);
         }
 
-        public void DeleteEditForm(EditorForm AEditForm)
+        public void DeleteEditForm(EditorForm editForm)
         {
-            EditForms.Remove(AEditForm);
+            EditForms.Remove(editForm);
         }
 
         public void UpdateViewControls()

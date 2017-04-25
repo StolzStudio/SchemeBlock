@@ -31,54 +31,54 @@ namespace tryhard
         //Methods
         //
 
-        public Link(int AFirstBlockIndex, int ASecondBlockIndex, string ALinkParameter, int ALinkParameterValue)
+        public Link(int firstBlockIndex, int secondBlockIndex, string linkParameter, int linkParameterValue)
         {
-            Points = new Point[4];
-            ArrowColor = Color.DarkSlateBlue;
-            SelectArrowColor = Color.IndianRed;
-            FirstBlockIndex = AFirstBlockIndex;
-            SecondBlockIndex = ASecondBlockIndex;
-            isFocus = false;
-            LinkParameter = ALinkParameter;
-            LinkParameterValue = ALinkParameterValue;
+            Points =             new Point[4];
+            isFocus =            false;
+            ArrowColor =         Color.DarkSlateBlue;
+            LinkParameter =      linkParameter;
+            FirstBlockIndex =    firstBlockIndex;
+            SelectArrowColor =   Color.IndianRed;
+            SecondBlockIndex =   secondBlockIndex;
+            LinkParameterValue = linkParameterValue;
         }
 
-        public Link(LinkStructuralObject ALink)
+        public Link(LinkStructuralObject link)
         {
-            Points = new Point[4];
-            ArrowColor = Color.DarkSlateBlue;
+            Points =           new Point[4];
+            isFocus =          false;
+            ArrowColor =       Color.DarkSlateBlue;
+            LinkParameter =    link.LinkParameter;
+            FirstBlockIndex =  link.FirstBlockIndex;
             SelectArrowColor = Color.IndianRed;
-            FirstBlockIndex = ALink.FirstBlockIndex;
-            SecondBlockIndex = ALink.SecondBlockIndex;
-            LinkParameter = ALink.LinkParameter;
-            isFocus = false;
+            SecondBlockIndex = link.SecondBlockIndex;
         }
         //
         //take point location
         //
-        public Point GetFirstBlockPointLocation(Dictionary<int, Block> aBlocks)
+        public Point GetFirstBlockPointLocation(Dictionary<int, Block> blocks)
         {
-            Block Result = aBlocks[FirstBlockIndex];
+            Block Result = blocks[FirstBlockIndex];
             return new Point(Result.Location.X + (Block.BlockWidth / 2),
                              Result.Location.Y + (Block.BlockHeight / 2));
         }
 
-        public Point GetSecondBlockPointLocation(Dictionary<int, Block> aBlocks)
+        public Point GetSecondBlockPointLocation(Dictionary<int, Block> blocks)
         {
-            Block Result = aBlocks[SecondBlockIndex];
+            Block Result = blocks[SecondBlockIndex];
             return new Point(Result.Location.X + (Block.BlockWidth / 2),
                              Result.Location.Y + (Block.BlockHeight / 2));
         }
 
-        public bool CheckDeletedLink(int AIndex)
+        public bool CheckDeletedLink(int index)
         {
-            if ((AIndex == FirstBlockIndex) || (AIndex == SecondBlockIndex)) { return true; }
-            else { return false; }
+            if ((index == FirstBlockIndex) || (index == SecondBlockIndex)) return true;
+            return false;
         }
         //
         //draw link
         //
-        public void Draw(Dictionary<int, Block> aBlocks, Graphics g)
+        public void Draw(Dictionary<int, Block> blocks, Graphics g)
         {
             Pen pen = new Pen(this.ArrowColor);
 
@@ -92,8 +92,8 @@ namespace tryhard
                 pen.Width = 1.5F;
             }
 
-            Points[0] = GetFirstBlockPointLocation(aBlocks);
-            Points[2] = GetSecondBlockPointLocation(aBlocks);
+            Points[0] = GetFirstBlockPointLocation(blocks);
+            Points[2] = GetSecondBlockPointLocation(blocks);
 
             if (Math.Abs(Math.Abs(Points[0].X) - Math.Abs(Points[2].X)) <
                 Math.Abs(Math.Abs(Points[0].Y) - Math.Abs(Points[2].Y)))
@@ -160,34 +160,34 @@ namespace tryhard
         //
         //work with focus
         //
-        public void TrySetFocus(Point Coord)
+        public void TrySetFocus(Point coord)
         {
             if (FirstLine == LineType.LTHorizontal)
             {
-                CheckFocus(Points[0].X, Points[0].Y, Points[1].X, Coord.X, Coord.Y);
-                CheckFocus(Points[1].Y, Points[1].X, Points[2].Y, Coord.Y, Coord.X);
+                CheckFocus(Points[0].X, Points[0].Y, Points[1].X, coord.X, coord.Y);
+                CheckFocus(Points[1].Y, Points[1].X, Points[2].Y, coord.Y, coord.X);
             }
             else
             {
-                CheckFocus(Points[0].Y, Points[0].X, Points[1].Y, Coord.Y, Coord.X);
-                CheckFocus(Points[1].X, Points[1].Y, Points[2].X, Coord.X, Coord.Y);
+                CheckFocus(Points[0].Y, Points[0].X, Points[1].Y, coord.Y, coord.X);
+                CheckFocus(Points[1].X, Points[1].Y, Points[2].X, coord.X, coord.Y);
             }
 
         }
 
-        public void CheckFocus(int Pnt0, int Pnt0_1, int Pnt1, int Pnt2, int Pnt2_1)
+        public void CheckFocus(int pnt0, int pnt0_1, int pnt1, int pnt2, int pnt2_1)
         {
             int SelectOffset = 7;
 
             int min;
             int max;
 
-            if (Pnt0 <= Pnt1) { min = Pnt0; max = Pnt1; }
-            else { min = Pnt1; max = Pnt0; }
+            if (pnt0 <= pnt1) { min = pnt0; max = pnt1; }
+            else { min = pnt1; max = pnt0; }
 
-            if ((min - SelectOffset <= Pnt2) && (Pnt2 <= max + SelectOffset))
+            if ((min - SelectOffset <= pnt2) && (pnt2 <= max + SelectOffset))
             {
-                if ((Pnt0_1 - SelectOffset <= Pnt2_1) && (Pnt2_1 <= Pnt0_1 + SelectOffset))
+                if ((pnt0_1 - SelectOffset <= pnt2_1) && (pnt2_1 <= pnt0_1 + SelectOffset))
                 {
                     this.isFocus = true;
                 }
