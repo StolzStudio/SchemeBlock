@@ -21,18 +21,6 @@ namespace tryhard
         }
     }
 
-    public class IdNameInfo
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public IdNameInfo(int AId, string AName)
-        {
-            Id = AId;
-            Name = AName;
-        }
-    }
-
     public class MetaDataManager
     {
         private static MetaDataManager instance;
