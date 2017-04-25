@@ -12,7 +12,7 @@ namespace tryhard
 {
     public partial class WelcomeForm : Form
     {
-        private List<IdNameInfo> ProjectsInfo;
+        private List<BaseObject> ProjectsInfo;
 
         public WelcomeForm()
         {
@@ -31,7 +31,7 @@ namespace tryhard
         private void LoadProjectsListItems()
         {
             ProjectsInfo = MetaDataManager.Instance.GetProjectsIdName();
-            foreach(IdNameInfo project in ProjectsInfo)
+            foreach(BaseObject project in ProjectsInfo)
                 ProjectsListBox.Items.Add(project.Name);
         }
         //

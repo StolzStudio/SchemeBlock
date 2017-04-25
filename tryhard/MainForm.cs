@@ -313,7 +313,7 @@ namespace tryhard
                 foreach (string TypeName in MetaDataManager.Instance.GetObjectTypesByCategory(CategoryName))
                 {
                     TreeNode node = new TreeNode(MetaDataManager.Instance.Dictionary[TypeName]);
-                    foreach (IdNameInfo ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsInfoByTypeAndEstimatedFieldId(TypeName, estimatedFieldId))
+                    foreach (BaseObject ObjectIdNameInfo in MetaDataManager.Instance.GetObjectsInfoByTypeAndEstimatedFieldId(TypeName, estimatedFieldId))
                     {
                         TreeNode node_child = new TreeNode(ObjectIdNameInfo.Name);
                         node_child.Tag = ObjectIdNameInfo.Id;
@@ -329,8 +329,8 @@ namespace tryhard
         private void FillFieldComboBox()
         {
             FieldComboBox.Items.Clear();
-            List<IdNameInfo> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
-            foreach (IdNameInfo field in fields)
+            List<BaseObject> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
+            foreach (BaseObject field in fields)
                 FieldComboBox.Items.Add(field.Name);
             for (int i = 0; i < fields.Count(); i++)
                 if (fields[i].Id == currentProject.EstimatedFieldId)
@@ -350,7 +350,7 @@ namespace tryhard
 
         private void SetIndex_FieldComboBox()
         {
-            List<IdNameInfo> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
+            List<BaseObject> fields = MetaDataManager.Instance.GetObjectsInfoByType("field_parameters").ToList();
             for (int i = 0; i < fields.Count(); i++)
                 if (fields[i].Id == currentProject.EstimatedFieldId)
                 {

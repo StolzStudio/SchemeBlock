@@ -94,9 +94,9 @@ namespace tryhard
         }
 
 
-        public List<IdNameInfo> GetProjectsIdName()
+        public List<BaseObject> GetProjectsIdName()
         {
-            return Projects.Keys.Select(key => new IdNameInfo(Projects[key].Id, Projects[key].Name)).ToList();
+            return Projects.Keys.Select(key => new BaseObject(Projects[key].Id, Projects[key].Name)).ToList();
         }
 
         public IEnumerable<string> ObjectCategories
@@ -124,9 +124,9 @@ namespace tryhard
             return result;
         }
 
-        public IEnumerable<IdNameInfo> GetObjectsInfoByType(string AObjectsType)
+        public IEnumerable<BaseObject> GetObjectsInfoByType(string AObjectsType)
         {
-            return Objects[AObjectsType].Select(k => new IdNameInfo(k.Id, k.Name));
+            return Objects[AObjectsType].Select(k => new BaseObject(k.Id, k.Name));
         }
 
         public BaseObject GetObject(string type, int id)
@@ -134,10 +134,10 @@ namespace tryhard
             return Objects[type].Where(obj => obj.Id == id).ToList()[0];
         }
 
-        public IEnumerable<IdNameInfo> GetObjectsInfoByTypeAndEstimatedFieldId(string AObjectsType, int _estimatedFieldId)
+        public IEnumerable<BaseObject> GetObjectsInfoByTypeAndEstimatedFieldId(string AObjectsType, int _estimatedFieldId)
         {
             IEnumerable<Complex> objects = (Objects[AObjectsType].Select(k => k as Complex)).Where(k => k.EstimatedFieldId == _estimatedFieldId);
-            return objects.Select(k => new IdNameInfo(k.Id, k.Name));
+            return objects.Select(k => new BaseObject(k.Id, k.Name));
         }
 
         public bool isPossibleLink(string ACategory, string AFirstObjectType, string ASecondObjectType)

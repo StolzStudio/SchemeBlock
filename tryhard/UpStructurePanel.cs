@@ -28,7 +28,7 @@ namespace tryhard
             NameTextBox.Enabled = true;
             if (ProgramState.currentProjectId != -1)
             {
-                foreach (IdNameInfo project in MetaDataManager.Instance.GetProjectsIdName())
+                foreach (BaseObject project in MetaDataManager.Instance.GetProjectsIdName())
                     if (project.Id == ProgramState.currentProjectId)
                         NameTextBox.Text = project.Name;
                 NameTextBox.Enabled = false;

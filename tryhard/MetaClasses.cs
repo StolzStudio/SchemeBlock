@@ -92,10 +92,17 @@ namespace tryhard
         }
     }
 
-    public abstract class BaseObject
+    public class BaseObject
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public BaseObject () { }
+        public BaseObject(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
     }
 
     public class MaterialObject : BaseObject
