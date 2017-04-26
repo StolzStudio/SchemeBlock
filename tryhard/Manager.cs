@@ -10,15 +10,15 @@ namespace tryhard
 {
     public class Manager
     {
-        public int SelectedBlockIndex;
+        public int  SelectedBlockIndex;
         public bool isHaveSelectedBlock;
         public bool isOilFieldAdd;
 
         public Dictionary<int, Block> Blocks;
-        public List<Link> Links;
+        public List<Link>             Links;
 
         private DrawPage Page;
-        private int block_counter;
+        private int      block_counter;
 
         public Manager(DrawPage page)
         {

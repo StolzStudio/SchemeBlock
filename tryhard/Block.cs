@@ -19,16 +19,16 @@ namespace tryhard
         //
         //Properties
         //
-        public string ClassText { get; set; }
-        public string ModelText { get; set; }
+        public int    Id        { get; set; }
         public int    Count     { get; set; }
         public int    Index     { get; set; }
-        public int    Id        { get; set; }
+        public bool   isFocus   { get; set; }
+        public string ClassText { get; set; }
+        public string ModelText { get; set; }
         //
         //Fields
         //
-        public Point  Location;
-        public bool   isFocus = false;
+        public  Point Location;
         private Point TextLocation;
 
         private int   TextOffsetX = 0;

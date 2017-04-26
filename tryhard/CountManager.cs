@@ -9,11 +9,7 @@ namespace tryhard
 {
     class CountManager
     {
-        public bool isEquipment;
-        private string ObjectType;
-        private string CategoryType;
-        private OilQuality FluidParam;
-        private bool isComeToStashAgain;
+        public  bool       isEquipment;
 
         public List<int> Queue;
         public Dictionary<int, Dictionary<string, float>> BlockStashValue;
@@ -21,13 +17,19 @@ namespace tryhard
         public List<Link> Links;
         public Dictionary<int, Block> Blocks;
 
+        private string     ObjectType;
+        private string     CategoryType;
+        private OilQuality FluidParam;
+        private bool       isComeToStashAgain;
+
+
         public CountManager(ref Dictionary<int, Block> blocks, ref List<Link> links, string categoryType, string objectType)
         {
             if (categoryType == "Equipment") { isEquipment = true;  }
                                          else { isEquipment = false; }
-            Links  =       links;
-            Blocks =       blocks;
-            ObjectType =   objectType;
+            Links        = links;
+            Blocks       = blocks;
+            ObjectType   = objectType;
             CategoryType = categoryType;
 
             isComeToStashAgain = false;

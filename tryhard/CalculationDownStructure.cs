@@ -10,45 +10,45 @@ namespace tryhard
 
     public class FieldSlice
     {
-        public double yWater { get; set; } = 1;
-        public double dLocalWater { get; set; } = 30;
-        public double dGlobalWater { get; set; } = 50;
-        public double hWave50 { get; set; } = 6;
-        public double hWave001 { get; set; } = 12;
-        public double dIce { get; set; } = 3;
-        public double durabilityIce { get; set; } = 2;
-        public double diameterIce { get; set; } = 3000;
-        public double speedIce { get; set; } = 0.5;
+        public double yWater           { get; set; } = 1;
+        public double dLocalWater      { get; set; } = 30;
+        public double dGlobalWater     { get; set; } = 50;
+        public double hWave50          { get; set; } = 6;
+        public double hWave001         { get; set; } = 12;
+        public double dIce             { get; set; } = 3;
+        public double durabilityIce    { get; set; } = 2;
+        public double diameterIce      { get; set; } = 3000;
+        public double speedIce         { get; set; } = 0.5;
         public double durabilityGround { get; set; } = 250;
 
         public FieldSlice() { }
 
         public void Fill()
         {
-            yWater = Field.Instance.yWater;
-            dLocalWater = Field.Instance.dLocalWater;
-            dGlobalWater = Field.Instance.dGlobalWater;
-            hWave50 = Field.Instance.hWave50;
-            hWave001 = Field.Instance.hWave001;
-            dIce = Field.Instance.dIce;
-            durabilityIce = Field.Instance.durabilityIce;
-            diameterIce = Field.Instance.diameterIce;
-            speedIce = Field.Instance.speedIce;
-            durabilityGround= Field.Instance.durabilityGround;
+            yWater           = Field.Instance.yWater;
+            dLocalWater      = Field.Instance.dLocalWater;
+            dGlobalWater     = Field.Instance.dGlobalWater;
+            hWave50          = Field.Instance.hWave50;
+            hWave001         = Field.Instance.hWave001;
+            dIce             = Field.Instance.dIce;
+            durabilityIce    = Field.Instance.durabilityIce;
+            diameterIce      = Field.Instance.diameterIce;
+            speedIce         = Field.Instance.speedIce;
+            durabilityGround = Field.Instance.durabilityGround;
         }
     }
 
     public class Field
     {
-        public double yWater { get; set; } = 1;
-        public double dLocalWater { get; set; } = 30;
-        public double dGlobalWater { get; set; } = 50;
-        public double hWave50 { get; set; } = 6;
-        public double hWave001 { get; set; } = 12;
-        public double dIce { get; set; } = 3;
-        public double durabilityIce { get; set; } = 2;
-        public double diameterIce { get; set; } = 3000;
-        public double speedIce { get; set; } = 0.5;
+        public double yWater           { get; set; } = 1;
+        public double dLocalWater      { get; set; } = 30;
+        public double dGlobalWater     { get; set; } = 50;
+        public double hWave50          { get; set; } = 6;
+        public double hWave001         { get; set; } = 12;
+        public double dIce             { get; set; } = 3;
+        public double durabilityIce    { get; set; } = 2;
+        public double diameterIce      { get; set; } = 3000;
+        public double speedIce         { get; set; } = 0.5;
         public double durabilityGround { get; set; } = 250;
 
         private static Field instance;
@@ -67,92 +67,93 @@ namespace tryhard
 
         public void Initialize(Field originalField)
         {
-            yWater = originalField.yWater;
-            dLocalWater = originalField.dLocalWater;
-            dGlobalWater = originalField.dGlobalWater;
-            hWave50 = originalField.hWave50;
-            hWave001 = originalField.hWave001;
-            dIce = originalField.dIce;
-            durabilityIce = originalField.durabilityIce;
-            diameterIce = originalField.diameterIce;
-            speedIce = originalField.speedIce;
+            yWater           = originalField.yWater;
+            dLocalWater      = originalField.dLocalWater;
+            dGlobalWater     = originalField.dGlobalWater;
+            hWave50          = originalField.hWave50;
+            hWave001         = originalField.hWave001;
+            dIce             = originalField.dIce;
+            durabilityIce    = originalField.durabilityIce;
+            diameterIce      = originalField.diameterIce;
+            speedIce         = originalField.speedIce;
             durabilityGround = originalField.durabilityGround;
         }
 
         public void Initialize(FieldSlice originalField)
         {
-            yWater = originalField.yWater;
-            dLocalWater = originalField.dLocalWater;
-            dGlobalWater = originalField.dGlobalWater;
-            hWave50 = originalField.hWave50;
-            hWave001 = originalField.hWave001;
-            dIce = originalField.dIce;
-            durabilityIce = originalField.durabilityIce;
-            diameterIce = originalField.diameterIce;
-            speedIce = originalField.speedIce;
+            yWater           = originalField.yWater;
+            dLocalWater      = originalField.dLocalWater;
+            dGlobalWater     = originalField.dGlobalWater;
+            hWave50          = originalField.hWave50;
+            hWave001         = originalField.hWave001;
+            dIce             = originalField.dIce;
+            durabilityIce    = originalField.durabilityIce;
+            diameterIce      = originalField.diameterIce;
+            speedIce         = originalField.speedIce;
             durabilityGround = originalField.durabilityGround;
         }
 
         public void Initialize()
         {
-            yWater = 1;
-            dLocalWater = 30;
-            dGlobalWater = 50;
-            hWave50 = 6;
-            hWave001 = 12;
-            dIce = 3;
-            durabilityIce = 2;
-            diameterIce = 3000;
-            speedIce = 0.5;
+            yWater           = 1;
+            dLocalWater      = 30;
+            dGlobalWater     = 50;
+            hWave50          = 6;
+            hWave001         = 12;
+            dIce             = 3;
+            durabilityIce    = 2;
+            diameterIce      = 3000;
+            speedIce         = 0.5;
             durabilityGround = 2500;
         }
     }
 
     public class DownStructure
     {
-        public bool isCalculated { get; set; }
-        public StructureType type { get; set; }
-        public int countBC { get; set; }
-        public int countSC { get; set; }
+        public bool isCalculated   { get; set; }
+        public StructureType type  { get; set; }
+        public int countBC         { get; set; }
+        public int countSC         { get; set; }
         public double wUpStructure { get; set; }
         public double pUpStructure { get; set; }
-        public double dWallCell { get; set; }
-        public double hStructure { get; set; }
-        public double wCell { get; set; }
-        public double hExCl { get; set; }
-        public double hTrCl { get; set; }
-        public double yMat { get; set; }
-        public double yMatBallast { get; set; }
-        public Cell supportCell { get; set; }
-        public BaseCell baseCell { get; set; }
-        public double minTrCl { get; set; }
-        public double freeVolume { get; set; }
-        public double weightJob { get; set; }
-        public double weight { get; set; }
-        public double cost { get; set; }
+        public double dWallCell    { get; set; }
+        public double hStructure   { get; set; }
+        public double wCell        { get; set; }
+        public double hExCl        { get; set; }
+        public double hTrCl        { get; set; }
+        public double yMat         { get; set; }
+        public double yMatBallast  { get; set; }
+        public Cell supportCell    { get; set; }
+        public BaseCell baseCell   { get; set; }
+        public double minTrCl      { get; set; }
+        public double freeVolume   { get; set; }
+        public double weightJob    { get; set; }
+        public double weight       { get; set; }
+        public double cost         { get; set; }
 
         public DownStructure() { }
+        
         public DownStructure(DownStructure originalStructure)
         {
             isCalculated = originalStructure.isCalculated;
-            type = originalStructure.type;
-            countBC = originalStructure.countBC;
-            countSC = originalStructure.countSC;
+            type         = originalStructure.type;
+            countBC      = originalStructure.countBC;
+            countSC      = originalStructure.countSC;
             wUpStructure = originalStructure.wUpStructure;
             pUpStructure = originalStructure.pUpStructure;
-            dWallCell = originalStructure.dWallCell;
-            hStructure = originalStructure.hStructure;
-            wCell = originalStructure.wCell;
-            hExCl = originalStructure.hExCl;
-            hTrCl = originalStructure.hTrCl;
-            yMat = originalStructure.yMat;
-            yMatBallast = originalStructure.yMatBallast;
-            supportCell = new Cell(originalStructure.supportCell);
-            baseCell = new BaseCell(originalStructure.baseCell);
-            weight = originalStructure.weight;
-            weightJob = originalStructure.weightJob;
-            cost = originalStructure.cost;
-            minTrCl = originalStructure.minTrCl;
+            dWallCell    = originalStructure.dWallCell;
+            hStructure   = originalStructure.hStructure;
+            wCell        = originalStructure.wCell;
+            hExCl        = originalStructure.hExCl;
+            hTrCl        = originalStructure.hTrCl;
+            yMat         = originalStructure.yMat;
+            yMatBallast  = originalStructure.yMatBallast;
+            supportCell  = new Cell(originalStructure.supportCell);
+            baseCell     = new BaseCell(originalStructure.baseCell);
+            weight       = originalStructure.weight;
+            weightJob    = originalStructure.weightJob;
+            cost         = originalStructure.cost;
+            minTrCl      = originalStructure.minTrCl;
         }
 
 
@@ -172,20 +173,20 @@ namespace tryhard
             this.type = type;
             switch (this.type)
             {
-                case StructureType.Kesson: countSC = 25; countBC = 25; break;
-                case StructureType.Monoleg: countSC = 1; countBC = 9; break;
-                case StructureType.Multileg: countSC = 4; countBC = 25; break;
+                case StructureType.Kesson:   countSC = 25; countBC = 25; break;
+                case StructureType.Monoleg:  countSC = 1;  countBC = 9;  break;
+                case StructureType.Multileg: countSC = 4;  countBC = 25; break;
             }
         }
 
         public void DefaultInitialize()
         {
-            minTrCl = 0.5 * Field.Instance.hWave001 + 2.5;
+            minTrCl      = 0.5 * Field.Instance.hWave001 + 2.5;
             wUpStructure = 100;
-            dWallCell = 0.75;
-            wCell = 20;
-            yMat = 2.5;
-            yMatBallast = 1.6;
+            dWallCell    = 0.75;
+            wCell        = 20;
+            yMat         = 2.5;
+            yMatBallast  = 1.6;
         }
 
         public bool CalculateDownStructure(double _pUpStructure)
@@ -487,36 +488,36 @@ namespace tryhard
 
     public class Cell
     {
-        public double a { get; set; }
-        public double h { get; set; }
-        public double v { get; set; }
-        public double p { get; set; }
-        public double kp { get; set; }
-        public double vMat { get; set; }
-        public double dWall { get; set; }
-        public double hTrCl { get; set; }
-        public double vTrCl { get; set; }
-        public double wInside { get; set; }
+        public double a        { get; set; }
+        public double h        { get; set; }
+        public double v        { get; set; }
+        public double p        { get; set; }
+        public double kp       { get; set; }
+        public double vMat     { get; set; }
+        public double dWall    { get; set; }
+        public double hTrCl    { get; set; }
+        public double vTrCl    { get; set; }
+        public double wInside  { get; set; }
         public double wOutside { get; set; }
-        public double aCSWall { get; set; }
+        public double aCSWall  { get; set; }
         public double vMatWall { get; set; }
         public double pMatWall { get; set; }
 
         public Cell() { }
         public Cell(Cell originCell)
         {
-            a = originCell.a;
-            h = originCell.h;
-            v = originCell.v;
-            p = originCell.p;
-            kp = originCell.kp;
-            vMat = originCell.vMat;
-            dWall = originCell.dWall;
-            hTrCl = originCell.hTrCl;
-            vTrCl = originCell.vTrCl;
-            wInside = originCell.wInside;
+            a        = originCell.a;
+            h        = originCell.h;
+            v        = originCell.v;
+            p        = originCell.p;
+            kp       = originCell.kp;
+            vMat     = originCell.vMat;
+            dWall    = originCell.dWall;
+            hTrCl    = originCell.hTrCl;
+            vTrCl    = originCell.vTrCl;
+            wInside  = originCell.wInside;
             wOutside = originCell.wOutside;
-            aCSWall = originCell.aCSWall;
+            aCSWall  = originCell.aCSWall;
             vMatWall = originCell.vMatWall;
             pMatWall = originCell.pMatWall;
         }
@@ -557,32 +558,32 @@ namespace tryhard
 
     public class BaseCell : Cell
     {
-        public double dCover { get; set; }
-        public double aCover { get; set; }
-        public double vMatCover { get; set; }
-        public double pMatCover { get; set; }
+        public double dCover     { get; set; }
+        public double aCover     { get; set; }
+        public double vMatCover  { get; set; }
+        public double pMatCover  { get; set; }
 
-        public double dBottom { get; set; }
-        public double aBottom { get; set; }
+        public double dBottom    { get; set; }
+        public double aBottom    { get; set; }
         public double vMatBottom { get; set; }
         public double pMatBottom { get; set; }
-        public double dBallast { get; set; }
-        public double pBallast { get; set; }
+        public double dBallast   { get; set; }
+        public double pBallast   { get; set; }
 
 
         public BaseCell() { }
         public BaseCell(BaseCell originalCell) : base()
         {
-            dCover = originalCell.dCover;
-            aCover = originalCell.aCover;
-            vMatCover = originalCell.vMatCover;
-            pMatCover = originalCell.pMatCover;
-            dBottom = originalCell.dBottom;
-            aBottom = originalCell.aBottom;
+            dCover     = originalCell.dCover;
+            aCover     = originalCell.aCover;
+            vMatCover  = originalCell.vMatCover;
+            pMatCover  = originalCell.pMatCover;
+            dBottom    = originalCell.dBottom;
+            aBottom    = originalCell.aBottom;
             vMatBottom = originalCell.vMatBottom;
             pMatBottom = originalCell.pMatBottom;
-            dBallast = originalCell.dBallast;
-            pBallast = originalCell.pBallast;
+            dBallast   = originalCell.dBallast;
+            pBallast   = originalCell.pBallast;
         }
 
         public override void CalculateParameters(double _hExCl, double _hTrCl, double _wOutside, double _dWall, double _yMat)

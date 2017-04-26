@@ -9,15 +9,15 @@ namespace tryhard
 {
     public static class ProgramState
     {
-        public static int currentProjectId { get; set; } = -1;
+        public static int  currentProjectId { get; set; } = -1;
         public static bool isSelectedProject { get; set; } = false;
         public static bool isExit { get; set; } = false;
 
         public static void DefaultState()
         {
-            currentProjectId = -1;
+            currentProjectId  = -1;
             isSelectedProject = false;
-            isExit = false;
+            isExit            = false;
         }
     }
 
@@ -39,9 +39,9 @@ namespace tryhard
 
         private string ObjFilesDir;
         private string ObjFileFormat = ".json";
-        public Dictionary<int, Project> Projects;
+        public Dictionary<int, Project>   Projects;
         public Dictionary<string, string> Dictionary;
-        public Dictionary<string, List<BaseObject>> Objects;
+        public Dictionary<string, List<BaseObject>>     Objects;
         public Dictionary<string, List<MetaObjectInfo>> ObjectsInfo;
 
         public void Initialize(string ADir)

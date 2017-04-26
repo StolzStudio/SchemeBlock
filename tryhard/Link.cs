@@ -15,41 +15,40 @@ namespace tryhard
         //
         //Properties
         //
-        public int FirstBlockIndex { get; set; }
-        public int SecondBlockIndex { get; set; }
-        public string LinkParameter { get; set; } = "";
-        public int LinkParameterValue { get; set; }
-        public bool isFocus { get; set; }
+        public int    FirstBlockIndex    { get; set; }
+        public int    SecondBlockIndex   { get; set; }
+        public string LinkParameter      { get; set; } = "";
+        public int    LinkParameterValue { get; set; }
+        public bool   isFocus            { get; set; }
         //
         //Fields
         //
-        private Point[] Points;
+        private Point[]  Points;
         private LineType FirstLine;
-        private Color ArrowColor;
-        private Color SelectArrowColor;
+        private Color    ArrowColor;
+        private Color    SelectArrowColor;
         //
         //Methods
         //
-
         public Link(int firstBlockIndex, int secondBlockIndex, string linkParameter, int linkParameterValue)
         {
-            Points =             new Point[4];
-            isFocus =            false;
-            ArrowColor =         Color.DarkSlateBlue;
-            LinkParameter =      linkParameter;
-            FirstBlockIndex =    firstBlockIndex;
-            SelectArrowColor =   Color.IndianRed;
-            SecondBlockIndex =   secondBlockIndex;
+            Points             = new Point[4];
+            isFocus            = false;
+            ArrowColor         = Color.DarkSlateBlue;
+            LinkParameter      = linkParameter;
+            FirstBlockIndex    = firstBlockIndex;
+            SelectArrowColor   = Color.IndianRed;
+            SecondBlockIndex   = secondBlockIndex;
             LinkParameterValue = linkParameterValue;
         }
 
         public Link(LinkStructuralObject link)
         {
-            Points =           new Point[4];
-            isFocus =          false;
-            ArrowColor =       Color.DarkSlateBlue;
-            LinkParameter =    link.LinkParameter;
-            FirstBlockIndex =  link.FirstBlockIndex;
+            Points           = new Point[4];
+            isFocus          = false;
+            ArrowColor       = Color.DarkSlateBlue;
+            LinkParameter    = link.LinkParameter;
+            FirstBlockIndex  = link.FirstBlockIndex;
             SelectArrowColor = Color.IndianRed;
             SecondBlockIndex = link.SecondBlockIndex;
         }

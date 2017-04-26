@@ -6,12 +6,12 @@ namespace tryhard
 {
     public class LinkInfo
     {
-        public int Index { get; set; }
+        public int    Index         { get; set; }
         public string LinkParameter { get; set; }
 
         public LinkInfo(int index, string linkParameter)
         {
-            Index = index;
+            Index         = index;
             LinkParameter = linkParameter;
         }
     }
@@ -35,18 +35,18 @@ namespace tryhard
 
         public CalcBlock(int index, string blockClass, string blockId, int count = 1)
         {
-            Index = index;
+            Index      = index;
             BlockClass = blockClass;
-            BlockId= blockId;
-            Count = count;
+            BlockId    = blockId;
+            Count      = count;
         }
 
         public CalcBlock(CalcBlock other)
         {
-            Index =      other.Index;
-            Count =      other.Count;
-            isDone =     other.isDone;
-            BlockId =    other.BlockId;
+            Index      = other.Index;
+            Count      = other.Count;
+            isDone     = other.isDone;
+            BlockId    = other.BlockId;
             BlockClass = other.BlockClass;
             InputLinks.AddRange(other.InputLinks);
             OutputLinks.AddRange(other.OutputLinks);
