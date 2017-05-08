@@ -27,21 +27,21 @@ namespace tryhard
         public Dictionary<int, List<DownStructure>> DownStructures { get; set; } = new Dictionary<int, List<DownStructure>>();
 
         public Project() { }
-        public Project(Project originalProject)
+        public Project(Project project)
         {
-            Id = originalProject.Id;
-            Name = originalProject.Name;
-            SelectedCell = originalProject.SelectedCell;
-            EstimatedFieldId = originalProject.EstimatedFieldId;
-            Structure = new ObjectsStructure(originalProject.Structure);
+            Id = project.Id;
+            Name = project.Name;
+            SelectedCell = project.SelectedCell;
+            EstimatedFieldId = project.EstimatedFieldId;
+            Structure = new ObjectsStructure(project.Structure);
             SelectedStructureTypes = new Dictionary<int, int>();
-            Field.Instance.Initialize(originalProject.FieldParameters);
-            foreach (int key in originalProject.SelectedStructureTypes.Keys)
-                SelectedStructureTypes.Add(key, originalProject.SelectedStructureTypes[key]);
-            foreach (int key in originalProject.DownStructures.Keys)
+            Field.Instance.Initialize(project.FieldParameters);
+            foreach (int key in project.SelectedStructureTypes.Keys)
+                SelectedStructureTypes.Add(key, project.SelectedStructureTypes[key]);
+            foreach (int key in project.DownStructures.Keys)
             {
                 List<DownStructure> downStructures = new List<DownStructure>();
-                foreach (DownStructure downStructure in originalProject.DownStructures[key])
+                foreach (DownStructure downStructure in project.DownStructures[key])
                     downStructures.Add(new DownStructure(downStructure));
                 DownStructures.Add(key, downStructures);
             }

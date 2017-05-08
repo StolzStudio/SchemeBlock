@@ -312,11 +312,6 @@ namespace tryhard
             return null;
         }
 
-        public List<string> GetListOfProjectNames()
-        {
-            return new List<string>();
-        }
-
         public string GetJson(string path)
         {
             StreamReader sr = new StreamReader(path);
